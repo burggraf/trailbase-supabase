@@ -1,0 +1,216 @@
+# Project-wide test and signoff plan
+
+**Mandatory for all project work, including future levels.** This is the planned full test suite, not a report of tests already passing. There is no SDK/test harness in the repository yet. Every Level 1 feature below is currently **NOT IMPLEMENTED / NOT RUN / NOT SIGNED OFF**.
+
+Related documents: [Level 1 implementation](LEVEL1_PLAN.md), [research and open gates](RESEARCH.md), [top-level roadmap](../PLAN.md), [contributor rules](../AGENTS.md).
+
+## 1. What counts as proof
+
+A feature is supported only when its documented behavior has reproducible evidence against the pinned backend and, where compatibility is claimed, the real reference Supabase SDK/backend. Passing unit mocks, type checks, screenshots, a successful HTTP status, or a happy-path demo alone is insufficient.
+
+For every feature and bug fix:
+
+1. Define the public contract, supported domain, failure behavior, and tests before implementation.
+2. Implement unit tests plus real integration tests for behavior. Add shared contract tests for compatibility claims, browser E2E for browser-observable behavior, and negative/security tests for trust boundaries.
+3. Verify **database postconditions**, session state, callbacks, resource cleanup, and errors—not only returned status codes.
+4. Produce CI artifacts tied to one commit, exact versions, fixtures, and run IDs.
+5. Obtain the named maintainer's signoff. A scope exception needs explicit approval and documentation, not a green assertion that ignores the difference.
+
+Tests provide evidence within a declared domain and version/configuration matrix; they are not proof of universal Supabase compatibility or absence of all bugs.
+
+## 2. Required test layers
+
+| Layer | Purpose and required coverage | Tools / execution |
+| --- | --- | --- |
+| Static/types | Build/declaration correctness; positive and negative public API consumers; Row/Insert/Update distinctions; nullability and unsupported signatures | TypeScript `tsc --noEmit` plus emitted-declaration consumers; `@ts-expect-error` must be exercised rather than ignored |
+| Unit | Builder state, validators, operator/range math, field codecs, result/cardinality handling, session/timer races, event mapping/framing/cancellation | Vitest, fake clocks and injected native transport/storage; no real service requirement |
+| Property/boundary | Seeded generated scalar/UUID/encoding inputs, byte fragmentation, page-bound arithmetic and builder state sequences | Table-driven and deterministic seeded cases in unit suites; log seed on failure; no extra property framework required initially |
+| Backend/database | Fixture migrations, constraints/defaults, owner rules/RLS, privileges, API exposure and realtime publication, fresh-start reproducibility | Native SQLite/TrailBase checks and local Supabase SQL/pgTAP policy assertions; run as actual roles as well as setup admin |
+| Integration | Installed SDK/adapter → real TrailBase HTTP/auth/streaming/database; side effects and errors | Vitest against disposable native server; production code cannot use test admin paths |
+| Shared contract/differential | Same supported application operations against adapter+TrailBase and official SDK+local Supabase | One parameterized suite, no mock Supabase server; compare approved values/shapes and database invariants |
+| Browser E2E | Built browser application → built/packed SDK → real auth, mail verification, records and subscriptions | Playwright Chromium, Firefox, WebKit; no intercepted fake success responses for primary flows |
+| Security/negative | Invalid inputs, role/owner isolation, credentials, refresh/session revocation, hidden fields, rejected mutations, privilege boundaries | Unit plus database/integration/E2E; direct backend calls confirm server enforcement independently of SDK guards |
+| Fault/recovery | Offline/timeout/5xx, SMTP/storage failure, partial/malformed SSE, shutdown, loss, late async responses | Deterministic fault proxy/injected transport in tests, plus real server/network disruption cases; not just mocks |
+| Package/consumer | Shipped tarball imports/types/browser bundle and real-backend behavior; no accidental secrets/source-only resolution | `npm pack`, install into temporary clean Node/browser projects, execute packaged smoke tests |
+| Resource/performance regression | Bounded page requests, mutation request counts, finite stream buffers, refresh deduplication, teardown/no live handles | Deterministic request/handle/buffer assertions; small repeated real workflows; no invented production throughput target |
+| Documentation/traceability | Markdown links, method matrix, IDs, planned versus supported status, commands/examples and evidence references | A small repository validation check; execute documented commands/examples once they exist |
+
+A layer may be marked N/A only with a concrete reviewer-approved reason (for example, negative compile tests have no browser runtime effect). Do not mark real integration, relevant E2E, or security checks N/A merely because they are inconvenient. New features and Levels 2/3 inherit this policy and must add their own matrices before code.
+
+## 3. Reproducible fixture environment
+
+### Versions and lifecycle
+
+- Begin with the baseline in [RESEARCH.md](RESEARCH.md); commit the exact server checksum/image digest, SDK lockfile, Supabase CLI/service versions, Node versions, test runner, and browser revisions as implementation lands.
+- Native TrailBase uses a temporary depot; local Supabase uses a disposable CLI/Docker stack. Docker is test infrastructure, not a requirement for the TrailBase application runtime.
+- Bootstrap with checked-in SQL migrations and API/auth configuration, not manual dashboard clicks. Health checks have bounded deadlines; setup failure fails the job. Always tear down servers, streams, containers, temporary directories, and privileged setup clients—even after assertion failure.
+- Use a local SMTP sink (Mailpit or the pinned CLI's bundled equivalent). Configure TrailBase to use the local sink as well. Capture and follow real backend verification links; no public email provider or production account is needed.
+- Turn email confirmation **on** for both fixtures; Supabase local defaults alone are not an appropriate parity fixture. Verify rate/redirect/SMTP settings explicitly.
+- Align the 1000-row common cap and configure Supabase realtime publication. Record replica identity and DELETE/RLS assumptions in the fixture manifest.
+- Use loopback/disposable targets only. Provision/reset scripts must reject non-test targets; fail closed on missing variables. Test admin secrets live in the setup process, never the browser bundle, client under test, or uploaded logs.
+
+### Data model and identities
+
+Fixture `todos` has: primary key `id`; owner `user_id`; non-null `title`; declared boolean `completed`; non-null numeric `priority`; nullable `note`; and `created_at` as a safe-integer UTC Unix timestamp in seconds (SQLite INTEGER/Postgres bigint, public JS number). Use native strict SQLite storage/mapped UUID/boolean fields and equivalent Postgres columns. The browser example supplies UUID record IDs explicitly, so it does not need mutation-returning to identify a newly created row. Include:
+
+- Integer-PK and UUID-PK variants, UUID owner columns, a nonstandard primary-key name, and a read-only view.
+- Unique/not-null/check/foreign-key/default constraints and nullable values. Test native write-only/hidden fields in a separate exposure fixture, not as an assumed Supabase underscore convention; use safe projection views/grants for restricted Supabase reads. Common `todos` contains no internal hidden fields.
+- Supabase read-only views use `security_invoker = true`; test anon/authenticated grants and owner isolation separately so a view cannot bypass RLS.
+- ASCII text comparison fixtures for the promised portable ordering domain; Unicode/combining characters and reserved URL characters for encoding tests, without claiming cross-database collation parity.
+- At least 60 records to detect accidental 50-row defaults; 1000, 1001, and cap-boundary cases; tied priorities with explicit key ordering.
+- No records, one matching record, two matching records, and matches beyond the default native page for cardinality tests.
+- User A, user B, anonymous, unverified, disabled/deleted/revoked, and setup admin identities. Passwords use generated test-only values compliant with each fixture policy.
+- Owner rules/RLS enforce create/read/update/delete isolation and forbid ownership reassignment. Include same-user two-session and same-origin two-tab scenarios separately from A/B isolation.
+
+Reset databases/depot once per isolated suite or worker, not every application assertion. Allocate unique user/email/data namespaces per test; clean them afterward. No test depends on another test's write order. Migration/auth verification scenarios receive dedicated instances when they must change global configuration.
+
+### Compare without hiding differences
+
+- Common application operations and assertions stay identical; test setup/factory/backend administration may differ.
+- Normalize only nondeterminism such as generated IDs through an explicit fixture mapping, token contents, server-generated expiry timestamps within declared tolerance, and unordered result ordering where no order is promised.
+- Never normalize wrong filter results, lost predicates, bad cardinality, unauthorized side effects, missing events, leaked fields, or a failed request into success.
+- Known exceptions (signup user, forbidden/missing mutation result, realtime partial payload, native refresh rotation) have separate backend-specific assertions plus common safety assertions and signed G1/G3/G6/G7 decisions.
+- Query data and auth user/session assertions test the declared subset without pretending that ignored extra fields are supported. Test unsupported fields/options explicitly.
+
+## 4. Feature-to-test and signoff matrix
+
+IDs are stable. Actual test names must include the feature ID and case family, for example `L1-09/I09/same-column-two-bounds`. `U`, `I`, `C`, `T`, and `P` mean unit, integration, shared contract, type, and package cases. Browser flows `E01–E15` and security cases `S01–S10` are specified below. Each cell describes **required assertions**, not optional suggestions.
+
+A row signs off only when every listed family passes at the release commit, applicable research gates are resolved, evidence exists, and the maintainer approves it. No row is signed off yet.
+
+| Feature / deliverable | Unit/type assertions | Real integration and contract assertions | E2E/security and item-specific signoff |
+| --- | --- | --- | --- |
+| **L1-01 Client/config** | U01: invalid URL/protocol, credentials in URL, bad/unknown options, injected fetch, per-client state; T01: accepted factory signatures | I01/C01: real configured origin/endpoint, anonymous request, key not used as auth, two independent clients | E01, S01/S07: browser CORS/preflight and no privileged headers; invalid config causes no request. Signoff: only documented options are honored. |
+| **L1-02 Public types** | T02: shared generated Database shape, Row/Insert/Update/default/null distinctions, read-only Views, single/maybeSingle inference; invalid methods/options/fields fail compile | P02/C02: same supported app compiles with both factories using public declarations and no `any` escape/casts | E01/E15 built consumer; runtime validator tests still reject JS misuse. Signoff: tarball declarations, not source-only types, pass. Browser cannot prove compile-negative checks; T02 is authoritative. |
+| **L1-03 Field/ID mapping** | U03: UUID byte/base64/canonical round trips, nullable declared fields, 0/1 booleans, safe integers, invalid UUID/boolean, unmarked string/integer unchanged; seeded cases | I03/C03: insert/filter/read/auth owner/realtime values round-trip; nonstandard key and fixture schema agree | E03/E04/E09, S02/S06: no coercion of arbitrary fields or owner confusion. Signoff: values match the approved portable domain without precision loss. |
+| **L1-04 Results/execution/errors** | U04: array/object/null/error envelopes, backend error mapping, lazy request start, repeated await/call-order contract, builder isolation, malformed responses | I04/C04: native failures observable; successful mutations have null data; request/DB counts match reference characterization | E02/E04/E10, S01: no successful-looking failure or accidental duplicate insert. Signoff: execution policy and deviations are explicit and tested. |
+| **L1-05 Select/list/view** | U05: default `*`, native records envelope unwrapped, empty array, unsupported projection/count/head rejected | I05/C05: no/one/many rows, exposed API vs table, declared read-only view, hidden field behavior | E04, S03/S06: only readable rows/fields appear. Signoff: supported reads use real permission-filtered native lists. |
+| **L1-06 Insert** | U06: one object, absent vs null/default fields, arrays/options/returning rejected before request | I06/C06: exactly one inserted row, defaults/constraints, duplicate key, returned `data:null`, independent follow-up read | E04, S03/S05: owner spoof denied, no unintended row. Signoff: DB invariant checks pass after success and failure. |
+| **L1-07 Update** | U07: exactly one key equality required; extra/non-key/conflicting filters, limit/order/key change rejected with zero writes | I07/C07: one target changes, other columns/rows unchanged; missing/forbidden/constraint errors characterized | E04/E11, S03/S05: no cross-owner modification or broadened write. Signoff: G3 approved and postconditions verified, not merely a 200 response. |
+| **L1-08 Delete** | U08: valid one-key predicate; absent/extra predicates/options rejected before write; idempotence contract documented | I08/C08: only target removed, foreign-key behavior observed, missing/forbidden cases, surviving rows verified | E04/E09/E11, S03/S05: unauthorized delete cannot remove data. Signoff: G3 and realtime DELETE safety hold. |
+| **L1-09 Six read filters** | U09: eq/neq/gt/gte/lt/lte mapping, AND and repeated same-column bounds, URL metacharacters/Unicode, null/unsafe/nonfinite values, hidden/unknown fields | I09/C09: golden row sets for all operators, numeric/boolean/UUID/text domains, `neq` excludes nulls, typo cannot broaden query | E05, S02: two-bound range selects exact rows; adversarial strings remain literal. Signoff: every operator has both matching and nonmatching real cases. |
+| **L1-10 Ordering** | U10: default ascending, descending, repeated keys, unsupported nullable/nullsFirst/reference options rejected | I10/C10: ordered numeric/common-text rows with key tie-breaker, equal-key ties, no fabricated unordered guarantee | E05, S02: exact declared sequences. Signoff: G4 domain restrictions and option failures are documented. |
+| **L1-11 Limit/range/caps** | U11: inclusive math, zero, end<start, negative/fractional/unsafe bounds, max, mixed/repeated calls, request-count bounds | I11/C11: range(1,3)=3 rows, limit(0)=0, >50 rows, 1000/1001 boundaries, offsets beyond end, max rejection, actual call-order precedence | E05: UI pages neither duplicate nor omit seeded stable rows. Signoff: no native-default fallback or hidden whole-table fetch. |
+| **L1-12 single** | U12: zero→error, one→object, two/many→error; explicit range/limit applied first | I12/C12: 0/1/2 and many results, including beyond 50; explicit limit(1) selects the caller's row | E06: user-visible exact cardinality handling. Signoff: never silently truncates unbounded multiple matches. |
+| **L1-13 maybeSingle** | U13: zero→null/no error, one→object, two/many→error | I13/C13: same real 0/1/2/many fixtures, empty range and explicit limit behavior | E06: optional absence not displayed as backend failure. Signoff: nullability/types and cardinality agree. |
+| **L1-14 Signup/confirmation** | U14: email/password mapping, password-repeat, unsupported phone/metadata/redirect/PKCE options rejected, no synthetic user | I14/C14: fresh and duplicate signup, weak/invalid input, disabled registration, SMTP failure, unverified login denied, real confirmation | E02/E03, S04: inbox/confirmation flow and enumeration resistance. Signoff: G1 approved; null-user exception visible; no admin bypass. |
+| **L1-15 Password login** | U15: result/token mapping, expiry calculation, malformed response, unverified/wrong/unknown/MFA-required errors | I15/C15: confirmed login→real protected query, wrong password and unknown account indistinguishable in app policy | E03/E11, S04: no session on failure, no password/token logs. Signoff: canonical owner ID and permitted user fields are correct. |
+| **L1-16 Session/persistence** | U16: no session, hydration ordering, sync/async storage, disabled/unavailable/corrupt storage, key isolation, late hydration guard | I16/C16: reload/current session, cached vs live semantics, expired startup, per-request server clients isolated | E07/E08, S07/S08: A/B clients and tabs cannot revive or cross-contaminate sessions. Signoff: storage behavior is explicit and scoped. |
+| **L1-17 Validated getUser** | U17: network required, status null/error, allowed fields only, arbitrary JWT overload rejected | I17/C17: live validated identity; forged/expired/deleted/revoked session outcomes; no reliance on cached claims for trusted validation | E07/E11, S04/S08: tampered storage cannot confer authorization. Signoff: actual server request and denial evidence, G7 approved. |
+| **L1-18 Refresh/auto-refresh** | U18: forced/manual vs expiry, disabled option, single-flight, timer/focus behavior, terminal vs transient failures, delayed refresh/logout/new-user race | I18/C18: short-TTL real refresh, revoked token rejection, concurrent requests, no duplicate session resurrection, native rotation distinction | E08/E10, S04/S08: late response cannot revive logout or overwrite user B. Signoff: fake-clock and real-server expiry tests both pass. |
+| **L1-19 Logout scopes** | U19: default global vs explicit local mapping, unsupported others, redirects, outage, idempotence, unrelated storage intact | I19/C19: two sessions: local revokes only current refresh, default global revokes both; remote failure reported and local state cleared | E08/E10, S04/S09: channels/timers close; residual JWT lifetime distinguished from refresh revocation. Signoff: native client's swallowed failures cannot mask the outcome. |
+| **L1-20 Auth notifications** | U20: INITIAL_SESSION ordering, supported events, listener unsubscribe, reentrant read, callback error isolation, no duplicate/late signals | I20/C20: initialization/login/refresh/logout event-state consistency; same-origin storage sync if claimed | E07/E08: UI tracks sign-in/out and reload; cross-tab contract tested, not assumed. Signoff: only four promised event types are advertised. |
+| **L1-21 Channel lifecycle** | U21: binding validation, chainability, timeout/status, idempotent unsubscribe/removeChannel, late callback suppression | I21/C21: connected only after handshake, two channels independent, anonymous/forbidden connection failure, native cancellation | E09/E10, S09: cleanup closes actual streams and registry entries. Signoff: status callbacks reflect real state. |
+| **L1-22 Change payloads** | U22: Insert/Update/Delete mapping, event selectors, declared codecs, unsupported fields, no invented timestamp/old row | I22/C22: exactly observed event type/table/schema/new/approved old-key data; update/delete order and configured RLS/replica-identity limits | E09/E11, S03/S06: hidden fields and other-owner protected values never reach callbacks; any Supabase DELETE-key visibility is separately asserted and approved under G6. Signoff: G6 approved and full-payload compatibility not implied. |
+| **L1-23 Stream faults/renewal** | U23: every-byte boundaries, UTF-8 splits, merged frames, comments, malformed/oversized frames, EOF, sequence gaps/loss, abort/reconnect cleanup | I23/C23: installed transport characterization, real proxy fragmentation, backend shutdown, permission/expiry/renewal, resubscribe+refetch behavior | E10/E11, S09: bounded error/close notification, no durable-replay claim or indefinitely stale authorized stream. Signoff: G5/G6 pass on chosen installed path. |
+| **L1-24 Security envelope** | U24: validators/redactors, unsupported operations, stale generations, credential/header boundaries | I24/C24: policy/constraint/direct-backend negative matrix; anonymous/A/B/admin separation; invalid token/owner transfer denied | E11, S01–S10: all security families green; no secrets in bundle/artifacts. Signoff: unchanged DB/no-leak evidence, no waived critical security failure. |
+| **L1-25 Portable app/manual migration** | U25: export field conversion validation, owner-map completeness, deterministic ordering, no lossy or partial accepted records | I25/C25: same application operations; quiesced export/import into fresh target, rows/FKs/owners/counts/defaults checked | E12/E15: imported data visible to correct separately authenticated users; application source unchanged apart from bootstrap/import. Signoff: actual transfer proved, not two independently seeded demos. |
+| **L1-26 Package/docs/release** | T26/P26: tarball contents/exports/declarations, clean consumer compile, no credentials, valid links/matrix/commands | P26/I26/C26: installed tarball real CRUD/auth/realtime smoke on both fixtures; no source paths or workspace symlinks | E13/E14/E15: all three browsers, accessible flows, packed bundle. Signoff: complete ledger, approved gaps, 3 clean runs, exact supported versions. |
+| **L1-27 Harness/CI/database fixtures** | U27: target guards, version manifest, startup deadline, always-cleanup and failed-setup behavior | I27/C27: cold-start schema/constraints/ACL/RLS/publication/mail, repeatable namespaces, role checks, backend teardown | E01/E03 exercise real infrastructure; S10 forbids live target/admin leakage. Signoff: clean checkout and CI reproduce all required commands without hosted credentials. |
+
+## 5. Browser E2E scenarios
+
+Run the built example against **both real backends** with the same application operations. Tests can use separate privileged setup helpers only to provision/inspect disposable fixtures; primary auth/data actions use ordinary users.
+
+| ID | Scenario and steps | Observable pass criteria |
+| --- | --- | --- |
+| E01 | Start with no stored session; boot app; exercise real cross-origin API/CORS; invalid client bootstrap in a separate negative case | Signed-out UI, safe anonymous result/denial, no privileged browser secret, unsupported configuration visibly fails without data request |
+| E02 | Submit email signup, inspect local inbox, attempt login before confirmation; repeat signup for existing email; simulate mail failure | Verification required, no authenticated session created; duplicate signup does not reveal account existence; failed delivery is not shown as completed verification |
+| E03 | Follow real verification link, return to app, explicitly sign in; submit wrong password/unknown email separately | Only confirmed correct credentials give session/protected data; canonical user ID matches own inserted rows; failure leaves UI signed out |
+| E04 | Create, separately read, update by key, read again, delete by key, read absence; verify another row untouched | Actual backend persisted each expected change; default mutation data null; exactly one intended row changed; no hidden fields displayed |
+| E05 | Seed >50 rows; run each filter, repeated bounds, ascending/descending multi-order, range pages, zero limit and 1000-row cap boundary | Exact expected IDs/order/length; stable page boundaries with explicit order; invalid/unsupported calls fail without broadened request |
+| E06 | Execute single/maybeSingle for empty/one/two matches and with explicit limit/range | Correct object/null/error UI states; two matches never silently become the first object; declared error category visible |
+| E07 | Reload persisted session; disable persistence in separate context; corrupt storage; inspect auth notification UI; exercise claimed cross-tab sync | Correct state after reload; disabled case loses session; corrupted data cannot grant access; unrelated storage retained; subscribed UI updates and listeners clean up |
+| E08 | Use short test TTL; issue concurrent reads and manual refresh; log out while a refresh is delayed; sign in as another user; exercise two-session global/local logout | Refresh deduplicates, real queries succeed, old response cannot restore prior user; local/global refresh revocation correct; no lingering session/stream/timer |
+| E09 | Two browser contexts signed in as same allowed user; await subscription readiness, then insert/update/delete with client-generated correlation IDs; unsubscribe | Expected correlated event and DB postcondition for each acknowledged write; supported new/old fields correct; no callback after acknowledged cleanup |
+| E10 | Disconnect network/stop backend; delay refresh; force stream loss/partial frames via controlled proxy; restore and explicitly resubscribe/refetch | Error/timeout/close reported within deadline; no fake SUBSCRIBED or silent lost-event success; recovery sees database truth; no replay guarantee inferred |
+| E11 | A/B/anonymous contexts attempt cross-owner reads/writes, owner reassignment, invalid stored token and subscriptions; include DELETE leakage checks | Protected values never exposed; unauthorized writes leave DB unchanged; any backend-specific RLS no-op error difference is documented; delete keys/data respect the approved narrower claim |
+| E12 | Export quiesced TrailBase fixture, convert/import with explicit user map into fresh Supabase, switch import/backend bootstrap, rerun same UI flows | Counts, normalized records, keys/FKs/ownership and displayed values match; users reauthenticate; no password/session transfer claimed; non-bootstrap app source hash unchanged |
+| E13 | Run complete supported flows on Chromium/Firefox/WebKit using pinned browser revisions | Same success/failure/lifecycle assertions pass; no unhandled browser errors, persistent CORS failures, or unsupported platform-only transport reliance |
+| E14 | Keyboard-only signup/login/CRUD; labels, error text and status updates; repeated mount/unmount and subscription teardown | Controls have accessible names/focus, validation errors associated with inputs, status perceivable; 100 lifecycle repetitions leave no app-owned streams/timers/listeners growing |
+| E15 | Build from published-style tarball installed in clean browser project and compile/run Node consumer; run common example under both SDK factories | No workspace/source import dependency; declaration compile and runtime smoke pass; migration demonstration changes only import/config/declared backend setup |
+
+Use Playwright's web-first assertions and wait for explicit subscription/DB readiness, not arbitrary sleeps. Default bounded waits: 5 seconds for local HTTP/auth assertions, 10 seconds for subscription readiness/events/recovery, 30 seconds for local mail delivery; startup may have a separately documented bound. These are test harness deadlines, not public production latency guarantees.
+
+For expected **absence** of events, first confirm authorized subscriber readiness, drive a correlated control event through the same live connection, and prove the forbidden event/data did not appear in the observed sequence. For post-unsubscribe absence, verify acknowledged cancellation/server connection cleanup and drive further writes through a live control subscriber. A short sleep alone is not a security proof.
+
+## 6. Security and adversarial case catalog
+
+| ID | Required negative checks and signoff |
+| --- | --- |
+| S01 Input/config boundaries | Invalid protocols/URLs, embedded credentials, path/query injection, unknown options, foreign endpoint redirects. No credentials sent to an unexpected origin and no unsupported call succeeds silently. |
+| S02 Query boundaries | Reserved strings (`&`, `+`, `%`, quotes, brackets, commas, slashes, Unicode), unknown/hidden columns, JSON/relation syntax, wrong types, unsafe integers/NaN/Infinity, malformed UUIDs. Values remain literal; predicates cannot disappear. |
+| S03 Owner/role policy | Anonymous/A/B attempts at every CRUD operation, owner spoof/reassignment, reads/security-invoker views, realtime insert/update/delete. Confirm grants/policies through direct backend requests and data postconditions, not adapter-only rejection. DELETE identifier visibility is a separate explicit G6 exception; no protected full row values may leak. |
+| S04 Auth/token policy | Unverified/wrong/unknown/disabled users, tampered/expired access tokens, revoked/invalid refresh token, MFA-required unsupported flow, malformed replies, SMTP outage, duplicate signup. No success session is synthesized; refresh revocation and residual access-JWT lifetime are distinguished. |
+| S05 Mutation guards | No-key/non-key/additional/conflicting filters, arrays, returning/upsert/limit/order/key changes. Assert zero native mutation requests for rejected builder shapes and no database changes for server-denied writes. |
+| S06 Data/payload exposure | Hidden/write-only fields, mapped owner IDs, cross-owner records and DELETE payloads. No reading extra old rows client-side or leaking native raw fields through errors/callbacks. |
+| S07 Secret/storage boundaries | Browser bundles/network/console/CI artifacts contain no admin/privileged credentials; only the SDK's entry is deleted; persistence-disabled/corrupt/unavailable storage safe; unrelated storage preserved. Redact auth/mail URLs, headers, passwords and refresh tokens from failure artifacts. |
+| S08 Race/isolation | Pending refresh/hydration/status after logout/new user; concurrent auth calls; per-request Node clients; same-origin storage synchronization if promised. No stale state can revive or replace a session or affect another user's requests. |
+| S09 Streaming resources | Expired/revoked session/permission, shutdown/loss, huge/partial frames, callback error, repeated cleanup. Enforce bounded buffer, close expired identity streams, no callbacks after cancellation, no timer/socket/listener leaks. |
+| S10 Test/release infrastructure | Setup/reset refuses non-test targets, privileged clients never reused for application assertions, cleanup on failure, artifact sanitization, tarball secret scan, lockfile/version drift. A fork PR must run without hosted secrets. |
+
+On Supabase, DELETE events have different RLS behavior from ordinary row reads. An isolated fixture may have to narrow the claimed DELETE payload to keys or change the demonstration policy model; document and approve G6 instead of assuming private row semantics. Never weaken TrailBase/Supabase permissions just to make a parity test pass.
+
+## 7. Fault, property, and resource acceptance
+
+- UUID/scalar codecs: at least 1000 deterministic generated valid cases plus fixed invalid/boundary vectors; all declared round trips are exact. The suite never converts unmarked strings/integers by heuristic.
+- SSE framing: every split point for fixed frames, one-byte chunks, merged frames, split UTF-8, LF/CRLF/comments/EOF, malformed and oversized frames. A configured maximum buffer/frame (initially 1 MiB in the fixture) errors and cancels instead of growing without bound; document actual SDK limit when chosen.
+- Session races: controlled promise barriers, fake-clock timer tests, and real short-TTL checks; no random delays. Terminal revocation clears state; transient network failure reports honestly. Disabling auto-refresh disables background/focus renewal, not explicit refresh/getSession or reference-required request-driven refresh; assert the characterized distinction and close expiring streams instead of secretly renewing them.
+- TLS/proxy smoke: run auth and SSE through a local trusted test certificate and a non-buffering reverse proxy; verify credentials stay on the intended HTTPS origin, events arrive incrementally, and stream cancellation works. Loopback plaintext is fixture-only; deployment docs require TLS.
+- HTTP faults: no ambiguous automatic replay of a mutation after an unknown network outcome. Test lost-response insert and verify at most the acknowledged/observed database effect; caller can reconcile with a read/client-supplied ID.
+- Request bounds: one native mutation per supported mutation execution; no extra read-after-write; one bounded page request per ordinary read where mapping permits; no rows downloaded to implement rejected filters. Expected auth/renewal requests are measured separately.
+- Resource checks: 100 subscribe/unsubscribe and auth listener/client lifecycles reach zero app-owned live handles and a stable active connection count. Use direct counters/teardown checks, not noisy process heap-size thresholds. No load/scale marketing claim is derived from this check.
+- Test strength: intentionally perturb critical range inclusivity, mutation-key validation, unknown-field rejection, and logout generation guards in an isolated test workspace. Their designated tests must fail. Record the mutation check; do not waive missing assertions with coverage percentages.
+
+## 8. Planned commands and CI gates
+
+These command names are **targets to implement in Phase A**, not commands that currently exist:
+
+| Command target | Required work |
+| --- | --- |
+| `npm run check` | Formatting/lint where configured, docs/traceability checks, TypeScript build and public compile tests |
+| `npm run test:unit` | Unit/property suites with V8 coverage and fake timers |
+| `npm run test:db` | Fixture/constraints/access rules/RLS/publication checks on disposable backends |
+| `npm run test:integration` | Real TrailBase adapter suite and upstream characterization |
+| `npm run test:contract` | Real TrailBase and local Supabase shared suite plus approved exceptions |
+| `npm run test:security` | All S01–S10 cases, including failure/race/stream checks |
+| `npm run test:e2e` | Complete built application suite on both backends, all three browsers |
+| `npm run test:package` | Pack/install into clean consumers and execute packaged type/runtime smoke |
+| `npm run test:all` | Provision once per isolated run, execute all required gates, sanitize artifacts, unconditional cleanup, nonzero exit on any failure |
+
+### Pull requests and main
+
+- Required jobs: static/types/docs; unit/coverage on Node 22 and 24; database/integration/contract; security/faults; full browser E2E on Chromium/Firefox/WebKit; clean package consumers.
+- Real-service jobs may use the primary pinned Node version; the other supported Node version must also execute the packaged Node smoke. No need to duplicate every browser in every Node version.
+- Run full suites for implementation changes. Documentation-only changes may run docs/traceability validation without starting backends; record that no runtime proof was generated. Dependency/fixture/API changes are not doc-only.
+- Local Supabase uses ordinary disposable keys; no hosted-project secret dependency. Fail provisioning errors instead of silently skipping contract/E2E checks.
+- Keep security/migration jobs isolated from unrelated test workers. Require successful CI status checks before merging when repository branch protection can be configured; until then the maintainer enforces the same gate.
+- Browser/test retries default to zero. A diagnostic retry may preserve evidence but a first-run failure is not counted green or discarded. Quarantine requires an issue/owner and cannot include required release/security cases.
+
+### Coverage and release thresholds
+
+- Runtime SDK unit coverage: **at least 95% statements/lines/functions and 90% branches**, enforced globally and per behavioral module. Generated declarations/fixture setup are reported separately, not used to inflate coverage.
+- Critical validation, mutation-safety, session-generation, secret-handling, and stream-cancellation branches require every reachable positive/negative branch exercised. Any exclusion requires a maintainer-reviewed rationale; never exclude a failing security path.
+- Coverage is necessary but insufficient: every feature/test matrix row, real backend contract, and E2E scenario must also pass.
+- Release: three consecutive full clean-environment runs on the same candidate commit/version manifest with zero required skips, zero unexplained failures, zero hidden retries, and passing tarball consumers. Verify all advertised platforms/versions, not only the developer's machine.
+- No unresolved critical/high security defect, known data-loss bug, incompatible advertised behavior, or unapproved G1–G7 decision. No feature is declared done by changing a test to accept an unreviewed narrower contract.
+
+## 9. Evidence and signoff ledger
+
+Each implementation PR/release must add an evidence entry (a checked-in concise ledger plus CI artifact URLs, not raw secrets):
+
+```text
+Feature ID / contract revision:
+Commit and CI run URLs:
+Server/client/CLI/image/Node/browser versions and fixture hash:
+Tests required → tests executed → results at each layer:
+Coverage and critical-branch evidence:
+DB/session/event/resource postconditions:
+Approved deviations (gate, rationale, owner, public documentation):
+Open defects/blocked cases (no silent skips):
+Reviewer and signoff date:
+```
+
+Artifacts include sanitized JUnit/JSON reports, coverage, exact environment manifest, backend/fixture logs, package contents, Playwright traces/screenshots on failure, and migration row/count/invariant comparisons. Raw Playwright traces may contain credentials/network bodies: sanitize/redact before uploading; if sanitization cannot safely retain a trace, restrict access or do not upload it and provide a sanitized diagnostic summary. CI logs/artifacts are not a safe place for tokens just because the accounts are disposable.
+
+Feature status progresses **planned → implemented → verified → signed off**. Record exact missing layers for partial work. At this planning revision **all 27 features remain planned**. A named maintainer signs the supported subset, and the release notes list known exceptions. After any contract-affecting fix or upstream upgrade, stale evidence cannot sign off the new version.

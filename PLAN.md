@@ -8,6 +8,14 @@ This plan follows the [source discussion](https://chatgpt.com/share/6ac02347-6a4
 
 **Only the minimal Level 1 prototype is in initial scope.** Levels 2 and 3 are documented eventual goals, not work to start now. Do not fork TrailBase, emulate Supabase wire protocols, or build a migration CLI for the first release.
 
+## Detailed implementation and mandatory verification
+
+- [Level 1 implementation plan](docs/LEVEL1_PLAN.md): researched contract, architecture, ordered work packages, and completion gates.
+- [Project-wide test plan](docs/TEST_PLAN.md): 27 feature signoff rows, unit/type/database/integration/shared-contract/browser E2E/security/fault/package tests, CI requirements, and evidence rules.
+- [Upstream research](docs/RESEARCH.md): official sources, pinned reference versions, substantive API differences, and seven open contract/characterization decisions.
+
+A full test plan is required throughout this project, not a final release task. Every behavior change includes tests at all applicable layers and explicit signoff criteria. Mocks alone cannot establish compatibility. All SDK features remain planned and unverified; documentation/source research is not runtime proof.
+
 ## Level 1 — Supabase-shaped TrailBase SDK
 
 ```text
@@ -29,10 +37,12 @@ Use the prototype described in the discussion as the release boundary: `createCl
 | Reads | `.from(name).select('*')` | `name` identifies an exposed TrailBase record API; arbitrary tables are not automatically exposed. |
 | Writes | `.insert(record)`, `.update(values).eq(primaryKey, value)`, `.delete().eq(primaryKey, value)` | Single-record writes first. No bulk writes, filtered multi-row writes, transactions, or implicit write-returning support. |
 | Filters | `.eq()`, `.neq()`, `.gt()`, `.gte()`, `.lt()`, `.lte()` combined with AND | Verify value encoding and supported types. No raw PostgREST filter language or `.or()`. |
-| Ordering/pagination | `.order()`, `.limit()`, `.range()` | Match supported ordering and inclusive range behavior; document offset/cursor differences. |
+| Ordering/pagination | `.order()`, `.limit()`, `.range()` | Non-null approved scalar ordering; explicit 1000-row initial cap and inclusive ranges. Reject unsupported null/reference options. |
 | Cardinality | `.single()`, `.maybeSingle()` | Distinguish zero, one, and multiple rows; never silently truncate a multiple-row result. |
-| Password auth | `.auth.signUp()`, `.signInWithPassword()`, `.signOut()`, `.getUser()`, `.getSession()`, `.refreshSession()` | Only the session lifecycle needed for password auth; no auth administration, OAuth, SSR cookies, or full GoTrue behavior. |
-| Realtime | `.channel().on('postgres_changes', ...).subscribe()` and subscription cleanup | One exposed record API per channel; table change events only. The event name does not imply a Postgres backend. Verify event payloads and available old/new row data. |
+| Password auth | `.auth.signUp()`, `.signInWithPassword()`, `.signOut()`, `.getUser()`, `.getSession()`, `.refreshSession()`; four core `onAuthStateChange()` notifications | Core email/password session lifecycle only. Signup's null-user exception requires signoff; global/local logout must match the chosen scope. No auth administration, OAuth, SSR cookies, or full GoTrue behavior. |
+| Realtime | `.channel().on('postgres_changes', ...).subscribe()`, `.unsubscribe()`, `.removeChannel()` | One exposed record API binding per channel; approved table-event payload subset, honest errors/loss, and real cleanup. No filters/private channels/full old UPDATE records/commit timestamp claim. |
+
+Portable UUID/owner/boolean values require explicit reviewed field mappings. Backend bootstrap configuration may change during migration; no heuristic coercion or fabricated user/event fields. See the detailed plan for supported options and researched exceptions.
 
 Unsupported features, options, and query shapes must fail explicitly with a recognizable unsupported-feature error. Do not silently ignore arguments or return successful-looking empty results. State whether a failure is returned in `{ data, error }` or thrown by a non-query API, and test that contract.
 
@@ -44,7 +54,9 @@ Do not simulate missing server guarantees with unsafe read/modify/write sequence
 
 - [ ] Pin the TrailBase server/client and `@supabase/supabase-js` reference versions.
 - [ ] Check the official TrailBase TypeScript client first; reuse it where it covers records, auth, and subscriptions. Add native HTTP only for confirmed gaps.
-- [ ] Record supported methods, options, return shapes, and backend differences in a compatibility matrix.
+- [x] Research official documentation and pinned sources; document differences and open decisions in `docs/RESEARCH.md`.
+- [ ] Characterize all seven research gates against installed packages and real backends; obtain named contract decisions.
+- [ ] Record supported methods, options, return shapes, backend differences, and feature/test IDs in a compatibility matrix.
 - [ ] Verify primary-key formats, filter encoding, range semantics, mutation results, signup behavior, refresh/logout, and realtime payload/cleanup behavior.
 - [ ] Decide the actual npm package name, supported runtime versions, and license before distribution.
 
@@ -55,7 +67,7 @@ Do not simulate missing server guarantees with unsafe read/modify/write sequence
 - [ ] Add one small TypeScript package, the minimum build tooling, and documented commands.
 - [ ] Implement the client, query execution, result/error normalization, reads, primary-key-scoped writes, basic filters, ordering, pagination, and cardinality helpers.
 - [ ] Add a tiny `todos` example against an exposed TrailBase record API.
-- [ ] Leave a runnable check covering successful reads/writes, filter encoding, inclusive ranges, cardinality, backend failures, and unsupported calls. Use existing or native test tooling rather than a new framework by default.
+- [ ] Implement full unit/property/type, fixture/database, real integration, shared Supabase contract, browser E2E, security/fault, and package test layers as specified in `docs/TEST_PLAN.md`; each query feature needs its own signoff evidence.
 
 **Done when:** the documented data subset works against a pinned TrailBase instance and unsafe or unsupported operations fail clearly.
 
@@ -64,7 +76,7 @@ Do not simulate missing server guarantees with unsafe read/modify/write sequence
 - [ ] Implement password signup/login/logout and the minimum session persistence/refresh behavior using native TrailBase capabilities where possible.
 - [ ] Define browser/server session ownership and storage behavior. Do not share mutable user sessions across server requests.
 - [ ] Adapt basic table subscriptions to the supported `postgres_changes` callback shape; implement cleanup and report connection failures honestly.
-- [ ] Extend runnable checks for expired/invalid credentials, refresh failure, logout cleanup, event mapping, and unsubscribe behavior.
+- [ ] Extend the full test suite with actual email-confirmation E2E, expired/invalid credentials, concurrent refresh/logout races, global/local revocation, multi-browser persistence, two-client events, fragmented streaming, permission/loss handling, and cleanup.
 - [ ] Extend the same small example; do not add Storage, OAuth, Broadcast, or Presence.
 
 **Done when:** one user can authenticate, make authorized queries, receive a database change, and sign out without leaking tokens or leaving subscriptions running.
@@ -75,9 +87,11 @@ Do not simulate missing server guarantees with unsafe read/modify/write sequence
 - [ ] Document a minimal manual schema/data migration for the example, including ID, boolean, timestamp, null, and default-value conventions.
 - [ ] Show the import and URL/key changes; list every remaining application-level difference rather than hide it.
 - [ ] Explain that migrating auth accounts/sessions, files, and access rules is separate work. Do not claim password hashes, tokens, or policies transfer automatically.
-- [ ] Publish the compatibility matrix, known limitations, example, and actual install/build/test instructions. Choose packaging/release automation only when needed.
+- [ ] Rehearse a real manual fixture export/import with explicit identity mapping and data/ownership invariants; two independently seeded demos do not prove migration.
+- [ ] Publish the compatibility matrix, known limitations, example, actual install/build/test instructions, and per-feature evidence/signoff ledger.
+- [ ] Pass every required test layer, packaged-consumer smoke, and three clean full runs; obtain maintainer approval for all advertised features and exceptions.
 
-**Done when:** the small documented application can run on both backends with changes bounded by the published contract. A release is a verified starter subset, not "drop-in Supabase compatibility."
+**Done when:** the small documented application can run on both backends with changes bounded by the published contract, and every applicable feature/test/signoff gate passes at the release commit. A release is a verified starter subset, not "drop-in Supabase compatibility."
 
 ### Deferred additions within Level 1
 
@@ -151,4 +165,5 @@ Exact Postgres behavior and arbitrary RLS cannot simply be mapped onto SQLite an
 - Prefer verified native capabilities over emulation; never weaken authorization to make an example pass.
 - Keep credentials out of code, logs, examples, and commits. A Supabase publishable key is not a replacement for a TrailBase user session.
 - Check behavior, not just method names. Version differences and backend limitations belong in the compatibility matrix.
-- Finish one runnable vertical slice before widening the API surface. Promote deferred work only for a demonstrated need and explicit scope change.
+- Finish one fully tested vertical slice before widening the API surface. Promote deferred work only for a demonstrated need and explicit scope change.
+- Every change and future level requires a test plan across all applicable layers, explicit signoff criteria, and reproducible evidence. Never substitute a single smoke check for the full suite.

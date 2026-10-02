@@ -20,7 +20,13 @@ The first release will target a deliberately small subset:
 - Password signup, login, and logout with the session handling those flows need.
 - Basic database change subscriptions, backed by TrailBase subscriptions.
 
-See [PLAN.md](PLAN.md) for the exact scope, implementation milestones, validation requirements, and deferred features.
+See [PLAN.md](PLAN.md) for scope and future levels, and the [detailed Level 1 plan](docs/LEVEL1_PLAN.md) for the researched contract and implementation sequence.
+
+## Verification is part of every feature
+
+The [full test plan](docs/TEST_PLAN.md) defines unit/type/property, database, real integration, shared Supabase contract, browser E2E, security/fault, and packaged-consumer tests, with **27 feature-specific signoff rows**. Tests land with implementation, not afterward. Chromium, Firefox, and WebKit exercise real disposable TrailBase/Supabase backends and actual email-confirmation flows.
+
+Release requires reproducible CI evidence and maintainer signoff—not mocks alone. [Upstream research](docs/RESEARCH.md) records seven open decisions, including signup return shapes, field conversions, auth lifecycle, and streaming behavior. All implementation/test/signoff work is still pending.
 
 ## Migration goal
 
@@ -48,6 +54,9 @@ Storage, OAuth, richer queries, and other additions to Level 1 are deferred unti
 ## Project documents
 
 - [PLAN.md](PLAN.md): roadmap and acceptance criteria.
+- [docs/LEVEL1_PLAN.md](docs/LEVEL1_PLAN.md): detailed work packages and completion gates.
+- [docs/TEST_PLAN.md](docs/TEST_PLAN.md): mandatory full-suite and per-feature signoff requirements.
+- [docs/RESEARCH.md](docs/RESEARCH.md): official sources, researched versions, differences, and open decisions.
 - [AGENTS.md](AGENTS.md): instructions for coding agents and contributors.
 - [Source discussion](https://chatgpt.com/share/6ac02347-6a48-83e8-b8b8-8ef8986f9a0f): the project's starting point, not a verified API specification.
 

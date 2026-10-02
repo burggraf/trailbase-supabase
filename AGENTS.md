@@ -2,9 +2,9 @@
 
 ## Read first
 
-Read [README.md](README.md) and [PLAN.md](PLAN.md) before changing the project. The repository is currently planning-only; no SDK, package manifest, build system, or test commands exist yet.
+Read [README.md](README.md), [PLAN.md](PLAN.md), [docs/LEVEL1_PLAN.md](docs/LEVEL1_PLAN.md), [docs/TEST_PLAN.md](docs/TEST_PLAN.md), and [docs/RESEARCH.md](docs/RESEARCH.md) before changing the project. The repository is currently planning-only; no SDK, package manifest, build system, or test commands exist yet.
 
-The linked discussion explains the motivation, not a verified specification. Check official documentation and the pinned upstream versions before relying on an API mapping.
+The linked discussion explains the motivation, not a verified specification. Research records documentation/source observations, not runtime proof. Resolve the seven research gates through real characterization before advertising an API mapping.
 
 ## Scope guardrails
 
@@ -32,11 +32,17 @@ The linked discussion explains the motivation, not a verified specification. Che
 - Keep user sessions isolated across server requests. Define persistence and refresh behavior, clear session state on logout, and clean up subscriptions.
 - Treat schema/data, auth identities, files, and access rules as separate migration concerns. Never claim that import changes migrate data or that arbitrary RLS/password credentials transfer automatically.
 
-## Verification and documentation
+## Mandatory full test plan and signoff
 
-- Leave at least one small runnable check for non-trivial logic. Prefer installed or native test tooling; add a framework only if it earns its cost.
-- Verify against pinned upstream versions. Include failure paths, unsupported calls, filter/range/cardinality edge cases, and the auth/realtime lifecycle as those features land.
-- Add real install/build/test commands alongside the first implementation; do not document imaginary commands or publish an unverified package name.
-- Use a real TrailBase instance for integration checks and the official Supabase SDK for the migration/compatibility rehearsal. Mocks alone do not establish compatibility.
-- Keep docs and examples within the supported subset. Mark any unverified mapping as an open question rather than a guarantee.
-- Report what changed, which checks actually ran, and any remaining limitations. Never say a check passed if it was not run.
+- A full test plan at every applicable layer is required for every feature, bug fix, dependency/fixture change, and eventual future level. Follow `docs/TEST_PLAN.md`; a single runnable check or happy-path demo is not enough.
+- Define feature IDs, unit/type/property, database, real integration, shared contract, browser E2E, security/fault, package checks, and measurable signoff criteria before implementation. Add tests with the code, not in a final testing phase.
+- New/deferred features need new matrix rows and explicit scope approval. Mark a layer N/A only with a concrete reviewer-approved reason, never simply because the backend/browser setup is inconvenient.
+- Use the pinned real TrailBase server and installed client distribution; compare claimed compatibility with the official Supabase SDK and real local Supabase stack. Mocks cannot sign off behavior or compatibility.
+- Browser E2E must run on Chromium, Firefox, and WebKit and cover real confirmation email, CRUD/query behavior, persistence/refresh/logout, two-client realtime, permissions, failures, and teardown. Do not stub successful auth/data responses for the primary E2E flow.
+- Prove database/session/event/resource postconditions, including forbidden writes and no data/secret leaks. Test race/expiry/partial-frame failures and cleanup, not only response codes.
+- Follow coverage/CI/release gates in the test plan. Setup failure is failure, not a skip. Do not hide flakes behind retries or relax assertions to erase unapproved incompatibility/security gaps.
+- Keep a commit/version-linked evidence ledger for every feature and obtain named maintainer signoff. Planned, implemented, verified, and signed off are distinct states; stale evidence does not certify a changed contract.
+- Tests and CI use disposable local resources, never live data or browser admin credentials. Sanitize traces/logs/reports before uploading; do not assume disposable tokens are safe to publish.
+- Add real install/build/test commands alongside the first implementation; command names in the plan are proposals until executable scripts exist. Do not publish an unverified package name.
+- Keep docs/examples/types within the supported subset and expose approved limitations (signup user, field mapping, auth scope, realtime payloads) to consumers. Never fabricate fields or quietly weaken permissions for parity.
+- Report exact checks actually run, evidence, missing layers, open gates, and remaining limitations. Never say a planned or skipped test passed.
