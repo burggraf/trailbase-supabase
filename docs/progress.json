@@ -106,7 +106,15 @@
         "docs/evidence/phase-a-browser-storage-node22.json",
         "docs/evidence/phase-a-storage-network-controls-node22.json",
         "docs/evidence/phase-a-storage-cleanup-node22.json",
-        "docs/evidence/phase-a-storage-full-stock-node22.json"
+        "docs/evidence/phase-a-storage-full-stock-node22.json",
+        "docs/evidence/phase-a-count-pagination-node22.json",
+        "docs/evidence/phase-a-pagination-browser-controls-node22.json",
+        "docs/evidence/phase-a-pagination-cleanup-node22.json",
+        "docs/evidence/phase-a-pagination-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-all.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-expiry.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-browser.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-lifecycle.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -161,7 +169,15 @@
         "docs/evidence/phase-a-browser-storage-node22.json",
         "docs/evidence/phase-a-storage-network-controls-node22.json",
         "docs/evidence/phase-a-storage-cleanup-node22.json",
-        "docs/evidence/phase-a-storage-full-stock-node22.json"
+        "docs/evidence/phase-a-storage-full-stock-node22.json",
+        "docs/evidence/phase-a-count-pagination-node22.json",
+        "docs/evidence/phase-a-pagination-browser-controls-node22.json",
+        "docs/evidence/phase-a-pagination-cleanup-node22.json",
+        "docs/evidence/phase-a-pagination-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-all.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-expiry.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-browser.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-lifecycle.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -225,7 +241,15 @@
         "docs/evidence/phase-a-browser-storage-node22.json",
         "docs/evidence/phase-a-storage-network-controls-node22.json",
         "docs/evidence/phase-a-storage-cleanup-node22.json",
-        "docs/evidence/phase-a-storage-full-stock-node22.json"
+        "docs/evidence/phase-a-storage-full-stock-node22.json",
+        "docs/evidence/phase-a-count-pagination-node22.json",
+        "docs/evidence/phase-a-pagination-browser-controls-node22.json",
+        "docs/evidence/phase-a-pagination-cleanup-node22.json",
+        "docs/evidence/phase-a-pagination-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-all.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-expiry.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-browser.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-lifecycle.json"
       ],
       "missing": [
         "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
@@ -286,7 +310,15 @@
         "docs/evidence/phase-a-browser-storage-node22.json",
         "docs/evidence/phase-a-storage-network-controls-node22.json",
         "docs/evidence/phase-a-storage-cleanup-node22.json",
-        "docs/evidence/phase-a-storage-full-stock-node22.json"
+        "docs/evidence/phase-a-storage-full-stock-node22.json",
+        "docs/evidence/phase-a-count-pagination-node22.json",
+        "docs/evidence/phase-a-pagination-browser-controls-node22.json",
+        "docs/evidence/phase-a-pagination-cleanup-node22.json",
+        "docs/evidence/phase-a-pagination-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-all.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-expiry.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-browser.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-lifecycle.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -656,7 +688,8 @@
         "docs/evidence/phase-a-network-full-stock-node22.json",
         "docs/evidence/phase-a-diagnostic-full-stock-node22.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-all.json",
-        "docs/evidence/phase-a-storage-full-stock-node22.json"
+        "docs/evidence/phase-a-storage-full-stock-node22.json",
+        "docs/evidence/phase-a-pagination-full-stock-node22.json"
       ],
       "missing": [
         "Candidate resolves duplicate confirmation in initial real characterization but is not approved/deployment-ready",
@@ -674,11 +707,13 @@
       "evidence": [
         "docs/evidence/phase-a-all-node22.json",
         "docs/evidence/phase-a-scalar-domains-node22.json",
-        "docs/evidence/phase-a-query-boundaries-node22.json"
+        "docs/evidence/phase-a-query-boundaries-node22.json",
+        "docs/evidence/phase-a-count-pagination-node22.json"
       ],
       "missing": [
         "Maintainer mapping/domain/cap contract approval; production scalar codec/runtime rejection and full adapter security/type matrix are not implemented",
-        "Page-bound invalid arithmetic/mixed calls and expanded scalar cases (dates, BLOB/JSON, relation syntax) remain incomplete"
+        "Page-bound invalid arithmetic/mixed calls and expanded scalar cases (dates, BLOB/JSON, relation syntax) remain incomplete",
+        "Exact count/head/out-of-range strategy not signed off: native successful empty offset loses total; reference exact-count range errors 416/count null while real HEAD wire retains */4"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -732,7 +767,8 @@
         "docs/evidence/phase-a-diagnostic-browser-node22.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-all.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-browser.json",
-        "docs/evidence/phase-a-browser-storage-node22.json"
+        "docs/evidence/phase-a-browser-storage-node22.json",
+        "docs/evidence/phase-a-pagination-browser-controls-node22.json"
       ],
       "missing": [
         "Buffered SSE proof has unit/live/three-browser/owned HTTP fault evidence, but no production transport choice/signoff or complete malformed/backpressure/reconnect corpus",
@@ -758,7 +794,9 @@
         "docs/evidence/phase-a-diagnostic-native-expiry-node22.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-all.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-expiry.json",
-        "docs/evidence/phase-a-storage-full-stock-node22.json"
+        "docs/evidence/phase-a-storage-full-stock-node22.json",
+        "docs/evidence/phase-a-pagination-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-expiry.json"
       ],
       "missing": [
         "Genuine native JWT expiry: ordinary protected HTTP denied but established stream delivered a newly written protected row; strict regression preserved under explicit short-native-auth fixture",
@@ -791,7 +829,10 @@
         "docs/evidence/phase-a-ci-linux-safe-inventory-all.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-browser.json",
         "docs/evidence/phase-a-browser-storage-node22.json",
-        "docs/evidence/phase-a-storage-full-stock-node22.json"
+        "docs/evidence/phase-a-storage-full-stock-node22.json",
+        "docs/evidence/phase-a-pagination-full-stock-node22.json",
+        "docs/evidence/phase-a-pagination-browser-controls-node22.json",
+        "docs/evidence/phase-a-ci-linux-browser-storage-browser.json"
       ],
       "missing": [
         "Strict native late refresh/status after logout resurrects cached state: two actual-response regressions preserved; approved wrapper/upstream resolution required",
@@ -810,29 +851,41 @@
     "Keep client reports and stream-lifetime question as drafts; only #298 is submitted. All named gate decisions precede Phase B/deployment recommendation."
   ],
   "lastSession": {
-    "date": "2026-10-03T05:01:19.432Z",
-    "sourceSha256": "ed79a9203cd78ccc68b338a6c314acaaf629201c51c25080d7dfcd6c355f6c5e",
+    "date": "2026-10-03T05:16:48.084Z",
+    "sourceSha256": "e10d51e0e5ebfaed5e9b9e084bfa3732f2f87f5d165dde4d513f945ed69563a4",
     "node": "v22.23.2",
-    "scope": "Installed reference browser persistence/cross-tab characterization, NOT adapter/timer/storage security signoff",
+    "scope": "Owner-filtered exact-count/page boundary characterization, NOT native/reference count strategy signoff",
     "unitCases": 37,
+    "paginationCases": 2,
     "browserCases": 12,
-    "networkCases": 2,
     "fullStock": {
-      "passed": 45,
+      "passed": 47,
       "failed": 5
     },
     "cleanup": "passed every scope",
-    "ci": "Prior diagnostics 84e1e0a Linux 37 per Node/9 browser/45 stock pass+5 strict failures/0 expiry pass+1 strict failure; latest storage hash remote pending",
-    "upstreamAuthIssue": {
-      "url": "https://github.com/trailbaseio/trailbase/issues/298",
-      "state": "OPEN",
-      "comments": 0
+    "ci": {
+      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37098487760",
+      "commit": "6cef3b8",
+      "scope": "Pre-pagination storage source",
+      "unitNode22": "job passed",
+      "unitNode24": "job passed",
+      "browser": 12,
+      "fullStock": {
+        "passed": 45,
+        "failed": 5
+      },
+      "expiry": {
+        "passed": 0,
+        "failed": 1
+      },
+      "setupCheck": "passed all four",
+      "cleanup": "passed all four"
     }
   },
   "pendingWork": {
-    "scope": "G2 bounded pagination/count/call-order characterization",
-    "status": "Browser storage subset completed: 12 browser, 37 unit, 2 HTTP and cleanup passed; raw stock 45/5 unchanged. Initial 9/3 fixture failures preserved/corrected without weakening unique/access policies. Next positive page matrices only, no public SDK implementation.",
-    "signoff": "none; G1/G6/G7 and explicit native expiry blockers remain; all three upstream drafts stay unsubmitted"
+    "scope": "G7 auth proof genuine failure/JSON transport/recovery boundaries",
+    "status": "Two count probes, 37 unit, 12 browser and cleanup passed; current full stock 47/5. Prior storage hash Linux reproduced 12 browser passes plus strict stock/expiry failures. Next inspect genuine revocation/refresh failure and actual JSON transport failure proof gaps; no production SDK or count emulation.",
+    "signoff": "none; raw G1/G6/G7/expiry failures remain; all three new reports stay drafts"
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",
