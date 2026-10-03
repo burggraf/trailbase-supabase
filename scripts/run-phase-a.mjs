@@ -22,14 +22,15 @@ async function main() {
   const options = process.argv.slice(3);
   if (options.some(option => option !== '--auth-mitigation') || options.length > 1) throw new Error('Unknown Phase A option');
   const authMitigation = options.includes('--auth-mitigation');
-  if (!['all','database','characterization','domains','boundaries','auth-lifecycle','proofs','streaming','smtp','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
+  const nativeAuthProfile = suite === 'expiry' ? 'short-native-auth' : 'default';
+  if (!['all','database','characterization','domains','boundaries','auth-lifecycle','proofs','expiry','streaming','smtp','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
   await mkdir('.runtime', { recursive: true, mode: 0o700 });
   // ponytail: one local stack at a time; per-run locks/port reservations if concurrent local runs matter.
   // Refuse overlap rather than stopping someone else's fixtures.
   await mkdir('.runtime/phase-a.lock');
   await writeFile('.runtime/phase-a.lock/owner.json', JSON.stringify({ runnerPid: process.pid, runId: null }), { mode: 0o600 });
   let harness, testChild;
-  const report = { scope: 'Phase A upstream/infrastructure harness, NOT SDK verification', authVariant:authMitigation ? 'candidate-email-reservation' : 'stock', suite, status: 'failed', startedAt: new Date().toISOString(), baseline, node: process.version, platform: `${process.platform}-${process.arch}`, tests: [], cleanup: 'not-started' };
+  const report = { scope: 'Phase A upstream/infrastructure harness, NOT SDK verification', authVariant:authMitigation ? 'candidate-email-reservation' : 'stock', suite, nativeAuthProfile, status: 'failed', startedAt: new Date().toISOString(), baseline, node: process.version, platform: `${process.platform}-${process.arch}`, tests: [], cleanup: 'not-started' };
   let interrupted = false;
   const interrupt = () => { interrupted = true; testChild?.kill('SIGTERM'); };
   process.on('SIGINT', interrupt); process.on('SIGTERM', interrupt);
@@ -53,7 +54,7 @@ async function main() {
     report.sourceSha256 = await sourceHash();
     report.baseCommit = (await exec('git', ['rev-parse','HEAD'])).stdout.trim();
     if (process.env.GITHUB_RUN_ID) report.ci = { commit:process.env.GITHUB_SHA, runUrl:`https://github.com/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}` };
-    harness = await createHarness({ authMitigation });
+    harness = await createHarness({ authMitigation, nativeAuthProfile });
     report.runId = harness.context.id;
     await writeFile('.runtime/phase-a.lock/owner.json', JSON.stringify({ runnerPid:process.pid, runId:harness.context.id }), { mode:0o600 });
     const environment = await harness.start();
@@ -64,7 +65,7 @@ async function main() {
     if (suite === 'lifecycle') { report.injectedFailure='after-start'; throw new Error('Injected fixture setup failure'); }
     if (suite !== 'browser') {
       const file = resolve(harness.context.directory,'vitest.json');
-      const args = ['run', ...(suite === 'all' ? ['tests/phase-a'] : [`tests/phase-a/${suite}.test.ts`]), '--reporter=json','--outputFile',file];
+      const args = ['run', ...(suite === 'all' ? ['tests/phase-a'] : suite === 'expiry' ? ['tests/expiry'] : [`tests/phase-a/${suite}.test.ts`]), '--reporter=json','--outputFile',file];
       const success = await runTests('vitest','vitest',args);
       const results = JSON.parse(await readFile(file,'utf8'));
       report.tests.push(...results.testResults.flatMap(result => result.assertionResults.map(test => ({ name:test.fullName, status:test.status }))));

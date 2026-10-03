@@ -3,8 +3,8 @@
   "status": "passed",
   "node": "v22.23.2",
   "platform": "darwin-arm64",
-  "sourceSha256": "268d166131932625f0b4b82b5829dba2d1ee6ee06184af652dd2e5998f873d6e",
-  "finishedAt": "2026-10-03T03:12:53.685Z",
+  "sourceSha256": "4eef355069de62f966427eb06d3e765064a8a2acd2e0c1af16e2c1a55c32ec6d",
+  "finishedAt": "2026-10-03T03:32:01.262Z",
   "tests": [
     {
       "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior blocks pending/verified/cross-column case-insensitive insert collisions without changing rows",
@@ -56,6 +56,10 @@
     },
     {
       "name": "L1-27/U27 harness safety verifies downloaded AND cached bytes rather than filenames",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety keeps default auth configuration unchanged and confines short TTL to a labelled owned profile",
       "status": "passed"
     },
     {

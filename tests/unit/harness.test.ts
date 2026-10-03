@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { assertLocalUrl, assertRunDirectory, verifyOwner, verifyImages, verifyLoopbackBindings, replaceTokens, freePort, waitReady, stopChild } from '../../scripts/harness.mjs';
+import { assertLocalUrl, assertRunDirectory, verifyOwner, verifyImages, verifyLoopbackBindings, replaceTokens, freePort, waitReady, stopChild, nativeAuthConfig } from '../../scripts/harness.mjs';
 import { verifyChecksum } from '../../scripts/tools.mjs';
 
 describe('L1-27/U27 harness safety', () => {
@@ -43,6 +43,13 @@ describe('L1-27/U27 harness safety', () => {
     expect(() => verifyChecksum(bytes, digest)).not.toThrow();
     expect(() => verifyChecksum(Buffer.from('corrupt'), digest)).toThrow('checksum');
     expect(() => verifyChecksum(bytes, '0'.repeat(64))).toThrow('checksum');
+  });
+  it('keeps default auth configuration unchanged and confines short TTL to a labelled owned profile',()=>{
+    const config='auth { user_identifier: ONLY_EMAIL }';
+    expect(nativeAuthConfig(config,'default')).toBe(config);
+    expect(nativeAuthConfig(config,'short-native-auth')).toBe('auth { auth_token_ttl_sec: 3 user_identifier: ONLY_EMAIL }');
+    for(const bad of ['unknown','',3])expect(()=>nativeAuthConfig(config,bad)).toThrow('Invalid');
+    for(const bad of ['',config+'\n'+config,'auth { auth_token_ttl_sec: 60 }'])expect(()=>nativeAuthConfig(bad,'short-native-auth')).toThrow('Invalid');
   });
   it('fails closed on missing fixture variables', () => {
     expect(replaceTokens('port = __PORT__', { PORT: 1234 })).toBe('port = 1234');

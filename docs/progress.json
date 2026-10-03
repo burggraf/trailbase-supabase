@@ -80,7 +80,11 @@
         "docs/evidence/phase-a-coordination-proofs-node22.json",
         "docs/evidence/phase-a-proof-browser-controls-node22.json",
         "docs/evidence/phase-a-proof-cleanup-node22.json",
-        "docs/evidence/phase-a-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-native-expiry-node22.json",
+        "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-expiry-default-browser-controls-node22.json",
+        "docs/evidence/phase-a-expiry-default-cleanup-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -111,7 +115,11 @@
         "docs/evidence/phase-a-coordination-proofs-node22.json",
         "docs/evidence/phase-a-proof-browser-controls-node22.json",
         "docs/evidence/phase-a-proof-cleanup-node22.json",
-        "docs/evidence/phase-a-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-native-expiry-node22.json",
+        "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-expiry-default-browser-controls-node22.json",
+        "docs/evidence/phase-a-expiry-default-cleanup-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -151,7 +159,11 @@
         "docs/evidence/phase-a-coordination-proofs-node22.json",
         "docs/evidence/phase-a-proof-browser-controls-node22.json",
         "docs/evidence/phase-a-proof-cleanup-node22.json",
-        "docs/evidence/phase-a-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-native-expiry-node22.json",
+        "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-expiry-default-browser-controls-node22.json",
+        "docs/evidence/phase-a-expiry-default-cleanup-node22.json"
       ],
       "missing": [
         "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
@@ -186,7 +198,11 @@
         "docs/evidence/phase-a-coordination-proofs-node22.json",
         "docs/evidence/phase-a-proof-browser-controls-node22.json",
         "docs/evidence/phase-a-proof-cleanup-node22.json",
-        "docs/evidence/phase-a-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-native-expiry-node22.json",
+        "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-expiry-default-browser-controls-node22.json",
+        "docs/evidence/phase-a-expiry-default-cleanup-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -618,7 +634,8 @@
         "docs/evidence/phase-a-all-node22.json",
         "docs/evidence/phase-a-stream-isolation-node22.json",
         "docs/evidence/phase-a-stream-isolation-deadline-regression.json",
-        "docs/evidence/phase-a-coordination-proofs-node22.json"
+        "docs/evidence/phase-a-coordination-proofs-node22.json",
+        "docs/evidence/phase-a-expiry-default-proof-controls-node22.json"
       ],
       "missing": [
         "Installed SSE byte-fragmentation and cross-chunk sequence-gap defects are confirmed; choose/review transport fallback, not implemented",
@@ -636,9 +653,11 @@
         "docs/evidence/phase-a-all-node22.json",
         "docs/evidence/phase-a-stream-isolation-node22.json",
         "docs/evidence/phase-a-stream-isolation-deadline-regression.json",
-        "docs/evidence/phase-a-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-native-expiry-node22.json"
       ],
       "missing": [
+        "Genuine native JWT expiry: ordinary protected HTTP denied but established stream delivered a newly written protected row; strict regression preserved under explicit short-native-auth fixture",
         "Reference two-owner DELETE delivers a foreign primary key despite owner RLS: strict regression preserved; maintainer must decide payload/security compatibility limits without weakening native access rules",
         "Native two-owner INSERT/UPDATE/DELETE isolation passed locally; expiry/revocation/renewal/anonymous and full resource/browser/SDK layers remain incomplete",
         "Approve CDC readiness and common payload subset; no feature/gate signoff inferred"
@@ -657,7 +676,8 @@
         "docs/evidence/phase-a-auth-lifecycle-node22.json",
         "docs/evidence/phase-a-auth-lifecycle-initial-status-mismatch.json",
         "docs/evidence/phase-a-coordination-proofs-node22.json",
-        "docs/evidence/phase-a-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-expiry-default-proof-controls-node22.json"
       ],
       "missing": [
         "Strict native late refresh/status after logout resurrects cached state: two actual-response regressions preserved; approved wrapper/upstream resolution required",
@@ -676,31 +696,28 @@
     "Keep both installed-client reports as drafts. Track server issue #298. G1/G6/G7 remain blocked pending resolutions and named review; no Phase B/deployment approval."
   ],
   "lastSession": {
-    "date": "2026-10-03T03:19:17.204Z",
-    "sourceSha256": "268d166131932625f0b4b82b5829dba2d1ee6ee06184af652dd2e5998f873d6e",
+    "date": "2026-10-03T03:39:36.017Z",
+    "sourceSha256": "4eef355069de62f966427eb06d3e765064a8a2acd2e0c1af16e2c1a55c32ec6d",
     "node": "v22.23.2",
-    "scope": "Authorized isolated native SSE/auth coordination proofs and stock controls; NOT SDK implementation/signoff",
-    "unitCases": 35,
-    "proofCases": 8,
-    "browserCases": 6,
-    "fullStock": {
-      "passed": 43,
-      "failed": 5
+    "scope": "Explicit native JWT-expiry profile plus default fixture controls, NOT reference/browser expiry or complete SDK proof",
+    "unitCases": 36,
+    "expiry": {
+      "passed": 0,
+      "failed": 1,
+      "profile": "short-native-auth"
     },
-    "cleanup": "passed for every run",
-    "ci": "Previous 5ae1632 Linux unit jobs passed; real setup failed before tests, cleanup passed. Current proof remote CI pending"
+    "defaultProofCases": 8,
+    "browserCases": 6,
+    "cleanup": "passed for every scope",
+    "ci": "New always-run expiry/cleanup steps implemented; not remote verified yet"
   },
   "pendingWork": {
-    "scope": "Authorized Phase A buffered SSE/epoch-single-flight proofs only",
-    "authorizationInterview": "ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d",
-    "status": "35 unit, 8 real proof, 6 browser infrastructure and cleanup controls passed. Full stock foundation remains 43 passed/5 failed; proof does not patch raw SDK or sign off compatibility.",
+    "scope": "G6 genuine wall-clock expiry and default-profile fixture controls",
+    "status": "36 unit, 8 default proof, 6 default browser infrastructure and cleanup controls passed; one strict short-profile native expiry failure (continued protected-row delivery after ordinary HTTP denial). Defaults unchanged; no gate signoff.",
     "process": null,
-    "direction": {
-      "g5": "Buffered Fetch/SSE proof with persistent sequence tracking",
-      "g6": "Preserve native owner-only delivery; proposed stronger DELETE-security compatibility deviation",
-      "g7": "Isolated epoch guard and single-flight over genuine native responses",
-      "upstream": "Keep both client reports as drafts; do not submit"
-    }
+    "authorizationInterview": "ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d",
+    "upstream": "Both installed-client reports remain drafts; no new submission authorization",
+    "signoff": "none"
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",

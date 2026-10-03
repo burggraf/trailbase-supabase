@@ -69,8 +69,15 @@ export function replaceTokens(text, values) {
   return result;
 }
 
+export function nativeAuthConfig(config, profile) {
+  if (profile === 'default') return config;
+  if (profile !== 'short-native-auth' || [...config.matchAll(/\bauth\s*\{/g)].length !== 1 || /auth_token_ttl_sec/.test(config)) throw new Error('Invalid native auth fixture profile');
+  return config.replace(/\bauth\s*\{/, 'auth { auth_token_ttl_sec: 3');
+}
+
 // All paths/ports/project names are generated here; callers cannot target a hosted project.
-export async function createHarness({ authMitigation = false } = {}) {
+export async function createHarness({ authMitigation = false, nativeAuthProfile = 'default' } = {}) {
+  const nativeConfig = nativeAuthConfig(await readFile('tests/fixtures/trailbase/config.textproto','utf8'),nativeAuthProfile);
   const id = `${Date.now()}-${randomUUID().replaceAll('-', '').slice(0,12)}`;
   const directory = resolve('.runtime/runs', id);
   assertRunDirectory(directory);
@@ -83,8 +90,8 @@ export async function createHarness({ authMitigation = false } = {}) {
   const origins = ['API_PORT','MAIL_PORT','TRAIL_PORT'].map(key => `http://127.0.0.1:${ports[key]}`);
   const childEnv = { ...process.env };
   for (const key of Object.keys(childEnv)) if (key.startsWith('SUPABASE_') || key.startsWith('TRAILBASE_')) delete childEnv[key];
-  const context = { id, project, directory, origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], authVariant: authMitigation ? 'candidate-email-reservation' : 'stock' };
-  const ownerRecord = { id, project, authVariant:context.authVariant, runnerPid: process.pid, trailPid: null };
+  const context = { id, project, directory, origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, authVariant: authMitigation ? 'candidate-email-reservation' : 'stock' };
+  const ownerRecord = { id, project, nativeAuthProfile, authVariant:context.authVariant, runnerPid: process.pid, trailPid: null };
   await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
   let trail, log;
   let startAttempted = false;
@@ -154,7 +161,7 @@ export async function createHarness({ authMitigation = false } = {}) {
     const depot = resolve(directory, 'traildepot');
     await cp(resolve('tests/fixtures/trailbase'), depot, { recursive: true });
     if (authMitigation) await cp(resolve('tests/fixtures/auth-mitigation/U1790991000__reserve_auth_email.sql'),resolve(depot,'migrations/main/U1790991000__reserve_auth_email.sql'));
-    await writeFile(resolve(depot, 'config.textproto'), replaceTokens(await readFile('tests/fixtures/trailbase/config.textproto', 'utf8'), values));
+    await writeFile(resolve(depot, 'config.textproto'), replaceTokens(nativeConfig, values));
     const publicDirectory = resolve(directory, 'public');
     await mkdir(publicDirectory);
     await writeFile(resolve(publicDirectory, 'index.html'), '<!doctype html><html lang="en"><meta charset="utf-8"><title>Phase A verification complete</title><main><h1>Verification complete</h1><p>Sign in explicitly.</p></main></html>');

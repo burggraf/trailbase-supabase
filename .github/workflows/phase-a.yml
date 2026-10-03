@@ -48,7 +48,11 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium firefox webkit
       - run: npm run test:phase-a
+      - name: Explicit short-lived native auth fixture / real expiry
+        if: always()
+        run: npm run test:phase-a -- expiry
       - run: npm run test:cleanup
+        if: always()
       # Whitelisted summaries only. Raw .runtime reports/logs/mail contain secrets and MUST NOT be uploaded.
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()

@@ -27,10 +27,17 @@ This is not a transparent patch to the installed native client: raw `initClient`
 
 The intended direction is **never** to weaken native read rules to mimic reference DELETE key exposure. Native owner isolation remains required; DELETE payload projection must retain only declared keys. The reference two-owner DELETE failure stays visible as an unapproved compatibility/security limitation. This direction does not certify a channel implementation or release exception.
 
+## Explicit real-expiry fixture
+
+`npm run test:phase-a -- expiry` alone selects the owned `short-native-auth` profile, injecting a 3-second native JWT TTL into a fresh depot. Owner/context/report metadata retain the profile and `authVariant`; unknown/ambiguous profile inputs fail. Default and mitigation fixture lifetimes stay unchanged. Supabase configuration is not shortened and no reference expiry parity is claimed.
+
+The expiry scope verifies genuine JWT lifetime, confirms initially protected access, waits under an 80-second bound until the real backend denies the original JWT (allowing actual server clock-skew grace), then performs a write with a freshly refreshed writer. The old stream must close or surface an observable forbidden error without delivering the new protected row. No JWT edit, fake clock, session synthesis or mere revocation substitute is used. This is a strict native expiry requirement under investigation, not an assertion that upstream already provides it. It is separate from the default `all` corpus and has its own required CI step.
+
 ## Commands and evidence
 
 - `npm run test:unit`: proof parser/property/cancellation guards plus existing harness checks.
 - `npm run test:phase-a -- proofs`: genuine native response/stream proof cases, separate from raw regressions.
+- `npm run test:phase-a -- expiry`: explicitly labelled short-lived owned native fixture and genuine wall-clock expiry.
 - `npm run test:phase-a -- auth-lifecycle` and `-- streaming`: retain raw failing baselines.
 - `npm run test:phase-a`: complete upstream harness remains red until all blockers are resolved; SDK-wide commands remain deliberately incomplete.
 

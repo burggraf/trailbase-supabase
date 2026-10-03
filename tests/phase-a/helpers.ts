@@ -12,7 +12,7 @@ export async function deadline<T>(promise: Promise<T>, milliseconds = 10000, lab
   } finally { clearTimeout(timer!); }
 }
 
-export type Context = { id: string; project: string; directory: string; origins: string[]; trailUrl: string; supabaseUrl: string; mailUrl: string; anonKey: string; authVariant: 'stock' | 'candidate-email-reservation' };
+export type Context = { id: string; project: string; directory: string; origins: string[]; trailUrl: string; supabaseUrl: string; mailUrl: string; anonKey: string; authVariant: 'stock' | 'candidate-email-reservation'; nativeAuthProfile: 'default'|'short-native-auth' };
 export async function context(): Promise<Context> {
   const path = process.env.PHASE_A_CONTEXT;
   if (!path || !path.endsWith('/context.json')) throw new Error('Run this suite via npm run test:phase-a (not a hosted backend)');
@@ -20,7 +20,7 @@ export async function context(): Promise<Context> {
   assertRunDirectory(data.directory);
   if (resolve(path) !== resolve(data.directory, 'context.json')) throw new Error('Fixture context mismatch');
   const owner = JSON.parse(await readFile(resolve(data.directory, 'owner.json'), 'utf8'));
-  if (owner.id !== data.id || owner.project !== data.project || owner.authVariant !== data.authVariant || !['stock','candidate-email-reservation'].includes(data.authVariant)) throw new Error('Fixture ownership/variant mismatch');
+  if (owner.id !== data.id || owner.project !== data.project || owner.authVariant !== data.authVariant || owner.nativeAuthProfile !== data.nativeAuthProfile || !['default','short-native-auth'].includes(data.nativeAuthProfile) || !['stock','candidate-email-reservation'].includes(data.authVariant)) throw new Error('Fixture ownership/variant mismatch');
   for (const url of [data.trailUrl, data.supabaseUrl, data.mailUrl]) assertLocalUrl(url, data.origins);
   return data;
 }
