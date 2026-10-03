@@ -5,6 +5,13 @@ import { initClient as createTrailClient } from 'trailbase';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { assertRunDirectory, assertLocalUrl } from '../../scripts/harness.mjs';
 
+export async function deadline<T>(promise: Promise<T>, milliseconds = 10000, label = 'Async operation'): Promise<T> {
+  let timer: ReturnType<typeof setTimeout>;
+  try {
+    return await Promise.race([promise, new Promise<never>((_,no) => { timer = setTimeout(() => no(new Error(`${label} deadline exceeded`)), milliseconds); })]);
+  } finally { clearTimeout(timer!); }
+}
+
 export type Context = { id: string; project: string; directory: string; origins: string[]; trailUrl: string; supabaseUrl: string; mailUrl: string; anonKey: string; authVariant: 'stock' | 'candidate-email-reservation' };
 export async function context(): Promise<Context> {
   const path = process.env.PHASE_A_CONTEXT;

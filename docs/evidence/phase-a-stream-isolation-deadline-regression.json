@@ -3,7 +3,7 @@
   "authVariant": "stock",
   "suite": "streaming",
   "status": "failed",
-  "startedAt": "2026-10-03T02:46:50.280Z",
+  "startedAt": "2026-10-03T02:40:41.896Z",
   "baseline": {
     "trailbase": {
       "version": "0.34.3",
@@ -63,9 +63,9 @@
     }
   ],
   "cleanup": "passed",
-  "sourceSha256": "bac55048df3ab0155534c7b5bbda76ee97f47ebf160d1c031f8b4de6c3708ef0",
+  "sourceSha256": "dcb5f881a14e750e9583ffcf3895097d155433493e5202f4d37213bb8e9091c3",
   "baseCommit": "de7cc54da6d5a9313c00838035d6a59464f3cd96",
-  "runId": "1790995610335-6df5855cf998",
+  "runId": "1790995241986-7daaef2f1ac3",
   "environment": {
     "trailVersion": "trail v0.34.3-0-geab50393 (2026-10-02)\nsqlite: 3.53.2",
     "cliVersion": "2.119.0",
@@ -103,14 +103,14 @@
           "1025/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "64159"
+              "HostPort": "63940"
             }
           ],
           "1110/tcp": null,
           "8025/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "64158"
+              "HostPort": "63939"
             }
           ]
         }
@@ -137,7 +137,7 @@
           "8000/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "64155"
+              "HostPort": "63936"
             }
           ],
           "8001/tcp": null,
@@ -157,12 +157,12 @@
           "5432/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "64156"
+              "HostPort": "63937"
             }
           ]
         }
       }
     ]
   },
-  "finishedAt": "2026-10-03T02:47:28.397Z"
+  "finishedAt": "2026-10-03T02:41:21.919Z"
 }

@@ -1,16 +1,10 @@
 import { randomUUID } from 'node:crypto';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { initClient, type ChangeEvent } from 'trailbase';
-import { context, confirmedTrailUser, confirmedSupabaseUser, nativeUuid, type Context } from './helpers.js';
+import { context, confirmedTrailUser, confirmedSupabaseUser, nativeUuid, deadline, type Context } from './helpers.js';
 
 let env: Context;
 beforeAll(async () => { env = await context(); });
-async function deadline<T>(promise: Promise<T>, milliseconds = 10000, label = 'Stream event'): Promise<T> {
-  let timer: ReturnType<typeof setTimeout>;
-  try {
-    return await Promise.race([promise, new Promise<never>((_,no) => { timer = setTimeout(() => no(new Error(`${label} deadline exceeded`)), milliseconds); })]);
-  } finally { clearTimeout(timer!); }
-}
 async function parseCapturedFrames(input: ChangeEvent[], mode: 'whole'|'bytes'|'frames', onLoss?: () => void) {
   const frames = input.map(event => new TextEncoder().encode(`data: ${JSON.stringify(event)}\n\n`));
   const bytes = Buffer.concat(frames);

@@ -1,9 +1,9 @@
 {
   "scope": "Phase A upstream/infrastructure harness, NOT SDK verification",
   "authVariant": "stock",
-  "suite": "streaming",
+  "suite": "auth-lifecycle",
   "status": "failed",
-  "startedAt": "2026-10-03T02:46:50.280Z",
+  "startedAt": "2026-10-03T02:39:59.602Z",
   "baseline": {
     "trailbase": {
       "version": "0.34.3",
@@ -46,26 +46,42 @@
   "platform": "darwin-arm64",
   "tests": [
     {
-      "name": "L1-27 G5/G6 streaming characterization (not full SDK/security signoff) native real Insert/Update/Delete and installed-parser fragmentation defect",
-      "status": "passed"
-    },
-    {
-      "name": "L1-27 G5/G6 streaming characterization (not full SDK/security signoff) reference real INSERT/UPDATE/DELETE, key-only delete payload, and channel cleanup",
-      "status": "passed"
-    },
-    {
-      "name": "L1-27 G5/G6 streaming characterization (not full SDK/security signoff) G6/S07 native two-owner INSERT/UPDATE/DELETE isolation with own-event barriers and reader cancellation",
-      "status": "passed"
-    },
-    {
-      "name": "L1-27 G5/G6 streaming characterization (not full SDK/security signoff) G6/S07 reference two-owner INSERT/UPDATE/DELETE isolation must not expose foreign primary keys",
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native hydration exposes cached claims before real revoked-session validation clears local state",
       "status": "failed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native concurrent forced refreshes send two real requests rather than single-flight",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late refresh response must not restore a locally logged-out client",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late status response must not restore a locally logged-out client",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference concurrent refresh is single-flight and preserves a usable actual rotated session",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference late refresh is discarded after logout and emits no post-logout TOKEN_REFRESHED",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native logout transport failure clears local state but reports true while remote refresh remains live",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference logout transport failure is observable, clears local state and leaves remote refresh usable",
+      "status": "passed"
     }
   ],
   "cleanup": "passed",
-  "sourceSha256": "bac55048df3ab0155534c7b5bbda76ee97f47ebf160d1c031f8b4de6c3708ef0",
+  "sourceSha256": "dcb5f881a14e750e9583ffcf3895097d155433493e5202f4d37213bb8e9091c3",
   "baseCommit": "de7cc54da6d5a9313c00838035d6a59464f3cd96",
-  "runId": "1790995610335-6df5855cf998",
+  "runId": "1790995199670-f99d64f18727",
   "environment": {
     "trailVersion": "trail v0.34.3-0-geab50393 (2026-10-02)\nsqlite: 3.53.2",
     "cliVersion": "2.119.0",
@@ -103,14 +119,14 @@
           "1025/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "64159"
+              "HostPort": "63869"
             }
           ],
           "1110/tcp": null,
           "8025/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "64158"
+              "HostPort": "63868"
             }
           ]
         }
@@ -137,7 +153,7 @@
           "8000/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "64155"
+              "HostPort": "63865"
             }
           ],
           "8001/tcp": null,
@@ -157,12 +173,12 @@
           "5432/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "64156"
+              "HostPort": "63866"
             }
           ]
         }
       }
     ]
   },
-  "finishedAt": "2026-10-03T02:47:28.397Z"
+  "finishedAt": "2026-10-03T02:40:41.503Z"
 }
