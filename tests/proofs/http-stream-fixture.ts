@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { setImmediate as nextTurn } from 'node:timers/promises';
 
 // Disposable loopback fault fixture, not a gateway/product. Forwards only genuine
-// owned native SSE bytes; never copies auth/cookie headers to downstream clients.
+// owned native response bytes; never copies auth/cookie headers to downstream clients.
 export async function httpStreamFixture(upstream:(signal:AbortSignal)=>Promise<Response>, mode:'fragment'|'disconnect') {
   const route=`/${randomUUID()}`,controllers=new Set<AbortController>(),tasks=new Set<Promise<void>>();
   let cancelled=0,bytesWritten=0;

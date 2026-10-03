@@ -128,7 +128,15 @@ The existing coordinator was reused **unchanged**. [11 native proof cases](evide
 
 Current-source [37 unit cases](evidence/phase-a-unit-node22.json), [12 browser controls](evidence/phase-a-auth-failure-browser-controls-node22.json) and [fault cleanup](evidence/phase-a-auth-failure-cleanup-node22.json) passed. [Full stock](evidence/phase-a-auth-failure-full-stock-node22.json) is **50 passed/5 failed**, including all three new proofs; the same G1/G6/G7 regressions remain strict. All cleanup passed. Latest real-expiry failure remains separately required and unrepaired.
 
-Next: latest remote proof verification and remaining timer/schema/backpressure/server-resource matrices. No public SDK implementation, deployment recommendation or gate approval. All three new reports remain drafts.
+Linux [run 37099980877](https://github.com/burggraf/trailbase-supabase/actions/runs/37099980877) at `0eb8dbc` passed both unit jobs and [12 browser cases](evidence/phase-a-ci-linux-auth-failure-browser.json), reproducing [stock 50/5](evidence/phase-a-ci-linux-auth-failure-all.json) and [expiry 0/1](evidence/phase-a-ci-linux-auth-failure-expiry.json), with [fault cleanup](evidence/phase-a-ci-linux-auth-failure-lifecycle.json), setup and all cleanup passed. It predates the live-stream ceiling expansion below.
+
+## Live native pressure/scalar/ceiling follow-up
+
+The decoder/coordinator are still unchanged. [14 native proofs](evidence/phase-a-live-stream-ceiling-proofs-node22.json) passed, including 64 genuine sequential writes while the consumer initially did not read (then all ordered own-row IDs/sequence/no-loss assertions), a genuine unsafe bigint event failing observably while the database/native reader retain its exact value, and a genuine >64Ki frame tripping the declared proof buffer ceiling/releasing its reader while the original row remains intact. The latter two are explicit unsupported-payload errors, not claims of large-event or bigint codec support. This bounded subset does not certify arbitrary slow consumers, WAN behavior or native server resource accounting.
+
+Current-source [37 unit cases](evidence/phase-a-unit-node22.json), [12 browser controls](evidence/phase-a-stream-ceiling-browser-controls-node22.json) and [fault cleanup](evidence/phase-a-stream-ceiling-cleanup-node22.json) passed. [Full stock](evidence/phase-a-stream-ceiling-full-stock-node22.json) is **53 passed/5 failed**, with the same raw regressions; all cleanup passed. No named gate was signed off.
+
+Next: standard client-only deadline abort against a genuine short-lived JWT in the explicit expiry profile, keeping the raw server-expiry regression unchanged. A client timer is not server authorization enforcement or complete renewal/clock-skew policy. Remaining schema/timer/backpressure/server-resource matrices still apply. No public SDK implementation, deployment recommendation or gate approval; all three new reports remain drafts.
 
 The [stream lifetime question](UPSTREAM_STREAM_LIFETIME_DRAFT.md) remains a draft. It asks about intended connection-scoped authentication/expiry/re-auth semantics, does not claim severity or foreign-row access, and explicitly distinguishes client delivery timers from server authorization enforcement. No new upstream report has been submitted.
 

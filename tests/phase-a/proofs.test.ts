@@ -41,6 +41,51 @@ describe('L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff',
       expect(bytes.locked).toBe(false);
     } finally {abort.abort();await parser.return(undefined);}
   });
+  it('a bounded 64-event producer burst survives an initially paused real consumer without loss',async()=>{
+    const account=await confirmedTrailUser(env,'proof-burst'),api=account.client.records('todos');
+    const response=await account.client.fetch('/api/records/v1/todos/subscribe/*');
+    expect(response.ok).toBe(true);if(!response.body)throw new Error('Real burst body missing');
+    const abort=new AbortController();let losses=0;
+    const parser=nativeSseProof(response.body,{signal:abort.signal,onLoss:()=>losses++});
+    const ids=Array.from({length:64},()=>nativeUuid(randomUUID()));
+    try {
+      // No parser read until all real writes have completed; this is bounded pressure,
+      // not a general server memory/throughput or arbitrary slow-consumer guarantee.
+      for(const [priority,id] of ids.entries())await api.create({id,user_id:account.user.id,title:`burst-${randomUUID()}`,priority});
+      const seen:string[]=[];
+      for(const id of ids){
+        const event=(await deadline(parser.next())).value!;expect('Insert' in event).toBe(true);
+        if(!('Insert' in event))throw new Error('Real burst insert missing');
+        expect(event.Insert.id).toBe(id);expect(event.Insert.user_id).toBe(account.user.id);seen.push(event.Insert.id as string);
+      }
+      expect(seen).toEqual(ids);expect(losses).toBe(0);expect((await api.list({pagination:{limit:1000}})).records).toHaveLength(64);
+      const pending=parser.next(),failed=expect(deadline(pending)).rejects.toMatchObject({name:'AbortError'});abort.abort();await failed;
+      expect(response.body.locked).toBe(false);
+    } finally {abort.abort();await parser.return(undefined);}
+  });
+  it('a genuine native unsafe-integer event fails visibly instead of silently rounding the stored value',async()=>{
+    const account=await confirmedTrailUser(env,'proof-unsafe-stream'),api=account.client.records('todos');
+    const response=await account.client.fetch('/api/records/v1/todos/subscribe/*');
+    expect(response.ok).toBe(true);if(!response.body)throw new Error('Real unsafe-scalar body missing');
+    const parser=nativeSseProof(response.body),id=nativeUuid(randomUUID());
+    try {
+      const failed=expect(deadline(parser.next())).rejects.toThrow('Invalid/unsupported native SSE JSON');
+      await api.create({id,user_id:account.user.id,title:`unsafe-stream-${randomUUID()}`,priority:9007199254740993n});
+      await failed;expect(response.body.locked).toBe(false);
+      expect((await api.read(id)).priority===9007199254740993n).toBe(true);
+    } finally {await parser.return(undefined);}
+  });
+  it('a genuine oversized native event trips the declared proof ceiling and releases the reader without altering the row',async()=>{
+    const account=await confirmedTrailUser(env,'proof-large-stream'),api=account.client.records('todos');
+    const response=await account.client.fetch('/api/records/v1/todos/subscribe/*');
+    expect(response.ok).toBe(true);if(!response.body)throw new Error('Real large-event body missing');
+    const parser=nativeSseProof(response.body),id=nativeUuid(randomUUID()),title=`large-${randomUUID()}-${'x'.repeat(70000)}`;
+    try {
+      const failed=expect(deadline(parser.next())).rejects.toThrow('Proof SSE buffer limit exceeded');
+      await api.create({id,user_id:account.user.id,title});await failed;
+      expect(response.body.locked).toBe(false);expect((await api.read(id)).title===title).toBe(true);
+    } finally {await parser.return(undefined);}
+  });
   it('single-flight proof issues one real refresh and clears its slot for the next refresh',async()=>{
     const account=await confirmedTrailUser(env,'proof-refresh');
     const ready=Promise.withResolvers<void>(),release=Promise.withResolvers<void>();let calls=0,hold=true;

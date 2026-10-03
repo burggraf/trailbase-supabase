@@ -17,6 +17,8 @@ This is not final G5/G6/G7 approval, deployment permission, Phase B implementati
 
 The 64Ki UTF-16 pending-buffer ceiling is a deliberate proof constraint, not a negotiated production limit. Unsafe integer JSON is rejected, not silently rounded or advertised as a full event codec. Deterministically split unit fixtures prove parser behavior; byte-rechunking a genuine live stream proves this decoder can consume those live events. Neither is evidence of actual TCP/proxy/browser fragmentation or a complete network fault corpus.
 
+Three additional live probes exercise a 64-event producer burst before the consumer starts reading (all actual IDs/order/owner/sequence must survive), a genuine unsafe-integer event that must fail visibly without rounding the stored bigint, and a genuine >64Ki frame that must trip the declared proof ceiling and release the reader while preserving the database row. This is a bounded pressure/codec/resource subset, not a production backpressure policy, arbitrary slow-consumer guarantee or server-internal resource accounting.
+
 ## Auth coordination proof
 
 `tests/proofs/auth-coordination.ts` owns a test-only cache of genuine native tokens. Epoch checks occur **after** asynchronous response JSON completes. Logout advances the epoch and clears locally before remote I/O; stale login/refresh/status operations cannot commit into the changed epoch. Simultaneous explicit refresh callers share a promise; a completed old promise cannot clear a newer slot. Native refresh retains its original actual refresh credential as characterized.
