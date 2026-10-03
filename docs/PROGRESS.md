@@ -17,7 +17,7 @@ The maintainer authorized investigation, not deployment. [Candidate prerequisite
 - [Candidate SMTP recovery](evidence/phase-a-auth-candidate-smtp.json): failed (no pending-account verification mail despite healthy control and reference recovery).
 - Cleanup passed for every run; candidate remote CI has not run. There is no complete green candidate suite or G1 signoff.
 
-The [sanitized upstream issue draft](UPSTREAM_AUTH_ISSUE.md) is prepared but **not submitted**. Next: maintainer review/submission decision, safe native recovery capability, and other isolated Phase A gates. The candidate remains opt-in and investigational; stock defaults are unchanged.
+The [sanitized upstream report](UPSTREAM_AUTH_ISSUE.md) was submitted with maintainer approval as [trailbaseio/trailbase#298](https://github.com/trailbaseio/trailbase/issues/298). Next: upstream response/test feedback, safe native recovery capability, and other isolated Phase A gates. The candidate remains opt-in and investigational; stock defaults are unchanged.
 
 ## G2/G4 scalar-domain follow-up
 

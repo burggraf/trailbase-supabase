@@ -1,10 +1,10 @@
-# Draft upstream issue: v0.34.3 pending-email registration and resend
+# Upstream issue: v0.34.3 pending-email registration and resend
 
-**Draft only; not submitted.** No real addresses, passwords, tokens, confirmation links, logs or admin credentials are included. Reproduce on disposable local resources only.
+**Submitted with maintainer approval:** [trailbaseio/trailbase#298](https://github.com/trailbaseio/trailbase/issues/298). The submitted body uses pinned absolute reproduction links; this file preserves the local report. No real addresses, passwords, tokens, confirmation links, logs or admin credentials are included. Reproduce on disposable local resources only.
 
-## Suggested title
+## Submitted title
 
-v0.34.3: duplicate pending email registrations block confirmation; resend cannot find unverified accounts after SMTP failure
+v0.34.3: duplicate pending email registrations block confirmation; resend misses pending accounts after SMTP failure
 
 ## Environment
 
