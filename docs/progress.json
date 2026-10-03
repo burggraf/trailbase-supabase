@@ -91,7 +91,9 @@
         "docs/evidence/phase-a-browser-proof-full-stock-node22.json",
         "docs/evidence/phase-a-real-http-network-node22.json",
         "docs/evidence/phase-a-network-browser-controls-node22.json",
-        "docs/evidence/phase-a-network-full-stock-node22.json"
+        "docs/evidence/phase-a-network-full-stock-node22.json",
+        "docs/evidence/phase-a-safe-inventory-network-node22.json",
+        "docs/evidence/phase-a-safe-inventory-cleanup-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -230,7 +232,9 @@
         "docs/evidence/phase-a-browser-proof-full-stock-node22.json",
         "docs/evidence/phase-a-real-http-network-node22.json",
         "docs/evidence/phase-a-network-browser-controls-node22.json",
-        "docs/evidence/phase-a-network-full-stock-node22.json"
+        "docs/evidence/phase-a-network-full-stock-node22.json",
+        "docs/evidence/phase-a-safe-inventory-network-node22.json",
+        "docs/evidence/phase-a-safe-inventory-cleanup-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -736,31 +740,23 @@
     "Keep client reports and stream-lifetime question as drafts; only #298 is submitted. All named gate decisions precede Phase B/deployment recommendation."
   ],
   "lastSession": {
-    "date": "2026-10-03T04:18:12.648Z",
-    "sourceSha256": "2667d99b5b67eeb76f8ec16039427c77c7b644a7d71c1662ee1da1652a3a145c",
+    "date": "2026-10-03T04:33:16.215Z",
+    "sourceSha256": "fc9bccce0693d0def16d5ddb682ee7a24a60c1388dd31218257a3ffd2a85bbeb",
     "node": "v22.23.2",
-    "scope": "Owned HTTP framing/disconnect/resource subset plus browser/default-stock controls, NOT full SDK security/signoff",
-    "unitCases": 36,
+    "scope": "Safe setup inventory and unchanged validators, NOT full stock rerun or security/gate signoff",
+    "unitCases": 37,
     "networkCases": 2,
-    "browserCases": 9,
-    "fullStock": {
-      "passed": 45,
-      "failed": 5
-    },
-    "cleanup": "passed for every scope",
-    "ci": "Historical a89264e Linux: unit jobs passed, all four backend scopes failed before assertions at image verification; need actionable sanitized inventory, no pins relaxed"
+    "cleanup": "passed including injected setup failure",
+    "setupCheck": "passed for real network scope",
+    "fullStock": "Previous cd2b029 source: 45 passed/5 strict failed; latest diagnostics source full/browser not yet rerun",
+    "ci": "a89264e Linux setup failed at verification before tests; current diagnostic hash remote verification pending"
   },
   "pendingWork": {
-    "scope": "G5 owned real HTTP stream fault fixture",
-    "status": "36 unit, 2 owned real HTTP cases and 9 browser controls passed. Full stock 45 passed/5 strict failed; cleanup passed. Native expiry remains separately failing; both client reports and new stream-lifetime question remain drafts.",
+    "scope": "Strict Linux setup verification diagnosis",
+    "status": "37 unit checks, 2 owned HTTP cases and injected fault cleanup passed on current diagnostics hash. Every real service inventory loopback-only with strict expected tag/digest checks passed. Remote verification rerun pending.",
     "process": null,
     "authorizationInterview": "ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d",
-    "signoff": "none; raw G1/G6/G7 and genuine expiry blockers remain; upstream client reports stay drafts",
-    "drafts": [
-      "docs/UPSTREAM_CLIENT_AUTH_ISSUE.md",
-      "docs/UPSTREAM_CLIENT_STREAM_ISSUE.md",
-      "docs/UPSTREAM_STREAM_LIFETIME_DRAFT.md"
-    ]
+    "signoff": "none; full previous-hash stock 45/5, explicit native expiry blocker and all three upstream drafts remain unchanged"
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",

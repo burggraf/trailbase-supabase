@@ -3,8 +3,8 @@
   "status": "passed",
   "node": "v22.23.2",
   "platform": "darwin-arm64",
-  "sourceSha256": "2667d99b5b67eeb76f8ec16039427c77c7b644a7d71c1662ee1da1652a3a145c",
-  "finishedAt": "2026-10-03T04:04:00.908Z",
+  "sourceSha256": "fc9bccce0693d0def16d5ddb682ee7a24a60c1388dd31218257a3ffd2a85bbeb",
+  "finishedAt": "2026-10-03T04:29:53.199Z",
   "tests": [
     {
       "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior blocks pending/verified/cross-column case-insensitive insert collisions without changing rows",
@@ -52,6 +52,10 @@
     },
     {
       "name": "L1-27/U27 harness safety rejects service image/digest/count drift",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety setup inventory exposes only public image refs/digests and a port-safety boolean",
       "status": "passed"
     },
     {

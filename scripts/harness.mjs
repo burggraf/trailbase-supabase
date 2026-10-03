@@ -26,6 +26,14 @@ export function verifyImages(containers, expected) {
     if (!pinned || container.image !== pinned.image || !pinned.repoDigests.some(digest => container.repoDigests.includes(digest))) throw new Error('Fixture image digest drift');
   }
 }
+export function setupImageInventory(containers, expected) {
+  return {containerCount:containers.length,services:containers.map(item=>({
+    service:Object.hasOwn(expected,item.service)?item.service:'unknown-service',
+    image:/^public\.ecr\.aws\/supabase\/[a-z0-9-]+:[a-zA-Z0-9_.-]+$/.test(item.image)?item.image:'unrecognized-image-reference',
+    repoDigests:(item.repoDigests??[]).filter(value=>/^public\.ecr\.aws\/supabase\/[a-z0-9-]+@sha256:[a-f0-9]{64}$/.test(value)),
+    loopbackOnly:Object.values(item.publishedPorts??{}).flatMap(value=>value??[]).every(binding=>['127.0.0.1','::1'].includes(binding.HostIp))
+  }))};
+}
 export function assertRunDirectory(directory) {
   const tail = relative(resolve('.runtime/runs'), resolve(directory));
   if (!/^\d{13}-[a-f0-9]{12}$/.test(tail) || tail.includes(sep)) throw new Error('Refusing non-fixture directory');
@@ -191,17 +199,25 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
     context.setupStage='verify-image-digests';
     const { stdout: names } = await exec('docker', ['ps', '--format', '{{.Names}}', '--filter', `name=_${project}$`]);
-    const containers = [];
+    const containers = [],expected=JSON.parse(await readFile('tests/fixtures/service-images.json','utf8'));
     for (const name of names.trim().split('\n').filter(Boolean)) {
       const { stdout } = await exec('docker', ['inspect', '--format', '{{.Config.Image}}|{{.Image}}', name]);
       const [image, imageId] = stdout.trim().split('|');
       const { stdout: digests } = await exec('docker', ['image', 'inspect', '--format', '{{json .RepoDigests}}', imageId]);
       const { stdout: ports } = await exec('docker',['inspect','--format','{{json .NetworkSettings.Ports}}',name]);
       const publishedPorts = JSON.parse(ports);
-      verifyLoopbackBindings(publishedPorts);
       containers.push({ service: name.replace(`_${project}`, ''), image, imageId, repoDigests: JSON.parse(digests), publishedPorts });
+      context.setupCheck='loopback-bindings';
+      try {verifyLoopbackBindings(publishedPorts);} catch(error) {
+        context.setupImageInventory=setupImageInventory(containers,expected);throw error;
+      }
     }
-    verifyImages(containers, JSON.parse(await readFile('tests/fixtures/service-images.json','utf8')));
+    context.setupImageInventory=setupImageInventory(containers,expected);
+    // Record only fixed categories; raw Docker/CLI exceptions remain private.
+    context.setupCheck=containers.length!==Object.keys(expected).length?'service-count':
+      containers.some(item=>!expected[item.service]||item.image!==expected[item.service].image)?'image-service-and-tag':'image-digest';
+    verifyImages(containers,expected);
+    context.setupCheck='passed';
     context.setupStage='ready';
     return { ...context, containers, trailVersion: trailVersion.trim(), cliVersion: version.trim() };
   }

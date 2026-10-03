@@ -98,6 +98,8 @@ async function main() {
     }
   } finally {
     report.setupStage=harness?.context.setupStage ?? 'not-created';
+    report.setupCheck=harness?.context.setupCheck;
+    report.setupImageInventory=harness?.context.setupImageInventory;
     try { if (harness) { await harness.cleanup(); report.cleanup='passed'; } else { report.cleanup='not-started'; } }
     catch { report.cleanup='failed'; report.status='failed'; console.error('Fixture cleanup failed; see private run logs before restarting.'); }
     if (report.sourceSha256 && await sourceHash() !== report.sourceSha256) { report.status='failed'; console.error('Harness sources changed during run; evidence is stale, rerun.'); }

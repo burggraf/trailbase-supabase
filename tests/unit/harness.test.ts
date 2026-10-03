@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { assertLocalUrl, assertRunDirectory, verifyOwner, verifyImages, verifyLoopbackBindings, replaceTokens, freePort, waitReady, stopChild, nativeAuthConfig } from '../../scripts/harness.mjs';
+import { assertLocalUrl, assertRunDirectory, verifyOwner, verifyImages, verifyLoopbackBindings, replaceTokens, freePort, waitReady, stopChild, nativeAuthConfig, setupImageInventory } from '../../scripts/harness.mjs';
 import { verifyChecksum } from '../../scripts/tools.mjs';
 
 describe('L1-27/U27 harness safety', () => {
@@ -36,6 +36,13 @@ describe('L1-27/U27 harness safety', () => {
     const good={service:'auth',image:'auth:v1',repoDigests:['auth@sha256:expected']};
     expect(() => verifyImages([good],expected)).not.toThrow();
     for(const bad of [[],[{...good,image:'auth:latest'}],[{...good,repoDigests:['changed']}],[{...good,service:'unknown'}]]) expect(() => verifyImages(bad,expected)).toThrow();
+  });
+  it('setup inventory exposes only public image refs/digests and a port-safety boolean',()=>{
+    const digest=`public.ecr.aws/supabase/gotrue@sha256:${'a'.repeat(64)}`,expected={supabase_auth:{}};
+    expect(setupImageInventory([{service:'supabase_auth',image:'public.ecr.aws/supabase/gotrue:v2.197.0',repoDigests:[digest],publishedPorts:{'80/tcp':[{HostIp:'127.0.0.1',HostPort:'secret'}]},token:'secret'}],expected)).toEqual({containerCount:1,services:[{service:'supabase_auth',image:'public.ecr.aws/supabase/gotrue:v2.197.0',repoDigests:[digest],loopbackOnly:true}]});
+    const bad=setupImageInventory([{service:'secret',image:'https://user:secret@registry.invalid',repoDigests:['Bearer secret'],publishedPorts:{'80/tcp':[{HostIp:'secret',HostPort:'secret'}]}}],expected);
+    expect(bad).toEqual({containerCount:1,services:[{service:'unknown-service',image:'unrecognized-image-reference',repoDigests:[],loopbackOnly:false}]});
+    expect(JSON.stringify(bad)).not.toContain('secret');
   });
   it('verifies downloaded AND cached bytes rather than filenames', () => {
     const bytes = Buffer.from('fixture archive');
