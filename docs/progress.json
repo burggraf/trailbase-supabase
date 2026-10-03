@@ -992,7 +992,7 @@
     "Diagnose latest Linux setup image/port/service verification failure using safe inventory and failure codes; never relax digest or loopback checks to make CI green.",
     "Review native connection-scoped JWT lifetime / client delivery-renewal requirement before production proposal; keep raw expiry failure and stronger owner-only direction.",
     "Complete remaining page/schema/auth/timer/backpressure/security matrices; proof successes are not SDK implementation or gate approval.",
-    "Keep client reports and stream-lifetime question as drafts; only #298 is submitted. All named gate decisions precede Phase B/deployment recommendation."
+    "Keep both installed-client reports as drafts; track only approved server reports #298 and #299. All named gate decisions precede Phase B/deployment recommendation."
   ],
   "lastSession": {
     "date": "2026-10-03T06:00:21.920Z",
@@ -1034,11 +1034,9 @@
     }
   },
   "pendingWork": {
-    "scope": "Current-source remote deadline verification / upstream stream-lifetime clarification",
-    "status": "Current-source local and Linux evidence complete for bounded client deadline: stock 53/5 and expiry 1/1 strict, 12 browsers and all setup/cleanup passed. Awaiting explicit permission to submit only neutral stream-lifetime question; no public issue created. Both installed-client reports remain drafts. No gate/Phase B/deployment approval.",
-    "signoff": "none; G1/G6/G7 blockers remain; no Phase B/deployment; both client reports and stream-lifetime question remain drafts",
-    "process": null,
-    "ci": "https://github.com/burggraf/trailbase-supabase/actions/runs/37101664560",
+    "scope": "Phase A strict blockers / upstream lifetime clarification",
+    "status": "Approved neutral server question submitted and verified as #299; #298 signup recovery remains separate. Both installed-client auth/SSE reports remain drafts. Current local/Linux proofs and client-only timer pass but raw stock 53/5 and server-expiry failure remain. Await upstream semantics before any production policy; remaining migration/schema/timer/resource matrices not certified.",
+    "signoff": "none; no public SDK/Phase B/deployment/permission changes",
     "submissionApprovalInterview": "f900e981-5a7b-4fac-9763-2214d5bcbdd1"
   },
   "historicalCi": {
@@ -1062,5 +1060,16 @@
     "real": "43 passed/5 failed, cleanup passed; full browser stage not reached",
     "evidence": "docs/evidence/phase-a-ci-linux-proof-stock.json",
     "scope": "Previous proof hash, before expiry/profile/browser expansion; not current-source verification"
+  },
+  "upstreamStreamLifetimeIssue": {
+    "status": "submitted",
+    "url": "https://github.com/trailbaseio/trailbase/issues/299",
+    "approvalInterview": "f900e981-5a7b-4fac-9763-2214d5bcbdd1",
+    "approval": "Explicit answered option to submit only neutral server question, returned after form timeout; both client reports stay drafts",
+    "reproductionCommit": "8b089da25057b6a74f066402634230423caf0c85",
+    "preparedBodySha256": "e76a449e29797f72b6a975d9f01bedd6658d8f8e20a9cd64f6ebb2800e82a0f5",
+    "publishedBodyVerified": true,
+    "submittedAt": "2026-10-03T06:19:08.270851+00:00",
+    "scope": "Lifetime/renewal clarification only; no CVE/foreign-owner claim, server fork, production SDK, deployment or gate approval"
   }
 }

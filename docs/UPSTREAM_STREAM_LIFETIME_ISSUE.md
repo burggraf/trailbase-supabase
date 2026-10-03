@@ -1,6 +1,8 @@
-# Draft question: native SSE authentication lifetime after JWT expiry
+# Submitted question: native SSE authentication lifetime after JWT expiry
 
-**Not submitted.** This is a bounded lifecycle/semantics question, not a severity/CVE claim. All accounts, rows and backends are disposable owned fixtures. No tokens, identities, links, raw bodies or private logs are included.
+**Submitted with explicit maintainer approval:** [trailbaseio/trailbase#299](https://github.com/trailbaseio/trailbase/issues/299). Approval came from the answered response in interview `f900e981-5a7b-4fac-9763-2214d5bcbdd1`, returned after its timeout; the timeout alone was not treated as permission. Both installed-client reports remain drafts. Published body was verified to match the prepared sanitized text, with absolute reproduction/evidence links pinned to `8b089da25057b6a74f066402634230423caf0c85`.
+
+This is a bounded lifecycle/semantics question, not a severity/CVE claim. All accounts, rows and backends are disposable owned fixtures. No tokens, identities, links, raw bodies or private logs are included.
 
 ## Environment
 
@@ -26,4 +28,4 @@ The [strict lifecycle probe](../tests/expiry/expiry.test.ts) and [sanitized evid
 
 Our proposed SDK lifecycle requirement is to stop local protected-event delivery and renew/re-authenticate explicitly, but a client-side close/timer is not server-side authorization enforcement. We will not claim otherwise or weaken owner rules. Please clarify intended guarantees before we finalize a compatibility contract.
 
-This report does not claim foreign-owner row delivery: native owner isolation passed in its separate fixture. The reference Supabase foreign DELETE-key limitation is a different issue. The existing server signup issue [#298](https://github.com/trailbaseio/trailbase/issues/298) is also unrelated. This draft remains local pending maintainer direction on submission.
+This report does not claim foreign-owner row delivery: native owner isolation passed in its separate fixture. The reference Supabase foreign DELETE-key limitation is a different issue. The existing server signup issue [#298](https://github.com/trailbaseio/trailbase/issues/298) is also unrelated. Submission authorizes no server fork, permission weakening, production SDK/deployment, compatibility exception or gate signoff. Await upstream clarification on lifetime/renewal semantics; the raw server-expiry assertion remains strictly failing.
