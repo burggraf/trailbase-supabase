@@ -70,7 +70,7 @@ export function replaceTokens(text, values) {
 }
 
 // All paths/ports/project names are generated here; callers cannot target a hosted project.
-export async function createHarness() {
+export async function createHarness({ authMitigation = false } = {}) {
   const id = `${Date.now()}-${randomUUID().replaceAll('-', '').slice(0,12)}`;
   const directory = resolve('.runtime/runs', id);
   assertRunDirectory(directory);
@@ -83,8 +83,8 @@ export async function createHarness() {
   const origins = ['API_PORT','MAIL_PORT','TRAIL_PORT'].map(key => `http://127.0.0.1:${ports[key]}`);
   const childEnv = { ...process.env };
   for (const key of Object.keys(childEnv)) if (key.startsWith('SUPABASE_') || key.startsWith('TRAILBASE_')) delete childEnv[key];
-  const context = { id, project, directory, origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1] };
-  const ownerRecord = { id, project, runnerPid: process.pid, trailPid: null };
+  const context = { id, project, directory, origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], authVariant: authMitigation ? 'candidate-email-reservation' : 'stock' };
+  const ownerRecord = { id, project, authVariant:context.authVariant, runnerPid: process.pid, trailPid: null };
   await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
   let trail, log;
   let startAttempted = false;
@@ -153,6 +153,7 @@ export async function createHarness() {
     await waitReady(`${context.mailUrl}/api/v1/messages`, 10000);
     const depot = resolve(directory, 'traildepot');
     await cp(resolve('tests/fixtures/trailbase'), depot, { recursive: true });
+    if (authMitigation) await cp(resolve('tests/fixtures/auth-mitigation/U1790991000__reserve_auth_email.sql'),resolve(depot,'migrations/main/U1790991000__reserve_auth_email.sql'));
     await writeFile(resolve(depot, 'config.textproto'), replaceTokens(await readFile('tests/fixtures/trailbase/config.textproto', 'utf8'), values));
     const publicDirectory = resolve(directory, 'public');
     await mkdir(publicDirectory);

@@ -4,7 +4,20 @@
 
 Stock TrailBase v0.34.3 fails real confirmation after duplicate unconfirmed registrations. SMTP retry/recovery exercises the same pending-row problem. See [the pinned-source diagnosis](RESEARCH.md#blocking-g1-regression-duplicate-pending-registrations). The regressions remain strict/red; no auth-schema workaround or maintainer approval has been assumed.
 
-The [current blocker run](evidence/phase-a-g1-blocker-node22.json) has **17 passing and 2 failing upstream cases**; both failures are native confirmation HTTP 400. **22 unit guards passed**, and cleanup passed with no owned Docker resources remaining. The browser stage did not run because upstream assertions failed. SMTP/reference recovery and the fresh native mail control ran before the failing retry-confirmation assertion. These partial results do not make G1 or the full suite green.
+The [earlier stock blocker run](evidence/phase-a-g1-blocker-node22.json) has **17 passing and 2 failing upstream cases**; both failures are native confirmation HTTP 400. **22 unit guards passed**, and cleanup passed with no owned Docker resources remaining. The browser stage did not run because upstream assertions failed. SMTP/reference recovery and the fresh native mail control ran before the failing retry-confirmation assertion. These partial results do not make G1 or the full suite green.
+
+## Auth-migration investigation handoff
+
+The maintainer authorized investigation, not deployment. [Candidate prerequisites and limits](AUTH_MIGRATION_INVESTIGATION.md) explain the opt-in SQL, preflight refusal and unchanged native security boundaries. Current-source macOS/Node 22 evidence:
+
+- [26 unit guards](evidence/phase-a-unit-node22.json), including SQL collision/confirmation/preflight/rollback checks: passed.
+- [Candidate characterization](evidence/phase-a-auth-candidate-characterization.json): 10 passed.
+- [Candidate three-browser infrastructure](evidence/phase-a-auth-candidate-browser.json): 6 passed.
+- [Stock characterization control](evidence/phase-a-auth-stock-characterization.json): 9 passed, 1 failed (native duplicate confirmation).
+- [Candidate SMTP recovery](evidence/phase-a-auth-candidate-smtp.json): failed (no pending-account verification mail despite healthy control and reference recovery).
+- Cleanup passed for every run; candidate remote CI has not run. There is no complete green candidate suite or G1 signoff.
+
+The [sanitized upstream issue draft](UPSTREAM_AUTH_ISSUE.md) is prepared but **not submitted**. Next: maintainer review/submission decision, safe native recovery capability, and other isolated Phase A gates. The candidate remains opt-in and investigational; stock defaults are unchanged.
 
 [progress.json](progress.json) is the authoritative status/signoff ledger. Run `npm run progress` to see Phase A deliverables, missing checks, open gates, and ordered next steps. Read this file first after a restart, then the [implementation plan](LEVEL1_PLAN.md) and [test matrix](TEST_PLAN.md).
 

@@ -131,7 +131,11 @@
         "docs/evidence/phase-a-ci-unit-node24.21.0.json",
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569",
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601",
-        "docs/evidence/phase-a-g1-blocker-node22.json"
+        "docs/evidence/phase-a-g1-blocker-node22.json",
+        "docs/evidence/phase-a-auth-candidate-characterization.json",
+        "docs/evidence/phase-a-auth-candidate-browser.json",
+        "docs/evidence/phase-a-auth-stock-characterization.json",
+        "docs/evidence/phase-a-auth-candidate-smtp.json"
       ],
       "missing": [
         "SMTP-outage and unconfirmed duplicate-signup cases (confirmed duplicate/wrong/unknown login probes passed)",
@@ -520,12 +524,18 @@
         "docs/evidence/phase-a-ci-all-node22.23.2.json",
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601",
         "docs/evidence/phase-a-g1-unconfirmed-initial-failure.json",
-        "docs/evidence/phase-a-g1-blocker-node22.json"
+        "docs/evidence/phase-a-g1-blocker-node22.json",
+        "docs/evidence/phase-a-auth-candidate-initial-characterization.json",
+        "docs/evidence/phase-a-auth-candidate-initial-smtp-failure.json",
+        "docs/evidence/phase-a-auth-candidate-characterization.json",
+        "docs/evidence/phase-a-auth-candidate-browser.json",
+        "docs/evidence/phase-a-auth-stock-characterization.json",
+        "docs/evidence/phase-a-auth-candidate-smtp.json"
       ],
       "missing": [
-        "Resolve native v0.34.3 duplicate-unconfirmed signup/confirmation failure and SMTP retry postconditions",
-        "Maintainer decision on stock upstream fix/repin versus explicitly reviewed deployment constraints",
-        "Remaining G1 approval and complete SDK/application tests"
+        "Candidate resolves duplicate confirmation in initial real characterization but is not approved/deployment-ready",
+        "Candidate SMTP recovery remains blocked: native resend cannot find pending identities",
+        "Existing-depot migration/upgrade, wider auth lifecycle and remaining G1 approval/test layers"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -620,29 +630,35 @@
     }
   ],
   "nextSteps": [
-    "Resolve G1 native signup blocker with maintainer; preserve failing regressions, verify corrected SMTP fault observations, and do not start/sign off SDK auth against the unsafe baseline.",
-    "Finish the explicit missing G1-G7 characterization cases, especially native auth races and stream owner/expiry/loss behavior; implement no SDK promise before relevant decisions.",
-    "Review Phase A evidence and compatibility exceptions with burggraf; only the maintainer records signoff.",
-    "After Phase A approval, start Phase B client/types/mapping/results with its own full applicable tests."
+    "Review/sanitize the upstream issue draft; submit only after maintainer approval.",
+    "Keep candidate migration investigational; resolve native pending-account SMTP resend/recovery before proposing deployment or G1 signoff.",
+    "Continue other Phase A gates (G2-G7) with isolated scopes; preserve stock-versus-candidate labels and required failing regressions.",
+    "Review all required Phase A evidence and G1-G7 decisions with burggraf before Phase B implementation."
   ],
   "lastSession": {
-    "date": "2026-10-03T01:24:11.582Z",
-    "scope": "G1/S04 stock-native blocker; NOT SDK verification or signoff",
-    "sourceSha256": "bd8ccbdb51b0991c0277cd8578b22537dbcf6c0abc8ea8938ce7e0245eb1ed5d",
+    "date": "2026-10-03T01:51:28.369Z",
+    "sourceSha256": "82ee25aac28237f81c0f859795e5483b1a5e9634cf41d732656a19cf6c188c8f",
+    "scope": "Separate stock/candidate investigation, not G1 approval or full SDK compatibility",
     "node": "v22.23.2",
-    "unitCases": 22,
-    "realUpstreamPassed": 17,
-    "realUpstreamFailed": 2,
-    "browserInfrastructureCases": 0,
-    "browserReason": "Not run: upstream assertions failed before browser stage",
-    "cleanup": "passed",
-    "ci": "Current-source CI pending; historical green reports do not certify expanded scope"
+    "unitCases": 26,
+    "candidateCharacterizationCases": 10,
+    "candidateBrowserCases": 6,
+    "stockCharacterization": {
+      "passed": 9,
+      "failed": 1
+    },
+    "candidateSmtp": {
+      "passed": 0,
+      "failed": 1
+    },
+    "cleanup": "passed for every run",
+    "ci": "Candidate remote CI not run; stock baseline remains red"
   },
   "pendingWork": {
-    "scope": "G1/S04 unconfirmed duplicate-password preservation and real stopped-SMTP failure/recovery",
-    "status": "Verified stock-server blocker: both native duplicate-unconfirmed and SMTP retry confirmation fail HTTP 400; reference recovery and fresh SMTP control succeeded; cleanup passed. Maintainer choice pending.",
-    "process": "phase-a-g1-unconfirmed-and-real-smtp-faults",
-    "signoff": "none; SMTP retry differences require explicit maintainer review",
-    "source": "https://github.com/trailbaseio/trailbase/blob/v0.34.3/crates/core/migrations/main/U1785764695__unverified_email.sql"
+    "scope": "Investigational explicit auth email-reservation migration, separate stock/candidate contexts and reports",
+    "authorization": "Maintainer selected investigation in interview 6e96f5cd-ea9f-4390-96ac-15214bd7b101; not deployment or G1 signoff",
+    "status": "Investigation complete for first candidate: 26 unit, 10 candidate characterization and 6 candidate browser cases passed. Stock duplicate confirmation and candidate SMTP recovery remain failing. No deployment/signoff approval.",
+    "process": null,
+    "signoff": "none; stock regressions remain red and SMTP recovery/wider auth lifecycle remain required"
   }
 }

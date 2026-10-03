@@ -120,6 +120,12 @@ Real SMTP shutdown yields native HTTP 424 and reference HTTP 500 with no session
 
 G1 and Phase A contract completion are **blocked** pending a maintainer decision: upstream fix/verified repin, or a separately reviewed deployment constraint with baseline-versus-mitigated evidence. No auth-schema workaround, scope exception, or signoff has been approved. Confirmed-duplicate/password-preservation checks and the prior green foundation reports do not certify this new failure path.
 
+### Authorized deployment-migration investigation
+
+The maintainer authorized investigation (not live deployment or G1 signoff) of an explicit auth uniqueness requirement. [The candidate and prerequisites](AUTH_MIGRATION_INVESTIGATION.md) preserve stock-versus-mitigated contexts/reports. A unique pending index and cross-column INSERT/UPDATE guards resolve the duplicate confirmation flow in an opt-in native depot; they refuse ambiguous existing identities instead of merging/deleting accounts.
+
+Uniqueness alone does **not** resolve SMTP recovery. The pinned public resend handler looks up verified `email`, while the failed registration is stored only as `unverified_email`. Candidate retries then correctly hit the reservation guard but cannot generate a missing confirmation message. G1 stays blocked pending a safe native recovery capability/approved deployment process and all remaining checks; client-side fake verification or automatic account deletion is not acceptable.
+
 ## Decisions requiring characterization/signoff
 
 All are **open** until the corresponding executable tests and evidence exist.

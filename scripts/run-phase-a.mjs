@@ -6,7 +6,7 @@ import { baseline, exec } from './tools.mjs';
 import { createHarness } from './harness.mjs';
 
 export async function sourceHash() {
-  const paths = ['package.json','package-lock.json','tsconfig.json','vitest.config.ts','playwright.config.ts','.gitignore','README.md','PLAN.md','AGENTS.md','docs/LEVEL1_PLAN.md','docs/RESEARCH.md','docs/TEST_PLAN.md'];
+  const paths = ['package.json','package-lock.json','tsconfig.json','vitest.config.ts','playwright.config.ts','.gitignore','README.md','PLAN.md','AGENTS.md','docs/LEVEL1_PLAN.md','docs/RESEARCH.md','docs/TEST_PLAN.md','docs/AUTH_MIGRATION_INVESTIGATION.md'];
   const listed = (await exec('git',['ls-files','--cached','--others','--exclude-standard','-z'])).stdout.split('\0');
   const inputs = [...new Set(listed.filter(path => paths.includes(path) || /^(scripts|tests|\.github|src|examples)\//.test(path)))].sort();
   const hash = createHash('sha256');
@@ -19,6 +19,9 @@ export async function sourceHash() {
 }
 async function main() {
   const suite = process.argv[2] ?? 'all';
+  const options = process.argv.slice(3);
+  if (options.some(option => option !== '--auth-mitigation') || options.length > 1) throw new Error('Unknown Phase A option');
+  const authMitigation = options.includes('--auth-mitigation');
   if (!['all','database','characterization','streaming','smtp','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
   await mkdir('.runtime', { recursive: true, mode: 0o700 });
   // ponytail: one local stack at a time; per-run locks/port reservations if concurrent local runs matter.
@@ -26,7 +29,7 @@ async function main() {
   await mkdir('.runtime/phase-a.lock');
   await writeFile('.runtime/phase-a.lock/owner.json', JSON.stringify({ runnerPid: process.pid, runId: null }), { mode: 0o600 });
   let harness, testChild;
-  const report = { scope: 'Phase A upstream/infrastructure harness, NOT SDK verification', suite, status: 'failed', startedAt: new Date().toISOString(), baseline, node: process.version, platform: `${process.platform}-${process.arch}`, tests: [], cleanup: 'not-started' };
+  const report = { scope: 'Phase A upstream/infrastructure harness, NOT SDK verification', authVariant:authMitigation ? 'candidate-email-reservation' : 'stock', suite, status: 'failed', startedAt: new Date().toISOString(), baseline, node: process.version, platform: `${process.platform}-${process.arch}`, tests: [], cleanup: 'not-started' };
   let interrupted = false;
   const interrupt = () => { interrupted = true; testChild?.kill('SIGTERM'); };
   process.on('SIGINT', interrupt); process.on('SIGTERM', interrupt);
@@ -50,7 +53,7 @@ async function main() {
     report.sourceSha256 = await sourceHash();
     report.baseCommit = (await exec('git', ['rev-parse','HEAD'])).stdout.trim();
     if (process.env.GITHUB_RUN_ID) report.ci = { commit:process.env.GITHUB_SHA, runUrl:`https://github.com/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}` };
-    harness = await createHarness();
+    harness = await createHarness({ authMitigation });
     report.runId = harness.context.id;
     await writeFile('.runtime/phase-a.lock/owner.json', JSON.stringify({ runnerPid:process.pid, runId:harness.context.id }), { mode:0o600 });
     const environment = await harness.start();
