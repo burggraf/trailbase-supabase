@@ -1,5 +1,7 @@
 # Submitted question: native SSE authentication lifetime after JWT expiry
 
+**Status: closed after clarification.** Upstream [#299](https://github.com/trailbaseio/trailbase/issues/299) explains that authentication is checked when a stream is established and access is expected for the connection's entire lifetime. Our [closing reply](https://github.com/trailbaseio/trailbase/issues/299#issuecomment-5969636164) adopts that behavior in this project's contract. JWT expiry alone does not revalidate/close an established stream; a new connection with an expired token is rejected. This is not treated as an upstream defect. The original report below is preserved as submitted history, not current contract language.
+
 **Submitted with explicit maintainer approval:** [trailbaseio/trailbase#299](https://github.com/trailbaseio/trailbase/issues/299). Approval came from the answered response in interview `f900e981-5a7b-4fac-9763-2214d5bcbdd1`, returned after its timeout; the timeout alone was not treated as permission. Both installed-client reports remain drafts. Published body was verified to match the prepared sanitized text, with absolute reproduction/evidence links pinned to `8b089da25057b6a74f066402634230423caf0c85`.
 
 This is a bounded lifecycle/semantics question, not a severity/CVE claim. All accounts, rows and backends are disposable owned fixtures. No tokens, identities, links, raw bodies or private logs are included.

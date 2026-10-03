@@ -36,6 +36,8 @@ The first release will target a deliberately small subset:
 - Password signup, login, and logout with the session handling those flows need.
 - Basic database change subscriptions, backed by TrailBase subscriptions.
 
+TrailBase SSE authentication is connection-scoped: a valid token establishes a stream, and access lasts for that connection's lifetime even after token expiry. New connections require valid credentials. Logout/teardown must cancel local subscriptions; that is not server-side revalidation or full Supabase authorization parity.
+
 See [PLAN.md](PLAN.md) for scope and future levels, and the [detailed Level 1 plan](docs/LEVEL1_PLAN.md) for the researched contract and implementation sequence.
 
 ## Verification is part of every feature

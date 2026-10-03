@@ -930,18 +930,18 @@
         "docs/evidence/phase-a-deadline-full-stock-node22.json",
         "docs/evidence/phase-a-native-client-deadline-node22.json",
         "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
-        "docs/evidence/phase-a-ci-linux-client-deadline-expiry.json"
+        "docs/evidence/phase-a-ci-linux-client-deadline-expiry.json",
+        "docs/evidence/phase-a-connection-lifetime-node22.json"
       ],
       "missing": [
-        "Genuine native JWT expiry: ordinary protected HTTP denied but established stream delivered a newly written protected row; strict regression preserved under explicit short-native-auth fixture",
-        "Reference two-owner DELETE delivers a foreign primary key despite owner RLS: strict regression preserved; maintainer must decide payload/security compatibility limits without weakening native access rules",
-        "Native two-owner INSERT/UPDATE/DELETE isolation passed locally; expiry/revocation/renewal/anonymous and full resource/browser/SDK layers remain incomplete",
-        "Approve CDC readiness and common payload subset; no feature/gate signoff inferred"
+        "Reference two-owner DELETE delivers a foreign primary key despite owner RLS: strict regression preserved; decide payload/security compatibility limits without weakening native access rules",
+        "Broader browser/SDK channel lifecycle, logout cancellation, CDC readiness, loss/reconnect and resource-cleanup matrices remain incomplete",
+        "Approve the common payload subset and document the connection-scoped authorization limitation; no feature/gate signoff inferred"
       ],
       "reviewer": null,
       "reviewedAt": null,
       "reviewedSourceSha256": null,
-      "proposedDirection": "Maintainer chose owner-only native delivery / stronger DELETE security for investigation; no final compatibility exception or gate signoff."
+      "proposedDirection": "Adopt TrailBase's connection-scoped authorization as the contract: auth is checked at stream establishment and remains valid for that connection's lifetime; an expired token cannot open a new stream. This removes JWT expiry as a G6 blocker, not the independent reference DELETE-key exposure or other missing checks; no gate signoff."
     },
     {
       "id": "G7",
@@ -989,13 +989,26 @@
     }
   ],
   "nextSteps": [
-    "Track upstream #299 (SSE authentication/expiry/renewal semantics) and #298 (signup recovery); keep raw regressions strict while awaiting responses. The client-only deadline is not a server-side fix.",
+    "#299 is closed after upstream clarified connection-scoped stream authorization; #298 (signup recovery) remains open. Keep both installed-client reports as drafts.",
     "Resolve G1 recovery before any migration proposal: duplicate pending confirmation and SMTP retry/pending-account lookup remain broken; experimental reservation migration still fails recovery and existing-depot/upgrade/concurrency paths need characterization.",
     "Resolve G7 lifecycle contract: native late refresh/status can restore state after logout, forced refresh is not single-flight, and logout hides transport failure. Retain raw failures and require named maintainer decisions before a production strategy.",
-    "Resolve G6 security boundaries: established streams survive genuine JWT expiry and reference DELETE exposes a foreign primary key. Do not weaken native owner rules; decide acceptable compatibility/security limits and finish renewal/resource/channel matrices.",
+    "Resolve remaining G6 boundaries: reference DELETE exposes a foreign primary key. Do not weaken native owner rules; decide acceptable payload/security limits and finish connection-lifetime, logout/resource and channel matrices.",
+
     "Finish G2-G4 matrices (invalid/page-bound arithmetic, exact-count/head semantics, date/BLOB/JSON/relation filters, call-order/null/collation, mutation errors) and obtain named signoff for every G1-G7 gate.",
     "Complete migration existing-depot/restart/reuse/concurrency/OAuth/anonymous safety, current-source CI/evidence and remaining Phase A release checks before considering Phase B. No public SDK or gate is approved."
   ],
+  "lastContractVerification": {
+    "date": "2026-10-03T13:42:43.569Z",
+    "sourceSha256": "c6c04d8e0f1c57b04f99117c90df09493ba9104fbe7540c02e7aa1888d3d0790",
+    "node": "v22.23.2",
+    "scope": "Connection-scoped native stream contract; #299 replied to and closed with explicit user approval",
+    "unitCases": 37,
+    "expiryCases": 2,
+    "checks": "npm run check passed; genuine expired token denied on new stream, established stream delivered expected row; optional client deadline proof passed",
+    "cleanup": "passed",
+    "evidence": "docs/evidence/phase-a-connection-lifetime-node22.json",
+    "missing": "Revised-contract Linux CI and complete SDK lifecycle/resource layers; no gate signoff"
+  },
   "lastSession": {
     "date": "2026-10-03T06:00:21.920Z",
     "sourceSha256": "371c1c3738b39d9fd573a094a919e1859deca46f2ea0325dbb39720986230475",
@@ -1036,10 +1049,9 @@
     }
   },
   "pendingWork": {
-    "scope": "Phase A strict blockers / upstream lifetime clarification",
-    "status": "Only the neutral lifetime question is approved/submitted as #299; #298 is separate and the two client reports remain drafts. Next: resolve strict G1/G6/G7 contract/security blockers with upstream/maintainer input while completing remaining bounded G2-G4 and migration matrices. No production SDK implementation, Phase B, deployment or gate approval.",
-    "signoff": "none; no public SDK/Phase B/deployment/permission changes",
-    "submissionApprovalInterview": "f900e981-5a7b-4fac-9763-2214d5bcbdd1"
+    "scope": "G1 genuine owned-depot migration preflight rollback",
+    "status": "#299 closed; contract now matches TrailBase connection-scoped stream authorization and expiry is no longer a G6 blocker. Next test candidate SQL preflight transaction rollback on real duplicate pending accounts; no policy deployed, no identities deleted/merged/reassigned, no stock/candidate report relabelling.",
+    "signoff": "none; both installed-client reports remain drafts; no further public reply authorized"
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",
@@ -1064,7 +1076,7 @@
     "scope": "Previous proof hash, before expiry/profile/browser expansion; not current-source verification"
   },
   "upstreamStreamLifetimeIssue": {
-    "status": "submitted",
+    "status": "closed",
     "url": "https://github.com/trailbaseio/trailbase/issues/299",
     "approvalInterview": "f900e981-5a7b-4fac-9763-2214d5bcbdd1",
     "approval": "Explicit answered option to submit only neutral server question, returned after form timeout; both client reports stay drafts",
@@ -1072,6 +1084,19 @@
     "preparedBodySha256": "e76a449e29797f72b6a975d9f01bedd6658d8f8e20a9cd64f6ebb2800e82a0f5",
     "publishedBodyVerified": true,
     "submittedAt": "2026-10-03T06:19:08.270851+00:00",
-    "scope": "Lifetime/renewal clarification only; no CVE/foreign-owner claim, server fork, production SDK, deployment or gate approval"
+    "scope": "Lifetime/renewal clarification only; no CVE/foreign-owner claim, server fork, production SDK, deployment or gate approval",
+    "closedAt": "2026-10-03T13:29:49Z",
+    "closingCommentUrl": "https://github.com/trailbaseio/trailbase/issues/299#issuecomment-5969636164",
+    "response": {
+      "author": "ignatz",
+      "url": "https://github.com/trailbaseio/trailbase/issues/299#issuecomment-5969080205",
+      "meaning": "Authentication checked at connection establishment; access expected for stream lifetime. Lifecycle definition requested before server changes."
+    }
+  },
+  "realtimeLifetimeDirection": {
+    "decisionSource": "Explicit user request to change the contract to TrailBase's intended behavior, following the answer on #299",
+    "supersedesInterview": "157455ba-1c16-460a-86f8-cd1ce3598087",
+    "selection": "Use connection-scoped authentication: check credentials at establishment; retain access for that stream's lifetime, including after JWT expiry; reject new connections with expired tokens",
+    "scope": "The earlier server-side revalidation requirement is superseded. Expiry is no longer a G6 blocker; historical failing evidence is retained as characterization, and client-side deadline cancellation is not server enforcement. G6 remains blocked by independent payload/security and missing test/signoff requirements."
   }
 }

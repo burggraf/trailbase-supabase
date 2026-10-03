@@ -28,6 +28,7 @@ Supported constructor options: `db.schema: 'public'`, `global.fetch`, and the te
 4. Default mutation result bodies can match; RLS no-op/error and missing-row errors may differ. Evidence and a documented G3 decision are mandatory. Do not fake success to hide a denied write.
 5. Realtime payloads promise only approved common fields. No prior full UPDATE record, actual commit timestamp, durable replay, exactly-once delivery, or full Supabase event object is promised.
 6. Native sessions/tokens remain native: no Supabase JWT issuer/claim/rotation emulation. A client-side session is not a server authorization decision.
+7. Native SSE authentication is connection-scoped: authenticate at establishment, then access lasts for the stream's lifetime even after the JWT expires. A new connection with an expired token is denied. Client cleanup on logout/teardown is local cancellation, not server-side revalidation.
 
 The successful common application flow must work unchanged after replacing the imported factory and backend/bootstrap configuration. Known exceptions must appear in documentation and typed interfaces, not only tests.
 
@@ -126,11 +127,11 @@ Every package includes its tests in the same change. **No phase can be signed of
 2. Reuse the installed native SSE subscription only if fragmented-frame, UTF-8, sequence/loss, and cancellation characterization passes. Otherwise implement a minimal buffered fetch/SSE reader through authenticated native transport, with no new runtime protocol dependency by default.
 3. Map INSERT/UPDATE new rows and approved DELETE primary-key old data using the same field codec as normal queries. Do not emit private/hidden fields, full old UPDATE records, or invented commit times.
 4. Track startup timeout, permissions, malformed frames, server shutdown, stream close, and loss. Report `CHANNEL_ERROR/TIMED_OUT/CLOSED` honestly, cancel resources, and require explicit resubscribe/refetch rather than imply durable replay.
-5. Renew authenticated streams before their credentials expire when background refresh is enabled; otherwise close at expiry and require explicit refresh/resubscription. Stop them on terminal refresh/logout. Validate native per-event access rules for revoked roles/sessions, ownership changes, and DELETE; no indefinitely authorized stream based on stale client state.
+5. Match TrailBase's connection-scoped stream contract: a valid token is checked when the stream is established, and that connection remains authorized for its lifetime; an expired token cannot establish a new connection. Stop local delivery on logout/teardown. If a client policy closes streams at a deadline, document it as local cancellation, not server revalidation.
 6. Unsubscribe/removeChannel are awaitable/idempotent; late data cannot reach callbacks after cleanup or a new session. User callback exceptions must not leak a stream or suppress other independent channels.
 7. Add two-real-browser synchronization, authorization, cleanup, and failure E2E. Do not assert an event is absent merely because an arbitrary sleep elapsed.
 
-**Signoff:** U/I/C21–23 and E2E loss/expiry/delete/isolation cases pass. G5/G6 decisions reference the installed transport. No direct dependence on Supabase's Phoenix wire protocol.
+**Signoff:** U/I/C21–23 and E2E loss/connection-lifetime/delete/isolation cases pass. G5/G6 decisions reference the installed transport and explicitly disclose connection-scoped authorization. No direct dependence on Supabase's Phoenix wire protocol.
 
 ### Phase F — Security, migration rehearsal, and release proof
 

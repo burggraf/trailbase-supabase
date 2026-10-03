@@ -9,7 +9,7 @@ The maintainer selected these investigations in interview `ab54f7fd-4ad9-4a45-8b
 - Isolated auth epoch/single-flight proof using genuine native responses.
 - Keep both installed-client upstream reports as drafts; no submission authorized.
 
-This is not final G5/G6/G7 approval, deployment permission, Phase B implementation or SDK signoff. Raw installed-client and reference isolation regressions remain strict and failing. No gateway, fork, production SDK, fake auth response or fabricated Supabase session is introduced.
+This is not final G5/G6/G7 approval, deployment permission, Phase B implementation or SDK signoff. Remaining installed-client and reference isolation regressions stay strict; native established-stream access after JWT expiry is now the documented connection-scoped behavior, not a failure against contract. No gateway, fork, production SDK, fake auth response or fabricated Supabase session is introduced.
 
 ## Streaming proof
 
@@ -53,9 +53,9 @@ The fragment case spaces real byte writes across event-loop turns; the receiver 
 
 `npm run test:phase-a -- expiry` alone selects the owned `short-native-auth` profile, injecting a 3-second native JWT TTL into a fresh depot. Owner/context/report metadata retain the profile and `authVariant`; unknown/ambiguous profile inputs fail. Default and mitigation fixture lifetimes stay unchanged. Supabase configuration is not shortened and no reference expiry parity is claimed.
 
-The expiry scope verifies genuine JWT lifetime, confirms initially protected access, waits under an 80-second bound until the real backend denies the original JWT (allowing actual server clock-skew grace), then performs a write with a freshly refreshed writer. The old stream must close or surface an observable forbidden error without delivering the new protected row. No JWT edit, fake clock, session synthesis or mere revocation substitute is used. This is a strict native expiry requirement under investigation, not an assertion that upstream already provides it. It is separate from the default `all` corpus and has its own required CI step.
+The expiry scope verifies genuine JWT lifetime, confirms initially protected access, waits under an 80-second bound until the real backend denies the original JWT (allowing actual server clock-skew grace), and confirms that the expired token cannot establish a new stream. A stream established before expiry remains open and delivers a new row from a freshly refreshed writer, matching the documented connection-scoped authorization model. No JWT edit, fake clock, session synthesis or revocation substitute is used. It is separate from the default `all` corpus and has its own required CI step.
 
-A second case uses only standard `AbortSignal.timeout` against the genuine JWT's `exp` to close a proof reader locally. It must abort visibly/release the lock at the same-host nominal deadline, subsequently observe actual HTTP denial including server grace, preserve a fresh authenticated writer's row, and emit nothing from the closed reader. The original server-expiry assertion remains strict and failing. This is a client-only safety proof—not server authorization enforcement, clock-skew negotiation, background-browser scheduling, automatic renewal/reconnection, revocation enforcement or a release-approved policy.
+A second case uses only standard `AbortSignal.timeout` against the genuine JWT's `exp` to close a proof reader locally. It must abort visibly/release the lock at the same-host nominal deadline, subsequently observe actual HTTP denial including server grace, preserve a fresh authenticated writer's row, and emit nothing from the closed reader. This demonstrates optional client-side cancellation only—not server authorization enforcement, clock-skew negotiation, background-browser scheduling, automatic renewal/reconnection, revocation enforcement or a release-approved timer policy.
 
 ## Commands and evidence
 

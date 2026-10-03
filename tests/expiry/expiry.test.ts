@@ -18,7 +18,7 @@ async function waitActualDenial(protectedRead:()=>Promise<Response>) {
   throw new Error('Actual native access expiry deadline exceeded');
 }
 describe('L1-27 G6/S07 actual native token expiry, NOT default fixture or reference/browser parity',()=>{
-  it('an established stream must stop delivering protected rows after its genuine access token expires',async()=>{
+  it('established streams retain connection-scoped access after JWT expiry; new connections reject the expired token',async()=>{
     const account=await confirmedTrailUser(env,'actual-expiry');
     const response=await account.client.fetch('/api/records/v1/todos/subscribe/*');
     expect(response.ok).toBe(true);if(!response.body)throw new Error('Actual native stream missing');
@@ -35,17 +35,22 @@ describe('L1-27 G6/S07 actual native token expiry, NOT default fixture or refere
       // The pinned server may allow clock-skew grace: observe actual denial, bounded at 80s.
       await waitActualDenial(protectedRead);
       expect(Date.now()/1000).toBeGreaterThan(claims.exp);
+      const expiredConnection=await fetch(`${env.trailUrl}/api/records/v1/todos/subscribe/*`,{
+        headers:{Authorization:`Bearer ${original.auth_token}`},signal:AbortSignal.timeout(5000)
+      });
+      expect([401,403]).toContain(expiredConnection.status);await expiredConnection.body?.cancel();
       const pending=parser.next();
-      const id=nativeUuid(randomUUID());
+      const id=nativeUuid(randomUUID()),title=`after-expiry-${randomUUID()}`;
       // The writer is freshly refreshed by the installed SDK; only the subscription keeps the old JWT.
-      await account.client.records('todos').create({id,user_id:account.user.id,title:`after-expiry-${randomUUID()}`});
+      await account.client.records('todos').create({id,user_id:account.user.id,title});
       const writerRead=await account.client.records('todos').list();expect(writerRead.records.map(row=>row.id)).toEqual([id]);
-      const result=await deadline(pending,10000,'Observable expired-stream close/error');
-      if(!result.done) {
-        expect('Error' in result.value).toBe(true);
-        if(!('Error' in result.value))throw new Error('Expired native subscriber received protected row data');
-        expect(result.value.Error.status).toBe(1);
-      }
+      const result=await deadline(pending,10000,'Established connection-scoped stream event');
+      expect(result.done).toBe(false);
+      if(result.done)throw new Error('Established native stream closed at JWT expiry');
+      expect('Insert' in result.value).toBe(true);
+      if(!('Insert' in result.value))throw new Error('Established native stream did not deliver the expected insert');
+      expect((result.value.Insert as Record<string,unknown>).id).toBe(id);
+      expect((result.value.Insert as Record<string,unknown>).title).toBe(title);
     } finally {abort.abort();await parser.return(undefined).catch(()=>{});}
   },100000);
   it('standard client deadline abort stops local delivery at genuine JWT exp, NOT server authorization enforcement',async()=>{
