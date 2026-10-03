@@ -4,6 +4,7 @@ import { beforeAll,describe,expect,it } from 'vitest';
 import { context,confirmedTrailUser,nativeUuid,deadline,type Context } from './helpers.js';
 import { nativeSseProof } from '../proofs/native-sse.js';
 import { authCoordinationProof } from '../proofs/auth-coordination.js';
+import { httpStreamFixture } from '../proofs/http-stream-fixture.js';
 
 let env:Context;
 beforeAll(async()=>{env=await context();});
@@ -113,6 +114,70 @@ describe('L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff',
       expect((await response.json()).records.map((row:Record<string,unknown>)=>row.id)).toEqual([id]);
       await proof.logout();expect(proof.tokens()).toBeUndefined();
     } finally {for(const gate of release)gate.resolve();await Promise.allSettled(current?[old,current]:[old]);}
+  });
+  it('genuine revoked refresh is single-flight, clears cache and recovers through a fresh real login',async()=>{
+    const account=await confirmedTrailUser(env,'proof-revoked');let calls=0,hold=true;
+    const ready=Promise.withResolvers<number>(),release=Promise.withResolvers<void>();
+    const proof=authCoordinationProof(async(path,init)=>{
+      const response=await forward(path,init);
+      if(path==='/api/auth/v1/refresh'){calls++;if(hold){await response.clone().arrayBuffer();ready.resolve(response.status);await release.promise;}}
+      return response;
+    });
+    await proof.login(account.email,account.password);const refreshToken=proof.tokens()!.refresh_token!;
+    expect((await forward('/api/auth/v1/logout',{method:'POST',headers:proof.headers(),body:JSON.stringify({refresh_token:refreshToken})})).ok).toBe(true);
+    const first=proof.refresh(),second=proof.refresh(),outcomes=Promise.allSettled([first,second]);
+    try {
+      expect(first).toBe(second);expect(await deadline(ready.promise)).toBe(401);expect(calls).toBe(1);
+      release.resolve();const results=await deadline(outcomes);
+      for(const result of results){expect(result.status).toBe('rejected');if(result.status==='rejected')expect(result.reason).toMatchObject({name:'AuthProofHttpError',status:401});}
+      expect(proof.tokens()).toBeUndefined();expect(await proof.refresh()).toBe(false);expect(calls).toBe(1);
+      expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).status).toBe(403);
+      hold=false;await proof.login(account.email,account.password);expect(await proof.refresh()).toBe(true);expect(calls).toBe(2);
+      expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).ok).toBe(true);await proof.logout();
+    } finally {release.resolve();await outcomes;}
+  });
+  it('late genuine 401 cannot clear a new account cache or its newer single-flight slot',async()=>{
+    const firstAccount=await confirmedTrailUser(env,'proof-old-401'),secondAccount=await confirmedTrailUser(env,'proof-new-401');
+    const ready=[Promise.withResolvers<number>(),Promise.withResolvers<number>()],release=[Promise.withResolvers<void>(),Promise.withResolvers<void>()];let calls=0;
+    const proof=authCoordinationProof(async(path,init)=>{
+      const response=await forward(path,init);
+      if(path==='/api/auth/v1/refresh'){const index=calls++;await response.clone().arrayBuffer();ready[index].resolve(response.status);await release[index].promise;}
+      return response;
+    });
+    await proof.login(firstAccount.email,firstAccount.password);
+    expect((await forward('/api/auth/v1/logout',{method:'POST',headers:proof.headers(),body:JSON.stringify({refresh_token:proof.tokens()!.refresh_token})})).ok).toBe(true);
+    const old=proof.refresh();let current:Promise<boolean>|undefined;
+    try {
+      expect(await deadline(ready[0].promise)).toBe(401);
+      await proof.login(secondAccount.email,secondAccount.password);const genuine=proof.tokens();
+      current=proof.refresh();expect(await deadline(ready[1].promise)).toBe(200);
+      release[0].resolve();await expect(deadline(old)).rejects.toMatchObject({name:'StaleAuthProofOperation'});
+      expect(proof.tokens()===genuine).toBe(true);const joined=proof.refresh();expect(joined).toBe(current);expect(calls).toBe(2);
+      release[1].resolve();expect(await deadline(Promise.all([current,joined]))).toEqual([true,true]);
+      const id=nativeUuid(randomUUID());await secondAccount.client.records('todos').create({id,user_id:secondAccount.user.id,title:`late-401-${randomUUID()}`});
+      const read=await forward('/api/records/v1/todos',{headers:proof.headers()});expect(read.ok).toBe(true);
+      expect((await read.json()).records.map((row:Record<string,unknown>)=>row.id)).toEqual([id]);await proof.logout();
+    } finally {for(const gate of release)gate.resolve();await Promise.allSettled(current?[old,current]:[old]);}
+  });
+  it('actual HTTP destruction inside genuine refresh JSON fails both waiters and releases the slot for real retry',async()=>{
+    const account=await confirmedTrailUser(env,'proof-json-wire');let captured:RequestInit|undefined,fault=true,calls=0;
+    const fixture=await httpStreamFixture(signal=>{
+      if(!captured)throw new Error('Real refresh request missing');
+      return fetch(new URL('/api/auth/v1/refresh',env.trailUrl),{...captured,signal});
+    },'disconnect');
+    const proof=authCoordinationProof((path,init)=>{
+      if(path==='/api/auth/v1/refresh'){calls++;if(fault){captured=init;return fetch(fixture.url);}}
+      return forward(path,init);
+    });
+    try {
+      await proof.login(account.email,account.password);const genuine=proof.tokens();
+      const first=proof.refresh(),second=proof.refresh();expect(first).toBe(second);
+      const results=await deadline(Promise.allSettled([first,second]));expect(results.map(result=>result.status)).toEqual(['rejected','rejected']);
+      expect(calls).toBe(1);expect(proof.tokens()===genuine).toBe(true);
+      await deadline(fixture.idle());expect(fixture.stats()).toMatchObject({active:0,cancelled:1,bytesWritten:32});
+      fault=false;expect(await proof.refresh()).toBe(true);expect(calls).toBe(2);
+      expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).ok).toBe(true);await proof.logout();expect(proof.tokens()).toBeUndefined();
+    } finally {await deadline(fixture.close());expect(fixture.stats()).toMatchObject({active:0,listening:false});}
   });
   it('logout proof clears locally before I/O and surfaces an undelivered remote revocation',async()=>{
     const account=await confirmedTrailUser(env,'proof-outage');let outage=false;

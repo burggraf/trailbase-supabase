@@ -23,6 +23,10 @@ The 64Ki UTF-16 pending-buffer ceiling is a deliberate proof constraint, not a n
 
 This is not a transparent patch to the installed native client: raw `initClient` failures remain. It is not a Supabase-shaped auth API, session/user mapping, automatic refresh scheduler, cookie/SSR facility or storage layer. Real response/body gates and controlled transport faults are fixtures, not fake successful sessions or proof of real network outages. Storage/cross-tab, account-switch/JSON-failure/revocation/expiry/error matrices and browser/native resource checks still need completion.
 
+## Genuine auth failure and JSON transport boundaries
+
+Additional bounded proof cases revoke the proof's actual native refresh credential through the real logout endpoint, then require one shared genuine HTTP 401 to clear local cache and allow recovery only through a fresh genuine login. A held old account's actual 401 must not clear a newer account's cache or its pending flight. An owned loopback HTTP fixture forwards a real successful refresh response, destroys the connection after 32 original JSON bytes, and requires both shared waiters to fail observably, preserving only the prior genuine cache and freeing the slot for real retry. No session, response status or JSON body is fabricated. This does not prove rotating-refresh-provider parity, arbitrary network retry policy, expiry timers or complete storage/resource enforcement.
+
 ## Security direction
 
 The intended direction is **never** to weaken native read rules to mimic reference DELETE key exposure. Native owner isolation remains required; DELETE payload projection must retain only declared keys. The reference two-owner DELETE failure stays visible as an unapproved compatibility/security limitation. This direction does not certify a channel implementation or release exception.

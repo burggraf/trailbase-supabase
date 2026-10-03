@@ -120,7 +120,15 @@ An important boundary differs: native offset past the matching rows succeeds wit
 
 Current source [37 unit cases](evidence/phase-a-unit-node22.json), [12 browser controls](evidence/phase-a-pagination-browser-controls-node22.json) and [fault cleanup](evidence/phase-a-pagination-cleanup-node22.json) passed. [Full stock](evidence/phase-a-pagination-full-stock-node22.json) is **47 passed/5 failed**, with both count probes included and the same raw regressions. Every scope cleaned up. Latest native-expiry failure remains separately required, not repaired by count/browser successes.
 
-Next: genuine auth-proof revocation/single-flight failure/recovery and actual JSON transport failure boundaries, then remaining timer/schema/backpressure/server-resource matrices. No public SDK implementation, deployment recommendation or gate approval.
+Linux [run 37099350893](https://github.com/burggraf/trailbase-supabase/actions/runs/37099350893) at `08c6ce6` passed both unit jobs and [12 browser cases](evidence/phase-a-ci-linux-pagination-browser.json), reproducing [stock 47/5](evidence/phase-a-ci-linux-pagination-all.json) and [expiry 0/1](evidence/phase-a-ci-linux-pagination-expiry.json), with [fault cleanup](evidence/phase-a-ci-linux-pagination-lifecycle.json) and all strict setup/cleanup checks passed. It predates the following auth-failure cases.
+
+## Genuine auth proof failure and JSON transport follow-up
+
+The existing coordinator was reused **unchanged**. [11 native proof cases](evidence/phase-a-auth-failure-proofs-node22.json) passed, including three new bounded cases: a genuinely revoked refresh credential produces one shared HTTP 401, clears cache, and requires real relogin for recovery; a held old account's genuine 401 cannot clear a newer account or its flight; and actual connection destruction after 32 original successful refresh-JSON bytes fails both waiters, preserves only prior genuine cache, releases the reader/listener/flight, and permits a genuine retry. No response status, session or JSON body was fabricated. This does not prove rotating-provider parity, general retries, expiry timers or complete server accounting.
+
+Current-source [37 unit cases](evidence/phase-a-unit-node22.json), [12 browser controls](evidence/phase-a-auth-failure-browser-controls-node22.json) and [fault cleanup](evidence/phase-a-auth-failure-cleanup-node22.json) passed. [Full stock](evidence/phase-a-auth-failure-full-stock-node22.json) is **50 passed/5 failed**, including all three new proofs; the same G1/G6/G7 regressions remain strict. All cleanup passed. Latest real-expiry failure remains separately required and unrepaired.
+
+Next: latest remote proof verification and remaining timer/schema/backpressure/server-resource matrices. No public SDK implementation, deployment recommendation or gate approval. All three new reports remain drafts.
 
 The [stream lifetime question](UPSTREAM_STREAM_LIFETIME_DRAFT.md) remains a draft. It asks about intended connection-scoped authentication/expiry/re-auth semantics, does not claim severity or foreign-row access, and explicitly distinguishes client delivery timers from server authorization enforcement. No new upstream report has been submitted.
 

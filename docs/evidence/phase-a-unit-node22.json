@@ -3,8 +3,8 @@
   "status": "passed",
   "node": "v22.23.2",
   "platform": "darwin-arm64",
-  "sourceSha256": "e10d51e0e5ebfaed5e9b9e084bfa3732f2f87f5d165dde4d513f945ed69563a4",
-  "finishedAt": "2026-10-03T05:06:27.430Z",
+  "sourceSha256": "66c12f341cb8f2eedd52455f58b9022e5a656a1119ad91ea7e622eaf8041426a",
+  "finishedAt": "2026-10-03T05:22:27.187Z",
   "tests": [
     {
       "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior blocks pending/verified/cross-column case-insensitive insert collisions without changing rows",
