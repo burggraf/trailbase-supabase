@@ -989,10 +989,12 @@
     }
   ],
   "nextSteps": [
-    "Diagnose latest Linux setup image/port/service verification failure using safe inventory and failure codes; never relax digest or loopback checks to make CI green.",
-    "Review native connection-scoped JWT lifetime / client delivery-renewal requirement before production proposal; keep raw expiry failure and stronger owner-only direction.",
-    "Complete remaining page/schema/auth/timer/backpressure/security matrices; proof successes are not SDK implementation or gate approval.",
-    "Keep both installed-client reports as drafts; track only approved server reports #298 and #299. All named gate decisions precede Phase B/deployment recommendation."
+    "Track upstream #299 (SSE authentication/expiry/renewal semantics) and #298 (signup recovery); keep raw regressions strict while awaiting responses. The client-only deadline is not a server-side fix.",
+    "Resolve G1 recovery before any migration proposal: duplicate pending confirmation and SMTP retry/pending-account lookup remain broken; experimental reservation migration still fails recovery and existing-depot/upgrade/concurrency paths need characterization.",
+    "Resolve G7 lifecycle contract: native late refresh/status can restore state after logout, forced refresh is not single-flight, and logout hides transport failure. Retain raw failures and require named maintainer decisions before a production strategy.",
+    "Resolve G6 security boundaries: established streams survive genuine JWT expiry and reference DELETE exposes a foreign primary key. Do not weaken native owner rules; decide acceptable compatibility/security limits and finish renewal/resource/channel matrices.",
+    "Finish G2-G4 matrices (invalid/page-bound arithmetic, exact-count/head semantics, date/BLOB/JSON/relation filters, call-order/null/collation, mutation errors) and obtain named signoff for every G1-G7 gate.",
+    "Complete migration existing-depot/restart/reuse/concurrency/OAuth/anonymous safety, current-source CI/evidence and remaining Phase A release checks before considering Phase B. No public SDK or gate is approved."
   ],
   "lastSession": {
     "date": "2026-10-03T06:00:21.920Z",
@@ -1035,7 +1037,7 @@
   },
   "pendingWork": {
     "scope": "Phase A strict blockers / upstream lifetime clarification",
-    "status": "Approved neutral server question submitted and verified as #299; #298 signup recovery remains separate. Both installed-client auth/SSE reports remain drafts. Current local/Linux proofs and client-only timer pass but raw stock 53/5 and server-expiry failure remain. Await upstream semantics before any production policy; remaining migration/schema/timer/resource matrices not certified.",
+    "status": "Only the neutral lifetime question is approved/submitted as #299; #298 is separate and the two client reports remain drafts. Next: resolve strict G1/G6/G7 contract/security blockers with upstream/maintainer input while completing remaining bounded G2-G4 and migration matrices. No production SDK implementation, Phase B, deployment or gate approval.",
     "signoff": "none; no public SDK/Phase B/deployment/permission changes",
     "submissionApprovalInterview": "f900e981-5a7b-4fac-9763-2214d5bcbdd1"
   },
