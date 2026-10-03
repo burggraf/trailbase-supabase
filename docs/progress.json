@@ -19,7 +19,12 @@
       "evidence": [
         "docs/evidence/phase-a-unit-node22.json",
         "docs/evidence/phase-a-all-node22.json",
-        "docs/evidence/phase-a-lifecycle-node22.json"
+        "docs/evidence/phase-a-lifecycle-node22.json",
+        "docs/evidence/phase-a-ci-all-node22.23.2.json",
+        "docs/evidence/phase-a-ci-lifecycle-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node24.21.0.json",
+        "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [],
       "reviewer": null,
@@ -37,11 +42,16 @@
       "evidence": [
         "docs/evidence/phase-a-unit-node22.json",
         "docs/evidence/phase-a-all-node22.json",
-        "docs/evidence/phase-a-lifecycle-node22.json"
+        "docs/evidence/phase-a-lifecycle-node22.json",
+        "docs/evidence/phase-a-ci-all-node22.23.2.json",
+        "docs/evidence/phase-a-ci-lifecycle-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node24.21.0.json",
+        "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [
-        "Node 24 and Linux CI verification",
-        "Final published npm name (harness remains private)"
+        "Final published npm name (harness remains private)",
+        "Named maintainer review"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -58,10 +68,15 @@
       "evidence": [
         "docs/evidence/phase-a-unit-node22.json",
         "docs/evidence/phase-a-all-node22.json",
-        "docs/evidence/phase-a-lifecycle-node22.json"
+        "docs/evidence/phase-a-lifecycle-node22.json",
+        "docs/evidence/phase-a-ci-all-node22.23.2.json",
+        "docs/evidence/phase-a-ci-lifecycle-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node24.21.0.json",
+        "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [
-        "Linux CI reproduction and named maintainer review remain pending"
+        "Named maintainer review"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -78,10 +93,15 @@
       "evidence": [
         "docs/evidence/phase-a-unit-node22.json",
         "docs/evidence/phase-a-all-node22.json",
-        "docs/evidence/phase-a-lifecycle-node22.json"
+        "docs/evidence/phase-a-lifecycle-node22.json",
+        "docs/evidence/phase-a-ci-all-node22.23.2.json",
+        "docs/evidence/phase-a-ci-lifecycle-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node24.21.0.json",
+        "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [
-        "Linux CI reproduction and named maintainer review remain pending"
+        "Named maintainer review"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -98,7 +118,12 @@
       "evidence": [
         "docs/evidence/phase-a-unit-node22.json",
         "docs/evidence/phase-a-all-node22.json",
-        "docs/evidence/phase-a-lifecycle-node22.json"
+        "docs/evidence/phase-a-lifecycle-node22.json",
+        "docs/evidence/phase-a-ci-all-node22.23.2.json",
+        "docs/evidence/phase-a-ci-lifecycle-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node24.21.0.json",
+        "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [
         "Duplicate-signup/SMTP-outage cases",
@@ -115,7 +140,7 @@
     {
       "id": "A06",
       "title": "Required CI jobs and evidence artifacts",
-      "status": "implemented",
+      "status": "verified",
       "tests": [
         "L1-27/U27",
         "L1-27/I27/C27"
@@ -123,11 +148,15 @@
       "evidence": [
         "docs/evidence/phase-a-unit-node22.json",
         "docs/evidence/phase-a-all-node22.json",
-        "docs/evidence/phase-a-lifecycle-node22.json"
+        "docs/evidence/phase-a-lifecycle-node22.json",
+        "docs/evidence/phase-a-ci-all-node22.23.2.json",
+        "docs/evidence/phase-a-ci-lifecycle-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node24.21.0.json",
+        "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [
-        "Passing remote CI URLs on both Node targets and Linux services/browsers",
-        "Future SDK-wide gates remain explicitly incomplete"
+        "Named maintainer review; future SDK-wide gates remain explicitly incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -454,7 +483,12 @@
       "evidence": [
         "docs/evidence/phase-a-unit-node22.json",
         "docs/evidence/phase-a-all-node22.json",
-        "docs/evidence/phase-a-lifecycle-node22.json"
+        "docs/evidence/phase-a-lifecycle-node22.json",
+        "docs/evidence/phase-a-ci-all-node22.23.2.json",
+        "docs/evidence/phase-a-ci-lifecycle-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node22.23.2.json",
+        "docs/evidence/phase-a-ci-unit-node24.21.0.json",
+        "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [
         "Current-source harness/CI evidence, remaining G1-G7 characterization, and maintainer signoff"
@@ -569,8 +603,7 @@
     }
   ],
   "nextSteps": [
-    "Reproduce npm run check, npm run test:unit, npm run test:phase-a and npm run test:cleanup; inspect current-source sanitized reports.",
-    "Inspect remote Phase A CI on Node 22.23.2/24.21.0 and Linux; record exact run URLs/results and resolve any platform/image drift without hiding failures.",
+    "Resume with npm run progress; current-source local and Linux CI foundation evidence is preserved. Re-run applicable checks after source/contract changes.",
     "Finish the explicit missing G1-G7 characterization cases, especially native auth races and stream owner/expiry/loss behavior; implement no SDK promise before relevant decisions.",
     "Review Phase A evidence and compatibility exceptions with burggraf; only the maintainer records signoff.",
     "After Phase A approval, start Phase B client/types/mapping/results with its own full applicable tests."
@@ -585,6 +618,11 @@
     "browserInfrastructureCases": 6,
     "pgTapAssertions": 10,
     "cleanupFaultCases": 1,
-    "ci": "workflow implemented; remote results not yet verified"
+    "ci": {
+      "status": "passed",
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569",
+      "commit": "14123bc282958723ccce17fae6f7a76024f5de9e",
+      "scope": "Linux x64 Node 22/24 static-unit; Node 22 real backends/three browsers/cleanup; NOT full SDK conformance"
+    }
   }
 }

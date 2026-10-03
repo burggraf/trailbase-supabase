@@ -39,7 +39,7 @@ On macOS arm64 / Node **22.23.2**, the current-source foundation passed:
 | [Injected setup failure](evidence/phase-a-lifecycle-node22.json) | Cleanup passed after both servers had started |
 | `npm run check` | TypeScript, JavaScript syntax, docs/traceability, evidence freshness and secret scan passed |
 
-No owned fixture containers/volumes/networks remained. Linux, Node 24, remote CI, remaining characterization, full SDK layers and maintainer signoff are still pending. These are **foundation results, not completion of Phase A or SDK compatibility**.
+No owned fixture containers/volumes/networks remained. [Linux x64 CI passed](https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569): static/unit checks on Node 22.23.2 and 24.21.0, plus real backends/all three browsers/injected-failure cleanup on Node 22. Sanitized CI reports are preserved in `docs/evidence/phase-a-ci-*.json`. Node 24 real-backend/browser execution is not claimed. Remaining characterization, full SDK layers and maintainer signoff are still pending. These are **foundation results, not completion of Phase A or SDK compatibility**.
 
 ## What exists now
 
