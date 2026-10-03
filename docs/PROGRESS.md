@@ -23,7 +23,19 @@ The [sanitized upstream report](UPSTREAM_AUTH_ISSUE.md) was submitted with maint
 
 `npm run test:phase-a -- domains` runs the isolated stock scalar probes. [Four local real cases](evidence/phase-a-scalar-domains-node22.json) passed: all six numeric comparisons with exact golden IDs; reserved/Unicode/combining text as literal values; null inequality plus declared boolean/UUID filters; and numeric ties with explicit keys plus lowercase ASCII words ascending/descending. The latest 26-case unit report also passed; cleanup passed.
 
-This is a bounded installed-client characterization, not an SDK contract or broad text-collation guarantee. Mixed-case/non-ASCII ordering, unsafe numeric/nullable option boundaries, builder isolation and remote CI remain incomplete. G1 blockers and all maintainer signoff requirements are unchanged.
+This is a bounded installed-client characterization, not an SDK contract or broad text-collation guarantee. The later boundary follow-up below covers unsafe decoding, nullable defaults and builder isolation. Adapter option validation, broad collation guarantees and remote CI remain incomplete. G1 blockers and all maintainer signoff requirements are unchanged.
+
+## G2/G4 boundary follow-up
+
+`npm run test:phase-a -- boundaries` runs the isolated stock boundary probes. [Five real cases](evidence/phase-a-query-boundaries-node22.json) and the latest 26-case unit report passed locally on Node 22; cleanup passed. Exact observations:
+
+- `9007199254740991` round-trips as a safe number. Native installed-client decoding preserves `9007199254740993` as bigint; the reference installed client returns `9007199254740992` even though real PostgREST wire data contains the exact original integer. This does not widen the planned portable safe-integer domain.
+- On nullable text, equality with JS `null` selects the literal string `"null"`, not SQL NULL. The future adapter must reject null comparison as planned; `.is()` remains deferred.
+- Numeric NaN/infinities/fractions, an unknown column and a malformed UUID fail in both pinned backends; fixture row counts remain unchanged. This is backend rejection evidence, not proof of a future adapter rejecting before requests.
+- Native nullable ascending order places NULL first; reference default ascending places it last. Explicit reference `nullsFirst:true` aligns this fixture, but nullable ordering remains outside the initial portable contract. Native mixed-case/Unicode order matches binary UTF-8; the reference fixture produces reversible ascending/descending results. No broad cross-database collation claim is made. Composed/decomposed accents remain distinct literal predicates.
+- Reference query construction is lazy; repeated awaits issue separate real requests. Independently constructed builders isolate, but branching the same builder mutates it. Native `listOp` is lazy, repeated `.query()` calls issue requests, independent options isolate, and mutation of shared options affects a previously constructed operation.
+
+G2/G4 remain in progress pending named contract approval, remaining matrices and eventual adapter/browser/security/type checks. Query page-bound arithmetic, unsupported date/BLOB/JSON/relation shapes and nullable/reference option rejection remain incomplete. No SDK implementation/signoff or G1 resolution is implied.
 
 [progress.json](progress.json) is the authoritative status/signoff ledger. Run `npm run progress` to see Phase A deliverables, missing checks, open gates, and ordered next steps. Read this file first after a restart, then the [implementation plan](LEVEL1_PLAN.md) and [test matrix](TEST_PLAN.md).
 

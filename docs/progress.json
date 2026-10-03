@@ -135,11 +135,12 @@
         "docs/evidence/phase-a-auth-candidate-characterization.json",
         "docs/evidence/phase-a-auth-candidate-browser.json",
         "docs/evidence/phase-a-auth-stock-characterization.json",
-        "docs/evidence/phase-a-auth-candidate-smtp.json"
+        "docs/evidence/phase-a-auth-candidate-smtp.json",
+        "docs/evidence/phase-a-query-boundaries-node22.json"
       ],
       "missing": [
-        "SMTP-outage and unconfirmed duplicate-signup cases (confirmed duplicate/wrong/unknown login probes passed)",
-        "Ordering/unsafe scalar boundaries",
+        "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
+        "Remaining query page-bound/unsupported-shape matrices and G2/G4 approvals; initial scalar/builder boundaries locally observed",
         "SSE UTF-8/sequence/loss/network fragmentation cases",
         "Owner/DELETE stream isolation and auth expiry",
         "Native hydration/refresh/logout races/storage cases",
@@ -547,10 +548,12 @@
       "status": "in-progress",
       "evidence": [
         "docs/evidence/phase-a-all-node22.json",
-        "docs/evidence/phase-a-scalar-domains-node22.json"
+        "docs/evidence/phase-a-scalar-domains-node22.json",
+        "docs/evidence/phase-a-query-boundaries-node22.json"
       ],
       "missing": [
-        "Unsafe integers/null/scalar boundaries and mapping contract approval; production codec is not implemented"
+        "Maintainer mapping/domain/cap contract approval; production scalar codec/runtime rejection and full adapter security/type matrix are not implemented",
+        "Page-bound invalid arithmetic/mixed calls and expanded scalar cases (dates, BLOB/JSON, relation syntax) remain incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -576,11 +579,12 @@
       "status": "in-progress",
       "evidence": [
         "docs/evidence/phase-a-all-node22.json",
-        "docs/evidence/phase-a-scalar-domains-node22.json"
+        "docs/evidence/phase-a-scalar-domains-node22.json",
+        "docs/evidence/phase-a-query-boundaries-node22.json"
       ],
       "missing": [
-        "Broader collation/nullable-option restrictions and builder-isolation characterization; exact contract approval",
-        "Lowercase ASCII ordering, numeric ties, six numeric operators and null inequality have local real evidence; no broad collation guarantee"
+        "Maintainer execution/cardinality/non-null ordering contract approval; no production builder/option guards or complete adapter matrix",
+        "Mixed-case/Unicode ordering has bounded upstream observations, not approved cross-database collation parity; remaining repeated-key/call-order and nullable/reference option matrix"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -633,26 +637,26 @@
     }
   ],
   "nextSteps": [
-    "Track trailbaseio/trailbase#298 and provide disposable test feedback; keep both regressions and deployment/signoff restrictions intact.",
-    "Continue remaining G2/G4 unsafe-scalar/collation/builder boundaries and G5-G7 streaming/auth races; keep G1 blocking regressions intact.",
-    "Resolve native pending-account SMTP recovery before recommending the auth migration or approving G1.",
-    "Review all required Phase A evidence and G1-G7 decisions with burggraf before Phase B."
+    "Track trailbaseio/trailbase#298 and provide disposable upstream test feedback; keep stock/candidate auth regressions intact.",
+    "Continue G5/G6 stream isolation/fragmentation/loss/cancel/security checks, then G7 hydration/concurrent refresh/logout/storage races.",
+    "Complete remaining query page-bound/unsupported-shape matrices; request named G2/G4 decisions only after required evidence layers.",
+    "Resolve native pending-account SMTP recovery before recommending migration or approving G1; all G1-G7 approval precedes Phase B."
   ],
   "lastSession": {
-    "date": "2026-10-03T02:01:32.650Z",
-    "sourceSha256": "1b8c50057f6f82e5b28ffd804157110e9673a206e4cc64d66fe05b694e598d17",
+    "date": "2026-10-03T02:18:40.517Z",
+    "sourceSha256": "5a2ba19f2ca5dc0a3f41eb6a95b943db38178e75da7dec9e2e00d38e0be3ba7c",
     "node": "v22.23.2",
-    "scope": "G2/G4 stock scalar-domain subset, NOT complete Phase A or SDK verification",
+    "scope": "G2/G4 stock unsafe/null/order/builder subset, NOT complete Phase A or SDK verification",
     "unitCases": 26,
-    "domainCases": 4,
+    "boundaryCases": 5,
     "cleanup": "passed",
-    "ci": "Current-source remote run pending; auth full-suite regressions remain red"
+    "ci": "Current-source remote run pending; complete foundation still blocked by G1"
   },
   "pendingWork": {
-    "scope": "G2/G4/I09 installed-client scalar/filter/ordering domains on stock disposable backends",
-    "status": "G2/G4 domain subset passed locally: 26 unit guards, 4 real domain cases; cleanup passed. Upstream issue #298 submitted with maintainer approval; G1 stock/candidate recovery blockers unchanged.",
+    "scope": "G2/G4/S02 installed-client unsafe scalar, null, ordering and builder boundaries on stock disposable backends",
+    "status": "26 unit and 5 real G2/G4 boundary cases passed on stock Node 22; cleanup passed. Results are upstream observations, not production validation or G2/G4 approval.",
     "process": null,
-    "signoff": "none; native G1 baseline/candidate SMTP blockers unchanged",
-    "upstreamIssue": "https://github.com/trailbaseio/trailbase/issues/298"
+    "upstreamIssue": "https://github.com/trailbaseio/trailbase/issues/298",
+    "signoff": "none; stock G1 and candidate SMTP blockers unchanged"
   }
 }
