@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "A \u2014 proof harness (in progress)",
+  "currentPhase": "A — proof harness (in progress)",
   "maintainer": "burggraf",
   "licenseDecision": {
     "license": "MIT",
@@ -102,7 +102,11 @@
         "docs/evidence/phase-a-ci-linux-safe-inventory-browser.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-lifecycle.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node22.json",
-        "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node24.json"
+        "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node24.json",
+        "docs/evidence/phase-a-browser-storage-node22.json",
+        "docs/evidence/phase-a-storage-network-controls-node22.json",
+        "docs/evidence/phase-a-storage-cleanup-node22.json",
+        "docs/evidence/phase-a-storage-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -153,7 +157,11 @@
         "docs/evidence/phase-a-ci-linux-safe-inventory-browser.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-lifecycle.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node22.json",
-        "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node24.json"
+        "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node24.json",
+        "docs/evidence/phase-a-browser-storage-node22.json",
+        "docs/evidence/phase-a-storage-network-controls-node22.json",
+        "docs/evidence/phase-a-storage-cleanup-node22.json",
+        "docs/evidence/phase-a-storage-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -213,7 +221,11 @@
         "docs/evidence/phase-a-ci-linux-safe-inventory-browser.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-lifecycle.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node22.json",
-        "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node24.json"
+        "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node24.json",
+        "docs/evidence/phase-a-browser-storage-node22.json",
+        "docs/evidence/phase-a-storage-network-controls-node22.json",
+        "docs/evidence/phase-a-storage-cleanup-node22.json",
+        "docs/evidence/phase-a-storage-full-stock-node22.json"
       ],
       "missing": [
         "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
@@ -270,7 +282,11 @@
         "docs/evidence/phase-a-ci-linux-safe-inventory-browser.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-lifecycle.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node22.json",
-        "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node24.json"
+        "docs/evidence/phase-a-ci-linux-safe-inventory-unit-node24.json",
+        "docs/evidence/phase-a-browser-storage-node22.json",
+        "docs/evidence/phase-a-storage-network-controls-node22.json",
+        "docs/evidence/phase-a-storage-cleanup-node22.json",
+        "docs/evidence/phase-a-storage-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -639,7 +655,8 @@
         "docs/evidence/phase-a-browser-proof-full-stock-node22.json",
         "docs/evidence/phase-a-network-full-stock-node22.json",
         "docs/evidence/phase-a-diagnostic-full-stock-node22.json",
-        "docs/evidence/phase-a-ci-linux-safe-inventory-all.json"
+        "docs/evidence/phase-a-ci-linux-safe-inventory-all.json",
+        "docs/evidence/phase-a-storage-full-stock-node22.json"
       ],
       "missing": [
         "Candidate resolves duplicate confirmation in initial real characterization but is not approved/deployment-ready",
@@ -714,7 +731,8 @@
         "docs/evidence/phase-a-network-browser-controls-node22.json",
         "docs/evidence/phase-a-diagnostic-browser-node22.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-all.json",
-        "docs/evidence/phase-a-ci-linux-safe-inventory-browser.json"
+        "docs/evidence/phase-a-ci-linux-safe-inventory-browser.json",
+        "docs/evidence/phase-a-browser-storage-node22.json"
       ],
       "missing": [
         "Buffered SSE proof has unit/live/three-browser/owned HTTP fault evidence, but no production transport choice/signoff or complete malformed/backpressure/reconnect corpus",
@@ -739,7 +757,8 @@
         "docs/evidence/phase-a-diagnostic-full-stock-node22.json",
         "docs/evidence/phase-a-diagnostic-native-expiry-node22.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-all.json",
-        "docs/evidence/phase-a-ci-linux-safe-inventory-expiry.json"
+        "docs/evidence/phase-a-ci-linux-safe-inventory-expiry.json",
+        "docs/evidence/phase-a-storage-full-stock-node22.json"
       ],
       "missing": [
         "Genuine native JWT expiry: ordinary protected HTTP denied but established stream delivered a newly written protected row; strict regression preserved under explicit short-native-auth fixture",
@@ -770,7 +789,9 @@
         "docs/evidence/phase-a-diagnostic-full-stock-node22.json",
         "docs/evidence/phase-a-diagnostic-browser-node22.json",
         "docs/evidence/phase-a-ci-linux-safe-inventory-all.json",
-        "docs/evidence/phase-a-ci-linux-safe-inventory-browser.json"
+        "docs/evidence/phase-a-ci-linux-safe-inventory-browser.json",
+        "docs/evidence/phase-a-browser-storage-node22.json",
+        "docs/evidence/phase-a-storage-full-stock-node22.json"
       ],
       "missing": [
         "Strict native late refresh/status after logout resurrects cached state: two actual-response regressions preserved; approved wrapper/upstream resolution required",
@@ -789,51 +810,29 @@
     "Keep client reports and stream-lifetime question as drafts; only #298 is submitted. All named gate decisions precede Phase B/deployment recommendation."
   ],
   "lastSession": {
-    "date": "2026-10-03T04:38:39.607Z",
-    "sourceSha256": "fc9bccce0693d0def16d5ddb682ee7a24a60c1388dd31218257a3ffd2a85bbeb",
+    "date": "2026-10-03T05:01:19.432Z",
+    "sourceSha256": "ed79a9203cd78ccc68b338a6c314acaaf629201c51c25080d7dfcd6c355f6c5e",
     "node": "v22.23.2",
-    "scope": "Current diagnostics source browser/stock/real-expiry controls, NOT SDK/gate signoff",
+    "scope": "Installed reference browser persistence/cross-tab characterization, NOT adapter/timer/storage security signoff",
     "unitCases": 37,
+    "browserCases": 12,
     "networkCases": 2,
-    "browserCases": 9,
     "fullStock": {
       "passed": 45,
       "failed": 5
     },
-    "expiry": {
-      "passed": 0,
-      "failed": 1,
-      "profile": "short-native-auth"
-    },
-    "setupCheck": "passed",
-    "cleanup": "passed for every scope",
-    "ci": {
-      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37096946058",
-      "commit": "84e1e0a5e4424ce29a6e102b791340949e199c78",
-      "sourceSha256": "fc9bccce0693d0def16d5ddb682ee7a24a60c1388dd31218257a3ffd2a85bbeb",
-      "unitNode22": 37,
-      "unitNode24": 37,
-      "browser": {
-        "passed": 9,
-        "failed": 0
-      },
-      "fullStock": {
-        "passed": 45,
-        "failed": 5
-      },
-      "expiry": {
-        "passed": 0,
-        "failed": 1
-      },
-      "cleanup": "passed all four scopes",
-      "setupCheck": "passed all four; previous verification failure exact cause unresolved"
+    "cleanup": "passed every scope",
+    "ci": "Prior diagnostics 84e1e0a Linux 37 per Node/9 browser/45 stock pass+5 strict failures/0 expiry pass+1 strict failure; latest storage hash remote pending",
+    "upstreamAuthIssue": {
+      "url": "https://github.com/trailbaseio/trailbase/issues/298",
+      "state": "OPEN",
+      "comments": 0
     }
   },
   "pendingWork": {
-    "scope": "G7 actual browser upstream SDK storage/cross-tab characterization",
-    "status": "Current-hash local and Linux proofs/regressions preserved. Next: use installed pinned Supabase UMD only as owned disposable browser fixture for real persistence/hydration/logout-sharing checks, no production SDK implementation.",
-    "signoff": "none; G1/G6/G7 raw regressions and genuine native expiry remain blockers; all three report drafts unsubmitted",
-    "authorizationInterview": "ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d"
+    "scope": "G2 bounded pagination/count/call-order characterization",
+    "status": "Browser storage subset completed: 12 browser, 37 unit, 2 HTTP and cleanup passed; raw stock 45/5 unchanged. Initial 9/3 fixture failures preserved/corrected without weakening unique/access policies. Next positive page matrices only, no public SDK implementation.",
+    "signoff": "none; G1/G6/G7 and explicit native expiry blockers remain; all three upstream drafts stay unsubmitted"
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",

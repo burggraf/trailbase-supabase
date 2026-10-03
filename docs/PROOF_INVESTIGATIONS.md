@@ -13,7 +13,7 @@ This is not final G5/G6/G7 approval, deployment permission, Phase B implementati
 
 ## Streaming proof
 
-`tests/proofs/native-sse.ts` is a test-only async generator over a native response body. It retains UTF-8/frame/sequence state between chunks, reports gaps and explicit loss, bounds the pending buffer, rejects malformed/truncated/unsafe-scalar inputs, and propagates abort/consumer cancellation. It accepts LF/CRLF and multiline data/comment frames. Bare-CR general SSE, reconnection, duplicate suppression, replay, browser integration, per-stream server resources and all event-schema guarantees are not implemented.
+`tests/proofs/native-sse.ts` is a test-only async generator over a native response body. It retains UTF-8/frame/sequence state between chunks, reports gaps and explicit loss, bounds the pending buffer, rejects malformed/truncated/unsafe-scalar inputs, and propagates abort/consumer cancellation. It accepts LF/CRLF and multiline data/comment frames. Bare-CR general SSE, reconnection, duplicate suppression, replay, production/browser-SDK lifecycle integration, per-stream server resources and all event-schema guarantees are not implemented.
 
 The 64Ki UTF-16 pending-buffer ceiling is a deliberate proof constraint, not a negotiated production limit. Unsafe integer JSON is rejected, not silently rounded or advertised as a full event codec. Deterministically split unit fixtures prove parser behavior; byte-rechunking a genuine live stream proves this decoder can consume those live events. Neither is evidence of actual TCP/proxy/browser fragmentation or a complete network fault corpus.
 
@@ -29,9 +29,13 @@ The intended direction is **never** to weaken native read rules to mimic referen
 
 ## Browser execution and setup diagnostics
 
-The fixture compiles only the two type-erased proof modules with the already pinned TypeScript tool and serves them from its owned loopback public directory. Browser cases dynamically import those modules, exercise genuine Unicode SSE/write/delete/abort plus late-refresh/logout guards, and return boolean postconditions—not credentials/session bodies. Chromium/Firefox/WebKit each run the proof case alongside existing real confirmation/login infrastructure tests. This is proof browser execution, not complete SDK/application E2E or a package build.
+The fixture compiles the two type-erased proof modules with the already pinned TypeScript tool and serves them from its owned loopback public directory. The installed pinned reference SDK UMD is copied only to that disposable directory for upstream browser characterization; no new dependency, bundle or production adapter is introduced. Browser cases dynamically import those modules, exercise genuine Unicode SSE/write/delete/abort plus late-refresh/logout guards, and return boolean postconditions—not credentials/session bodies. Chromium/Firefox/WebKit each run the proof case alongside existing real confirmation/login infrastructure tests. This is proof browser execution, not complete SDK/application E2E or a package build.
 
 Sanitized reports include constant-valued `setupStage`/`setupCheck` checkpoints (config/build/start/loopback/service-count/image-tag/digest/ready), so setup failures are not mistaken for backend assertions. An allowlisted setup inventory exposes only known service labels, public Supabase ECR image references/digests and a `loopbackOnly` boolean; unknown reference formats become fixed placeholders. Container names, credentials, raw host ports, bodies, logs and exceptions remain private. Digest and loopback validators remain strict and unchanged. Standalone browser, explicit expiry and fault-cleanup CI steps run even when default stock regressions fail; the job stays red when any required scope fails.
+
+## Actual browser reference storage characterization
+
+A fresh genuinely confirmed reference account signs in through the installed SDK in the browser. An owned per-test storage key must retain the genuine session across an actual document reload; `getUser()` and owner-protected row reads must validate it remotely. A second same-origin tab hydrates that store and must observe `SIGNED_OUT` after a real first-tab logout, with no remaining local session/storage or anonymous protected rows. A retained genuine refresh token must then be rejected by the real auth service without restoring local state. Only boolean postconditions leave browser evaluation. Automatic refresh is disabled deliberately: this does not certify timer/background-tab/retry or adapter persistence behavior. No fabricated sessions or storage bodies are injected.
 
 ## Owned HTTP fault fixture
 

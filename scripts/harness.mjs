@@ -178,7 +178,10 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await mkdir(publicDirectory);
     await writeFile(resolve(publicDirectory, 'index.html'), '<!doctype html><html lang="en"><meta charset="utf-8"><title>Phase A verification complete</title><main><h1>Verification complete</h1><p>Sign in explicitly.</p></main></html>');
     await writeFile(resolve(publicDirectory, 'phase-a-owner.txt'), id);
-    // Only test-only, type-erased proof modules are served; no production SDK/package build.
+    await mkdir(resolve(publicDirectory,'fixtures'));
+    await cp(resolve('node_modules/@supabase/supabase-js/dist/umd/supabase.js'),resolve(publicDirectory,'fixtures/supabase.js'));
+    // Installed pinned upstream UMD is characterization-only; proof modules are
+    // type-erased test files, not a production adapter/package build.
     try {
       await exec(resolve('node_modules/.bin/tsc'), ['--ignoreConfig','tests/proofs/native-sse.ts','tests/proofs/auth-coordination.ts','--target','ES2022','--module','ES2022','--moduleResolution','bundler','--skipLibCheck','--outDir',resolve(publicDirectory,'proofs')],{env:childEnv,timeout:30000});
     } catch(error) {
