@@ -29,6 +29,12 @@ Reports/context record `authVariant: stock` or `candidate-email-reservation`. Ne
 
 SQL unit checks cover pending/verified/cross-column collisions, case folding, unchanged denied writes, confirmation, anonymous nulls, ambiguous preflight and rollback. Real native migrations/auth/permission/browser/cleanup checks remain separately required; SQLite policy unit checks cannot certify native behavior.
 
+### Existing-depot preflight rollback scope
+
+`npm run test:phase-a -- auth-migration` uses an isolated stock/default owned depot and genuine duplicate pending registrations. A confirmed ordinary-user control retains its protected row. The native `trail schema todos --mode select` command exercises native migration initialization against that existing depot: first without the candidate, then with the opt-in candidate staged, then after removing only that never-applied candidate. Required postconditions: the intended preflight CHECK fails, every `_user` row (including credentials), schema entry and migration-history row is unchanged, no candidate index/trigger remains, pending login stays denied, and the control's row remains readable. Raw CLI diagnostics stay private; teardown still verifies owned resource cleanup.
+
+This is a native initializer/preflight rollback rehearsal, not a stopped-server restart, backup restore, concurrent-auth safety, SMTP recovery fix, deployment approval or G1 signoff. Browser/reference compatibility is not claimed by this backend-only probe; their full required layers remain pending.
+
 ## Initial investigation result (not signoff)
 
 The opt-in SQL migration applied through the real pinned native migration runner and passed the 10-case characterization subset, including duplicate unconfirmed registration, original-password preservation and real email confirmation. SQL policy checks passed too. These are candidate-only observations; source-linked reports and rerun status are tracked in the ledger.

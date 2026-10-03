@@ -342,7 +342,7 @@
         "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
         "Remaining query page-bound/unsupported-shape matrices and G2/G4 approvals; initial scalar/builder boundaries locally observed",
         "SSE UTF-8/sequence/loss/network fragmentation cases",
-        "Resolve G6 reference DELETE key exposure; complete auth expiry/stream renewal (native owner isolation passed)",
+        "Resolve G6 reference DELETE key exposure and complete channel lifecycle/resource checks; connection-scoped stream expiry behavior is accepted (native owner isolation passed)",
         "Resolve G7 native late-response/logout resurrection and complete browser/timer/expiry/storage-race matrix",
         "Named G1-G7 contract decisions"
       ],
@@ -809,12 +809,14 @@
         "docs/evidence/phase-a-auth-failure-full-stock-node22.json",
         "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json",
         "docs/evidence/phase-a-deadline-full-stock-node22.json",
-        "docs/evidence/phase-a-ci-linux-client-deadline-all.json"
+        "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
+        "docs/evidence/phase-a-owned-depot-preflight-node22.json",
+        "docs/evidence/phase-a-migration-full-stock-node22.json"
       ],
       "missing": [
         "Candidate resolves duplicate confirmation in initial real characterization but is not approved/deployment-ready",
         "Candidate SMTP recovery remains blocked: native resend cannot find pending identities",
-        "Existing-depot migration/upgrade, wider auth lifecycle and remaining G1 approval/test layers"
+        "Native existing-depot preflight refusal/row-schema-history preservation passed locally; stopped-server restart, successful upgrade, backup restore, concurrent writes, wider auth lifecycle and remaining G1 approval/test layers are incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -900,7 +902,7 @@
       ],
       "missing": [
         "Buffered SSE proof has unit/live/three-browser/owned HTTP fault evidence, but no production transport choice/signoff or complete malformed/backpressure/reconnect corpus",
-        "Server-internal stream accounting, arbitrary proxy/WAN behavior and expired/revoked stream renewal/security remain incomplete"
+        "Server-internal stream accounting, arbitrary proxy/WAN behavior and complete connection-scoped lifecycle/logout/resource checks remain incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -931,7 +933,9 @@
         "docs/evidence/phase-a-native-client-deadline-node22.json",
         "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
         "docs/evidence/phase-a-ci-linux-client-deadline-expiry.json",
-        "docs/evidence/phase-a-connection-lifetime-node22.json"
+        "docs/evidence/phase-a-connection-lifetime-node22.json",
+        "docs/evidence/phase-a-ci-linux-connection-lifetime-expiry.json",
+        "docs/evidence/phase-a-migration-expiry-controls-node22.json"
       ],
       "missing": [
         "Reference two-owner DELETE delivers a foreign primary key despite owner RLS: strict regression preserved; decide payload/security compatibility limits without weakening native access rules",
@@ -1007,9 +1011,41 @@
     "checks": "npm run check passed; genuine expired token denied on new stream, established stream delivered expected row; optional client deadline proof passed",
     "cleanup": "passed",
     "evidence": "docs/evidence/phase-a-connection-lifetime-node22.json",
-    "missing": "Revised-contract Linux CI and complete SDK lifecycle/resource layers; no gate signoff"
+    "ci": {
+      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37127182103",
+      "commit": "eac36ce",
+      "scope": "Connection-lifetime contract source, before migration proof additions",
+      "unitNode22": 37,
+      "unitNode24": 37,
+      "expiryCases": 2,
+      "browserCases": 12,
+      "fullStock": { "passed": 53, "failed": 5 },
+      "cleanup": "passed all four scopes",
+      "job": "red for unchanged required G1/G6 DELETE/G7 regressions"
+    },
+    "missing": "Complete SDK lifecycle/resource layers; no gate signoff; this evidence predates the migration-source changes"
   },
   "lastSession": {
+    "date": "2026-10-03T13:53:15.859Z",
+    "sourceSha256": "df17abcd53552d37031afa6559c2bdd2849307e3c4f719084b161cfd61483f73",
+    "node": "v22.23.2",
+    "scope": "Native existing-depot candidate preflight rollback with genuine duplicate pending registrations; no deployment or recovery claim",
+    "unitCases": 37,
+    "migrationCases": 1,
+    "expiryCases": 2,
+    "browserCases": 12,
+    "fullStock": { "passed": 53, "failed": 5 },
+    "cleanup": "passed every scope",
+    "evidence": [
+      "docs/evidence/phase-a-owned-depot-preflight-node22.json",
+      "docs/evidence/phase-a-migration-expiry-controls-node22.json",
+      "docs/evidence/phase-a-migration-browser-controls-node22.json",
+      "docs/evidence/phase-a-migration-cleanup-node22.json",
+      "docs/evidence/phase-a-migration-full-stock-node22.json"
+    ],
+    "missing": "Migration-source Linux CI; successful upgrade/restart/concurrency/backup restore and safe SMTP recovery; no gate signoff"
+  },
+  "historicalClientDeadlineSession": {
     "date": "2026-10-03T06:00:21.920Z",
     "sourceSha256": "371c1c3738b39d9fd573a094a919e1859deca46f2ea0325dbb39720986230475",
     "node": "v22.23.2",
@@ -1049,8 +1085,8 @@
     }
   },
   "pendingWork": {
-    "scope": "G1 genuine owned-depot migration preflight rollback",
-    "status": "#299 closed; contract now matches TrailBase connection-scoped stream authorization and expiry is no longer a G6 blocker. Next test candidate SQL preflight transaction rollback on real duplicate pending accounts; no policy deployed, no identities deleted/merged/reassigned, no stock/candidate report relabelling.",
+    "scope": "G1 recovery capability and migration restart/upgrade investigation",
+    "status": "Owned-depot preflight rollback passed; failed native initializer preserved all user rows/schema/history. gpt-6.1-sol read-only investigation is checking safe recovery feasibility under the unchanged no-fork/no-identity-repair constraints. No policy deployed, no stock/candidate relabelling. #299 closed and connection-scoped expiry behavior accepted.",
     "signoff": "none; both installed-client reports remain drafts; no further public reply authorized"
   },
   "historicalCi": {

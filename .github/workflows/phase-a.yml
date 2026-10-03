@@ -51,6 +51,9 @@ jobs:
       - name: Explicit short-lived native auth fixture / real expiry
         if: always()
         run: npm run test:phase-a -- expiry
+      - name: Existing owned-depot auth migration preflight rollback
+        if: always()
+        run: npm run test:phase-a -- auth-migration
       - name: Three-browser isolated proof / infrastructure controls
         if: always()
         run: npm run test:phase-a -- browser

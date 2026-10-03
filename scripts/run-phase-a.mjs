@@ -23,7 +23,8 @@ async function main() {
   if (options.some(option => option !== '--auth-mitigation') || options.length > 1) throw new Error('Unknown Phase A option');
   const authMitigation = options.includes('--auth-mitigation');
   const nativeAuthProfile = suite === 'expiry' ? 'short-native-auth' : 'default';
-  if (!['all','database','characterization','domains','boundaries','auth-lifecycle','proofs','expiry','network','pagination','streaming','smtp','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
+  if (!['all','database','characterization','domains','boundaries','auth-lifecycle','auth-migration','proofs','expiry','network','pagination','streaming','smtp','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
+  if (suite === 'auth-migration' && authMitigation) throw new Error('Existing-depot migration rehearsal requires the stock fixture');
   await mkdir('.runtime', { recursive: true, mode: 0o700 });
   // ponytail: one local stack at a time; per-run locks/port reservations if concurrent local runs matter.
   // Refuse overlap rather than stopping someone else's fixtures.
@@ -65,7 +66,7 @@ async function main() {
     if (suite === 'lifecycle') { report.injectedFailure='after-start'; throw new Error('Injected fixture setup failure'); }
     if (suite !== 'browser') {
       const file = resolve(harness.context.directory,'vitest.json');
-      const args = ['run', ...(suite === 'all' ? ['tests/phase-a'] : suite === 'expiry' ? ['tests/expiry'] : [`tests/phase-a/${suite}.test.ts`]), '--reporter=json','--outputFile',file];
+      const args = ['run', ...(suite === 'all' ? ['tests/phase-a'] : suite === 'expiry' ? ['tests/expiry'] : suite === 'auth-migration' ? ['tests/migration'] : [`tests/phase-a/${suite}.test.ts`]), '--reporter=json','--outputFile',file];
       const success = await runTests('vitest','vitest',args);
       const results = JSON.parse(await readFile(file,'utf8'));
       report.tests.push(...results.testResults.flatMap(result => result.assertionResults.map(test => ({ name:test.fullName, status:test.status }))));
