@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "A — proof harness (in progress)",
+  "currentPhase": "A \u2014 proof harness (in progress)",
   "maintainer": "burggraf",
   "licenseDecision": {
     "license": "MIT",
@@ -139,7 +139,11 @@
         "docs/evidence/phase-a-deadline-default-browser-controls-node22.json",
         "docs/evidence/phase-a-deadline-default-cleanup-node22.json",
         "docs/evidence/phase-a-deadline-full-stock-node22.json",
-        "docs/evidence/phase-a-native-client-deadline-node22.json"
+        "docs/evidence/phase-a-native-client-deadline-node22.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-expiry.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-browser.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-lifecycle.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -227,7 +231,11 @@
         "docs/evidence/phase-a-deadline-default-browser-controls-node22.json",
         "docs/evidence/phase-a-deadline-default-cleanup-node22.json",
         "docs/evidence/phase-a-deadline-full-stock-node22.json",
-        "docs/evidence/phase-a-native-client-deadline-node22.json"
+        "docs/evidence/phase-a-native-client-deadline-node22.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-expiry.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-browser.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-lifecycle.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -324,7 +332,11 @@
         "docs/evidence/phase-a-deadline-default-browser-controls-node22.json",
         "docs/evidence/phase-a-deadline-default-cleanup-node22.json",
         "docs/evidence/phase-a-deadline-full-stock-node22.json",
-        "docs/evidence/phase-a-native-client-deadline-node22.json"
+        "docs/evidence/phase-a-native-client-deadline-node22.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-expiry.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-browser.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-lifecycle.json"
       ],
       "missing": [
         "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
@@ -418,7 +430,11 @@
         "docs/evidence/phase-a-deadline-default-browser-controls-node22.json",
         "docs/evidence/phase-a-deadline-default-cleanup-node22.json",
         "docs/evidence/phase-a-deadline-full-stock-node22.json",
-        "docs/evidence/phase-a-native-client-deadline-node22.json"
+        "docs/evidence/phase-a-native-client-deadline-node22.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-expiry.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-browser.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-lifecycle.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -792,7 +808,8 @@
         "docs/evidence/phase-a-pagination-full-stock-node22.json",
         "docs/evidence/phase-a-auth-failure-full-stock-node22.json",
         "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json",
-        "docs/evidence/phase-a-deadline-full-stock-node22.json"
+        "docs/evidence/phase-a-deadline-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-all.json"
       ],
       "missing": [
         "Candidate resolves duplicate confirmation in initial real characterization but is not approved/deployment-ready",
@@ -877,7 +894,9 @@
         "docs/evidence/phase-a-auth-failure-browser-controls-node22.json",
         "docs/evidence/phase-a-live-stream-ceiling-proofs-node22.json",
         "docs/evidence/phase-a-deadline-default-proof-controls-node22.json",
-        "docs/evidence/phase-a-deadline-default-browser-controls-node22.json"
+        "docs/evidence/phase-a-deadline-default-browser-controls-node22.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-browser.json"
       ],
       "missing": [
         "Buffered SSE proof has unit/live/three-browser/owned HTTP fault evidence, but no production transport choice/signoff or complete malformed/backpressure/reconnect corpus",
@@ -909,7 +928,9 @@
         "docs/evidence/phase-a-auth-failure-full-stock-node22.json",
         "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json",
         "docs/evidence/phase-a-deadline-full-stock-node22.json",
-        "docs/evidence/phase-a-native-client-deadline-node22.json"
+        "docs/evidence/phase-a-native-client-deadline-node22.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-expiry.json"
       ],
       "missing": [
         "Genuine native JWT expiry: ordinary protected HTTP denied but established stream delivered a newly written protected row; strict regression preserved under explicit short-native-auth fixture",
@@ -953,7 +974,9 @@
         "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json",
         "docs/evidence/phase-a-deadline-full-stock-node22.json",
         "docs/evidence/phase-a-deadline-default-proof-controls-node22.json",
-        "docs/evidence/phase-a-deadline-default-browser-controls-node22.json"
+        "docs/evidence/phase-a-deadline-default-browser-controls-node22.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
+        "docs/evidence/phase-a-ci-linux-client-deadline-browser.json"
       ],
       "missing": [
         "Strict native late refresh/status after logout resurrects cached state: two actual-response regressions preserved; approved wrapper/upstream resolution required",
@@ -991,9 +1014,9 @@
     },
     "cleanup": "passed every scope",
     "ci": {
-      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37100969224",
-      "commit": "0c0d8a4",
-      "scope": "Previous stream-pressure source, not latest client-deadline case",
+      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37101664560",
+      "commit": "8b089da",
+      "scope": "Current client-deadline source; Linux raw/positive cases reproduce local distinction",
       "unitNode22": "job passed",
       "unitNode24": "job passed",
       "browser": 12,
@@ -1002,8 +1025,9 @@
         "failed": 5
       },
       "expiry": {
-        "passed": 0,
-        "failed": 1
+        "passed": 1,
+        "failed": 1,
+        "meaning": "client-only abort proof passed; raw server expiry remains failed"
       },
       "setupCheck": "passed all four",
       "cleanup": "passed all four"
@@ -1011,8 +1035,11 @@
   },
   "pendingWork": {
     "scope": "Current-source remote deadline verification / upstream stream-lifetime clarification",
-    "status": "37 unit/14 proof/12 browser/default cleanup passed; stock remains 53/5. Explicit expiry 1 passed/1 failed: client nominal-exp abort stops local reader, raw server stream still delivers after genuine HTTP denial. Clarification needed before production lifecycle policy; no automatic renewal/client timer substitute for server enforcement.",
-    "signoff": "none; G1/G6/G7 blockers remain; no Phase B/deployment; both client reports and stream-lifetime question remain drafts"
+    "status": "Current-source local and Linux evidence complete for bounded client deadline: stock 53/5 and expiry 1/1 strict, 12 browsers and all setup/cleanup passed. Awaiting explicit permission to submit only neutral stream-lifetime question; no public issue created. Both installed-client reports remain drafts. No gate/Phase B/deployment approval.",
+    "signoff": "none; G1/G6/G7 blockers remain; no Phase B/deployment; both client reports and stream-lifetime question remain drafts",
+    "process": null,
+    "ci": "https://github.com/burggraf/trailbase-supabase/actions/runs/37101664560",
+    "submissionApprovalInterview": "f900e981-5a7b-4fac-9763-2214d5bcbdd1"
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",
