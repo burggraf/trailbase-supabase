@@ -32,7 +32,7 @@ The first release will target a deliberately small subset:
 
 - `createClient()` and Supabase-style `{ data, error }` results.
 - Table reads and basic insert/update/delete operations.
-- Basic filters, sorting, pagination, and single-row results.
+- Basic filters, sorting, pagination, and single-row results. Planned positive-offset/zero-limit queries expose an explicitly adapter-generated range error, not a fabricated native HTTP 416.
 - Password signup, login, and logout with the session handling those flows need.
 - Basic database change subscriptions, backed by TrailBase subscriptions.
 

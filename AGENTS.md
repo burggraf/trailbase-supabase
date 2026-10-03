@@ -9,7 +9,7 @@ The linked discussion explains the motivation, not a verified specification. Res
 ## Scope guardrails
 
 - Implement only the minimal **Level 1 — Supabase-shaped TrailBase SDK** contract in `PLAN.md` unless the maintainer explicitly approves more.
-- Levels 2 and 3 are documentation-only eventual goals. Do not add HTTP gateways, Supabase server endpoints, protocol emulators, or a TrailBase fork.
+- Levels 2 and 3 are documentation-only eventual goals. Do not add HTTP gateways, Supabase server endpoints, protocol emulators, or a deployed/maintained TrailBase fork. The instruction following interview `6f74221d-1b37-456b-af5d-261ea4372430` permits only an isolated private upstream G1 source patch and disposable-backend tests; it does not authorize deployment, baseline repinning, public submission, identity repair or production SDK work.
 - Deferred Level 1 features are also out of initial scope: richer queries, upsert/bulk writes, relationships, Storage, OAuth, SSR cookies, and the migration CLI.
 - Do not present planned features as implemented. Update the compatibility matrix and README whenever the supported contract changes.
 

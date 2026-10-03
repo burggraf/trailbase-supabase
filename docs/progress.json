@@ -816,11 +816,15 @@
         "docs/evidence/phase-a-smtp-identity-candidate-characterization-node22.json",
         "docs/evidence/phase-a-smtp-identity-candidate-regression-node22.json",
         "docs/evidence/phase-a-smtp-identity-candidate-browser-node22.json",
-        "docs/evidence/phase-a-smtp-identity-full-stock-node22.json"
+        "docs/evidence/phase-a-smtp-identity-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-page-bounds-all.json",
+        "docs/evidence/phase-a-ci-linux-page-bounds-candidate-characterization.json",
+        "docs/evidence/phase-a-ci-linux-page-bounds-candidate-smtp.json",
+        "docs/evidence/phase-a-ci-linux-page-bounds-auth-migration.json"
       ],
       "missing": [
         "Candidate resolves duplicate confirmation in initial real characterization but is not approved/deployment-ready",
-        "Candidate SMTP recovery remains blocked: native resend cannot find pending identities",
+        "Stock and reservation-only candidate SMTP recovery remain blocked: public resend cannot find pending identities. An isolated private native-source prototype is authorized, not yet validated or deployment-ready.",
         "Native existing-depot preflight refusal/row-schema-history preservation passed on macOS and Linux; stopped-server restart, successful upgrade, backup restore, concurrent writes, wider auth lifecycle and remaining G1 approval/test layers are incomplete"
       ],
       "reviewer": null,
@@ -838,7 +842,8 @@
         "docs/evidence/phase-a-count-pagination-node22.json",
         "docs/evidence/phase-a-page-bounds-pagination-node22.json",
         "docs/evidence/phase-a-page-bounds-all-node22.json",
-        "docs/evidence/phase-a-page-bounds-initial-assumption-failures-node22.json"
+        "docs/evidence/phase-a-page-bounds-initial-assumption-failures-node22.json",
+        "docs/evidence/phase-a-ci-linux-page-bounds-all.json"
       ],
       "missing": [
         "Maintainer mapping/domain/cap contract approval; production scalar codec/runtime rejection and full adapter security/type matrix are not implemented",
@@ -873,12 +878,13 @@
         "docs/evidence/phase-a-query-boundaries-node22.json",
         "docs/evidence/phase-a-live-stream-ceiling-proofs-node22.json",
         "docs/evidence/phase-a-page-bounds-pagination-node22.json",
-        "docs/evidence/phase-a-page-bounds-all-node22.json"
+        "docs/evidence/phase-a-page-bounds-all-node22.json",
+        "docs/evidence/phase-a-ci-linux-page-bounds-all.json"
       ],
       "missing": [
         "Maintainer execution/cardinality/non-null ordering contract approval; no production builder/option guards or complete adapter matrix",
         "Mixed-case/Unicode ordering has bounded upstream observations, not approved cross-database collation parity; remaining repeated-key/call-order and nullable/reference option matrix",
-        "Choose positive-offset/zero-limit behavior: native empty success versus reference 416/PGRST103. Interview 6f74221d-1b37-456b-af5d-261ea4372430 is pending; no adapter policy or signoff inferred."
+        "The instruction after interview 6f74221d-1b37-456b-af5d-261ea4372430 timed out approves an explicitly adapter-generated range error for effective positive offset plus zero limit, matching the reference failure category without fabricating native HTTP 416. Implementation, error-origin/request-count tests and full G4 signoff remain pending."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -1004,7 +1010,9 @@
         "docs/evidence/phase-a-terminal-revocation-browser-node22.json",
         "docs/evidence/phase-a-terminal-revocation-all-node22.json",
         "docs/evidence/phase-a-ci-linux-terminal-revocation-all.json",
-        "docs/evidence/phase-a-ci-linux-terminal-revocation-browser.json"
+        "docs/evidence/phase-a-ci-linux-terminal-revocation-browser.json",
+        "docs/evidence/phase-a-ci-linux-page-bounds-all.json",
+        "docs/evidence/phase-a-ci-linux-page-bounds-browser.json"
       ],
       "missing": [
         "Strict native late refresh/status after logout resurrects cached state: two actual-response regressions preserved; approved wrapper/upstream resolution required",
@@ -1018,11 +1026,11 @@
   ],
   "nextSteps": [
     "#299 is closed after upstream clarified connection-scoped stream authorization; #298 (signup recovery) remains open. Keep both installed-client reports as drafts.",
-    "Resolve G1 recovery before any migration proposal: duplicate pending confirmation and SMTP retry/pending-account lookup remain broken; experimental reservation migration still fails recovery and existing-depot/upgrade/concurrency paths need characterization.",
+    "Review the authorized private G1 native patch, then rehearse a separately labeled owned prototype with genuine SMTP/redelivery/identity/password, migration rollback, restart and concurrency checks. Preserve stock and reservation-only candidate failures; no deployment, repin, public submission or identity repair.",
     "Resolve G7 lifecycle contract: native late refresh/status can restore state after logout, forced refresh is not single-flight, and logout hides transport failure. Retain raw failures and require named maintainer decisions before a production strategy.",
     "Complete G6 verification under approved backend differences: require native owner-only delivery and reference key-only DELETE visibility, then finish payload/CDC-readiness/connection-lifetime/logout/resource matrices. No gate signoff yet.",
 
-    "Finish G2-G4 matrices (invalid/page-bound arithmetic, exact-count/head semantics, date/BLOB/JSON/relation filters, call-order/null/collation, mutation errors) and obtain named signoff for every G1-G7 gate.",
+    "Finish G2-G4 safe input/schema/operator/order/cardinality/call-order/mutation matrices and obtain named signoff. Document the approved adapter-origin positive-offset/zero-limit error without native HTTP 416 fabrication; count/head stay unsupported and need no emulation.",
     "Complete migration existing-depot/restart/reuse/concurrency/OAuth/anonymous safety, current-source CI/evidence and remaining Phase A release checks before considering Phase B. No public SDK or gate is approved."
   ],
   "lastContractVerification": {
@@ -1050,6 +1058,34 @@
     "missing": "Complete SDK lifecycle/resource layers; no gate signoff; this evidence predates the migration-source changes"
   },
   "lastSession": {
+    "date": "2026-10-03T16:12:25.910Z",
+    "sourceSha256": "1fe0c2293ec0f7b98e85f8cb92f38f15e93096de05fdb99b461ea3e79baedbf2",
+    "node": "v22.23.2",
+    "scope": "Document approved bounded G1/G4 directions and verify prior Linux page-bound evidence; no production SDK or native runtime success claimed",
+    "unitCases": 37,
+    "checks": "npm run check, npm run progress and git diff --check passed",
+    "nativeTestsExecuted": 0,
+    "nativePrototype": "Three-file private draft; initial vendor prerequisite failure preserved; exact submodules restored and same-protocol native test continuation running",
+    "backendEvidenceSourceSha256": "5302a59c096507d8d1a1fe831fb98ae34ffa300613caff3230dd3d9b5a6c5999",
+    "evidence": ["docs/evidence/phase-a-unit-node22.json", "docs/evidence/phase-a-ci-linux-page-bounds-all.json", "docs/evidence/phase-a-ci-linux-page-bounds-browser.json"],
+    "missing": "Native compilation/mail/rollback/restart/concurrency evidence, remaining Phase A matrices and named gate signoff. Stock G1/G7 and SQL-candidate SMTP failures remain strict."
+  },
+  "lastVerifiedCi": {
+    "run": "https://github.com/burggraf/trailbase-supabase/actions/runs/37133365644",
+    "commit": "f26efb70fa2db211c4c1ce44f05dfea1b8ad6795",
+    "sourceSha256": "5302a59c096507d8d1a1fe831fb98ae34ffa300613caff3230dd3d9b5a6c5999",
+    "conclusion": "failure; strict stock and SQL-candidate regressions preserved",
+    "fullStock": {"passed": 61, "failed": 4},
+    "unitCasesEachNode": 37,
+    "browserCases": 24,
+    "expiryCases": 2,
+    "candidateCharacterizationCases": 10,
+    "candidateSmtp": {"passed": 0, "failed": 1},
+    "migrationCases": 1,
+    "realScopes": 7,
+    "setupAndCleanup": "passed every scope"
+  },
+  "historicalPageBoundsSession": {
     "date": "2026-10-03T15:26:18.894Z",
     "sourceSha256": "5302a59c096507d8d1a1fe831fb98ae34ffa300613caff3230dd3d9b5a6c5999",
     "node": "v22.23.2",
@@ -1243,11 +1279,11 @@
   },
   "pendingWork": {
     "scope": "G1 recovery capability and migration restart/upgrade investigation",
-    "status": "Owned-depot preflight rollback passed on macOS/Linux. Completed gpt-6.1-sol assessment identifies the missing native pending-identity confirmation-redelivery path. The strengthened candidate SMTP case preserves one ID/password through alternate-password retry/resend, then strictly fails for missing real mail. Candidate characterization/browser controls passed. No fork, deployment, identity repair, repin or public follow-up approved; #299 remains closed.",
+    "status": "Owned-depot preflight rollback passed on macOS/Linux. The reservation-only candidate preserves one ID/password through retries/resend but still fails for missing mail. Following interview timeout, an isolated private native patch/disposable tests are authorized and a sole gpt-6.1-sol writer is preparing them. Existing resend throttling is unchanged. No deployment, maintained fork, identity repair, repin or public submission approved; #299 remains closed.",
     "g6DecisionInterview": "186fd6d9-0e51-4c33-a864-8e099ba8cd26: explicit approval to document native owner-only versus Supabase non-confidential DELETE keys; protected row values remain private",
     "g7Proof": "Four genuine response/JSON-stage terminal-revocation regressions reproduced stale-success restoration in the test-only coordinator. Cache clearing now centrally invalidates its epoch/flight; 18 real proofs, 24 browser cases, 2 expiry cases, 2 network controls and fault cleanup passed. Stock remains 58/4; Linux 5ba3e25 reproduced those results and all 24 browser cases. This does not patch the installed client or sign off a production strategy.",
-    "decisionInterview": "6f74221d-1b37-456b-af5d-261ea4372430: awaiting explicit G1 native prototype authority and G4 positive-offset/zero-limit policy; no answer inferred",
-    "queryBoundaries": "Raw probes found permissive reference invalid-limit behavior and 416/PGRST103 for positive-offset zero-width queries; ordinary no-count out-of-range pages succeed empty. Initial incorrect characterization assumptions are preserved; all five revised exact-observation pagination cases passed, with boundary/domain/browser/cleanup controls also passed. Full stock is 61/4. Future adapter input guards remain required.",
+    "decisionInterview": "6f74221d-1b37-456b-af5d-261ea4372430 timed out; follow-up user instruction authorized proceeding with the recommended bounded G1 private prototype and G4 adapter-generated range-error direction. This is not named gate signoff.",
+    "queryBoundaries": "Raw probes found permissive reference invalid-limit behavior and 416/PGRST103 for positive-offset zero-width queries; ordinary no-count out-of-range pages succeed empty. Initial assumption failures are preserved. Linux f26efb7 reproduced stock 61/4, 24 browsers and all setup/cleanup controls; candidate SMTP stays failed. The future adapter must expose an adapter-origin range error for effective positive offset plus zero limit, not fabricated native HTTP 416; input guards/implementation remain required.",
     "signoff": "none; both installed-client reports remain drafts; no further public reply authorized"
   },
   "historicalCi": {
@@ -1304,6 +1340,30 @@
     "requiredCapability": "Dedicated uniquely reserved pending-identity lookup and genuine confirmation redelivery without changing ID/password or widening shared verified-email lookup semantics",
     "limits": "Alternative-route and limiter/stale-link observations are source risks, not demonstrated exploits; no tests/backend operations performed by the subagent; no upstream patch, repin or public submission approved",
     "nextProof": "Strict candidate SMTP probe checks exactly one preserved ID/password through alternate-password retries and public resend, while still requiring genuine delivery/confirmation/original-password login"
+  },
+  "g1NativePrototypeDirection": {
+    "interview": "6f74221d-1b37-456b-af5d-261ea4372430",
+    "authority": "Follow-up user instruction after interview timeout; proceed with recommended bounded choices",
+    "scope": "Isolated private upstream source patch and disposable-backend tests only",
+    "baselineCommit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+    "status": "Three-file private draft; zero native tests executed at checkpoint. Missing pinned vendor prerequisite restored; same-protocol validation continuation running.",
+    "workflowRun": "e1906215-23e7-40ed-99a6-b7c72268084a",
+    "initialChildRun": "80c53128-8457-4d11-8e6a-5c2713ea7d45",
+    "childRun": "64e70186-2cf1-47b5-a7cf-def00fd39ec3",
+    "initialBlocker": "Cargo exit 101 before compilation: vendor/rmcp-openapi-minimal/Cargo.toml missing. Exact tracked gitlinks are now restored, not substituted.",
+    "partialPatchSha256": "4a149c73f1e35ebdce072b9338dc5935bd7c07790f8903da9f2dd1c22c2393e9",
+    "toolchain": "Existing Rust 1.95.0 for core's declared minimum; no global switch or installation",
+    "resumeControl": "Redundant model override rejected before launch; retry accepted with persisted gpt-6.1-sol contract",
+    "resendThrottle": "Unchanged; pinned-source four-hour failed-resend ceiling is not immediate-retry support",
+    "forbidden": ["deployment", "baseline repinning", "public submission", "identity repair", "permission weakening", "Phase B"],
+    "gateSignoff": false
+  },
+  "zeroWidthRangeDirection": {
+    "interview": "6f74221d-1b37-456b-af5d-261ea4372430",
+    "authority": "Follow-up user instruction after interview timeout; proceed with recommended bounded choices",
+    "policy": "Effective positive offset plus zero limit resolves data:null and an explicitly adapter-generated range error, matching reference failure category without claiming native HTTP 416",
+    "implementation": "not started; future adapter requirement only",
+    "gateSignoff": false
   },
   "realtimeLifetimeDirection": {
     "decisionSource": "Explicit user request to change the contract to TrailBase's intended behavior, following the answer on #299",

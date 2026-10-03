@@ -12,7 +12,7 @@ Read [RESEARCH.md](RESEARCH.md) for verified documentation/source observations a
 - `.from(apiName).select()` / `.select('*')` with awaited results containing `data` and `error`.
 - `.insert(oneRecord)`; `.update(values).eq(primaryKey, value)`; `.delete().eq(primaryKey, value)`. Default success has `data: null`; mutation `.select()` is unsupported.
 - Read predicates `.eq/.neq/.gt/.gte/.lt/.lte`, AND composition, declared scalar fields only. Null comparison must not be silently translated to equality; `.is()` is deferred.
-- `.order(column, { ascending })`, chained ordering over the approved non-null scalar domain; `.limit(n)` and inclusive `.range(from, to)` within the 1000-row initial cap.
+- `.order(column, { ascending })`, chained ordering over the approved non-null scalar domain; `.limit(n)` and inclusive `.range(from, to)` within the 1000-row initial cap. The approved positive-offset/zero-limit combination returns an explicitly adapter-generated range error in the query result, matching the reference failure category without claiming native HTTP 416.
 - Read `.single()` / `.maybeSingle()`; apply cardinality to the query's actual bounded result, never insert an implicit `.limit(1)`.
 - Email/password `.auth.signUp`, `.signInWithPassword`, `.getSession`, `.getUser`, `.refreshSession`, `.signOut` with global default and explicit local scope.
 - Supporting `.auth.onAuthStateChange()` for `INITIAL_SESSION`, `SIGNED_IN`, `TOKEN_REFRESHED`, `SIGNED_OUT`, with subscription cleanup. No recovery/OAuth/MFA events are promised.
@@ -99,7 +99,7 @@ Every package includes its tests in the same change. **No phase can be signed of
 3. Route update/delete only after exactly one valid primary-key equality predicate is known. Reject absent/non-key/additional/conflicting predicates, ordering/limits, and attempts to change the primary key. Never preflight a filtered write then ignore a race.
 4. Translate six filter operators using native structured filters and safe encoding. Keep multiple predicates on one column, including two bounds; reject unknown/hidden columns, null equality, nested syntax, NaN/Infinity, and unsafe numeric inputs.
 5. Translate approved chained sort directions. Reject unsupported nullable/reference/collation options; explicitly order fixture comparisons with a key tie-breaker.
-6. Map range to offset plus `to - from + 1`. Handle zero, reversed/negative/noninteger/unsafe bounds, maximum cap, offsets past the end, and repeated/mixed limit-range calls according to characterized behavior. No overfetching to simulate unlimited results.
+6. Map range to offset plus `to - from + 1`. Handle zero, reversed/negative/noninteger/unsafe bounds, maximum cap, offsets past the end, and repeated/mixed limit-range calls according to characterized behavior. After all setters, positive offset with zero limit resolves `data:null` and an explicitly adapter-generated range error; do not invent a native HTTP 416/status or hide the reference failure. Zero limit at offset zero and ordinary positive-width out-of-range pages remain empty under the verified authorization/query contract. No extra count/head request or whole-table fetch is needed.
 7. Apply `.single()` and `.maybeSingle()` after the query's filters/range/limit. Detect zero/one/many, including matches beyond TrailBase's default page. Preserve an explicit `.limit(1)` selected by the caller, but do not add one yourself.
 8. Add the data part of the shared browser example and comparisons against the official SDK before declaring a query method supported.
 
