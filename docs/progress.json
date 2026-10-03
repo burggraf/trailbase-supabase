@@ -672,13 +672,14 @@
   },
   "pendingWork": {
     "scope": "G7/S04 real-response hydration/refresh/logout races, owned persistent storage and fault handling; shared deadline regression",
-    "status": "27 unit passed; auth lifecycle 8 passed/2 strict native late-response failures; stream controls 3 passed/1 reference DELETE failure. Both cleanup passed. No implementation/signoff approval.",
+    "status": "Evidence/drafts pushed at 2c06309. Awaiting explicit investigation/compatibility direction via interview ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d; no SDK/deployment/gate signoff authorization inferred.",
     "process": null,
     "signoff": "none; G1/G6 blocked, native late auth responses under investigation",
     "drafts": [
       "docs/UPSTREAM_CLIENT_AUTH_ISSUE.md",
       "docs/UPSTREAM_CLIENT_STREAM_ISSUE.md"
-    ]
+    ],
+    "interviewId": "ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d"
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",
