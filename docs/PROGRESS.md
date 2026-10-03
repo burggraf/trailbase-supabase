@@ -37,6 +37,16 @@ This is a bounded installed-client characterization, not an SDK contract or broa
 
 G2/G4 remain in progress pending named contract approval, remaining matrices and eventual adapter/browser/security/type checks. Query page-bound arithmetic, unsupported date/BLOB/JSON/relation shapes and nullable/reference option rejection remain incomplete. No SDK implementation/signoff or G1 resolution is implied.
 
+## G5/G6 streaming follow-up — strict isolation blocker
+
+`npm run test:phase-a -- streaming` now includes the expanded parser and two-owner cases. [Stock Node 22 evidence](evidence/phase-a-stream-isolation-node22.json): **3 passed, 1 failed**; latest 26 unit cases passed and owned fixture cleanup passed. It is not a green streaming/security suite.
+
+- Native real UTF-8 INSERT/UPDATE/DELETE and two-owner isolation passed. Foreign INSERT/UPDATE/DELETE followed by own-event barriers did not appear in the owner reader; foreign direct read was denied. Both owners' final tables were empty. Reader cancellation completed; this does not prove every server-side stream resource/expiry condition.
+- Whole-frame replay preserved a captured Unicode payload; byte-fragmented replay still failed/lost events. Synthetic sequence metadata over captured real payloads produced one loss callback for a gap inside one transport chunk but **zero** for the same gap split into whole-frame chunks. The installed parser resets sequence tracking per transform invocation. Explicit synthetic loss status produced a callback. These are deterministic installed-parser observations, not actual network fragmentation/loss/expiry proof or a working fallback.
+- Reference basic own-row events and channel cleanup passed. In the strict two-owner test, INSERT/UPDATE own-event barriers and direct RLS invisibility passed, but the next DELETE event carried the **foreign owner's primary key**. Both owners' tables were empty and channel cleanup completed. The strict failure remains, including no leaked-row acceptance or event-discard workaround.
+
+G6 is blocked on an explicit payload/security compatibility decision. This is the pinned reference backend's DELETE limitation, **not a demonstrated native TrailBase owner-isolation failure**; never weaken native access rules to mimic it. No broad security/CVE claim is made. G5 still requires a reviewed transport fallback and real network/browser corpus. G6/G7 still require expiration, revocation, renewal, anonymous, storage/race and resource evidence. Maintainer signoff remains absent.
+
 [progress.json](progress.json) is the authoritative status/signoff ledger. Run `npm run progress` to see Phase A deliverables, missing checks, open gates, and ordered next steps. Read this file first after a restart, then the [implementation plan](LEVEL1_PLAN.md) and [test matrix](TEST_PLAN.md).
 
 ## Status and completion rules

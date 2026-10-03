@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "A \u2014 proof harness (in progress)",
+  "currentPhase": "A — proof harness (in progress)",
   "maintainer": "burggraf",
   "licenseDecision": {
     "license": "MIT",
@@ -136,13 +136,14 @@
         "docs/evidence/phase-a-auth-candidate-browser.json",
         "docs/evidence/phase-a-auth-stock-characterization.json",
         "docs/evidence/phase-a-auth-candidate-smtp.json",
-        "docs/evidence/phase-a-query-boundaries-node22.json"
+        "docs/evidence/phase-a-query-boundaries-node22.json",
+        "docs/evidence/phase-a-stream-isolation-node22.json"
       ],
       "missing": [
         "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
         "Remaining query page-bound/unsupported-shape matrices and G2/G4 approvals; initial scalar/builder boundaries locally observed",
         "SSE UTF-8/sequence/loss/network fragmentation cases",
-        "Owner/DELETE stream isolation and auth expiry",
+        "Resolve G6 reference DELETE key exposure; complete auth expiry/stream renewal (native owner isolation passed)",
         "Native hydration/refresh/logout races/storage cases",
         "Named G1-G7 contract decisions"
       ],
@@ -595,11 +596,12 @@
       "title": "Installed SSE transport selection",
       "status": "in-progress",
       "evidence": [
-        "docs/evidence/phase-a-all-node22.json"
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-stream-isolation-node22.json"
       ],
       "missing": [
-        "Captured-event byte fragmentation defect is confirmed; choose/review fallback",
-        "Remaining UTF-8/sequence/loss/real fragmentation/cancel corpus"
+        "Installed SSE byte-fragmentation and cross-chunk sequence-gap defects are confirmed; choose/review transport fallback, not implemented",
+        "Real network fragmentation/disconnect/backpressure/cancel/loss corpus and browser coverage remain incomplete; synthetic replays are parser-only"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -608,13 +610,15 @@
     {
       "id": "G6",
       "title": "Realtime payload and security limits",
-      "status": "in-progress",
+      "status": "blocked",
       "evidence": [
-        "docs/evidence/phase-a-all-node22.json"
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-stream-isolation-node22.json"
       ],
       "missing": [
-        "Approve CDC readiness/payload subset",
-        "Two-owner INSERT/UPDATE/DELETE isolation, expiration/revocation/renewal and resource checks"
+        "Reference two-owner DELETE delivers a foreign primary key despite owner RLS: strict regression preserved; maintainer must decide payload/security compatibility limits without weakening native access rules",
+        "Native two-owner INSERT/UPDATE/DELETE isolation passed locally; expiry/revocation/renewal/anonymous and full resource/browser/SDK layers remain incomplete",
+        "Approve CDC readiness and common payload subset; no feature/gate signoff inferred"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -637,26 +641,28 @@
     }
   ],
   "nextSteps": [
-    "Track trailbaseio/trailbase#298 and provide disposable upstream test feedback; keep stock/candidate auth regressions intact.",
-    "Continue G5/G6 stream isolation/fragmentation/loss/cancel/security checks, then G7 hydration/concurrent refresh/logout/storage races.",
-    "Complete remaining query page-bound/unsupported-shape matrices; request named G2/G4 decisions only after required evidence layers.",
-    "Resolve native pending-account SMTP recovery before recommending migration or approving G1; all G1-G7 approval precedes Phase B."
+    "Review G6 reference DELETE primary-key exposure and common payload/security contract; never weaken native access rules to reproduce it.",
+    "Choose/review installed SSE fallback for UTF-8 fragmentation and cross-chunk gap loss; real network/browser/expiry/resource checks remain required.",
+    "Continue G7 hydration/concurrent refresh/logout/storage/outage characterization; preserve G1/G6 failing regressions.",
+    "Track trailbaseio/trailbase#298; resolve native pending-account SMTP recovery before deployment recommendation/G1 approval; all gate review precedes Phase B."
   ],
   "lastSession": {
-    "date": "2026-10-03T02:18:40.517Z",
-    "sourceSha256": "5a2ba19f2ca5dc0a3f41eb6a95b943db38178e75da7dec9e2e00d38e0be3ba7c",
+    "date": "2026-10-03T02:28:30.709Z",
+    "sourceSha256": "d851868413ed1b5db9ae960bbbad78ad2e310db131f83c5aec68dabc8aa03151",
     "node": "v22.23.2",
-    "scope": "G2/G4 stock unsafe/null/order/builder subset, NOT complete Phase A or SDK verification",
+    "scope": "G5/G6 upstream parser/isolation subset, NOT complete Phase A/SDK security proof",
     "unitCases": 26,
-    "boundaryCases": 5,
+    "streamCases": {
+      "passed": 3,
+      "failed": 1
+    },
     "cleanup": "passed",
-    "ci": "Current-source remote run pending; complete foundation still blocked by G1"
+    "ci": "Current-source remote run pending; full foundation blocked by G1 and G6"
   },
   "pendingWork": {
-    "scope": "G2/G4/S02 installed-client unsafe scalar, null, ordering and builder boundaries on stock disposable backends",
-    "status": "26 unit and 5 real G2/G4 boundary cases passed on stock Node 22; cleanup passed. Results are upstream observations, not production validation or G2/G4 approval.",
+    "scope": "G5/G6/S07 installed SSE UTF-8/sequence/loss and strict two-owner INSERT/UPDATE/DELETE isolation",
+    "status": "26 unit passed; streaming 3 passed, 1 strict reference DELETE isolation failure. Native owner isolation/reader cleanup passed; parser UTF-8 fragmentation/cross-chunk gap defects remain. Cleanup passed; G6 blocked, no signoff.",
     "process": null,
-    "upstreamIssue": "https://github.com/trailbaseio/trailbase/issues/298",
-    "signoff": "none; stock G1 and candidate SMTP blockers unchanged"
+    "signoff": "none; G1 blocking regressions and all gate review requirements unchanged"
   }
 }
