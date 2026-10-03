@@ -84,7 +84,11 @@
         "docs/evidence/phase-a-native-expiry-node22.json",
         "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
         "docs/evidence/phase-a-expiry-default-browser-controls-node22.json",
-        "docs/evidence/phase-a-expiry-default-cleanup-node22.json"
+        "docs/evidence/phase-a-expiry-default-cleanup-node22.json",
+        "docs/evidence/phase-a-browser-proof-node22.json",
+        "docs/evidence/phase-a-browser-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-browser-proof-cleanup-node22.json",
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -119,7 +123,11 @@
         "docs/evidence/phase-a-native-expiry-node22.json",
         "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
         "docs/evidence/phase-a-expiry-default-browser-controls-node22.json",
-        "docs/evidence/phase-a-expiry-default-cleanup-node22.json"
+        "docs/evidence/phase-a-expiry-default-cleanup-node22.json",
+        "docs/evidence/phase-a-browser-proof-node22.json",
+        "docs/evidence/phase-a-browser-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-browser-proof-cleanup-node22.json",
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -163,7 +171,11 @@
         "docs/evidence/phase-a-native-expiry-node22.json",
         "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
         "docs/evidence/phase-a-expiry-default-browser-controls-node22.json",
-        "docs/evidence/phase-a-expiry-default-cleanup-node22.json"
+        "docs/evidence/phase-a-expiry-default-cleanup-node22.json",
+        "docs/evidence/phase-a-browser-proof-node22.json",
+        "docs/evidence/phase-a-browser-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-browser-proof-cleanup-node22.json",
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
       ],
       "missing": [
         "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
@@ -202,7 +214,11 @@
         "docs/evidence/phase-a-native-expiry-node22.json",
         "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
         "docs/evidence/phase-a-expiry-default-browser-controls-node22.json",
-        "docs/evidence/phase-a-expiry-default-cleanup-node22.json"
+        "docs/evidence/phase-a-expiry-default-cleanup-node22.json",
+        "docs/evidence/phase-a-browser-proof-node22.json",
+        "docs/evidence/phase-a-browser-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-browser-proof-cleanup-node22.json",
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -567,7 +583,8 @@
         "docs/evidence/phase-a-auth-candidate-browser.json",
         "docs/evidence/phase-a-auth-stock-characterization.json",
         "docs/evidence/phase-a-auth-candidate-smtp.json",
-        "docs/evidence/phase-a-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
       ],
       "missing": [
         "Candidate resolves duplicate confirmation in initial real characterization but is not approved/deployment-ready",
@@ -635,7 +652,9 @@
         "docs/evidence/phase-a-stream-isolation-node22.json",
         "docs/evidence/phase-a-stream-isolation-deadline-regression.json",
         "docs/evidence/phase-a-coordination-proofs-node22.json",
-        "docs/evidence/phase-a-expiry-default-proof-controls-node22.json"
+        "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-browser-proof-node22.json",
+        "docs/evidence/phase-a-browser-default-proof-controls-node22.json"
       ],
       "missing": [
         "Installed SSE byte-fragmentation and cross-chunk sequence-gap defects are confirmed; choose/review transport fallback, not implemented",
@@ -654,7 +673,8 @@
         "docs/evidence/phase-a-stream-isolation-node22.json",
         "docs/evidence/phase-a-stream-isolation-deadline-regression.json",
         "docs/evidence/phase-a-proof-full-stock-node22.json",
-        "docs/evidence/phase-a-native-expiry-node22.json"
+        "docs/evidence/phase-a-native-expiry-node22.json",
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
       ],
       "missing": [
         "Genuine native JWT expiry: ordinary protected HTTP denied but established stream delivered a newly written protected row; strict regression preserved under explicit short-native-auth fixture",
@@ -677,7 +697,10 @@
         "docs/evidence/phase-a-auth-lifecycle-initial-status-mismatch.json",
         "docs/evidence/phase-a-coordination-proofs-node22.json",
         "docs/evidence/phase-a-proof-full-stock-node22.json",
-        "docs/evidence/phase-a-expiry-default-proof-controls-node22.json"
+        "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-browser-proof-node22.json",
+        "docs/evidence/phase-a-browser-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
       ],
       "missing": [
         "Strict native late refresh/status after logout resurrects cached state: two actual-response regressions preserved; approved wrapper/upstream resolution required",
@@ -690,34 +713,33 @@
     }
   ],
   "nextSteps": [
-    "Continue real expiry/revocation/stream resource checks using explicitly labelled disposable fixture configuration; defaults and raw regressions unchanged.",
-    "Investigate genuine stream/network cancellation/fragmentation and browser proof execution; current byte-rechunking is post-HTTP, not TCP evidence.",
-    "Expand auth error/storage/account-switch/timer matrices before proposing any production coordinator; current proofs are test-only.",
-    "Keep both installed-client reports as drafts. Track server issue #298. G1/G6/G7 remain blocked pending resolutions and named review; no Phase B/deployment approval."
+    "Continue real HTTP framing/disconnect/cancellation/resource checks; browser byte-rechunking is still post-HTTP, not actual network fixture proof.",
+    "Keep native stream expiry, raw auth resurrection, reference DELETE exposure and both G1 regressions strict; source-linked proof successes do not repair baselines.",
+    "Investigate remaining auth/storage/timer/schema/page boundaries before proposing production adoption; no Phase B/deployment/gate approval.",
+    "Keep both installed-client reports as drafts; track server #298 and review native expiry semantics separately before any new issue submission."
   ],
   "lastSession": {
-    "date": "2026-10-03T03:39:36.017Z",
-    "sourceSha256": "4eef355069de62f966427eb06d3e765064a8a2acd2e0c1af16e2c1a55c32ec6d",
+    "date": "2026-10-03T03:54:26.746Z",
+    "sourceSha256": "b0e6e0d8e0ecc382729ea0c3433ec9328897e091dee09225ca20b42638969488",
     "node": "v22.23.2",
-    "scope": "Explicit native JWT-expiry profile plus default fixture controls, NOT reference/browser expiry or complete SDK proof",
+    "scope": "Three-browser proof execution and default/native stock controls; NOT SDK/application signoff",
     "unitCases": 36,
-    "expiry": {
-      "passed": 0,
-      "failed": 1,
-      "profile": "short-native-auth"
+    "browserCases": 9,
+    "proofCases": 8,
+    "fullStock": {
+      "passed": 43,
+      "failed": 5
     },
-    "defaultProofCases": 8,
-    "browserCases": 6,
-    "cleanup": "passed for every scope",
-    "ci": "New always-run expiry/cleanup steps implemented; not remote verified yet"
+    "setupStage": "ready",
+    "cleanup": "passed for every run",
+    "ci": "Historical 69ce78c Linux unit jobs 35 each passed, full stock 43/5; current browser/expiry expansion pending remote CI"
   },
   "pendingWork": {
-    "scope": "G6 genuine wall-clock expiry and default-profile fixture controls",
-    "status": "36 unit, 8 default proof, 6 default browser infrastructure and cleanup controls passed; one strict short-profile native expiry failure (continued protected-row delivery after ordinary HTTP denial). Defaults unchanged; no gate signoff.",
+    "scope": "G5/G7 actual three-browser proof modules / constant-valued setup-stage diagnostics",
+    "status": "36 unit, 9 actual browser infrastructure/proof cases, 8 native proofs and cleanup passed. Full stock suite remains 43 passed/5 strict failed. Initial build setup failure preserved/corrected; no test assertions weakened.",
     "process": null,
     "authorizationInterview": "ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d",
-    "upstream": "Both installed-client reports remain drafts; no new submission authorization",
-    "signoff": "none"
+    "signoff": "none; G1/G6/G7 raw regressions plus native real-expiry failure unchanged; both client reports still drafts"
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",
@@ -731,5 +753,14 @@
       "docs/evidence/phase-a-ci-linux-unit22-stream-blockers.json",
       "docs/evidence/phase-a-ci-linux-unit24-stream-blockers.json"
     ]
+  },
+  "historicalCiProofs": {
+    "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37092902157",
+    "commit": "69ce78c05ca6fcc2e64a5a386793c7206c39aeb1",
+    "unitNode22": "35 passed",
+    "unitNode24": "35 passed",
+    "real": "43 passed/5 failed, cleanup passed; full browser stage not reached",
+    "evidence": "docs/evidence/phase-a-ci-linux-proof-stock.json",
+    "scope": "Previous proof hash, before expiry/profile/browser expansion; not current-source verification"
   }
 }

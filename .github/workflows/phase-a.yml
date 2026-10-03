@@ -51,6 +51,9 @@ jobs:
       - name: Explicit short-lived native auth fixture / real expiry
         if: always()
         run: npm run test:phase-a -- expiry
+      - name: Three-browser isolated proof / infrastructure controls
+        if: always()
+        run: npm run test:phase-a -- browser
       - run: npm run test:cleanup
         if: always()
       # Whitelisted summaries only. Raw .runtime reports/logs/mail contain secrets and MUST NOT be uploaded.

@@ -90,7 +90,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
   const origins = ['API_PORT','MAIL_PORT','TRAIL_PORT'].map(key => `http://127.0.0.1:${ports[key]}`);
   const childEnv = { ...process.env };
   for (const key of Object.keys(childEnv)) if (key.startsWith('SUPABASE_') || key.startsWith('TRAILBASE_')) delete childEnv[key];
-  const context = { id, project, directory, origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, authVariant: authMitigation ? 'candidate-email-reservation' : 'stock' };
+  const context = { id, project, directory, setupStage:'created', origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, authVariant: authMitigation ? 'candidate-email-reservation' : 'stock' };
   const ownerRecord = { id, project, nativeAuthProfile, authVariant:context.authVariant, runnerPid: process.pid, trailPid: null };
   await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
   let trail, log;
@@ -137,6 +137,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await rm(resolve(directory, 'context.json'), { force: true });
   }
   async function start() {
+    context.setupStage='config-and-binaries';
     const { stdout: dockerHost } = await exec('docker', ['context', 'inspect', '--format', '{{.Endpoints.docker.Host}}']);
     if (process.env.DOCKER_HOST && !process.env.DOCKER_HOST.startsWith('unix://') || !dockerHost.trim().startsWith('unix://')) {
       throw new Error('Fixture requires a local Unix-socket Docker daemon');
@@ -150,14 +151,17 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     const { stdout: trailVersion } = await exec(binary, ['--version']);
     if (!trailVersion.includes(baseline.trailbase.version)) throw new Error('TrailBase version drift');
     console.log('Starting disposable Supabase (first run may download images)...');
+    context.setupStage='supabase-start';
     startAttempted = true;
     await exec('docker',['network','create','--driver','bridge','--opt','com.docker.network.bridge.host_binding_ipv4=127.0.0.1','--label',`trailbase-supabase.run=${id}`,`supabase_network_${project}`]);
     await command(['start', '--exclude', 'studio,postgres-meta,storage-api,imgproxy,edge-runtime,logflare,vector,supavisor'], 'start');
+    context.setupStage='supabase-status-and-mail';
     const status = JSON.parse(await command(['status', '-o', 'json'], 'status'));
     context.anonKey = status.ANON_KEY ?? status.api?.anon_key ?? status.api?.publishable_key;
     if (typeof context.anonKey !== 'string') throw new Error('Missing ordinary local Supabase client key');
     if (status.API_URL && assertLocalUrl(status.API_URL, origins).origin !== context.supabaseUrl) throw new Error('Fixture origin mismatch');
     await waitReady(`${context.mailUrl}/api/v1/messages`, 10000);
+    context.setupStage='native-config-and-proof-build';
     const depot = resolve(directory, 'traildepot');
     await cp(resolve('tests/fixtures/trailbase'), depot, { recursive: true });
     if (authMitigation) await cp(resolve('tests/fixtures/auth-mitigation/U1790991000__reserve_auth_email.sql'),resolve(depot,'migrations/main/U1790991000__reserve_auth_email.sql'));
@@ -166,6 +170,13 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await mkdir(publicDirectory);
     await writeFile(resolve(publicDirectory, 'index.html'), '<!doctype html><html lang="en"><meta charset="utf-8"><title>Phase A verification complete</title><main><h1>Verification complete</h1><p>Sign in explicitly.</p></main></html>');
     await writeFile(resolve(publicDirectory, 'phase-a-owner.txt'), id);
+    // Only test-only, type-erased proof modules are served; no production SDK/package build.
+    try {
+      await exec(resolve('node_modules/.bin/tsc'), ['--ignoreConfig','tests/proofs/native-sse.ts','tests/proofs/auth-coordination.ts','--target','ES2022','--module','ES2022','--moduleResolution','bundler','--skipLibCheck','--outDir',resolve(publicDirectory,'proofs')],{env:childEnv,timeout:30000});
+    } catch(error) {
+      await writeFile(resolve(directory,'proof-build-private.log'),String(error.stdout??'')+String(error.stderr??''),{mode:0o600});
+      throw new Error('Phase A browser proof build failed; inspect private diagnostics');
+    }
     log = await open(resolve(directory, 'trail.log'), 'w', 0o600);
     trail = spawn(binary, ['--depot', depot, 'run', '--address', `127.0.0.1:${ports.TRAIL_PORT}`, '--admin-address', `127.0.0.1:${ports.ADMIN_PORT}`, '--public-dir', publicDirectory, '--runtime-threads', '2'], {
       env: childEnv, stdio: ['ignore', log.fd, log.fd]
@@ -173,10 +184,12 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     trail.on('error', () => {}); // Attach before awaiting I/O; waitReady reports failure without dumping private logs.
     ownerRecord.trailPid = trail.pid ?? null;
     await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
+    context.setupStage='native-health';
     await waitReady(`${context.trailUrl}/api/healthcheck`, 30000, trail);
     const marker = await fetch(`${context.trailUrl}/phase-a-owner.txt`,{signal:AbortSignal.timeout(5000)});
     if (!marker.ok || await marker.text() !== id) throw new Error('Native fixture origin ownership mismatch');
     await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
+    context.setupStage='verify-image-digests';
     const { stdout: names } = await exec('docker', ['ps', '--format', '{{.Names}}', '--filter', `name=_${project}$`]);
     const containers = [];
     for (const name of names.trim().split('\n').filter(Boolean)) {
@@ -189,6 +202,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
       containers.push({ service: name.replace(`_${project}`, ''), image, imageId, repoDigests: JSON.parse(digests), publishedPorts });
     }
     verifyImages(containers, JSON.parse(await readFile('tests/fixtures/service-images.json','utf8')));
+    context.setupStage='ready';
     return { ...context, containers, trailVersion: trailVersion.trim(), cliVersion: version.trim() };
   }
   return { context, start, cleanup };

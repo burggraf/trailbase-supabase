@@ -27,6 +27,12 @@ This is not a transparent patch to the installed native client: raw `initClient`
 
 The intended direction is **never** to weaken native read rules to mimic reference DELETE key exposure. Native owner isolation remains required; DELETE payload projection must retain only declared keys. The reference two-owner DELETE failure stays visible as an unapproved compatibility/security limitation. This direction does not certify a channel implementation or release exception.
 
+## Browser execution and setup diagnostics
+
+The fixture compiles only the two type-erased proof modules with the already pinned TypeScript tool and serves them from its owned loopback public directory. Browser cases dynamically import those modules, exercise genuine Unicode SSE/write/delete/abort plus late-refresh/logout guards, and return boolean postconditions—not credentials/session bodies. Chromium/Firefox/WebKit each run the proof case alongside existing real confirmation/login infrastructure tests. This is proof browser execution, not complete SDK/application E2E or a package build.
+
+Sanitized reports include a constant-valued setup checkpoint (`created`, config/binaries, Supabase start/status/mail, native proof build/health, image verification, ready) so a setup failure is not mistaken for an auth assertion. Raw bodies, logs and error messages remain private. Standalone browser, explicit expiry and fault-cleanup CI steps run even when default stock regressions fail; the job stays red when any required scope fails.
+
 ## Explicit real-expiry fixture
 
 `npm run test:phase-a -- expiry` alone selects the owned `short-native-auth` profile, injecting a 3-second native JWT TTL into a fresh depot. Owner/context/report metadata retain the profile and `authVariant`; unknown/ambiguous profile inputs fail. Default and mitigation fixture lifetimes stay unchanged. Supabase configuration is not shortened and no reference expiry parity is claimed.
