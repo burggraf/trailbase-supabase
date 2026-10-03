@@ -45,6 +45,10 @@ The real candidate SMTP-outage probe still fails: after restored SMTP, a healthy
 
 A uniqueness constraint does not roll back an account when SMTP fails, generate a missing verification email, or fix a native resend lookup. Investigation must verify initial failure, no session/protected access, an actual healthy delivery control, resend/retry, confirmation, and login—not just a successful signup response. If the candidate still fails recovery, G1 remains blocked; do not pre-verify an email, synthesize a session, or delete an account from SDK code.
 
+The strict candidate SMTP probe now snapshots the genuine stranded identity's ID/password hash after the first HTTP 424. Retries with a different password and public resend must preserve exactly one unchanged pending identity. Real delivery, confirmation of that same identity and login with the original password remain required; preserved rows or opaque resend success cannot make the recovery case green. CI executes candidate characterization and the strict candidate SMTP regression separately from stock checks; a candidate failure keeps the job red.
+
+Read-only source review found no identity-preserving recovery through the inspected stock public APIs: the needed native capability is a dedicated pending-identity confirmation-redelivery path, without widening shared verified-email lookups used by login/reset/OTP. Reservation SQL alone cannot invoke Rust mail sending. Confirmation's signed-identity binding, resend-failure throttling and stale-link/address-reuse safety need real regression evidence; these source risks are not exploit/severity claims.
+
 Email-change, OAuth/anonymous promotion, address release/reuse, races, restart persistence, existing-depot upgrades and future native migrations need regression review before recommending this deployment requirement. Existing native security rules and schema invariants remain authoritative. No broader auth compatibility is inferred from the email/password candidate.
 
 Current results, blockers and approval state are in [progress.json](progress.json) and the [restart guide](PROGRESS.md).

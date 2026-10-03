@@ -38,6 +38,8 @@ The first release will target a deliberately small subset:
 
 TrailBase SSE authentication is connection-scoped: a valid token establishes a stream, and access lasts for that connection's lifetime even after token expiry. New connections require valid credentials. Logout/teardown must cancel local subscriptions; that is not server-side revalidation or full Supabase authorization parity.
 
+DELETE event payloads are limited to primary keys. TrailBase keeps owner-only delivery; Supabase may deliver another owner's DELETE key even when ordinary row reads are denied. Primary-key confidentiality is **not portable**; protected row values must remain private. No permissions are weakened to reproduce this difference.
+
 See [PLAN.md](PLAN.md) for scope and future levels, and the [detailed Level 1 plan](docs/LEVEL1_PLAN.md) for the researched contract and implementation sequence.
 
 ## Verification is part of every feature

@@ -51,6 +51,11 @@ jobs:
       - name: Explicit short-lived native auth fixture / real expiry
         if: always()
         run: npm run test:phase-a -- expiry
+      - name: Investigational candidate signup / strict SMTP recovery
+        if: always()
+        run: |
+          npm run test:phase-a -- characterization --auth-mitigation
+          npm run test:phase-a -- smtp --auth-mitigation
       - name: Existing owned-depot auth migration preflight rollback
         if: always()
         run: npm run test:phase-a -- auth-migration

@@ -146,7 +146,7 @@
         "docs/evidence/phase-a-ci-linux-client-deadline-lifecycle.json"
       ],
       "missing": [
-        "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
+        "Full foundation remains blocked by G1 native confirmation/recovery and G7 native auth-state races; G6 backend differences are explicitly approved but complete SDK/lifecycle/resource evidence is still missing",
         "Named maintainer review"
       ],
       "reviewer": null,
@@ -238,7 +238,7 @@
         "docs/evidence/phase-a-ci-linux-client-deadline-lifecycle.json"
       ],
       "missing": [
-        "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
+        "Full foundation remains blocked by G1 native confirmation/recovery and G7 native auth-state races; G6 backend differences are explicitly approved but complete SDK/lifecycle/resource evidence is still missing",
         "Named maintainer review"
       ],
       "reviewer": null,
@@ -342,7 +342,7 @@
         "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
         "Remaining query page-bound/unsupported-shape matrices and G2/G4 approvals; initial scalar/builder boundaries locally observed",
         "SSE UTF-8/sequence/loss/network fragmentation cases",
-        "Resolve G6 reference DELETE key exposure and complete channel lifecycle/resource checks; connection-scoped stream expiry behavior is accepted (native owner isolation passed)",
+        "Verify approved G6 backend differences with exact key-only DELETE payloads; complete CDC readiness, channel lifecycle and resource checks (native owner isolation remains required)",
         "Resolve G7 native late-response/logout resurrection and complete browser/timer/expiry/storage-race matrix",
         "Named G1-G7 contract decisions"
       ],
@@ -437,7 +437,7 @@
         "docs/evidence/phase-a-ci-linux-client-deadline-lifecycle.json"
       ],
       "missing": [
-        "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
+        "Full foundation remains blocked by G1 native confirmation/recovery and G7 native auth-state races; G6 backend differences are explicitly approved but complete SDK/lifecycle/resource evidence is still missing",
         "Named maintainer review; future SDK-wide gates remain explicitly incomplete"
       ],
       "reviewer": null,
@@ -811,12 +811,17 @@
         "docs/evidence/phase-a-deadline-full-stock-node22.json",
         "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
         "docs/evidence/phase-a-owned-depot-preflight-node22.json",
-        "docs/evidence/phase-a-migration-full-stock-node22.json"
+        "docs/evidence/phase-a-migration-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-owned-preflight-migration.json",
+        "docs/evidence/phase-a-smtp-identity-candidate-characterization-node22.json",
+        "docs/evidence/phase-a-smtp-identity-candidate-regression-node22.json",
+        "docs/evidence/phase-a-smtp-identity-candidate-browser-node22.json",
+        "docs/evidence/phase-a-smtp-identity-full-stock-node22.json"
       ],
       "missing": [
         "Candidate resolves duplicate confirmation in initial real characterization but is not approved/deployment-ready",
         "Candidate SMTP recovery remains blocked: native resend cannot find pending identities",
-        "Native existing-depot preflight refusal/row-schema-history preservation passed locally; stopped-server restart, successful upgrade, backup restore, concurrent writes, wider auth lifecycle and remaining G1 approval/test layers are incomplete"
+        "Native existing-depot preflight refusal/row-schema-history preservation passed on macOS and Linux; stopped-server restart, successful upgrade, backup restore, concurrent writes, wider auth lifecycle and remaining G1 approval/test layers are incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -911,7 +916,7 @@
     {
       "id": "G6",
       "title": "Realtime payload and security limits",
-      "status": "blocked",
+      "status": "in-progress",
       "evidence": [
         "docs/evidence/phase-a-all-node22.json",
         "docs/evidence/phase-a-stream-isolation-node22.json",
@@ -935,17 +940,20 @@
         "docs/evidence/phase-a-ci-linux-client-deadline-expiry.json",
         "docs/evidence/phase-a-connection-lifetime-node22.json",
         "docs/evidence/phase-a-ci-linux-connection-lifetime-expiry.json",
-        "docs/evidence/phase-a-migration-expiry-controls-node22.json"
+        "docs/evidence/phase-a-migration-expiry-controls-node22.json",
+        "docs/evidence/phase-a-approved-delete-streaming-node22.json",
+        "docs/evidence/phase-a-approved-delete-expiry-node22.json",
+        "docs/evidence/phase-a-approved-delete-full-stock-node22.json"
       ],
       "missing": [
-        "Reference two-owner DELETE delivers a foreign primary key despite owner RLS: strict regression preserved; decide payload/security compatibility limits without weakening native access rules",
+        "Approved DELETE difference passed all four local streaming cases: native owner-only delivery and reference exact key-only DELETE payloads. Current-source Linux and broader browser/SDK payload checks remain pending; historical stricter-key failures remain unchanged.",
         "Broader browser/SDK channel lifecycle, logout cancellation, CDC readiness, loss/reconnect and resource-cleanup matrices remain incomplete",
         "Approve the common payload subset and document the connection-scoped authorization limitation; no feature/gate signoff inferred"
       ],
       "reviewer": null,
       "reviewedAt": null,
       "reviewedSourceSha256": null,
-      "proposedDirection": "Adopt TrailBase's connection-scoped authorization as the contract: auth is checked at stream establishment and remains valid for that connection's lifetime; an expired token cannot open a new stream. This removes JWT expiry as a G6 blocker, not the independent reference DELETE-key exposure or other missing checks; no gate signoff."
+      "proposedDirection": "Explicitly approved connection-scoped authorization and native owner-only versus Supabase key-only foreign DELETE visibility. Neither expiry nor the documented DELETE-key difference is a contract blocker now; broader payload/lifecycle/resource verification and full G6 signoff remain pending. Never weaken native owner rules or expose protected row values."
     },
     {
       "id": "G7",
@@ -996,7 +1004,7 @@
     "#299 is closed after upstream clarified connection-scoped stream authorization; #298 (signup recovery) remains open. Keep both installed-client reports as drafts.",
     "Resolve G1 recovery before any migration proposal: duplicate pending confirmation and SMTP retry/pending-account lookup remain broken; experimental reservation migration still fails recovery and existing-depot/upgrade/concurrency paths need characterization.",
     "Resolve G7 lifecycle contract: native late refresh/status can restore state after logout, forced refresh is not single-flight, and logout hides transport failure. Retain raw failures and require named maintainer decisions before a production strategy.",
-    "Resolve remaining G6 boundaries: reference DELETE exposes a foreign primary key. Do not weaken native owner rules; decide acceptable payload/security limits and finish connection-lifetime, logout/resource and channel matrices.",
+    "Complete G6 verification under approved backend differences: require native owner-only delivery and reference key-only DELETE visibility, then finish payload/CDC-readiness/connection-lifetime/logout/resource matrices. No gate signoff yet.",
 
     "Finish G2-G4 matrices (invalid/page-bound arithmetic, exact-count/head semantics, date/BLOB/JSON/relation filters, call-order/null/collation, mutation errors) and obtain named signoff for every G1-G7 gate.",
     "Complete migration existing-depot/restart/reuse/concurrency/OAuth/anonymous safety, current-source CI/evidence and remaining Phase A release checks before considering Phase B. No public SDK or gate is approved."
@@ -1026,6 +1034,51 @@
     "missing": "Complete SDK lifecycle/resource layers; no gate signoff; this evidence predates the migration-source changes"
   },
   "lastSession": {
+    "date": "2026-10-03T14:29:36.384Z",
+    "sourceSha256": "b0b97c2acd6aca95f2ddd192ddd689063395b7efee57995c6086b78b3f125278",
+    "node": "v22.23.2",
+    "scope": "Explicitly approved native owner-only versus reference key-only foreign DELETE contract and strengthened candidate SMTP identity oracle",
+    "unitCases": 37,
+    "streamingCases": 4,
+    "expiryCases": 2,
+    "candidateCharacterizationCases": 10,
+    "candidateBrowserCases": 12,
+    "candidateSmtp": { "passed": 0, "failed": 1, "meaning": "identity-preservation assertions precede strict missing-mail failure; no recovery claim" },
+    "fullStock": { "passed": 54, "failed": 4 },
+    "checks": "npm run check passed",
+    "cleanup": "passed every scope; strict setup verification passed",
+    "evidence": [
+      "docs/evidence/phase-a-approved-delete-streaming-node22.json",
+      "docs/evidence/phase-a-approved-delete-expiry-node22.json",
+      "docs/evidence/phase-a-approved-delete-candidate-characterization-node22.json",
+      "docs/evidence/phase-a-approved-delete-candidate-smtp-node22.json",
+      "docs/evidence/phase-a-approved-delete-candidate-browser-node22.json",
+      "docs/evidence/phase-a-approved-delete-cleanup-node22.json",
+      "docs/evidence/phase-a-approved-delete-full-stock-node22.json"
+    ],
+    "missing": "Current-source Linux CI; G1 native recovery and G7 installed-client races remain strict/red; complete matrices and named gate signoff"
+  },
+  "historicalSmtpIdentitySession": {
+    "date": "2026-10-03T14:12:59.629Z",
+    "sourceSha256": "4ffb81a8c0d70cd9e8252c3cb5ea03cbfe789f0d8f4eb5dc9324d952451901b2",
+    "node": "v22.23.2",
+    "scope": "Strict candidate SMTP identity/password preservation through different-password retry and public resend, NOT a recovery fix",
+    "unitCases": 37,
+    "candidateCharacterizationCases": 10,
+    "candidateBrowserCases": 12,
+    "candidateSmtp": { "passed": 0, "failed": 1, "meaning": "unchanged identity assertions reached missing-mail failure; real confirmation/login still required" },
+    "fullStock": { "passed": 53, "failed": 5 },
+    "cleanup": "passed every scope",
+    "evidence": [
+      "docs/evidence/phase-a-smtp-identity-candidate-characterization-node22.json",
+      "docs/evidence/phase-a-smtp-identity-candidate-regression-node22.json",
+      "docs/evidence/phase-a-smtp-identity-candidate-browser-node22.json",
+      "docs/evidence/phase-a-smtp-identity-cleanup-node22.json",
+      "docs/evidence/phase-a-smtp-identity-full-stock-node22.json"
+    ],
+    "missing": "SMTP-identity-source Linux CI; native pending-account redelivery capability and complete gate decisions; no signoff"
+  },
+  "historicalMigrationSession": {
     "date": "2026-10-03T13:53:15.859Z",
     "sourceSha256": "df17abcd53552d37031afa6559c2bdd2849307e3c4f719084b161cfd61483f73",
     "node": "v22.23.2",
@@ -1043,7 +1096,19 @@
       "docs/evidence/phase-a-migration-cleanup-node22.json",
       "docs/evidence/phase-a-migration-full-stock-node22.json"
     ],
-    "missing": "Migration-source Linux CI; successful upgrade/restart/concurrency/backup restore and safe SMTP recovery; no gate signoff"
+    "ci": {
+      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37127961064",
+      "commit": "58d9812",
+      "scope": "Migration-preflight source, before strengthened SMTP identity oracle",
+      "migrationCases": 1,
+      "unitNode22": 37,
+      "unitNode24": 37,
+      "expiryCases": 2,
+      "browserCases": 12,
+      "fullStock": { "passed": 53, "failed": 5 },
+      "cleanup": "passed all five scopes; job correctly red"
+    },
+    "missing": "Successful upgrade/restart/concurrency/backup restore and safe SMTP recovery; no gate signoff; this evidence predates the SMTP-identity source"
   },
   "historicalClientDeadlineSession": {
     "date": "2026-10-03T06:00:21.920Z",
@@ -1086,7 +1151,8 @@
   },
   "pendingWork": {
     "scope": "G1 recovery capability and migration restart/upgrade investigation",
-    "status": "Owned-depot preflight rollback passed; failed native initializer preserved all user rows/schema/history. gpt-6.1-sol read-only investigation is checking safe recovery feasibility under the unchanged no-fork/no-identity-repair constraints. No policy deployed, no stock/candidate relabelling. #299 closed and connection-scoped expiry behavior accepted.",
+    "status": "Owned-depot preflight rollback passed on macOS/Linux. Completed gpt-6.1-sol assessment identifies the missing native pending-identity confirmation-redelivery path. The strengthened candidate SMTP case preserves one ID/password through alternate-password retry/resend, then strictly fails for missing real mail. Candidate characterization/browser controls passed. No fork, deployment, identity repair, repin or public follow-up approved; #299 remains closed.",
+    "g6DecisionInterview": "186fd6d9-0e51-4c33-a864-8e099ba8cd26: explicit approval to document native owner-only versus Supabase non-confidential DELETE keys; protected row values remain private",
     "signoff": "none; both installed-client reports remain drafts; no further public reply authorized"
   },
   "historicalCi": {
@@ -1129,10 +1195,25 @@
       "meaning": "Authentication checked at connection establishment; access expected for stream lifetime. Lifecycle definition requested before server changes."
     }
   },
+  "deleteSecurityDirection": {
+    "approvalInterview": "186fd6d9-0e51-4c33-a864-8e099ba8cd26",
+    "selection": "Document the backend difference: native owner-only DELETE; Supabase DELETE primary keys are not confidential. Keep protected row values private.",
+    "scope": "Approved contract boundary only, not G6 feature/gate signoff, deployment or permission weakening. Preserve historical failure reports; updated reference assertions require both expected keys and no protected old/new row fields."
+  },
+  "g1RecoveryAssessment": {
+    "kind": "Read-only source assessment, not runtime proof or signoff",
+    "model": "openai-codex/gpt-6.1-sol",
+    "runId": "0709b1c4-21ba-4df2-afc9-33045617e20c",
+    "pinnedCommit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+    "conclusion": "Reservation prevents new ambiguity but cannot send confirmation mail from Rust's failed-insert branch. Public resend selects only verified email, so the genuine pending identity has no inspected public identity-preserving redelivery path.",
+    "requiredCapability": "Dedicated uniquely reserved pending-identity lookup and genuine confirmation redelivery without changing ID/password or widening shared verified-email lookup semantics",
+    "limits": "Alternative-route and limiter/stale-link observations are source risks, not demonstrated exploits; no tests/backend operations performed by the subagent; no upstream patch, repin or public submission approved",
+    "nextProof": "Strict candidate SMTP probe checks exactly one preserved ID/password through alternate-password retries and public resend, while still requiring genuine delivery/confirmation/original-password login"
+  },
   "realtimeLifetimeDirection": {
     "decisionSource": "Explicit user request to change the contract to TrailBase's intended behavior, following the answer on #299",
     "supersedesInterview": "157455ba-1c16-460a-86f8-cd1ce3598087",
     "selection": "Use connection-scoped authentication: check credentials at establishment; retain access for that stream's lifetime, including after JWT expiry; reject new connections with expired tokens",
-    "scope": "The earlier server-side revalidation requirement is superseded. Expiry is no longer a G6 blocker; historical failing evidence is retained as characterization, and client-side deadline cancellation is not server enforcement. G6 remains blocked by independent payload/security and missing test/signoff requirements."
+    "scope": "The earlier server-side revalidation requirement is superseded. Expiry is no longer a G6 blocker; historical failing evidence is retained as characterization, and client-side deadline cancellation is not server enforcement. G6 remains in progress: the DELETE-key backend difference is separately approved, but complete payload/lifecycle/resource evidence and named signoff remain pending."
   }
 }

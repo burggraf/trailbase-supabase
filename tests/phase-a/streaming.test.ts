@@ -141,7 +141,7 @@ describe('L1-27 G5/G6 streaming characterization (not full SDK/security signoff)
       expect((await api.list()).records).toEqual([]); expect((await foreign.list()).records).toEqual([]);
     } finally {await reader.cancel(); expect((await reader.read()).done).toBe(true); reader.releaseLock();}
   });
-  it('G6/S07 reference two-owner INSERT/UPDATE/DELETE isolation must not expose foreign primary keys',async()=>{
+  it('G6/S07 reference two-owner INSERT/UPDATE isolation and approved key-only foreign DELETE visibility',async()=>{
     const owner=await confirmedSupabaseUser(env,'isolation-owner'),other=await confirmedSupabaseUser(env,'isolation-other');
     const ownId=randomUUID(),foreignId=randomUUID();
     const queue: {eventType:string;new:Record<string,unknown>;old:Record<string,unknown>}[]=[];
@@ -171,10 +171,11 @@ describe('L1-27 G5/G6 streaming characterization (not full SDK/security signoff)
       const ownerRows=await owner.client.from('todos').select('*'),otherRows=await other.client.from('todos').select('*');
       expect(ownerRows.error).toBeNull();expect(otherRows.error).toBeNull();
       expect(ownerRows.data).toEqual([]);expect(otherRows.data).toEqual([]);
-      event=await take();expect(event.eventType).toBe('DELETE');expect(event.old.id).toBe(ownId);
-      expect(Object.keys(event.old)).toEqual(['id']);
-      // Give any second queued CDC message a bounded observation window; no event is discarded.
-      await new Promise<void>(yes=>setTimeout(yes,300));
+      // Supabase DELETE keys are explicitly non-confidential; protected row values remain forbidden.
+      for(const expectedId of [foreignId,ownId]) {
+        event=await take();expect(event.eventType).toBe('DELETE');
+        expect(event.old).toEqual({id:expectedId});expect(event.new).toEqual({});
+      }
       expect(queue).toEqual([]);
     } finally {
       expect(await deadline(owner.client.removeChannel(channel))).toBe('ok');

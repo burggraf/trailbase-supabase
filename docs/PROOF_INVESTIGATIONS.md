@@ -9,7 +9,7 @@ The maintainer selected these investigations in interview `ab54f7fd-4ad9-4a45-8b
 - Isolated auth epoch/single-flight proof using genuine native responses.
 - Keep both installed-client upstream reports as drafts; no submission authorized.
 
-This is not final G5/G6/G7 approval, deployment permission, Phase B implementation or SDK signoff. Remaining installed-client and reference isolation regressions stay strict; native established-stream access after JWT expiry is now the documented connection-scoped behavior, not a failure against contract. No gateway, fork, production SDK, fake auth response or fabricated Supabase session is introduced.
+This is not final G5/G6/G7 approval, deployment permission, Phase B implementation or SDK signoff. Remaining installed-client auth and signup regressions stay strict. Native established-stream access after JWT expiry is documented connection-scoped behavior; Supabase key-only foreign DELETE visibility is now an explicitly approved backend difference. Historical failing evidence remains unchanged. No gateway, fork, production SDK, fake auth response or fabricated Supabase session is introduced.
 
 ## Streaming proof
 
@@ -31,7 +31,7 @@ Additional bounded proof cases revoke the proof's actual native refresh credenti
 
 ## Security direction
 
-The intended direction is **never** to weaken native read rules to mimic reference DELETE key exposure. Native owner isolation remains required; DELETE payload projection must retain only declared keys. The reference two-owner DELETE failure stays visible as an unapproved compatibility/security limitation. This direction does not certify a channel implementation or release exception.
+**Never** weaken native read rules to mimic reference DELETE key exposure. Native owner isolation remains required; DELETE payload projection retains only declared keys. The maintainer explicitly approved documenting Supabase foreign DELETE-key visibility in interview `186fd6d9-0e51-4c33-a864-8e099ba8cd26`. The reference case now requires both expected keys and no protected old/new row fields; historical stricter-key failures stay visible. This contract decision does not certify a channel implementation or full G6 signoff.
 
 ## Browser execution and setup diagnostics
 
