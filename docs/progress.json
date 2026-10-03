@@ -88,7 +88,10 @@
         "docs/evidence/phase-a-browser-proof-node22.json",
         "docs/evidence/phase-a-browser-default-proof-controls-node22.json",
         "docs/evidence/phase-a-browser-proof-cleanup-node22.json",
-        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-real-http-network-node22.json",
+        "docs/evidence/phase-a-network-browser-controls-node22.json",
+        "docs/evidence/phase-a-network-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -127,7 +130,10 @@
         "docs/evidence/phase-a-browser-proof-node22.json",
         "docs/evidence/phase-a-browser-default-proof-controls-node22.json",
         "docs/evidence/phase-a-browser-proof-cleanup-node22.json",
-        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-real-http-network-node22.json",
+        "docs/evidence/phase-a-network-browser-controls-node22.json",
+        "docs/evidence/phase-a-network-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -175,7 +181,10 @@
         "docs/evidence/phase-a-browser-proof-node22.json",
         "docs/evidence/phase-a-browser-default-proof-controls-node22.json",
         "docs/evidence/phase-a-browser-proof-cleanup-node22.json",
-        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-real-http-network-node22.json",
+        "docs/evidence/phase-a-network-browser-controls-node22.json",
+        "docs/evidence/phase-a-network-full-stock-node22.json"
       ],
       "missing": [
         "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
@@ -218,7 +227,10 @@
         "docs/evidence/phase-a-browser-proof-node22.json",
         "docs/evidence/phase-a-browser-default-proof-controls-node22.json",
         "docs/evidence/phase-a-browser-proof-cleanup-node22.json",
-        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-real-http-network-node22.json",
+        "docs/evidence/phase-a-network-browser-controls-node22.json",
+        "docs/evidence/phase-a-network-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -584,7 +596,8 @@
         "docs/evidence/phase-a-auth-stock-characterization.json",
         "docs/evidence/phase-a-auth-candidate-smtp.json",
         "docs/evidence/phase-a-proof-full-stock-node22.json",
-        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-network-full-stock-node22.json"
       ],
       "missing": [
         "Candidate resolves duplicate confirmation in initial real characterization but is not approved/deployment-ready",
@@ -654,11 +667,13 @@
         "docs/evidence/phase-a-coordination-proofs-node22.json",
         "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
         "docs/evidence/phase-a-browser-proof-node22.json",
-        "docs/evidence/phase-a-browser-default-proof-controls-node22.json"
+        "docs/evidence/phase-a-browser-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-real-http-network-node22.json",
+        "docs/evidence/phase-a-network-browser-controls-node22.json"
       ],
       "missing": [
-        "Installed SSE byte-fragmentation and cross-chunk sequence-gap defects are confirmed; choose/review transport fallback, not implemented",
-        "Real network fragmentation/disconnect/backpressure/cancel/loss corpus and browser coverage remain incomplete; synthetic replays are parser-only"
+        "Buffered SSE proof has unit/live/three-browser/owned HTTP fault evidence, but no production transport choice/signoff or complete malformed/backpressure/reconnect corpus",
+        "Server-internal stream accounting, arbitrary proxy/WAN behavior and expired/revoked stream renewal/security remain incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -674,7 +689,8 @@
         "docs/evidence/phase-a-stream-isolation-deadline-regression.json",
         "docs/evidence/phase-a-proof-full-stock-node22.json",
         "docs/evidence/phase-a-native-expiry-node22.json",
-        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-network-full-stock-node22.json"
       ],
       "missing": [
         "Genuine native JWT expiry: ordinary protected HTTP denied but established stream delivered a newly written protected row; strict regression preserved under explicit short-native-auth fixture",
@@ -700,7 +716,8 @@
         "docs/evidence/phase-a-expiry-default-proof-controls-node22.json",
         "docs/evidence/phase-a-browser-proof-node22.json",
         "docs/evidence/phase-a-browser-default-proof-controls-node22.json",
-        "docs/evidence/phase-a-browser-proof-full-stock-node22.json"
+        "docs/evidence/phase-a-browser-proof-full-stock-node22.json",
+        "docs/evidence/phase-a-network-full-stock-node22.json"
       ],
       "missing": [
         "Strict native late refresh/status after logout resurrects cached state: two actual-response regressions preserved; approved wrapper/upstream resolution required",
@@ -713,33 +730,37 @@
     }
   ],
   "nextSteps": [
-    "Continue real HTTP framing/disconnect/cancellation/resource checks; browser byte-rechunking is still post-HTTP, not actual network fixture proof.",
-    "Keep native stream expiry, raw auth resurrection, reference DELETE exposure and both G1 regressions strict; source-linked proof successes do not repair baselines.",
-    "Investigate remaining auth/storage/timer/schema/page boundaries before proposing production adoption; no Phase B/deployment/gate approval.",
-    "Keep both installed-client reports as drafts; track server #298 and review native expiry semantics separately before any new issue submission."
+    "Diagnose latest Linux setup image/port/service verification failure using safe inventory and failure codes; never relax digest or loopback checks to make CI green.",
+    "Review native connection-scoped JWT lifetime / client delivery-renewal requirement before production proposal; keep raw expiry failure and stronger owner-only direction.",
+    "Complete remaining page/schema/auth/timer/backpressure/security matrices; proof successes are not SDK implementation or gate approval.",
+    "Keep client reports and stream-lifetime question as drafts; only #298 is submitted. All named gate decisions precede Phase B/deployment recommendation."
   ],
   "lastSession": {
-    "date": "2026-10-03T03:54:26.746Z",
-    "sourceSha256": "b0e6e0d8e0ecc382729ea0c3433ec9328897e091dee09225ca20b42638969488",
+    "date": "2026-10-03T04:18:12.648Z",
+    "sourceSha256": "2667d99b5b67eeb76f8ec16039427c77c7b644a7d71c1662ee1da1652a3a145c",
     "node": "v22.23.2",
-    "scope": "Three-browser proof execution and default/native stock controls; NOT SDK/application signoff",
+    "scope": "Owned HTTP framing/disconnect/resource subset plus browser/default-stock controls, NOT full SDK security/signoff",
     "unitCases": 36,
+    "networkCases": 2,
     "browserCases": 9,
-    "proofCases": 8,
     "fullStock": {
-      "passed": 43,
+      "passed": 45,
       "failed": 5
     },
-    "setupStage": "ready",
-    "cleanup": "passed for every run",
-    "ci": "Historical 69ce78c Linux unit jobs 35 each passed, full stock 43/5; current browser/expiry expansion pending remote CI"
+    "cleanup": "passed for every scope",
+    "ci": "Historical a89264e Linux: unit jobs passed, all four backend scopes failed before assertions at image verification; need actionable sanitized inventory, no pins relaxed"
   },
   "pendingWork": {
-    "scope": "G5/G7 actual three-browser proof modules / constant-valued setup-stage diagnostics",
-    "status": "36 unit, 9 actual browser infrastructure/proof cases, 8 native proofs and cleanup passed. Full stock suite remains 43 passed/5 strict failed. Initial build setup failure preserved/corrected; no test assertions weakened.",
+    "scope": "G5 owned real HTTP stream fault fixture",
+    "status": "36 unit, 2 owned real HTTP cases and 9 browser controls passed. Full stock 45 passed/5 strict failed; cleanup passed. Native expiry remains separately failing; both client reports and new stream-lifetime question remain drafts.",
     "process": null,
     "authorizationInterview": "ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d",
-    "signoff": "none; G1/G6/G7 raw regressions plus native real-expiry failure unchanged; both client reports still drafts"
+    "signoff": "none; raw G1/G6/G7 and genuine expiry blockers remain; upstream client reports stay drafts",
+    "drafts": [
+      "docs/UPSTREAM_CLIENT_AUTH_ISSUE.md",
+      "docs/UPSTREAM_CLIENT_STREAM_ISSUE.md",
+      "docs/UPSTREAM_STREAM_LIFETIME_DRAFT.md"
+    ]
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",

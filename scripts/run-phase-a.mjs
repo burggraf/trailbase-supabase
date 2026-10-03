@@ -23,7 +23,7 @@ async function main() {
   if (options.some(option => option !== '--auth-mitigation') || options.length > 1) throw new Error('Unknown Phase A option');
   const authMitigation = options.includes('--auth-mitigation');
   const nativeAuthProfile = suite === 'expiry' ? 'short-native-auth' : 'default';
-  if (!['all','database','characterization','domains','boundaries','auth-lifecycle','proofs','expiry','streaming','smtp','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
+  if (!['all','database','characterization','domains','boundaries','auth-lifecycle','proofs','expiry','network','streaming','smtp','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
   await mkdir('.runtime', { recursive: true, mode: 0o700 });
   // ponytail: one local stack at a time; per-run locks/port reservations if concurrent local runs matter.
   // Refuse overlap rather than stopping someone else's fixtures.

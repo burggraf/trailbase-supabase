@@ -33,6 +33,12 @@ The fixture compiles only the two type-erased proof modules with the already pin
 
 Sanitized reports include a constant-valued setup checkpoint (`created`, config/binaries, Supabase start/status/mail, native proof build/health, image verification, ready) so a setup failure is not mistaken for an auth assertion. Raw bodies, logs and error messages remain private. Standalone browser, explicit expiry and fault-cleanup CI steps run even when default stock regressions fail; the job stays red when any required scope fails.
 
+## Owned HTTP fault fixture
+
+`npm run test:phase-a -- network` uses an ephemeral Node standard-library server bound only to `127.0.0.1`, with an unguessable per-test route. This is a disposable test fault fixture, not an architecture gateway. It forwards a genuine owned native stream's bytes/status/content type, not auth/cookie response headers or fabricated events. Requests outside its one GET route are denied.
+
+The fragment case spaces real byte writes across event-loop turns; the receiver asserts that it actually observed multiple HTTP chunks while preserving native Unicode INSERT/UPDATE/DELETE. It does not assert one byte per TCP packet or general WAN fragmentation. Consumer abort must cancel the upstream reader, drain active fixture handlers and close the listening socket. A second fixture destroys the connection after 32 genuine bytes; the proof decoder must surface a transport/truncation failure rather than yield a fabricated event. Server-internal subscription accounting and arbitrary proxy/browser/WAN behavior remain incomplete.
+
 ## Explicit real-expiry fixture
 
 `npm run test:phase-a -- expiry` alone selects the owned `short-native-auth` profile, injecting a 3-second native JWT TTL into a fresh depot. Owner/context/report metadata retain the profile and `authVariant`; unknown/ambiguous profile inputs fail. Default and mitigation fixture lifetimes stay unchanged. Supabase configuration is not shortened and no reference expiry parity is claimed.
@@ -44,6 +50,7 @@ The expiry scope verifies genuine JWT lifetime, confirms initially protected acc
 - `npm run test:unit`: proof parser/property/cancellation guards plus existing harness checks.
 - `npm run test:phase-a -- proofs`: genuine native response/stream proof cases, separate from raw regressions.
 - `npm run test:phase-a -- expiry`: explicitly labelled short-lived owned native fixture and genuine wall-clock expiry.
+- `npm run test:phase-a -- network`: actual owned HTTP fragment/disconnect/cancellation postconditions.
 - `npm run test:phase-a -- auth-lifecycle` and `-- streaming`: retain raw failing baselines.
 - `npm run test:phase-a`: complete upstream harness remains red until all blockers are resolved; SDK-wide commands remain deliberately incomplete.
 

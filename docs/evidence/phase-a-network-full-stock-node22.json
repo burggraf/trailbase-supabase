@@ -1,0 +1,354 @@
+{
+  "scope": "Phase A upstream/infrastructure harness, NOT SDK verification",
+  "authVariant": "stock",
+  "suite": "all",
+  "nativeAuthProfile": "default",
+  "status": "failed",
+  "startedAt": "2026-10-03T04:13:22.909Z",
+  "baseline": {
+    "trailbase": {
+      "version": "0.34.3",
+      "commit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+      "assets": {
+        "darwin-arm64": {
+          "name": "trailbase_v0.34.3_aarch64_apple_darwin.zip",
+          "sha256": "211132ece889b373317ce7339c13992bd2ccfe02298458a9e6104a7b8454fe43"
+        },
+        "darwin-x64": {
+          "name": "trailbase_v0.34.3_x86_64_apple_darwin.zip",
+          "sha256": "c4e66e48165f3dcd1c9292b26f46203a8a2123652e05926f6c1a79b4fdd7fc4f"
+        },
+        "linux-arm64": {
+          "name": "trailbase_v0.34.3_aarch64_linux.zip",
+          "sha256": "88156ee1008e6fdd4d71784014fc970e0abdddd88ea952eddf04f25aa32fe99a"
+        },
+        "linux-x64": {
+          "name": "trailbase_v0.34.3_x86_64_linux.zip",
+          "sha256": "aa5a08fa50c06c026b652afa265cf392438675a2bb26ec174096c941fdb67b97"
+        }
+      }
+    },
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "nodeMajors": [
+      22,
+      24
+    ],
+    "nodeVersions": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "playwright": "1.63.0",
+    "commonRowCap": 1000,
+    "startupTimeoutMs": 300000
+  },
+  "node": "v22.23.2",
+  "platform": "darwin-arm64",
+  "tests": [
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference owned persistent storage hydrates real sessions and observes shared-store logout",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference storage write failure is observable, installs no local session and recovers with real login",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native hydration exposes cached claims before real revoked-session validation clears local state",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native concurrent forced refreshes send two real requests rather than single-flight",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late refresh response must not restore a locally logged-out client",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late status response must not restore a locally logged-out client",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference concurrent refresh is single-flight and preserves a usable actual rotated session",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference late refresh is discarded after logout and emits no post-logout TOKEN_REFRESHED",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native logout transport failure clears local state but reports true while remote refresh remains live",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference logout transport failure is observable, clears local state and leaves remote refresh usable",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation safe integers round-trip; native preserves unsafe bigint while reference JSON loses precision",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation null equality becomes literal text null, not IS NULL, in both installed clients",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation nonfinite/fractional numeric values, typo columns and malformed UUIDs fail rather than broadening reads",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation nullable defaults diverge; mixed-case/Unicode ordering is deterministic but not promised portable",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation construction is lazy, repeated execution sends requests, independent builders isolate but shared builders/options mutate",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1 native signup supplies no user/session; both backends require real mail confirmation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native confirmed duplicate signup is opaque, preserves credentials, and creates no session",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 reference confirmed duplicate signup obscures identity and invalid logins leave no session",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native unconfirmed duplicate keeps the original password and requires real confirmation",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 reference unconfirmed duplicate preserves credentials with explicit resend rate behavior",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G2 installed native list defaults to 50, native limit(0) omits limit, and aligned cap is 1000",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G2/G4 reference ranges/caps/zero/cardinality and repeated builder awaits are characterized",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G3 native missing writes error; reference missing writes succeed without modifying another row",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G7 native validated status, retained refresh token and explicit local/global revocation across two sessions",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G7 reference default logout is global; explicit local scope preserves the other refresh session",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) pgTAP grants, RLS, security-invoker view and publication assertions",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) native UUID/owner/default/boolean/null fields round-trip and constraints hold",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) reference UUID/owner/default/boolean/null fields round-trip and constraints hold",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) native anonymous/B/spoof/reassignment denials leave A row intact; read-only view isolates owners",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) reference anonymous/B/spoof/reassignment denials leave A row intact; view obeys RLS",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) integer/nonstandard primary-key fixtures support ordinary owner-scoped CRUD",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G2/G4/I09 upstream scalar-domain characterization, NOT adapter signoff all six numeric comparisons produce exact golden IDs, including tied priorities",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G2/G4/I09 upstream scalar-domain characterization, NOT adapter signoff reserved characters, Unicode and combining marks remain literal rather than altering query predicates",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G2/G4/I09 upstream scalar-domain characterization, NOT adapter signoff inequality excludes null, and explicitly declared boolean/UUID filters select only intended rows",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G2/G4/I09 upstream scalar-domain characterization, NOT adapter signoff numeric ties use an explicit key tiebreaker; lowercase ASCII words sort identically in both directions",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/S07 owned real HTTP fault fixture, NOT arbitrary TCP/browser/package guarantee preserves real UTF-8 frames over observed multi-chunk HTTP and releases upstream on consumer abort",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/S07 owned real HTTP fault fixture, NOT arbitrary TCP/browser/package guarantee a real HTTP disconnect inside a native event fails observably and yields no fabricated event",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff buffered decoder consumes a byte-rechunked REAL UTF-8 stream and aborts its pending read",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff single-flight proof issues one real refresh and clears its slot for the next refresh",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff epoch proof discards late real refresh at response completion after logout",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff epoch proof discards late real refresh at json completion after logout",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff epoch proof discards late real status at response completion after logout",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff epoch proof discards late real status at json completion after logout",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff account switch invalidates an old response without clearing the new single-flight slot",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff logout proof clears locally before I/O and surfaces an undelivered remote revocation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G1/S04 real SMTP outage reports failure, creates no session, and distinguishes native retry from reference recovery",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27 G5/G6 streaming characterization (not full SDK/security signoff) native real Insert/Update/Delete and installed-parser fragmentation defect",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G6 streaming characterization (not full SDK/security signoff) reference real INSERT/UPDATE/DELETE, key-only delete payload, and channel cleanup",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G6 streaming characterization (not full SDK/security signoff) G6/S07 native two-owner INSERT/UPDATE/DELETE isolation with own-event barriers and reader cancellation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G6 streaming characterization (not full SDK/security signoff) G6/S07 reference two-owner INSERT/UPDATE/DELETE isolation must not expose foreign primary keys",
+      "status": "failed"
+    }
+  ],
+  "cleanup": "passed",
+  "sourceSha256": "2667d99b5b67eeb76f8ec16039427c77c7b644a7d71c1662ee1da1652a3a145c",
+  "baseCommit": "a89264e94e6419d359b4a4d081aab1afba5ab89c",
+  "runId": "1791000802964-6f3bff5d0a31",
+  "environment": {
+    "trailVersion": "trail v0.34.3-0-geab50393 (2026-10-02)\nsqlite: 3.53.2",
+    "cliVersion": "2.119.0",
+    "containers": [
+      {
+        "service": "supabase_rest",
+        "image": "public.ecr.aws/supabase/postgrest:v16.4",
+        "imageId": "sha256:669f9b9231d6e7d0c7cf8c20732b978f3c5f67529e2a6ad4691ce594ed7f3b93",
+        "repoDigests": [
+          "public.ecr.aws/supabase/postgrest@sha256:d155c6718ed9a9f990d159a2ab7c0a3f16944dbb6d0a0344557421042acfe0df"
+        ],
+        "publishedPorts": {
+          "3000/tcp": null
+        }
+      },
+      {
+        "service": "supabase_realtime",
+        "image": "public.ecr.aws/supabase/realtime:v2.140.3",
+        "imageId": "sha256:aa5ca219e04aef1d8e9994e49f09ce8bf4e52eeaa4af5764ff9a114fae612ef6",
+        "repoDigests": [
+          "public.ecr.aws/supabase/realtime@sha256:f66c721c71b576f5854c78f86df0c78a98368d900dcf62e4ddd96c6913139999"
+        ],
+        "publishedPorts": {
+          "4000/tcp": null
+        }
+      },
+      {
+        "service": "supabase_inbucket",
+        "image": "public.ecr.aws/supabase/mailpit:v1.31.3",
+        "imageId": "sha256:c615141564db0fb1abbcfd773203c4b4ef5637c2ebcb4df0f3418fb7eef828a0",
+        "repoDigests": [
+          "public.ecr.aws/supabase/mailpit@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d"
+        ],
+        "publishedPorts": {
+          "1025/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "50545"
+            }
+          ],
+          "1110/tcp": null,
+          "8025/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "50544"
+            }
+          ]
+        }
+      },
+      {
+        "service": "supabase_auth",
+        "image": "public.ecr.aws/supabase/gotrue:v2.197.0",
+        "imageId": "sha256:1fe404919398421de491a1580e1dcce1faca055e985fd9bd9029520880845056",
+        "repoDigests": [
+          "public.ecr.aws/supabase/gotrue@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+        ],
+        "publishedPorts": {
+          "9999/tcp": null
+        }
+      },
+      {
+        "service": "supabase_kong",
+        "image": "public.ecr.aws/supabase/kong:2.8.1",
+        "imageId": "sha256:a5957d67fc55af3d11bdbd87de76f7480e3c4d8bcb715d6cfd01922780f46ea9",
+        "repoDigests": [
+          "public.ecr.aws/supabase/kong@sha256:1b53405d8680a09d6f44494b7990bf7da2ea43f84a258c59717d4539abf09f6d"
+        ],
+        "publishedPorts": {
+          "8000/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "50541"
+            }
+          ],
+          "8001/tcp": null,
+          "8088/tcp": null,
+          "8443/tcp": null,
+          "8444/tcp": null
+        }
+      },
+      {
+        "service": "supabase_db",
+        "image": "public.ecr.aws/supabase/postgres:17.11.0.002",
+        "imageId": "sha256:1f4bf2beadd5e5053e63dd2f9c53a31cb8c2b3386c6836d4513a126898ef88d8",
+        "repoDigests": [
+          "public.ecr.aws/supabase/postgres@sha256:0450166354dc9c1d25f0322ac8b580774d4fb0184d2b087f6e4fe9499c66cf53"
+        ],
+        "publishedPorts": {
+          "5432/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "50542"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "setupStage": "ready",
+  "finishedAt": "2026-10-03T04:14:14.183Z"
+}
