@@ -835,12 +835,15 @@
         "docs/evidence/phase-a-all-node22.json",
         "docs/evidence/phase-a-scalar-domains-node22.json",
         "docs/evidence/phase-a-query-boundaries-node22.json",
-        "docs/evidence/phase-a-count-pagination-node22.json"
+        "docs/evidence/phase-a-count-pagination-node22.json",
+        "docs/evidence/phase-a-page-bounds-pagination-node22.json",
+        "docs/evidence/phase-a-page-bounds-all-node22.json",
+        "docs/evidence/phase-a-page-bounds-initial-assumption-failures-node22.json"
       ],
       "missing": [
         "Maintainer mapping/domain/cap contract approval; production scalar codec/runtime rejection and full adapter security/type matrix are not implemented",
-        "Page-bound invalid arithmetic/mixed calls and expanded scalar cases (dates, BLOB/JSON, relation syntax) remain incomplete",
-        "Exact count/head/out-of-range strategy not signed off: native successful empty offset loses total; reference exact-count range errors 416/count null while real HEAD wire retains */4"
+        "Initial NaN/negative/fractional/nonfinite/cap and repeated/mixed wire-bound probes passed locally. Unsafe arithmetic, expanded scalar/schema cases (dates, BLOB/JSON, relation syntax), future adapter guards and remaining layers remain incomplete",
+        "Ordinary no-count out-of-range pages and initial repeated/mixed wire bounds passed locally; expanded unsafe/call-order cases and complete adapter layers remain pending. Count/head are already unsupported by the initial L1-05 contract; retain raw count/HEAD differences without building a speculative count strategy."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -868,11 +871,14 @@
         "docs/evidence/phase-a-all-node22.json",
         "docs/evidence/phase-a-scalar-domains-node22.json",
         "docs/evidence/phase-a-query-boundaries-node22.json",
-        "docs/evidence/phase-a-live-stream-ceiling-proofs-node22.json"
+        "docs/evidence/phase-a-live-stream-ceiling-proofs-node22.json",
+        "docs/evidence/phase-a-page-bounds-pagination-node22.json",
+        "docs/evidence/phase-a-page-bounds-all-node22.json"
       ],
       "missing": [
         "Maintainer execution/cardinality/non-null ordering contract approval; no production builder/option guards or complete adapter matrix",
-        "Mixed-case/Unicode ordering has bounded upstream observations, not approved cross-database collation parity; remaining repeated-key/call-order and nullable/reference option matrix"
+        "Mixed-case/Unicode ordering has bounded upstream observations, not approved cross-database collation parity; remaining repeated-key/call-order and nullable/reference option matrix",
+        "Choose positive-offset/zero-limit behavior: native empty success versus reference 416/PGRST103. Interview 6f74221d-1b37-456b-af5d-261ea4372430 is pending; no adapter policy or signoff inferred."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -996,7 +1002,9 @@
         "docs/evidence/phase-a-ci-linux-approved-delete-all.json",
         "docs/evidence/phase-a-terminal-revocation-proofs-node22.json",
         "docs/evidence/phase-a-terminal-revocation-browser-node22.json",
-        "docs/evidence/phase-a-terminal-revocation-all-node22.json"
+        "docs/evidence/phase-a-terminal-revocation-all-node22.json",
+        "docs/evidence/phase-a-ci-linux-terminal-revocation-all.json",
+        "docs/evidence/phase-a-ci-linux-terminal-revocation-browser.json"
       ],
       "missing": [
         "Strict native late refresh/status after logout resurrects cached state: two actual-response regressions preserved; approved wrapper/upstream resolution required",
@@ -1042,6 +1050,29 @@
     "missing": "Complete SDK lifecycle/resource layers; no gate signoff; this evidence predates the migration-source changes"
   },
   "lastSession": {
+    "date": "2026-10-03T15:26:18.894Z",
+    "sourceSha256": "5302a59c096507d8d1a1fe831fb98ae34ffa300613caff3230dd3d9b5a6c5999",
+    "node": "v22.23.2",
+    "scope": "Raw invalid/mixed pagination characterization with exact wire/golden/error/postcondition controls; no production adapter policy approved",
+    "unitCases": 37,
+    "paginationCases": 5,
+    "boundaryCases": 5,
+    "scalarDomainCases": 4,
+    "browserCases": 24,
+    "fullStock": { "passed": 61, "failed": 4 },
+    "checks": "npm run check passed",
+    "cleanup": "passed every scope with strict setup verification",
+    "evidence": [
+      "docs/evidence/phase-a-page-bounds-pagination-node22.json",
+      "docs/evidence/phase-a-page-bounds-boundaries-node22.json",
+      "docs/evidence/phase-a-page-bounds-domains-node22.json",
+      "docs/evidence/phase-a-page-bounds-browser-node22.json",
+      "docs/evidence/phase-a-page-bounds-lifecycle-node22.json",
+      "docs/evidence/phase-a-page-bounds-all-node22.json"
+    ],
+    "missing": "Current-source Linux CI; explicit G1 native-prototype authority and G4 zero-width policy from pending interview 6f74221d-1b37-456b-af5d-261ea4372430; remaining matrices and named signoff. Stock G1/G7 failures remain strict."
+  },
+  "historicalTerminalRevocationSession": {
     "date": "2026-10-03T14:52:04.722Z",
     "sourceSha256": "4c64e6449d72d3fbc9d0e83dd9d30f2eb3b469b775457bb56daac7dd80e32986",
     "node": "v22.23.2",
@@ -1062,9 +1093,24 @@
       "docs/evidence/phase-a-terminal-revocation-lifecycle-node22.json",
       "docs/evidence/phase-a-terminal-revocation-all-node22.json"
     ],
-    "missing": "Current-source Linux CI; installed-client G7 races and G1 recovery remain strict/red; transient-error/storage/timer/resource and full SDK matrices incomplete; no signoff"
+    "ci": {
+      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37131271545",
+      "commit": "5ba3e252b8152c8ec3d992c486cd85dcb74db002",
+      "scope": "Terminal-revocation proof source, before expanded query-boundary characterization",
+      "unitNode22": 37,
+      "unitNode24": 37,
+      "fullStock": { "passed": 58, "failed": 4 },
+      "browserCases": 24,
+      "expiryCases": 2,
+      "migrationCases": 1,
+      "candidateCharacterizationCases": 10,
+      "candidateSmtp": { "passed": 0, "failed": 1 },
+      "cleanup": "passed all seven real scopes with strict setup verification",
+      "job": "red for the preserved stock auth and candidate recovery regressions"
+    },
+    "missing": "Installed-client G7 races and G1 recovery remain strict/red; transient-error/storage/timer/resource and full SDK matrices incomplete; no signoff; Linux evidence predates query-boundary changes"
   },
-  "historicalApprovedDeleteSession": {
+  "historicalApprovedDeleteSession":  {
     "date": "2026-10-03T14:29:36.384Z",
     "sourceSha256": "b0b97c2acd6aca95f2ddd192ddd689063395b7efee57995c6086b78b3f125278",
     "node": "v22.23.2",
@@ -1199,7 +1245,9 @@
     "scope": "G1 recovery capability and migration restart/upgrade investigation",
     "status": "Owned-depot preflight rollback passed on macOS/Linux. Completed gpt-6.1-sol assessment identifies the missing native pending-identity confirmation-redelivery path. The strengthened candidate SMTP case preserves one ID/password through alternate-password retry/resend, then strictly fails for missing real mail. Candidate characterization/browser controls passed. No fork, deployment, identity repair, repin or public follow-up approved; #299 remains closed.",
     "g6DecisionInterview": "186fd6d9-0e51-4c33-a864-8e099ba8cd26: explicit approval to document native owner-only versus Supabase non-confidential DELETE keys; protected row values remain private",
-    "g7Proof": "Four genuine response/JSON-stage terminal-revocation regressions reproduced stale-success restoration in the test-only coordinator. Cache clearing now centrally invalidates its epoch/flight; 18 real proofs, 24 browser cases, 2 expiry cases, 2 network controls and fault cleanup passed. Stock remains 58/4; Linux verification is pending. This does not patch the installed client or sign off a production strategy.",
+    "g7Proof": "Four genuine response/JSON-stage terminal-revocation regressions reproduced stale-success restoration in the test-only coordinator. Cache clearing now centrally invalidates its epoch/flight; 18 real proofs, 24 browser cases, 2 expiry cases, 2 network controls and fault cleanup passed. Stock remains 58/4; Linux 5ba3e25 reproduced those results and all 24 browser cases. This does not patch the installed client or sign off a production strategy.",
+    "decisionInterview": "6f74221d-1b37-456b-af5d-261ea4372430: awaiting explicit G1 native prototype authority and G4 positive-offset/zero-limit policy; no answer inferred",
+    "queryBoundaries": "Raw probes found permissive reference invalid-limit behavior and 416/PGRST103 for positive-offset zero-width queries; ordinary no-count out-of-range pages succeed empty. Initial incorrect characterization assumptions are preserved; all five revised exact-observation pagination cases passed, with boundary/domain/browser/cleanup controls also passed. Full stock is 61/4. Future adapter input guards remain required.",
     "signoff": "none; both installed-client reports remain drafts; no further public reply authorized"
   },
   "historicalCi": {
