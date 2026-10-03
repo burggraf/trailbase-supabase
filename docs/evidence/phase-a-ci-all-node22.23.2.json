@@ -2,7 +2,7 @@
   "scope": "Phase A upstream/infrastructure harness, NOT SDK verification",
   "suite": "all",
   "status": "passed",
-  "startedAt": "2026-10-03T00:23:58.610Z",
+  "startedAt": "2026-10-03T00:54:16.666Z",
   "baseline": {
     "trailbase": {
       "version": "0.34.3",
@@ -46,6 +46,14 @@
   "tests": [
     {
       "name": "L1-27 upstream characterization; G1-G7 still require approval G1 native signup supplies no user/session; both backends require real mail confirmation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native confirmed duplicate signup is opaque, preserves credentials, and creates no session",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 reference confirmed duplicate signup obscures identity and invalid logins leave no session",
       "status": "passed"
     },
     {
@@ -126,13 +134,13 @@
     }
   ],
   "cleanup": "passed",
-  "sourceSha256": "6dcfb291d34ed81a6b906e6dfe2a241ea3177b6d7cf0f5370bd3ebd54ea97171",
-  "baseCommit": "14123bc282958723ccce17fae6f7a76024f5de9e",
+  "sourceSha256": "95cd390f44c12ceea93b2bd23274c2e3755054657df094536775c0ef6e43aac8",
+  "baseCommit": "7a080b4dfaa8cfd1d5bcef4aa00df7c929ea0b9e",
   "ci": {
-    "commit": "14123bc282958723ccce17fae6f7a76024f5de9e",
-    "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
+    "commit": "7a080b4dfaa8cfd1d5bcef4aa00df7c929ea0b9e",
+    "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601"
   },
-  "runId": "1790987038622-e6546185a67e",
+  "runId": "1790988856700-6e7292fdfa8b",
   "environment": {
     "trailVersion": "trail v0.34.3-0-geab50393 (2026-10-02)\nsqlite: 3.53.2",
     "cliVersion": "2.119.0",
@@ -170,14 +178,14 @@
           "1025/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "34541"
+              "HostPort": "44235"
             }
           ],
           "1110/tcp": null,
           "8025/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "46645"
+              "HostPort": "39009"
             }
           ]
         }
@@ -204,7 +212,7 @@
           "8000/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "39999"
+              "HostPort": "42049"
             }
           ],
           "8001/tcp": null,
@@ -224,7 +232,7 @@
           "5432/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "41109"
+              "HostPort": "43247"
             }
           ]
         }
@@ -280,5 +288,5 @@
       "installByDefault": false
     }
   ],
-  "finishedAt": "2026-10-03T00:25:19.728Z"
+  "finishedAt": "2026-10-03T00:55:50.856Z"
 }
