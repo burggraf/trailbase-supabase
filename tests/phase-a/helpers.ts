@@ -57,7 +57,7 @@ export async function confirmEmail(env: Context, email: string) {
           if (!location) throw new Error('Verification redirect missing');
           target = new URL(location, target).href;
         } else {
-          if (!result.ok) throw new Error('Real verification request failed');
+          if (!result.ok) throw new Error(`Real verification request failed (HTTP ${result.status})`);
           return;
         }
       }

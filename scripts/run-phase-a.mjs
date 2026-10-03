@@ -19,7 +19,7 @@ export async function sourceHash() {
 }
 async function main() {
   const suite = process.argv[2] ?? 'all';
-  if (!['all','database','characterization','streaming','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
+  if (!['all','database','characterization','streaming','smtp','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
   await mkdir('.runtime', { recursive: true, mode: 0o700 });
   // ponytail: one local stack at a time; per-run locks/port reservations if concurrent local runs matter.
   // Refuse overlap rather than stopping someone else's fixtures.

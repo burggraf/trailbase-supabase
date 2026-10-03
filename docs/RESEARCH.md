@@ -56,7 +56,7 @@ Initially support ascending/descending ordering over declared **non-null numeric
 
 ### 6. Signup is a genuine return-shape gap
 
-TrailBase email registration sends verification mail, forbids login before confirmation, never logs in the user, and returns a plain success response with **no user ID/object** [TB9]. It also reports success for an existing account to resist enumeration. Supabase confirmation-enabled signup ordinarily exposes a user and a null session; confirmation-disabled environments can create a session immediately [SB4, SB5].
+TrailBase email registration sends verification mail, forbids login before confirmation, never logs in the user, and returns a plain success response with **no user ID/object** [TB9]. Its insertion-error path reports success to resist enumeration, but v0.34.3's new unverified-email storage does not actually enforce pending-address uniqueness; see the blocking regression below. Supabase confirmation-enabled signup ordinarily exposes a user and a null session; confirmation-disabled environments can create a session immediately [SB4, SB5].
 
 Recommended minimal contract: email/password only, confirmations enabled in both fixtures, TrailBase signup success returns `{ data: { user: null, session: null }, error: null }`. This is an **explicit compatibility exception requiring maintainer approval**, not full Supabase signup parity. Never fabricate a UUID/user object, use browser admin APIs to retrieve one, or silently auto-confirm accounts.
 
@@ -111,6 +111,14 @@ Use the progress ledger's exact reports/source hashes to see current versus hist
 - Real two-session local/global logout and native refresh-token retention were exercised. Native stateless access-JWT residual validity is distinct from refresh revocation. Storage/expiry/concurrency/hydration/remote-outage behavior is not thereby certified.
 - A healthy real native stream supplied INSERT/UPDATE/DELETE. Replaying its captured INSERT frame through the **installed** native parser one byte at a time loses the event. This confirms a reuse blocker, not a working fallback; G5 recommends the planned minimal buffered native HTTP path unless an upstream fix is pinned and retested.
 - The installed reference Realtime SDK documents that default `SUBSCRIBED` can mean channel join **before Postgres Changes is ready**. Its `postgres_changes_options.wait` option waits for CDC readiness. The upstream event probe uses this test-only configuration rather than arbitrary sleeps; no new option is silently added to the future SDK contract. G6 still needs approved readiness/payload/permission/expiry semantics.
+
+## Blocking G1 regression: duplicate pending registrations
+
+Real native v0.34.3 probes on 2026-10-03 fail confirmation with **HTTP 400** after two registrations for the same unconfirmed address. The pinned [auth migration](https://github.com/trailbaseio/trailbase/blob/v0.34.3/crates/core/migrations/main/U1785764695__unverified_email.sql) makes only verified `email` unique; `unverified_email` has no unique index. [Registration](https://github.com/trailbaseio/trailbase/blob/v0.34.3/crates/core/src/auth/api/register.rs) inserts each pending row, and [verification](https://github.com/trailbaseio/trailbase/blob/v0.34.3/crates/core/src/auth/api/verify_email.rs) updates all matching pending addresses, conflicting with verified-email uniqueness. The observed result is blocked confirmation, not evidence of privilege escalation.
+
+Real SMTP shutdown yields native HTTP 424 and reference HTTP 500 with no session. Native registration inserts before delivery; retries while SMTP is down return 424 again, rather than an opaque success. After restart, a healthy fresh control account can confirm, and retry mail reaches the failed address. Delivery alone is not recovery: the retained duplicate pending rows must still pass confirmation/login. Keep that regression red rather than silently adding constraints to native system tables or pretending a client-side deduplication guard fixes direct backend calls.
+
+G1 and Phase A contract completion are **blocked** pending a maintainer decision: upstream fix/verified repin, or a separately reviewed deployment constraint with baseline-versus-mitigated evidence. No auth-schema workaround, scope exception, or signoff has been approved. Confirmed-duplicate/password-preservation checks and the prior green foundation reports do not certify this new failure path.
 
 ## Decisions requiring characterization/signoff
 

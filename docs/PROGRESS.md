@@ -1,6 +1,10 @@
 # Development progress and restart guide
 
-**Current phase: A — proof harness, in progress. No SDK feature is signed off.**
+**Current phase: A — proof harness; G1 contract completion is blocked. No SDK feature is signed off.**
+
+Stock TrailBase v0.34.3 fails real confirmation after duplicate unconfirmed registrations. SMTP retry/recovery exercises the same pending-row problem. See [the pinned-source diagnosis](RESEARCH.md#blocking-g1-regression-duplicate-pending-registrations). The regressions remain strict/red; no auth-schema workaround or maintainer approval has been assumed.
+
+The [current blocker run](evidence/phase-a-g1-blocker-node22.json) has **17 passing and 2 failing upstream cases**; both failures are native confirmation HTTP 400. **22 unit guards passed**, and cleanup passed with no owned Docker resources remaining. The browser stage did not run because upstream assertions failed. SMTP/reference recovery and the fresh native mail control ran before the failing retry-confirmation assertion. These partial results do not make G1 or the full suite green.
 
 [progress.json](progress.json) is the authoritative status/signoff ledger. Run `npm run progress` to see Phase A deliverables, missing checks, open gates, and ordered next steps. Read this file first after a restart, then the [implementation plan](LEVEL1_PLAN.md) and [test matrix](TEST_PLAN.md).
 
@@ -30,7 +34,7 @@
 
 ## Recorded local verification
 
-On macOS arm64 / Node **22.23.2**, the current-source foundation passed:
+The earlier foundation on macOS arm64 / Node **22.23.2** passed the results below. These reports are historical for the now-expanded source, not evidence that the new G1 regressions pass:
 
 | Evidence | Result |
 | --- | --- |
@@ -41,7 +45,7 @@ On macOS arm64 / Node **22.23.2**, the current-source foundation passed:
 
 Confirmed duplicate-signup probes now verify no new session, preserved original passwords, matching wrong/unknown-login error contracts, and disabled phone signup. The reference fixture explicitly disables both email and SMS auto-confirmation; phone signup stays disabled. The initial failed probe is retained in [historical failure evidence](evidence/phase-a-g1-initial-failure.json), not counted green.
 
-No owned fixture containers/volumes/networks remained. **[Current-source Linux x64 CI passed](https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601)**: static/unit checks on Node 22.23.2 and 24.21.0, plus real backends/all three browsers/injected-failure cleanup on Node 22. Sanitized current-source CI reports are preserved in `docs/evidence/phase-a-ci-*.json`. The earlier foundation CI is historical and remains traceable through the ledger/Git history. Node 24 real-backend/browser execution is not claimed. Remaining characterization, full SDK layers and maintainer signoff are still pending. These are **foundation results, not completion of Phase A or SDK compatibility**.
+No owned fixture containers/volumes/networks remained. **[Earlier-foundation Linux x64 CI passed](https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601)**: static/unit checks on Node 22.23.2 and 24.21.0, plus real backends/all three browsers/injected-failure cleanup on Node 22. Sanitized earlier-foundation CI reports are preserved in `docs/evidence/phase-a-ci-*.json`. The earlier foundation CI is historical and remains traceable through the ledger/Git history. Node 24 real-backend/browser execution is not claimed. Remaining characterization, full SDK layers and maintainer signoff are still pending. These are **foundation results, not completion of Phase A or SDK compatibility**.
 
 ## What exists now
 

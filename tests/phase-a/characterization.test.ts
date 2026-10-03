@@ -68,6 +68,44 @@ describe('L1-27 upstream characterization; G1-G7 still require approval', () => 
     const valid = await visitor.auth.signInWithPassword({ email:account.email,password:account.password });
     expect(valid.error).toBeNull(); expect(valid.data.user?.id).toBe(account.user.id);
   });
+  it('G1/S04 native unconfirmed duplicate keeps the original password and requires real confirmation', async () => {
+    const email = `pending-native-${randomUUID()}@example.test`;
+    const password = `Fixture-${randomUUID()}-Aa1!`, replacement = `Fixture-${randomUUID()}-Aa1!`;
+    const first = trailbase(env), duplicate = trailbase(env);
+    await first.register({email,password});
+    expect(await duplicate.register({email,password:replacement})).toBeUndefined();
+    expect(duplicate.user()).toBeUndefined(); expect(duplicate.tokens()).toBeUndefined();
+    await expect(first.login(email,password)).rejects.toMatchObject({status:401});
+    await expect(duplicate.login(email,replacement)).rejects.toMatchObject({status:401});
+    await confirmEmail(env,email);
+    await first.login(email,password);
+    expect(first.user()?.email).toBe(email);
+    await expect(duplicate.login(email,replacement)).rejects.toMatchObject({status:401});
+    expect(duplicate.tokens()).toBeUndefined();
+  });
+  it('G1/S04 reference unconfirmed duplicate preserves credentials with explicit resend rate behavior', async () => {
+    const email = `pending-reference-${randomUUID()}@example.test`;
+    const password = `Fixture-${randomUUID()}-Aa1!`, replacement = `Fixture-${randomUUID()}-Aa1!`;
+    const first = supabase(env), visitor = supabase(env);
+    const signup = await first.auth.signUp({email,password});
+    expect(signup.error).toBeNull(); expect(signup.data.session).toBeNull();
+    const duplicate = await visitor.auth.signUp({email,password:replacement});
+    if (duplicate.error) {
+      expect(duplicate.error.code).toBe('over_email_send_rate_limit');
+      expect(duplicate.error.status).toBe(429); // Preserve the real configured throttle, never relabel it success.
+    } else {
+      expect(duplicate.data.user?.id).toBe(signup.data.user?.id);
+    }
+    expect(duplicate.data.session).toBeNull();
+    expect((await visitor.auth.getSession()).data.session).toBeNull();
+    expect((await first.auth.signInWithPassword({email,password})).error?.code).toBe('email_not_confirmed');
+    expect((await visitor.auth.signInWithPassword({email,password:replacement})).error).not.toBeNull();
+    await confirmEmail(env,email);
+    const login = await first.auth.signInWithPassword({email,password});
+    expect(login.error).toBeNull(); expect(login.data.user?.id).toBe(signup.data.user?.id);
+    expect((await visitor.auth.signInWithPassword({email,password:replacement})).error?.code).toBe('invalid_credentials');
+    expect((await visitor.auth.getSession()).data.session).toBeNull();
+  });
   it('G2 installed native list defaults to 50, native limit(0) omits limit, and aligned cap is 1000', async () => {
     const native = await confirmedTrailUser(env,'pages');
     const api = native.client.records('todos');

@@ -3,8 +3,8 @@
   "status": "passed",
   "node": "v22.23.2",
   "platform": "darwin-arm64",
-  "sourceSha256": "95cd390f44c12ceea93b2bd23274c2e3755054657df094536775c0ef6e43aac8",
-  "finishedAt": "2026-10-03T00:49:42.238Z",
+  "sourceSha256": "bd8ccbdb51b0991c0277cd8578b22537dbcf6c0abc8ea8938ce7e0245eb1ed5d",
+  "finishedAt": "2026-10-03T01:22:00.507Z",
   "tests": [
     {
       "name": "L1-27/U27 G2 fixture UUID inputs (not production codec) uses padding required by the native BLOB input decoder",
