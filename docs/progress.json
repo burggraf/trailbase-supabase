@@ -130,7 +130,16 @@
         "docs/evidence/phase-a-live-stream-ceiling-proofs-node22.json",
         "docs/evidence/phase-a-stream-ceiling-browser-controls-node22.json",
         "docs/evidence/phase-a-stream-ceiling-cleanup-node22.json",
-        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json"
+        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-all.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-expiry.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-browser.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-lifecycle.json",
+        "docs/evidence/phase-a-deadline-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-deadline-default-browser-controls-node22.json",
+        "docs/evidence/phase-a-deadline-default-cleanup-node22.json",
+        "docs/evidence/phase-a-deadline-full-stock-node22.json",
+        "docs/evidence/phase-a-native-client-deadline-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -209,7 +218,16 @@
         "docs/evidence/phase-a-live-stream-ceiling-proofs-node22.json",
         "docs/evidence/phase-a-stream-ceiling-browser-controls-node22.json",
         "docs/evidence/phase-a-stream-ceiling-cleanup-node22.json",
-        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json"
+        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-all.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-expiry.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-browser.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-lifecycle.json",
+        "docs/evidence/phase-a-deadline-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-deadline-default-browser-controls-node22.json",
+        "docs/evidence/phase-a-deadline-default-cleanup-node22.json",
+        "docs/evidence/phase-a-deadline-full-stock-node22.json",
+        "docs/evidence/phase-a-native-client-deadline-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -297,7 +315,16 @@
         "docs/evidence/phase-a-live-stream-ceiling-proofs-node22.json",
         "docs/evidence/phase-a-stream-ceiling-browser-controls-node22.json",
         "docs/evidence/phase-a-stream-ceiling-cleanup-node22.json",
-        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json"
+        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-all.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-expiry.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-browser.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-lifecycle.json",
+        "docs/evidence/phase-a-deadline-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-deadline-default-browser-controls-node22.json",
+        "docs/evidence/phase-a-deadline-default-cleanup-node22.json",
+        "docs/evidence/phase-a-deadline-full-stock-node22.json",
+        "docs/evidence/phase-a-native-client-deadline-node22.json"
       ],
       "missing": [
         "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
@@ -382,7 +409,16 @@
         "docs/evidence/phase-a-live-stream-ceiling-proofs-node22.json",
         "docs/evidence/phase-a-stream-ceiling-browser-controls-node22.json",
         "docs/evidence/phase-a-stream-ceiling-cleanup-node22.json",
-        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json"
+        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-all.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-expiry.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-browser.json",
+        "docs/evidence/phase-a-ci-linux-stream-ceiling-lifecycle.json",
+        "docs/evidence/phase-a-deadline-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-deadline-default-browser-controls-node22.json",
+        "docs/evidence/phase-a-deadline-default-cleanup-node22.json",
+        "docs/evidence/phase-a-deadline-full-stock-node22.json",
+        "docs/evidence/phase-a-native-client-deadline-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -755,7 +791,8 @@
         "docs/evidence/phase-a-storage-full-stock-node22.json",
         "docs/evidence/phase-a-pagination-full-stock-node22.json",
         "docs/evidence/phase-a-auth-failure-full-stock-node22.json",
-        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json"
+        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json",
+        "docs/evidence/phase-a-deadline-full-stock-node22.json"
       ],
       "missing": [
         "Candidate resolves duplicate confirmation in initial real characterization but is not approved/deployment-ready",
@@ -838,7 +875,9 @@
         "docs/evidence/phase-a-pagination-browser-controls-node22.json",
         "docs/evidence/phase-a-auth-failure-proofs-node22.json",
         "docs/evidence/phase-a-auth-failure-browser-controls-node22.json",
-        "docs/evidence/phase-a-live-stream-ceiling-proofs-node22.json"
+        "docs/evidence/phase-a-live-stream-ceiling-proofs-node22.json",
+        "docs/evidence/phase-a-deadline-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-deadline-default-browser-controls-node22.json"
       ],
       "missing": [
         "Buffered SSE proof has unit/live/three-browser/owned HTTP fault evidence, but no production transport choice/signoff or complete malformed/backpressure/reconnect corpus",
@@ -868,7 +907,9 @@
         "docs/evidence/phase-a-pagination-full-stock-node22.json",
         "docs/evidence/phase-a-ci-linux-browser-storage-expiry.json",
         "docs/evidence/phase-a-auth-failure-full-stock-node22.json",
-        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json"
+        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json",
+        "docs/evidence/phase-a-deadline-full-stock-node22.json",
+        "docs/evidence/phase-a-native-client-deadline-node22.json"
       ],
       "missing": [
         "Genuine native JWT expiry: ordinary protected HTTP denied but established stream delivered a newly written protected row; strict regression preserved under explicit short-native-auth fixture",
@@ -909,7 +950,10 @@
         "docs/evidence/phase-a-auth-failure-browser-controls-node22.json",
         "docs/evidence/phase-a-auth-failure-full-stock-node22.json",
         "docs/evidence/phase-a-live-stream-ceiling-proofs-node22.json",
-        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json"
+        "docs/evidence/phase-a-stream-ceiling-full-stock-node22.json",
+        "docs/evidence/phase-a-deadline-full-stock-node22.json",
+        "docs/evidence/phase-a-deadline-default-proof-controls-node22.json",
+        "docs/evidence/phase-a-deadline-default-browser-controls-node22.json"
       ],
       "missing": [
         "Strict native late refresh/status after logout resurrects cached state: two actual-response regressions preserved; approved wrapper/upstream resolution required",
@@ -928,10 +972,10 @@
     "Keep client reports and stream-lifetime question as drafts; only #298 is submitted. All named gate decisions precede Phase B/deployment recommendation."
   ],
   "lastSession": {
-    "date": "2026-10-03T05:47:04.607Z",
-    "sourceSha256": "39b682542dadbecfc37684a6ed6326c30f1410b9f999f82f7d4ce6d10516c9f0",
+    "date": "2026-10-03T06:00:21.920Z",
+    "sourceSha256": "371c1c3738b39d9fd573a094a919e1859deca46f2ea0325dbb39720986230475",
     "node": "v22.23.2",
-    "scope": "Bounded paused-consumer/native unsafe scalar/declared ceiling proof subset, NOT arbitrary backpressure/server accounting/signoff",
+    "scope": "Standard client JWT deadline abort using genuine claims/actual server-denial boundary, NOT server authz/renewal/clock-skew/signoff",
     "unitCases": 37,
     "proofCases": 14,
     "browserCases": 12,
@@ -939,16 +983,22 @@
       "passed": 53,
       "failed": 5
     },
+    "expiry": {
+      "passed": 1,
+      "failed": 1,
+      "profile": "short-native-auth",
+      "meaning": "client timer proof passed, raw server-expiry regression still strict failing"
+    },
     "cleanup": "passed every scope",
     "ci": {
-      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37099980877",
-      "commit": "0eb8dbc",
-      "scope": "Previous auth-failure hash, not stream-pressure expansion",
+      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37100969224",
+      "commit": "0c0d8a4",
+      "scope": "Previous stream-pressure source, not latest client-deadline case",
       "unitNode22": "job passed",
       "unitNode24": "job passed",
       "browser": 12,
       "fullStock": {
-        "passed": 50,
+        "passed": 53,
         "failed": 5
       },
       "expiry": {
@@ -960,9 +1010,9 @@
     }
   },
   "pendingWork": {
-    "scope": "G6 client-only genuine JWT deadline abort proof",
-    "status": "Current hash 37 unit/14 proof/12 browser/cleanup passed; stock 53/5 unchanged. Next standard AbortSignal deadline proof in explicit short-native profile only; keep raw server-expiry failure strict and never treat a client timer as server authorization repair.",
-    "signoff": "none; G1/G6/G7/real-expiry blockers and three draft reports unchanged"
+    "scope": "Current-source remote deadline verification / upstream stream-lifetime clarification",
+    "status": "37 unit/14 proof/12 browser/default cleanup passed; stock remains 53/5. Explicit expiry 1 passed/1 failed: client nominal-exp abort stops local reader, raw server stream still delivers after genuine HTTP denial. Clarification needed before production lifecycle policy; no automatic renewal/client timer substitute for server enforcement.",
+    "signoff": "none; G1/G6/G7 blockers remain; no Phase B/deployment; both client reports and stream-lifetime question remain drafts"
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",

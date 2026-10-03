@@ -55,6 +55,8 @@ The fragment case spaces real byte writes across event-loop turns; the receiver 
 
 The expiry scope verifies genuine JWT lifetime, confirms initially protected access, waits under an 80-second bound until the real backend denies the original JWT (allowing actual server clock-skew grace), then performs a write with a freshly refreshed writer. The old stream must close or surface an observable forbidden error without delivering the new protected row. No JWT edit, fake clock, session synthesis or mere revocation substitute is used. This is a strict native expiry requirement under investigation, not an assertion that upstream already provides it. It is separate from the default `all` corpus and has its own required CI step.
 
+A second case uses only standard `AbortSignal.timeout` against the genuine JWT's `exp` to close a proof reader locally. It must abort visibly/release the lock at the same-host nominal deadline, subsequently observe actual HTTP denial including server grace, preserve a fresh authenticated writer's row, and emit nothing from the closed reader. The original server-expiry assertion remains strict and failing. This is a client-only safety proof—not server authorization enforcement, clock-skew negotiation, background-browser scheduling, automatic renewal/reconnection, revocation enforcement or a release-approved policy.
+
 ## Commands and evidence
 
 - `npm run test:unit`: proof parser/property/cancellation guards plus existing harness checks.

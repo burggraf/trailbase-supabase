@@ -1,0 +1,216 @@
+{
+  "scope": "Phase A upstream/infrastructure harness, NOT SDK verification",
+  "authVariant": "stock",
+  "suite": "expiry",
+  "nativeAuthProfile": "short-native-auth",
+  "status": "failed",
+  "startedAt": "2026-10-03T05:50:33.680Z",
+  "baseline": {
+    "trailbase": {
+      "version": "0.34.3",
+      "commit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+      "assets": {
+        "darwin-arm64": {
+          "name": "trailbase_v0.34.3_aarch64_apple_darwin.zip",
+          "sha256": "211132ece889b373317ce7339c13992bd2ccfe02298458a9e6104a7b8454fe43"
+        },
+        "darwin-x64": {
+          "name": "trailbase_v0.34.3_x86_64_apple_darwin.zip",
+          "sha256": "c4e66e48165f3dcd1c9292b26f46203a8a2123652e05926f6c1a79b4fdd7fc4f"
+        },
+        "linux-arm64": {
+          "name": "trailbase_v0.34.3_aarch64_linux.zip",
+          "sha256": "88156ee1008e6fdd4d71784014fc970e0abdddd88ea952eddf04f25aa32fe99a"
+        },
+        "linux-x64": {
+          "name": "trailbase_v0.34.3_x86_64_linux.zip",
+          "sha256": "aa5a08fa50c06c026b652afa265cf392438675a2bb26ec174096c941fdb67b97"
+        }
+      }
+    },
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "nodeMajors": [
+      22,
+      24
+    ],
+    "nodeVersions": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "playwright": "1.63.0",
+    "commonRowCap": 1000,
+    "startupTimeoutMs": 300000
+  },
+  "node": "v22.23.2",
+  "platform": "linux-x64",
+  "tests": [
+    {
+      "name": "L1-27 G6/S07 actual native token expiry, NOT default fixture or reference/browser parity an established stream must stop delivering protected rows after its genuine access token expires",
+      "status": "failed"
+    }
+  ],
+  "cleanup": "passed",
+  "sourceSha256": "39b682542dadbecfc37684a6ed6326c30f1410b9f999f82f7d4ce6d10516c9f0",
+  "baseCommit": "0c0d8a427a403e74d746c3bf922e708ff61796e0",
+  "ci": {
+    "commit": "0c0d8a427a403e74d746c3bf922e708ff61796e0",
+    "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37100969224"
+  },
+  "runId": "1791006633695-f04b2bf59535",
+  "environment": {
+    "trailVersion": "trail v0.34.3-0-geab50393 (2026-10-02)\nsqlite: 3.53.2",
+    "cliVersion": "2.119.0",
+    "containers": [
+      {
+        "service": "supabase_rest",
+        "image": "public.ecr.aws/supabase/postgrest:v16.4",
+        "imageId": "sha256:1ad5f2ea5501150ec9c7953ae9bf04111ced39a53ca01fc0f08af6d0b7ba67be",
+        "repoDigests": [
+          "public.ecr.aws/supabase/postgrest@sha256:d155c6718ed9a9f990d159a2ab7c0a3f16944dbb6d0a0344557421042acfe0df"
+        ],
+        "publishedPorts": {
+          "3000/tcp": null
+        }
+      },
+      {
+        "service": "supabase_realtime",
+        "image": "public.ecr.aws/supabase/realtime:v2.140.3",
+        "imageId": "sha256:cf7559c05b3a844e13e9aabf6117b4494305977cc2fc8445ae3797ac050f6594",
+        "repoDigests": [
+          "public.ecr.aws/supabase/realtime@sha256:f66c721c71b576f5854c78f86df0c78a98368d900dcf62e4ddd96c6913139999"
+        ],
+        "publishedPorts": {
+          "4000/tcp": null
+        }
+      },
+      {
+        "service": "supabase_inbucket",
+        "image": "public.ecr.aws/supabase/mailpit:v1.31.3",
+        "imageId": "sha256:1ce65b9a2daa2a01cf4f226dbd4b3758b5b9fe686c2f471cf979273a389aab91",
+        "repoDigests": [
+          "public.ecr.aws/supabase/mailpit@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d"
+        ],
+        "publishedPorts": {
+          "1025/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "46183"
+            }
+          ],
+          "1110/tcp": null,
+          "8025/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "33797"
+            }
+          ]
+        }
+      },
+      {
+        "service": "supabase_auth",
+        "image": "public.ecr.aws/supabase/gotrue:v2.197.0",
+        "imageId": "sha256:1181bff5ba4ce440013a63cef9f4cf13024c432d705c9b1fbc9e5b949e852f48",
+        "repoDigests": [
+          "public.ecr.aws/supabase/gotrue@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+        ],
+        "publishedPorts": {
+          "9999/tcp": null
+        }
+      },
+      {
+        "service": "supabase_kong",
+        "image": "public.ecr.aws/supabase/kong:2.8.1",
+        "imageId": "sha256:3cefb958bcd694597b65adc00053a762b1f9a6df3c6031af528d052d75a64e1a",
+        "repoDigests": [
+          "public.ecr.aws/supabase/kong@sha256:1b53405d8680a09d6f44494b7990bf7da2ea43f84a258c59717d4539abf09f6d"
+        ],
+        "publishedPorts": {
+          "8000/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "35597"
+            }
+          ],
+          "8001/tcp": null,
+          "8088/tcp": null,
+          "8443/tcp": null,
+          "8444/tcp": null
+        }
+      },
+      {
+        "service": "supabase_db",
+        "image": "public.ecr.aws/supabase/postgres:17.11.0.002",
+        "imageId": "sha256:e671c63f6ad3a3bc0503d26bb6641bb2b8eddaabbfe1782ba56b7d2c0243b6d8",
+        "repoDigests": [
+          "public.ecr.aws/supabase/postgres@sha256:0450166354dc9c1d25f0322ac8b580774d4fb0184d2b087f6e4fe9499c66cf53"
+        ],
+        "publishedPorts": {
+          "5432/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "42193"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "setupStage": "ready",
+  "setupCheck": "passed",
+  "setupImageInventory": {
+    "containerCount": 6,
+    "services": [
+      {
+        "service": "supabase_rest",
+        "image": "public.ecr.aws/supabase/postgrest:v16.4",
+        "repoDigests": [
+          "public.ecr.aws/supabase/postgrest@sha256:d155c6718ed9a9f990d159a2ab7c0a3f16944dbb6d0a0344557421042acfe0df"
+        ],
+        "loopbackOnly": true
+      },
+      {
+        "service": "supabase_realtime",
+        "image": "public.ecr.aws/supabase/realtime:v2.140.3",
+        "repoDigests": [
+          "public.ecr.aws/supabase/realtime@sha256:f66c721c71b576f5854c78f86df0c78a98368d900dcf62e4ddd96c6913139999"
+        ],
+        "loopbackOnly": true
+      },
+      {
+        "service": "supabase_inbucket",
+        "image": "public.ecr.aws/supabase/mailpit:v1.31.3",
+        "repoDigests": [
+          "public.ecr.aws/supabase/mailpit@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d"
+        ],
+        "loopbackOnly": true
+      },
+      {
+        "service": "supabase_auth",
+        "image": "public.ecr.aws/supabase/gotrue:v2.197.0",
+        "repoDigests": [
+          "public.ecr.aws/supabase/gotrue@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+        ],
+        "loopbackOnly": true
+      },
+      {
+        "service": "supabase_kong",
+        "image": "public.ecr.aws/supabase/kong:2.8.1",
+        "repoDigests": [
+          "public.ecr.aws/supabase/kong@sha256:1b53405d8680a09d6f44494b7990bf7da2ea43f84a258c59717d4539abf09f6d"
+        ],
+        "loopbackOnly": true
+      },
+      {
+        "service": "supabase_db",
+        "image": "public.ecr.aws/supabase/postgres:17.11.0.002",
+        "repoDigests": [
+          "public.ecr.aws/supabase/postgres@sha256:0450166354dc9c1d25f0322ac8b580774d4fb0184d2b087f6e4fe9499c66cf53"
+        ],
+        "loopbackOnly": true
+      }
+    ]
+  },
+  "finishedAt": "2026-10-03T05:52:12.405Z"
+}
