@@ -59,3 +59,54 @@ test('L1-27/G5/G7 browser proof: real UTF-8 SSE, abort and guarded late refresh 
   },{base:env.trailUrl,email:account.email,password:account.password,owner:account.user.id,id:nativeUuid(randomUUID()),title:`browser-proof-${randomUUID()}-雪é-e\u0301`});
   expect(result).toEqual({unicode:true,delete:true,abort:true,logoutRace:true,protectedDenied:true});
 });
+
+for(const operation of ['refresh','status'] as const)for(const stage of ['response','json'] as const) {
+  test(`L1-27/G7/S04/S08 browser proof: terminal revocation rejects late ${operation} at ${stage} completion`,async({page})=>{
+    const env=await context(),account=await confirmedTrailUser(env,`b-term-${operation}-${stage}`);
+    await page.context().route('**/*',route=>env.origins.includes(new URL(route.request().url()).origin)?route.continue():route.abort());
+    await page.goto(env.trailUrl);
+    const result=await page.evaluate(async({base,email,password,operation,stage})=>{
+      const {authCoordinationProof}:typeof import('../proofs/auth-coordination.js')=await import(`${base}/proofs/auth-coordination.js`);
+      const ready=Promise.withResolvers<number>(),release=Promise.withResolvers<void>();
+      const forward=(path:string,init?:RequestInit)=>fetch(`${base}${path}`,{...init,credentials:'omit',signal:AbortSignal.timeout(10000)});
+      const wait=async<T>(promise:Promise<T>):Promise<T>=>{
+        let timer:ReturnType<typeof setTimeout>;
+        try{return await Promise.race([promise,new Promise<never>((_,no)=>{timer=setTimeout(()=>no(new Error('Browser revocation deadline exceeded')),10000);})]);}
+        finally{clearTimeout(timer!);}
+      };
+      const proof=authCoordinationProof(async(path,init)=>{
+        const response=await forward(path,init);
+        if(path===`/api/auth/v1/${operation}`) {
+          if(stage==='response'){await response.clone().arrayBuffer();ready.resolve(response.status);await release.promise;}
+          else {
+            const json=response.json.bind(response);
+            response.json=async()=>{const actual=await json();ready.resolve(response.status);await release.promise;return actual;};
+          }
+        }
+        return response;
+      });
+      await proof.login(email,password);
+      const pending=operation==='refresh'?proof.refresh():proof.validate();
+      try {
+        if(await wait(ready.promise)!==200)throw new Error('Browser held response was not successful');
+        const revoked=await forward('/api/auth/v1/logout',{method:'POST',headers:proof.headers(),body:JSON.stringify({refresh_token:proof.tokens()!.refresh_token})});
+        if(!revoked.ok)throw new Error('Browser remote revocation failed');await revoked.body?.cancel();
+        let terminal=false;
+        try{await wait<unknown>(operation==='refresh'?proof.validate():proof.refresh());}
+        catch(error){terminal=(error as {name:string;status:number}).name==='AuthProofHttpError'&&(error as {status:number}).status===401;}
+        if(!terminal||proof.tokens()!==undefined)throw new Error('Browser terminal denial did not clear cache');
+        release.resolve();let stale=false;
+        try{await wait<unknown>(pending);}catch(error){stale=(error as Error).name==='StaleAuthProofOperation';}
+        if(!stale||proof.tokens()!==undefined||await proof.refresh())throw new Error('Browser revoked state was restored');
+        const denied=await forward('/api/records/v1/todos',{headers:proof.headers()});
+        if(denied.status!==403)throw new Error('Browser revoked proof retained protected access');await denied.body?.cancel();
+        await proof.login(email,password);if(!await proof.refresh())throw new Error('Browser genuine relogin refresh failed');
+        const read=await forward('/api/records/v1/todos',{headers:proof.headers()});
+        if(!read.ok)throw new Error('Browser genuine relogin access failed');await read.body?.cancel();
+        await proof.logout();if(proof.tokens()!==undefined)throw new Error('Browser recovery logout failed');
+        return {terminal:true,stale:true,protectedDenied:true,recovered:true,signedOut:true};
+      } finally {release.resolve();await Promise.allSettled([pending]);}
+    },{base:env.trailUrl,email:account.email,password:account.password,operation,stage});
+    expect(result).toEqual({terminal:true,stale:true,protectedDenied:true,recovered:true,signedOut:true});
+  });
+}

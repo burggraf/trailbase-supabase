@@ -16,8 +16,9 @@ export function authCoordinationProof(forward:(path:string,init?:RequestInit)=>P
     ...(value?{Authorization:`Bearer ${value.auth_token}`,'Refresh-Token':value.refresh_token??'','CSRF-Token':value.csrf_token??''}:{})
   });
   const check=(started:number)=>{if(epoch!==started)throw new StaleAuthProofOperation();};
+  const clear=()=>{++epoch;tokens=undefined;pending=undefined;};
   async function login(email:string,password:string) {
-    const started=++epoch;tokens=undefined;pending=undefined;
+    clear();const started=epoch;
     const response=await forward('/api/auth/v1/login',{method:'POST',headers:headers(),body:JSON.stringify({email_or_username:email,password})});
     if(!response.ok){check(started);throw new AuthProofHttpError(response.status);}
     const actual:Tokens=await response.json();check(started);tokens=actual;
@@ -28,7 +29,7 @@ export function authCoordinationProof(forward:(path:string,init?:RequestInit)=>P
     if(!current?.refresh_token)return Promise.resolve(false);
     const operation=(async()=>{
       const response=await forward('/api/auth/v1/refresh',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({refresh_token:current.refresh_token})});
-      if(!response.ok){check(started);if(response.status===401)tokens=undefined;throw new AuthProofHttpError(response.status);}
+      if(!response.ok){check(started);if(response.status===401)clear();throw new AuthProofHttpError(response.status);}
       const actual:Tokens=await response.json();check(started);
       // Pinned native refresh retains the original genuine refresh credential.
       tokens={...actual,refresh_token:current.refresh_token};return true;
@@ -40,12 +41,12 @@ export function authCoordinationProof(forward:(path:string,init?:RequestInit)=>P
   async function validate() {
     const started=epoch,current=tokens;
     const response=await forward('/api/auth/v1/status',{headers:headers(current)});
-    if(!response.ok){check(started);tokens=undefined;throw new AuthProofHttpError(response.status);}
+    if(!response.ok){check(started);clear();throw new AuthProofHttpError(response.status);}
     const actual=await response.json();check(started);
-    tokens=actual.auth_token?actual:undefined;
+    if(actual.auth_token)tokens=actual;else clear();
   }
   async function logout() {
-    const current=tokens;++epoch;tokens=undefined;pending=undefined;
+    const current=tokens;clear();
     if(!current)return;
     const response=await forward('/api/auth/v1/logout',{method:'POST',headers:headers(current),body:JSON.stringify({refresh_token:current.refresh_token})});
     if(!response.ok)throw new AuthProofHttpError(response.status);

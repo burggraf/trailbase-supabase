@@ -181,6 +181,38 @@ describe('L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff',
       expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).ok).toBe(true);await proof.logout();
     } finally {release.resolve();await outcomes;}
   });
+  for(const operation of ['refresh','status'] as const)for(const stage of ['response','json'] as const) {
+    it(`terminal real revocation invalidates late ${operation} at ${stage} completion`,async()=>{
+      const account=await confirmedTrailUser(env,`terminal-${operation}-${stage}`);
+      const ready=Promise.withResolvers<number>(),release=Promise.withResolvers<void>();
+      const proof=authCoordinationProof(async(path,init)=>{
+        const response=await forward(path,init);
+        if(path===`/api/auth/v1/${operation}`) {
+          if(stage==='response'){await response.clone().arrayBuffer();ready.resolve(response.status);await release.promise;}
+          else {
+            const json=response.json.bind(response);
+            response.json=async()=>{const actual=await json();ready.resolve(response.status);await release.promise;return actual;};
+          }
+        }
+        return response;
+      });
+      await proof.login(account.email,account.password);
+      const pending=operation==='refresh'?proof.refresh():proof.validate();
+      try {
+        expect(await deadline(ready.promise)).toBe(200);
+        expect((await forward('/api/auth/v1/logout',{method:'POST',headers:proof.headers(),body:JSON.stringify({refresh_token:proof.tokens()!.refresh_token})})).ok).toBe(true);
+        const denial=operation==='refresh'?proof.validate():proof.refresh();
+        await expect(deadline<unknown>(denial)).rejects.toMatchObject({name:'AuthProofHttpError',status:401});
+        expect(proof.tokens()).toBeUndefined();
+        release.resolve();await expect(deadline<unknown>(pending)).rejects.toMatchObject({name:'StaleAuthProofOperation'});
+        expect(proof.tokens()).toBeUndefined();expect(await proof.refresh()).toBe(false);
+        expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).status).toBe(403);
+        await proof.login(account.email,account.password);expect(await proof.refresh()).toBe(true);
+        expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).ok).toBe(true);
+        await proof.logout();expect(proof.tokens()).toBeUndefined();
+      } finally {release.resolve();await Promise.allSettled([pending]);}
+    });
+  }
   it('late genuine 401 cannot clear a new account cache or its newer single-flight slot',async()=>{
     const firstAccount=await confirmedTrailUser(env,'proof-old-401'),secondAccount=await confirmedTrailUser(env,'proof-new-401');
     const ready=[Promise.withResolvers<number>(),Promise.withResolvers<number>()],release=[Promise.withResolvers<void>(),Promise.withResolvers<void>()];let calls=0;

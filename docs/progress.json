@@ -943,10 +943,12 @@
         "docs/evidence/phase-a-migration-expiry-controls-node22.json",
         "docs/evidence/phase-a-approved-delete-streaming-node22.json",
         "docs/evidence/phase-a-approved-delete-expiry-node22.json",
-        "docs/evidence/phase-a-approved-delete-full-stock-node22.json"
+        "docs/evidence/phase-a-approved-delete-full-stock-node22.json",
+        "docs/evidence/phase-a-ci-linux-approved-delete-all.json",
+        "docs/evidence/phase-a-ci-linux-approved-delete-expiry.json"
       ],
       "missing": [
-        "Approved DELETE difference passed all four local streaming cases: native owner-only delivery and reference exact key-only DELETE payloads. Current-source Linux and broader browser/SDK payload checks remain pending; historical stricter-key failures remain unchanged.",
+        "Approved DELETE difference passed all four local streaming cases: native owner-only delivery and reference exact key-only DELETE payloads. Linux e24b1da also passed the revised DELETE cases within stock 54/4. Broader browser/SDK payload checks remain pending; historical stricter-key failures remain unchanged.",
         "Broader browser/SDK channel lifecycle, logout cancellation, CDC readiness, loss/reconnect and resource-cleanup matrices remain incomplete",
         "Approve the common payload subset and document the connection-scoped authorization limitation; no feature/gate signoff inferred"
       ],
@@ -988,7 +990,13 @@
         "docs/evidence/phase-a-deadline-default-proof-controls-node22.json",
         "docs/evidence/phase-a-deadline-default-browser-controls-node22.json",
         "docs/evidence/phase-a-ci-linux-client-deadline-all.json",
-        "docs/evidence/phase-a-ci-linux-client-deadline-browser.json"
+        "docs/evidence/phase-a-ci-linux-client-deadline-browser.json",
+        "docs/evidence/phase-a-terminal-revocation-initial-fixture-failures-node22.json",
+        "docs/evidence/phase-a-terminal-revocation-pre-fix-node22.json",
+        "docs/evidence/phase-a-ci-linux-approved-delete-all.json",
+        "docs/evidence/phase-a-terminal-revocation-proofs-node22.json",
+        "docs/evidence/phase-a-terminal-revocation-browser-node22.json",
+        "docs/evidence/phase-a-terminal-revocation-all-node22.json"
       ],
       "missing": [
         "Strict native late refresh/status after logout resurrects cached state: two actual-response regressions preserved; approved wrapper/upstream resolution required",
@@ -1034,6 +1042,29 @@
     "missing": "Complete SDK lifecycle/resource layers; no gate signoff; this evidence predates the migration-source changes"
   },
   "lastSession": {
+    "date": "2026-10-03T14:52:04.722Z",
+    "sourceSha256": "4c64e6449d72d3fbc9d0e83dd9d30f2eb3b469b775457bb56daac7dd80e32986",
+    "node": "v22.23.2",
+    "scope": "Test-only terminal-revocation generation invalidation; four genuine response/JSON-stage races plus equivalent three-browser checks, NOT installed-client repair or production SDK",
+    "unitCases": 37,
+    "proofCases": 18,
+    "browserCases": 24,
+    "expiryCases": 2,
+    "networkCases": 2,
+    "fullStock": { "passed": 58, "failed": 4 },
+    "checks": "npm run check passed",
+    "cleanup": "passed every scope with strict setup verification",
+    "evidence": [
+      "docs/evidence/phase-a-terminal-revocation-proofs-node22.json",
+      "docs/evidence/phase-a-terminal-revocation-browser-node22.json",
+      "docs/evidence/phase-a-terminal-revocation-expiry-node22.json",
+      "docs/evidence/phase-a-terminal-revocation-network-node22.json",
+      "docs/evidence/phase-a-terminal-revocation-lifecycle-node22.json",
+      "docs/evidence/phase-a-terminal-revocation-all-node22.json"
+    ],
+    "missing": "Current-source Linux CI; installed-client G7 races and G1 recovery remain strict/red; transient-error/storage/timer/resource and full SDK matrices incomplete; no signoff"
+  },
+  "historicalApprovedDeleteSession": {
     "date": "2026-10-03T14:29:36.384Z",
     "sourceSha256": "b0b97c2acd6aca95f2ddd192ddd689063395b7efee57995c6086b78b3f125278",
     "node": "v22.23.2",
@@ -1056,7 +1087,22 @@
       "docs/evidence/phase-a-approved-delete-cleanup-node22.json",
       "docs/evidence/phase-a-approved-delete-full-stock-node22.json"
     ],
-    "missing": "Current-source Linux CI; G1 native recovery and G7 installed-client races remain strict/red; complete matrices and named gate signoff"
+    "ci": {
+      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37130028575",
+      "commit": "e24b1da77506ee3425464592224c571cd109c73c",
+      "scope": "Approved DELETE and SMTP-identity source, before terminal-revocation proof additions",
+      "unitNode22": 37,
+      "unitNode24": 37,
+      "fullStock": { "passed": 54, "failed": 4 },
+      "candidateCharacterizationCases": 10,
+      "candidateSmtp": { "passed": 0, "failed": 1 },
+      "migrationCases": 1,
+      "expiryCases": 2,
+      "browserCases": 12,
+      "cleanup": "passed all seven real scopes with strict setup verification",
+      "job": "red for the preserved stock auth regressions and candidate recovery failure"
+    },
+    "missing": "G1 native recovery and G7 installed-client races remain strict/red; complete matrices and named gate signoff; Linux evidence predates terminal-revocation proof additions"
   },
   "historicalSmtpIdentitySession": {
     "date": "2026-10-03T14:12:59.629Z",
@@ -1153,6 +1199,7 @@
     "scope": "G1 recovery capability and migration restart/upgrade investigation",
     "status": "Owned-depot preflight rollback passed on macOS/Linux. Completed gpt-6.1-sol assessment identifies the missing native pending-identity confirmation-redelivery path. The strengthened candidate SMTP case preserves one ID/password through alternate-password retry/resend, then strictly fails for missing real mail. Candidate characterization/browser controls passed. No fork, deployment, identity repair, repin or public follow-up approved; #299 remains closed.",
     "g6DecisionInterview": "186fd6d9-0e51-4c33-a864-8e099ba8cd26: explicit approval to document native owner-only versus Supabase non-confidential DELETE keys; protected row values remain private",
+    "g7Proof": "Four genuine response/JSON-stage terminal-revocation regressions reproduced stale-success restoration in the test-only coordinator. Cache clearing now centrally invalidates its epoch/flight; 18 real proofs, 24 browser cases, 2 expiry cases, 2 network controls and fault cleanup passed. Stock remains 58/4; Linux verification is pending. This does not patch the installed client or sign off a production strategy.",
     "signoff": "none; both installed-client reports remain drafts; no further public reply authorized"
   },
   "historicalCi": {
