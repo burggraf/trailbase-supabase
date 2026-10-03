@@ -2,7 +2,7 @@
   "scope": "Phase A upstream/infrastructure harness, NOT SDK verification",
   "suite": "all",
   "status": "passed",
-  "startedAt": "2026-10-03T00:17:41.327Z",
+  "startedAt": "2026-10-03T00:49:42.420Z",
   "baseline": {
     "trailbase": {
       "version": "0.34.3",
@@ -46,6 +46,14 @@
   "tests": [
     {
       "name": "L1-27 upstream characterization; G1-G7 still require approval G1 native signup supplies no user/session; both backends require real mail confirmation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native confirmed duplicate signup is opaque, preserves credentials, and creates no session",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 reference confirmed duplicate signup obscures identity and invalid logins leave no session",
       "status": "passed"
     },
     {
@@ -126,9 +134,9 @@
     }
   ],
   "cleanup": "passed",
-  "sourceSha256": "6dcfb291d34ed81a6b906e6dfe2a241ea3177b6d7cf0f5370bd3ebd54ea97171",
-  "baseCommit": "081390ba74ebe4578036cfc3423a9dcfa1617d11",
-  "runId": "1790986661382-9ebd9bce6611",
+  "sourceSha256": "95cd390f44c12ceea93b2bd23274c2e3755054657df094536775c0ef6e43aac8",
+  "baseCommit": "d6e378c22826ffb350160226f3adce072da5755f",
+  "runId": "1790988582476-2c659e5a2fdc",
   "environment": {
     "trailVersion": "trail v0.34.3-0-geab50393 (2026-10-02)\nsqlite: 3.53.2",
     "cliVersion": "2.119.0",
@@ -166,14 +174,14 @@
           "1025/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "59245"
+              "HostPort": "60268"
             }
           ],
           "1110/tcp": null,
           "8025/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "59244"
+              "HostPort": "60267"
             }
           ]
         }
@@ -200,7 +208,7 @@
           "8000/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "59241"
+              "HostPort": "60264"
             }
           ],
           "8001/tcp": null,
@@ -220,7 +228,7 @@
           "5432/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "59242"
+              "HostPort": "60265"
             }
           ]
         }
@@ -276,5 +284,5 @@
       "installByDefault": false
     }
   ],
-  "finishedAt": "2026-10-03T00:18:33.744Z"
+  "finishedAt": "2026-10-03T00:50:33.747Z"
 }

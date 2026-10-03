@@ -60,6 +60,8 @@ TrailBase email registration sends verification mail, forbids login before confi
 
 Recommended minimal contract: email/password only, confirmations enabled in both fixtures, TrailBase signup success returns `{ data: { user: null, session: null }, error: null }`. This is an **explicit compatibility exception requiring maintainer approval**, not full Supabase signup parity. Never fabricate a UUID/user object, use browser admin APIs to retrieve one, or silently auto-confirm accounts.
 
+The pinned [Auth v2.197.0 signup handler](https://github.com/supabase/auth/blob/v2.197.0/internal/api/signup.go) returns `user_already_exists` for a confirmed duplicate if **either** email or SMS auto-confirmation is enabled, independently of whether phone signup is enabled. The initial local fixture exposed that response because SMS confirmations defaulted off. Require both confirmation flags for the reference fixture while keeping phone signup disabled; this strengthens confirmation/identity protection, not phone support. A sanitized duplicate user is still not full response-shape parity or a universal enumeration-resistance guarantee.
+
 Test real confirmation through a local SMTP inbox and both backends' verification links. The application tells users to check mail and explicitly sign in afterward; automatic Supabase callback-session adoption is outside scope. If identical signup user results are required, resolve the missing native capability before claiming Level 1 complete.
 
 ### 7. `getSession()` is not `getUser()`

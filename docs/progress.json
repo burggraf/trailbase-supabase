@@ -50,6 +50,7 @@
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [
+        "Current-source Linux/Node 22/24 CI rerun after confirmation-policy change",
         "Final published npm name (harness remains private)",
         "Named maintainer review"
       ],
@@ -76,6 +77,7 @@
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [
+        "Current-source Linux/Node 22/24 CI rerun after confirmation-policy change",
         "Named maintainer review"
       ],
       "reviewer": null,
@@ -101,6 +103,7 @@
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [
+        "Current-source Linux/Node 22/24 CI rerun after confirmation-policy change",
         "Named maintainer review"
       ],
       "reviewer": null,
@@ -126,7 +129,7 @@
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [
-        "Duplicate-signup/SMTP-outage cases",
+        "SMTP-outage and unconfirmed duplicate-signup cases (confirmed duplicate/wrong/unknown login probes passed)",
         "Ordering/unsafe scalar boundaries",
         "SSE UTF-8/sequence/loss/network fragmentation cases",
         "Owner/DELETE stream isolation and auth expiry",
@@ -140,7 +143,7 @@
     {
       "id": "A06",
       "title": "Required CI jobs and evidence artifacts",
-      "status": "verified",
+      "status": "implemented",
       "tests": [
         "L1-27/U27",
         "L1-27/I27/C27"
@@ -156,6 +159,7 @@
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569"
       ],
       "missing": [
+        "Current-source Linux/Node 22/24 CI rerun after confirmation-policy change",
         "Named maintainer review; future SDK-wide gates remain explicitly incomplete"
       ],
       "reviewer": null,
@@ -504,11 +508,12 @@
       "title": "Signup null-user exception",
       "status": "in-progress",
       "evidence": [
-        "docs/evidence/phase-a-all-node22.json"
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-g1-initial-failure.json"
       ],
       "missing": [
-        "Duplicate/signup enumeration and SMTP failure characterization",
-        "Maintainer approval of null-user exception; future app E02/E03 remain required"
+        "SMTP-outage and unconfirmed duplicate-signup characterization",
+        "Maintainer approval of null-user exception and documented confirmation policy; future app E02/E03 remain required"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -603,26 +608,32 @@
     }
   ],
   "nextSteps": [
-    "Resume with npm run progress; current-source local and Linux CI foundation evidence is preserved. Re-run applicable checks after source/contract changes.",
+    "Inspect current-source Linux CI after publishing G1/S04 confirmation-policy regression; local full foundation/cleanup passed, sanitized first-failure and passing evidence preserved.",
     "Finish the explicit missing G1-G7 characterization cases, especially native auth races and stream owner/expiry/loss behavior; implement no SDK promise before relevant decisions.",
     "Review Phase A evidence and compatibility exceptions with burggraf; only the maintainer records signoff.",
     "After Phase A approval, start Phase B client/types/mapping/results with its own full applicable tests."
   ],
   "lastSession": {
-    "date": "2026-10-03T00:20:47.080Z",
+    "date": "2026-10-03T00:51:51.983Z",
     "scope": "Phase A foundation; NOT SDK implementation or signoff",
-    "sourceSha256": "6dcfb291d34ed81a6b906e6dfe2a241ea3177b6d7cf0f5370bd3ebd54ea97171",
+    "sourceSha256": "95cd390f44c12ceea93b2bd23274c2e3755054657df094536775c0ef6e43aac8",
     "node": "v22.23.2",
     "unitCases": 22,
-    "realUpstreamCases": 14,
+    "realUpstreamCases": 16,
     "browserInfrastructureCases": 6,
     "pgTapAssertions": 10,
     "cleanupFaultCases": 1,
     "ci": {
-      "status": "passed",
+      "status": "historical pass; current-source rerun pending",
       "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569",
-      "commit": "14123bc282958723ccce17fae6f7a76024f5de9e",
-      "scope": "Linux x64 Node 22/24 static-unit; Node 22 real backends/three browsers/cleanup; NOT full SDK conformance"
+      "commit": "14123bc282958723ccce17fae6f7a76024f5de9e"
     }
+  },
+  "pendingWork": {
+    "scope": "G1/S04 confirmed duplicate signup, password preservation, wrong/unknown login equivalence and no-session postconditions",
+    "status": "Expanded G1/S04 probes, full local foundation and fault cleanup passed; current-source Linux CI pending",
+    "process": "phase-a-duplicate-and-invalid-login-probes",
+    "signoff": "none; do not infer approval",
+    "source": "https://github.com/supabase/auth/blob/v2.197.0/internal/api/signup.go"
   }
 }

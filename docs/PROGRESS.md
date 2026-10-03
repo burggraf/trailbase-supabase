@@ -35,11 +35,13 @@ On macOS arm64 / Node **22.23.2**, the current-source foundation passed:
 | Evidence | Result |
 | --- | --- |
 | [Unit guards](evidence/phase-a-unit-node22.json) | 22 cases, including 1000 seeded UUID vectors |
-| [Real upstream/browser infrastructure](evidence/phase-a-all-node22.json) | 14 database/auth/query/stream cases and 6 browser scenarios (Chromium/Firefox/WebKit); includes 10 pgTAP assertions |
+| [Real upstream/browser infrastructure](evidence/phase-a-all-node22.json) | 16 database/auth/query/stream cases and 6 browser scenarios (Chromium/Firefox/WebKit); includes 10 pgTAP assertions |
 | [Injected setup failure](evidence/phase-a-lifecycle-node22.json) | Cleanup passed after both servers had started |
 | `npm run check` | TypeScript, JavaScript syntax, docs/traceability, evidence freshness and secret scan passed |
 
-No owned fixture containers/volumes/networks remained. [Linux x64 CI passed](https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569): static/unit checks on Node 22.23.2 and 24.21.0, plus real backends/all three browsers/injected-failure cleanup on Node 22. Sanitized CI reports are preserved in `docs/evidence/phase-a-ci-*.json`. Node 24 real-backend/browser execution is not claimed. Remaining characterization, full SDK layers and maintainer signoff are still pending. These are **foundation results, not completion of Phase A or SDK compatibility**.
+Confirmed duplicate-signup probes now verify no new session, preserved original passwords, matching wrong/unknown-login error contracts, and disabled phone signup. The reference fixture explicitly disables both email and SMS auto-confirmation; phone signup stays disabled. The initial failed probe is retained in [historical failure evidence](evidence/phase-a-g1-initial-failure.json), not counted green.
+
+No owned fixture containers/volumes/networks remained. **Current-source Linux CI is pending after this fixture change.** The earlier foundation's [Linux x64 CI passed](https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569): static/unit checks on Node 22.23.2 and 24.21.0, plus real backends/all three browsers/injected-failure cleanup on Node 22. Sanitized historical CI reports are preserved in `docs/evidence/phase-a-ci-*.json`; their source hash identifies the earlier revision. Node 24 real-backend/browser execution is not claimed. Remaining characterization, full SDK layers and maintainer signoff are still pending. These are **foundation results, not completion of Phase A or SDK compatibility**.
 
 ## What exists now
 

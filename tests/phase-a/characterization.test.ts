@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { beforeAll, describe, expect, it } from 'vitest';
+import { FetchError } from 'trailbase';
 import { context, confirmedTrailUser, confirmedSupabaseUser, nativeUuid, supabase, trailbase, confirmEmail, type Context } from './helpers.js';
 
 let env: Context;
@@ -24,6 +25,48 @@ describe('L1-27 upstream characterization; G1-G7 still require approval', () => 
     await confirmEmail(env,se);
     expect((await reference.auth.signInWithPassword({ email: se, password })).error === null).toBe(true);
     expect((await reference.auth.getUser()).data.user?.email).toBe(se);
+  });
+  it('G1/S04 native confirmed duplicate signup is opaque, preserves credentials, and creates no session', async () => {
+    const account = await confirmedTrailUser(env,'duplicate');
+    const visitor = trailbase(env), replacement = `Fixture-${randomUUID()}-Aa1!`;
+    expect(await visitor.register({ email:account.email, password:replacement })).toBeUndefined();
+    expect(visitor.user()).toBeUndefined(); expect(visitor.tokens()).toBeUndefined();
+    await expect(visitor.login(account.email,replacement)).rejects.toBeDefined();
+    expect(visitor.user()).toBeUndefined(); expect(visitor.tokens()).toBeUndefined();
+    await visitor.login(account.email,account.password);
+    expect(visitor.user()?.id).toBe(account.user.id);
+    const wrong = trailbase(env), unknown = trailbase(env);
+    const failure = async (client: typeof wrong, email: string) => {
+      try { await client.login(email,replacement); throw new Error('Unexpected authenticated invalid login'); }
+      catch(error) {
+        // Compare only the observable error contract, never persist credentials/backend replies.
+        if (!(error instanceof FetchError)) throw error;
+        return { status:error.status, message:error.message };
+      }
+    };
+    const denied = await failure(wrong,account.email);
+    expect(denied.status).toBe(401);
+    expect(await failure(unknown,`unknown-${randomUUID()}@example.test`)).toEqual(denied);
+    expect(wrong.tokens()).toBeUndefined(); expect(unknown.tokens()).toBeUndefined();
+    expect((await account.client.fetch('/api/auth/v1/status')).ok).toBe(true);
+  });
+  it('G1/S04 reference confirmed duplicate signup obscures identity and invalid logins leave no session', async () => {
+    const account = await confirmedSupabaseUser(env,'duplicate');
+    const visitor = supabase(env), replacement = `Fixture-${randomUUID()}-Aa1!`;
+    const phoneDisabled = await visitor.auth.signUp({ phone:'+15555550100',password:replacement });
+    expect(phoneDisabled.error?.code).toBe('phone_provider_disabled');
+    const duplicate = await visitor.auth.signUp({ email:account.email,password:replacement });
+    expect(duplicate.error).toBeNull(); expect(duplicate.data.session).toBeNull();
+    expect(duplicate.data.user?.id).not.toBe(account.user.id);
+    expect(duplicate.data.user?.identities).toEqual([]);
+    expect((await visitor.auth.getSession()).data.session).toBeNull();
+    const wrong = await visitor.auth.signInWithPassword({ email:account.email,password:replacement });
+    const unknown = await visitor.auth.signInWithPassword({ email:`unknown-${randomUUID()}@example.test`,password:replacement });
+    expect(wrong.error?.status).toBe(400);
+    expect({code:unknown.error?.code,status:unknown.error?.status,message:unknown.error?.message}).toEqual({code:wrong.error?.code,status:wrong.error?.status,message:wrong.error?.message});
+    expect((await visitor.auth.getSession()).data.session).toBeNull();
+    const valid = await visitor.auth.signInWithPassword({ email:account.email,password:account.password });
+    expect(valid.error).toBeNull(); expect(valid.data.user?.id).toBe(account.user.id);
   });
   it('G2 installed native list defaults to 50, native limit(0) omits limit, and aligned cap is 1000', async () => {
     const native = await confirmedTrailUser(env,'pages');

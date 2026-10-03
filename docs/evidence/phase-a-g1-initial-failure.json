@@ -1,8 +1,8 @@
 {
   "scope": "Phase A upstream/infrastructure harness, NOT SDK verification",
-  "suite": "lifecycle",
-  "status": "passed",
-  "startedAt": "2026-10-03T00:50:33.995Z",
+  "suite": "all",
+  "status": "failed",
+  "startedAt": "2026-10-03T00:44:22.992Z",
   "baseline": {
     "trailbase": {
       "version": "0.34.3",
@@ -45,14 +45,74 @@
   "platform": "darwin-arm64",
   "tests": [
     {
-      "name": "L1-27/I27 injected setup failure reaches unconditional owned-resource cleanup",
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1 native signup supplies no user/session; both backends require real mail confirmation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native confirmed duplicate signup is opaque, preserves credentials, and creates no session",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 reference confirmed duplicate signup obscures identity and invalid logins leave no session",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G2 installed native list defaults to 50, native limit(0) omits limit, and aligned cap is 1000",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G2/G4 reference ranges/caps/zero/cardinality and repeated builder awaits are characterized",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G3 native missing writes error; reference missing writes succeed without modifying another row",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G7 native validated status, retained refresh token and explicit local/global revocation across two sessions",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 upstream characterization; G1-G7 still require approval G7 reference default logout is global; explicit local scope preserves the other refresh session",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) pgTAP grants, RLS, security-invoker view and publication assertions",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) native UUID/owner/default/boolean/null fields round-trip and constraints hold",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) reference UUID/owner/default/boolean/null fields round-trip and constraints hold",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) native anonymous/B/spoof/reassignment denials leave A row intact; read-only view isolates owners",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) reference anonymous/B/spoof/reassignment denials leave A row intact; view obeys RLS",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/I27/C27 cold-start fixtures (upstream, not SDK) integer/nonstandard primary-key fixtures support ordinary owner-scoped CRUD",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G6 streaming characterization (not full SDK/security signoff) native real Insert/Update/Delete and installed-parser fragmentation defect",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5/G6 streaming characterization (not full SDK/security signoff) reference real INSERT/UPDATE/DELETE, key-only delete payload, and channel cleanup",
       "status": "passed"
     }
   ],
   "cleanup": "passed",
-  "sourceSha256": "95cd390f44c12ceea93b2bd23274c2e3755054657df094536775c0ef6e43aac8",
+  "sourceSha256": "815e493f5a0f5fa38f56c09ec686b2f8f3aed143fe28437c8d7627a8c1535100",
   "baseCommit": "d6e378c22826ffb350160226f3adce072da5755f",
-  "runId": "1790988634049-6f74345961dd",
+  "runId": "1790988263065-59c48f779a32",
   "environment": {
     "trailVersion": "trail v0.34.3-0-geab50393 (2026-10-02)\nsqlite: 3.53.2",
     "cliVersion": "2.119.0",
@@ -90,14 +150,14 @@
           "1025/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "60394"
+              "HostPort": "60031"
             }
           ],
           "1110/tcp": null,
           "8025/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "60393"
+              "HostPort": "60030"
             }
           ]
         }
@@ -124,7 +184,7 @@
           "8000/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "60390"
+              "HostPort": "60027"
             }
           ],
           "8001/tcp": null,
@@ -144,13 +204,12 @@
           "5432/tcp": [
             {
               "HostIp": "127.0.0.1",
-              "HostPort": "60391"
+              "HostPort": "60028"
             }
           ]
         }
       }
     ]
   },
-  "injectedFailure": "after-start",
-  "finishedAt": "2026-10-03T00:51:07.378Z"
+  "finishedAt": "2026-10-03T00:45:06.101Z"
 }

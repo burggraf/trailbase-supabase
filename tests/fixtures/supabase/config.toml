@@ -48,6 +48,12 @@ enable_signup = true
 enable_confirmations = true
 max_frequency = "1s"
 
+# Auth v2.197.0 reveals confirmed duplicates if either provider auto-confirms.
+# Disable SMS auto-confirmation without enabling phone signup or any SMS provider.
+[auth.sms]
+enable_signup = false
+enable_confirmations = true
+
 [analytics]
 enabled = false
 
