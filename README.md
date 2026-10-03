@@ -2,7 +2,23 @@
 
 A planned Supabase-shaped TypeScript SDK for TrailBase: start with a lightweight TrailBase backend, then move to Supabase with fewer application changes.
 
-**Status: planning only.** No SDK, npm package, migration command, or compatibility gateway is implemented yet. This is an independent project, not an official TrailBase or Supabase product.
+**Status: Phase A development in progress.** A private, MIT-licensed proof harness exists; the public compatibility SDK, migration command, and gateway are not implemented. This is an independent project, not an official TrailBase or Supabase product.
+
+## Resume development and review progress
+
+Start with [docs/PROGRESS.md](docs/PROGRESS.md) and `npm run progress`. The checked-in [progress ledger](docs/progress.json) tracks Phase A deliverables, all 27 feature rows, seven research gates, test evidence, missing checks, maintainer signoff, and next steps. Implemented, verified, and signed off are separate states.
+
+```sh
+npm ci
+npm run progress
+npm run check
+npm run test:unit
+npx playwright install chromium firefox webkit
+npm run test:phase-a
+npm run test:cleanup
+```
+
+Real-service tests require local Docker; see the restart guide for exact tool versions, Linux browser dependencies, safe recovery, tested environments, and evidence. The smaller Phase A probes are not a substitute for the future SDK's full suite.
 
 ## Start small
 
@@ -26,7 +42,7 @@ See [PLAN.md](PLAN.md) for scope and future levels, and the [detailed Level 1 pl
 
 The [full test plan](docs/TEST_PLAN.md) defines unit/type/property, database, real integration, shared Supabase contract, browser E2E, security/fault, and packaged-consumer tests, with **27 feature-specific signoff rows**. Tests land with implementation, not afterward. Chromium, Firefox, and WebKit exercise real disposable TrailBase/Supabase backends and actual email-confirmation flows.
 
-Release requires reproducible CI evidence and maintainer signoff—not mocks alone. [Upstream research](docs/RESEARCH.md) records seven open decisions, including signup return shapes, field conversions, auth lifecycle, and streaming behavior. All implementation/test/signoff work is still pending.
+Release requires reproducible CI evidence and maintainer signoff—not mocks alone. [Upstream research](docs/RESEARCH.md) records seven open decisions, including signup return shapes, field conversions, auth lifecycle, and streaming behavior. Upstream/harness checks are being implemented and exercised; SDK feature implementation and signoff remain pending.
 
 ## Migration goal
 
@@ -53,6 +69,8 @@ Storage, OAuth, richer queries, and other additions to Level 1 are deferred unti
 
 ## Project documents
 
+- [docs/PROGRESS.md](docs/PROGRESS.md): restart guide, commands, evidence, and signoff workflow.
+- [docs/progress.json](docs/progress.json): authoritative per-deliverable/feature/gate status and next steps.
 - [PLAN.md](PLAN.md): roadmap and acceptance criteria.
 - [docs/LEVEL1_PLAN.md](docs/LEVEL1_PLAN.md): detailed work packages and completion gates.
 - [docs/TEST_PLAN.md](docs/TEST_PLAN.md): mandatory full-suite and per-feature signoff requirements.
@@ -60,4 +78,4 @@ Storage, OAuth, richer queries, and other additions to Level 1 are deferred unti
 - [AGENTS.md](AGENTS.md): instructions for coding agents and contributors.
 - [Source discussion](https://chatgpt.com/share/6ac02347-6a48-83e8-b8b8-8ef8986f9a0f): the project's starting point, not a verified API specification.
 
-There are no install, build, or test commands yet. Those will be added with the first working SDK increment.
+Phase A commands are documented above and in the restart guide. Full SDK contract/security/application-E2E/package/release commands deliberately fail while unimplemented; they do not silently substitute a smoke test. See [LICENSE](LICENSE) for MIT terms.

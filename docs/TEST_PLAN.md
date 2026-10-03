@@ -1,6 +1,6 @@
 # Project-wide test and signoff plan
 
-**Mandatory for all project work, including future levels.** This is the planned full test suite, not a report of tests already passing. There is no SDK/test harness in the repository yet. Every Level 1 feature below is currently **NOT IMPLEMENTED / NOT RUN / NOT SIGNED OFF**.
+**Mandatory for all project work, including future levels.** This is the full SDK test specification, not a blanket report of passing tests. Phase A now has a partial executable upstream/database/browser infrastructure harness; the compatibility SDK is not implemented. Actual statuses and evidence live in [progress.json](progress.json), with restart instructions in [PROGRESS.md](PROGRESS.md). SDK features remain **NOT IMPLEMENTED / NOT RUN / NOT SIGNED OFF**; L1-27 harness work is in progress, not signed off.
 
 Related documents: [Level 1 implementation](LEVEL1_PLAN.md), [research and open gates](RESEARCH.md), [top-level roadmap](../PLAN.md), [contributor rules](../AGENTS.md).
 
@@ -164,7 +164,7 @@ On Supabase, DELETE events have different RLS behavior from ordinary row reads. 
 
 ## 8. Planned commands and CI gates
 
-These command names are **targets to implement in Phase A**, not commands that currently exist:
+The table describes the **required full SDK scope**. Some executable names now exist with deliberately narrower Phase A meanings; [PROGRESS.md](PROGRESS.md) lists those exact scopes. Unimplemented SDK contract/security/application-E2E/package/all gates exit nonzero instead of silently passing upstream smoke tests. Expand each command and CI job as its real implementation lands; no full-suite signoff exists yet.
 
 | Command target | Required work |
 | --- | --- |
@@ -213,4 +213,4 @@ Reviewer and signoff date:
 
 Artifacts include sanitized JUnit/JSON reports, coverage, exact environment manifest, backend/fixture logs, package contents, Playwright traces/screenshots on failure, and migration row/count/invariant comparisons. Raw Playwright traces may contain credentials/network bodies: sanitize/redact before uploading; if sanitization cannot safely retain a trace, restrict access or do not upload it and provide a sanitized diagnostic summary. CI logs/artifacts are not a safe place for tokens just because the accounts are disposable.
 
-Feature status progresses **planned → implemented → verified → signed off**. Record exact missing layers for partial work. At this planning revision **all 27 features remain planned**. A named maintainer signs the supported subset, and the release notes list known exceptions. After any contract-affecting fix or upstream upgrade, stale evidence cannot sign off the new version.
+Feature status progresses **planned → implemented → verified → signed off**. Record exact missing layers for partial work. The 26 SDK/application/release features remain planned; **L1-27 harness work is partially implemented/tested**. Read the checked-in progress ledger instead of inferring completion from this specification. A named maintainer signs the supported subset, and the release notes list known exceptions. After any contract-affecting fix or upstream upgrade, stale evidence cannot sign off the new version.

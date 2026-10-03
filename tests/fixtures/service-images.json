@@ -1,0 +1,38 @@
+{
+  "supabase_rest": {
+    "image": "public.ecr.aws/supabase/postgrest:v16.4",
+    "repoDigests": [
+      "public.ecr.aws/supabase/postgrest@sha256:d155c6718ed9a9f990d159a2ab7c0a3f16944dbb6d0a0344557421042acfe0df"
+    ]
+  },
+  "supabase_realtime": {
+    "image": "public.ecr.aws/supabase/realtime:v2.140.3",
+    "repoDigests": [
+      "public.ecr.aws/supabase/realtime@sha256:f66c721c71b576f5854c78f86df0c78a98368d900dcf62e4ddd96c6913139999"
+    ]
+  },
+  "supabase_inbucket": {
+    "image": "public.ecr.aws/supabase/mailpit:v1.31.3",
+    "repoDigests": [
+      "public.ecr.aws/supabase/mailpit@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d"
+    ]
+  },
+  "supabase_auth": {
+    "image": "public.ecr.aws/supabase/gotrue:v2.197.0",
+    "repoDigests": [
+      "public.ecr.aws/supabase/gotrue@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    ]
+  },
+  "supabase_kong": {
+    "image": "public.ecr.aws/supabase/kong:2.8.1",
+    "repoDigests": [
+      "public.ecr.aws/supabase/kong@sha256:1b53405d8680a09d6f44494b7990bf7da2ea43f84a258c59717d4539abf09f6d"
+    ]
+  },
+  "supabase_db": {
+    "image": "public.ecr.aws/supabase/postgres:17.11.0.002",
+    "repoDigests": [
+      "public.ecr.aws/supabase/postgres@sha256:0450166354dc9c1d25f0322ac8b580774d4fb0184d2b087f6e4fe9499c66cf53"
+    ]
+  }
+}

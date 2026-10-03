@@ -1,6 +1,6 @@
 # Detailed Level 1 implementation plan
 
-**Status: planned, not implemented or verified.** Scope remains the minimal SDK described in [PLAN.md](../PLAN.md). This document adds implementation detail and proof requirements; it does not promote the deferred richer-query, Storage, OAuth, migration-CLI, or gateway features into the first release.
+**Status: Phase A proof harness in progress; no compatibility SDK feature is signed off.** See [PROGRESS.md](PROGRESS.md) and [progress.json](progress.json) for actual work/test evidence and restart steps. Scope remains the minimal SDK described in [PLAN.md](../PLAN.md). This document adds implementation detail and proof requirements; it does not promote the deferred richer-query, Storage, OAuth, migration-CLI, or gateway features into the first release.
 
 Read [RESEARCH.md](RESEARCH.md) for verified documentation/source observations and unresolved gates. Read [TEST_PLAN.md](TEST_PLAN.md) for every feature's test cases and signoff requirements. All feature IDs below must remain traceable from plan → tests → CI evidence → compatibility documentation.
 
@@ -56,7 +56,7 @@ tests/
   package/                   npm-packed clean-consumer checks
 ```
 
-Actual files and commands must be added together with their tests. Do not advertise executable commands until they exist.
+Actual files and commands must be added together with their tests. Phase A now has executable harness commands; their exact limited scopes are in [PROGRESS.md](PROGRESS.md). Do not treat these upstream/browser infrastructure probes as the future SDK's full-suite commands or scaffold the remaining layout without implementation.
 
 ## 3. Ordered work packages
 
@@ -64,7 +64,7 @@ Every package includes its tests in the same change. **No phase can be signed of
 
 ### Phase A — Freeze the contract and build the proof harness
 
-**Features: L1-27; decisions G1–G7.**
+**Features: L1-27; decisions G1–G7.** Track work packages as A01–A06 in [progress.json](progress.json); only the maintainer can sign them off.
 
 1. Pin baseline versions/checksums and the complete backend service/version manifest; choose package name/license/runtime targets.
 2. Bring up a disposable native TrailBase server, local Supabase stack, and local SMTP inbox. Configure confirmations on both backends, protected APIs/RLS, aligned row caps, and realtime publication.

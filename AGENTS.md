@@ -2,7 +2,7 @@
 
 ## Read first
 
-Read [README.md](README.md), [PLAN.md](PLAN.md), [docs/LEVEL1_PLAN.md](docs/LEVEL1_PLAN.md), [docs/TEST_PLAN.md](docs/TEST_PLAN.md), and [docs/RESEARCH.md](docs/RESEARCH.md) before changing the project. The repository is currently planning-only; no SDK, package manifest, build system, or test commands exist yet.
+Start with [docs/PROGRESS.md](docs/PROGRESS.md) and run `npm run progress`; [docs/progress.json](docs/progress.json) is the authoritative restart/status/signoff ledger. Then read [README.md](README.md), [PLAN.md](PLAN.md), [docs/LEVEL1_PLAN.md](docs/LEVEL1_PLAN.md), [docs/TEST_PLAN.md](docs/TEST_PLAN.md), and [docs/RESEARCH.md](docs/RESEARCH.md). Phase A has a private MIT-licensed npm proof harness; no public compatibility SDK is implemented.
 
 The linked discussion explains the motivation, not a verified specification. Research records documentation/source observations, not runtime proof. Resolve the seven research gates through real characterization before advertising an API mapping.
 
@@ -41,7 +41,10 @@ The linked discussion explains the motivation, not a verified specification. Res
 - Browser E2E must run on Chromium, Firefox, and WebKit and cover real confirmation email, CRUD/query behavior, persistence/refresh/logout, two-client realtime, permissions, failures, and teardown. Do not stub successful auth/data responses for the primary E2E flow.
 - Prove database/session/event/resource postconditions, including forbidden writes and no data/secret leaks. Test race/expiry/partial-frame failures and cleanup, not only response codes.
 - Follow coverage/CI/release gates in the test plan. Setup failure is failure, not a skip. Do not hide flakes behind retries or relax assertions to erase unapproved incompatibility/security gaps.
-- Keep a commit/version-linked evidence ledger for every feature and obtain named maintainer signoff. Planned, implemented, verified, and signed off are distinct states; stale evidence does not certify a changed contract.
+- Update `docs/progress.json` after each work session: deliverable/feature/gate statuses, exact tests/evidence, missing checks/blockers, and ordered restart steps. Use `docs/PROGRESS.md` for the workflow. Planned, implemented, verified, and signed off are distinct states; stale evidence does not certify a changed contract.
+- Only the maintainer can approve signoff or compatibility exceptions. Do not fill in `reviewer`/`reviewedAt` from an agent's inference. MIT licensing was explicitly approved; G1–G7 approval has not been inferred from that instruction.
+- Run `npm run check`, `npm run test:unit`, and the applicable real Phase A scopes for harness/fixture changes. Full SDK commands intentionally fail while unimplemented; never alias them to the smaller upstream probes or claim they passed.
+- Use only generated owned fixtures. Recover hard-killed runs through `npm run fixtures:cleanup -- <run-id>`; never bypass a live lock, reset a linked project, or prune unrelated Docker resources.
 - Tests and CI use disposable local resources, never live data or browser admin credentials. Sanitize traces/logs/reports before uploading; do not assume disposable tokens are safe to publish.
 - Add real install/build/test commands alongside the first implementation; command names in the plan are proposals until executable scripts exist. Do not publish an unverified package name.
 - Keep docs/examples/types within the supported subset and expose approved limitations (signup user, field mapping, auth scope, realtime payloads) to consumers. Never fabricate fields or quietly weaken permissions for parity.

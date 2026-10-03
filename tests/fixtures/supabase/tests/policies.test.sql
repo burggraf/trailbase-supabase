@@ -1,0 +1,16 @@
+BEGIN;
+CREATE EXTENSION IF NOT EXISTS pgtap WITH SCHEMA extensions;
+SET LOCAL search_path = public, extensions;
+SELECT plan(10);
+SELECT ok((SELECT relrowsecurity FROM pg_class WHERE oid = 'public.todos'::regclass), 'todos RLS enabled');
+SELECT ok((SELECT relrowsecurity FROM pg_class WHERE oid = 'public.integer_todos'::regclass), 'integer_todos RLS enabled');
+SELECT ok(NOT has_table_privilege('anon', 'public.todos', 'select,insert,update,delete'), 'anonymous has no todos grants');
+SELECT ok((SELECT bool_and(has_table_privilege('authenticated', 'public.todos', privilege)) FROM unnest(ARRAY['select','insert','update','delete']) AS privilege), 'authenticated has every todos CRUD grant');
+SELECT ok(NOT has_table_privilege('anon', 'public.todos_read', 'select'), 'anonymous cannot read view');
+SELECT ok(has_table_privilege('authenticated', 'public.todos_read', 'select'), 'authenticated can read view');
+SELECT ok(NOT has_table_privilege('authenticated', 'public.todos_read', 'insert,update,delete'), 'view has no mutation grants');
+SELECT ok((SELECT reloptions @> ARRAY['security_invoker=true'] FROM pg_class WHERE oid = 'public.todos_read'::regclass), 'view obeys caller RLS');
+SELECT is((SELECT count(*)::integer FROM pg_policies WHERE schemaname = 'public' AND tablename = 'todos'), 4, 'one policy per CRUD operation');
+SELECT ok(EXISTS(SELECT 1 FROM pg_publication_tables WHERE pubname = 'supabase_realtime' AND tablename = 'todos'), 'todos realtime publication enabled');
+SELECT * FROM finish();
+ROLLBACK;

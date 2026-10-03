@@ -1,0 +1,98 @@
+{
+  "scope": "Phase A harness unit/traceability checks, NOT SDK coverage/signoff",
+  "status": "passed",
+  "node": "v22.23.2",
+  "platform": "darwin-arm64",
+  "sourceSha256": "6dcfb291d34ed81a6b906e6dfe2a241ea3177b6d7cf0f5370bd3ebd54ea97171",
+  "finishedAt": "2026-10-03T00:17:41.143Z",
+  "tests": [
+    {
+      "name": "L1-27/U27 G2 fixture UUID inputs (not production codec) uses padding required by the native BLOB input decoder",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 G2 fixture UUID inputs (not production codec) round-trips 1000 seeded UUIDv4 fixture values exactly",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety allows only exact owned loopback origins",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety rejects traversal and non-owned cleanup directories",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety refuses foreign/comment-spoofed project ownership before cleanup",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety refuses externally published fixture ports",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety rejects service image/digest/count drift",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety verifies downloaded AND cached bytes rather than filenames",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety fails closed on missing fixture variables",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety allocates local ports and releases the allocation socket",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety fails a stopped child immediately rather than reporting a skipped setup",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety has a finite readiness deadline",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety cleanup tolerates an absent or already stopped child",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff validates the real checked-in ledger",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects missing or duplicate feature IDs",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects undocumented states and missing restart actions",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff cannot claim verification without evidence",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff cannot sign off with missing tests, reviewer, date or evidence",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff a fresh report cannot silently carry old maintainer approval onto changed sources",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff cannot sign off a feature while compatibility decisions remain open",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects an approval attached to work that remains unsigned",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects external/private-token style evidence references",
+      "status": "passed"
+    }
+  ]
+}

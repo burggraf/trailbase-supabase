@@ -1,0 +1,34 @@
+{
+  "name": "trailbase-supabase",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "check": "tsc --noEmit && node scripts/check-docs.mjs",
+    "progress": "node scripts/progress.mjs",
+    "test:unit": "node scripts/run-unit.mjs",
+    "test:phase-a": "node scripts/run-phase-a.mjs",
+    "test:cleanup": "node scripts/run-phase-a.mjs lifecycle",
+    "test:phase-a:browser": "node scripts/run-phase-a.mjs browser",
+    "fixtures:cleanup": "node scripts/cleanup.mjs",
+    "tools:install": "node scripts/tools.mjs",
+    "test:db": "node scripts/run-phase-a.mjs database",
+    "test:integration": "node scripts/run-phase-a.mjs characterization",
+    "test:contract": "node scripts/incomplete.mjs contract",
+    "test:security": "node scripts/incomplete.mjs security",
+    "test:e2e": "node scripts/incomplete.mjs e2e",
+    "test:package": "node scripts/incomplete.mjs package",
+    "test:all": "node scripts/incomplete.mjs all"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@supabase/supabase-js": "2.117.2",
+    "@types/node": "22.19.15",
+    "trailbase": "0.14.3",
+    "typescript": "7.0.2",
+    "vitest": "5.0.3",
+    "supabase": "2.119.0"
+  }
+}

@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 1,
+  "currentPhase": "A — proof harness (in progress)",
+  "maintainer": "burggraf",
+  "licenseDecision": {
+    "license": "MIT",
+    "approvedBy": "burggraf",
+    "source": "Maintainer instruction in development conversation"
+  },
+  "deliverables": [
+    {
+      "id": "A01",
+      "title": "Restartable progress and signoff ledger",
+      "status": "verified",
+      "tests": [
+        "L1-27/U27",
+        "docs/traceability"
+      ],
+      "evidence": [
+        "docs/evidence/phase-a-unit-node22.json",
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-lifecycle-node22.json"
+      ],
+      "missing": [],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "A02",
+      "title": "Pinned tools, runtime targets and MIT license",
+      "status": "implemented",
+      "tests": [
+        "L1-27/U27",
+        "docs/traceability"
+      ],
+      "evidence": [
+        "docs/evidence/phase-a-unit-node22.json",
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-lifecycle-node22.json"
+      ],
+      "missing": [
+        "Node 24 and Linux CI verification",
+        "Final published npm name (harness remains private)"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "A03",
+      "title": "Disposable backends, migrations and SMTP",
+      "status": "verified",
+      "tests": [
+        "L1-27/U27",
+        "L1-27/I27/C27"
+      ],
+      "evidence": [
+        "docs/evidence/phase-a-unit-node22.json",
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-lifecycle-node22.json"
+      ],
+      "missing": [
+        "Linux CI reproduction and named maintainer review remain pending"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "A04",
+      "title": "Fixture database/permission test suites",
+      "status": "verified",
+      "tests": [
+        "L1-27/U27",
+        "L1-27/I27/C27"
+      ],
+      "evidence": [
+        "docs/evidence/phase-a-unit-node22.json",
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-lifecycle-node22.json"
+      ],
+      "missing": [
+        "Linux CI reproduction and named maintainer review remain pending"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "A05",
+      "title": "G1-G7 upstream characterization",
+      "status": "in-progress",
+      "tests": [
+        "L1-27/U27",
+        "L1-27/I27/C27"
+      ],
+      "evidence": [
+        "docs/evidence/phase-a-unit-node22.json",
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-lifecycle-node22.json"
+      ],
+      "missing": [
+        "Duplicate-signup/SMTP-outage cases",
+        "Ordering/unsafe scalar boundaries",
+        "SSE UTF-8/sequence/loss/network fragmentation cases",
+        "Owner/DELETE stream isolation and auth expiry",
+        "Native hydration/refresh/logout races/storage cases",
+        "Named G1-G7 contract decisions"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "A06",
+      "title": "Required CI jobs and evidence artifacts",
+      "status": "implemented",
+      "tests": [
+        "L1-27/U27",
+        "L1-27/I27/C27"
+      ],
+      "evidence": [
+        "docs/evidence/phase-a-unit-node22.json",
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-lifecycle-node22.json"
+      ],
+      "missing": [
+        "Passing remote CI URLs on both Node targets and Linux services/browsers",
+        "Future SDK-wide gates remain explicitly incomplete"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    }
+  ],
+  "features": [
+    {
+      "id": "L1-01",
+      "title": "Client/config",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-02",
+      "title": "Public types",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-03",
+      "title": "Field/ID mapping",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-04",
+      "title": "Results/execution/errors",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-05",
+      "title": "Select/list/view",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-06",
+      "title": "Insert",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-07",
+      "title": "Update",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-08",
+      "title": "Delete",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-09",
+      "title": "Six read filters",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-10",
+      "title": "Ordering",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-11",
+      "title": "Limit/range/caps",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-12",
+      "title": "single",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-13",
+      "title": "maybeSingle",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-14",
+      "title": "Signup/confirmation",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-15",
+      "title": "Password login",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-16",
+      "title": "Session/persistence",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-17",
+      "title": "Validated getUser",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-18",
+      "title": "Refresh/auto-refresh",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-19",
+      "title": "Logout scopes",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-20",
+      "title": "Auth notifications",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-21",
+      "title": "Channel lifecycle",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-22",
+      "title": "Change payloads",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-23",
+      "title": "Stream faults/renewal",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-24",
+      "title": "Security envelope",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-25",
+      "title": "Portable app/manual migration",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-26",
+      "title": "Package/docs/release",
+      "status": "planned",
+      "evidence": [],
+      "missing": [
+        "All applicable test-plan families and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "L1-27",
+      "title": "harness work is partially implemented/tested",
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/phase-a-unit-node22.json",
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-lifecycle-node22.json"
+      ],
+      "missing": [
+        "Current-source harness/CI evidence, remaining G1-G7 characterization, and maintainer signoff"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    }
+  ],
+  "gates": [
+    {
+      "id": "G1",
+      "title": "Signup null-user exception",
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/phase-a-all-node22.json"
+      ],
+      "missing": [
+        "Duplicate/signup enumeration and SMTP failure characterization",
+        "Maintainer approval of null-user exception; future app E02/E03 remain required"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "G2",
+      "title": "Portable fields and page cap",
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/phase-a-all-node22.json"
+      ],
+      "missing": [
+        "Unsafe integers/null/scalar boundaries and mapping contract approval; production codec is not implemented"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "G3",
+      "title": "Mutation no-op/error differences",
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/phase-a-all-node22.json"
+      ],
+      "missing": [
+        "Error-code/result contract approval; full adapter negative matrix remains required"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "G4",
+      "title": "Builder/order/cardinality semantics",
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/phase-a-all-node22.json"
+      ],
+      "missing": [
+        "Nullable/text domain and builder isolation characterization; exact behavior approval"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "G5",
+      "title": "Installed SSE transport selection",
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/phase-a-all-node22.json"
+      ],
+      "missing": [
+        "Captured-event byte fragmentation defect is confirmed; choose/review fallback",
+        "Remaining UTF-8/sequence/loss/real fragmentation/cancel corpus"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "G6",
+      "title": "Realtime payload and security limits",
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/phase-a-all-node22.json"
+      ],
+      "missing": [
+        "Approve CDC readiness/payload subset",
+        "Two-owner INSERT/UPDATE/DELETE isolation, expiration/revocation/renewal and resource checks"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    },
+    {
+      "id": "G7",
+      "title": "User/session/refresh/logout lifecycle",
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/phase-a-all-node22.json"
+      ],
+      "missing": [
+        "Native status/refresh/logout basics are tested",
+        "Hydration/concurrent refresh/logout races, storage/timers/outages, field/scope contract approval"
+      ],
+      "reviewer": null,
+      "reviewedAt": null,
+      "reviewedSourceSha256": null
+    }
+  ],
+  "nextSteps": [
+    "Reproduce npm run check, npm run test:unit, npm run test:phase-a and npm run test:cleanup; inspect current-source sanitized reports.",
+    "Inspect remote Phase A CI on Node 22.23.2/24.21.0 and Linux; record exact run URLs/results and resolve any platform/image drift without hiding failures.",
+    "Finish the explicit missing G1-G7 characterization cases, especially native auth races and stream owner/expiry/loss behavior; implement no SDK promise before relevant decisions.",
+    "Review Phase A evidence and compatibility exceptions with burggraf; only the maintainer records signoff.",
+    "After Phase A approval, start Phase B client/types/mapping/results with its own full applicable tests."
+  ],
+  "lastSession": {
+    "date": "2026-10-03T00:20:47.080Z",
+    "scope": "Phase A foundation; NOT SDK implementation or signoff",
+    "sourceSha256": "6dcfb291d34ed81a6b906e6dfe2a241ea3177b6d7cf0f5370bd3ebd54ea97171",
+    "node": "v22.23.2",
+    "unitCases": 22,
+    "realUpstreamCases": 14,
+    "browserInfrastructureCases": 6,
+    "pgTapAssertions": 10,
+    "cleanupFaultCases": 1,
+    "ci": "workflow implemented; remote results not yet verified"
+  }
+}

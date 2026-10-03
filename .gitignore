@@ -1,0 +1,12 @@
+node_modules/
+.runtime/
+artifacts/
+coverage/
+dist/
+.env
+.env.*
+supabase/.temp/
+supabase/.branches/
+playwright-report/
+test-results/
+.DS_Store

@@ -1,0 +1,38 @@
+email {
+  smtp_host: "127.0.0.1"
+  smtp_port: __SMTP_PORT__
+  smtp_encryption: SMTP_ENCRYPTION_NONE
+  sender_name: "Phase A fixture"
+  sender_address: "fixture@example.test"
+}
+server { application_name: "Phase A fixture" site_url: "http://127.0.0.1:__TRAIL_PORT__" }
+auth { user_identifier: ONLY_EMAIL password_minimal_length: 12 }
+jobs {}
+record_apis {
+  name: "todos"
+  table_name: "todos"
+  acl_authenticated: [CREATE, READ, UPDATE, DELETE, SCHEMA]
+  enable_subscriptions: true
+  listing_hard_limit: 1000
+  create_access_rule: "_USER_.id = _REQ_.user_id"
+  read_access_rule: "_USER_.id = _ROW_.user_id"
+  update_access_rule: "_USER_.id = _ROW_.user_id AND (_REQ_.user_id IS NULL OR _REQ_.user_id = _USER_.id)"
+  delete_access_rule: "_USER_.id = _ROW_.user_id"
+}
+record_apis {
+  name: "todos_read"
+  table_name: "todos_read"
+  acl_authenticated: [READ]
+  listing_hard_limit: 1000
+  read_access_rule: "_USER_.id = _ROW_.user_id"
+}
+record_apis {
+  name: "integer_todos"
+  table_name: "integer_todos"
+  acl_authenticated: [CREATE, READ, UPDATE, DELETE]
+  listing_hard_limit: 1000
+  create_access_rule: "_USER_.id = _REQ_.user_id"
+  read_access_rule: "_USER_.id = _ROW_.user_id"
+  update_access_rule: "_USER_.id = _ROW_.user_id AND (_REQ_.user_id IS NULL OR _REQ_.user_id = _USER_.id)"
+  delete_access_rule: "_USER_.id = _ROW_.user_id"
+}

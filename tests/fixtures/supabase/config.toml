@@ -1,0 +1,55 @@
+project_id = "__PROJECT_ID__"
+
+[api]
+enabled = true
+port = __API_PORT__
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = __DB_PORT__
+shadow_port = __SHADOW_PORT__
+major_version = 17
+
+[db.seed]
+enabled = false
+
+[realtime]
+enabled = true
+
+[studio]
+enabled = false
+
+[local_smtp]
+enabled = true
+port = __MAIL_PORT__
+smtp_port = __SMTP_PORT__
+
+[storage]
+enabled = false
+
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:__TRAIL_PORT__"
+external_url = "http://127.0.0.1:__API_PORT__/auth/v1"
+additional_redirect_urls = ["http://127.0.0.1:__TRAIL_PORT__"]
+jwt_expiry = 3600
+enable_signup = true
+minimum_password_length = 12
+
+[auth.rate_limit]
+email_sent = 1000
+sign_in_sign_ups = 1000
+token_verifications = 1000
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+max_frequency = "1s"
+
+[analytics]
+enabled = false
+
+[edge_runtime]
+enabled = false

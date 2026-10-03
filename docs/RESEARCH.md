@@ -1,6 +1,6 @@
 # Level 1 upstream research
 
-Research date: **2026-10-02**. This is documentation and source review, **not runtime verification**. No SDK feature or backend integration has passed a test in this repository yet.
+Research date: **2026-10-02**. The original findings below came from official documentation/pinned source review. Phase A now adds executable **upstream/infrastructure characterization**, tracked in [PROGRESS.md](PROGRESS.md) and [progress.json](progress.json). It does not verify a compatibility SDK or approve an exception; those remain separate gates.
 
 ## Reference baseline
 
@@ -97,6 +97,18 @@ Supabase grants and RLS are separate checks; set least-privilege grants and owne
 TrailBase hides underscore-prefixed columns during reads [TB1]; Supabase does not adopt that convention automatically. Keep internal columns out of the common `todos` API and use separate restricted-field fixtures/safe projection views for exposure tests. Do not claim that a column named `_secret` is private on Supabase or silently normalize away an exposed field.
 
 Production auth requires HTTPS, while controlled test fixtures may use loopback HTTP. Include a local TLS/proxy streaming smoke and document reverse-proxy buffering requirements [TB14]; passing only direct loopback SSE is not evidence that an example deployment works through a proxy.
+
+## Phase A runtime observations (limited scope)
+
+Use the progress ledger's exact reports/source hashes to see current versus historical runs; this summary does not waive any required test family.
+
+- Native declared BLOB UUID inputs require **padded** URL-safe base64. An unpadded fixture encoder initially caused 400 responses; the corrected fixture and 1000 seeded round-trip vectors retain `==` padding. Production codecs still need full trust-boundary validation and declared-field mapping tests.
+- Installed native list defaults to 50, `.list({ pagination: { limit: 0 } })` omits zero and returns a page, and direct native `?limit=0` yields zero rows. The 1000 cap and two bounds on one scalar column were exercised on 1001 real records.
+- The reference range is inclusive; later limit/range calls replace the limit while an earlier range offset persists. Awaiting the same reference insert builder twice sends it again, demonstrated by a successful first insert and duplicate-key failure on the second. These are observations to formalize under G4, not permission to memoize or duplicate mutations arbitrarily.
+- Real SMTP confirmation and explicit password login, native nullable registration result versus reference user/null session, protected owner CRUD/views, and missing/forbidden mutation differences have initial upstream checks. Duplicate-account/mail-outage/full browser application behavior remain separate required cases.
+- Real two-session local/global logout and native refresh-token retention were exercised. Native stateless access-JWT residual validity is distinct from refresh revocation. Storage/expiry/concurrency/hydration/remote-outage behavior is not thereby certified.
+- A healthy real native stream supplied INSERT/UPDATE/DELETE. Replaying its captured INSERT frame through the **installed** native parser one byte at a time loses the event. This confirms a reuse blocker, not a working fallback; G5 recommends the planned minimal buffered native HTTP path unless an upstream fix is pinned and retested.
+- The installed reference Realtime SDK documents that default `SUBSCRIBED` can mean channel join **before Postgres Changes is ready**. Its `postgres_changes_options.wait` option waits for CDC readiness. The upstream event probe uses this test-only configuration rather than arbitrary sleeps; no new option is silently added to the future SDK contract. G6 still needs approved readiness/payload/permission/expiry semantics.
 
 ## Decisions requiring characterization/signoff
 
