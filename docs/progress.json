@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "A \u2014 proof harness (in progress)",
+  "currentPhase": "A — proof harness (in progress)",
   "maintainer": "burggraf",
   "licenseDecision": {
     "license": "MIT",
@@ -76,7 +76,11 @@
         "docs/evidence/phase-a-ci-unit-node22.23.2.json",
         "docs/evidence/phase-a-ci-unit-node24.21.0.json",
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569",
-        "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601"
+        "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601",
+        "docs/evidence/phase-a-coordination-proofs-node22.json",
+        "docs/evidence/phase-a-proof-browser-controls-node22.json",
+        "docs/evidence/phase-a-proof-cleanup-node22.json",
+        "docs/evidence/phase-a-proof-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -103,7 +107,11 @@
         "docs/evidence/phase-a-ci-unit-node22.23.2.json",
         "docs/evidence/phase-a-ci-unit-node24.21.0.json",
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569",
-        "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601"
+        "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601",
+        "docs/evidence/phase-a-coordination-proofs-node22.json",
+        "docs/evidence/phase-a-proof-browser-controls-node22.json",
+        "docs/evidence/phase-a-proof-cleanup-node22.json",
+        "docs/evidence/phase-a-proof-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -139,7 +147,11 @@
         "docs/evidence/phase-a-query-boundaries-node22.json",
         "docs/evidence/phase-a-stream-isolation-node22.json",
         "docs/evidence/phase-a-auth-lifecycle-node22.json",
-        "docs/evidence/phase-a-stream-isolation-node22.json"
+        "docs/evidence/phase-a-stream-isolation-node22.json",
+        "docs/evidence/phase-a-coordination-proofs-node22.json",
+        "docs/evidence/phase-a-proof-browser-controls-node22.json",
+        "docs/evidence/phase-a-proof-cleanup-node22.json",
+        "docs/evidence/phase-a-proof-full-stock-node22.json"
       ],
       "missing": [
         "Resolve stock unconfirmed duplicate-signup and candidate SMTP-recovery blockers (strict regressions preserved)",
@@ -170,7 +182,11 @@
         "docs/evidence/phase-a-ci-unit-node22.23.2.json",
         "docs/evidence/phase-a-ci-unit-node24.21.0.json",
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569",
-        "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601"
+        "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601",
+        "docs/evidence/phase-a-coordination-proofs-node22.json",
+        "docs/evidence/phase-a-proof-browser-controls-node22.json",
+        "docs/evidence/phase-a-proof-cleanup-node22.json",
+        "docs/evidence/phase-a-proof-full-stock-node22.json"
       ],
       "missing": [
         "Current-source full foundation is blocked by G1 native confirmation, G6 reference DELETE and G7 native auth-state regressions; previous green CI is historical",
@@ -534,7 +550,8 @@
         "docs/evidence/phase-a-auth-candidate-characterization.json",
         "docs/evidence/phase-a-auth-candidate-browser.json",
         "docs/evidence/phase-a-auth-stock-characterization.json",
-        "docs/evidence/phase-a-auth-candidate-smtp.json"
+        "docs/evidence/phase-a-auth-candidate-smtp.json",
+        "docs/evidence/phase-a-proof-full-stock-node22.json"
       ],
       "missing": [
         "Candidate resolves duplicate confirmation in initial real characterization but is not approved/deployment-ready",
@@ -600,7 +617,8 @@
       "evidence": [
         "docs/evidence/phase-a-all-node22.json",
         "docs/evidence/phase-a-stream-isolation-node22.json",
-        "docs/evidence/phase-a-stream-isolation-deadline-regression.json"
+        "docs/evidence/phase-a-stream-isolation-deadline-regression.json",
+        "docs/evidence/phase-a-coordination-proofs-node22.json"
       ],
       "missing": [
         "Installed SSE byte-fragmentation and cross-chunk sequence-gap defects are confirmed; choose/review transport fallback, not implemented",
@@ -617,7 +635,8 @@
       "evidence": [
         "docs/evidence/phase-a-all-node22.json",
         "docs/evidence/phase-a-stream-isolation-node22.json",
-        "docs/evidence/phase-a-stream-isolation-deadline-regression.json"
+        "docs/evidence/phase-a-stream-isolation-deadline-regression.json",
+        "docs/evidence/phase-a-proof-full-stock-node22.json"
       ],
       "missing": [
         "Reference two-owner DELETE delivers a foreign primary key despite owner RLS: strict regression preserved; maintainer must decide payload/security compatibility limits without weakening native access rules",
@@ -626,7 +645,8 @@
       ],
       "reviewer": null,
       "reviewedAt": null,
-      "reviewedSourceSha256": null
+      "reviewedSourceSha256": null,
+      "proposedDirection": "Maintainer chose owner-only native delivery / stronger DELETE security for investigation; no final compatibility exception or gate signoff."
     },
     {
       "id": "G7",
@@ -635,7 +655,9 @@
       "evidence": [
         "docs/evidence/phase-a-all-node22.json",
         "docs/evidence/phase-a-auth-lifecycle-node22.json",
-        "docs/evidence/phase-a-auth-lifecycle-initial-status-mismatch.json"
+        "docs/evidence/phase-a-auth-lifecycle-initial-status-mismatch.json",
+        "docs/evidence/phase-a-coordination-proofs-node22.json",
+        "docs/evidence/phase-a-proof-full-stock-node22.json"
       ],
       "missing": [
         "Strict native late refresh/status after logout resurrects cached state: two actual-response regressions preserved; approved wrapper/upstream resolution required",
@@ -648,38 +670,37 @@
     }
   ],
   "nextSteps": [
-    "Review G5 transport investigation choice, G6 owner-safe DELETE compatibility limits and G7 late-response mitigation approach; these are not final gate signoff.",
-    "Preserve strict G1/G6/G7 regressions and draft installed-client upstream reports; submit only with maintainer approval.",
-    "Continue remaining real expiry/network/browser/storage/timer/page-shape matrices within the approved investigation choices.",
-    "Track trailbaseio/trailbase#298; no deployment recommendation/G1 approval or Phase B until required evidence and named gate decisions."
+    "Continue real expiry/revocation/stream resource checks using explicitly labelled disposable fixture configuration; defaults and raw regressions unchanged.",
+    "Investigate genuine stream/network cancellation/fragmentation and browser proof execution; current byte-rechunking is post-HTTP, not TCP evidence.",
+    "Expand auth error/storage/account-switch/timer matrices before proposing any production coordinator; current proofs are test-only.",
+    "Keep both installed-client reports as drafts. Track server issue #298. G1/G6/G7 remain blocked pending resolutions and named review; no Phase B/deployment approval."
   ],
   "lastSession": {
-    "date": "2026-10-03T02:49:52.962Z",
-    "sourceSha256": "bac55048df3ab0155534c7b5bbda76ee97f47ebf160d1c031f8b4de6c3708ef0",
+    "date": "2026-10-03T03:19:17.204Z",
+    "sourceSha256": "268d166131932625f0b4b82b5829dba2d1ee6ee06184af652dd2e5998f873d6e",
     "node": "v22.23.2",
-    "scope": "G7 auth/storage/race and G5/G6 stream subset, NOT SDK verification",
-    "unitCases": 27,
-    "authCases": {
-      "passed": 8,
-      "failed": 2
+    "scope": "Authorized isolated native SSE/auth coordination proofs and stock controls; NOT SDK implementation/signoff",
+    "unitCases": 35,
+    "proofCases": 8,
+    "browserCases": 6,
+    "fullStock": {
+      "passed": 43,
+      "failed": 5
     },
-    "streamCases": {
-      "passed": 3,
-      "failed": 1
-    },
-    "cleanup": "passed for both runs",
-    "ci": "Previous de7cc54 Linux unit jobs passed/real three failures; current auth expansion not yet remote verified"
+    "cleanup": "passed for every run",
+    "ci": "Previous 5ae1632 Linux unit jobs passed; real setup failed before tests, cleanup passed. Current proof remote CI pending"
   },
   "pendingWork": {
-    "scope": "G7/S04 real-response hydration/refresh/logout races, owned persistent storage and fault handling; shared deadline regression",
-    "status": "Evidence/drafts pushed at 2c06309. Awaiting explicit investigation/compatibility direction via interview ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d; no SDK/deployment/gate signoff authorization inferred.",
+    "scope": "Authorized Phase A buffered SSE/epoch-single-flight proofs only",
+    "authorizationInterview": "ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d",
+    "status": "35 unit, 8 real proof, 6 browser infrastructure and cleanup controls passed. Full stock foundation remains 43 passed/5 failed; proof does not patch raw SDK or sign off compatibility.",
     "process": null,
-    "signoff": "none; G1/G6 blocked, native late auth responses under investigation",
-    "drafts": [
-      "docs/UPSTREAM_CLIENT_AUTH_ISSUE.md",
-      "docs/UPSTREAM_CLIENT_STREAM_ISSUE.md"
-    ],
-    "interviewId": "ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d"
+    "direction": {
+      "g5": "Buffered Fetch/SSE proof with persistent sequence tracking",
+      "g6": "Preserve native owner-only delivery; proposed stronger DELETE-security compatibility deviation",
+      "g7": "Isolated epoch guard and single-flight over genuine native responses",
+      "upstream": "Keep both client reports as drafts; do not submit"
+    }
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",

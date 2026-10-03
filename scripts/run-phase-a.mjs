@@ -6,7 +6,7 @@ import { baseline, exec } from './tools.mjs';
 import { createHarness } from './harness.mjs';
 
 export async function sourceHash() {
-  const paths = ['package.json','package-lock.json','tsconfig.json','vitest.config.ts','playwright.config.ts','.gitignore','README.md','PLAN.md','AGENTS.md','docs/LEVEL1_PLAN.md','docs/RESEARCH.md','docs/TEST_PLAN.md','docs/AUTH_MIGRATION_INVESTIGATION.md'];
+  const paths = ['package.json','package-lock.json','tsconfig.json','vitest.config.ts','playwright.config.ts','.gitignore','README.md','PLAN.md','AGENTS.md','docs/LEVEL1_PLAN.md','docs/RESEARCH.md','docs/TEST_PLAN.md','docs/AUTH_MIGRATION_INVESTIGATION.md','docs/PROOF_INVESTIGATIONS.md'];
   const listed = (await exec('git',['ls-files','--cached','--others','--exclude-standard','-z'])).stdout.split('\0');
   const inputs = [...new Set(listed.filter(path => paths.includes(path) || /^(scripts|tests|\.github|src|examples)\//.test(path)))].sort();
   const hash = createHash('sha256');
@@ -22,7 +22,7 @@ async function main() {
   const options = process.argv.slice(3);
   if (options.some(option => option !== '--auth-mitigation') || options.length > 1) throw new Error('Unknown Phase A option');
   const authMitigation = options.includes('--auth-mitigation');
-  if (!['all','database','characterization','domains','boundaries','auth-lifecycle','streaming','smtp','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
+  if (!['all','database','characterization','domains','boundaries','auth-lifecycle','proofs','streaming','smtp','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
   await mkdir('.runtime', { recursive: true, mode: 0o700 });
   // ponytail: one local stack at a time; per-run locks/port reservations if concurrent local runs matter.
   // Refuse overlap rather than stopping someone else's fixtures.

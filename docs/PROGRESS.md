@@ -60,9 +60,23 @@ G6 is blocked on an explicit payload/security compatibility decision. This is th
 
 G7 is blocked on the two strict native state-race regressions and a reviewed upstream/future-wrapper mitigation path. No production guard or SDK implementation was added. G1/G6 blockers remain intact.
 
+## Authorized isolated proofs — not production work
+
+The maintainer's completed interview `ab54f7fd-4ad9-4a45-8b63-afe09a7ff19d` selected buffered Fetch/SSE and epoch/single-flight proofs, stronger native owner-only DELETE behavior as a **proposed** deviation, and keeping both client reports as drafts. [Scope/limits](PROOF_INVESTIGATIONS.md) are part of the evidence source hash. No SDK implementation, deployment or gate signoff was approved.
+
+Current-source local Node 22 results:
+
+- [35 unit checks](evidence/phase-a-unit-node22.json), including eight parser/property/malformed/cancellation cases: passed.
+- [Eight genuine native proof cases](evidence/phase-a-coordination-proofs-node22.json): passed. The decoder preserved real UTF-8 INSERT/UPDATE/DELETE under deterministic post-HTTP byte rechunking and aborted a pending read. The auth proof single-flighted refresh, discarded late refresh/status responses held at both response and JSON completion, preserved a newer account's flight when an old one settled, and exposed undelivered logout while clearing locally.
+- [Six three-browser infrastructure controls](evidence/phase-a-proof-browser-controls-node22.json) and [injected failure cleanup](evidence/phase-a-proof-cleanup-node22.json): passed. These browsers do **not** execute the proof modules yet.
+- [Full stock suite](evidence/phase-a-proof-full-stock-node22.json): **43 passed, 5 failed**, all required G1/G6/G7 regressions still strict; browser stage not reached in the full run. Cleanup passed for every scope.
+- [First proof run](evidence/phase-a-proofs-initial-cleanup-header-mismatch.json): 6 passed/1 failed because fixture cleanup reused a different session's headers. It was corrected to the original proof session's captured genuine headers; assertions were not relaxed. An account-switch case was then added, giving eight final real cases.
+
+The proof is test-only and does not patch `initClient` or create Supabase sessions. Unsafe event integers are rejected under an explicit buffer/framing limit; automatic storage/timers/reconnection and full network/browser/security/schema handling remain incomplete. G1/G6/G7 remain blocked on the raw baseline and required decisions; G5 remains in progress. Next: real expiry/revocation/resource and network/browser checks, with owned labelled fixtures and preserved stock defaults.
+
 ## Historical Linux CI confirmation
 
-[Run 37089983540](https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540) at `de7cc54` predates G7: [Node 22 unit](evidence/phase-a-ci-linux-unit22-stream-blockers.json) and [Node 24 unit](evidence/phase-a-ci-linux-unit24-stream-blockers.json) each passed 26 cases. The [real backend report](evidence/phase-a-ci-linux-stream-blockers.json) has 27 passed/3 failed (both stock G1 regressions and reference G6 DELETE isolation), with cleanup passed; browser stage was not reached. It does not certify the expanded current source. Upstream [#298](https://github.com/trailbaseio/trailbase/issues/298) remains open with no maintainer response as of this handoff.
+[Run 37089983540](https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540) at `de7cc54` predates G7: [Node 22 unit](evidence/phase-a-ci-linux-unit22-stream-blockers.json) and [Node 24 unit](evidence/phase-a-ci-linux-unit24-stream-blockers.json) each passed 26 cases. The [real backend report](evidence/phase-a-ci-linux-stream-blockers.json) has 27 passed/3 failed (both stock G1 regressions and reference G6 DELETE isolation), with cleanup passed; browser stage was not reached. It does not certify the expanded current source. Upstream [#298](https://github.com/trailbaseio/trailbase/issues/298) remains open with no maintainer response as of this handoff. A later [5ae1632 Linux run](https://github.com/burggraf/trailbase-supabase/actions/runs/37091459295) passed both 27-case unit jobs but [failed backend setup before any real tests](evidence/phase-a-ci-linux-auth-races.json); cleanup passed. Do not count this setup failure as auth verification or attribute it to a demonstrated auth assertion.
 
 [progress.json](progress.json) is the authoritative status/signoff ledger. Run `npm run progress` to see Phase A deliverables, missing checks, open gates, and ordered next steps. Read this file first after a restart, then the [implementation plan](LEVEL1_PLAN.md) and [test matrix](TEST_PLAN.md).
 
