@@ -15,7 +15,7 @@ TrailBase v0.34.3 (`eab5039392a624736ab0c6a9f07f6793423dc979`), macOS arm64, Nod
 5. Through a separately refreshed writer of the same owner, create a new protected row.
 6. Observed: the already established stream delivers the native INSERT rather than closing or sending a forbidden signal, although the original JWT no longer authorizes a new ordinary read.
 
-The [strict lifecycle probe](../tests/expiry/expiry.test.ts) and [sanitized evidence](evidence/phase-a-native-expiry-node22.json) retain this failure against the desired compatibility requirement. Fresh writer access was verified; fixture cleanup passed. Default-profile proof/browser/cleanup controls also passed.
+The [strict lifecycle probe](../tests/expiry/expiry.test.ts) and [sanitized evidence](evidence/phase-a-native-expiry-node22.json) retain this failure against the desired compatibility requirement. Fresh writer access was verified; fixture cleanup passed. The [current diagnostics-source macOS report](evidence/phase-a-diagnostic-native-expiry-node22.json) and [Linux report](evidence/phase-a-ci-linux-safe-inventory-expiry.json) reproduce the same strict failure after successful pinned-image/loopback verification. Linux [run 37096946058](https://github.com/burggraf/trailbase-supabase/actions/runs/37096946058) at `84e1e0a` also passed 37 unit cases per supported Node version, 9 browser cases and fault cleanup; its full stock suite remains 45 passed/5 unrelated strict failures. These controls do not prove expiry policy parity with reference/browser clients or complete server stream-resource enforcement.
 
 ## Questions for upstream
 
