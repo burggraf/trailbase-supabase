@@ -8,7 +8,7 @@ The [earlier stock blocker run](evidence/phase-a-g1-blocker-node22.json) has **1
 
 ## Auth-migration investigation handoff
 
-The maintainer authorized investigation, not deployment. [Candidate prerequisites and limits](AUTH_MIGRATION_INVESTIGATION.md) explain the opt-in SQL, preflight refusal and unchanged native security boundaries. Current-source macOS/Node 22 evidence:
+The maintainer authorized investigation, not deployment. [Candidate prerequisites and limits](AUTH_MIGRATION_INVESTIGATION.md) explain the opt-in SQL, preflight refusal and unchanged native security boundaries. Auth-investigation macOS/Node 22 evidence (historical after subsequent scalar-probe additions):
 
 - [26 unit guards](evidence/phase-a-unit-node22.json), including SQL collision/confirmation/preflight/rollback checks: passed.
 - [Candidate characterization](evidence/phase-a-auth-candidate-characterization.json): 10 passed.
@@ -18,6 +18,12 @@ The maintainer authorized investigation, not deployment. [Candidate prerequisite
 - Cleanup passed for every run; candidate remote CI has not run. There is no complete green candidate suite or G1 signoff.
 
 The [sanitized upstream issue draft](UPSTREAM_AUTH_ISSUE.md) is prepared but **not submitted**. Next: maintainer review/submission decision, safe native recovery capability, and other isolated Phase A gates. The candidate remains opt-in and investigational; stock defaults are unchanged.
+
+## G2/G4 scalar-domain follow-up
+
+`npm run test:phase-a -- domains` runs the isolated stock scalar probes. [Four local real cases](evidence/phase-a-scalar-domains-node22.json) passed: all six numeric comparisons with exact golden IDs; reserved/Unicode/combining text as literal values; null inequality plus declared boolean/UUID filters; and numeric ties with explicit keys plus lowercase ASCII words ascending/descending. The latest 26-case unit report also passed; cleanup passed.
+
+This is a bounded installed-client characterization, not an SDK contract or broad text-collation guarantee. Mixed-case/non-ASCII ordering, unsafe numeric/nullable option boundaries, builder isolation and remote CI remain incomplete. G1 blockers and all maintainer signoff requirements are unchanged.
 
 [progress.json](progress.json) is the authoritative status/signoff ledger. Run `npm run progress` to see Phase A deliverables, missing checks, open gates, and ordered next steps. Read this file first after a restart, then the [implementation plan](LEVEL1_PLAN.md) and [test matrix](TEST_PLAN.md).
 

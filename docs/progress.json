@@ -546,7 +546,8 @@
       "title": "Portable fields and page cap",
       "status": "in-progress",
       "evidence": [
-        "docs/evidence/phase-a-all-node22.json"
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-scalar-domains-node22.json"
       ],
       "missing": [
         "Unsafe integers/null/scalar boundaries and mapping contract approval; production codec is not implemented"
@@ -574,10 +575,12 @@
       "title": "Builder/order/cardinality semantics",
       "status": "in-progress",
       "evidence": [
-        "docs/evidence/phase-a-all-node22.json"
+        "docs/evidence/phase-a-all-node22.json",
+        "docs/evidence/phase-a-scalar-domains-node22.json"
       ],
       "missing": [
-        "Nullable/text domain and builder isolation characterization; exact behavior approval"
+        "Broader collation/nullable-option restrictions and builder-isolation characterization; exact contract approval",
+        "Lowercase ASCII ordering, numeric ties, six numeric operators and null inequality have local real evidence; no broad collation guarantee"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -630,35 +633,25 @@
     }
   ],
   "nextSteps": [
-    "Review/sanitize the upstream issue draft; submit only after maintainer approval.",
-    "Keep candidate migration investigational; resolve native pending-account SMTP resend/recovery before proposing deployment or G1 signoff.",
-    "Continue other Phase A gates (G2-G7) with isolated scopes; preserve stock-versus-candidate labels and required failing regressions.",
-    "Review all required Phase A evidence and G1-G7 decisions with burggraf before Phase B implementation."
+    "Review the sanitized upstream issue draft and authorize submission if desired; do not submit or deploy implicitly.",
+    "Continue remaining G2/G4 unsafe-scalar/collation/builder boundaries and G5-G7 streaming/auth races; keep G1 blocking regressions intact.",
+    "Resolve native pending-account SMTP recovery before recommending the auth migration or approving G1.",
+    "Review all required Phase A evidence and G1-G7 decisions with burggraf before Phase B."
   ],
   "lastSession": {
-    "date": "2026-10-03T01:51:28.369Z",
-    "sourceSha256": "82ee25aac28237f81c0f859795e5483b1a5e9634cf41d732656a19cf6c188c8f",
-    "scope": "Separate stock/candidate investigation, not G1 approval or full SDK compatibility",
+    "date": "2026-10-03T02:01:32.650Z",
+    "sourceSha256": "1b8c50057f6f82e5b28ffd804157110e9673a206e4cc64d66fe05b694e598d17",
     "node": "v22.23.2",
+    "scope": "G2/G4 stock scalar-domain subset, NOT complete Phase A or SDK verification",
     "unitCases": 26,
-    "candidateCharacterizationCases": 10,
-    "candidateBrowserCases": 6,
-    "stockCharacterization": {
-      "passed": 9,
-      "failed": 1
-    },
-    "candidateSmtp": {
-      "passed": 0,
-      "failed": 1
-    },
-    "cleanup": "passed for every run",
-    "ci": "Candidate remote CI not run; stock baseline remains red"
+    "domainCases": 4,
+    "cleanup": "passed",
+    "ci": "Current-source remote run pending; auth full-suite regressions remain red"
   },
   "pendingWork": {
-    "scope": "Investigational explicit auth email-reservation migration, separate stock/candidate contexts and reports",
-    "authorization": "Maintainer selected investigation in interview 6e96f5cd-ea9f-4390-96ac-15214bd7b101; not deployment or G1 signoff",
-    "status": "Investigation complete for first candidate: 26 unit, 10 candidate characterization and 6 candidate browser cases passed. Stock duplicate confirmation and candidate SMTP recovery remain failing. No deployment/signoff approval.",
+    "scope": "G2/G4/I09 installed-client scalar/filter/ordering domains on stock disposable backends",
+    "status": "G2/G4 domain subset passed locally: 26 unit guards, 4 real domain cases; cleanup passed. Upstream issue drafted, not submitted; G1 stock/candidate recovery blockers unchanged.",
     "process": null,
-    "signoff": "none; stock regressions remain red and SMTP recovery/wider auth lifecycle remain required"
+    "signoff": "none; native G1 baseline/candidate SMTP blockers unchanged"
   }
 }
