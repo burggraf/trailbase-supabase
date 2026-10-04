@@ -1160,12 +1160,15 @@
   "lastSession": {
     "date": "2026-10-04",
     "node": "v22.23.2",
-    "scope": "Approved G2/G3 invalid-Date serialization characterization added after Linux checkpoint; no production implementation or signoff",
-    "state": "local-characterization-verified-linux-pending",
+    "scope": "Approved G2/G3 invalid-Date serialization characterization; no production implementation or signoff",
+    "state": "local-and-linux-characterization-verified-docs-checkpoint-pending",
+    "checkpoint": "f48622e733a5fc10a4ae439c59139cb64c06009d",
+    "push": "Pushed source/evidence checkpoint after immutable-source full refresh and final local audits.",
+    "ci": {"runUrl":"https://github.com/burggraf/trailbase-supabase/actions/runs/37218881528","sourceSha256":"7c5c7833607daa634b3b10556b653221886b1c5d6fbc3da293705761d6086332","commit":"f48622e733a5fc10a4ae439c59139cb64c06009d","status":"completed-red-for-strict-characterization-failures","watchProcessId":"proc_9bca","units":{"node22":"50/50 passed","node24":"50/50 passed"},"realJob":"Stock 96/6; expiry 2/2; candidate characterization 10/10; candidate SMTP 0/1; migration 1/1; browser 60/6; cleanup 1/1. All seven reports inspected against exact source/pins/setup/cleanup/counts/private exclusion; no setup failure.","summary":"docs/evidence/phase-a-ci-invalid-date-summary.json","copyAudit":"docs/evidence/phase-a-invalid-date-ci-copy-audit-error.json"},
     "fullRefreshProcessId": "proc_33fb",
     "localSummary": "docs/evidence/phase-a-invalid-date-local-summary.json",
     "fullRefreshOutcome": "Thirteen immutable real scopes completed; aggregate exit 1 only for preserved strict failures. Units 50/50 both nodes, boundaries 8/8, browser 60/6, network 6/1, constraints 6/6, streaming 5/5, lifecycle 9/3, stock 96/6, proofs 34/34, expiry 2/2, candidate characterization 10/10, SMTP 0/1, migration/cleanup 1/1. Exact source, pins/setup/cleanup and private exclusion independently audited.",
-    "finalValidation": "npm run check/progress and git diff --check passed. Parsed/scanned 493 evidence JSONs; only 31 exact literal prose/static-test-title credential-header phrases exempted. Initial stale A01 check order, two malformed progress JSON edits, CI-summary comma error, and scanner-script path/prose-match errors retained and corrected transparently. Source unchanged; owned lock clear.",
+    "finalValidation": "npm run check/progress and git diff --check passed. Parsed/scanned 504 evidence JSONs; only 32 exact literal prose/static-test-title credential-header phrases exempted. Initial stale A01 check order, two malformed progress JSON edits, CI-summary comma error, and scanner-script path/prose-match errors retained and corrected transparently. Source unchanged; owned lock clear.",
     "fullRefreshCommand": "Pinned Node 22 .runtime/invalid-date-controls.mjs; 13 immutable scopes, validate and archive before expected-count checks; no source changes",
     "focused": {"boundaries":"8/8, setup/cleanup passed","browser":"60/6; all six new Date/byte cases passed in Chromium/Firefox/WebKit; setup/cleanup passed; six known failures retained","evidence":["docs/evidence/phase-a-invalid-date-boundaries-node22.json","docs/evidence/phase-a-invalid-date-browser-node22.json"]},
     "sourceSha256": "7c5c7833607daa634b3b10556b653221886b1c5d6fbc3da293705761d6086332",
@@ -1173,7 +1176,7 @@
     "unitNode22Cases": 50,
     "unitNode24Cases": 50,
     "typecheck": "Pinned Node 22 tsc --noEmit passed; Node 22/24 units passed 50/50 both. First npm run check hit stale A01 evidence because current-hash units had not yet been copied; failure retained in docs/evidence/phase-a-invalid-date-initial-check-stale-ledger.json. Copied those passing reports to authoritative paths; repeat check/progress/diff and immutable-hash check passed. Initial progress JSON and CI-summary JSON parse failures separately retained and corrected. No source changes during immutable scopes.",
-    "missing": "All thirteen local scopes and final static/progress/privacy/source/pin/cleanup checks complete. Checkpoint/push and current-source Linux CI pending. Existing failures remain strict.",
+    "missing": "Thirteen local scopes and current-source Linux CI complete; native/browser/SMTP strict failures remain. Publish docs-only ledger/evidence correction checkpoint, then continue remaining approved Phase A characterization. SDK/gate layers incomplete.",
     "restart": ["Wait for exact focused boundaries/browser reports; inspect all assertions and cleanup", "If unexpected result, preserve report and investigate root cause before any source change", "Run all applicable immutable-source scopes and inspect pins/counts/postconditions/privacy", "Commit/push coherent checkpoint and verify exact-source Linux CI", "No SDK/gate signoff or auth transport changes"]
   },
   "previousInputShapesSession": {

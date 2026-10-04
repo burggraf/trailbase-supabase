@@ -1,0 +1,13 @@
+{
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37218881528",
+  "commit": "f48622e733a5fc10a4ae439c59139cb64c06009d",
+  "sourceSha256": "7c5c7833607daa634b3b10556b653221886b1c5d6fbc3da293705761d6086332",
+  "workflowConclusion": "failure",
+  "scope": "Current-source Linux verification for raw invalid-Date, Date, and typed-byte characterization; not SDK/gate signoff",
+  "units": {"node22":"50/50 passed","node24":"50/50 passed"},
+  "real": {"stock":"96 passed/6 strict failures","expiry":"2/2","candidateCharacterization":"10/10","candidateSmtp":"0/1","migration":"1/1","browser":"60 passed/6 strict failures","cleanup":"1/1"},
+  "checks": "Downloaded sanitized unit and seven real-scope reports. Exact commit/source, Linux Node/runtime counts, expected status/counts, six pinned ECR images/tags/digests, setup inventory, loopback bindings, stock private-G1 exclusion and owned setup/cleanup verified. All six new input-shape browser cases passed Chromium/Firefox/WebKit.",
+  "strictFailures": "Stock six: reference unawaited hydration notification race; native late refresh/status resurrection; native unconfirmed duplicate; raw Fetch permissive-origin custom-header forwarding; native SMTP recovery. Browser six: three hydration notification cases and three raw Fetch header-boundary cases. Candidate SMTP remains 0/1. No setup failure.",
+  "artifactHandling": "All eight source-scoped CI reports inspected. An initial copy helper used async predicate with Array.find and wrote stock report to temporary destinations; destinations were replaced from exact original artifact filenames and revalidated by suite/source. Wrong copies were not committed. The defect is archived separately.",
+  "missing": "Remaining approved characterization matrices, production SDK validators/types/contracts/package, maintainer signoff. No public logout exploit/live-session compromise, SDK/server patch, repin, deployment or submission inferred."
+}

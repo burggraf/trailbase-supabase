@@ -1,0 +1,7 @@
+{
+  "sourceSha256": "7c5c7833607daa634b3b10556b653221886b1c5d6fbc3da293705761d6086332",
+  "operation": "Post-CI artifact verification/copy script",
+  "error": "JavaScript Array.find was passed an async predicate; it treated Promise objects as truthy and selected first (stock) report for every destination. Script suppressed copy exceptions and did not validate destination suite names.",
+  "effect": "Temporary uncommitted phase-a-ci-invalid-date-*-node22.json copies all contained stock all report. No upstream artifact modified, no claim based on these copies. Independent source audit used downloaded .runtime originals and matched each scope's true suite/counts/pins/setup/cleanup.",
+  "correction": "Replace destinations from exact known artifact filenames per suite; validate every copied report's suite, count and source after copy. Preserve this script defect."
+}
