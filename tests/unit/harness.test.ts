@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { assertLocalUrl, assertRunDirectory, verifyOwner, verifyImages, verifyLoopbackBindings, replaceTokens, freePort, waitReady, stopChild, nativeAuthConfig, setupImageInventory, fixtureAuthVariant } from '../../scripts/harness.mjs';
+import { assertLocalUrl, assertRunDirectory, verifyOwner, verifyImages, verifyLoopbackBindings, replaceTokens, freePort, waitReady, stopChild, nativeAuthConfig, setupImageInventory, fixtureAuthVariant, fixtureEnvironment } from '../../scripts/harness.mjs';
 import { verifyChecksum } from '../../scripts/tools.mjs';
 import { vitestArguments, testTimeoutMs } from '../../scripts/run-phase-a.mjs';
 
@@ -67,6 +67,12 @@ describe('L1-27/U27 harness safety', () => {
     expect(() => verifyChecksum(bytes, digest)).not.toThrow();
     expect(() => verifyChecksum(Buffer.from('corrupt'), digest)).toThrow('checksum');
     expect(() => verifyChecksum(bytes, '0'.repeat(64))).toThrow('checksum');
+  });
+  it('forces the pinned ECR registry for every fixture while excluding inherited backend configuration',()=>{
+    const inherited={PATH:'/fixture/bin',HOME:'/fixture/home',SUPABASE_INTERNAL_IMAGE_REGISTRY:'ghcr.io',SUPABASE_PROJECT_ID:'hosted-placeholder',SUPABASE_SERVICE_ROLE_KEY:'placeholder-not-a-key',TRAILBASE_URL:'https://hosted.invalid'};
+    expect(fixtureEnvironment(inherited)).toEqual({PATH:'/fixture/bin',HOME:'/fixture/home',SUPABASE_INTERNAL_IMAGE_REGISTRY:'public.ecr.aws'});
+    expect(inherited.SUPABASE_INTERNAL_IMAGE_REGISTRY).toBe('ghcr.io');
+    expect(fixtureEnvironment({})).toEqual({SUPABASE_INTERNAL_IMAGE_REGISTRY:'public.ecr.aws'});
   });
   it('keeps stock/candidate/source-prototype fixtures disjoint and explicitly labelled',()=>{
     expect(fixtureAuthVariant()).toBe('stock');

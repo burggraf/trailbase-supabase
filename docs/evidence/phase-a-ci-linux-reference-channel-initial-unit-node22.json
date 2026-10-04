@@ -1,10 +1,10 @@
 {
   "scope": "Phase A harness unit/traceability checks, NOT SDK coverage/signoff",
   "status": "passed",
-  "node": "v24.21.0",
-  "platform": "darwin-arm64",
-  "sourceSha256": "00d67b769b1e6d72d4f4c2091183182e21c5d22af9ba98d11c3b74510e45da95",
-  "finishedAt": "2026-10-04T01:59:32.680Z",
+  "node": "v22.23.2",
+  "platform": "linux-x64",
+  "sourceSha256": "aa0bcf3f3bc5dead2f6a6fcbf7ef8c9824ea2bc246ab5f8f9f7b2b0ebbc0ee14",
+  "finishedAt": "2026-10-04T01:48:55.763Z",
   "tests": [
     {
       "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior blocks pending/verified/cross-column case-insensitive insert collisions without changing rows",
@@ -76,10 +76,6 @@
     },
     {
       "name": "L1-27/U27 harness safety verifies downloaded AND cached bytes rather than filenames",
-      "status": "passed"
-    },
-    {
-      "name": "L1-27/U27 harness safety forces the pinned ECR registry for every fixture while excluding inherited backend configuration",
       "status": "passed"
     },
     {

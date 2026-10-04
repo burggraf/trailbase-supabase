@@ -90,6 +90,15 @@ export function nativeAuthConfig(config, profile) {
   return config.replace(/\bauth\s*\{/, 'auth { auth_token_ttl_sec: 3');
 }
 
+export function fixtureEnvironment(environment = process.env) {
+  const child = { ...environment };
+  for (const key of Object.keys(child)) if (key.startsWith('SUPABASE_') || key.startsWith('TRAILBASE_')) delete child[key];
+  // The pinned CLI otherwise falls back to registry mirrors after pull failures.
+  // Use only the already pinned ECR registry; keep exact tag/digest checks unchanged.
+  child.SUPABASE_INTERNAL_IMAGE_REGISTRY = 'public.ecr.aws';
+  return child;
+}
+
 // All paths/ports/project names are generated here; callers cannot target a hosted project.
 export function fixtureAuthVariant({ authMitigation = false, privateNativePrototype = false } = {}) {
   if (authMitigation && privateNativePrototype) throw new Error('Auth reservation candidate and private source prototype are mutually exclusive');
@@ -141,8 +150,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     do { ports[key] = await freePort(); } while (Object.values(ports).filter(value => value === ports[key]).length > 1);
   }
   const origins = ['API_PORT','MAIL_PORT','TRAIL_PORT'].map(key => `http://127.0.0.1:${ports[key]}`);
-  const childEnv = { ...process.env };
-  for (const key of Object.keys(childEnv)) if (key.startsWith('SUPABASE_') || key.startsWith('TRAILBASE_')) delete childEnv[key];
+  const childEnv = fixtureEnvironment();
   const context = { id, project, directory, setupStage:'created', origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, authVariant };
   const ownerRecord = { id, project, nativeAuthProfile, authVariant, runnerPid: process.pid, trailPid: null };
   await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
