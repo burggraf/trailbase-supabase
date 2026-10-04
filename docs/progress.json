@@ -19,6 +19,7 @@
       "evidence": [
         "docs/evidence/phase-a-ledger-edit-failure-node22.json",
         "docs/evidence/phase-a-null-order-unit-node22.json",
+        "docs/evidence/phase-a-ci-null-order-unit-node22.json",
         "docs/evidence/phase-a-null-predicate-unit-node22.json",
         "docs/evidence/phase-a-unit-node22.json",
         "docs/evidence/phase-a-all-node22.json",
@@ -561,7 +562,7 @@
       "id": "L1-10",
       "title": "Ordering",
       "status": "planned",
-      "evidence": ["docs/evidence/phase-a-null-order-boundaries-node22.json","docs/evidence/phase-a-null-order-summary.json"],
+      "evidence": ["docs/evidence/phase-a-null-order-boundaries-node22.json","docs/evidence/phase-a-null-order-summary.json","docs/evidence/phase-a-ci-null-order-all-node22.json"],
       "missing": [
         "All applicable test-plan families and maintainer signoff"
       ],
@@ -922,7 +923,8 @@
         "docs/evidence/phase-a-update-order-initial-assumptions-node22.json",
         "docs/evidence/phase-a-update-order-followup-node22.json",
         "docs/evidence/phase-a-null-order-boundaries-node22.json",
-        "docs/evidence/phase-a-null-order-summary.json"
+        "docs/evidence/phase-a-null-order-summary.json",
+        "docs/evidence/phase-a-ci-null-order-summary.json"
       ],
       "missing": [
         "Initial repeated-key precedence and order/range call order passed; remaining nullable/reference-option and broader builder edge matrix, production guards and complete adapter verification remain pending",
@@ -1168,26 +1170,26 @@
     "date": "2026-10-04",
     "node": "v22.23.2",
     "scope": "Approved G4 installed-client nullsFirst wire/order characterization; nullable/reference ordering remains out of SDK scope, no production implementation or signoff",
-    "state": "local-real-characterization-verified-linux-ci-pending",
-    "latestCheckpoint": "pending-current-source-checkpoint; base=7220cf46fd1255cf44376b17f6cb2ff90312693f",
-    "latestPush": "Current G4 test/evidence checkpoint pending; previous remote checkpoint 7220cf4.",
-    "latestCi": {"status":"pending-current-source-Linux-run","scope":"G4 null-order option characterization; exact source hash f6c6541e039393bcc0e815b7fd40c1c7ef60231352fc974b418e22fec17e109f"},
-    "checkpoint": "pending-current-source-commit-at-f6c6541e039393bcc0e815b7fd40c1c7ef60231352fc974b418e22fec17e109f",
-    "push": "Current G4 test/evidence commit not yet created; prior remote commit 7220cf46fd1255cf44376b17f6cb2ff90312693f.",
-    "ci": {"runUrl":"https://github.com/burggraf/trailbase-supabase/actions/runs/37218881528","sourceSha256":"7c5c7833607daa634b3b10556b653221886b1c5d6fbc3da293705761d6086332","commit":"f48622e733a5fc10a4ae439c59139cb64c06009d","status":"completed-red-for-strict-characterization-failures","watchProcessId":"proc_9bca","units":{"node22":"50/50 passed","node24":"50/50 passed"},"realJob":"Stock 96/6; expiry 2/2; candidate characterization 10/10; candidate SMTP 0/1; migration 1/1; browser 60/6; cleanup 1/1. All seven reports inspected against exact source/pins/setup/cleanup/counts/private exclusion; no setup failure.","summary":"docs/evidence/phase-a-ci-invalid-date-summary.json","copyAudit":"docs/evidence/phase-a-invalid-date-ci-copy-audit-error.json"},
+    "state": "source-and-evidence-pushed-linux-ci-verified-red-strict-failures",
+    "latestCheckpoint": "dda6df13620d7525f78f173bb81db6031b32e84b",
+    "latestPush": "G4 source/evidence dda6df1 pushed; Linux CI 37229215215 audited; sanitized CI evidence checkpoint pending.",
+    "latestCi": {"runUrl":"https://github.com/burggraf/trailbase-supabase/actions/runs/37229215215","status":"completed-red-for-preserved-strict-failures","scope":"Exact-source Linux G4 null-order option characterization; nine artifacts independently audited.","evidence":"docs/evidence/phase-a-ci-null-order-summary.json"},
+    "checkpoint": "dda6df13620d7525f78f173bb81db6031b32e84b",
+    "push": "Pushed source/test commit dda6df13620d7525f78f173bb81db6031b32e84b; Linux CI 37229215215 audited. Sanitized evidence commit pending.",
+    "ci": {"runUrl":"https://github.com/burggraf/trailbase-supabase/actions/runs/37229215215","sourceSha256":"f6c6541e039393bcc0e815b7fd40c1c7ef60231352fc974b418e22fec17e109f","commit":"dda6df13620d7525f78f173bb81db6031b32e84b","status":"completed-red-for-preserved-strict-failures","units":{"node22":"50/50 passed","node24":"50/50 passed"},"realJob":"Stock 98/6; expiry 2/2; candidate characterization 10/10; candidate SMTP 0/1; migration 1/1; browser 60/6; cleanup 1/1. All nine reports audited against exact source/pins/setup/cleanup/counts/private exclusion; no setup failure.","summary":"docs/evidence/phase-a-ci-null-order-summary.json"},
     "fullRefreshProcessId": "foreground Bash hit 1000s timeout during expiry; exact run recovered; missing scopes resumed by proc_f49e",
     "localSummary": "docs/evidence/phase-a-null-order-summary.json",
-    "fullRefreshOutcome": "Thirteen immutable real scopes completed at f6c6541e039393bcc0e815b7fd40c1c7ef60231352fc974b418e22fec17e109f; aggregate red only for preserved strict failures. Units 50/50 both Nodes; boundaries 10/0; browser 60/6; network 6/1; constraints 6/0; streaming 5/0; auth lifecycle 9/3; stock 98/6; proofs 34/0; expiry 2/0; candidate characterization 10/0; SMTP 0/1; migration/cleanup 1/0. Exact-source pins/setup/cleanup/private exclusion verified. Initial shell timed out during expiry; exact fixture recovered and remaining scopes resumed. No interrupted result inferred.",
-    "finalValidation": "Pinned Node 22 npm run check/progress and git diff --check passed; exact source hash verified. Recursive privacy scan parsed 550 evidence JSONs; 37 exact known literal test/prose header phrases only. Node 22/24 units 50/50; all thirteen real reports match source/counts/pins/setup/cleanup/private exclusion; owned lock clear; CI pending.",
+    "fullRefreshOutcome": "Thirteen immutable real scopes completed at f6c6541e039393bcc0e815b7fd40c1c7ef60231352fc974b418e22fec17e109f; aggregate red only for preserved strict failures. Units 50/50 both Nodes; boundaries 10/0; browser 60/6; network 6/1; constraints 6/0; streaming 5/0; auth lifecycle 9/3; stock 98/6; proofs 34/0; expiry 2/0; candidate characterization 10/0; SMTP 0/1; migration/cleanup 1/0. Exact-source pins/setup/cleanup/private exclusion verified. Initial shell timed out during expiry; exact fixture recovered and remaining scopes resumed. No interrupted result inferred. Linux 37229215215 reproduced units, stock 98/6, expiry 2/0, characterization 10/0, SMTP 0/1, migration 1/0, browser 60/6 and cleanup 1/0; all nine source-matched reports/audits complete; red only for retained strict failures.",
+    "finalValidation": "Pinned Node 22 npm run check/progress and git diff --check passed before/after CI audit; source hash verified. Recursive privacy scan parsed 560 evidence JSONs; 37 exact known literal test/prose header phrases only. Node 22/24 units 50/50; all local and nine Linux reports audited against source/counts/pins/setup/cleanup/private exclusion; lock clear.",
     "fullRefreshCommand": "Pinned Node22/24 units then .runtime/null-order-full-controls.mjs; foreground shell timeout during expiry, exact owned cleanup, then .runtime/null-order-remaining-controls.mjs. No test/source edits during scopes.",
     "focused": {"boundaries":"10/10; explicit nullsFirst true/false wire tokens and exact row order passed; setup/cleanup passed","fullMatrix":"Stock 98/6; browser 60/6; all thirteen source-matched scopes audited","evidence":["docs/evidence/phase-a-null-order-boundaries-node22.json","docs/evidence/phase-a-null-order-summary.json","docs/evidence/phase-a-null-order-refresh-interruption.json"]},
     "sourceSha256": "f6c6541e039393bcc0e815b7fd40c1c7ef60231352fc974b418e22fec17e109f",
-    "checkpoint": "pending-current-source-commit-at-f6c6541e039393bcc0e815b7fd40c1c7ef60231352fc974b418e22fec17e109f",
+    "checkpoint": "dda6df13620d7525f78f173bb81db6031b32e84b",
     "unitNode22Cases": 50,
     "unitNode24Cases": 50,
-    "typecheck": "Pinned Node 22 npm run check passed after A01 current-source unit evidence linked; Node 22/24 unit reports 50/50. Progress JSON, diff, source hash and 550-report privacy scan passed. Exact-source real reports audited; shell interruption/recovery recorded; no source edits during scopes.",
-    "missing": "Current exact-source Linux CI and final docs/privacy checks pending. Known strict stock/browser/network/auth/SMTP failures remain. More approved Phase A matrices and all production adapter/security/type/package/signoff layers incomplete; no SDK/gate feature signed off.",
-    "restart": ["Run final npm run check/progress, diff/source/privacy validation and confirm recovered expiry attempt has no report", "Commit/push current test/evidence/docs and inspect exact-source Linux CI, pins/counts/setup/cleanup", "Continue remaining approved G2-G7 Phase A characterization under immutable hash", "No adapter implementation, transport/logout change, public follow-up or gate signoff without approval"]
+    "typecheck": "Pinned Node 22 npm run check passed before/after CI evidence; Node 22/24 unit reports 50/50. Recursive privacy scan parsed 560 evidence JSONs; progress/diff/source checks passed. Exact-source local and Linux reports audited.",
+    "missing": "Known strict stock/browser/network/auth/SMTP failures remain. More approved Phase A matrices and all production adapter/security/type/package/signoff layers incomplete; no SDK/gate feature signed off.",
+    "restart": ["Commit/push sanitized Linux audit/evidence checkpoint", "Continue remaining approved G2-G7 Phase A characterization under immutable hash", "No adapter implementation, transport/logout change, public follow-up or gate signoff without approval"]
   },
   "previousInputShapesSession": {
     "date": "2026-10-04",

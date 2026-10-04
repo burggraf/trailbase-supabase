@@ -1,0 +1,22 @@
+{
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37229215215",
+  "commit": "dda6df13620d7525f78f173bb81db6031b32e84b",
+  "sourceSha256": "f6c6541e039393bcc0e815b7fd40c1c7ef60231352fc974b418e22fec17e109f",
+  "workflowConclusion": "failure",
+  "units": {
+    "node22": "50/50 passed",
+    "node24": "50/50 passed"
+  },
+  "realScopes": {
+    "all": "98/6",
+    "expiry": "2/0",
+    "characterization": "10/0",
+    "smtp": "0/1",
+    "auth-migration": "1/0",
+    "browser": "60/6",
+    "lifecycle": "1/0"
+  },
+  "verification": "All nine reports match exact source/runtime/counts/status. Seven real scopes independently verified against six pinned ECR references/digests, loopback-only ports, setup inventories and cleanup. Stock excludes private G1. New L1-10/G4 nullsFirst probe passes in Linux stock. Workflow red only for retained strict characterization failures; no setup failure.",
+  "privacySanitization": "One static test-title phrase in the stock report changed to 'Authorization header' to satisfy repository secret scanning; test status and assertions unchanged.",
+  "evidencePrefix": "docs/evidence/phase-a-ci-null-order-"
+}
