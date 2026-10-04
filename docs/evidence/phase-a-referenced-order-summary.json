@@ -1,0 +1,27 @@
+{
+  "sourceSha256": "fab889d5119e189090fa62530e4df1365e12096f448a27a47150dbf845d3fb17",
+  "localNode22": "50/50",
+  "localNode24": "50/50",
+  "focused": "boundaries 11/11",
+  "realScopes": {
+    "boundaries": "11/0",
+    "browser": "60/6",
+    "network": "6/1",
+    "constraints": "6/0",
+    "streaming": "5/0",
+    "auth-lifecycle": "9/3",
+    "all": "99/6",
+    "proofs": "34/0",
+    "expiry": "2/0",
+    "candidate-characterization": "10/0",
+    "candidate-smtp": "0/1",
+    "migration": "1/0",
+    "cleanup": "1/0"
+  },
+  "behavior": "Two installed Supabase SDK calls ordered parent todos by priority DESC and supplied nested title order using referencedTable:'todo_links' and deprecated foreignTable:'todo_links'. Both emitted order=priority.desc plus todo_links.order=title.asc and returned HTTP 400/PGRST108 with null data because no todo_links embed was selected. This is raw reference-client/backend behavior; no relationship support or SDK contract expansion. Future adapter direction rejects referenced-table options.",
+  "verified": "All thirteen full-scope reports and focused report match source/runtime/counts/status. Six pinned ECR images/digests and loopback-only binds verified; setup/cleanup passed; stock excludes private G1. The new referencedTable/foreignTable wire/error probe passes focused and stock; Node 22 tsc passes.",
+  "failureComparison": "Compared named outcomes in full, browser, network, auth-lifecycle and candidate-SMTP reports against immediately prior null-order source: all previous statuses unchanged; stock contains exactly one new passing test; no new failure.",
+  "finalChecks": "Pinned Node 22 npm run check/progress and git diff --check passed; source hash verified. Recursive privacy scan parsed 577 evidence JSONs; 39 exact known static test-title/prose header phrases only. Owned lock clear.",
+  "missing": "Exact-source Linux CI pending. SDK/adaptor contract/type/security/package layers and maintainer signoff remain incomplete.",
+  "strict": "Preserved failures remain in stock/browser/network/auth-lifecycle/candidate-SMTP; no setup failures or hidden retries."
+}

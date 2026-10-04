@@ -143,6 +143,25 @@ describe('L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation',(
     const nativeDefault=await native.client.records('todos').list({order:['+note','+priority']});
     expect(nativeDefault.records.map(row=>canonicalUuid(String(row.id)))).toEqual(nullFirst);
   });
+  it('L1-10/G4 installed referencedTable/foreignTable order options stay outside the supported contract',async()=>{
+    const session=(await reference.client.auth.getSession()).data.session;
+    if(!session)throw new Error('Confirmed reference session missing');
+    const urls:URL[]=[];
+    const client=createClient(env.supabaseUrl,env.anonKey,{
+      auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},
+      accessToken:async()=>session.access_token,
+      global:{fetch:(input,init)=>{
+        urls.push(new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url));
+        return fetch(input,init);
+      }}
+    });
+    const current=await client.from('todos').select('id').order('priority',{ascending:false}).order('title',{referencedTable:'todo_links'});
+    const legacy=await client.from('todos').select('id').order('priority',{ascending:false}).order('title',{foreignTable:'todo_links'});
+    expect(current.status).toBe(400);expect(current.error?.code).toBe('PGRST108');expect(current.data).toBeNull();
+    expect(legacy.status).toBe(400);expect(legacy.error?.code).toBe('PGRST108');expect(legacy.data).toBeNull();
+    expect(urls.map(url=>url.searchParams.get('order'))).toEqual(['priority.desc','priority.desc']);
+    expect(urls.map(url=>url.searchParams.get('todo_links.order'))).toEqual(['title.asc','title.asc']);
+  });
   it('G4 repeated order keys retain first-key precedence; bounds/order call order selects the same page',async()=>{
     const api=native.client.records('todos');
     for(const ascending of [true,false]) {
