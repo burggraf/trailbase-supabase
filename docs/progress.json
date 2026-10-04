@@ -1123,6 +1123,8 @@
   "lastSession": {
     "date": "2026-10-04T00:52:26Z",
     "node": "v22.23.2",
+    "checkpoint": "a452e4a47323b03ea385adec0cf1d21a7953c787",
+    "ci": { "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37166397354", "status": "completed-red-for-preserved-stock-and-candidate-regressions", "completedWatchProcessId": "proc_3620", "unitNode22Cases": 46, "unitNode24Cases": 46, "realScopes": "Stock 91 passed/4 unchanged G1/G7 failures; expiry 2/2; candidate characterization 10/10; candidate SMTP 0/1; migration 1/1; browser 45/45; fault cleanup 1/1. All seven strict setup/owned cleanup checks passed, six pinned ECR services throughout. Native 100-cycle case passed inside stock; each browser passed 100 cycles.", "evidence": ["docs/evidence/phase-a-ci-linux-stream-lifecycle-unit-node22.json", "docs/evidence/phase-a-ci-linux-stream-lifecycle-unit-node24.json", "docs/evidence/phase-a-ci-linux-stream-lifecycle-all.json", "docs/evidence/phase-a-ci-linux-stream-lifecycle-expiry.json", "docs/evidence/phase-a-ci-linux-stream-lifecycle-candidate-characterization.json", "docs/evidence/phase-a-ci-linux-stream-lifecycle-candidate-smtp.json", "docs/evidence/phase-a-ci-linux-stream-lifecycle-migration.json", "docs/evidence/phase-a-ci-linux-stream-lifecycle-browser.json", "docs/evidence/phase-a-ci-linux-stream-lifecycle-cleanup.json"], "missing": "Earlier checkpoint DB image setup blocker did not recur here; its actual reference/root cause remains unproven. No pin or verification change repaired it. No full SDK/gate signoff." },
     "sourceSha256": "8f00b6d63c248868fbfb0f8829c6d20dadf2e9528e3ed7cf962db46d5c402b3e",
     "scope": "Revised bounded G5/G6 stream lifecycle proof and fixed-category setup diagnostics, unchanged image pins/assertions",
     "unitNode22Cases": 46,
@@ -1134,7 +1136,7 @@
     "checks": "Pinned Node 22/24 units 46/46; final TypeScript/docs/progress/traceability, all 305 evidence JSON parses/credential-pattern scan, source-hash/report-count/private-isolation/lock and git diff --check passed. Known prose Bearer matches separately classified; no credentials printed.",
     "correction": "Browser shared request helper adds application/json (installed headers() does not). Non-stream requests get a bounded deadline and constant method/status error; lifecycle assertions unchanged. Setup image format categories expose no arbitrary reference and grant no alternate-image acceptance.",
     "observations": "100 real Node HTTP proxy cycles cancelled exactly 100 upstream readers, drained owned tasks after every cycle and closed the listener; independent live control consumed every correlated update/final DELETE. Each browser completed 100 direct stream cycles, both abort/return paths, repeated close/no late generator delivery and released reader locks. Unit spies verified cancel-once/listener detachment. This is not native server-internal resource accounting, auth timer/listener parity, reference channel proof or SDK signoff.",
-    "missing": "Current-source Linux diagnostic CI/checkpoint pending. Keep exact image pins strict; earlier CI DB image outside safe inventory is not diagnosed yet. Reference-channel/native-server/auth timer/storage/TLS/WAN/package resource matrices, G1/G7 backend prerequisites and full SDK/signoff remain incomplete. No server patch/repin/deployment/submission/identity repair/SDK/Phase B authorized; coherent commit/push checkpoints are permitted."
+    "missing": "Current-source Linux CI at a452e4a completed with identical strict stock/candidate failures and passing native/browser lifecycle controls. Keep exact image pins strict; earlier CI DB image outside safe inventory is still not diagnosed. Reference-channel/native-server/auth timer/storage/TLS/WAN/package resource matrices, G1/G7 backend prerequisites and full SDK/signoff remain incomplete. No server patch/repin/deployment/submission/identity repair/SDK/Phase B authorized; coherent commit/push checkpoints are permitted."
   },
   "previousInitialStreamLifecycleSession": {
     "date": "2026-10-04T00:30:36Z",
@@ -1149,7 +1151,8 @@
     "realScopes": "COMPLETE: network 5/5, constraints 6/6, stock 91 passed/4 strict failures, browser 42 passed/3 new fixture failures, proofs 34/34, expiry 2/2, candidate characterization 10/10, candidate SMTP 0/1, migration 1/1, fault cleanup 1/1. All ten hashes/setup/cleanup passed; owned lock cleared. Aggregate exit 1 preserves every failure, not a hidden retry.",
     "missing": "Browser JSON-header fixture failures diagnosed/preserved; revised source runs separately. Server-internal resource counters, reference channel/auth timer parity, TLS/WAN/package/full SDK/CI/signoff remain unverified."
   },
-  "gitCheckpoint": {
+  "gitCheckpoint": { "commit": "a452e4a47323b03ea385adec0cf1d21a7953c787", "scope": "Bounded Phase A stream lifecycle characterization and safe image-format diagnostics, no gate signoff", "push": "Pushed to origin/main after final local validation", "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37166397354" },
+  "previousGitCheckpoint": {
     "commit": "31000b2",
     "scope": "Phase A characterization checkpoint, not gate signoff",
     "push": "Initially deferred by agent; remote-tracking reflog subsequently records update by push and origin/main at 31000b2. No duplicate push performed in this follow-up. User permits coherent commit/push checkpoints.",
