@@ -1,0 +1,28 @@
+{
+  "sourceSha256": "76ca39f66353d6f41272d11b4efd8ab296ca8b200c1ba804f94781a4d3511f54",
+  "processId": "proc_f545",
+  "scope": "Approved Phase A upstream/installed-client input-shape characterization, NOT SDK compatibility or signoff",
+  "aggregateExitCode": 1,
+  "aggregateReason": "All thirteen expected scope reports independently validated; preserved strict failures keep aggregate red",
+  "units": {"node22": "50/50", "node24": "50/50"},
+  "local": {
+    "boundaries": "8/8",
+    "browser": "60 passed / 6 strict failures",
+    "network": "6 passed / 1 strict failure",
+    "constraints": "6/6",
+    "streaming": "5/5",
+    "authLifecycle": "9 passed / 3 strict failures",
+    "stock": "96 passed / 6 strict failures",
+    "proofs": "34/34",
+    "expiry": "2/2",
+    "candidateCharacterization": "10/10",
+    "candidateSmtp": "0 passed / 1 strict failure",
+    "migration": "1/1",
+    "faultCleanup": "1/1"
+  },
+  "verification": "All thirteen real reports match source, Node 22.23.2, macOS arm64, expected counts/status, six original service images/tags/digests/loopback ports, pinned ECR setup inventory and passed owned setup/cleanup. Stock excludes private G1 suites; owned lock clear.",
+  "newCases": "Both installed Node clients serialize Date in declared text to ISO text. Date in integer and Uint8Array in UUID/integer reject HTTP 400 (reference 22P02/null) with exact real mutation counts and unchanged complete A/B rows/audits. All six installed native ESM/reference UMD browser cases pass Chromium/Firefox/WebKit, including actual outgoing body shapes and owned row/local-session cleanup; native exact B refresh rejected after local revocation.",
+  "initialFailuresPreserved": "Browser-copy red unit 49/1, initial typecheck failures and initial browser 57/9 remain separate. Three native browser failures were counter instrumentation excluding PATCH child paths; no backend/status/data/auth/assertion relaxation. Initial native final wire-body assertions had not been reached.",
+  "strictFailuresPreserved": "Reference unawaited hydration notification race, native late refresh/status resurrection, native unconfirmed duplicate and SMTP recovery, candidate SMTP recovery, and permissive-origin raw-follow header forwarding. No public logout exploit/live-session compromise or startup repair inferred.",
+  "missing": "Current-source Linux CI, wider remaining approved characterization, full SDK before-wire validators/types/shared contracts/browser/package matrices and maintainer signoff. No SDK/server patch, baseline repin, production deployment, public submission or transport/contract change."
+}

@@ -1,7 +1,9 @@
 import { createHash } from 'node:crypto';
+import { mkdtemp,readFile,rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { assertLocalUrl, assertRunDirectory, verifyOwner, verifyImages, verifyLoopbackBindings, replaceTokens, freePort, waitReady, stopChild, nativeAuthConfig, setupImageInventory, fixtureAuthVariant, fixtureEnvironment } from '../../scripts/harness.mjs';
+import { assertLocalUrl, assertRunDirectory, verifyOwner, verifyImages, verifyLoopbackBindings, replaceTokens, freePort, waitReady, stopChild, nativeAuthConfig, setupImageInventory, fixtureAuthVariant, fixtureEnvironment, copyBrowserSdks } from '../../scripts/harness.mjs';
 import { verifyChecksum } from '../../scripts/tools.mjs';
 import { vitestArguments, testTimeoutMs } from '../../scripts/run-phase-a.mjs';
 
@@ -100,6 +102,15 @@ describe('L1-27/U27 harness safety', () => {
   it('fails closed on missing fixture variables', () => {
     expect(replaceTokens('port = __PORT__', { PORT: 1234 })).toBe('port = 1234');
     expect(() => replaceTokens('__MISSING__', {})).toThrow('Missing');
+  });
+  it('serves byte-identical installed native ESM and reference UMD distributions, not replacements',async()=>{
+    const directory=await mkdtemp(resolve(tmpdir(),'phase-a-browser-sdks-'));
+    try{
+      await copyBrowserSdks(directory);
+      for(const [source,name] of [['node_modules/trailbase/dist/index.js','trailbase.js'],['node_modules/@supabase/supabase-js/dist/umd/supabase.js','supabase.js']]){
+        expect(await readFile(resolve(directory,'fixtures',name))).toEqual(await readFile(source));
+      }
+    }finally{await rm(directory,{recursive:true,force:true});}
   });
   it('allocates local ports and releases the allocation socket', async () => {
     const port = await freePort();

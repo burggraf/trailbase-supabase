@@ -1,6 +1,6 @@
 {
   "stage": "Post-CI Linux evidence audit bookkeeping",
   "error": "AssertionError: 10",
-  "cause": "Audit counted seven real-scope reports plus two Node reports but omitted separately written summary report from expected file count; glob correctly found 10.",
+  "cause": "Original audit assertion expected 8 files; glob correctly found 10. Earlier cause prose implied nine (seven real scopes plus two Node reports, omitting summary), but did not accurately state the original assertion. Both incorrect counts are bookkeeping mistakes, not test results.",
   "correction": "Re-run the same parse/source/credential-pattern checks with expected count 10. No report discarded, CI/test outcome changed, assertion changed, source edited, or secret scan completed by the failed invocation."
 }

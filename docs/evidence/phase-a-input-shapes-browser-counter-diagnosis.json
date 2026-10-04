@@ -1,0 +1,11 @@
+{
+  "sourceSha256": "ec911555bd774ba232aecad943af1d791f27110b93bca7f1b040225f77acde4b",
+  "initialReport": "docs/evidence/phase-a-input-shapes-initial-browser-node22.json",
+  "result": { "passed": 57, "failed": 9, "setup": "passed", "cleanup": "passed" },
+  "newFailures": "Native Chromium/Firefox/WebKit: Browser raw-shape postcondition: exactly five mutation requests, no replay",
+  "retainedFailures": "Three reference unawaited hydration notification races and three permissive-origin raw-follow credential-boundary failures",
+  "rootCause": "Test counter required exact native pathname /api/records/v1/todos. Installed native UpdateOperation.query sends PATCH to /api/records/v1/todos/<id>, which was never recorded. Reference PATCH uses /rest/v1/todos with query, so exact reference pathname counter included updates.",
+  "evidenceMethod": "All engines reached counter guard after real Date/byte rejection and complete unchanged A/B row/audit assertions. Private reports contain static failing guard labels. Installed dist/index.js UpdateOperation.query and test predicate independently show excluded PATCH path; no actual captured count was returned by initial guard.",
+  "initialLimits": "Final wire-body checks after counter guard were not reached by native browser cases. Their row/local-session finally checks completed without replacing the primary error. Node equivalent passed all eight boundary cases. Do not present initial native browser cases as passing.",
+  "correction": "Include exact todos collection and slash-delimited child paths in native mutation counter; retain exactly-five/no-replay, outgoing Date/byte body, row/audit/permission and teardown assertions. No backend/status/code/pin/SDK/auth assertion changed. Initial artifact preserved; revised real run pending."
+}

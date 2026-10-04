@@ -107,6 +107,58 @@ describe('L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation',(
     const invalid=await reference.client.from('todos').select('*').order('typo_column');
     expect(invalid.error).not.toBeNull(); expect(invalid.data).toBeNull();
   });
+  for(const shape of ['date','bytes'] as const)it(`G2/G3/S02 raw ${shape} serialization preserves rejected-write rows/audits and other-owner controls`,async()=>{
+    const b=await confirmedTrailUser(env,'shape-b'),rb=await confirmedSupabaseUser(env,'shape-b');
+    const bid=randomUUID(),created=randomUUID(),date=new Date('2024-01-02T03:04:05.000Z'),bytes=Uint8Array.from(Buffer.from(created.replaceAll('-',''),'hex'));
+    const api=native.client.records('todos');
+    await b.client.records('todos').create({id:nativeUuid(bid),user_id:b.user.id,title:'other-owner-shape-control'});
+    expect((await rb.client.from('todos').insert({id:bid,user_id:rb.user.id,title:'other-owner-shape-control'})).error).toBeNull();
+    const token=(await reference.client.auth.getSession()).data.session!.access_token;
+    const wire:{method:string;body:Record<string,unknown>}[]=[];
+    const client=createClient(env.supabaseUrl,env.anonKey,{accessToken:async()=>token,global:{fetch:async(input,init)=>{
+      const url=new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url);
+      if(url.pathname==='/rest/v1/todos'&&['POST','PATCH'].includes(init?.method??''))wire.push({method:init!.method!,body:JSON.parse(String(init!.body))});
+      return fetch(input,{...init,signal:AbortSignal.timeout(10000)});
+    }}});
+    const spy=vi.spyOn(native.client,'fetch');let nativeCreated=false,referenceCreated=false;
+    const state=async()=>{
+      const rows=await reference.client.from('todos').select('*').order('id'),audit=await reference.client.from('todo_audit').select('*').order('audit_key');
+      const other=await rb.client.from('todos').select('*').order('id'),otherAudit=await rb.client.from('todo_audit').select('*').order('audit_key');
+      for(const result of [rows,audit,other,otherAudit])expect(result.error).toBeNull();
+      return {rows:rows.data,audit:audit.data,other:other.data,otherAudit:otherAudit.data,native:(await api.list({order:['+id'],pagination:{limit:1000}})).records,nativeAudit:(await native.client.records('todo_audit').list({order:['+audit_key'],pagination:{limit:1000}})).records,nativeOther:(await b.client.records('todos').list()).records,nativeOtherAudit:(await b.client.records('todo_audit').list({order:['+audit_key']})).records};
+    };
+    try{
+      if(shape==='date'){
+        expect(await api.create({id:nativeUuid(created),user_id:native.user.id,title:date})).toBe(nativeUuid(created));nativeCreated=true;
+        const inserted=await client.from('todos').insert({id:created,user_id:reference.user.id,title:date});referenceCreated=!inserted.error;expect(inserted.error).toBeNull();
+        expect((await api.read(nativeUuid(created))).title).toBe(date.toISOString());
+        const row=await reference.client.from('todos').select('*').eq('id',created).single();expect(row.error).toBeNull();expect(row.data.title).toBe(date.toISOString());
+      }
+      const before=await state();
+      const bad=shape==='date'?{id:nativeUuid(randomUUID()),user_id:native.user.id,title:'rejected-date',created_at:date}:{id:bytes,user_id:native.user.id,title:'rejected-bytes'};
+      await expect(api.create(bad)).rejects.toMatchObject({status:400});
+      const rejected=await client.from('todos').insert({...bad,id:shape==='date'?randomUUID():bytes,user_id:reference.user.id});
+      expect(rejected.status).toBe(400);expect(rejected.error?.code).toBe('22P02');expect(rejected.data).toBeNull();
+      const values=shape==='date'?{created_at:date,note:'must-not-persist'}:{priority:bytes,note:'must-not-persist'};
+      await expect(api.update(nativeUuid(ids[0]),values)).rejects.toMatchObject({status:400});
+      const updated=await client.from('todos').update(values).eq('id',ids[0]);expect(updated.status).toBe(400);expect(updated.error?.code).toBe('22P02');expect(updated.data).toBeNull();
+      expect(await state()).toEqual(before);
+      const nativeWire=spy.mock.calls.filter(([,init])=>['POST','PATCH'].includes(init?.method??'')).map(([,init])=>({method:init!.method!,body:JSON.parse(String(init!.body))}));
+      expect(nativeWire.map(call=>call.method)).toEqual(shape==='date'?['POST','POST','PATCH']:['POST','PATCH']);expect(wire.map(call=>call.method)).toEqual(nativeWire.map(call=>call.method));
+      for(const calls of [nativeWire,wire]){
+        if(shape==='date'){expect(calls[0].body.title).toBe(date.toISOString());expect(calls[1].body.created_at).toBe(date.toISOString());expect(calls[2].body.created_at).toBe(date.toISOString());}
+        else{expect(calls[0].body.id).toEqual(JSON.parse(JSON.stringify(bytes)));expect(calls[1].body.priority).toEqual(JSON.parse(JSON.stringify(bytes)));}
+      }
+    }finally{
+      spy.mockRestore();
+      if(nativeCreated)await api.delete(nativeUuid(created));if(referenceCreated)expect((await reference.client.from('todos').delete().eq('id',created)).error).toBeNull();
+      await b.client.records('todos').delete(nativeUuid(bid));expect((await rb.client.from('todos').delete().eq('id',bid)).error).toBeNull();
+      expect((await b.client.records('todos').list()).records).toEqual([]);const empty=await rb.client.from('todos').select('*');expect(empty.error).toBeNull();expect(empty.data).toEqual([]);
+      const refresh=b.client.tokens()!.refresh_token;await b.client.logout();expect(b.client.tokens()).toBeUndefined();expect(b.client.user()).toBeUndefined();
+      expect((await fetch(`${env.trailUrl}/api/auth/v1/refresh`,{method:'POST',credentials:'omit',redirect:'error',headers:{'content-type':'application/json'},body:JSON.stringify({refresh_token:refresh}),signal:AbortSignal.timeout(10000)})).status).toBe(401);
+      expect((await rb.client.auth.signOut({scope:'local'})).error).toBeNull();expect((await rb.client.auth.getSession()).data.session).toBeNull();client.realtime.disconnect();
+    }
+  });
   it('construction is lazy, repeated execution sends requests, independent builders isolate but shared builders/options mutate',async()=>{
     let calls=0;
     const session=(await reference.client.auth.getSession()).data.session;

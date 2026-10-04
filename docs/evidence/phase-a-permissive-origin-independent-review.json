@@ -1,0 +1,20 @@
+{
+  "sourceSha256": "a33e05f9f42252dd9eea350960612c882f4831a4bb35ad3fe60b76799664bd01",
+  "reviewRunId": "72ed5e1e-aaa7-440f-88e5-537a8a8f8168",
+  "model": "openai-codex/gpt-6.1-sol",
+  "authority": "Operator-requested independent read-only review; advisory model judgment, not maintainer signoff",
+  "initialModelSelection": "Unknown subagent model 'openai-codex/gpt-5.1-sol' in the active Pi model registry. No child launched; operator explicitly selected openai-codex/gpt-6.1-sol before subsequent launch.",
+  "judgment": "No issues found; OK with notes for bounded characterization, not SDK/gate signoff",
+  "supported": "Raw Fetch following an owned permissive cross-origin redirect forwards genuine custom refresh/CSRF headers despite credentials:omit; Authorization stripped. Tested redirect:error variants produce observable error and zero foreign arrivals. Node/browser/Linux strict failures and session/row/cleanup controls retained.",
+  "notEstablished": "Public installed logout-method exploit, live-session compromise, protected-data leakage, severity/CVE, universal header security, TLS/WAN/custom-fetch safety, authenticated global acknowledgement or SDK implementation/signoff",
+  "runtimeOrderingLimit": "Existing tests probe refresh rejection after Fetch completes, not a timestamped receiver-arrival/revocation barrier. Source ordering is a separate observation, not runtime-timing instrumentation.",
+  "pristinePinnedSourceCheck": {
+    "commit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+    "method": "Read original blobs with git show at exact commit; not inferred from dirty private G1 source working tree",
+    "logoutHandler": "crates/core/src/auth/api/logout.rs:41 validates redirect; :45-46 awaits deletion for authenticated user; :49-50 then constructs redirect response",
+    "deletion": "crates/core/src/auth/util.rs:396-402 awaits session_conn.execute DELETE of sessions for the user",
+    "redirectValidation": "crates/core/src/auth/util.rs:89-91 accepts strings starting '/', including tested protocol-relative //host/path",
+    "installedClient": "trailbase@0.14.3 dist/index.js:640-653 uses POST with exact refresh token when present, otherwise default GET without tested foreign redirect_uri; errors caught, state cleared and true returned"
+  },
+  "next": "No additional logout-path runtime expansion or transport change without explicit input. Continue previously approved unrelated Phase A G2-G4 unsupported-shape characterization. No public submission or signoff."
+}

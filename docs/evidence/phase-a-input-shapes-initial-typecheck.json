@@ -1,0 +1,11 @@
+{
+  "sourceSha256": "ed769ceeac2faaab2c3c19cb076871fecd045fd48f1f931a03f4729b1b394a6a",
+  "command": "Node 22.23.2 tsc --noEmit",
+  "exitCode": 1,
+  "errors": [
+    "tests/phase-a-browser/input-shapes.spec.ts(23,46) and (23,91): TS2322: bare Fetch function is not assignable to installed Transport interface",
+    "tests/phase-a-browser/input-shapes.spec.ts(28,250): TS2322: string | null is not assignable to string | undefined",
+    "tests/phase-a-browser/input-shapes.spec.ts(49,138): TS2345: conditional raw-record union fails installed reference insert overload inference"
+  ],
+  "correction": "Use installed Transport {fetch} interface and resolve native relative paths against owned base, preserve nullable refresh type, explicitly type raw JavaScript records as Record<string,unknown>. No production type/contract/assertion or pin changed. Initial failing invocation retained, corrected typecheck not yet claimed."
+}

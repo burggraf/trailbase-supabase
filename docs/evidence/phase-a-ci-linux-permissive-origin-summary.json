@@ -31,6 +31,6 @@
   ],
   "browserFailures": "Same three unawaited hydration notification failures in Chromium/Firefox/WebKit, plus same three raw-Fetch custom-header-forwarding failures. All redirect:error guards had zero receiver traffic; other browser cases passed.",
   "verification": "All seven real reports match exact source/counts, setup ready/check passed, owned cleanup passed, six original ECR services classified ecr-tag per report; stock suite excluded private G1. Original pinned tags/digests and assertions unchanged. No retry or hidden normalization.",
-  "initialUnrelatedSetupFailure": "Earlier same-source run 37174358342 stock failed before assertions at startup and has separately retained zero-test evidence. This run setup passed; original failure's cause remains unproven/unrepaired. No setup repair claim.",
+  "initialUnrelatedSetupFailure": "Earlier hydration-source run 37174358342 (1d2bf19b61e88ab92c6c9935d632fd609e2616d31ca1524aaff5064d92a8ef04, not permissive source a33e05f) stock failed before assertions at startup and has separately retained zero-test evidence. This run setup passed; original failure's cause remains unproven/unrepaired. No setup repair claim.",
   "limits": "Upstream installed logout() at trailbase@0.14.3 uses POST exact refresh token when present and swallows errors; redirect exercised here only through test-only raw Fetch global GET. No production SDK/server patch, upstream submission, severity/CVE, global-ack fallback or G1-G7 signoff."
 }

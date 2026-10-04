@@ -100,6 +100,13 @@ export function fixtureEnvironment(environment = process.env) {
 }
 
 // All paths/ports/project names are generated here; callers cannot target a hosted project.
+export async function copyBrowserSdks(publicDirectory) {
+  await mkdir(resolve(publicDirectory,'fixtures'),{recursive:true});
+  for(const [source,name] of [['node_modules/trailbase/dist/index.js','trailbase.js'],['node_modules/@supabase/supabase-js/dist/umd/supabase.js','supabase.js']]) {
+    await cp(resolve(source),resolve(publicDirectory,'fixtures',name));
+  }
+}
+
 export function fixtureAuthVariant({ authMitigation = false, privateNativePrototype = false } = {}) {
   if (authMitigation && privateNativePrototype) throw new Error('Auth reservation candidate and private source prototype are mutually exclusive');
   return privateNativePrototype ? 'private-native-prototype' : authMitigation ? 'candidate-email-reservation' : 'stock';
@@ -247,8 +254,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await mkdir(publicDirectory);
     await writeFile(resolve(publicDirectory, 'index.html'), '<!doctype html><html lang="en"><meta charset="utf-8"><title>Phase A verification complete</title><main><h1>Verification complete</h1><p>Sign in explicitly.</p></main></html>');
     await writeFile(resolve(publicDirectory, 'phase-a-owner.txt'), id);
-    await mkdir(resolve(publicDirectory,'fixtures'));
-    await cp(resolve('node_modules/@supabase/supabase-js/dist/umd/supabase.js'),resolve(publicDirectory,'fixtures/supabase.js'));
+    await copyBrowserSdks(publicDirectory);
     // Installed pinned upstream UMD is characterization-only; proof modules are
     // type-erased test files, not a production adapter/package build.
     try {
