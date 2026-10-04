@@ -1,0 +1,10 @@
+{
+  "sourceSha256": "f6c6541e039393bcc0e815b7fd40c1c7ef60231352fc974b418e22fec17e109f",
+  "operation": "Exact-source G4 NULL-order-option full Phase A characterization refresh.",
+  "commandFailure": "Foreground bash tool hit its 1000-second deadline while controller was in real expiry scope. No ordinary process notification/summary; do not interpret omitted report as test outcome.",
+  "lastOwnedScope": {"runId":"1791141918378-195b94ae0987","runnerPid":11781,"suite":"expiry","report":"none observed"},
+  "completedBeforeInterruption": ["Node 22/24 units 50/50", "boundaries 10/0", "browser 60/6", "network 6/1", "constraints 6/0", "streaming 5/0", "auth-lifecycle 9/3", "stock 98/6", "proofs 34/0"],
+  "recovery": "Verified runner PID 11781 absent. Ran exact owned cleanup: npm run fixtures:cleanup -- 1791141918378-195b94ae0987; tool confirmed depot/credentials removed. Verified .runtime/phase-a.lock absent and PID remains absent.",
+  "setupOrAssertionFailure": "Not established for interrupted expiry attempt; no report/count inferred. Strict results only from prior independently preserved scopes.",
+  "next": "Resume at expiry with a managed process; do not bypass live lock or rerun/overwrite retained scopes. Then candidate characterization/SMTP, migration and cleanup."
+}

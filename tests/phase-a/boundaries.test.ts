@@ -120,6 +120,29 @@ describe('L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation',(
       expect((await api.list({filters:[{column:'title',value:title}]})).records.map(row=>row.title)).toEqual([title]);
     }
   });
+  it('L1-10/G4 installed nullsFirst flags produce explicit reference order tokens; nullable ordering stays nonportable',async()=>{
+    const session=(await reference.client.auth.getSession()).data.session;
+    if(!session)throw new Error('Confirmed reference session missing');
+    const urls:URL[]=[];
+    const client=createClient(env.supabaseUrl,env.anonKey,{
+      auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},
+      accessToken:async()=>session.access_token,
+      global:{fetch:(input,init)=>{
+        urls.push(new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url));
+        return fetch(input,init);
+      }}
+    });
+    const first=await client.from('todos').select('id').order('note',{nullsFirst:true}).order('priority');
+    const last=await client.from('todos').select('id').order('note',{nullsFirst:false}).order('priority');
+    const nullFirst=[ids[0],...ids.slice(1)],nullLast=[...ids.slice(1),ids[0]];
+    expect(first.status).toBe(200);expect(first.error).toBeNull();expect(first.data?.map(row=>row.id)).toEqual(nullFirst);
+    expect(last.status).toBe(200);expect(last.error).toBeNull();expect(last.data?.map(row=>row.id)).toEqual(nullLast);
+    expect(urls.map(url=>url.searchParams.get('order'))).toEqual([
+      'note.asc.nullsfirst,priority.asc','note.asc.nullslast,priority.asc'
+    ]);
+    const nativeDefault=await native.client.records('todos').list({order:['+note','+priority']});
+    expect(nativeDefault.records.map(row=>canonicalUuid(String(row.id)))).toEqual(nullFirst);
+  });
   it('G4 repeated order keys retain first-key precedence; bounds/order call order selects the same page',async()=>{
     const api=native.client.records('todos');
     for(const ascending of [true,false]) {

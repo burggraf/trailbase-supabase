@@ -1,0 +1,13 @@
+{
+  "scope": "Approved G4 upstream characterization of installed reference nullsFirst order options; test-only, nullable order remains unsupported/nonportable in approved adapter contract",
+  "sourceSha256": "f6c6541e039393bcc0e815b7fd40c1c7ef60231352fc974b418e22fec17e109f",
+  "baseline": {"trailbase":"0.34.3","trailbaseClient":"0.14.3","supabaseJs":"2.117.2","supabaseCli":"2.119.0","node22":"22.23.2","node24":"24.21.0","playwright":"1.63.0"},
+  "behavior": "Installed Supabase emits order=note.asc.nullsfirst,priority.asc for nullsFirst:true and note.asc.nullslast,priority.asc for false; both requests return exact row order. The nullable SQL NULL row moves from first to last. Native installed list defaults to NULL-first on this field and has no nullsFirst option. G4 direction rejects nullable order and nullsFirst/reference options in the future adapter; this only records raw installed behavior and does not expand supported API.",
+  "focused": {"suite":"boundaries","passed":10,"failed":0,"setup":"passed","cleanup":"passed","report":"docs/evidence/phase-a-null-order-boundaries-node22.json"},
+  "units": {"node22":"50/50 passed","node24":"50/50 passed"},
+  "realScopes": {"boundaries":"10/0","browser":"60/6","network":"6/1","constraints":"6/0","streaming":"5/0","authLifecycle":"9/3","stock":"98/6","proofs":"34/0","expiry":"2/0","candidateCharacterization":"10/0","candidateSmtp":"0/1","migration":"1/0","cleanup":"1/0"},
+  "verification": "All thirteen real reports match exact source/runtime/counts/status, six pinned ECR image references/digests, loopback-only ports, setup inventories and owned cleanup. Stock excludes private G1. Strict stock/browser/network/auth/SMTP failures match previously retained failures; new order-options test passes in focused boundaries and stock. No setup failure.",
+  "interruption": "First full refresh foreground shell timed out at 1000 seconds during expiry. No expiry outcome inferred. PID 11781 was absent; exact owned fixture 1791141918378-195b94ae0987 recovered using npm run fixtures:cleanup; lock clear. Expiry and all later scopes then ran in resumed managed process. Details: docs/evidence/phase-a-null-order-refresh-interruption.json.",
+  "finalChecks": "Pinned Node 22 npm run check/progress and git diff --check passed; source hash independently verified. Recursive privacy scan parsed 550 evidence JSONs; only 37 exact known literal test/prose header phrases. Owned lock clear.",
+  "missing": "CI for this source pending. All adapter validation/types/contracts/package checks and maintainer signoff remain incomplete. No SDK/gate feature signed off."
+}
