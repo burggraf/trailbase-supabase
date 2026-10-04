@@ -40,10 +40,26 @@ describe('L1-27/U27 harness safety', () => {
   });
   it('setup inventory exposes only public image refs/digests and a port-safety boolean',()=>{
     const digest=`public.ecr.aws/supabase/gotrue@sha256:${'a'.repeat(64)}`,expected={supabase_auth:{}};
-    expect(setupImageInventory([{service:'supabase_auth',image:'public.ecr.aws/supabase/gotrue:v2.197.0',repoDigests:[digest],publishedPorts:{'80/tcp':[{HostIp:'127.0.0.1',HostPort:'secret'}]},token:'secret'}],expected)).toEqual({containerCount:1,services:[{service:'supabase_auth',image:'public.ecr.aws/supabase/gotrue:v2.197.0',repoDigests:[digest],loopbackOnly:true}]});
+    expect(setupImageInventory([{service:'supabase_auth',image:'public.ecr.aws/supabase/gotrue:v2.197.0',repoDigests:[digest],publishedPorts:{'80/tcp':[{HostIp:'127.0.0.1',HostPort:'secret'}]},token:'secret'}],expected)).toEqual({containerCount:1,services:[{service:'supabase_auth',image:'public.ecr.aws/supabase/gotrue:v2.197.0',imageReferenceKind:'ecr-tag',repoDigests:[digest],loopbackOnly:true}]});
     const bad=setupImageInventory([{service:'secret',image:'https://user:secret@registry.invalid',repoDigests:['Bearer secret'],publishedPorts:{'80/tcp':[{HostIp:'secret',HostPort:'secret'}]}}],expected);
-    expect(bad).toEqual({containerCount:1,services:[{service:'unknown-service',image:'unrecognized-image-reference',repoDigests:[],loopbackOnly:false}]});
+    expect(bad).toEqual({containerCount:1,services:[{service:'unknown-service',image:'unrecognized-image-reference',imageReferenceKind:'unrecognized',repoDigests:[],loopbackOnly:false}]});
     expect(JSON.stringify(bad)).not.toContain('secret');
+    for(const [image,kind] of [
+      ['ghcr.io/supabase/gotrue:v2.197.0','ghcr-tag'],
+      ['supabase/gotrue:v2.197.0','docker-hub-tag'],
+      ['docker.io/supabase/gotrue:v2.197.0','docker-hub-tag'],
+      [`sha256:${'a'.repeat(64)}`,'image-id'],
+      [`public.ecr.aws/supabase/gotrue@sha256:${'a'.repeat(64)}`,'public-digest-reference'],
+      ['https://user:secret@registry.invalid','unrecognized']
+    ]){
+      const container={service:'supabase_auth',image,repoDigests:[digest],publishedPorts:{}};
+      const inventory=setupImageInventory([container],expected);
+      expect(inventory.services[0].imageReferenceKind).toBe(kind);
+      expect(inventory.services[0].image).toBe('unrecognized-image-reference');
+      expect(JSON.stringify(inventory)).not.toContain('secret');
+      // Diagnostic recognition grants no permission to use mirrors, IDs or altered pins.
+      expect(()=>verifyImages([container],{supabase_auth:{image:'public.ecr.aws/supabase/gotrue:v2.197.0',repoDigests:[digest]}})).toThrow('digest drift');
+    }
   });
   it('verifies downloaded AND cached bytes rather than filenames', () => {
     const bytes = Buffer.from('fixture archive');

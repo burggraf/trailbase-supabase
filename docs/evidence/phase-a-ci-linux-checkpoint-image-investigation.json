@@ -1,0 +1,19 @@
+{
+  "scope": "Read-only investigation of checkpoint CI image setup failure; NOT repaired setup or accepted alternate pin",
+  "status": "blocked",
+  "sourceSha256": "c55d6fe0b44c4c6342257e33bf89e3071fb8ad70d59d95c0bfc622903e55b695",
+  "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37164772592",
+  "observed": "Six loopback services, DB image outside current safe ECR inventory and no allowlisted DB repoDigests; strict image-service-and-tag verification failed before tests. Cleanup passed.",
+  "pinnedSources": [
+    "https://raw.githubusercontent.com/supabase/cli/v2.119.0/apps/cli-go/internal/utils/docker.go",
+    "https://raw.githubusercontent.com/supabase/cli/v2.119.0/apps/cli-go/cmd/root.go"
+  ],
+  "sourceObservations": [
+    "DockerStart assigns config.Image from DockerResolveImageIfNotCached.",
+    "Without an INTERNAL_IMAGE_REGISTRY override, GetRegistryImageUrls offers public.ecr.aws, ghcr.io and a Docker Hub fallback; the first cached or successfully pulled candidate can be selected.",
+    "Root Viper configuration uses the SUPABASE environment prefix and AutomaticEnv. The existing harness removes inherited SUPABASE_* variables from the child process."
+  ],
+  "inferenceNotProof": "A public mirror fallback could explain an unrecognized DB image, but current sanitized evidence cannot identify its actual reference. Do not claim that as the proven root cause or accept its image automatically.",
+  "next": "Add constant-valued image-reference format diagnostics without revealing arbitrary registry strings or changing verifyImages/service-images pins, then obtain genuine Linux evidence before deciding whether registry selection needs correction.",
+  "limits": "No image/version repin, verification relaxation, backend patch, deployment or SDK signoff authorized or performed. No raw CI auth/row/log material published."
+}

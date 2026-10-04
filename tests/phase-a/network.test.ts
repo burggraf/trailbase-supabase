@@ -44,6 +44,47 @@ describe('L1-27 G5/S07 owned real HTTP fault fixture, NOT arbitrary TCP/browser/
       expect(fixture.stats()).toMatchObject({active:0,listening:false});
     }
   });
+  it('100 real subscribe/consume/close cycles drain owned HTTP tasks and readers while a live control observes every write',async()=>{
+    const account=await confirmedTrailUser(env,'stream-cycles'),api=account.client.records('todos');
+    const id=nativeUuid(randomUUID());await api.create({id,user_id:account.user.id,title:`cycles-${randomUUID()}`});
+    let connections=0;
+    const fixture=await httpStreamFixture(signal=>{
+      connections++;return fetch(`${env.trailUrl}/api/records/v1/todos/subscribe/*`,{headers:account.client.headers(),signal});
+    },'fragment');
+    const controlAbort=new AbortController();
+    const controlResponse=await account.client.fetch('/api/records/v1/todos/subscribe/*',{signal:controlAbort.signal});
+    expect(controlResponse.ok).toBe(true);if(!controlResponse.body)throw new Error('Live cycle control body missing');
+    const control=nativeSseProof(controlResponse.body,{signal:controlAbort.signal});
+    try {
+      for(let cycle=0;cycle<100;cycle++){
+        const abort=new AbortController(),response=await fetch(fixture.url,{signal:abort.signal});
+        expect(response.ok).toBe(true);if(!response.body)throw new Error('Cycle stream body missing');
+        const parser=nativeSseProof(response.body,{signal:abort.signal});
+        try {
+          const pending=parser.next(),barrier=control.next(),note=`cycle-${cycle}`;
+          await api.update(id,{note});
+          for(const event of [(await deadline(pending)).value,(await deadline(barrier)).value]){
+            expect(event).toMatchObject({Update:{id,user_id:account.user.id,note}});
+          }
+          if(cycle%2===0){
+            const failed=expect(deadline(parser.next())).rejects.toMatchObject({name:'AbortError'});
+            abort.abort();await failed;
+          }else await deadline(parser.return(undefined));
+          await parser.return(undefined);expect(await parser.next()).toEqual({done:true,value:undefined});
+          expect(response.body.locked).toBe(false);
+          await deadline(fixture.idle());expect(fixture.stats()).toMatchObject({active:0,cancelled:cycle+1});
+        }finally{abort.abort();await parser.return(undefined).catch(()=>{});}
+      }
+      expect(connections).toBe(100);
+      const pending=control.next();await api.delete(id);
+      expect((await deadline(pending)).value).toMatchObject({Delete:{id}});
+      expect((await api.list()).records).toEqual([]);
+      // Owned proxy counters/readers only: no native server-internal accounting claim.
+    }finally{
+      controlAbort.abort();await deadline(control.return(undefined));expect(controlResponse.body.locked).toBe(false);
+      await deadline(fixture.close());expect(fixture.stats()).toMatchObject({active:0,cancelled:100,listening:false});
+    }
+  },120000);
   it('a real HTTP disconnect inside a native event fails observably and yields no fabricated event',async()=>{
     const account=await confirmedTrailUser(env,'http-disconnect');
     const fixture=await httpStreamFixture(signal=>fetch(`${env.trailUrl}/api/records/v1/todos/subscribe/*`,{headers:account.client.headers(),signal}),'disconnect');

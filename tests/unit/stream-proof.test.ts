@@ -1,4 +1,4 @@
-import { describe,it,expect } from 'vitest';
+import { describe,it,expect,vi } from 'vitest';
 import { nativeSseProof } from '../proofs/native-sse.js';
 
 const event={seq:1,Insert:{id:'fixture-key',title:'雪é-e\u0301 &+%'}};
@@ -50,6 +50,23 @@ describe('L1-27 G5 proof parser unit/property checks, NOT real network or produc
     const parser=nativeSseProof(source);
     expect((await parser.next()).value).toEqual(event);
     await parser.return(undefined);expect(cancelled).toBe(1);expect(source.locked).toBe(false);
+  });
+  it('100 alternating return/abort lifecycles cancel once, detach abort listeners and never deliver after close',async()=>{
+    for(let cycle=0;cycle<100;cycle++){
+      let cancelled=0;
+      const source=new ReadableStream<Uint8Array>({start(controller){controller.enqueue(encode(frame));},cancel(){cancelled++;}});
+      const abort=new AbortController(),added=vi.spyOn(abort.signal,'addEventListener'),removed=vi.spyOn(abort.signal,'removeEventListener');
+      const parser=nativeSseProof(source,{signal:abort.signal});
+      expect((await parser.next()).value).toEqual(event);
+      if(cycle%2===0){const pending=parser.next();abort.abort();await expect(pending).rejects.toMatchObject({name:'AbortError'});}
+      else await parser.return(undefined);
+      await parser.return(undefined);abort.abort();
+      expect(await parser.next()).toEqual({done:true,value:undefined});
+      expect(cancelled).toBe(1);expect(source.locked).toBe(false);
+      expect(added).toHaveBeenCalledTimes(1);expect(removed).toHaveBeenCalledTimes(1);
+      expect(removed.mock.calls[0]).toEqual(added.mock.calls[0].slice(0,2));
+      added.mockRestore();removed.mockRestore();
+    }
   });
   it('abort unblocks a pending read, surfaces AbortError and cancels once',async()=>{
     let cancelled=0;

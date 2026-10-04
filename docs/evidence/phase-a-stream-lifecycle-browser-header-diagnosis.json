@@ -1,0 +1,26 @@
+{
+  "scope": "Initial test-fixture browser failure diagnosis, NOT native stream resource failure or SDK signoff",
+  "status": "failed",
+  "sourceSha256": "03767deb3b1211e1cedf531ac49666ea73d78e5db60e4c2070aa6d7db1cf139f",
+  "evidence": "docs/evidence/phase-a-stream-lifecycle-initial-browser-node22.json",
+  "observed": {
+    "existingCasesPassed": 42,
+    "newCasesFailed": 3,
+    "engines": ["chromium", "firefox", "webkit"],
+    "stage": "First real POST before the stream loop",
+    "error": "Browser lifecycle real request failed",
+    "setup": "passed",
+    "cleanup": "passed"
+  },
+  "sourceDiagnosis": [
+    "The new browser helper passes account.client.headers() to raw Fetch; the installed client headers() contains only native auth headers.",
+    "The installed client's fetch() separately adds application/json, but this helper bypasses fetch().",
+    "Fetch of a string body without explicit content type supplies text/plain;charset=UTF-8; the pinned native RequestContentType extractor rejects unsupported content types.",
+    "The fix is to add application/json to the shared browser request helper, not weaken HTTP success, event correlation, reader cleanup or database postcondition assertions."
+  ],
+  "limitations": [
+    "Initial error omitted numeric HTTP status; no captured status/body is invented here.",
+    "Initial failing reports remain unchanged; correction and full revised controls have not yet run.",
+    "No source-hashed files changed during the active initial control batch."
+  ]
+}

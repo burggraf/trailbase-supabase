@@ -62,6 +62,57 @@ test('L1-27/G5/G7 browser proof: real UTF-8 SSE, abort and guarded late refresh 
   expect(result).toEqual({unicode:true,delete:true,abort:true,logoutRace:true,protectedDenied:true});
 });
 
+test('L1-27/G5/G6/S09 browser proof: 100 stream lifecycles release readers with exact live-control barriers',async({page})=>{
+  test.setTimeout(120000);
+  const env=await context(),account=await confirmedTrailUser(env,'b-stream-cycles');
+  await page.context().route('**/*',route=>env.origins.includes(new URL(route.request().url()).origin)?route.continue():route.abort());
+  await page.goto(env.trailUrl);
+  const result=await page.evaluate(async({base,headers,owner,id,title})=>{
+    const {nativeSseProof}:typeof import('../proofs/native-sse.js')=await import(`${base}/proofs/native-sse.js`);
+    const request=async(path:string,init?:RequestInit)=>{
+      const response=await fetch(`${base}${path}`,{...init,headers:{'content-type':'application/json',...headers},credentials:'omit',signal:init?.signal??AbortSignal.timeout(10000)});
+      if(!response.ok)throw new Error(`Browser lifecycle real request failed: ${init?.method??'GET'} HTTP ${response.status}`);return response;
+    };
+    const wait=async<T>(promise:Promise<T>):Promise<T>=>{
+      let timer:ReturnType<typeof setTimeout>;
+      try{return await Promise.race([promise,new Promise<never>((_,no)=>{timer=setTimeout(()=>no(new Error('Browser lifecycle deadline exceeded')),10000);})]);}
+      finally{clearTimeout(timer!);}
+    };
+    await (await request('/api/records/v1/todos',{method:'POST',body:JSON.stringify({id,user_id:owner,title})})).body?.cancel();
+    const controlAbort=new AbortController(),controlResponse=await request('/api/records/v1/todos/subscribe/*',{signal:controlAbort.signal});
+    if(!controlResponse.body)throw new Error('Browser lifecycle control body missing');
+    const control=nativeSseProof(controlResponse.body,{signal:controlAbort.signal});let closed=0;
+    try {
+      for(let cycle=0;cycle<100;cycle++){
+        const abort=new AbortController(),response=await request('/api/records/v1/todos/subscribe/*',{signal:abort.signal});
+        if(!response.body)throw new Error('Browser lifecycle body missing');
+        const parser=nativeSseProof(response.body,{signal:abort.signal});
+        try {
+          const pending=parser.next(),barrier=control.next(),note=`cycle-${cycle}`;
+          await (await request(`/api/records/v1/todos/${id}`,{method:'PATCH',body:JSON.stringify({note})})).body?.cancel();
+          for(const event of [(await wait(pending)).value,(await wait(barrier)).value]){
+            if(!event||!('Update' in event)||event.Update.id!==id||event.Update.user_id!==owner||event.Update.note!==note)throw new Error('Browser lifecycle live barrier mismatch');
+          }
+          if(cycle%2===0){
+            const pendingClose=parser.next();abort.abort();let aborted=false;
+            try{await wait(pendingClose);}catch(error){aborted=(error as Error).name==='AbortError';}
+            if(!aborted)throw new Error('Browser lifecycle pending abort not observable');
+          }else await wait(parser.return(undefined));
+          await parser.return(undefined);
+          if(!(await parser.next()).done||response.body.locked)throw new Error('Browser lifecycle reader/delivery retained');
+          closed++;
+        }finally{abort.abort();await parser.return(undefined).catch(()=>{});}
+      }
+      const pending=control.next();await (await request(`/api/records/v1/todos/${id}`,{method:'DELETE'})).body?.cancel();
+      const event=(await wait(pending)).value;
+      if(!event||!('Delete' in event)||event.Delete.id!==id)throw new Error('Browser lifecycle final barrier mismatch');
+      if((await (await request('/api/records/v1/todos')).json()).records.length!==0)throw new Error('Browser lifecycle rows retained');
+    }finally{controlAbort.abort();await wait(control.return(undefined));}
+    return {closed,controlUnlocked:!controlResponse.body.locked};
+  },{base:env.trailUrl,headers:account.client.headers(),owner:account.user.id,id:nativeUuid(randomUUID()),title:`b-cycles-${randomUUID()}`});
+  expect(result).toEqual({closed:100,controlUnlocked:true});
+});
+
 test('L1-27/G7/S04/S09 browser proof: local revocation and opaque global redirect remain observable',async({page})=>{
   const env=await context(),account=await confirmedTrailUser(env,'browser-scopes');
   await page.context().route('**/*',route=>env.origins.includes(new URL(route.request().url()).origin)?route.continue():route.abort());

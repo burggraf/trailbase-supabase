@@ -931,6 +931,7 @@
       "id": "G5",
       "title": "Installed SSE transport selection",
       "status": "in-progress",
+      "resourceCharacterization": { "scope": "100 native proof HTTP connect/update/consume/close cycles; independent control, task/reader/listener counters; 100 direct cycles per browser", "evidence": ["docs/evidence/phase-a-stream-lifecycle-revised-network-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-browser-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-unit-node22.json"], "limits": "No server-internal accounting, auth timer/storage/reference-channel/TLS/WAN/SDK signoff" },
       "approvedDirection": "Maintainer follow-up after interview 1a566198-4ddd-4fb3-a40c-1e28035d3fa7 approved minimal buffered authenticated Fetch/SSE: bounded framing, persistent sequence/loss state and cancellation. No protocol emulation, new dependency, durable replay or production implementation now. Direction only, not gate signoff.",
       "directionApprovalEvidence": "docs/evidence/phase-a-auth-stream-policy-directions.json",
       "evidence": [
@@ -972,6 +973,7 @@
       "id": "G6",
       "title": "Realtime payload and security limits",
       "status": "in-progress",
+      "resourceCharacterization": { "scope": "Repeated native proof abort/return reader cleanup with exact live-control writes/final DELETE; no late generator delivery; 100 direct cycles in every browser", "evidence": "docs/evidence/phase-a-stream-lifecycle-revised-browser-node22.json", "limits": "Proof only, not production channels, reference parity or server-internal resource accounting" },
       "approvedDirection": "Maintainer follow-up after interview 1a566198-4ddd-4fb3-a40c-1e28035d3fa7 approved common eventType/schema/table/new and DELETE-key-only old using declared mappings. No full previous UPDATE row, invented commit timestamp, full Supabase parity or durable replay. Approved connection-scoped auth/native owner-only versus reference foreign DELETE-key behavior remains unchanged. Direction only, not gate signoff.",
       "directionApprovalEvidence": "docs/evidence/phase-a-auth-stream-policy-directions.json",
       "evidence": [
@@ -1119,6 +1121,50 @@
     "missing": "Complete SDK lifecycle/resource layers; no gate signoff; this evidence predates the migration-source changes"
   },
   "lastSession": {
+    "date": "2026-10-04T00:52:26Z",
+    "node": "v22.23.2",
+    "sourceSha256": "8f00b6d63c248868fbfb0f8829c6d20dadf2e9528e3ed7cf962db46d5c402b3e",
+    "scope": "Revised bounded G5/G6 stream lifecycle proof and fixed-category setup diagnostics, unchanged image pins/assertions",
+    "unitNode22Cases": 46,
+    "unitNode24Cases": 46,
+    "browser": { "passed": 45, "failed": 0, "setup": "passed", "cleanup": "passed", "cyclesPerEngine": 100, "evidence": "docs/evidence/phase-a-stream-lifecycle-revised-browser-node22.json" },
+    "realScopes": "COMPLETE: revised browser 45/45; network 5/5; constraints 6/6; stock 91 passed/4 unchanged G1/G7 failures; proofs 34/34; expiry 2/2; candidate characterization 10/10; candidate SMTP 0/1 strict recovery failure; migration 1/1; fault cleanup 1/1. All ten hashes/counts/setup/cleanup/private-isolation verified, owned lock cleared; aggregate exit 1 preserves strict failures without hidden retries.",
+    "completedProcessId": "proc_677b",
+    "evidence": ["docs/evidence/phase-a-stream-lifecycle-revised-unit-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-unit-node24.json", "docs/evidence/phase-a-stream-lifecycle-revised-browser-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-network-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-constraints-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-all-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-proofs-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-expiry-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-candidate-characterization-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-candidate-smtp-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-migration-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-cleanup-node22.json"],
+    "checks": "Pinned Node 22/24 units 46/46; final TypeScript/docs/progress/traceability, all 305 evidence JSON parses/credential-pattern scan, source-hash/report-count/private-isolation/lock and git diff --check passed. Known prose Bearer matches separately classified; no credentials printed.",
+    "correction": "Browser shared request helper adds application/json (installed headers() does not). Non-stream requests get a bounded deadline and constant method/status error; lifecycle assertions unchanged. Setup image format categories expose no arbitrary reference and grant no alternate-image acceptance.",
+    "observations": "100 real Node HTTP proxy cycles cancelled exactly 100 upstream readers, drained owned tasks after every cycle and closed the listener; independent live control consumed every correlated update/final DELETE. Each browser completed 100 direct stream cycles, both abort/return paths, repeated close/no late generator delivery and released reader locks. Unit spies verified cancel-once/listener detachment. This is not native server-internal resource accounting, auth timer/listener parity, reference channel proof or SDK signoff.",
+    "missing": "Current-source Linux diagnostic CI/checkpoint pending. Keep exact image pins strict; earlier CI DB image outside safe inventory is not diagnosed yet. Reference-channel/native-server/auth timer/storage/TLS/WAN/package resource matrices, G1/G7 backend prerequisites and full SDK/signoff remain incomplete. No server patch/repin/deployment/submission/identity repair/SDK/Phase B authorized; coherent commit/push checkpoints are permitted."
+  },
+  "previousInitialStreamLifecycleSession": {
+    "date": "2026-10-04T00:30:36Z",
+    "sourceSha256": "03767deb3b1211e1cedf531ac49666ea73d78e5db60e4c2070aa6d7db1cf139f",
+    "scope": "Approved bounded G5/G6 native proof resource characterization: 100 genuine connect/update/consume/close cycles with independent live control; no SDK or server changes",
+    "unitNode22Cases": 46,
+    "unitNode24Cases": 46,
+    "checks": "Both pinned unit runtimes, TypeScript/docs/traceability/secret checks and git diff --check passed before focused launch",
+    "focusedNetwork": { "passed": 5, "failed": 0, "setup": "passed", "cleanup": "passed", "evidence": "docs/evidence/phase-a-stream-lifecycle-network-node22.json" },
+    "initialBrowser": { "passed": 42, "failed": 3, "setup": "passed", "cleanup": "passed", "evidence": "docs/evidence/phase-a-stream-lifecycle-initial-browser-node22.json", "diagnosis": "Each new case failed before the stream loop on a real HTTP request. Suspected missing application/json in test request helper; do not change inputs until batch completes, and preserve failures." },
+    "completedProcessId": "proc_2133",
+    "realScopes": "COMPLETE: network 5/5, constraints 6/6, stock 91 passed/4 strict failures, browser 42 passed/3 new fixture failures, proofs 34/34, expiry 2/2, candidate characterization 10/10, candidate SMTP 0/1, migration 1/1, fault cleanup 1/1. All ten hashes/setup/cleanup passed; owned lock cleared. Aggregate exit 1 preserves every failure, not a hidden retry.",
+    "missing": "Browser JSON-header fixture failures diagnosed/preserved; revised source runs separately. Server-internal resource counters, reference channel/auth timer parity, TLS/WAN/package/full SDK/CI/signoff remain unverified."
+  },
+  "gitCheckpoint": {
+    "commit": "31000b2",
+    "scope": "Phase A characterization checkpoint, not gate signoff",
+    "push": "Initially deferred by agent; remote-tracking reflog subsequently records update by push and origin/main at 31000b2. No duplicate push performed in this follow-up. User permits coherent commit/push checkpoints.",
+    "ci": {
+      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37164772592",
+      "sourceSha256": "c55d6fe0b44c4c6342257e33bf89e3071fb8ad70d59d95c0bfc622903e55b695",
+      "unitNode22Cases": 45,
+      "unitNode24Cases": 45,
+      "realScopes": "All six emitted real reports failed before assertions at verify-image-digests/image-service-and-tag. Cleanup passed throughout. Candidate SMTP step was not reached after characterization setup failed; no SMTP assertion reproduction claimed.",
+      "inventory": "Six loopback-only services; five pinned image/tag/digests recognized. supabase_db reported unrecognized-image-reference/no repoDigests. This is a strict setup blocker, not passing backend tests or an approved repin.",
+      "evidence": ["docs/evidence/phase-a-ci-linux-checkpoint-unit-node22.json", "docs/evidence/phase-a-ci-linux-checkpoint-unit-node24.json", "docs/evidence/phase-a-ci-linux-checkpoint-all.json", "docs/evidence/phase-a-ci-linux-checkpoint-expiry.json", "docs/evidence/phase-a-ci-linux-checkpoint-characterization.json", "docs/evidence/phase-a-ci-linux-checkpoint-auth-migration.json", "docs/evidence/phase-a-ci-linux-checkpoint-browser.json", "docs/evidence/phase-a-ci-linux-checkpoint-lifecycle.json"],
+      "missing": "Determine actual unknown DB image reference privately; keep strict tag/digest verification. These CI artifacts predate stream lifecycle changes. No root-cause repair inferred."
+    }
+  },
+  "previousG3LostReplySession": {
     "date": "2026-10-04T00:06:00.000Z",
     "sourceSha256": "c55d6fe0b44c4c6342257e33bf89e3071fb8ad70d59d95c0bfc622903e55b695",
     "node": "v22.23.2",
@@ -1140,8 +1186,8 @@
     "requiredScopeSetupCleanup": "passed for all ten; no private G1 tests entered stock; owned lock cleared",
     "realScopes": "COMPLETE: network 4/4; constraints 6/6; stock 90 passed/4 strict failures; browser 42/42; proofs 34/34; expiry 2/2; candidate characterization 10/10; candidate SMTP 0/1; migration 1/1; fault cleanup 1/1. Aggregate exit 1 preserves four stock G1/G7 and candidate SMTP failures; no hidden retries.",
     "checks": "Pinned Node 22/24 units 45/45; TypeScript/docs/traceability/secret checks and git diff --check passed before real launch",
-    "evidence": ["docs/evidence/phase-a-unit-node22.json", "docs/evidence/phase-a-unit-node24.json", "docs/evidence/phase-a-g3-lost-reply-network-node22.json", "docs/evidence/phase-a-g3-configured-side-effects-direction.json", "docs/evidence/phase-a-g3-lost-reply-constraints-node22.json", "docs/evidence/phase-a-g3-lost-reply-all-node22.json", "docs/evidence/phase-a-g3-lost-reply-browser-node22.json", "docs/evidence/phase-a-g3-lost-reply-proofs-node22.json", "docs/evidence/phase-a-g3-lost-reply-expiry-node22.json", "docs/evidence/phase-a-g3-lost-reply-candidate-characterization-node22.json", "docs/evidence/phase-a-g3-lost-reply-candidate-smtp-node22.json", "docs/evidence/phase-a-g3-lost-reply-migration-node22.json", "docs/evidence/phase-a-g3-lost-reply-cleanup-node22.json"],
-    "missing": "All ten real-scope hashes/counts/setup/cleanup/private-isolation/lock verified. Continue approved bounded Phase A characterization only. Browser/packaged/WAN lost-reply proof, full adapter guards/matrix, current-source Linux CI, storage/timer/TLS/resources and signoff remain incomplete. Native global authenticated-ack prerequisite remains approved; no server patch/repin/deployment/submission/identity repair/SDK/Phase B/commit/push authorized."
+    "evidence": ["docs/evidence/phase-a-g3-lost-reply-unit-node22.json", "docs/evidence/phase-a-g3-lost-reply-unit-node24.json", "docs/evidence/phase-a-g3-lost-reply-network-node22.json", "docs/evidence/phase-a-g3-configured-side-effects-direction.json", "docs/evidence/phase-a-g3-lost-reply-constraints-node22.json", "docs/evidence/phase-a-g3-lost-reply-all-node22.json", "docs/evidence/phase-a-g3-lost-reply-browser-node22.json", "docs/evidence/phase-a-g3-lost-reply-proofs-node22.json", "docs/evidence/phase-a-g3-lost-reply-expiry-node22.json", "docs/evidence/phase-a-g3-lost-reply-candidate-characterization-node22.json", "docs/evidence/phase-a-g3-lost-reply-candidate-smtp-node22.json", "docs/evidence/phase-a-g3-lost-reply-migration-node22.json", "docs/evidence/phase-a-g3-lost-reply-cleanup-node22.json"],
+    "missing": "All ten real-scope hashes/counts/setup/cleanup/private-isolation/lock verified. Continue approved bounded Phase A characterization only. Browser/packaged/WAN lost-reply proof, full adapter guards/matrix, current-source Linux CI, storage/timer/TLS/resources and signoff remain incomplete. Native global authenticated-ack prerequisite remains approved; no server patch/repin/deployment/submission/identity repair/SDK/Phase B authorized. User permits coherent commit/push checkpoints; local commit 31000b2 recorded separately."
   },
   "previousG3ConstraintSession": {
     "date": "2026-10-03T23:38:15.158Z",

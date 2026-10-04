@@ -30,6 +30,13 @@ export function setupImageInventory(containers, expected) {
   return {containerCount:containers.length,services:containers.map(item=>({
     service:Object.hasOwn(expected,item.service)?item.service:'unknown-service',
     image:/^public\.ecr\.aws\/supabase\/[a-z0-9-]+:[a-zA-Z0-9_.-]+$/.test(item.image)?item.image:'unrecognized-image-reference',
+    // Fixed categories diagnose CLI registry fallback without publishing arbitrary references
+    // or accepting a different image. verifyImages still requires the original exact pins.
+    imageReferenceKind:/^public\.ecr\.aws\/supabase\/[a-z0-9-]+:[a-zA-Z0-9_.-]+$/.test(item.image)?'ecr-tag':
+      /^ghcr\.io\/supabase\/[a-z0-9-]+:[a-zA-Z0-9_.-]+$/.test(item.image)?'ghcr-tag':
+      /^(docker\.io\/)?supabase\/[a-z0-9-]+:[a-zA-Z0-9_.-]+$/.test(item.image)?'docker-hub-tag':
+      /^sha256:[a-f0-9]{64}$/.test(item.image)?'image-id':
+      /^(public\.ecr\.aws|ghcr\.io|docker\.io)\/supabase\/[a-z0-9-]+@sha256:[a-f0-9]{64}$/.test(item.image)?'public-digest-reference':'unrecognized',
     repoDigests:(item.repoDigests??[]).filter(value=>/^public\.ecr\.aws\/supabase\/[a-z0-9-]+@sha256:[a-f0-9]{64}$/.test(value)),
     loopbackOnly:Object.values(item.publishedPorts??{}).flatMap(value=>value??[]).every(binding=>['127.0.0.1','::1'].includes(binding.HostIp))
   }))};

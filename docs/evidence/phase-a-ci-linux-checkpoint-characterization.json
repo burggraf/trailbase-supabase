@@ -1,0 +1,111 @@
+{
+  "scope": "Phase A upstream/infrastructure harness, NOT SDK verification",
+  "authVariant": "candidate-email-reservation",
+  "suite": "characterization",
+  "nativeAuthProfile": "default",
+  "status": "failed",
+  "startedAt": "2026-10-04T00:25:59.506Z",
+  "baseline": {
+    "trailbase": {
+      "version": "0.34.3",
+      "commit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+      "assets": {
+        "darwin-arm64": {
+          "name": "trailbase_v0.34.3_aarch64_apple_darwin.zip",
+          "sha256": "211132ece889b373317ce7339c13992bd2ccfe02298458a9e6104a7b8454fe43"
+        },
+        "darwin-x64": {
+          "name": "trailbase_v0.34.3_x86_64_apple_darwin.zip",
+          "sha256": "c4e66e48165f3dcd1c9292b26f46203a8a2123652e05926f6c1a79b4fdd7fc4f"
+        },
+        "linux-arm64": {
+          "name": "trailbase_v0.34.3_aarch64_linux.zip",
+          "sha256": "88156ee1008e6fdd4d71784014fc970e0abdddd88ea952eddf04f25aa32fe99a"
+        },
+        "linux-x64": {
+          "name": "trailbase_v0.34.3_x86_64_linux.zip",
+          "sha256": "aa5a08fa50c06c026b652afa265cf392438675a2bb26ec174096c941fdb67b97"
+        }
+      }
+    },
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "nodeMajors": [
+      22,
+      24
+    ],
+    "nodeVersions": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "playwright": "1.63.0",
+    "commonRowCap": 1000,
+    "startupTimeoutMs": 300000
+  },
+  "node": "v22.23.2",
+  "platform": "linux-x64",
+  "tests": [],
+  "cleanup": "passed",
+  "sourceSha256": "c55d6fe0b44c4c6342257e33bf89e3071fb8ad70d59d95c0bfc622903e55b695",
+  "baseCommit": "31000b20d87dedea7f517b7102e16023137dbf98",
+  "ci": {
+    "commit": "31000b20d87dedea7f517b7102e16023137dbf98",
+    "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37164772592"
+  },
+  "runId": "1791073559526-cb3986fe1916",
+  "setupStage": "verify-image-digests",
+  "setupCheck": "image-service-and-tag",
+  "setupImageInventory": {
+    "containerCount": 6,
+    "services": [
+      {
+        "service": "supabase_rest",
+        "image": "public.ecr.aws/supabase/postgrest:v16.4",
+        "repoDigests": [
+          "public.ecr.aws/supabase/postgrest@sha256:d155c6718ed9a9f990d159a2ab7c0a3f16944dbb6d0a0344557421042acfe0df"
+        ],
+        "loopbackOnly": true
+      },
+      {
+        "service": "supabase_realtime",
+        "image": "public.ecr.aws/supabase/realtime:v2.140.3",
+        "repoDigests": [
+          "public.ecr.aws/supabase/realtime@sha256:f66c721c71b576f5854c78f86df0c78a98368d900dcf62e4ddd96c6913139999"
+        ],
+        "loopbackOnly": true
+      },
+      {
+        "service": "supabase_inbucket",
+        "image": "public.ecr.aws/supabase/mailpit:v1.31.3",
+        "repoDigests": [
+          "public.ecr.aws/supabase/mailpit@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d"
+        ],
+        "loopbackOnly": true
+      },
+      {
+        "service": "supabase_auth",
+        "image": "public.ecr.aws/supabase/gotrue:v2.197.0",
+        "repoDigests": [
+          "public.ecr.aws/supabase/gotrue@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+        ],
+        "loopbackOnly": true
+      },
+      {
+        "service": "supabase_kong",
+        "image": "public.ecr.aws/supabase/kong:2.8.1",
+        "repoDigests": [
+          "public.ecr.aws/supabase/kong@sha256:1b53405d8680a09d6f44494b7990bf7da2ea43f84a258c59717d4539abf09f6d"
+        ],
+        "loopbackOnly": true
+      },
+      {
+        "service": "supabase_db",
+        "image": "unrecognized-image-reference",
+        "repoDigests": [],
+        "loopbackOnly": true
+      }
+    ]
+  },
+  "finishedAt": "2026-10-04T00:26:34.675Z"
+}
