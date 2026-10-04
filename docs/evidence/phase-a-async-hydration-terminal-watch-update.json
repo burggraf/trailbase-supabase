@@ -1,0 +1,6 @@
+{
+  "scope": "Management-only watch adjustment after completion, not a test failure",
+  "processId": "proc_2f7b",
+  "error": "process update requires a running process; proc_2f7b has status exited",
+  "action": "No process restarted or result discarded. Verified all twelve completed source-matching real reports and owned cleanup/lock state."
+}

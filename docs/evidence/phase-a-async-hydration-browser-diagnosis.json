@@ -1,0 +1,11 @@
+{
+  "sourceSha256": "1d2bf19b61e88ab92c6c9935d632fd609e2616d31ca1524aaff5064d92a8ef04",
+  "scope": "G7/S08 installed reference UMD in Chromium/Firefox/WebKit; genuine mail-confirmed owners, held genuine async storage snapshot, no SDK repair",
+  "report": "docs/evidence/phase-a-async-hydration-browser-node22.json",
+  "counts": { "passed": 51, "failed": 3, "setup": "passed", "cleanup": "passed" },
+  "engines": ["chromium", "firefox", "webkit"],
+  "unawaitedEachEngine": { "events": ["SIGNED_IN:B", "SIGNED_IN:A", "INITIAL_SESSION:B"], "passwordRequests": 1, "passwordRequestsBeforeRelease": 1, "cachedB": true, "validatedB": true, "storedB": true, "onlyBRow": true, "controlsUnchanged": true, "noStaleA": false, "listenerSilentAfterCleanup": true, "ownedStorageCleared": true, "unrelatedStoragePreserved": true, "anonymousDenied": true },
+  "awaitedEachEngine": { "events": ["SIGNED_IN:A", "INITIAL_SESSION:A", "SIGNED_IN:B"], "passwordRequests": 1, "passwordRequestsBeforeRelease": 0, "cachedB": true, "validatedB": true, "storedB": true, "onlyBRow": true, "controlsUnchanged": true, "noStaleA": true, "listenerSilentAfterCleanup": true, "ownedStorageCleared": true, "unrelatedStoragePreserved": true, "anonymousDenied": true },
+  "finding": "Unawaited initialization can queue recovered-owner A SIGNED_IN after newer B login; final INITIAL_SESSION, storage, live validated identity and protected reads remain B. This is a notification ordering failure, not demonstrated session resurrection or protected-data leakage. Explicit initialization prevents it in the measured case.",
+  "limits": "All three failures remain strict. Older 48 browser cases passed, including native/reference resource cycles. No production initialization gate, general timer/storage concurrency guarantee, upstream submission, patch/repin or SDK/gate signoff; current-source Node/full controls/CI pending."
+}

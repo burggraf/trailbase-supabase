@@ -1,0 +1,11 @@
+{
+  "sourceSha256": "3868cf593f953077b6a7ddf4922e99cbad2b67fc7f7f382e7c19dfa5e88db8f6",
+  "scope": "G7/S08 installed reference SDK, two genuinely confirmed owners, one held genuine async storage snapshot; no production SDK",
+  "report": "docs/evidence/phase-a-async-hydration-focused-node22.json",
+  "counts": { "passed": 9, "failed": 3, "setup": "passed", "cleanup": "passed" },
+  "unawaited": { "events": ["SIGNED_IN:B", "SIGNED_IN:A", "INITIAL_SESSION:B"], "passwordRequests": 1, "cachedB": true, "validatedB": true, "onlyBRow": true, "controlsUnchanged": true, "strictNoStaleNotification": "failed-preserved" },
+  "awaited": { "events": ["SIGNED_IN:A", "INITIAL_SESSION:A", "SIGNED_IN:B"], "passwordRequests": 1, "cachedB": true, "validatedB": true, "onlyBRow": true, "controlsUnchanged": true, "strictNoStaleNotification": "passed", "passwordRequestsBeforeRelease": 0, "listenerAndStorageCleanup": "passed" },
+  "finding": "A queued recovered-owner SIGNED_IN follows a newer genuine B login when initialization is not awaited. Cached storage, live identity and protected reads stayed B, controls stayed unchanged; no session resurrection or protected-data leak is demonstrated. Explicit initialization orders recovery before B login in the measured case.",
+  "preserved": "Both native late refresh/status strict failures also remain; no source patch, assertion relaxation, response/session fabrication or SDK/gate signoff",
+  "missing": "All-browser equivalent and immutable-source full control refresh/CI; general timer/storage/callback/concurrency semantics remain incomplete"
+}

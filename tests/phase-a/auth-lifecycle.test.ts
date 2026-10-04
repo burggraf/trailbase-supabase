@@ -1,5 +1,7 @@
 /// <reference lib="es2024.promise" />
 import { beforeAll, describe, expect, it } from 'vitest';
+import { randomUUID } from 'node:crypto';
+import { writeFile } from 'node:fs/promises';
 import { initClient } from 'trailbase';
 import { createClient } from '@supabase/supabase-js';
 import { context, confirmedTrailUser, confirmedSupabaseUser, deadline, type Context } from './helpers.js';
@@ -29,6 +31,64 @@ describe('L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff'
     expect(values.size).toBe(0);
     const read=await second.from('todos').select('*');expect(read.error).not.toBeNull();expect(read.data).toBeNull();
   });
+  for(const ordering of ['unawaited','awaited'] as const) {
+    it(`reference ${ordering} async hydration must not notify recovered A after genuine newer B login`,async()=>{
+      const a=await confirmedSupabaseUser(env,'hydrate-a'),b=await confirmedSupabaseUser(env,'hydrate-b');
+      const aid=randomUUID(),bid=randomUUID(),key=`fixture-${env.id}-hydrate-${ordering}`;
+      for(const [account,id] of [[a,aid],[b,bid]] as const)expect((await account.client.from('todos').insert({id,user_id:account.user.id,title:`hydrate-${id}`,note:'unchanged'})).error).toBeNull();
+      const beforeA=await a.client.from('todos').select('*').eq('id',aid).single(),beforeB=await b.client.from('todos').select('*').eq('id',bid).single();
+      expect(beforeA.error).toBeNull();expect(beforeB.error).toBeNull();
+      const seed=await a.client.auth.getSession();expect(seed.error).toBeNull();expect(seed.data.session?.user.id===a.user.id).toBe(true);
+      const values=new Map([[key,JSON.stringify(seed.data.session)],['owned-unrelated','keep']]);
+      const ready=Promise.withResolvers<void>(),release=Promise.withResolvers<void>(),initial=Promise.withResolvers<void>();
+      let held=false,passwordRequests=0;
+      const client=createClient(env.supabaseUrl,env.anonKey,{
+        auth:{persistSession:true,autoRefreshToken:false,detectSessionInUrl:false,storageKey:key,storage:{
+          getItem:async(name:string)=>{const snapshot=values.get(name)??null;if(name===key&&!held){held=true;ready.resolve();await release.promise;}return snapshot;},
+          setItem:(name:string,value:string)=>{values.set(name,value);},removeItem:(name:string)=>{values.delete(name);}
+        }},
+        global:{fetch:(input,init)=>{
+          const url=new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url);
+          if(url.pathname==='/auth/v1/token'&&url.searchParams.get('grant_type')==='password')passwordRequests++;
+          return fetch(input,init);
+        }}
+      });
+      const events:{event:string;owner:'A'|'B'|'none'|'other'}[]=[];
+      const subscription=client.auth.onAuthStateChange((event,session)=>{
+        events.push({event,owner:!session?'none':session.user.id===a.user.id?'A':session.user.id===b.user.id?'B':'other'});
+        if(event==='INITIAL_SESSION')initial.resolve();
+      }).data.subscription;
+      let pending:ReturnType<typeof client.auth.signInWithPassword>|undefined;
+      try {
+        await deadline(ready.promise);
+        pending=(async()=>{if(ordering==='awaited')await client.auth.initialize();return client.auth.signInWithPassword({email:b.email,password:b.password});})();
+        if(ordering==='awaited'){
+          await new Promise<void>(yes=>setImmediate(yes)); // Drain ready tasks, not a timing sleep.
+          expect(passwordRequests).toBe(0);release.resolve();
+        }
+        const login=await deadline(pending);expect(login.error).toBeNull();expect(login.data.user?.id===b.user.id).toBe(true);
+        release.resolve();expect((await deadline(client.auth.initialize())).error).toBeNull();await deadline(initial.promise);
+        const cached=await client.auth.getSession(),validated=await client.auth.getUser(),rows=await client.from('todos').select('*');
+        const unchangedA=await a.client.from('todos').select('*').eq('id',aid).single(),unchangedB=await b.client.from('todos').select('*').eq('id',bid).single();
+        expect(cached.error).toBeNull();expect(validated.error).toBeNull();expect(rows.error).toBeNull();
+        expect(cached.data.session?.user.id===b.user.id).toBe(true);expect(validated.data.user?.id===b.user.id).toBe(true);
+        expect(rows.data).toEqual([beforeB.data]);expect(unchangedA).toEqual(beforeA);expect(unchangedB).toEqual(beforeB);
+        expect(JSON.parse(values.get(key)??'null')?.user?.id===b.user.id).toBe(true);expect(passwordRequests).toBe(1);
+        // Fixed labels/booleans only; never serialize the genuine session/rows/IDs.
+        await writeFile(`${env.directory}/reference-hydration-${ordering}.json`,JSON.stringify({ordering,events,passwordRequests,cachedB:true,validatedB:true,onlyBRow:true,controlsUnchanged:true}),{mode:0o600});
+        const signedIn=events.filter(event=>event.event==='SIGNED_IN').map(event=>event.owner),newer=signedIn.indexOf('B');
+        expect(newer).toBeGreaterThanOrEqual(0);expect(signedIn.slice(newer+1)).not.toContain('A');
+        subscription.unsubscribe();subscription.unsubscribe();const count=events.length;
+        expect((await client.auth.signOut({scope:'local'})).error).toBeNull();expect(events.length).toBe(count);
+        expect((await client.auth.getSession()).data.session).toBeNull();expect(values.get('owned-unrelated')).toBe('keep');expect(values.has(key)).toBe(false);
+        const denied=await client.from('todos').select('*');expect(denied.error).not.toBeNull();expect(denied.data).toBeNull();
+      } finally {
+        release.resolve();await Promise.allSettled(pending?[pending]:[]);subscription.unsubscribe();
+        expect((await deadline(client.auth.signOut({scope:'local'}))).error).toBeNull();
+        for(const [account,id] of [[a,aid],[b,bid]] as const){expect((await account.client.from('todos').delete().eq('id',id)).error).toBeNull();expect((await account.client.auth.signOut({scope:'local'})).error).toBeNull();}
+      }
+    });
+  }
   it('reference storage write failure is observable, installs no local session and recovers with real login',async()=>{
     const account=await confirmedSupabaseUser(env,'storage-fault');
     const values=new Map<string,string>();let fail=true;

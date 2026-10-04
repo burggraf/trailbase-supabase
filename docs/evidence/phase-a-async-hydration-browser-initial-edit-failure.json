@@ -1,0 +1,6 @@
+{
+  "scope": "Test-only browser hydration edit; no execution failure or relaxation",
+  "error": "Found 2 occurrences of the text in tests/phase-a-browser/auth-storage.spec.ts. The text must be unique. Please provide more context to make it unique.",
+  "correction": "Used separate unique rows/denied contexts; Promise.resolve adapts SDK thenables using the standard library. No assertion removed or weakened.",
+  "initialDiffCheck": { "exit": 2, "error": "tests/phase-a-browser/auth-storage.spec.ts:141: new blank line at EOF.", "precedingChecks": "Both pinned units 48/48 and TypeScript/docs passed; copied pre-whitespace unit reports separately", "correction": "Removed only the extra EOF blank line; recheck source/hash/units before real launch" }
+}
