@@ -1,0 +1,9 @@
+{
+  "sourceSha256": "0bb9fe27831ecc87688d4f9edb4afb8340f4e60c5f5b5146ca3ef50a5399fcfa",
+  "platform": "Pinned Node 22.23.2, macOS arm64, genuine stock native HTTP and owned loopback second origin",
+  "counts": { "passed": 6, "failed": 1, "setup": "passed", "cleanup": "passed", "unitsNode22": 49, "unitsNode24": 49 },
+  "follow": { "readableForeign": true, "authReceipt": false, "senderCsrfNonempty": true, "requests": 1, "getRequests": 1, "authorization": false, "refresh": true, "csrf": true, "cookie": false, "bodyBytes": 0 },
+  "error": { "observableTypeError": true, "authReceipt": false, "requests": 0, "getRequests": 0, "authorization": false, "refresh": false, "csrf": false, "cookie": false, "bodyBytes": 0 },
+  "postconditions": "Both modes genuinely revoked caller and same-user sibling refresh sessions, preserved other owner's live refresh session and complete A/B rows, then closed owned receiver, deleted owned rows and performed exact local session cleanup. A row read uses documented still-valid native bearer JWT, not a claim of refresh/session survival.",
+  "limits": "Raw Fetch explicitly configured to follow with the native header set transfers custom refresh/CSRF headers despite credentials:omit; Authorization was stripped. Strict no-credential assertion retained. The affected refresh tokens were already revoked by genuine native global logout before the foreign hop; no live-session compromise, public installed logout-method exploit, severity/CVE, TLS/WAN/custom-fetch/SDK signoff or client-only global acknowledgement solution is claimed. No credential values retained/published; browser equivalents pending. Approved guarded HTTP direction and authenticated native global acknowledgement backend prerequisite unchanged."
+}

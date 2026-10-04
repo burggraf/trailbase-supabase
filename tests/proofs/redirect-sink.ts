@@ -3,7 +3,8 @@ import { randomUUID } from 'node:crypto';
 
 // Owned second-origin transport sink, NOT an auth server/acknowledgement.
 // Retain only counts/credential-presence booleans, never header/body values.
-export async function redirectSink() {
+export async function redirectSink(allowPreflight=false) {
+  if(typeof allowPreflight!=='boolean')throw new TypeError('Invalid owned redirect sink preflight mode');
   const route=`/${randomUUID()}`;
   const seen={requests:0,getRequests:0,authorization:false,refresh:false,csrf:false,cookie:false,bodyBytes:0};
   const server=createServer((request,response)=>{
@@ -14,6 +15,10 @@ export async function redirectSink() {
     seen.csrf ||= request.headers['csrf-token']!==undefined;
     seen.cookie ||= request.headers.cookie!==undefined;
     request.on('data',bytes=>{seen.bodyBytes+=bytes.length;});
+    if(request.method==='OPTIONS'&&allowPreflight){
+      response.writeHead(204,{'access-control-allow-origin':'*','access-control-allow-methods':'GET,OPTIONS','access-control-allow-headers':'authorization,content-type,refresh-token,csrf-token'});
+      response.end();return;
+    }
     if(request.method!=='GET'){response.writeHead(404);response.end();return;}
     seen.getRequests++;
     response.writeHead(200,{'access-control-allow-origin':'*','content-type':'text/plain'});

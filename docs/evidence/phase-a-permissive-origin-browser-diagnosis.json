@@ -1,0 +1,126 @@
+{
+  "sourceSha256": "a33e05f9f42252dd9eea350960612c882f4831a4bb35ad3fe60b76799664bd01",
+  "counts": {
+    "passed": 54,
+    "failed": 6,
+    "setup": "passed",
+    "cleanup": "passed"
+  },
+  "observations": {
+    "permissive-redirect-error-chromium": {
+      "readableForeign": false,
+      "blocked": true,
+      "authReceipt": false,
+      "revokedBoth": true,
+      "otherSessionAlive": true,
+      "controlsUnchanged": true,
+      "senderCsrfNonempty": true,
+      "receiver": {
+        "requests": 0,
+        "getRequests": 0,
+        "authorization": false,
+        "refresh": false,
+        "csrf": false,
+        "cookie": false,
+        "bodyBytes": 0,
+        "listening": true
+      }
+    },
+    "permissive-redirect-error-webkit": {
+      "readableForeign": false,
+      "blocked": true,
+      "authReceipt": false,
+      "revokedBoth": true,
+      "otherSessionAlive": true,
+      "controlsUnchanged": true,
+      "senderCsrfNonempty": true,
+      "receiver": {
+        "requests": 0,
+        "getRequests": 0,
+        "authorization": false,
+        "refresh": false,
+        "csrf": false,
+        "cookie": false,
+        "bodyBytes": 0,
+        "listening": true
+      }
+    },
+    "permissive-redirect-follow-webkit": {
+      "readableForeign": true,
+      "blocked": false,
+      "authReceipt": false,
+      "revokedBoth": true,
+      "otherSessionAlive": true,
+      "controlsUnchanged": true,
+      "senderCsrfNonempty": true,
+      "receiver": {
+        "requests": 2,
+        "getRequests": 1,
+        "authorization": false,
+        "refresh": true,
+        "csrf": true,
+        "cookie": false,
+        "bodyBytes": 0,
+        "listening": true
+      }
+    },
+    "permissive-redirect-follow-firefox": {
+      "readableForeign": true,
+      "blocked": false,
+      "authReceipt": false,
+      "revokedBoth": true,
+      "otherSessionAlive": true,
+      "controlsUnchanged": true,
+      "senderCsrfNonempty": true,
+      "receiver": {
+        "requests": 2,
+        "getRequests": 1,
+        "authorization": false,
+        "refresh": true,
+        "csrf": true,
+        "cookie": false,
+        "bodyBytes": 0,
+        "listening": true
+      }
+    },
+    "permissive-redirect-follow-chromium": {
+      "readableForeign": true,
+      "blocked": false,
+      "authReceipt": false,
+      "revokedBoth": true,
+      "otherSessionAlive": true,
+      "controlsUnchanged": true,
+      "senderCsrfNonempty": true,
+      "receiver": {
+        "requests": 1,
+        "getRequests": 1,
+        "authorization": false,
+        "refresh": true,
+        "csrf": true,
+        "cookie": false,
+        "bodyBytes": 0,
+        "listening": true
+      }
+    },
+    "permissive-redirect-error-firefox": {
+      "readableForeign": false,
+      "blocked": true,
+      "authReceipt": false,
+      "revokedBoth": true,
+      "otherSessionAlive": true,
+      "controlsUnchanged": true,
+      "senderCsrfNonempty": true,
+      "receiver": {
+        "requests": 0,
+        "getRequests": 0,
+        "authorization": false,
+        "refresh": false,
+        "csrf": false,
+        "cookie": false,
+        "bodyBytes": 0,
+        "listening": true
+      }
+    }
+  },
+  "limits": "Three raw-follow secret-header assertions and three historical unawaited hydration notification assertions remain strict failures. All three redirect:error guards, awaited hydration controls and older resource cases passed. Authorization was stripped but genuine custom refresh/CSRF headers were forwarded; affected refresh credentials already revoked, no live-session compromise or public native logout-method exploit/severity claim. Owned receiver listener/rows/exact local sessions cleaned in finally. Receiver listening:true snapshots are before asserted listener shutdown. No raw credential values published, no SDK/backend patch, fallback, repin, timer/TLS/WAN/custom-fetch/SDK signoff or altered authenticated-global-ack prerequisite."
+}

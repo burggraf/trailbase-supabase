@@ -1,0 +1,7 @@
+{
+  "stage": "Excluded-from-source-hash progress bookkeeping during frozen browser batch",
+  "file": "docs/PROGRESS.md",
+  "error": "Could not find the exact text in docs/PROGRESS.md. The old text must match exactly including all whitespace and newlines.",
+  "requestedHeading": "## Current state",
+  "correction": "Read actual headings, then insert the new bounded S01/S07 section at the unique existing stream-lifecycle heading. No test/source input edited, no assertion relaxed or run restarted."
+}

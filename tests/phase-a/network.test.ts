@@ -1,10 +1,12 @@
 import { beforeAll,describe,it,expect } from 'vitest';
 import { randomUUID } from 'node:crypto';
+import { writeFile } from 'node:fs/promises';
 import { initClient } from 'trailbase';
 import { createClient } from '@supabase/supabase-js';
 import { context,confirmedTrailUser,confirmedSupabaseUser,nativeUuid,deadline,type Context } from './helpers.js';
 import { nativeSseProof } from '../proofs/native-sse.js';
 import { httpStreamFixture } from '../proofs/http-stream-fixture.js';
+import { redirectSink } from '../proofs/redirect-sink.js';
 
 let env:Context;
 beforeAll(async()=>{env=await context();});
@@ -101,6 +103,41 @@ describe('L1-27 G5/S07 owned real HTTP fault fixture, NOT arbitrary TCP/browser/
     } finally {
       await parser?.return(undefined).catch(()=>{});await deadline(fixture.close());
       expect(fixture.stats()).toMatchObject({active:0,listening:false});
+    }
+  });
+});
+
+describe('L1-27/S01/S07 native header set at permissive foreign origin, NOT a logout acknowledgement strategy',()=>{
+  for(const mode of ['follow','error'] as const)it(`raw Fetch redirect ${mode} must not export native credentials to permissive receiver`,async()=>{
+    const a=await confirmedTrailUser(env,'redirect-a'),b=await confirmedTrailUser(env,'redirect-b'),sibling=initClient(env.trailUrl);
+    await sibling.login(a.email,a.password);
+    const aid=nativeUuid(randomUUID()),bid=nativeUuid(randomUUID());
+    await a.client.records('todos').create({id:aid,user_id:a.user.id,title:`redirect-${randomUUID()}`,note:'unchanged'});
+    await b.client.records('todos').create({id:bid,user_id:b.user.id,title:`redirect-${randomUUID()}`,note:'unchanged'});
+    const beforeA=await a.client.records('todos').read(aid),beforeB=await b.client.records('todos').read(bid);
+    const one=a.client.tokens()!,two=sibling.tokens()!,other=b.client.tokens()!,sink=await redirectSink(true);
+    const refresh=async(token:string)=>{const response=await fetch(`${env.trailUrl}/api/auth/v1/refresh`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({refresh_token:token}),signal:AbortSignal.timeout(10000)});const status=response.status;await response.body?.cancel();return status;};
+    try{
+      const headers={'content-type':'application/json',...a.client.headers()},actual=new Headers(headers);
+      expect(Boolean(actual.get('authorization'))&&Boolean(actual.get('refresh-token'))).toBe(true);
+      const target=new URL(sink.url),relative=`//${target.host}${target.pathname}`;
+      let readableForeign=false,blocked=false;
+      try{
+        const response=await fetch(`${env.trailUrl}/api/auth/v1/logout?redirect_uri=${encodeURIComponent(relative)}`,{method:'GET',headers,credentials:'omit',redirect:mode,signal:AbortSignal.timeout(10000)});
+        readableForeign=response.status===200&&response.redirected&&response.url===sink.url;await response.body?.cancel();
+      }catch(cause){if(mode!=='error')throw cause;blocked=cause instanceof TypeError;}
+      expect(readableForeign).toBe(mode==='follow');expect(blocked).toBe(mode==='error');
+      expect(await refresh(one.refresh_token!)).toBe(401);expect(await refresh(two.refresh_token!)).toBe(401);expect(await refresh(other.refresh_token!)).toBe(200);
+      const response=await fetch(`${env.trailUrl}/api/records/v1/todos/${encodeURIComponent(aid)}`,{headers:{Authorization:`Bearer ${one.auth_token}`},signal:AbortSignal.timeout(10000)});
+      expect(response.status).toBe(200);expect(await response.json()).toEqual(beforeA);expect(await b.client.records('todos').read(bid)).toEqual(beforeB);
+      // Fixed counters/booleans only; never retain the actual credential values.
+      await writeFile(`${env.directory}/permissive-redirect-${mode}-node.json`,JSON.stringify({mode,readableForeign,blocked,authReceipt:false,revokedBoth:true,otherSessionAlive:true,controlsUnchanged:true,senderCsrfNonempty:Boolean(actual.get('csrf-token')),receiver:sink.stats()}),{mode:0o600});
+      // HTTP 200 at the foreign sink is not an authenticated native receipt.
+      expect(sink.stats()).toMatchObject({requests:mode==='follow'?1:0,getRequests:mode==='follow'?1:0,authorization:false,refresh:false,csrf:false,cookie:false,bodyBytes:0});
+    }finally{
+      await sink.close();expect(sink.stats().listening).toBe(false);
+      for(const [id,token] of [[aid,one.auth_token],[bid,other.auth_token]]){const deleted=await fetch(`${env.trailUrl}/api/records/v1/todos/${encodeURIComponent(id)}`,{method:'DELETE',headers:{Authorization:`Bearer ${token}`},signal:AbortSignal.timeout(10000)});expect(deleted.ok).toBe(true);await deleted.body?.cancel();}
+      for(const token of [one.refresh_token!,two.refresh_token!,other.refresh_token!]){const cleared=await fetch(`${env.trailUrl}/api/auth/v1/logout`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({refresh_token:token}),credentials:'omit',redirect:'error',signal:AbortSignal.timeout(10000)});expect(cleared.ok).toBe(true);await cleared.body?.cancel();}
     }
   });
 });

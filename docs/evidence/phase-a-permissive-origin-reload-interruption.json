@@ -1,0 +1,11 @@
+{
+  "sourceSha256": "a33e05f9f42252dd9eea350960612c882f4831a4bb35ad3fe60b76799664bd01",
+  "scope": "Owned local full-stock Phase A control `all` during explicitly authorized Pi app/extensions reload",
+  "runId": "1791121147894-b8f8b040820a",
+  "runnerPid": 77994,
+  "outcome": "Runner process no longer existed when session resumed; no sanitized artifact for this run; test assertions/counts not inferred.",
+  "partialPrivateRunFiles": ["owner.json", "permissive-redirect-error-node.json", "permissive-redirect-follow-node.json", "reference-hydration-awaited.json", "reference-hydration-unawaited.json", "start.log", "status.log", "trail.log"],
+  "recovery": "Verified runner PID absent, then ran `npm run fixtures:cleanup -- 1791121147894-b8f8b040820a`; owned fixture/depot credentials removed and private diagnostics retained. Owned Phase A lock now absent. No unrelated resource pruned or live lock bypassed.",
+  "rerun": "Explicit exact-source stock/control scope is included once in the continuing batch; no assertion, registry pin, dependency, or budget changed. Original interruption remains recorded, not presented as passed/failed assertion evidence.",
+  "reload": "Pi process/reload interruption, not a reported fixture or test assertion failure."
+}

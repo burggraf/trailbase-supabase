@@ -1,10 +1,10 @@
 {
   "scope": "Phase A harness unit/traceability checks, NOT SDK coverage/signoff",
   "status": "passed",
-  "node": "v22.23.2",
+  "node": "v24.21.0",
   "platform": "darwin-arm64",
-  "sourceSha256": "a33e05f9f42252dd9eea350960612c882f4831a4bb35ad3fe60b76799664bd01",
-  "finishedAt": "2026-10-04T13:43:15.051Z",
+  "sourceSha256": "0bb9fe27831ecc87688d4f9edb4afb8340f4e60c5f5b5146ca3ef50a5399fcfa",
+  "finishedAt": "2026-10-04T13:04:57.202Z",
   "tests": [
     {
       "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior blocks pending/verified/cross-column case-insensitive insert collisions without changing rows",

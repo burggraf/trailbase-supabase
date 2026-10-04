@@ -287,6 +287,51 @@ test('L1-27/G7/S01/S04 browser candidate: fixed acknowledgement, anonymous false
   }
 });
 
+for(const mode of ['follow','error'] as const)test(`L1-27/S01/S07 raw Fetch redirect ${mode} must not export native headers to permissive foreign receiver`,async({page,browserName})=>{
+  const env=await context(),a=await confirmedTrailUser(env,'b-head-a'),b=await confirmedTrailUser(env,'b-head-b');
+  const aid=nativeUuid(randomUUID()),bid=nativeUuid(randomUUID());
+  await a.client.records('todos').create({id:aid,user_id:a.user.id,title:`headers-${randomUUID()}`,note:'unchanged'});
+  await b.client.records('todos').create({id:bid,user_id:b.user.id,title:`headers-${randomUUID()}`,note:'unchanged'});
+  const beforeA=await a.client.records('todos').read(aid),beforeB=await b.client.records('todos').read(bid),sink=await redirectSink(true);
+  const allowed=[...env.origins,new URL(sink.url).origin];
+  await page.context().route('**/*',route=>allowed.includes(new URL(route.request().url()).origin)?route.continue():route.abort());
+  await page.context().addCookies([{name:'owned-permissive-marker',value:'fixture-cookie',url:sink.url}]);
+  try{
+    await page.goto(env.trailUrl);
+    const result=await page.evaluate(async({base,email,password,otherEmail,otherPassword,aid,bid,beforeA,beforeB,sinkUrl,mode})=>{
+      const {authCoordinationProof}:typeof import('../proofs/auth-coordination.js')=await import(`${base}/proofs/auth-coordination.js`);
+      const forward=(path:string,init?:RequestInit)=>fetch(`${base}${path}`,{...init,credentials:'omit',redirect:init?.redirect??'error',signal:AbortSignal.timeout(10000)});
+      const first=authCoordinationProof(forward),sibling=authCoordinationProof(forward),other=authCoordinationProof(forward);
+      const refresh=async(token:string)=>{const response=await forward('/api/auth/v1/refresh',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({refresh_token:token})});const status=response.status;await response.body?.cancel();return status;};
+      try{
+        await first.login(email,password);await sibling.login(email,password);await other.login(otherEmail,otherPassword);
+        const one=first.tokens()!,two=sibling.tokens()!,control=other.tokens()!,headers=first.headers();
+        if(!one.refresh_token||!headers.Authorization)throw new Error('Browser native credential set missing');
+        const target=new URL(sinkUrl),relative=`//${target.host}${target.pathname}`;
+        let readableForeign=false,blocked=false;
+        try{
+          const response=await forward(`/api/auth/v1/logout?redirect_uri=${encodeURIComponent(relative)}`,{method:'GET',headers,redirect:mode});
+          readableForeign=response.status===200&&response.redirected&&response.url===sinkUrl;await response.body?.cancel();
+        }catch(cause){if(mode!=='error')throw cause;blocked=cause instanceof TypeError;}
+        const revokedBoth=await refresh(one.refresh_token!)===401&&await refresh(two.refresh_token!)===401;
+        const otherSessionAlive=await refresh(control.refresh_token!)===200;
+        const read=async(id:string,auth:Record<string,string>)=>{const response=await forward(`/api/records/v1/todos/${encodeURIComponent(id)}`,{headers:auth});if(response.status!==200)throw new Error('Browser native row control read failed');return response.json();};
+        const rowA=await read(aid,{Authorization:`Bearer ${one.auth_token}`}),rowB=await read(bid,other.headers());
+        const equal=(row:Record<string,unknown>,before:Record<string,unknown>)=>Object.keys(row).length===Object.keys(before).length&&Object.entries(before).every(([key,value])=>row[key]===value);
+        return {readableForeign,blocked,authReceipt:false,revokedBoth,otherSessionAlive,controlsUnchanged:equal(rowA,beforeA)&&equal(rowB,beforeB),senderCsrfNonempty:Boolean(one.csrf_token)};
+      }finally{await first.logout();await sibling.logout();await other.logout();}
+    },{base:env.trailUrl,email:a.email,password:a.password,otherEmail:b.email,otherPassword:b.password,aid,bid,beforeA,beforeB,sinkUrl:sink.url,mode});
+    await writeFile(`${env.directory}/permissive-redirect-${mode}-${browserName}.json`,JSON.stringify({...result,receiver:sink.stats()}),{mode:0o600});
+    expect(result).toMatchObject({readableForeign:mode==='follow',blocked:mode==='error',authReceipt:false,revokedBoth:true,otherSessionAlive:true,controlsUnchanged:true});
+    expect((await page.context().cookies()).some(cookie=>cookie.name==='owned-permissive-marker')).toBe(true);
+    expect(sink.stats()).toMatchObject({getRequests:mode==='follow'?1:0,authorization:false,refresh:false,csrf:false,cookie:false,bodyBytes:0});
+    expect(sink.stats().requests).toBeGreaterThanOrEqual(sink.stats().getRequests);expect(sink.stats().requests).toBeLessThanOrEqual(mode==='follow'?2:0);
+  }finally{
+    await sink.close();expect(sink.stats().listening).toBe(false);
+    await a.client.records('todos').delete(aid);await b.client.records('todos').delete(bid);
+  }
+});
+
 for(const stage of ['response','json'] as const)for(const outage of [false,true]) {
   test(`L1-27/G7/S04/S08 browser discarded login ${stage}, cleanup outage ${outage}: exact-session cleanup preserves newer account`,async({page})=>{
     const env=await context(),first=await confirmedTrailUser(env,`b-old-${stage}`),second=await confirmedTrailUser(env,`b-new-${stage}`);
