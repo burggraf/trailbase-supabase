@@ -1,0 +1,57 @@
+{
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37241979556",
+  "commit": "74e3323c5da0d097a820e05a2ae8e7b39e7380b0",
+  "sourceSha256": "d893c0eac21e96c6461d9be67dceaacfd54a0846a240738d3072426cbe4c93d1",
+  "workflowConclusion": "failure-preserved-strict-characterization",
+  "unitNode22": "50/50 passed",
+  "unitNode24": "50/50 passed",
+  "realScopes": {
+    "all": "100/6",
+    "browser": "60/6",
+    "expiry": "2/0",
+    "candidate-characterization": "10/0",
+    "candidate-smtp": "0/1",
+    "migration": "1/0",
+    "cleanup": "1/0"
+  },
+  "comparison": [
+    {
+      "suite": "all",
+      "changedCommonOutcomes": 0,
+      "addedPassing": 1
+    },
+    {
+      "suite": "browser",
+      "changedCommonOutcomes": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "expiry",
+      "changedCommonOutcomes": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "characterization",
+      "changedCommonOutcomes": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "smtp",
+      "changedCommonOutcomes": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "auth-migration",
+      "changedCommonOutcomes": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "lifecycle",
+      "changedCommonOutcomes": 0,
+      "addedPassing": 0
+    }
+  ],
+  "verification": "All seven real Linux reports and both unit reports match exact commit/source/Node/platform/count/status. All seven setups and cleanups passed; six exact pinned ECR image references/digests and loopback-only bindings were independently checked. Stock excludes private G1 and the new JSON-shape test passed. Jobs failed only at retained real assertions (stock, SMTP, browser); no setup or artifact failure.",
+  "privacySanitization": "One static proof test title in the copied stock report replaces a false-positive credential-like phrase with Authorization header; status and behavior are unchanged.",
+  "strict": "Common named outcomes match the previous exact-source Linux run; only the new stock characterization adds one passing test. Existing stock/browser/network/auth-lifecycle/candidate-SMTP strict failures remain unchanged. No gate or SDK signoff."
+}
