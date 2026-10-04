@@ -1,0 +1,59 @@
+{
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37236919199",
+  "commit": "595106e14462522bb4fa12d03500a928b20e4899",
+  "sourceSha256": "fab889d5119e189090fa62530e4df1365e12096f448a27a47150dbf845d3fb17",
+  "workflowConclusion": "failure",
+  "units": {
+    "node22": "50/50 passed",
+    "node24": "50/50 passed"
+  },
+  "realScopes": {
+    "all": "99/6",
+    "browser": "60/6",
+    "expiry": "2/0",
+    "characterization": "10/0",
+    "smtp": "0/1",
+    "auth-migration": "1/0",
+    "lifecycle": "1/0"
+  },
+  "comparison": [
+    {
+      "scope": "all-node22",
+      "changedExisting": 0,
+      "newPassing": 1
+    },
+    {
+      "scope": "browser-node22",
+      "changedExisting": 0,
+      "newPassing": 0
+    },
+    {
+      "scope": "expiry-node22",
+      "changedExisting": 0,
+      "newPassing": 0
+    },
+    {
+      "scope": "candidate-characterization-node22",
+      "changedExisting": 0,
+      "newPassing": 0
+    },
+    {
+      "scope": "candidate-smtp-node22",
+      "changedExisting": 0,
+      "newPassing": 0
+    },
+    {
+      "scope": "migration-node22",
+      "changedExisting": 0,
+      "newPassing": 0
+    },
+    {
+      "scope": "cleanup-node22",
+      "changedExisting": 0,
+      "newPassing": 0
+    }
+  ],
+  "verification": "All nine reports match exact source/runtime/counts/status. Seven real scopes independently verified against six pinned ECR references/digests, loopback-only ports, setup inventories and cleanup. Stock excludes private G1. New referencedTable/foreignTable wire/error case passes on Linux stock. No setup failure.",
+  "privacySanitization": "One static proof test-title phrase in the stock report changed to Authorization header to satisfy secret scanning; its result status and behavior are unchanged.",
+  "strict": "Workflow red only for retained strict characterization failures: stock, browser and candidate SMTP. Named common outcomes match immediately prior Linux CI; no new failing test."
+}
