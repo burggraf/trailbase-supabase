@@ -1,0 +1,210 @@
+{
+  "scope": "Phase A harness unit/traceability checks, NOT SDK coverage/signoff",
+  "status": "passed",
+  "node": "v24.21.0",
+  "platform": "linux-x64",
+  "sourceSha256": "76ca39f66353d6f41272d11b4efd8ab296ca8b200c1ba804f94781a4d3511f54",
+  "finishedAt": "2026-10-04T16:01:22.064Z",
+  "tests": [
+    {
+      "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior blocks pending/verified/cross-column case-insensitive insert collisions without changing rows",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior permits same-user confirmation and anonymous null addresses but rejects conflicting updates atomically",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior refuses ambiguous existing accounts and rolls back without dropping or merging identities",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior does not reject a row reserving the same address in both fields",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7 stale cleanup failure exposes a failure flag/cause without changing its stale-operation category",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7 test-only logout rejects unsupported scopes and is request-free when already signed out",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 G3 native fixture SQL enforces FK/trigger row rollback, not native HTTP compatibility",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 G3 fixture audit stays read-only and trigger definer SQL has no direct client execution",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 G2 fixture UUID inputs (not production codec) bounds asynchronous probes without changing results or hiding failures",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 G2 fixture UUID inputs (not production codec) uses padding required by the native BLOB input decoder",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 G2 fixture UUID inputs (not production codec) round-trips 1000 seeded UUIDv4 fixture values exactly",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety allows only exact owned loopback origins",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety rejects traversal and non-owned cleanup directories",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety refuses foreign/comment-spoofed project ownership before cleanup",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety refuses externally published fixture ports",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety rejects service image/digest/count drift",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety setup inventory exposes only public image refs/digests and a port-safety boolean",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety verifies downloaded AND cached bytes rather than filenames",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety forces the pinned ECR registry for every fixture while excluding inherited backend configuration",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety keeps stock/candidate/source-prototype fixtures disjoint and explicitly labelled",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety budgets the three-engine 100-channel corpus without removing deadlines or extending other suites",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety excludes private G1 rehearsals from stock all, but not from explicitly selected suites",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety keeps default auth configuration unchanged and confines short TTL to a labelled owned profile",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety fails closed on missing fixture variables",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety serves byte-identical installed native ESM and reference UMD distributions, not replacements",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety allocates local ports and releases the allocation socket",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety fails a stopped child immediately rather than reporting a skipped setup",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety has a finite readiness deadline",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety cleanup tolerates an absent or already stopped child",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27/S05 owned HTTP drop completes one upstream POST but delivers no response and closes resources",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff validates the real checked-in ledger",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects missing or duplicate feature IDs",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects undocumented states and missing restart actions",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff cannot claim verification without evidence",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff cannot sign off with missing tests, reviewer, date or evidence",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff a fresh report cannot silently carry old maintainer approval onto changed sources",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff cannot sign off a feature while compatibility decisions remain open",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects an approval attached to work that remains unsigned",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects external/private-token style evidence references",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/S01/S07 owned redirect sink rejects other routes and records only credential-presence booleans",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/S01/S07 permissive owned sink accepts preflight without accepting credentials as an auth receipt",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK preserves UTF-8 at every single split and byte-fragmentation boundary",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK accepts byte-split CRLF, multiline data and keepalive comments",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK keeps sequence state across chunks and signals gaps, duplicate/reordered sequence and explicit loss",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK does not signal gaps for consecutive frames or absent sequence metadata",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK fails closed on malformed, truncated, unsafe-integer and invalid event/sequence/status frames",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK enforces the declared proof buffer ceiling",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK consumer return cancels an open source and releases its reader lock",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK 100 alternating return/abort lifecycles cancel once, detach abort listeners and never deliver after close",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK abort unblocks a pending read, surfaces AbortError and cancels once",
+      "status": "passed"
+    }
+  ]
+}

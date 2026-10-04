@@ -1,0 +1,14 @@
+{
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37215192933",
+  "commit": "775ff8fad5f168501df8ca86f044d1e1d59bec35",
+  "sourceSha256": "76ca39f66353d6f41272d11b4efd8ab296ca8b200c1ba804f94781a4d3511f54",
+  "workflowConclusion": "failure",
+  "scope": "Current-source Linux verification for bounded raw Date/typed-byte characterization; not SDK/gate signoff",
+  "units": {"node22": "50/50 passed", "node24": "50/50 passed"},
+  "real": {"stock": "96 passed/6 strict failures", "expiry": "2/2", "candidateCharacterization": "10/10", "candidateSmtp": "0 passed/1 strict failure", "migration": "1/1", "browser": "60 passed/6 strict failures", "cleanup": "1/1"},
+  "checks": "Downloaded and inspected sanitized unit artifacts and all seven real-scope reports. Exact commit/source, Node/runtime counts, expected status/counts, six original pinned ECR service image tags, setup inventory, loopback bindings, stock private-G1 exclusion and owned setup/cleanup verified. Every Linux real report copied to a source-matching evidence file.",
+  "strictFailures": "Stock six: reference unawaited hydration notification race; native late refresh/status resurrection; native unconfirmed duplicate signup; raw Fetch permissive-origin custom-header forwarding; native SMTP recovery. Browser six: three hydration notification cases and three raw Fetch header-boundary cases. Candidate SMTP remains 0/1. No setup failure. CI red is expected characterization failures, not a gate pass.",
+  "initialAuditDownloadError": "First artifact download attempt encountered a connection reset. No artifact outcome inferred then. After CI completed, downloaded and verified all required artifacts; this transient fetch error did not alter CI or tests.",
+  "privacyAudit": "Parsed and recursively scanned 474 evidence JSONs; only 27 exact static tests[].name phrases 'Bearer authorization' were exempted, no other credential-shaped match."
+  "missing": "Broader approved characterization, SDK before-wire validation/shared types/contracts/package, and maintainer signoff. No public logout-method exploit/live-session compromise inferred; no SDK/server patch, baseline repin, deployment or public submission."
+}
