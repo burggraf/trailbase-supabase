@@ -1,0 +1,10 @@
+{
+  "scope": "Reference lifecycle test seed/readiness ordering diagnosis, NOT a backend repair or gate signoff",
+  "status": "failed",
+  "sourceSha256": "405750c2aeb2ee20f01b9e92b2096f3d812fdeda27e7ca63abf80bba4f587d1d",
+  "evidence": "docs/evidence/phase-a-reference-channel-diagnostic-streaming-node22.json",
+  "privateBooleanDiagnostic": { "cycle": 0, "eventType": "INSERT", "idMatches": true, "ownerMatches": true, "noteMatches": false, "fieldCount": 7 },
+  "finding": "The live control received the genuine target INSERT seeded before channel startup. The UPDATE-only cycle channel received its expected UPDATE, but the wildcard control queue still held the seed INSERT. CDC SUBSCRIBED was incorrectly treated as a commit-time cutoff for already pending seed changes.",
+  "correction": "Establish CDC-ready live control before seeding, explicitly consume and validate both target/control INSERTs, then run 100 UPDATE/leave/post-leave barriers. Apply the same readiness-first ordering in browsers. Do not ignore/filter queued events, add sleeps, invent a cutoff, or weaken payload/postcondition/cleanup assertions.",
+  "limitations": "One local diagnostic; not a general historical replay, exactly-once or reconnect guarantee. Initial 4-pass/1-fail and diagnostic 4-pass/1-fail reports remain unchanged; revised tests have not run. No raw IDs, row contents or credentials published."
+}

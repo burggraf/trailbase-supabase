@@ -2,7 +2,7 @@
 import { test,expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { writeFile } from 'node:fs/promises';
-import { context,confirmedTrailUser,nativeUuid } from '../phase-a/helpers.js';
+import { context,confirmedTrailUser,confirmedSupabaseUser,nativeUuid } from '../phase-a/helpers.js';
 import { redirectSink } from '../proofs/redirect-sink.js';
 
 // Real browser execution of isolated proof modules, NOT a public SDK/UI contract suite.
@@ -111,6 +111,79 @@ test('L1-27/G5/G6/S09 browser proof: 100 stream lifecycles release readers with 
     return {closed,controlUnlocked:!controlResponse.body.locked};
   },{base:env.trailUrl,headers:account.client.headers(),owner:account.user.id,id:nativeUuid(randomUUID()),title:`b-cycles-${randomUUID()}`});
   expect(result).toEqual({closed:100,controlUnlocked:true});
+});
+
+test('L1-27/G6/S09 reference browser: 100 CDC-ready channels remove without late callbacks and explicitly disconnect',async({page})=>{
+  test.setTimeout(180000);
+  const env=await context(),account=await confirmedSupabaseUser(env,'b-ref-cycles'),id=randomUUID(),controlId=randomUUID();
+  await page.context().route('**/*',route=>env.origins.includes(new URL(route.request().url()).origin)?route.continue():route.abort());
+  await page.goto(env.trailUrl);await page.addScriptTag({url:`${env.trailUrl}/fixtures/supabase.js`});
+  const result=await page.evaluate(async({base,anon,email,password,owner,id,controlId})=>{
+    const client=window.supabase.createClient(base,anon,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
+    const wait=async<T>(promise:PromiseLike<T>):Promise<T>=>{
+      let timer:ReturnType<typeof setTimeout>;
+      try{return await Promise.race([promise,new Promise<never>((_,no)=>{timer=setTimeout(()=>no(new Error('Reference browser lifecycle deadline exceeded')),10000);})]);}
+      finally{clearTimeout(timer!);}
+    };
+    const login=await client.auth.signInWithPassword({email,password});
+    if(login.error||login.data.user?.id!==owner)throw new Error('Reference browser lifecycle login failed');
+    const queue:{eventType:string;new:Record<string,unknown>;old:Record<string,unknown>}[]=[];let notify:(()=>void)|undefined;
+    const retired:number[]=[],control=client.channel(`control-${id}`,{config:{postgres_changes_options:{wait:true}}})
+      .on('postgres_changes',{event:'*',schema:'public',table:'todos'},event=>{queue.push(event);notify?.();});
+    const ready=(channel:typeof control)=>wait(new Promise<void>((yes,no)=>channel.subscribe(status=>{
+      if(status==='SUBSCRIBED')yes();
+      if(status==='CHANNEL_ERROR'||status==='TIMED_OUT')no(new Error('Reference browser lifecycle CDC startup failed'));
+    })));
+    const take=async()=>{
+      if(!queue.length)await wait(new Promise<void>(yes=>{notify=yes;}));notify=undefined;
+      const event=queue.shift();if(!event)throw new Error('Reference browser lifecycle control event missing');return event;
+    };
+    try {
+      await ready(control);
+      for(const row of [{id,user_id:owner,title:`cycle-${id}`,note:'initial'},{id:controlId,user_id:owner,title:`control-${controlId}`,note:'unchanged'}]){
+        if((await client.from('todos').insert(row)).error)throw new Error('Reference browser lifecycle seed failed');
+        const event=await take();
+        if(event.eventType!=='INSERT'||event.new.id!==row.id||event.new.user_id!==owner||event.new.title!==row.title||event.new.note!==row.note)throw new Error('Reference browser lifecycle seed event mismatch');
+      }
+      const before=await client.from('todos').select('*').eq('id',controlId).single();
+      if(before.error)throw new Error('Reference browser lifecycle control read failed');
+      for(let cycle=0;cycle<100;cycle++){
+        retired.push(0);const eventReady=Promise.withResolvers<Record<string,unknown>>();
+        const channel=client.channel(`cycle-${id}-${cycle}`,{config:{postgres_changes_options:{wait:true}}})
+          .on('postgres_changes',{event:'UPDATE',schema:'public',table:'todos'},event=>{retired[cycle]++;eventReady.resolve(event.new);});
+        try {
+          await ready(channel);
+          if(client.getChannels().length!==2)throw new Error('Reference browser lifecycle registry grew');
+          for(const removed of [false,true]){
+            if(removed){
+              if(await wait(client.removeChannel(channel))!=='ok'||await wait(client.removeChannel(channel))!=='ok')throw new Error('Reference browser lifecycle leave failed');
+              if(client.getChannels().length!==1||client.getChannels()[0]!==control||!client.realtime.isConnected())throw new Error('Reference browser lifecycle removed live control');
+            }
+            const note=`${removed?'closed':'cycle'}-${cycle}`;
+            if((await client.from('todos').update({note}).eq('id',id)).error)throw new Error('Reference browser lifecycle write failed');
+            if(!removed){const row=await wait(eventReady.promise);if(row.id!==id||row.user_id!==owner||row.note!==note)throw new Error('Reference browser lifecycle event mismatch');}
+            const event=await take();
+            if(event.eventType!=='UPDATE'||event.new.id!==id||event.new.user_id!==owner||event.new.note!==note)throw new Error('Reference browser lifecycle live barrier mismatch');
+          }
+          if(retired.some(count=>count!==1))throw new Error('Reference browser lifecycle late callback');
+        }finally{await wait(client.removeChannel(channel));}
+      }
+      const rows=await client.from('todos').select('*').eq('id',controlId).single();
+      if(rows.error||JSON.stringify(rows.data)!==JSON.stringify(before.data))throw new Error('Reference browser lifecycle changed control row');
+      if((await client.from('todos').delete().eq('id',id)).error)throw new Error('Reference browser lifecycle delete failed');
+      const event=await take();
+      if(event.eventType!=='DELETE'||Object.keys(event.old).length!==1||event.old.id!==id||Object.keys(event.new).length!==0||queue.length||retired.some(count=>count!==1))throw new Error('Reference browser lifecycle delete/retired barrier failed');
+      const after=await client.from('todos').select('*');
+      if(after.error||after.data?.length!==1||JSON.stringify(after.data[0])!==JSON.stringify(before.data))throw new Error('Reference browser lifecycle row postcondition failed');
+    }finally{
+      const removed=await wait(client.removeAllChannels());
+      if(removed.length!==1||removed[0]!=='ok'||client.getChannels().length||client.realtime.isConnected())throw new Error('Reference browser lifecycle teardown failed');
+      if((await wait(client.removeAllChannels())).length)throw new Error('Reference browser repeated teardown failed');
+      if((await client.auth.signOut({scope:'local'})).error)throw new Error('Reference browser owned session cleanup failed');
+    }
+    return {cycles:retired.length,noLateCallbacks:retired.every(count=>count===1),disconnected:!client.realtime.isConnected()};
+  },{base:env.supabaseUrl,anon:env.anonKey,email:account.email,password:account.password,owner:account.user.id,id,controlId});
+  expect(result).toEqual({cycles:100,noLateCallbacks:true,disconnected:true});
 });
 
 test('L1-27/G7/S04/S09 browser proof: local revocation and opaque global redirect remain observable',async({page})=>{

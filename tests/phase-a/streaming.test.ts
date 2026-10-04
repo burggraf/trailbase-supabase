@@ -110,6 +110,61 @@ describe('L1-27 G5/G6 streaming characterization (not full SDK/security signoff)
       expect(account.client.getChannels()).toHaveLength(0);
     }
   });
+  it('G6/S09 reference 100 CDC-ready channel cycles leave no retired callbacks or registry entries and explicitly disconnect',async()=>{
+    const account=await confirmedSupabaseUser(env,'ref-cycles'),client=account.client,id=randomUUID(),controlId=randomUUID();
+    const queue:{eventType:string;new:Record<string,unknown>;old:Record<string,unknown>}[]=[];
+    let notify:(()=>void)|undefined;
+    const retired:number[]=[],control=client.channel(`control-${randomUUID()}`,{config:{postgres_changes_options:{wait:true}}})
+      .on('postgres_changes',{event:'*',schema:'public',table:'todos'},event=>{queue.push(event);notify?.();});
+    const ready=(channel:typeof control)=>deadline(new Promise<void>((yes,no)=>channel.subscribe(status=>{
+      if(status==='SUBSCRIBED')yes();
+      if(status==='CHANNEL_ERROR'||status==='TIMED_OUT')no(new Error('Reference lifecycle CDC startup failed'));
+    })));
+    const take=async()=>{
+      if(!queue.length)await deadline(new Promise<void>(yes=>{notify=yes;}));notify=undefined;
+      const event=queue.shift();if(!event)throw new Error('Reference lifecycle control missing');return event;
+    };
+    try {
+      await ready(control);
+      // Readiness is not a commit-time cutoff: seed only after joining and consume
+      // both genuine seed events instead of ignoring pending WAL changes.
+      expect((await client.from('todos').insert({id,user_id:account.user.id,title:`ref-cycles-${randomUUID()}`})).error).toBeNull();
+      expect(await take()).toMatchObject({eventType:'INSERT',new:{id,user_id:account.user.id}});
+      expect((await client.from('todos').insert({id:controlId,user_id:account.user.id,title:`ref-control-${randomUUID()}`,note:'unchanged'})).error).toBeNull();
+      expect(await take()).toMatchObject({eventType:'INSERT',new:{id:controlId,user_id:account.user.id,note:'unchanged'}});
+      const before=await client.from('todos').select('*').eq('id',controlId).single();expect(before.error).toBeNull();
+      for(let cycle=0;cycle<100;cycle++){
+        retired.push(0);const eventReady=Promise.withResolvers<Record<string,unknown>>();
+        const channel=client.channel(`cycle-${randomUUID()}`,{config:{postgres_changes_options:{wait:true}}})
+          .on('postgres_changes',{event:'UPDATE',schema:'public',table:'todos'},event=>{retired[cycle]++;eventReady.resolve(event.new);});
+        try {
+          await ready(channel);expect(client.getChannels()).toEqual([control,channel]);
+          const note=`cycle-${cycle}`;
+          expect((await client.from('todos').update({note}).eq('id',id)).error).toBeNull();
+          expect(await deadline(eventReady.promise)).toMatchObject({id,user_id:account.user.id,note});
+          expect(await take()).toMatchObject({eventType:'UPDATE',new:{id,user_id:account.user.id,note}});
+          expect(await deadline(client.removeChannel(channel))).toBe('ok');
+          expect(await deadline(client.removeChannel(channel))).toBe('ok');
+          expect(client.getChannels()).toEqual([control]);expect(client.realtime.isConnected()).toBe(true);
+          const closedNote=`closed-${cycle}`;
+          expect((await client.from('todos').update({note:closedNote}).eq('id',id)).error).toBeNull();
+          expect(await take()).toMatchObject({eventType:'UPDATE',new:{id,user_id:account.user.id,note:closedNote}});
+          // A live correlated event after acknowledged leave, not a sleep-based absence assertion.
+          expect(retired).toEqual(Array(cycle+1).fill(1));
+        }finally{await deadline(client.removeChannel(channel));}
+      }
+      expect((await client.from('todos').select('*').eq('id',id).single()).data).toMatchObject({id,user_id:account.user.id,note:'closed-99'});
+      expect((await client.from('todos').delete().eq('id',id)).error).toBeNull();
+      expect(await take()).toMatchObject({eventType:'DELETE',new:{},old:{id}});
+      expect(queue).toEqual([]);expect(retired).toEqual(Array(100).fill(1));
+      const rows=await client.from('todos').select('*');expect(rows.error).toBeNull();expect(rows.data).toEqual([before.data]);
+    }finally{
+      expect(await deadline(client.removeAllChannels())).toEqual(['ok']);
+      expect(client.getChannels()).toEqual([]);expect(client.realtime.isConnected()).toBe(false);
+      expect(await deadline(client.removeAllChannels())).toEqual([]);
+    }
+    // Explicit SDK disconnect/registry evidence, not service-internal resource or timer accounting.
+  },180000);
   it('G6/S07 native two-owner INSERT/UPDATE/DELETE isolation with own-event barriers and reader cancellation',async()=>{
     const owner=await confirmedTrailUser(env,'isolation-owner'),other=await confirmedTrailUser(env,'isolation-other');
     const api=owner.client.records('todos'),foreign=other.client.records('todos');

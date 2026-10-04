@@ -20,6 +20,8 @@ export async function sourceHash() {
 export function vitestArguments(testPath, outputFile) {
   return ['run', testPath, ...(testPath === 'tests/phase-a' ? ['--exclude', '**/private-g1-*.test.ts'] : []), '--reporter=json', '--outputFile', outputFile];
 }
+// Three engines each run 100 CDC-ready channel cycles; keep other suites at 5m.
+export const testTimeoutMs = binary => binary === 'playwright' ? 600000 : 300000;
 async function main() {
   const suite = process.argv[2] ?? 'all';
   const options = process.argv.slice(3);
@@ -49,8 +51,9 @@ async function main() {
     });
     // Never stream assertion dumps/auth replies. Only sanitized case summaries leave the private run directory.
     for (const stream of [testChild.stdout,testChild.stderr]) stream.on('data', bytes => { if (output.length < 2_000_000) output += bytes; });
-    const timer = setTimeout(() => testChild.kill('SIGTERM'), 300000);
-    const killTimer = setTimeout(() => testChild.kill('SIGKILL'), 305000);
+    const budget = testTimeoutMs(binary);
+    const timer = setTimeout(() => testChild.kill('SIGTERM'), budget);
+    const killTimer = setTimeout(() => testChild.kill('SIGKILL'), budget + 5000);
     let code;
     try { code = await new Promise((yes,no) => { testChild.once('error',no); testChild.once('exit',yes); }); }
     finally { clearTimeout(timer); clearTimeout(killTimer); }

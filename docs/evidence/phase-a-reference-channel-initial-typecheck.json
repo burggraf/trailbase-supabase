@@ -1,0 +1,9 @@
+{
+  "scope": "Initial reference-channel test fixture typecheck, NOT backend behavior",
+  "status": "failed",
+  "sourceSha256": "d67dfd04fb882df6eb9345736d469e198fdb60437e5c922a70816249b7be66ad",
+  "node": "v24.21.0",
+  "error": "TS2345 in tests/phase-a-browser/proofs.spec.ts:131:45: inferred seed-row union had optional undefined note versus string note, rejected by the installed reference insert generic.",
+  "correction": "Give both generated seed objects explicit string notes; no type cast, runtime assertion relaxation, SDK or backend change.",
+  "realScopes": "Not launched at this source; units passed 46/46 on both pinned runtimes."
+}

@@ -3,8 +3,8 @@
   "status": "passed",
   "node": "v24.21.0",
   "platform": "darwin-arm64",
-  "sourceSha256": "aa0bcf3f3bc5dead2f6a6fcbf7ef8c9824ea2bc246ab5f8f9f7b2b0ebbc0ee14",
-  "finishedAt": "2026-10-04T01:24:59.942Z",
+  "sourceSha256": "405750c2aeb2ee20f01b9e92b2096f3d812fdeda27e7ca63abf80bba4f587d1d",
+  "finishedAt": "2026-10-04T01:16:26.460Z",
   "tests": [
     {
       "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior blocks pending/verified/cross-column case-insensitive insert collisions without changing rows",
@@ -80,10 +80,6 @@
     },
     {
       "name": "L1-27/U27 harness safety keeps stock/candidate/source-prototype fixtures disjoint and explicitly labelled",
-      "status": "passed"
-    },
-    {
-      "name": "L1-27/U27 harness safety budgets the three-engine 100-channel corpus without removing deadlines or extending other suites",
       "status": "passed"
     },
     {

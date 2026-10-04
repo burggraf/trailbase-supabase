@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { assertLocalUrl, assertRunDirectory, verifyOwner, verifyImages, verifyLoopbackBindings, replaceTokens, freePort, waitReady, stopChild, nativeAuthConfig, setupImageInventory, fixtureAuthVariant } from '../../scripts/harness.mjs';
 import { verifyChecksum } from '../../scripts/tools.mjs';
-import { vitestArguments } from '../../scripts/run-phase-a.mjs';
+import { vitestArguments, testTimeoutMs } from '../../scripts/run-phase-a.mjs';
 
 describe('L1-27/U27 harness safety', () => {
   const origin = 'http://127.0.0.1:55431';
@@ -73,6 +73,10 @@ describe('L1-27/U27 harness safety', () => {
     expect(fixtureAuthVariant({authMitigation:true})).toBe('candidate-email-reservation');
     expect(fixtureAuthVariant({privateNativePrototype:true})).toBe('private-native-prototype');
     expect(() => fixtureAuthVariant({authMitigation:true,privateNativePrototype:true})).toThrow('mutually exclusive');
+  });
+  it('budgets the three-engine 100-channel corpus without removing deadlines or extending other suites',()=>{
+    expect(testTimeoutMs('playwright')).toBe(600000);
+    for(const binary of ['vitest','unknown',''])expect(testTimeoutMs(binary)).toBe(300000);
   });
   it('excludes private G1 rehearsals from stock all, but not from explicitly selected suites',()=>{
     expect(vitestArguments('tests/phase-a','report.json')).toEqual(['run','tests/phase-a','--exclude','**/private-g1-*.test.ts','--reporter=json','--outputFile','report.json']);
