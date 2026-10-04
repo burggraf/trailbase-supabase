@@ -237,6 +237,66 @@ describe('L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation',(
       expect((await rb.client.auth.signOut({scope:'local'})).error).toBeNull();expect((await rb.client.auth.getSession()).data.session).toBeNull();client.realtime.disconnect();
     }
   });
+  it('G2 rejects unsupported JSON-shaped text input natively while reference coerces it to JSON text',async()=>{
+    const value={nested:['alpha',7],enabled:true},nativeId=randomUUID(),referenceId=randomUUID();
+    const api=native.client.records('todos');
+    const nativeRowsBefore=(await api.list({pagination:{limit:1000},order:['+id']})).records;
+    const nativeAuditBefore=(await native.client.records('todo_audit').list({pagination:{limit:1000},order:['+audit_key']})).records;
+    const referenceRowsBefore=await reference.client.from('todos').select('*').order('id');
+    const referenceAuditBefore=await reference.client.from('todo_audit').select('*').order('audit_key');
+    expect(referenceRowsBefore.error).toBeNull();expect(referenceAuditBefore.error).toBeNull();
+    const referenceSession=(await reference.client.auth.getSession()).data.session;
+    if(!referenceSession)throw new Error('Confirmed reference session missing');
+    const referenceWire:{method:string;body:Record<string,unknown>}[]=[];
+    const client=createClient(env.supabaseUrl,env.anonKey,{
+      auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},
+      accessToken:async()=>referenceSession.access_token,
+      global:{fetch:(input,init)=>{
+        const url=new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url);
+        if(url.pathname==='/rest/v1/todos'&&init?.method==='POST')referenceWire.push({method:init.method,body:JSON.parse(String(init.body))});
+        return fetch(input,init);
+      }}
+    });
+    const nativeSpy=vi.spyOn(native.client,'fetch');
+    try{
+      let nativeError:unknown;
+      try{await api.create({id:nativeUuid(nativeId),user_id:native.user.id,title:value});}catch(error){nativeError=error;}
+      expect((nativeError as {status?:number}|undefined)?.status).toBe(400);
+      const nativeWire=nativeSpy.mock.calls.filter(([,init])=>init?.method==='POST').map(([,init])=>JSON.parse(String(init?.body)));
+      expect(nativeWire).toHaveLength(1);expect(nativeWire[0].title).toEqual(value);
+      expect((await api.list({pagination:{limit:1000},order:['+id']})).records).toEqual(nativeRowsBefore);
+      expect((await native.client.records('todo_audit').list({pagination:{limit:1000},order:['+audit_key']})).records).toEqual(nativeAuditBefore);
+
+      const inserted=await client.from('todos').insert({id:referenceId,user_id:reference.user.id,title:value});
+      expect(inserted.status).toBe(201);expect(inserted.error).toBeNull();expect(inserted.data).toBeNull();
+      expect(referenceWire).toHaveLength(1);expect(referenceWire[0].body.title).toEqual(value);
+      const found=await reference.client.from('todos').select('id,title').eq('id',referenceId).single();
+      expect(found.error).toBeNull();if(!found.data)throw new Error('Reference JSON-shaped row missing');
+      expect(typeof found.data.title).toBe('string');expect(JSON.parse(found.data.title)).toEqual(value);
+      const referenceRowsAfter=await reference.client.from('todos').select('*').order('id');
+      expect(referenceRowsAfter.error).toBeNull();expect(referenceRowsAfter.data?.filter(row=>row.id!==referenceId)).toEqual(referenceRowsBefore.data);
+      const referenceAuditAfter=await reference.client.from('todo_audit').select('*').order('audit_key');
+      expect(referenceAuditAfter.error).toBeNull();
+      expect(referenceAuditAfter.data?.filter(row=>row.todo_id!==referenceId)).toEqual(referenceAuditBefore.data);
+      expect(referenceAuditAfter.data?.filter(row=>row.todo_id===referenceId).map(row=>row.operation)).toEqual(['INSERT']);
+    }finally{
+      nativeSpy.mockRestore();
+      const nativeProbe=await api.list({filters:[{column:'id',value:nativeUuid(nativeId)}]});
+      if(nativeProbe.records.length)await api.delete(nativeUuid(nativeId));
+      expect((await api.list({pagination:{limit:1000},order:['+id']})).records).toEqual(nativeRowsBefore);
+      expect((await native.client.records('todo_audit').list({pagination:{limit:1000},order:['+audit_key']})).records).toEqual(nativeAuditBefore);
+      const referenceProbe=await reference.client.from('todos').select('id').eq('id',referenceId);
+      expect(referenceProbe.error).toBeNull();
+      if(referenceProbe.data?.length){const removed=await reference.client.from('todos').delete().eq('id',referenceId);expect(removed.status).toBe(204);expect(removed.error).toBeNull();}
+      const referenceRowsAfter=await reference.client.from('todos').select('*').order('id');
+      const referenceAuditAfter=await reference.client.from('todo_audit').select('*').order('audit_key');
+      expect(referenceRowsAfter.error).toBeNull();expect(referenceRowsAfter.data).toEqual(referenceRowsBefore.data);
+      expect(referenceAuditAfter.error).toBeNull();
+      expect(referenceAuditAfter.data?.filter(row=>row.todo_id!==referenceId)).toEqual(referenceAuditBefore.data);
+      expect(referenceAuditAfter.data?.filter(row=>row.todo_id===referenceId).map(row=>row.operation)).toEqual(referenceProbe.data?.length?['INSERT','DELETE']:[]);
+      client.realtime.disconnect();
+    }
+  });
   it('construction is lazy, repeated execution sends requests, independent builders isolate but shared builders/options mutate',async()=>{
     let calls=0;
     const session=(await reference.client.auth.getSession()).data.session;

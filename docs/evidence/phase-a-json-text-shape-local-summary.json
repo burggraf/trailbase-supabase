@@ -1,0 +1,28 @@
+{
+  "sourceSha256": "d893c0eac21e96c6461d9be67dceaacfd54a0846a240738d3072426cbe4c93d1",
+  "localNode22": "50/50",
+  "localNode24": "50/50",
+  "focused": "boundaries 12/12",
+  "realScopes": {
+    "boundaries": "12/0",
+    "browser": "60/6",
+    "network": "6/1",
+    "constraints": "6/0",
+    "streaming": "5/0",
+    "auth-lifecycle": "9/3",
+    "all": "100/6",
+    "proofs": "34/0",
+    "expiry": "2/0",
+    "candidate-characterization": "10/0",
+    "candidate-smtp": "0/1",
+    "migration": "1/0",
+    "cleanup": "1/0"
+  },
+  "behavior": "Installed TrailBase 0.14.3 sent the JSON object unchanged for a declared TEXT field and returned HTTP 400 with no row or audit effect. Installed Supabase JS 2.117.2 sent the same object; Postgres accepted it as JSON text (HTTP 201), and the stored text parses back to the original object. Exact owned delete restored rows; audit contains the expected INSERT/DELETE pair. This is raw client/backend characterization only: no adapter coercion or supported JSON-field mapping is claimed; future scalar-field validation must reject this shape before wire.",
+  "verified": "All thirteen immutable-source local scopes and the focused boundary scope are source/runtime/count/status checked. Six pinned ECR image references/digests, loopback-only bindings, setup/cleanup and private-G1 exclusion are verified. Common test outcomes match the previous source; only the new JSON-shape test was added and it passed in focused, boundaries and stock.",
+  "failureComparison": "Common test names/statuses in boundaries, stock, browser, network, auth lifecycle and candidate SMTP match the prior referenced-order source; only the one new passing test appears in boundaries and stock. Existing strict failures remain unchanged.",
+  "privacySanitization": "Two static proof-test titles in local stock/proofs evidence replace a false-positive credential-like phrase with Authorization header to satisfy credential-pattern scanning; behavior and test statuses are unchanged.",
+  "finalChecks": "Pinned Node 22 npm run check, npm run progress, npm run test:unit (50/50) and git diff --check passed; Node 24 units 50/50. Recursive privacy scan parsed 604 evidence JSONs; 39 known static-title/prose false positives only, no other credential-shaped matches. All 17 new reports match source hash; owned lock clear. Exact-source Linux CI pending.",
+  "missing": "Production SDK guards/codecs, JSON-typed field mappings, full portable-input matrix, remaining layers and all maintainer signoff remain incomplete.",
+  "strict": "Preserved strict failures remain in stock, browser, network, auth lifecycle and candidate SMTP. No setup failure, retry or assertion weakening."
+}

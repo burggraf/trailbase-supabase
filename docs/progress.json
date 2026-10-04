@@ -18,6 +18,7 @@
       ],
       "evidence": [
         "docs/evidence/phase-a-ledger-edit-failure-node22.json",
+        "docs/evidence/phase-a-json-text-shape-focused-boundaries-node22.json",
         "docs/evidence/phase-a-null-order-unit-node22.json",
         "docs/evidence/phase-a-ci-null-order-unit-node22.json",
         "docs/evidence/phase-a-referenced-order-unit-node22.json",
@@ -777,7 +778,10 @@
         "docs/evidence/phase-a-ci-unit-node22.23.2.json",
         "docs/evidence/phase-a-ci-unit-node24.21.0.json",
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569",
-        "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601"
+        "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601",
+        "docs/evidence/phase-a-json-text-shape-local-summary.json",
+        "docs/evidence/phase-a-json-text-shape-unit-node22.json",
+        "docs/evidence/phase-a-json-text-shape-unit-node24.json"
       ],
       "missing": [
         "Current-source harness/CI evidence, remaining G1-G7 characterization, and maintainer signoff"
@@ -867,11 +871,15 @@
         "docs/evidence/phase-a-g2-safe-range-overflow-node22.json",
         "docs/evidence/phase-a-null-predicate-boundaries-node22.json",
         "docs/evidence/phase-a-null-predicate-summary.json",
-        "docs/evidence/phase-a-ci-null-predicate-summary.json"
+        "docs/evidence/phase-a-ci-null-predicate-summary.json",
+        "docs/evidence/phase-a-json-text-shape-focused-boundaries-node22.json",
+        "docs/evidence/phase-a-json-text-shape-boundaries-node22.json",
+        "docs/evidence/phase-a-json-text-shape-all-node22.json",
+        "docs/evidence/phase-a-json-text-shape-local-summary.json"
       ],
       "missing": [
         "The maintainer approved the bounded scalar/page-cap direction in a follow-up interview; production scalar codec/runtime rejection and the full adapter security/type matrix remain unimplemented/out of scope.",
-        "Initial NaN/negative/fractional/nonfinite/cap and repeated/mixed wire-bound probes passed locally. A separate unsafe offset of 2^53 is accepted by both installed clients and serialized exactly with an empty result ([evidence](docs/evidence/phase-a-unsafe-offset-node22.json)); safe-integer/overflow guards still need before-wire adapter verification; stock inclusive-end overflow is now characterized. Expanded scalar/schema cases (dates, BLOB/JSON, relation syntax) and remaining layers remain incomplete",
+        "Initial NaN/negative/fractional/nonfinite/cap and repeated/mixed wire-bound probes passed locally. A separate unsafe offset of 2^53 is accepted by both installed clients and serialized exactly with an empty result ([evidence](docs/evidence/phase-a-unsafe-offset-node22.json)); safe-integer/overflow guards still need before-wire adapter verification; stock inclusive-end overflow is now characterized. Date and typed-byte mutations are characterized. A JSON object sent to TrailBase TEXT is rejected atomically while Supabase/Postgres stores its JSON text representation ([evidence](docs/evidence/phase-a-json-text-shape-local-summary.json)); future adapter must reject this unmapped shape before wire. JSON-typed field mappings, relation syntax, remaining portable domains/layers and production guards remain incomplete",
         "Ordinary no-count out-of-range pages and initial repeated/mixed wire bounds passed locally; expanded unsafe/call-order cases and complete adapter layers remain pending. Count/head are already unsupported by the initial L1-05 contract; retain raw count/HEAD differences without building a speculative count strategy."
       ],
       "approvedDirection": "Follow-up maintainer interview approved an explicit mapped subset: UUIDv4, declared booleans, safe-integer Numbers, declared text/null/default behavior; no implicit Date conversion, arbitrary BLOB/JSON operators, relation expansion or unmapped fields. Page limit is 0–1000; offsets are nonnegative safe integers; invalid page bounds must be rejected before a request. This is policy approval only, not G2 gate/SDK signoff; stock probes show installed clients themselves accept offset 2^53.",
@@ -1104,16 +1112,16 @@
     }
   ],
   "nextSteps": [
-    "Checkpoint f447d8c3c67079f735271637541037fd780e7714 pushed; local exact-source checks passed: units 49/49 both nodes; browser 54/6; stock 94/6; network 6/1; lifecycle 9/3; constraints 6/6; streaming 5/5; proofs 34/34; expiry 2/2; candidate characterization 10/10; candidate SMTP 0/1; migration 1/1; cleanup 1/1.",
-    "Linux run 37207784965 inspected at exact source: units 49/49 both nodes; stock 94/6; expiry 2/2; candidate characterization 10/10; SMTP 0/1; migration 1/1; browser 54/6; cleanup 1/1. All seven real scopes had exact hashes/counts, six original ECR services, setup/cleanup/private isolation; CI red only for strict stock/browser/SMTP failures. Original hydration-source (1d2bf19...) startup failure remains unproven/unrepaired, separately retained; it was not the permissive source a33e05f.",
+    "Commit and push source d893c0eac21e96c6461d9be67dceaacfd54a0846a240738d3072426cbe4c93d1 plus sanitized G2 JSON-shape local evidence; no SDK/runtime behavior changed.",
+    "Inspect exact-checkpoint Linux CI units and real reports for source/counts, six image pins/digests, loopback setup, cleanup, private-G1 exclusion and common outcomes; preserve strict failures and classify only from artifacts.",
     "#299 is closed after upstream clarified connection-scoped stream authorization; #298 (signup recovery) remains open. Keep both installed-client reports as drafts.",
     "Preserve the bounded private G1 prototype evidence separately: SMTP recovery, same-server signup race, existing-depot upgrade/repeat restart, stock CLI backup/restore and ambiguous-depot refusal/rollback passed on owned fixtures. These do not change strict stock or reservation-only SQL-candidate failures or confer signoff. No deployment, repin, public submission or identity repair.",
     "Obtain maintainer triage for bounded S01 observation: raw Fetch follow stripped Authorization but sent custom Refresh-Token/CSRF-Token headers to permissive foreign receiver despite credentials:omit. Test-only GET global proof revokes before redirect; installed trailbase@0.14.3 ClientImpl.logout instead POSTs the exact refresh token when present and swallows remote errors. No live-session compromise or public installed logout-method impact is established. Do not submit upstream, change transport/contract, add workaround or assign severity without authorization. No SDK/patch/repin/signoff.",
-    "Continue remaining approved G2-G4 schema/operator/order/cardinality/call-order/mutation characterization and remaining G5-G7 timer/storage/network/resource matrices; preserve backend differences and full postconditions. No adapter or gate signoff without required layers.",
+    "Update ledger/docs with audited Linux result, run final checks/privacy/source/diff/lock validation, then continue remaining already-approved Phase A G2-G7 matrices without waiting for maintainer input.",
     "Keep G1/G7 blocked, private G1 patch isolated, #298/#299 drafts unchanged, Levels 2/3 documentation-only. No deployment, public submission, identity repair, SDK/package claim, logout contract reduction or acknowledgement workaround.",
 
     "Previous native ECR registry and Linux corrections remain verified without tag/digest changes; old unknown-image setup root cause remains unproven. Do not relax pins or verification.",
-    "After maintainer triage, continue bounded Phase A matrices under an immutable source hash; explicitly separate planned, observed, verified, implemented, and signed-off states. No public SDK or gate is approved."
+    "Keep G1/G7 blocked and Levels 2/3 documentation-only. No SDK feature/gate signoff, deployment, repin, identity repair, public submission or production/runtime change without explicit authorization."
   ],
   "lastContractVerification": {
     "date": "2026-10-03T13:42:43.569Z",
@@ -1173,7 +1181,7 @@
     "evidence": ["docs/evidence/phase-a-async-hydration-unit-node22.json", "docs/evidence/phase-a-async-hydration-unit-node24.json", "docs/evidence/phase-a-async-hydration-browser-node22.json", "docs/evidence/phase-a-async-hydration-lifecycle-node22.json", "docs/evidence/phase-a-async-hydration-all-node22.json", "docs/evidence/phase-a-async-hydration-streaming-node22.json", "docs/evidence/phase-a-async-hydration-network-node22.json", "docs/evidence/phase-a-async-hydration-constraints-node22.json", "docs/evidence/phase-a-async-hydration-proofs-node22.json", "docs/evidence/phase-a-async-hydration-expiry-node22.json", "docs/evidence/phase-a-async-hydration-candidate-characterization-node22.json", "docs/evidence/phase-a-async-hydration-candidate-smtp-node22.json", "docs/evidence/phase-a-async-hydration-migration-node22.json", "docs/evidence/phase-a-async-hydration-cleanup-node22.json"],
     "missing": "Final validation/checkpoint/push completed at c54a4b4; initial Linux browser race reproduced but stock failed before assertions. Explicit separate same-commit diagnostic Linux run 37175389135 completed with stock 93/5, browser 51/3 and all pinned setup/cleanup verified; initial unproven startup failure retained, not counted repaired. Keep new raw-reference ordering failure and original native/G1/candidate failures strict. Awaited control validates the approved initialization direction in the measured scenario, not a production repair or general timer/storage/concurrency guarantee. No SDK/server patch/submission/repin/identity repair/gate signoff; broader approved matrices remain incomplete."
   },
-  "lastSession": {
+  "previousReferencedOrderSession": {
     "date": "2026-10-04",
     "node": "v22.23.2",
     "scope": "Approved G4 installed referencedTable/foreignTable ordering wire/error characterization; raw backend behavior only, no relationship support, SDK implementation or signoff",
@@ -1197,6 +1205,27 @@
     "typecheck": "Pinned Node 22 npm run check passed after Linux evidence links; Node22/24 units 50/50. Progress JSON, diff, source hash and recursive 587-report privacy scan passed. Local/Linux exact-source reports audited.",
     "missing": "Known strict stock/browser/network/auth/SMTP failures remain. More approved Phase A matrices and all production adapter/security/type/package/signoff layers incomplete; no SDK/gate feature signed off.",
     "restart": ["Continue remaining approved G2-G7 Phase A characterization; no adapter/runtime/public changes or gate signoff without explicit authorization"]
+  },
+  "lastSession": {
+    "date": "2026-10-04",
+    "node": "v22.23.2",
+    "scope": "Approved G2 raw JSON-object-to-TEXT characterization; no adapter implementation or contract expansion",
+    "state": "local-evidence-validated-pending-commit-linux-ci",
+    "latestCheckpoint": "pending commit",
+    "latestPush": "Local source/test/evidence complete; commit/push and exact-source Linux CI remain pending.",
+    "latestCi": {"status":"pending-exact-source-run","scope":"G2 JSON-shaped scalar-field characterization","evidence":"docs/evidence/phase-a-json-text-shape-local-summary.json"},
+    "fullRefreshProcessId": "proc_93dd; all thirteen immutable scopes audited; controller exited 0 after checking exact expected reports",
+    "localSummary": "docs/evidence/phase-a-json-text-shape-local-summary.json",
+    "fullRefreshOutcome": "Source d893c0eac21e96c6461d9be67dceaacfd54a0846a240738d3072426cbe4c93d1. Focused/full boundaries 12/12; units 50/50 Node 22/24; browser 60/6; network 6/1; constraints 6/0; streaming 5/0; lifecycle 9/3; stock 100/6; proofs 34/0; expiry 2/0; candidate characterization 10/0; SMTP 0/1; migration/cleanup 1/0. All thirteen source/runtime/count/status, exact six ECR pins/digests, loopback/setup/cleanup and private-G1 exclusion checks passed. Common named outcomes unchanged; only new JSON-shape test passed in focused/boundaries/stock. Strict failures preserved; lock clear.",
+    "sourceSha256": "d893c0eac21e96c6461d9be67dceaacfd54a0846a240738d3072426cbe4c93d1",
+    "unitNode22Cases": 50,
+    "unitNode24Cases": 50,
+    "focused": {"boundaries":"12/12; native rejects JSON-shaped TEXT with HTTP 400 and unchanged rows/audits; reference stores JSON text on HTTP 201; exact cleanup and final audit postconditions passed","evidence":["docs/evidence/phase-a-json-text-shape-focused-boundaries-node22.json","docs/evidence/phase-a-json-text-shape-local-summary.json"]},
+    "typecheck": "Pinned Node 22 npm run check/progress passed; npm run test:unit 50/50 on Node 22 and full-scope controller units 50/50 on Node 24. git diff --check passed; source hash verified.",
+    "finalValidation": "Recursive privacy scan parsed 604 evidence JSONs; 39 known static-title/prose false positives only, no other credential-shaped matches. All 17 current-source JSON-shape evidence files hash-match d893c0e. Exact six ECR pins/digests, loopback/setup/cleanup/private isolation checked; lock clear. Exact-source Linux CI remains pending.",
+    "evidence": ["docs/evidence/phase-a-json-text-shape-focused-boundaries-node22.json", "docs/evidence/phase-a-json-text-shape-boundaries-node22.json", "docs/evidence/phase-a-json-text-shape-browser-node22.json", "docs/evidence/phase-a-json-text-shape-network-node22.json", "docs/evidence/phase-a-json-text-shape-constraints-node22.json", "docs/evidence/phase-a-json-text-shape-streaming-node22.json", "docs/evidence/phase-a-json-text-shape-auth-lifecycle-node22.json", "docs/evidence/phase-a-json-text-shape-all-node22.json", "docs/evidence/phase-a-json-text-shape-proofs-node22.json", "docs/evidence/phase-a-json-text-shape-expiry-node22.json", "docs/evidence/phase-a-json-text-shape-candidate-characterization-node22.json", "docs/evidence/phase-a-json-text-shape-candidate-smtp-node22.json", "docs/evidence/phase-a-json-text-shape-migration-node22.json", "docs/evidence/phase-a-json-text-shape-cleanup-node22.json", "docs/evidence/phase-a-json-text-shape-unit-node22.json", "docs/evidence/phase-a-json-text-shape-unit-node24.json", "docs/evidence/phase-a-json-text-shape-local-summary.json"],
+    "missing": "Exact-source Linux CI remains pending. Production scalar guards/JSON field mapping, broader approved matrices and all SDK/gate signoff remain incomplete; strict stock/browser/network/lifecycle/SMTP failures preserved.",
+    "restart": ["Commit and push exact source plus sanitized local evidence", "Inspect exact-checkpoint Linux units/reports/artifacts, source/counts/pins/setup/cleanup/private exclusion/common outcomes; preserve strict failures", "Update progress/evidence with audited Linux result and rerun checks", "Continue remaining approved Phase A characterization; no SDK/runtime changes or gate signoff without authorization"]
   },
   "previousInputShapesSession": {
     "date": "2026-10-04",
