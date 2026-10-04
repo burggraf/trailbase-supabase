@@ -1,0 +1,12 @@
+{
+  "sourceSha256": "1d2bf19b61e88ab92c6c9935d632fd609e2616d31ca1524aaff5064d92a8ef04",
+  "commit": "c54a4b4e276212d48afa6234c175457611941853",
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37174358342",
+  "stock": { "stage": "supabase-start", "tests": 0, "cleanup": "passed", "durationSeconds": 25.097, "imageInventory": "not-reached", "cause": "unproven; private CLI diagnostics not included in sanitized CI artifact" },
+  "subsequentScopes": "Expiry 2/2, candidate characterization 10/10, candidate SMTP 0/1, migration 1/1, browser 51/3, fault cleanup 1/1; all six exact-pinned ECR setups and owned cleanup passed",
+  "units": "48/48 on both pinned Node versions",
+  "browser": "All three strict unawaited notification failures reproduced; awaited controls and older 48 cases passed. No current-source stock/Node lifecycle reproduction is claimed from this run.",
+  "inspectionFailure": "First metadata inspector raised KeyError: setupImageInventory because pre-verification setup failures omit inventory; corrected inspection treats that field as optional. No report discarded or behavior changed.",
+  "diagnosticInvocation": { "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37175389135", "kind": "One explicit separate workflow_dispatch at the same commit, original failure/artifacts preserved", "result": "Seven exact-pinned ECR setups/cleanup passed; stock 93/5, browser 51/3, expiry 2/2, candidate characterization 10/10, SMTP 0/1, migration/cleanup 1/1, both units 48/48. Strict notification/native/G1 failures reproduced. Initial startup failure did not recur, but cause remains unproven/unrepaired; original invocation stays failed." },
+  "limits": "No raw logs/rows/credentials uploaded, no registry/tag/digest/assertion/time-budget change, no hidden retry, SDK repair or signoff. Earlier unknown DB image failure remains separately unproven."
+}
