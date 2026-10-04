@@ -1,0 +1,14 @@
+{
+  "scope": "Approved G2/G4 installed-client characterization of explicit SQL NULL filters; test-only, no adapter implementation/signoff",
+  "sourceSha256": "b0673a0afd45fd497f45d24e7bb1bc5dde5a0bcb3ac8d576be7f30b03f0260ae",
+  "baseline": {"trailbase":"0.34.3","trailbaseClient":"0.14.3","supabaseJs":"2.117.2","supabaseCli":"2.119.0","node22":"22.23.2","node24":"24.21.0","playwright":"1.63.0"},
+  "behavior": "Installed TrailBase isNull/isNotNull helpers serialize filter[note][$is]=NULL and !NULL. Installed Supabase .is('note',null)/.not('note','is',null) serialize note=is.null and not.is.null. Both return only the actual SQL NULL row and its complementary non-NULL rows. Existing .eq('note',null) characterization separately matches literal text 'null'. Explicit NULL operators remain outside the approved six-filter SDK subset; no support claim or runtime change.",
+  "focused": {"suite":"boundaries","passed":9,"failed":0,"setup":"passed","cleanup":"passed","report":"docs/evidence/phase-a-null-predicate-boundaries-node22.json"},
+  "units": {"node22":"50/50 passed","node24":"50/50 passed"},
+  "realScopes": {"boundaries":"9/0","browser":"60/6","network":"6/1","constraints":"6/0","streaming":"5/0","authLifecycle":"9/3","stock":"97/6","proofs":"34/0","expiry":"2/0","candidateCharacterization":"10/0","candidateSmtp":"0/1","migration":"1/0","cleanup":"1/0"},
+  "verification": "All thirteen real-scope reports match exact source/runtime/counts, six pinned ECR service image references/digests, loopback port bindings, setup inventories and owned cleanup. New null test passes in focused boundaries and stock. Stock excludes private G1 suites. The full stock/browser/network/auth-lifecycle/SMTP strict failures remain; setup did not fail. Owned lock is clear.",
+  "controlError": "The first full-refresh controller expected the previous stock count 96/6 and stopped at actual 97/6 after the added passing test. Its separate record is phase-a-null-predicate-batch-control-count-error.json. Preserved completed reports and resumed only missing scopes. No assertion/backend/source correction or skipped scope.",
+  "initialCheck": "First npm run check compiled TypeScript then correctly rejected stale A01 current-source evidence; preserved at phase-a-null-predicate-initial-check-stale-ledger.json. Current-source unit reports were collected before final static check.",
+  "evidencePrefix": "docs/evidence/phase-a-null-predicate-",
+  "missing": "Browser behavior for this database-only predicate is not an adapter claim; all production validators/types/shared contract, package verification and maintainer signoff remain incomplete. No SDK/gate feature signed off."
+}

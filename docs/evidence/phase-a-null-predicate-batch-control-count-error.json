@@ -1,0 +1,11 @@
+{
+  "sourceSha256": "b0673a0afd45fd497f45d24e7bb1bc5dde5a0bcb3ac8d576be7f30b03f0260ae",
+  "operation": "Thirteen-scope immutable Phase A refresh for one added installed-client NULL-predicate characterization case.",
+  "processId": "proc_2e75",
+  "durationSeconds": 854,
+  "failure": "The scope controller retained and checked full-stock report; its expected full-stock count remained 96 passed/6 strict failures from previous source instead of 97 passed/6 after added passing boundary test. It stopped before running proofs/expiry/candidate/migration/cleanup scopes.",
+  "actualAllReport": "docs/evidence/phase-a-null-predicate-all-node22.json",
+  "actualOutcome": "97 passed/6 strict failures; new NULL-predicate assertion passed; exact source/runtime/image/setup/cleanup checks passed; no private G1 suite in stock run.",
+  "recovery": "No assertion, source, or backend changes. Owned run cleaned and phase-a lock is clear. Preserve reports from completed scopes, correct only disposable controller count, resume at next missing scope proofs. Recheck every scope and pins/setup/cleanup before signoff claims.",
+  "setupFailure": false
+}

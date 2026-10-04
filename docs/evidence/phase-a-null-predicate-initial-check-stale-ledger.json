@@ -1,0 +1,7 @@
+{
+  "sourceSha256": "da09218e52eeb388cd258386c1121f54bfb768dab1c5e6f5221b7b4f53b9f6e0",
+  "operation": "Initial npm run check immediately after adding G2/G4 installed-client NULL predicate characterization.",
+  "outcome": "TypeScript compilation passed; documentation evidence freshness check stopped at A01 because source-hash-matched unit reports had not yet been collected.",
+  "error": "Stale/missing current-source evidence: A01",
+  "interpretation": "Expected fail-closed stale-ledger result after changing tests. Not backend/test failure and not signoff. Preserve until current-source unit evidence is recorded, then rerun full checks."
+}

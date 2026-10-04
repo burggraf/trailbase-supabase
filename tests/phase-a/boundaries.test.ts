@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { createClient } from '@supabase/supabase-js';
+import { isNotNull,isNull } from 'trailbase';
 import { context, confirmedTrailUser, confirmedSupabaseUser, nativeUuid, canonicalUuid } from './helpers.js';
 
 let env: Awaited<ReturnType<typeof context>>;
@@ -50,6 +51,38 @@ describe('L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation',(
     expect(rows.map(row=>canonicalUuid(String(row.id)))).toEqual([ids[1]]);
     expect(result.data?.map(row=>row.id)).toEqual([ids[1]]);
     expect(rows[0].note).toBe('null');
+  });
+  it('L1-09/G2 upstream NULL predicates select SQL NULL, outside the approved six-filter subset',async()=>{
+    const nativeSpy=vi.spyOn(native.client,'fetch');
+    try {
+      const api=native.client.records('todos');
+      const nativeNull=await api.list({filters:[isNull('note')],order:['+id']});
+      const nativeNotNull=await api.list({filters:[isNotNull('note')],order:['+id']});
+      expect(nativeSpy).toHaveBeenCalledTimes(2);
+      const nativeUrls=nativeSpy.mock.calls.map(([path])=>new URL(path,env.trailUrl));
+      expect(nativeUrls.map(url=>url.searchParams.get('filter[note][$is]'))).toEqual(['NULL','!NULL']);
+      expect(nativeNull.records.map(row=>canonicalUuid(String(row.id)))).toEqual([ids[0]]);
+      expect(nativeNotNull.records.map(row=>canonicalUuid(String(row.id))).sort()).toEqual(ids.slice(1).sort());
+    } finally {nativeSpy.mockRestore();}
+
+    const session=(await reference.client.auth.getSession()).data.session;
+    if(!session)throw new Error('Confirmed reference session missing');
+    const urls:URL[]=[];
+    const client=createClient(env.supabaseUrl,env.anonKey,{
+      auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},
+      accessToken:async()=>session.access_token,
+      global:{fetch:(input,init)=>{
+        urls.push(new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url));
+        return fetch(input,init);
+      }}
+    });
+    const referenceNull=await client.from('todos').select('id,note').is('note',null).order('id');
+    const referenceNotNull=await client.from('todos').select('id,note').not('note','is',null).order('id');
+    expect(referenceNull.status).toBe(200);expect(referenceNull.error).toBeNull();
+    expect(referenceNull.data?.map(row=>row.id)).toEqual([ids[0]]);
+    expect(referenceNotNull.status).toBe(200);expect(referenceNotNull.error).toBeNull();
+    expect(referenceNotNull.data?.map(row=>row.id)).toEqual(ids.slice(1).sort());
+    expect(urls.map(url=>url.searchParams.get('note'))).toEqual(['is.null','not.is.null']);
   });
   it('nonfinite/fractional numeric values, typo columns and malformed UUIDs fail rather than broadening reads',async()=>{
     for(const[column,value]of [
