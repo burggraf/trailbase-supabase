@@ -1,0 +1,21 @@
+{
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37224685141",
+  "commit": "e3b649456f22b62c5b002ea627b5a889798da8a0",
+  "sourceSha256": "b0673a0afd45fd497f45d24e7bb1bc5dde5a0bcb3ac8d576be7f30b03f0260ae",
+  "workflowConclusion": "failure",
+  "units": {
+    "node22": "50/50 passed",
+    "node24": "50/50 passed"
+  },
+  "realScopes": {
+    "all": "97/6",
+    "expiry": "2/0",
+    "characterization": "10/0",
+    "smtp": "0/1",
+    "auth-migration": "1/0",
+    "browser": "60/6",
+    "lifecycle": "1/0"
+  },
+  "verification": "All nine CI reports match exact source/runtime/counts/status. Seven real reports have all six pinned ECR image references/digests and loopback ports independently verified; setup and owned cleanup pass, stock excludes private G1. New NULL predicate case passes in stock report. Workflow is red for preserved strict upstream/auth/browser/SMTP failures, no setup failure.",
+  "evidencePrefix": "docs/evidence/phase-a-ci-null-predicate-"
+}

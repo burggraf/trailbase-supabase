@@ -548,7 +548,7 @@
       "id": "L1-09",
       "title": "Six read filters",
       "status": "planned",
-      "evidence": ["docs/evidence/phase-a-null-predicate-boundaries-node22.json","docs/evidence/phase-a-null-predicate-summary.json"],
+      "evidence": ["docs/evidence/phase-a-null-predicate-boundaries-node22.json","docs/evidence/phase-a-null-predicate-summary.json","docs/evidence/phase-a-ci-null-predicate-summary.json"],
       "missing": [
         "All applicable test-plan families and maintainer signoff"
       ],
@@ -862,7 +862,8 @@
         "docs/evidence/phase-a-unsafe-offset-node22.json",
         "docs/evidence/phase-a-g2-safe-range-overflow-node22.json",
         "docs/evidence/phase-a-null-predicate-boundaries-node22.json",
-        "docs/evidence/phase-a-null-predicate-summary.json"
+        "docs/evidence/phase-a-null-predicate-summary.json",
+        "docs/evidence/phase-a-ci-null-predicate-summary.json"
       ],
       "missing": [
         "The maintainer approved the bounded scalar/page-cap direction in a follow-up interview; production scalar codec/runtime rejection and the full adapter security/type matrix remain unimplemented/out of scope.",
@@ -1164,26 +1165,26 @@
     "date": "2026-10-04",
     "node": "v22.23.2",
     "scope": "Approved G2/G4 installed-client SQL NULL filter characterization; six-filter SDK subset unchanged, no production implementation or signoff",
-    "state": "local-real-characterization-verified-linux-ci-pending",
-    "latestCheckpoint": "pending-current-source-checkpoint; base=1bd1c298348287e21bffed026887ee7ec6c67e6d",
-    "latestPush": "Current test/evidence checkpoint pending; prior remote checkpoint 1bd1c29.",
-    "latestCi": {"runUrl":"https://github.com/burggraf/trailbase-supabase/actions/runs/37220266931","status":"completed-red-for-same-strict-characterization-failures","watchProcessId":"proc_a9f8","scope":"Docs/evidence-only follow-up; same source/hash and counts as 37218881528.","evidence":"docs/evidence/phase-a-ci-invalid-date-docs-checkpoint-followup.json"},
-    "checkpoint": "f48622e733a5fc10a4ae439c59139cb64c06009d",
-    "push": "Current source/evidence commit not yet created or pushed; last remote commit 1bd1c29.",
+    "state": "source-and-evidence-pushed-linux-ci-verified",
+    "latestCheckpoint": "e3b649456f22b62c5b002ea627b5a889798da8a0",
+    "latestPush": "Source/test checkpoint e3b6494 and exact-source Linux CI evidence/progress correction pushed.",
+    "latestCi": {"runUrl":"https://github.com/burggraf/trailbase-supabase/actions/runs/37224685141","status":"completed-red-for-preserved-strict-failures","watchProcessId":"proc_dd01","scope":"Exact-source Linux test-only NULL predicate characterization; all nine artifacts inspected.","evidence":"docs/evidence/phase-a-ci-null-predicate-summary.json"},
+    "checkpoint": "e3b649456f22b62c5b002ea627b5a889798da8a0",
+    "push": "Pushed test/evidence commit e3b649456f22b62c5b002ea627b5a889798da8a0; exact-source Linux CI reports inspected.",
     "ci": {"runUrl":"https://github.com/burggraf/trailbase-supabase/actions/runs/37218881528","sourceSha256":"7c5c7833607daa634b3b10556b653221886b1c5d6fbc3da293705761d6086332","commit":"f48622e733a5fc10a4ae439c59139cb64c06009d","status":"completed-red-for-strict-characterization-failures","watchProcessId":"proc_9bca","units":{"node22":"50/50 passed","node24":"50/50 passed"},"realJob":"Stock 96/6; expiry 2/2; candidate characterization 10/10; candidate SMTP 0/1; migration 1/1; browser 60/6; cleanup 1/1. All seven reports inspected against exact source/pins/setup/cleanup/counts/private exclusion; no setup failure.","summary":"docs/evidence/phase-a-ci-invalid-date-summary.json","copyAudit":"docs/evidence/phase-a-invalid-date-ci-copy-audit-error.json"},
     "fullRefreshProcessId": "proc_2e75 + proc_0a47 (resumed)",
     "localSummary": "docs/evidence/phase-a-null-predicate-summary.json",
     "fullRefreshOutcome": "Thirteen immutable real scopes completed at b0673a0afd45fd497f45d24e7bb1bc5dde5a0bcb3ac8d576be7f30b03f0260ae; aggregate exit 1 only for preserved strict failures. Units 50/50 both Nodes; boundaries 9/0; browser 60/6; network 6/1; constraints 6/0; streaming 5/0; auth lifecycle 9/3; stock 97/6; proofs 34/0; expiry 2/0; candidate characterization 10/0; SMTP 0/1; migration/cleanup 1/0. All 13 real scopes exact-source pins/setup/cleanup/private exclusion independently verified. Controller count error retained and corrected; no assertion/source change.",
-    "finalValidation": "npm run check/progress and git diff --check passed; exact source hash b0673a0afd45fd497f45d24e7bb1bc5dde5a0bcb3ac8d576be7f30b03f0260ae verified. Recursive privacy scan parsed 523 evidence JSONs; 34 exact known literal test/prose header phrases only. Node 22/24 units 50/50; all thirteen real reports match hash/counts/pins/setup/cleanup/private exclusion; owned lock clear. CI pending for current source.",
+    "finalValidation": "npm run check/progress and git diff --check passed; source hash b0673a0afd45fd497f45d24e7bb1bc5dde5a0bcb3ac8d576be7f30b03f0260ae unchanged. Linux CI 37224685141 all nine reports inspected; exact source/counts/pins/setup/cleanup/private exclusion verified. Recursive privacy scan parsed 533 evidence JSONs; 35 exact known literal test/prose header phrases only. Node 22/24 units 50/50, local 13 scopes verified, lock clear.",
     "fullRefreshCommand": "Pinned Node 22 .runtime/null-predicate-full-controls.mjs; unit Node22/24 then thirteen immutable real scopes; corrected count controller and resumed only missing scopes. No source changes during batches.",
     "focused": {"boundaries":"9/9, new SQL NULL predicate wire/value assertions passed; setup/cleanup passed","fullMatrix":"Stock 97/6; browser 60/6; all thirteen source-matched scopes audited","evidence":["docs/evidence/phase-a-null-predicate-boundaries-node22.json","docs/evidence/phase-a-null-predicate-summary.json"]},
     "sourceSha256": "b0673a0afd45fd497f45d24e7bb1bc5dde5a0bcb3ac8d576be7f30b03f0260ae",
-    "checkpoint": "pending; current work is test-only against base 1bd1c298348287e21bffed026887ee7ec6c67e6d",
+    "checkpoint": "e3b649456f22b62c5b002ea627b5a889798da8a0",
     "unitNode22Cases": 50,
     "unitNode24Cases": 50,
-    "typecheck": "TypeScript compile passed on initial npm run check; docs freshness then correctly failed A01 before current-source unit evidence existed (docs/evidence/phase-a-null-predicate-initial-check-stale-ledger.json). Pinned Node 22/24 units subsequently passed 50/50; final npm run check pending after ledger evidence links added. Exact-source real scopes verified; no source edits during characterization batches.",
-    "missing": "Current source/evidence commit and exact-source Linux CI pending. Preserved strict stock/browser/network/auth/SMTP failures remain. Remaining approved matrices and all production adapter/security/type/package/signoff layers incomplete; no SDK/gate feature signed off.",
-    "restart": ["Run npm run check/test:unit on current source; inspect diff and source hash", "Commit/push only approved test/evidence/docs; inspect exact-source Linux CI reports/pins/setup/cleanup and preserve strict failures", "Continue other already-approved G2-G7 Phase A characterization under immutable hash", "No adapter implementation, transport/logout change, public follow-up or gate signoff without approval"]
+    "typecheck": "Pinned Node 22 TypeScript compile/npm run check passed after current-source A01 unit evidence was linked. Node 22/24 units 50/50; post-CI evidence docs/npm run check, progress JSON, diff and 533-report privacy scan passed. Initial expected stale-ledger check is retained separately. Exact-source real scopes verified; no source edits during batches.",
+    "missing": "CI 37224685141 inspected and strict failures retained. More approved Phase A matrices remain. Production adapter/security/type/package/signoff layers incomplete; no SDK/gate feature signed off.",
+    "restart": ["Continue remaining already-approved G2-G7 Phase A characterization under immutable hash", "Run exact-source local/CI checks and preserve known strict failures", "Keep SDK features planned until required layers and named maintainer signoff", "No adapter implementation, transport/logout change, public follow-up or gate signoff without approval"]
   },
   "previousInputShapesSession": {
     "date": "2026-10-04",
