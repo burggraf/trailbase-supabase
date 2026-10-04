@@ -129,6 +129,9 @@ describe('L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation',(
     };
     try{
       if(shape==='date'){
+        const invalidId=randomUUID(),invalidDate=new Date(Number.NaN);
+        await expect(api.create({id:nativeUuid(invalidId),user_id:native.user.id,title:invalidDate})).rejects.toMatchObject({status:400});
+        const invalid=await client.from('todos').insert({id:invalidId,user_id:reference.user.id,title:invalidDate});expect(invalid.status).toBe(400);expect(invalid.error?.code).toBe('23502');expect(invalid.data).toBeNull();
         expect(await api.create({id:nativeUuid(created),user_id:native.user.id,title:date})).toBe(nativeUuid(created));nativeCreated=true;
         const inserted=await client.from('todos').insert({id:created,user_id:reference.user.id,title:date});referenceCreated=!inserted.error;expect(inserted.error).toBeNull();
         expect((await api.read(nativeUuid(created))).title).toBe(date.toISOString());
@@ -144,9 +147,9 @@ describe('L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation',(
       const updated=await client.from('todos').update(values).eq('id',ids[0]);expect(updated.status).toBe(400);expect(updated.error?.code).toBe('22P02');expect(updated.data).toBeNull();
       expect(await state()).toEqual(before);
       const nativeWire=spy.mock.calls.filter(([,init])=>['POST','PATCH'].includes(init?.method??'')).map(([,init])=>({method:init!.method!,body:JSON.parse(String(init!.body))}));
-      expect(nativeWire.map(call=>call.method)).toEqual(shape==='date'?['POST','POST','PATCH']:['POST','PATCH']);expect(wire.map(call=>call.method)).toEqual(nativeWire.map(call=>call.method));
+      expect(nativeWire.map(call=>call.method)).toEqual(shape==='date'?['POST','POST','POST','PATCH']:['POST','PATCH']);expect(wire.map(call=>call.method)).toEqual(nativeWire.map(call=>call.method));
       for(const calls of [nativeWire,wire]){
-        if(shape==='date'){expect(calls[0].body.title).toBe(date.toISOString());expect(calls[1].body.created_at).toBe(date.toISOString());expect(calls[2].body.created_at).toBe(date.toISOString());}
+        if(shape==='date'){expect(calls[0].body.title).toBe(null);expect(calls[1].body.title).toBe(date.toISOString());expect(calls[2].body.created_at).toBe(date.toISOString());expect(calls[3].body.created_at).toBe(date.toISOString());}
         else{expect(calls[0].body.id).toEqual(JSON.parse(JSON.stringify(bytes)));expect(calls[1].body.priority).toEqual(JSON.parse(JSON.stringify(bytes)));}
       }
     }finally{

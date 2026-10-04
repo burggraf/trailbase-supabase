@@ -2,7 +2,11 @@
 
 **Current phase: A — proof harness; G1 contract completion is blocked. No SDK feature is signed off.**
 
-## Active approved G2/G3 unsupported-input characterization
+## Active approved G2/G3 invalid-Date edge characterization
+
+Following checkpoint `d6b3ce7`, added invalid JavaScript `Date` mutation probes. `JSON.stringify` may serialize invalid Date as `null`; verify genuine installed clients' actual outgoing bodies, backend NOT NULL rejection, complete owner/audit invariants and teardown in Node and browsers. No fixture/schema/production SDK changes. Pinned Node 22/24 units **50/50** and Node 22 typecheck passed at source `7c5c7833607daa634b3b10556b653221886b1c5d6fbc3da293705761d6086332`. Focused immutable-source [boundaries 8/8](evidence/phase-a-invalid-date-boundaries-node22.json) and [browser 60/6](evidence/phase-a-invalid-date-browser-node22.json) completed with all six new cases passing across native/reference Chromium/Firefox/WebKit, setup/cleanup passed. Full thirteen-scope refresh under `proc_33fb` completed ([summary](evidence/phase-a-invalid-date-local-summary.json)): boundaries 8/8; browser 60/6; network 6/1; constraints 6/6; streaming 5/5; lifecycle 9/3; stock 96/6; proofs 34/34; expiry 2/2; candidate characterization 10/10; candidate SMTP 0/1; migration/cleanup 1/1. All exact-source reports/setup/cleanup/counts remain to be independently audited before checkpoint; preserve hydration/header/G1/G7/SMTP strict failures. No source changes during refresh.
+
+## Previous approved G2/G3 unsupported-input characterization
 
 Read-only independent review and pristine pinned-source ordering check are [recorded](evidence/phase-a-permissive-origin-independent-review.json). `openai-codex/gpt-6.1-sol` found no issues in bounded permissive-origin characterization; this is advisory model judgment, not maintainer signoff. Runtime tests probe revocation after Fetch completion; separate exact-parent source shows awaited user-session deletion before redirect response construction. Public logout impact/severity, new logout runtime probes, transport changes and public submission remain unapproved.
 

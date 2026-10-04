@@ -1,0 +1,8 @@
+{
+  "sourceSha256": "7c5c7833607daa634b3b10556b653221886b1c5d6fbc3da293705761d6086332",
+  "command": "Node 22.23.2 npm run check during new immutable-source run before copying same-source unit artifact",
+  "exitCode": 1,
+  "error": "Error: Stale/missing current-source evidence: A01",
+  "cause": "Ledger's verified A01 requires passing current-source evidence. Source hash changed for approved invalid-Date test changes; latest passing unit report 50/50 was generated at the new source but had not yet been copied into its authoritative evidence path when check ran.",
+  "correction": "Retain this order-of-operations failure. Copy the already-passing current-source 50/50 unit JSON to current evidence paths, then rerun npm run check/progress; no test, feature status, source input or gate assertion changes."
+}

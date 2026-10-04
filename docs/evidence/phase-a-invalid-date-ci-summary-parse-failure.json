@@ -1,0 +1,12 @@
+{
+  "sourceSha256": "7c5c7833607daa634b3b10556b653221886b1c5d6fbc3da293705761d6086332",
+  "command": "Post-run evidence JSON recursive parse/privacy scan",
+  "exitCode": 1,
+  "error": "JSONDecodeError: Expecting ',' delimiter: line 13 column 3 (char 1935)",
+  "file": "docs/evidence/phase-a-ci-input-shapes-summary.json",
+  "cause": "Earlier evidence writer omitted comma after privacyAudit property. Scan stopped on this file and made no credential-scan claim for full corpus.",
+  "correction": "Repair delimiter only, parse/scan all reports again; preserve this bookkeeping error. No CI/test outcome or source changed.",
+  "subsequentAuditToolError": "Python AttributeError: 'str' object has no attribute 'name' while comparing the one known prose match; script passed file path as string then used pathlib .name. No JSON/secret-scan result inferred from this failed invocation.",
+  "next": "Compare against exact pathlib.Path string basename or keep Path object; rerun complete recursive scan.",
+  "subsequentExactPhraseMatch": "The recursive scanner found the documented credential-header wording in the new local-summary privacyAudit prose field, not a credential. It stopped there; no scan completion claimed. Add only this exact file/field/literal to the narrow prose allowlist, not a regex-wide bypass."
+}

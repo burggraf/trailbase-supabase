@@ -1,0 +1,7 @@
+{
+  "sourceSha256": "7c5c7833607daa634b3b10556b653221886b1c5d6fbc3da293705761d6086332",
+  "operation": "Read-only final scope audit exposed malformed docs/progress.json before final checkpoint.",
+  "errors": ["SyntaxError: Expected ',' or '}' after property value in JSON at position 78348 (line 1168 column 5)","SyntaxError: Expected ',' or '}' after property value in JSON at position 79937 (line 1176 column 5)"],
+  "cause": "Progress replacements first inserted fullRefreshCommand without comma separator after fullRefreshOutcome and misplaced focused/source fields outside session; second follow-up inserted finalValidation but omitted comma after typecheck string. Local test reports were already independently archived; no fixture/test outcome changed.",
+  "correction": "Repair only ledger JSON structure and finalize current source/session fields from verified reports; validate in-memory JSON before check/progress, then rerun parse/privacy and source checks before commit. Preserve both edit failures."
+}

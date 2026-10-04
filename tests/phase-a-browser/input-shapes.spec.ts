@@ -32,6 +32,9 @@ for(const backend of ['trailbase','supabase'] as const)test(`G2/G3/S02 ${backend
         else{check(!(await aReference!.from('todos').insert({id:ids[0],user_id:accounts[0].owner,title:'target-control'})).error,'A seed');check(!(await bReference!.from('todos').insert({id:ids[1],user_id:accounts[1].owner,title:'foreign-control'})).error,'B seed');}
         wire.length=0;
         const date=new Date('2024-01-02T03:04:05.000Z'),bytes=Uint8Array.from(canonical.replaceAll('-','').match(/../g)!,pair=>parseInt(pair,16));
+        const invalidDate=new Date(Number.NaN);
+        if(native){let status=0;try{await aNative!.records('todos').create({id:ids[3],user_id:accounts[0].owner,title:invalidDate});}catch(error){status=(error as {status:number}).status;}check(status===400,'native invalid Date-to-null NOT NULL rejection');}
+        else{const invalid=await aReference!.from('todos').insert({id:ids[3],user_id:accounts[0].owner,title:invalidDate});check(invalid.status===400&&invalid.error?.code==='23502'&&invalid.data===null,'reference invalid Date-to-null NOT NULL rejection');}
         if(native){check(await aNative!.records('todos').create({id:ids[2],user_id:accounts[0].owner,title:date})===ids[2],'Date text insert');check((await aNative!.records('todos').read(ids[2])).title===date.toISOString(),'literal ISO text');}
         else{check(!(await aReference!.from('todos').insert({id:ids[2],user_id:accounts[0].owner,title:date})).error,'Date text insert');const row=await aReference!.from('todos').select('*').eq('id',ids[2]).single();check(!row.error&&row.data?.title===date.toISOString(),'literal ISO text');}
         const state=async()=>{
@@ -51,9 +54,9 @@ for(const backend of ['trailbase','supabase'] as const)test(`G2/G3/S02 ${backend
           check(await state()===before,'no partial row/audit effects; B unchanged');
         };
         await rejected('date',false);await rejected('date',true);await rejected('bytes',false);await rejected('bytes',true);
-        check(JSON.stringify(wire.map(call=>call.method))===JSON.stringify(['POST','POST','PATCH','POST','PATCH']),'exactly five mutation requests, no replay');
-        check(wire[0].body.title===date.toISOString()&&wire[1].body.created_at===date.toISOString()&&wire[2].body.created_at===date.toISOString(),'actual outgoing ISO strings');
-        check(JSON.stringify(wire[3].body.id)===JSON.stringify(bytes)&&JSON.stringify(wire[4].body.priority)===JSON.stringify(bytes),'actual outgoing byte objects');
+        check(JSON.stringify(wire.map(call=>call.method))===JSON.stringify(['POST','POST','POST','PATCH','POST','PATCH']),'exactly six mutation requests, no replay');
+        check(wire[0].body.title===null&&wire[1].body.title===date.toISOString()&&wire[2].body.created_at===date.toISOString()&&wire[3].body.created_at===date.toISOString(),'actual outgoing null and ISO values');
+        check(JSON.stringify(wire[4].body.id)===JSON.stringify(bytes)&&JSON.stringify(wire[5].body.priority)===JSON.stringify(bytes),'actual outgoing byte objects');
         return true;
       }finally{
         if(native){
