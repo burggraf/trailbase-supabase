@@ -1,0 +1,12 @@
+{
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37220266931",
+  "commit": "62bbf1d47fc9332302d4714711a0a20b648af4c0",
+  "sourceCommit": "f48622e733a5fc10a4ae439c59139cb64c06009d",
+  "sourceSha256": "7c5c7833607daa634b3b10556b653221886b1c5d6fbc3da293705761d6086332",
+  "workflowConclusion": "failure",
+  "reason": "Same source as already inspected run 37218881528; required strict characterization failures reproduced, not a new regression or changed contract",
+  "units": {"node22":"50/50 passed","node24":"50/50 passed"},
+  "realScopes": {"stock":"96/6","expiry":"2/2","candidateCharacterization":"10/10","candidateSmtp":"0/1","migration":"1/1","browser":"60/6","cleanup":"1/1"},
+  "verification": "Downloaded all nine reports. Exact current source/runtime/counts/status, six ECR service image references/digests, setup inventories, loopback ports and owned setup/cleanup verified. Stock excludes private G1 suite. Browser input-shape tests passed all six engine/backend combinations; strict failures match previous exact-source run.",
+  "purpose": "Follow-up was triggered by docs/evidence-only commit 62bbf1d. Full repeated artifacts are retained privately in .runtime and not duplicated into docs; authoritative first exact-source report family remains phase-a-ci-invalid-date-*.json."
+}
