@@ -1,0 +1,8 @@
+{
+  "status": "approved",
+  "scope": "Maintainer mutation-boundary direction only; NOT G3/SDK signoff or deployment permission",
+  "sourceSha256": "36021ddc68eb4c0af3ed40850bc80a5430d663cebbed34ed3529ddc527bef7a4",
+  "decision": "One explicit primary-key operation, preserving configured database FK/trigger effects. Document that cascades may affect additional or differently owned dependent rows; owner-consistent dependencies require backend constraints, not SDK preflights or client loops.",
+  "evidence": "docs/evidence/phase-a-g3-fk-trigger-revised-constraints-node22.json",
+  "limits": "Direct owner/role rules stay mandatory. No relationship-query feature, multi-row SDK write, automatic mutation replay, client-side cascade, authorization emulation, new server patch, live schema deployment, Phase B or gate signoff is authorized. Runtime adapter/whole-matrix verification remains incomplete."
+}

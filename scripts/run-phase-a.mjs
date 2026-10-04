@@ -17,13 +17,20 @@ export async function sourceHash() {
   }
   return hash.digest('hex');
 }
+export function vitestArguments(testPath, outputFile) {
+  return ['run', testPath, ...(testPath === 'tests/phase-a' ? ['--exclude', '**/private-g1-*.test.ts'] : []), '--reporter=json', '--outputFile', outputFile];
+}
 async function main() {
   const suite = process.argv[2] ?? 'all';
   const options = process.argv.slice(3);
   if (options.some(option => option !== '--auth-mitigation') || options.length > 1) throw new Error('Unknown Phase A option');
   const authMitigation = options.includes('--auth-mitigation');
+  const privateNativePrototype = suite === 'private-g1-prototype';
+  const privateNativeUpgrade = suite === 'private-g1-upgrade';
+  const privateNativeAmbiguousUpgrade = suite === 'private-g1-ambiguous-upgrade';
+  if ((privateNativePrototype || privateNativeUpgrade || privateNativeAmbiguousUpgrade) && options.length) throw new Error('Private G1 suites have pinned source/auth variants; no fixture override is allowed');
   const nativeAuthProfile = suite === 'expiry' ? 'short-native-auth' : 'default';
-  if (!['all','database','characterization','domains','boundaries','auth-lifecycle','auth-migration','proofs','expiry','network','pagination','streaming','smtp','lifecycle','browser'].includes(suite)) throw new Error('Unknown Phase A suite');
+  if (!['all','database','constraints','characterization','domains','boundaries','auth-lifecycle','auth-migration','proofs','expiry','network','pagination','streaming','smtp','lifecycle','browser','private-g1-prototype','private-g1-upgrade','private-g1-ambiguous-upgrade'].includes(suite)) throw new Error('Unknown Phase A suite');
   if (suite === 'auth-migration' && authMitigation) throw new Error('Existing-depot migration rehearsal requires the stock fixture');
   await mkdir('.runtime', { recursive: true, mode: 0o700 });
   // ponytail: one local stack at a time; per-run locks/port reservations if concurrent local runs matter.
@@ -31,7 +38,7 @@ async function main() {
   await mkdir('.runtime/phase-a.lock');
   await writeFile('.runtime/phase-a.lock/owner.json', JSON.stringify({ runnerPid: process.pid, runId: null }), { mode: 0o600 });
   let harness, testChild;
-  const report = { scope: 'Phase A upstream/infrastructure harness, NOT SDK verification', authVariant:authMitigation ? 'candidate-email-reservation' : 'stock', suite, nativeAuthProfile, status: 'failed', startedAt: new Date().toISOString(), baseline, node: process.version, platform: `${process.platform}-${process.arch}`, tests: [], cleanup: 'not-started' };
+  const report = { scope: privateNativePrototype ? 'Private pinned upstream G1 source prototype with owned disposable services; NOT stock/default behavior, SDK verification, or gate signoff' : privateNativeUpgrade ? 'Owned existing-depot stock-to-private G1 prototype upgrade rehearsal; NOT stock behavior, deployment readiness, or gate signoff' : privateNativeAmbiguousUpgrade ? 'Owned ambiguous legacy-depot refusal rehearsal on the private G1 prototype; NOT stock behavior, deployment readiness, or gate signoff' : 'Phase A upstream/infrastructure harness, NOT SDK verification', authVariant:privateNativePrototype ? 'private-native-prototype' : privateNativeUpgrade ? 'stock-to-private-native-prototype-upgrade' : privateNativeAmbiguousUpgrade ? 'stock-to-private-native-prototype-ambiguous-refusal' : authMitigation ? 'candidate-email-reservation' : 'stock', suite, nativeAuthProfile, status: 'failed', startedAt: new Date().toISOString(), baseline, node: process.version, platform: `${process.platform}-${process.arch}`, tests: [], cleanup: 'not-started' };
   let interrupted = false;
   const interrupt = () => { interrupted = true; testChild?.kill('SIGTERM'); };
   process.on('SIGINT', interrupt); process.on('SIGTERM', interrupt);
@@ -51,26 +58,56 @@ async function main() {
     if (interrupted || code !== 0) return false;
     return true;
   }
+  async function runVitest(name, testPath) {
+    const file = resolve(harness.context.directory, `${name}.json`);
+    const success = await runTests(name, 'vitest', vitestArguments(testPath, file));
+    const results = JSON.parse(await readFile(file, 'utf8'));
+    report.tests.push(...results.testResults.flatMap(result => result.assertionResults.map(test => ({ name: test.fullName, status: test.status }))));
+    if (!success) throw new Error('Phase A assertions failed; inspect private run diagnostics');
+  }
   try {
     report.sourceSha256 = await sourceHash();
     report.baseCommit = (await exec('git', ['rev-parse','HEAD'])).stdout.trim();
     if (process.env.GITHUB_RUN_ID) report.ci = { commit:process.env.GITHUB_SHA, runUrl:`https://github.com/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}` };
-    harness = await createHarness({ authMitigation, nativeAuthProfile });
+    harness = await createHarness({ authMitigation, nativeAuthProfile, privateNativePrototype });
     report.runId = harness.context.id;
     await writeFile('.runtime/phase-a.lock/owner.json', JSON.stringify({ runnerPid:process.pid, runId:harness.context.id }), { mode:0o600 });
     const environment = await harness.start();
     report.runId = environment.id;
     report.environment = { trailVersion:environment.trailVersion, cliVersion:environment.cliVersion, containers:environment.containers };
+    if (privateNativePrototype) report.prototypePatchSha256 = environment.prototypePatchSha256;
     if (interrupted) throw new Error('Run interrupted');
-    console.log('Phase A backends ready; running real upstream checks.');
+    console.log(privateNativePrototype || privateNativeUpgrade || privateNativeAmbiguousUpgrade ? 'Private G1 disposable backend ready; running isolated checks.' : 'Phase A backends ready; running real upstream checks.');
     if (suite === 'lifecycle') { report.injectedFailure='after-start'; throw new Error('Injected fixture setup failure'); }
-    if (suite !== 'browser') {
-      const file = resolve(harness.context.directory,'vitest.json');
-      const args = ['run', ...(suite === 'all' ? ['tests/phase-a'] : suite === 'expiry' ? ['tests/expiry'] : suite === 'auth-migration' ? ['tests/migration'] : [`tests/phase-a/${suite}.test.ts`]), '--reporter=json','--outputFile',file];
-      const success = await runTests('vitest','vitest',args);
-      const results = JSON.parse(await readFile(file,'utf8'));
-      report.tests.push(...results.testResults.flatMap(result => result.assertionResults.map(test => ({ name:test.fullName, status:test.status }))));
-      if (!success) throw new Error('Phase A assertions failed; inspect private run diagnostics');
+    if (privateNativeUpgrade || privateNativeAmbiguousUpgrade) {
+      const ambiguous = privateNativeAmbiguousUpgrade;
+      const stockTest = ambiguous ? 'tests/phase-a/private-g1-ambiguous-stock.test.ts' : 'tests/phase-a/private-g1-upgrade-stock.test.ts';
+      const prototypeTest = ambiguous ? 'tests/phase-a/private-g1-ambiguous-prototype.test.ts' : 'tests/phase-a/private-g1-upgrade-prototype.test.ts';
+      const label = ambiguous ? 'ambiguous-refusal' : 'upgrade';
+      await runVitest(`${label}-stock-seed`, stockTest);
+      if (!ambiguous) report.environment.stockBackupCount = (await harness.createStockBackup()).backupCount;
+      const result = await harness.restartWithPrivatePrototype({ expectAmbiguousRefusal: ambiguous });
+      report.prototypePatchSha256 = result.patchSha256;
+      if (ambiguous) {
+        if (!result.refusedAmbiguous) throw new Error('Private prototype did not refuse the ambiguous legacy depot');
+        report.environment.prototypeStartupOutcome = 'failed-closed-on-ambiguous-legacy-identities';
+      } else {
+        if (result.refusedAmbiguous) throw new Error('Private prototype unexpectedly refused the existing depot');
+        report.environment.prototypeTrailVersion = result.trailVersion;
+      }
+      await runVitest(`${label}-prototype-verification`, prototypeTest);
+      if (!ambiguous) {
+        const restarted = await harness.restartWithPrivatePrototype();
+        if (restarted.refusedAmbiguous) throw new Error('Private prototype unexpectedly refused its second restart');
+        report.environment.prototypeSecondRestartOutcome = 'healthy';
+        await runVitest('private-prototype-repeat-restart', 'tests/phase-a/private-g1-restart-prototype.test.ts');
+        await harness.restoreStockBackupAndRestart();
+        report.environment.stockBackupRestoreOutcome = 'restored-and-stock-started';
+        await runVitest('private-prototype-stock-backup-restore', 'tests/phase-a/private-g1-backup-restore-stock.test.ts');
+      }
+    } else if (suite !== 'browser') {
+      const testPath = suite === 'all' ? 'tests/phase-a' : suite === 'expiry' ? 'tests/expiry' : suite === 'auth-migration' ? 'tests/migration' : suite === 'private-g1-prototype' ? 'tests/phase-a/private-g1-prototype.test.ts' : `tests/phase-a/${suite}.test.ts`;
+      await runVitest(suite, testPath);
     }
     if (suite === 'all' || suite === 'browser') {
       const file = resolve(harness.context.directory,'playwright.json');

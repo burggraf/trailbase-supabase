@@ -1,7 +1,7 @@
 import type { Tokens } from 'trailbase';
 
 export class StaleAuthProofOperation extends Error {
-  constructor(){super('Discarded stale proof auth operation');this.name='StaleAuthProofOperation';}
+  constructor(readonly cleanupFailed=false,options?:ErrorOptions){super('Discarded stale proof auth operation',options);this.name='StaleAuthProofOperation';}
 }
 export class AuthProofHttpError extends Error {
   constructor(readonly status:number){super(`Native auth HTTP ${status}`);this.name='AuthProofHttpError';}
@@ -17,11 +17,25 @@ export function authCoordinationProof(forward:(path:string,init?:RequestInit)=>P
   });
   const check=(started:number)=>{if(epoch!==started)throw new StaleAuthProofOperation();};
   const clear=()=>{++epoch;tokens=undefined;pending=undefined;};
+  async function revoke(refresh_token:Tokens['refresh_token']|undefined) {
+    if(typeof refresh_token!=='string'||!refresh_token)throw new TypeError('Missing discarded-session refresh credential');
+    const response=await forward('/api/auth/v1/logout',{method:'POST',headers:{'content-type':'application/json'},credentials:'omit',redirect:'error',body:JSON.stringify({refresh_token})});
+    await response.body?.cancel();
+    if(!response.ok)throw new AuthProofHttpError(response.status);
+  }
   async function login(email:string,password:string) {
     clear();const started=epoch;
     const response=await forward('/api/auth/v1/login',{method:'POST',headers:headers(),body:JSON.stringify({email_or_username:email,password})});
     if(!response.ok){check(started);throw new AuthProofHttpError(response.status);}
-    const actual:Tokens=await response.json();check(started);tokens=actual;
+    const actual:Tokens=await response.json();
+    if(epoch!==started) {
+      // Revoke only this newly decoded genuine session, never a newer cache or siblings.
+      // Missing/undecodable responses cannot establish a remote-cleanup claim.
+      try {await revoke(actual.refresh_token);}
+      catch(cause){throw new StaleAuthProofOperation(true,{cause});}
+      throw new StaleAuthProofOperation();
+    }
+    tokens=actual;
   }
   function refresh():Promise<boolean> {
     if(pending)return pending;
@@ -45,11 +59,17 @@ export function authCoordinationProof(forward:(path:string,init?:RequestInit)=>P
     const actual=await response.json();check(started);
     if(actual.auth_token)tokens=actual;else clear();
   }
-  async function logout() {
+  // Existing proof callers default to local; future public signOut defaults to global.
+  async function logout(scope:'local'|'global'='local') {
+    if(scope!=='local'&&scope!=='global')throw new TypeError('Unsupported proof logout scope');
     const current=tokens;clear();
     if(!current)return;
-    const response=await forward('/api/auth/v1/logout',{method:'POST',headers:headers(current),body:JSON.stringify({refresh_token:current.refresh_token})});
-    if(!response.ok)throw new AuthProofHttpError(response.status);
+    if(scope==='local'){await revoke(current.refresh_token);return;}
+    // Global candidate redirect following is investigated separately, not enabled here.
+    const response=await forward('/api/auth/v1/logout',{method:'GET',headers:headers(current),redirect:'manual'});
+    await response.body?.cancel();
+    // Only the characterized root redirect counts as global success; never follow it.
+    if(!response.ok&&!(scope==='global'&&[302,303].includes(response.status)&&response.headers.get('location')==='/'))throw new AuthProofHttpError(response.status);
   }
   return {login,refresh,validate,logout,tokens:()=>tokens,headers:()=>headers()};
 }

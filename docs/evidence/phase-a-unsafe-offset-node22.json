@@ -1,0 +1,40 @@
+{
+  "scope": "G2/G4 stock installed-client unsafe-offset wire characterization; NOT adapter validation/signoff",
+  "status": "passed",
+  "baseline": {
+    "trailbaseVersion": "0.34.3",
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2"
+  },
+  "sourceSha256": "8a73d25e7cfa931addeac5095ef55db9abcdc3b3833b8040a2aa36c1b4bfaef8",
+  "baseCommit": "915afbd44cd5822955d6cf2986842e948a5fc4fc",
+  "runId": "1791054824719-92efd674e751",
+  "platform": "darwin-arm64",
+  "suite": "pagination",
+  "suiteCases": { "passed": 6, "failed": 0 },
+  "cleanup": "passed",
+  "probe": {
+    "offset": 9007199254740992,
+    "limit": 1,
+    "offsetIsSafeInteger": false,
+    "trailbaseClient": {
+      "wireOffset": "9007199254740992",
+      "wireLimit": "1",
+      "result": "successful empty out-of-range page"
+    },
+    "supabaseClient": {
+      "wireOffset": "9007199254740992",
+      "wireLimit": "1",
+      "httpStatus": 200,
+      "data": []
+    }
+  },
+  "interpretation": "Both installed clients accepted this exact representable 2^53 offset and serialized the same offset/limit. A successful empty page is expected because the fixture has only six owned rows. This establishes observed behavior, not safe-integer validation; adjacent integers above 2^53 are not all representable by JavaScript Number.",
+  "limits": [
+    "One macOS disposable SQLite/local-Supabase run; no cross-platform CI rerun.",
+    "No production adapter implementation or maintainer field/domain signoff is inferred.",
+    "Does not test end-bound overflow, all adjacent unsafe integers, or recommend supporting unsafe page offsets."
+  ]
+}

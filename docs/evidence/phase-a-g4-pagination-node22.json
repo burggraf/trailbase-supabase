@@ -1,0 +1,30 @@
+{
+  "scope": "Stock Phase A G2/G4 page-bound and count characterization; upstream clients only, NOT SDK or adapter verification",
+  "status": "passed",
+  "runId": "1791057117771-f3e2e0419cd7",
+  "sourceSha256": "9ef664b7a7253afb25f622b2bbd3856237a1f86bb6a6b02bd77a235ea2fb3cd4",
+  "baseline": {
+    "trailbase": "0.34.3",
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2",
+    "platform": "darwin-arm64"
+  },
+  "suite": "pagination",
+  "passedCases": 6,
+  "cleanup": "passed",
+  "characterized": [
+    "Exact count/page and HEAD/no-body observations.",
+    "Malformed NaN bounds and invalid/cap bounds have backend-specific behavior; they remain reject-before-wire adapter inputs.",
+    "Reference last-set wire bounds preserve zero-width range errors; ordinary no-count out-of-range pages remain empty.",
+    "Out-of-range exact-count behavior differs: native loses total while reference returns a range error.",
+    "Both installed clients serialize the unsafe offset 2^53 and return an empty out-of-range page."
+  ],
+  "explicitNonClaims": [
+    "No range/query adapter implementation or request-count/error-origin tests.",
+    "No G2/G4 gate signoff.",
+    "Malformed inputs observed in the stock clients are not accepted by the approved portable input domain."
+  ],
+  "rawArtifact": "artifacts/phase-a/1791057117771-f3e2e0419cd7.json"
+}

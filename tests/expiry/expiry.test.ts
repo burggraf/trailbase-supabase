@@ -1,6 +1,6 @@
 import { beforeAll,describe,it,expect } from 'vitest';
 import { randomUUID } from 'node:crypto';
-import { context,confirmedTrailUser,nativeUuid,deadline,type Context } from '../phase-a/helpers.js';
+import { context,confirmedTrailUser,nativeUuid,deadline,trailbase,type Context } from '../phase-a/helpers.js';
 import { nativeSseProof } from '../proofs/native-sse.js';
 
 let env:Context;
@@ -18,8 +18,9 @@ async function waitActualDenial(protectedRead:()=>Promise<Response>) {
   throw new Error('Actual native access expiry deadline exceeded');
 }
 describe('L1-27 G6/S07 actual native token expiry, NOT default fixture or reference/browser parity',()=>{
-  it('established streams retain connection-scoped access after JWT expiry; new connections reject the expired token',async()=>{
-    const account=await confirmedTrailUser(env,'actual-expiry');
+  it('established streams retain connection-scoped access; expired tokens deny new streams but can yield misleading global-logout acknowledgements',async()=>{
+    const account=await confirmedTrailUser(env,'actual-expiry'),sibling=trailbase(env);
+    await sibling.login(account.email,account.password);
     const response=await account.client.fetch('/api/records/v1/todos/subscribe/*');
     expect(response.ok).toBe(true);if(!response.body)throw new Error('Actual native stream missing');
     const original=account.client.tokens()!;
@@ -39,6 +40,16 @@ describe('L1-27 G6/S07 actual native token expiry, NOT default fixture or refere
         headers:{Authorization:`Bearer ${original.auth_token}`},signal:AbortSignal.timeout(5000)
       });
       expect([401,403]).toContain(expiredConnection.status);await expiredConnection.body?.cancel();
+      // Genuine expired JWT, not an edited/forged token or a fake acknowledgement.
+      const acknowledged=await fetch(`${env.trailUrl}/api/auth/v1/logout?redirect_uri=%2Fapi%2Fhealthcheck`,{
+        method:'GET',headers:{Authorization:`Bearer ${original.auth_token}`},credentials:'omit',redirect:'follow',signal:AbortSignal.timeout(5000)
+      });
+      expect(acknowledged.status).toBe(200);expect(acknowledged.redirected).toBe(true);
+      expect(acknowledged.url).toBe(`${env.trailUrl}/api/healthcheck`);await acknowledged.body?.cancel();
+      for(const refresh_token of [original.refresh_token,sibling.tokens()!.refresh_token]){
+        const stillLive=await fetch(`${env.trailUrl}/api/auth/v1/refresh`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({refresh_token}),signal:AbortSignal.timeout(5000)});
+        expect(stillLive.status).toBe(200);await stillLive.body?.cancel();
+      }
       const pending=parser.next();
       const id=nativeUuid(randomUUID()),title=`after-expiry-${randomUUID()}`;
       // The writer is freshly refreshed by the installed SDK; only the subscription keeps the old JWT.
@@ -51,7 +62,7 @@ describe('L1-27 G6/S07 actual native token expiry, NOT default fixture or refere
       if(!('Insert' in result.value))throw new Error('Established native stream did not deliver the expected insert');
       expect((result.value.Insert as Record<string,unknown>).id).toBe(id);
       expect((result.value.Insert as Record<string,unknown>).title).toBe(title);
-    } finally {abort.abort();await parser.return(undefined).catch(()=>{});}
+    } finally {abort.abort();await parser.return(undefined).catch(()=>{});await sibling.logout();}
   },100000);
   it('standard client deadline abort stops local delivery at genuine JWT exp, NOT server authorization enforcement',async()=>{
     const account=await confirmedTrailUser(env,'client-expiry-deadline'),original=account.client.tokens()!;

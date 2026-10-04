@@ -1,0 +1,28 @@
+{
+  "scope": "Stock Phase A scalar-domain and ordering characterization; upstream clients only, NOT adapter verification/signoff",
+  "status": "passed",
+  "runId": "1791057282052-98ef548466ac",
+  "sourceSha256": "9ef664b7a7253afb25f622b2bbd3856237a1f86bb6a6b02bd77a235ea2fb3cd4",
+  "baseline": {
+    "trailbase": "0.34.3",
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2",
+    "platform": "darwin-arm64"
+  },
+  "suite": "domains",
+  "passedCases": 4,
+  "cleanup": "passed",
+  "observations": [
+    "All six numeric comparison operators selected exact golden IDs, including tied values.",
+    "Reserved characters, Unicode and combining marks remained literal in predicates.",
+    "Inequality excluded null; explicitly declared boolean and UUID filters selected only intended rows.",
+    "Numeric ties were deterministic with an explicit key tie-breaker; lowercase ASCII text sorted identically in both backends in both directions."
+  ],
+  "explicitNonClaims": [
+    "No cross-backend Unicode/collation ordering guarantee.",
+    "No nullable ordering, general schema domain, adapter implementation or G2/G4 signoff."
+  ],
+  "rawArtifact": "artifacts/phase-a/1791057282052-98ef548466ac.json"
+}

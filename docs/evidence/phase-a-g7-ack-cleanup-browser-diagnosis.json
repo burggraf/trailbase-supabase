@@ -1,0 +1,16 @@
+{
+  "scope": "Sanitized diagnosis of initial browser fixture assumption; NOT global-logout acknowledgement/signoff",
+  "status": "diagnosed-not-yet-reverified",
+  "sourceSha256": "22817a13171dfa8900b54c2ec22773bedc8682f8274061e1b16d6c09e876dd3a",
+  "report": "docs/evidence/phase-a-g7-ack-cleanup-diagnostic-browser-node22.json",
+  "runId": "1791065877310-2e90ca130d80",
+  "browserResult": { "passed": 40, "failed": 2, "setup": "passed", "cleanup": "passed" },
+  "observations": {
+    "chromium": { "foreignFetch": "readable foreign response; rejected as native acknowledgement", "acceptedGetArrivals": 1, "authorizationPresent": false, "refreshPresent": false, "csrfPresent": false, "cookiePresent": false },
+    "firefox": { "failureStage": "foreign-redirect", "transportError": "NetworkError when attempting to fetch resource", "acceptedGetArrivals": 0 },
+    "webkit": { "failureStage": "foreign-redirect", "transportError": "Load failed", "acceptedGetArrivals": 0 }
+  },
+  "limits": "The initial sink counted only accepted GETs, not rejected preflights; no claim about every incoming request is inferred from these initial zero counts. Fixed-target genuine/anonymous/invalid assertions completed before the foreign-stage failures. All 12 new discarded-login browser cases passed, but the complete browser scope remains red.",
+  "correction": "Permit the characterized pinned-engine foreign redirect block only when a genuine TypeError is observed at that exact fetch, then independently require actual native refresh revocation. Chromium still requires a readable foreign response rejected by origin. All engines must prove credential absence, omitted-cookie marker preservation and owned cleanup. The sink now counts all known-route methods plus accepted GETs, so rejected preflights cannot hide credentials. Preserve both failed reports; no auth/security assertion is waived.",
+  "remaining": "Reverify the corrected negative transport assertion and all current-source controls. Anonymous/invalid/expired readable health 200 remains not an authenticated revocation receipt; manual global coordinator is unchanged and G7 remains blocked."
+}

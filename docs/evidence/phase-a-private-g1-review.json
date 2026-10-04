@@ -1,0 +1,31 @@
+{
+  "scope": "Independent read-only review of the isolated private G1 prototype and single HTTP/SMTP rehearsal; no edits/build/services/upstream contact; NOT stock behavior or gate signoff",
+  "reviewerRun": "ba505753-d0fd-44a1-8302-033b969211fe",
+  "reportedVerdict": "OK with notes for the isolated private prototype only",
+  "reviewedPatchSha256Claim": "c76f14a0bff3f391435a10073c2fb741d0c27528bdd29dfad464022d1d0f86c9",
+  "provenanceLimit": "Reviewer did not independently recompute patch hash, verify nested checkout base, or inspect migration-runner implementation; exact-patch gating and test harness perform separate local checks.",
+  "finding": {
+    "severity": "P2",
+    "location": "tests/phase-a/private-g1-prototype.test.ts",
+    "summary": "Protected-record assertion previously accepted any failure and did not establish authorization denial.",
+    "resolution": "Assertion now accepts only explicit HTTP authorization status 401 or 403; the private real HTTP/SMTP rehearsal passed again.",
+    "rerunEvidence": "docs/evidence/phase-a-private-g1-http-smtp.json"
+  },
+  "reviewedStrengths": [
+    "Migration refuses conflicting existing identities without merging, deleting or reassigning owners; pending uniqueness and email-change triggers are described by the reviewed patch.",
+    "Confirmation binds the signed subject UUID and address in one guarded update; pending resend lookup is local and shared verified-email lookup semantics remain unchanged.",
+    "Added native tests compare ID/password hash around retries/confirmation and reject replacement-password login and stale address-reuse confirmation.",
+    "Native result correctly distinguishes 23 executions from 22 unique tests; build evidence correctly identifies a dev/debug binary, not a release build.",
+    "Parent follow-up added a same-server concurrent case-insensitive signup HTTP test; both the recovery case and this race case passed on the private prototype. The independent reviewer did not assess that follow-up test."
+  ],
+  "residualRisksAndTestGaps": [
+    "Successful upgrade/restart on a genuine existing depot, backup/restore, history replay, broader collision variants, multi-process/multi-server signup races, and independent-connection confirmation/email-change/delete races. The follow-up covers only two concurrent signup HTTP requests to one server.",
+    "Public resend SMTP failure consumes the existing four-hour throttle; immediate retry is not established.",
+    "Resend/address-change/delete races, same-ID address lifecycle replay, throttle concurrency/restart/expiry, broader anti-enumeration, and OAuth/anonymous/email-change paths.",
+    "SQLite NOCASE behavior does not establish Unicode normalization or PostgreSQL parity; browser/Linux and broader security/lifecycle matrices remain incomplete."
+  ],
+  "explicitNonClaims": [
+    "Does not change stock v0.34.3 or reservation-only SQL-candidate SMTP failure evidence.",
+    "Does not establish production readiness, deployment approval, upstream acceptance or G1 signoff."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "scope": "Stock G2/G4 reference range, cardinality and repeated-builder characterization; NOT adapter verification or signoff",
+  "suiteStatus": "failed",
+  "runId": "1791057816368-f39af3b72a9d",
+  "sourceSha256": "23ce2700480a6748e577520e1232b9c4f72ebbbda668c6cb08b707f60ecfe9b7",
+  "baseline": {
+    "trailbase": "0.34.3",
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "node": "22.23.2",
+    "platform": "darwin-arm64"
+  },
+  "suite": "characterization",
+  "passedCases": 9,
+  "failedCases": 1,
+  "cleanup": "passed",
+  "preservedFailure": "Strict stock G1 native unconfirmed-duplicate recovery/credential-preservation case remained failed; it was not normalized away.",
+  "g2G4Case": {
+    "name": "G2/G4 reference ranges/caps/zero/cardinality and repeated builder awaits are characterized",
+    "status": "passed",
+    "observations": [
+      "single errors with zero or multiple rows and succeeds with one row.",
+      "maybeSingle returns null without error for zero, returns an object for one, and errors with null data for multiple rows.",
+      "Explicit range/limit call order produces the characterized last-effective-bound results; no implicit limit is needed to observe cardinality.",
+      "Each await of the same mutation builder sends again; the second insert surfaces the duplicate-key failure rather than being memoized."
+    ]
+  },
+  "explicitNonClaims": [
+    "This G4 characterization pass is not an overall-green stock suite.",
+    "No adapter implementation, request-count/error-origin tests, or gate signoff."
+  ],
+  "rawArtifact": "artifacts/phase-a/1791057816368-f39af3b72a9d.json"
+}

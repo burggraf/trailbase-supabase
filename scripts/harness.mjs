@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:net';
-import { randomUUID } from 'node:crypto';
-import { mkdir, readFile, writeFile, cp, rm, open } from 'node:fs/promises';
+import { createHash, randomUUID } from 'node:crypto';
+import { mkdir, readFile, writeFile, cp, rm, open, lstat } from 'node:fs/promises';
 import { resolve, relative, sep } from 'node:path';
 import { once } from 'node:events';
 import { baseline, exec, installTrail } from './tools.mjs';
@@ -84,7 +84,45 @@ export function nativeAuthConfig(config, profile) {
 }
 
 // All paths/ports/project names are generated here; callers cannot target a hosted project.
-export async function createHarness({ authMitigation = false, nativeAuthProfile = 'default' } = {}) {
+export function fixtureAuthVariant({ authMitigation = false, privateNativePrototype = false } = {}) {
+  if (authMitigation && privateNativePrototype) throw new Error('Auth reservation candidate and private source prototype are mutually exclusive');
+  return privateNativePrototype ? 'private-native-prototype' : authMitigation ? 'candidate-email-reservation' : 'stock';
+}
+
+export async function verifyPrivateG1Prototype() {
+  const source = resolve('.runtime/upstream-g1/source');
+  const baseCommit = 'eab5039392a624736ab0c6a9f07f6793423dc979';
+  const patchSha256 = 'c76f14a0bff3f391435a10073c2fb741d0c27528bdd29dfad464022d1d0f86c9';
+  const { stdout: head } = await exec('git', ['-C', source, 'rev-parse', 'HEAD']);
+  const { stdout: branch } = await exec('git', ['-C', source, 'branch', '--show-current']);
+  if (head.trim() !== baseCommit || branch.trim() !== 'private/g1-pending-recovery') throw new Error('Private G1 prototype base/ref mismatch');
+  const { stdout: staged } = await exec('git', ['-C', source, 'diff', '--cached', '--name-only']);
+  if (staged.trim()) throw new Error('Private G1 prototype has staged changes');
+  const { stdout: status } = await exec('git', ['-C', source, 'status', '--short']);
+  const changed = status.split('\n').filter(Boolean).map(line => line.slice(3)).sort();
+  const expected = ['crates/core/migrations/main/U1790991000__reserve_auth_email.sql','crates/core/src/auth/api/verify_email.rs','crates/core/src/migrations.rs'].sort();
+  if (JSON.stringify(changed) !== JSON.stringify(expected)) throw new Error('Private G1 prototype changed-file set mismatch');
+  const { stdout: trackedDiff } = await exec('git', ['-C', source, 'diff', '--binary']);
+  let migrationDiff;
+  try {
+    await exec('git', ['-C', source, 'diff', '--no-index', '--binary', '/dev/null', 'crates/core/migrations/main/U1790991000__reserve_auth_email.sql'], { cwd: source });
+    throw new Error('Expected the private migration to be an untracked prototype file');
+  } catch (error) {
+    if (error.code !== 1) throw error;
+    migrationDiff = error.stdout;
+  }
+  const actualPatch = createHash('sha256').update(trackedDiff).update(migrationDiff).digest('hex');
+  if (actualPatch !== patchSha256) throw new Error('Private G1 prototype patch hash mismatch');
+  const { stdout: submodules } = await exec('git', ['-C', source, 'submodule', 'status']);
+  if (!submodules.includes(' deac51f04b37e2d01b83e403fd22e4fa5acba800 ') || !submodules.includes(' d0006d774bc8f0f8bee3b3be8353f7299088adbd ')) throw new Error('Private G1 prototype submodule pin mismatch');
+  const binary = resolve(source, 'target/debug/trail');
+  const info = await lstat(binary);
+  if (!info.isFile() || (info.mode & 0o111) === 0) throw new Error('Private G1 prototype binary missing or not executable');
+  return { binary, baseCommit, branch: branch.trim(), patchSha256 };
+}
+
+export async function createHarness({ authMitigation = false, nativeAuthProfile = 'default', privateNativePrototype = false } = {}) {
+  const authVariant = fixtureAuthVariant({ authMitigation, privateNativePrototype });
   const nativeConfig = nativeAuthConfig(await readFile('tests/fixtures/trailbase/config.textproto','utf8'),nativeAuthProfile);
   const id = `${Date.now()}-${randomUUID().replaceAll('-', '').slice(0,12)}`;
   const directory = resolve('.runtime/runs', id);
@@ -98,10 +136,10 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
   const origins = ['API_PORT','MAIL_PORT','TRAIL_PORT'].map(key => `http://127.0.0.1:${ports[key]}`);
   const childEnv = { ...process.env };
   for (const key of Object.keys(childEnv)) if (key.startsWith('SUPABASE_') || key.startsWith('TRAILBASE_')) delete childEnv[key];
-  const context = { id, project, directory, setupStage:'created', origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, authVariant: authMitigation ? 'candidate-email-reservation' : 'stock' };
-  const ownerRecord = { id, project, nativeAuthProfile, authVariant:context.authVariant, runnerPid: process.pid, trailPid: null };
+  const context = { id, project, directory, setupStage:'created', origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, authVariant };
+  const ownerRecord = { id, project, nativeAuthProfile, authVariant, runnerPid: process.pid, trailPid: null };
   await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
-  let trail, log;
+  let trail, log, stockBinary, stockBackupTimestamp;
   let startAttempted = false;
   async function command(args, name) {
     try {
@@ -143,9 +181,24 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     // Diagnostics stay private and gitignored. Delete only the owned depot (including keys/data).
     await rm(resolve(directory, 'traildepot'), { recursive: true, force: true });
     await rm(resolve(directory, 'context.json'), { force: true });
+    await rm(resolve(directory, 'private-g1-upgrade-fixture.json'), { force: true });
+  }
+  async function launchTrail(binary, logName) {
+    log = await open(resolve(directory, logName), 'w', 0o600);
+    trail = spawn(binary, ['--depot', resolve(directory, 'traildepot'), 'run', '--address', `127.0.0.1:${ports.TRAIL_PORT}`, '--admin-address', `127.0.0.1:${ports.ADMIN_PORT}`, '--public-dir', resolve(directory, 'public'), '--runtime-threads', '2'], {
+      env: childEnv, stdio: ['ignore', log.fd, log.fd]
+    });
+    trail.on('error', () => {});
+    ownerRecord.trailPid = trail.pid ?? null;
+    await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
   }
   async function start() {
     context.setupStage='config-and-binaries';
+    const prototype = privateNativePrototype ? await verifyPrivateG1Prototype() : null;
+    if (prototype) {
+      context.prototypePatchSha256 = prototype.patchSha256;
+      ownerRecord.prototypePatchSha256 = prototype.patchSha256;
+    }
     const { stdout: dockerHost } = await exec('docker', ['context', 'inspect', '--format', '{{.Endpoints.docker.Host}}']);
     if (process.env.DOCKER_HOST && !process.env.DOCKER_HOST.startsWith('unix://') || !dockerHost.trim().startsWith('unix://')) {
       throw new Error('Fixture requires a local Unix-socket Docker daemon');
@@ -155,7 +208,8 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await cp(resolve('tests/fixtures/supabase'), resolve(directory, 'supabase'), { recursive: true });
     const values = { ...ports, PROJECT_ID: project };
     await writeFile(resolve(directory, 'supabase/config.toml'), replaceTokens(await readFile('tests/fixtures/supabase/config.toml', 'utf8'), values));
-    const binary = await installTrail();
+    const binary = prototype?.binary ?? await installTrail();
+    if (!prototype) stockBinary = binary;
     const { stdout: trailVersion } = await exec(binary, ['--version']);
     if (!trailVersion.includes(baseline.trailbase.version)) throw new Error('TrailBase version drift');
     console.log('Starting disposable Supabase (first run may download images)...');
@@ -188,13 +242,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
       await writeFile(resolve(directory,'proof-build-private.log'),String(error.stdout??'')+String(error.stderr??''),{mode:0o600});
       throw new Error('Phase A browser proof build failed; inspect private diagnostics');
     }
-    log = await open(resolve(directory, 'trail.log'), 'w', 0o600);
-    trail = spawn(binary, ['--depot', depot, 'run', '--address', `127.0.0.1:${ports.TRAIL_PORT}`, '--admin-address', `127.0.0.1:${ports.ADMIN_PORT}`, '--public-dir', publicDirectory, '--runtime-threads', '2'], {
-      env: childEnv, stdio: ['ignore', log.fd, log.fd]
-    });
-    trail.on('error', () => {}); // Attach before awaiting I/O; waitReady reports failure without dumping private logs.
-    ownerRecord.trailPid = trail.pid ?? null;
-    await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
+    await launchTrail(binary, 'trail.log');
     context.setupStage='native-health';
     await waitReady(`${context.trailUrl}/api/healthcheck`, 30000, trail);
     const marker = await fetch(`${context.trailUrl}/phase-a-owner.txt`,{signal:AbortSignal.timeout(5000)});
@@ -224,5 +272,76 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     context.setupStage='ready';
     return { ...context, containers, trailVersion: trailVersion.trim(), cliVersion: version.trim() };
   }
-  return { context, start, cleanup };
+  async function restartWithPrivatePrototype({ expectAmbiguousRefusal = false } = {}) {
+    if (!startAttempted || !['stock', 'private-native-prototype'].includes(context.authVariant) || !trail) throw new Error('Private G1 restart requires a running owned fixture');
+    const fromStock = context.authVariant === 'stock';
+    await stopChild(trail);
+    await log?.close();
+    trail = undefined;
+    log = undefined;
+    const prototype = await verifyPrivateG1Prototype();
+    const { stdout: version } = await exec(prototype.binary, ['--version']);
+    if (!version.includes(baseline.trailbase.version)) throw new Error('Private TrailBase version drift');
+    context.authVariant = 'private-native-prototype';
+    context.prototypePatchSha256 = prototype.patchSha256;
+    ownerRecord.authVariant = context.authVariant;
+    ownerRecord.prototypePatchSha256 = prototype.patchSha256;
+    context.setupStage = fromStock ? 'private-prototype-upgrade' : 'private-prototype-restart';
+    await launchTrail(prototype.binary, fromStock ? 'trail-upgrade.log' : 'trail-repeat-restart.log');
+    try {
+      await waitReady(`${context.trailUrl}/api/healthcheck`, 30000, trail);
+    } catch {
+      if (!expectAmbiguousRefusal || (trail.exitCode === null && trail.signalCode === null)) throw new Error('Private prototype startup failed; inspect private run diagnostics');
+      const logText = await readFile(resolve(directory, 'trail-upgrade.log'), 'utf8').catch(() => '');
+      if (!/CHECK constraint failed/i.test(logText)) throw new Error('Private prototype startup failed for an unexpected reason; inspect private run diagnostics');
+      context.setupStage = 'private-prototype-ambiguous-refusal';
+      await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
+      return { ...context, trailVersion: version.trim(), patchSha256: prototype.patchSha256, refusedAmbiguous: true };
+    }
+    const marker = await fetch(`${context.trailUrl}/phase-a-owner.txt`, { signal: AbortSignal.timeout(5000) });
+    if (!marker.ok || await marker.text() !== id) throw new Error('Fixture origin ownership mismatch after prototype upgrade');
+    context.setupStage = 'ready';
+    await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
+    return { ...context, trailVersion: version.trim(), patchSha256: prototype.patchSha256, refusedAmbiguous: false };
+  }
+  async function runStockBackupCommand(name, args) {
+    if (!stockBinary) throw new Error('Stock TrailBase binary unavailable for owned backup rehearsal');
+    try {
+      const result = await exec(stockBinary, ['--depot', resolve(directory, 'traildepot'), 'backups', ...args], { env: childEnv, timeout: 30000 });
+      await writeFile(resolve(directory, `${name}.log`), result.stdout + result.stderr, { mode: 0o600 });
+      return result.stdout;
+    } catch (error) {
+      await writeFile(resolve(directory, `${name}.log`), String(error.stdout ?? '') + String(error.stderr ?? ''), { mode: 0o600 });
+      throw new Error(`Owned stock backup ${name} failed; inspect private run diagnostics`);
+    }
+  }
+  async function createStockBackup() {
+    if (!startAttempted || context.authVariant !== 'stock' || !trail) throw new Error('Stock backup requires the owned stock server and depot');
+    await runStockBackupCommand('backup-create', ['trigger']);
+    const listing = await runStockBackupCommand('backup-list', ['list']);
+    const timestamps = [...listing.matchAll(/^\s*(\d+):/gm)].map(match => Number(match[1]));
+    if (timestamps.length !== 1 || !Number.isSafeInteger(timestamps[0])) throw new Error('Expected exactly one owned stock backup');
+    stockBackupTimestamp = timestamps[0];
+    return { backupCount: timestamps.length };
+  }
+  async function restoreStockBackupAndRestart() {
+    if (!startAttempted || context.authVariant !== 'private-native-prototype' || !trail || stockBackupTimestamp === undefined) throw new Error('Stock backup restore requires an upgraded owned depot and verified backup');
+    await stopChild(trail);
+    await log?.close();
+    trail = undefined;
+    log = undefined;
+    await runStockBackupCommand('backup-restore', ['restore', String(stockBackupTimestamp)]);
+    context.authVariant = 'stock';
+    delete context.prototypePatchSha256;
+    ownerRecord.authVariant = 'stock';
+    delete ownerRecord.prototypePatchSha256;
+    context.setupStage = 'stock-backup-restored';
+    await launchTrail(stockBinary, 'trail-restored-stock.log');
+    await waitReady(`${context.trailUrl}/api/healthcheck`, 30000, trail);
+    const marker = await fetch(`${context.trailUrl}/phase-a-owner.txt`, { signal: AbortSignal.timeout(5000) });
+    if (!marker.ok || await marker.text() !== id) throw new Error('Fixture origin ownership mismatch after stock backup restore');
+    await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
+    return { restored: true };
+  }
+  return { context, start, restartWithPrivatePrototype, createStockBackup, restoreStockBackupAndRestart, cleanup };
 }

@@ -104,4 +104,43 @@ describe('L1-27 G2/G4 exact count/page characterization, NOT adapter count/range
     const control=await native.client.records('todos').list({filters,count:true,pagination:{limit:1}});
     expect(control.total_count).toBe(4);expect(control.records).toHaveLength(1);
   });
+  it('G2/G4 safe offsets whose range end overflows Number safety are still serialized upstream',async()=>{
+    const offset=Number.MAX_SAFE_INTEGER,limit=2,end=offset+(limit-1);
+    expect(Number.isSafeInteger(offset)).toBe(true);expect(Number.isSafeInteger(end)).toBe(false);
+    const nativeSpy=vi.spyOn(native.client,'fetch');
+    try {
+      expect((await native.client.records('todos').list({pagination:{offset,limit}})).records).toEqual([]);
+      expect(nativeSpy).toHaveBeenCalledTimes(1);
+      const params=new URL(nativeSpy.mock.calls[0][0],env.trailUrl).searchParams;
+      expect(params.get('offset')).toBe(String(offset));expect(params.get('limit')).toBe(String(limit));
+    } finally {nativeSpy.mockRestore();}
+    const session=(await reference.client.auth.getSession()).data.session;if(!session)throw new Error('Real overflowing-range session missing');
+    const observed:URL[]=[];
+    const client=createClient(env.supabaseUrl,env.anonKey,{accessToken:async()=>session.access_token,global:{fetch:(input,init)=>{
+      observed.push(new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url));return fetch(input,init);
+    }}});
+    const page=await client.from('todos').select('priority').order('priority').range(offset,end);
+    expect(page.status).toBe(200);expect(page.error).toBeNull();expect(page.data).toEqual([]);
+    expect(observed).toHaveLength(1);expect(observed[0].searchParams.get('offset')).toBe(String(offset));expect(observed[0].searchParams.get('limit')).toBe(String(limit));
+  });
+  it('G2/G4 unsafe integer offsets are serialized by installed clients and return empty out-of-range pages',async()=>{
+    const offset=Number.MAX_SAFE_INTEGER+1;
+    expect(Number.isSafeInteger(offset)).toBe(false);
+    const spy=vi.spyOn(native.client,'fetch');
+    try {
+      const page=await native.client.records('todos').list({order:['+priority'],pagination:{offset,limit:1}});
+      expect(page.records).toEqual([]);
+      expect(spy).toHaveBeenCalledTimes(1);
+      const params=new URL(spy.mock.calls[0][0],env.trailUrl).searchParams;
+      expect(params.get('offset')).toBe(String(offset));expect(params.get('limit')).toBe('1');
+    } finally {spy.mockRestore();}
+    const session=(await reference.client.auth.getSession()).data.session;if(!session)throw new Error('Real unsafe-offset session missing');
+    const observed:URL[]=[];
+    const client=createClient(env.supabaseUrl,env.anonKey,{accessToken:async()=>session.access_token,global:{fetch:(input,init)=>{
+      observed.push(new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url));return fetch(input,init);
+    }}});
+    const page=await client.from('todos').select('priority').order('priority').range(offset,offset);
+    expect(page.status).toBe(200);expect(page.error).toBeNull();expect(page.data).toEqual([]);
+    expect(observed).toHaveLength(1);expect(observed[0].searchParams.get('offset')).toBe(String(offset));expect(observed[0].searchParams.get('limit')).toBe('1');
+  });
 });

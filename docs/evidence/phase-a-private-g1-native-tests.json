@@ -1,0 +1,99 @@
+{
+  "scope": "Private isolated upstream G1 source prototype native tests only; NOT stock behavior, public SDK verification, HTTP/SMTP-outage characterization, deployment readiness, or gate signoff",
+  "status": "passed",
+  "prototype": {
+    "upstreamVersion": "TrailBase v0.34.3",
+    "baseCommit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+    "privateBranch": "private/g1-pending-recovery",
+    "changedFiles": [
+      "crates/core/migrations/main/U1790991000__reserve_auth_email.sql",
+      "crates/core/src/auth/api/verify_email.rs",
+      "crates/core/src/migrations.rs"
+    ],
+    "patchSha256": "c76f14a0bff3f391435a10073c2fb741d0c27528bdd29dfad464022d1d0f86c9",
+    "index": "unchanged/empty; no commit or push"
+  },
+  "toolchain": {
+    "rustc": "1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "1.98.1 (797e8a9bc 2026-08-05)",
+    "source": "Pinned by the upstream v0.34.3 .github/workflows/test.yml and Dockerfile",
+    "installation": "Owned private rustup/cargo homes; host default unchanged"
+  },
+  "pinnedSubmodules": {
+    "rmcp-openapi-minimal": "deac51f04b37e2d01b83e403fd22e4fa5acba800",
+    "sqlite-vec": "d0006d774bc8f0f8bee3b3be8353f7299088adbd"
+  },
+  "executions": [
+    {
+      "filter": "pending_recovery",
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "durationSeconds": 2.26,
+      "covered": "Pending identity/password preservation, concurrent duplicate reservation, opaque duplicate behavior, genuine test-transport resend/confirmation, signed identity and address-reuse checks, ambiguity refusal, migration rollback fixture."
+    },
+    {
+      "filter": "auth::auth_test::",
+      "executed": 17,
+      "passed": 17,
+      "failed": 0,
+      "durationSeconds": 22.26,
+      "covered": "Original auth controls including email change, password change/reset, OTP, login, username/unset-email, anonymous promotion, PKCE/TOTP and refresh."
+    },
+    {
+      "filter": "migrations::tests::",
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "durationSeconds": 0.07,
+      "covered": "Two original migration controls and the ambiguity-preflight rollback regression; the new regression is counted in two filter executions."
+    }
+  ],
+  "aggregate": {
+    "testExecutions": 23,
+    "distinctTests": 22,
+    "passedExecutions": 23,
+    "failedExecutions": 0,
+    "newRegressionTests": 3,
+    "originalAuthTests": 17,
+    "originalMigrationTests": 2
+  },
+  "independentParentRerun": {
+    "status": "passed",
+    "result": "3 + 17 + 3 test executions passed; the migration regression is intentionally exercised twice.",
+    "output": "Sanitized per-filter Rust summaries retained; raw output remains private."
+  },
+  "formatAndTree": {
+    "rustfmtCheck": "passed with upstream nightly-only formatting-option warnings",
+    "diffCheck": "passed",
+    "stagedFiles": 0,
+    "manifestOrLockChanges": 0,
+    "baseCommitUnchanged": true
+  },
+  "historicalAttempts": [
+    {
+      "attempt": 1,
+      "result": "failed before compilation; zero tests",
+      "cause": "Pinned vendor submodule working tree was absent; exact tracked gitlinks later restored."
+    },
+    {
+      "attempt": 2,
+      "toolchain": "Rust 1.95.0",
+      "result": "failed while compiling preexisting lib tests; zero tests",
+      "cause": "11 E0658 diagnostics for preexisting std::assert_matches usages; no source workaround was applied."
+    }
+  ],
+  "notEstablished": [
+    "Initial SMTP outage and real SMTP delivery/recovery",
+    "Real HTTP confirmation/login and protected-resource postconditions",
+    "Existing-depot restart, upgrade, backup restore, multi-server concurrency, wider OAuth/anonymous lifecycle",
+    "CLI release build or running a private prototype binary",
+    "Deployment readiness or G1 signoff"
+  ],
+  "policyBoundaries": [
+    "Existing four-hour resend throttle unchanged; a failed public resend is not immediately retryable.",
+    "Legacy ambiguous identities are refused, never deleted, merged, reassigned or automatically repaired.",
+    "SQLite NOCASE prototype only; no PostgreSQL or Unicode normalization parity claimed.",
+    "No server was launched, no production deployment or public submission occurred."
+  ]
+}

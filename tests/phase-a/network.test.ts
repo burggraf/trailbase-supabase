@@ -1,6 +1,8 @@
 import { beforeAll,describe,it,expect } from 'vitest';
 import { randomUUID } from 'node:crypto';
-import { context,confirmedTrailUser,nativeUuid,deadline,type Context } from './helpers.js';
+import { initClient } from 'trailbase';
+import { createClient } from '@supabase/supabase-js';
+import { context,confirmedTrailUser,confirmedSupabaseUser,nativeUuid,deadline,type Context } from './helpers.js';
 import { nativeSseProof } from '../proofs/native-sse.js';
 import { httpStreamFixture } from '../proofs/http-stream-fixture.js';
 
@@ -59,5 +61,77 @@ describe('L1-27 G5/S07 owned real HTTP fault fixture, NOT arbitrary TCP/browser/
       await parser?.return(undefined).catch(()=>{});await deadline(fixture.close());
       expect(fixture.stats()).toMatchObject({active:0,listening:false});
     }
+  });
+});
+
+describe('L1-27/G3/G4/S05 actual lost mutation reply, NOT SDK retry policy or browser/WAN signoff',()=>{
+  it('native insert loses its real HTTP reply, rejects observably and is reconciled without replay',async()=>{
+    const account=await confirmedTrailUser(env,'lost-native-write');
+    const id=nativeUuid(randomUUID()),control=nativeUuid(randomUUID()),title=`lost-native-${randomUUID()}`;
+    const records=account.client.records('todos');
+    await records.create({id:control,user_id:account.user.id,title:`control-${randomUUID()}`,note:'control'});
+    const before=await records.list({pagination:{limit:1000},order:['+id']});
+    const auditBefore=(await account.client.records('todo_audit').list({pagination:{limit:1000},order:['+audit_key']})).records;
+    let captured:RequestInit|undefined,calls=0,status=0;
+    const fixture=await httpStreamFixture(async signal=>{
+      if(!captured)throw new Error('Owned mutation request missing');
+      const actual=await fetch(new URL('/api/records/v1/todos',env.trailUrl),{...captured,signal});
+      status=actual.status;return actual;
+    },'drop');
+    const client=initClient(env.trailUrl,{transport:{fetch:async(path,init)=>{
+      if(path==='/api/records/v1/todos'&&init?.method==='POST'){
+        calls++;captured=init;return fetch(fixture.url,{signal:AbortSignal.timeout(10000)});
+      }
+      return fetch(new URL(path,env.trailUrl),{...init,signal:AbortSignal.timeout(10000)});
+    }}});
+    try {
+      await client.login(account.email,account.password);
+      await expect(deadline(client.records('todos').create({id,user_id:account.user.id,title,note:'persisted despite lost reply'}))).rejects.toBeInstanceOf(TypeError);
+      await deadline(fixture.idle());expect(calls).toBe(1);expect(status).toBeGreaterThanOrEqual(200);expect(status).toBeLessThan(300);
+      const persisted=await records.read(id);
+      expect(persisted).toMatchObject({id,user_id:account.user.id,title,note:'persisted despite lost reply',completed:0,priority:0});
+      expect(Number.isSafeInteger(persisted.created_at)).toBe(true);
+      const after=(await records.list({pagination:{limit:1000},order:['+id']})).records;
+      expect(after).toHaveLength(before.records.length+1);expect(after.filter(row=>row.id!==id)).toEqual(before.records);
+      const audit=(await account.client.records('todo_audit').list({pagination:{limit:1000},order:['+audit_key']})).records;
+      expect(audit).toHaveLength(auditBefore.length+1);expect(audit.slice(0,auditBefore.length)).toEqual(auditBefore);
+      expect(audit.filter(row=>row.todo_id===id).map(row=>row.operation)).toEqual(['INSERT']);
+      // Reconciliation is a test/caller read, not an adapter preflight/retry.
+      expect(calls).toBe(1);expect(fixture.stats()).toMatchObject({active:0,bytesWritten:0});
+    } finally {await deadline(fixture.close());expect(fixture.stats()).toMatchObject({active:0,listening:false});}
+  });
+  it('reference insert loses its real HTTP reply, returns error/no-data and is reconciled without replay',async()=>{
+    const account=await confirmedSupabaseUser(env,'lost-reference-write');
+    const id=randomUUID(),control=randomUUID(),title=`lost-reference-${randomUUID()}`;
+    expect((await account.client.from('todos').insert({id:control,user_id:account.user.id,title:`control-${randomUUID()}`,note:'control'})).error).toBeNull();
+    const before=await account.client.from('todos').select('*').order('id');expect(before.error).toBeNull();
+    const auditBefore=await account.client.from('todo_audit').select('*').order('audit_key');expect(auditBefore.error).toBeNull();
+    let captured:{url:string,init:RequestInit}|undefined,calls=0,status=0;
+    const fixture=await httpStreamFixture(async signal=>{
+      if(!captured)throw new Error('Owned reference mutation request missing');
+      const actual=await fetch(captured.url,{...captured.init,signal});status=actual.status;return actual;
+    },'drop');
+    const client=createClient(env.supabaseUrl,env.anonKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},global:{fetch:async(input,init)=>{
+      const url=new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url);
+      if(url.origin===env.supabaseUrl&&url.pathname==='/rest/v1/todos'&&init?.method==='POST'){
+        calls++;captured={url:url.href,init};return fetch(fixture.url,{signal:AbortSignal.timeout(10000)});
+      }
+      return fetch(input,{...init,signal:AbortSignal.timeout(10000)});
+    }}});
+    try {
+      const login=await client.auth.signInWithPassword({email:account.email,password:account.password});expect(login.error).toBeNull();
+      const lost=await deadline(Promise.resolve(client.from('todos').insert({id,user_id:account.user.id,title,note:'persisted despite lost reply'})));
+      expect(lost.error).not.toBeNull();expect(lost.data).toBeNull();expect(lost.status).toBe(0);
+      await deadline(fixture.idle());expect(calls).toBe(1);expect(status).toBe(201);
+      const persisted=await account.client.from('todos').select('*').eq('id',id).single();expect(persisted.error).toBeNull();
+      expect(persisted.data).toMatchObject({id,user_id:account.user.id,title,note:'persisted despite lost reply',completed:false,priority:0});
+      expect(Number.isSafeInteger(persisted.data?.created_at)).toBe(true);
+      const after=await account.client.from('todos').select('*').order('id');expect(after.error).toBeNull();
+      expect(after.data).toHaveLength(before.data!.length+1);expect(after.data!.filter(row=>row.id!==id)).toEqual(before.data);
+      const audit=await account.client.from('todo_audit').select('*').order('audit_key');expect(audit.error).toBeNull();
+      expect(audit.data).toHaveLength(auditBefore.data!.length+1);expect(audit.data!.slice(0,auditBefore.data!.length)).toEqual(auditBefore.data);
+      expect(audit.data!.filter(row=>row.todo_id===id).map(row=>row.operation)).toEqual(['INSERT']);
+      expect(calls).toBe(1);expect(fixture.stats()).toMatchObject({active:0,bytesWritten:0});
+    } finally {await deadline(fixture.close());expect(fixture.stats()).toMatchObject({active:0,listening:false});}
   });
 });

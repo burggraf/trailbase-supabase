@@ -1,0 +1,32 @@
+{
+  "scope": "Stock G3/G4 owner update postconditions and repeated ordering; NOT adapter guards/signoff",
+  "status": "passed",
+  "sourceSha256": "448979f55ad179ead90de07ae5b51257ecc90bca6a5544eae405a3ff7082ab0a",
+  "node": "v22.23.2",
+  "platform": "darwin-arm64",
+  "baseline": { "trailbase": "0.34.3", "trailbaseClient": "0.14.3", "supabaseClient": "2.117.2", "supabaseCli": "2.119.0" },
+  "runs": [
+    { "runId": "1791060959707-d8856ef770ae", "suite": "database", "passed": 8, "failed": 0, "cleanup": "passed" },
+    { "runId": "1791060997498-cdd486914e17", "suite": "boundaries", "passed": 6, "failed": 0, "cleanup": "passed" }
+  ],
+  "updateRejections": [
+    { "input": "duplicate title", "nativeStatus": 500, "referenceStatus": 409, "referenceCode": "23505" },
+    { "input": "null title", "nativeStatus": 500, "referenceStatus": 400, "referenceCode": "23502" },
+    { "input": "negative priority", "nativeStatus": 500, "referenceStatus": 400, "referenceCode": "23514" },
+    { "input": "completed integer 2", "nativeStatus": 500, "referenceStatus": 400, "referenceCode": "22P02" },
+    { "input": "noninteger priority text", "nativeStatus": 400, "referenceStatus": 400, "referenceCode": "22P02" }
+  ],
+  "postconditions": "Every rejected update preserved the entire target and control rows, including a simultaneously submitted valid note change. Native update SQL-constraint failures differ from native insert HTTP 400 failures.",
+  "unknownUpdateField": {
+    "native": "Succeeded: ignored the unknown field and applied the valid note change; all other fields unchanged.",
+    "reference": "Rejected with HTTP 400/PGRST204 and preserved the complete row.",
+    "boundary": "Stock observation, not permission for the adapter to ignore fields. The approved mapped-field validator must reject the whole unsupported mutation before sending any request."
+  },
+  "ordering": {
+    "duplicateKeys": "The first sort key direction wins for both ascending-then-descending and descending-then-ascending requests on both backends.",
+    "callOrder": "range-before-order and order-before-range selected the same descending priorities [6,5,4], matching the native bounded page.",
+    "unknownOrder": "Native rejected with HTTP 500; reference returned error/no data."
+  },
+  "initialFailures": "docs/evidence/phase-a-update-order-initial-assumptions-node22.json",
+  "explicitNonClaims": ["No FK/delete/trigger matrix, production validation, backend repair or G3/G4 gate signoff."]
+}

@@ -4,7 +4,7 @@ import { setImmediate as nextTurn } from 'node:timers/promises';
 
 // Disposable loopback fault fixture, not a gateway/product. Forwards only genuine
 // owned native response bytes; never copies auth/cookie headers to downstream clients.
-export async function httpStreamFixture(upstream:(signal:AbortSignal)=>Promise<Response>, mode:'fragment'|'disconnect') {
+export async function httpStreamFixture(upstream:(signal:AbortSignal)=>Promise<Response>, mode:'fragment'|'disconnect'|'drop') {
   const route=`/${randomUUID()}`,controllers=new Set<AbortController>(),tasks=new Set<Promise<void>>();
   let cancelled=0,bytesWritten=0;
   const server=createServer((request,response)=>{
@@ -16,6 +16,11 @@ export async function httpStreamFixture(upstream:(signal:AbortSignal)=>Promise<R
       let reader:ReadableStreamDefaultReader<Uint8Array>|undefined;
       try {
         const actual=await upstream(abort.signal);
+        if(mode==='drop'){
+          // Drain genuine upstream completion, then lose the downstream reply.
+          // No fabricated status/body or automatic mutation retry.
+          await actual.arrayBuffer();response.destroy();return;
+        }
         response.writeHead(actual.status,{'content-type':actual.headers.get('content-type')??'application/octet-stream'});
         response.flushHeaders();
         if(!actual.body)throw new Error('Actual upstream body missing');

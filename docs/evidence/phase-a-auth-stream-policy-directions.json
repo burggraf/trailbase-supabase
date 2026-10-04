@@ -1,0 +1,20 @@
+{
+  "scope": "Maintainer policy-direction approval only; NOT gate/SDK signoff or runtime verification",
+  "status": "direction-approved",
+  "recordedAt": "2026-10-03T21:28:15Z",
+  "approvedBy": "burggraf",
+  "interviewId": "1a566198-4ddd-4fb3-a40c-1e28035d3fa7",
+  "confirmation": "After form timeout, the maintainer explicitly instructed proceeding with its three answered choices and using best judgment for the unanswered optional notes.",
+  "directions": {
+    "G7": "Investigate guarded native-HTTP auth: single-flight refresh, session-generation guards, awaited hydration, stale-response discard after logout/account change/terminal denial, local clearing before logout I/O, observable remote revocation failure, explicit global/local scope and native tokens. Extend test-only evidence now.",
+    "G5": "Choose minimal buffered authenticated Fetch/SSE direction with bounded framing, persistent sequence/loss tracking and cancellation. No protocol emulation, dependency, automatic durable replay or production implementation now.",
+    "G6": "Approve common eventType/schema/table/new and DELETE-key-only old fields using explicit declared mappings. No full prior UPDATE records, invented commit timestamps, full Supabase payload parity, durable replay or portable key confidentiality. Preserve approved connection-scoped authorization and native owner rules."
+  },
+  "boundaries": [
+    "No gate signoff or Phase B/production SDK implementation",
+    "No deployment, baseline repin, identity repair or maintained fork",
+    "No commit/push or public upstream submission",
+    "Private G1 evidence stays isolated; stock and candidate failures remain strict",
+    "Broader storage/timer/browser/security/resource and current-source CI evidence remains required"
+  ]
+}

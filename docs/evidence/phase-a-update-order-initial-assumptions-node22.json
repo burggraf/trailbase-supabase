@@ -1,0 +1,17 @@
+{
+  "scope": "Stock Phase A update/order probes; failed characterization assumptions, NOT SDK verification",
+  "status": "failed",
+  "sourceSha256": "c11fbc57bc29652be7659d447271f151f44cbafc4d5e779e5b91d9e07db6ce0d",
+  "node": "v22.23.2",
+  "platform": "darwin-arm64",
+  "runs": [
+    { "runId": "1791060724291-b431ff1cb918", "suite": "database", "passed": 6, "failed": 1, "cleanup": "passed" },
+    { "runId": "1791060762801-459ae694ba5b", "suite": "boundaries", "passed": 5, "failed": 1, "cleanup": "passed" }
+  ],
+  "failures": [
+    "The new owner-update case expected a native unique-constraint failure at HTTP 400; stock returned 500 instead. Later vectors were not reached by this case.",
+    "Repeated order/call-order assertions passed before the unknown-order assertion expected native 400 and observed 500."
+  ],
+  "followup": "Stock source maps update SQL failures to internal errors, unlike create, and skips unknown mutation fields. Revised probes must characterize those distinctions explicitly while retaining exact database postconditions. No stock G1/G7 assertion or adapter reject-before-wire policy is relaxed.",
+  "explicitNonClaims": ["These runs are not green and do not establish the later unexecuted vectors or gate signoff."]
+}

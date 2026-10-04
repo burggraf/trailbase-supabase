@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "scope": "Interactive form schema validation only; no form opened and no maintainer answer received",
+  "sourceSha256": "49db187ee385b52a326824d9eebbc679fdac73fb48ae4e00935fd676e4807160",
+  "error": "Question \"global_strategy\": recommended must be string for single-select",
+  "correction": "Use the recommended option's label string, put conviction at question level, and keep recommendation reasoning in the displayed markdown context. No authorization inferred."
+}

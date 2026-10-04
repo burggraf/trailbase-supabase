@@ -1,0 +1,30 @@
+{
+  "scope": "Stock Phase A G2/G4 boundary characterization; upstream clients only, NOT adapter runtime validation or signoff",
+  "status": "passed",
+  "runId": "1791057504453-1ebd77a7f93b",
+  "sourceSha256": "f475de6ce56b50a9a4bb54ce2f2c5ee3a20a212c284c3c1e8c617db016203202",
+  "baseline": {
+    "trailbase": "0.34.3",
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2",
+    "platform": "darwin-arm64"
+  },
+  "suite": "boundaries",
+  "passedCases": 5,
+  "cleanup": "passed",
+  "observations": [
+    "The safe integer 2^53-1 round-trips; the native client preserves 9007199254740993n while the Supabase JS decoder returns 9007199254740992 despite the exact JSON integer on the wire.",
+    "On the declared text fixture, `.eq('note', null)` selects the literal string `null`, not SQL NULL, in both installed clients.",
+    "Nonfinite/fractional numeric filters, typo fields and malformed UUID filters return errors rather than broadening reads.",
+    "Native ascending nullable ordering puts NULL first; reference default ordering puts it last. ASCII/binary and Unicode ordering observations remain backend-specific outside the approved portable text-sort domain.",
+    "Reference query construction is lazy; each await sends again; independent builders isolate, while the same builder and captured options remain mutable. Native list operations likewise issue a new request on each query and observe mutation of shared options."
+  ],
+  "explicitNonClaims": [
+    "No production codec, runtime validation, query builder, or null-normalization implementation.",
+    "No Unicode/collation parity or nullable ordering guarantee.",
+    "No G2/G4 gate signoff."
+  ],
+  "rawArtifact": "artifacts/phase-a/1791057504453-1ebd77a7f93b.json"
+}

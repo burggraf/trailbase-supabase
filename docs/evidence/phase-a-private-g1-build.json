@@ -1,0 +1,51 @@
+{
+  "scope": "Private build of the exact-base G1 prototype for one owned disposable loopback rehearsal; NOT deployment, stock behavior, SDK verification, or G1 signoff",
+  "status": "passed",
+  "upstream": {
+    "version": "TrailBase v0.34.3",
+    "baseCommit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+    "branch": "private/g1-pending-recovery",
+    "sourcePatchSha256": "c76f14a0bff3f391435a10073c2fb741d0c27528bdd29dfad464022d1d0f86c9"
+  },
+  "toolchain": {
+    "rustc": "1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "1.98.1 (797e8a9bc 2026-08-05)",
+    "home": "Owned private rustup/cargo homes; host default unchanged"
+  },
+  "commands": [
+    {
+      "command": "cargo +1.98.1 build --locked --offline -p trailbase-cli --bin trail --no-default-features -j 2",
+      "result": "failed before compilation",
+      "cause": "Owned offline cache lacked locked crate ar_archive_writer v0.5.3."
+    },
+    {
+      "command": "cargo +1.98.1 build --locked -p trailbase-cli --bin trail --no-default-features -j 2",
+      "result": "passed",
+      "durationSeconds": 302,
+      "details": "PNPM_OFFLINE=TRUE; Cargo fetched only versions fixed by the unchanged Cargo.lock into the owned CARGO_HOME; dev-profile CLI binary built."
+    }
+  ],
+  "binary": {
+    "relativePath": "target/debug/trail",
+    "versionOutput": "trail stale-v0.34.3-0-geab5039 (stale-2026-10-02); sqlite: 3.53.2",
+    "sha256": "8d29850d9b28b23d0bb20af94b3e3765c47d78dd5a67ad583e8d7dd9b009c235",
+    "sizeBytes": 302030744,
+    "profile": "dev/debug, not release",
+    "use": "Only the private source prototype's owned loopback test fixture; not a deployment or system install"
+  },
+  "tree": {
+    "CargoLockChanged": false,
+    "manifestsChanged": false,
+    "upstreamHeadUnchanged": true,
+    "publicSubmission": false
+  },
+  "warnings": [
+    "Existing unused regex manifest-key warning",
+    "Existing sqlite-vec C compiler unused-parameter warnings",
+    "Apple linker compact-unwind table size warning"
+  ],
+  "notEstablished": [
+    "Release binary or production deployment readiness",
+    "G1 signoff or behavior on non-SQLite backends"
+  ]
+}

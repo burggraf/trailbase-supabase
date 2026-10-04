@@ -87,6 +87,26 @@ describe('L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation',(
       expect((await api.list({filters:[{column:'title',value:title}]})).records.map(row=>row.title)).toEqual([title]);
     }
   });
+  it('G4 repeated order keys retain first-key precedence; bounds/order call order selects the same page',async()=>{
+    const api=native.client.records('todos');
+    for(const ascending of [true,false]) {
+      const expected=ascending?[...ids]:[...ids].reverse();
+      const page=await api.list({order:[ascending?'+priority':'-priority',ascending?'-priority':'+priority','+id']});
+      const result=await reference.client.from('todos').select('*').order('priority',{ascending}).order('priority',{ascending:!ascending}).order('id');
+      expect(page.records.map(row=>canonicalUuid(String(row.id)))).toEqual(expected);
+      expect(result.error).toBeNull(); expect(result.data?.map(row=>row.id)).toEqual(expected);
+    }
+    const beforeOrder=await reference.client.from('todos').select('*').range(1,3).order('priority',{ascending:false});
+    const afterOrder=await reference.client.from('todos').select('*').order('priority',{ascending:false}).range(1,3);
+    expect(beforeOrder.error).toBeNull(); expect(afterOrder.error).toBeNull();
+    expect(beforeOrder.data?.map(row=>row.id)).toEqual([ids[6],ids[5],ids[4]]);
+    expect(afterOrder.data).toEqual(beforeOrder.data);
+    const nativePage=await api.list({order:['-priority'],pagination:{offset:1,limit:3}});
+    expect(nativePage.records.map(row=>canonicalUuid(String(row.id)))).toEqual([ids[6],ids[5],ids[4]]);
+    await expect(api.list({order:['+typo_column']})).rejects.toMatchObject({status:500});
+    const invalid=await reference.client.from('todos').select('*').order('typo_column');
+    expect(invalid.error).not.toBeNull(); expect(invalid.data).toBeNull();
+  });
   it('construction is lazy, repeated execution sends requests, independent builders isolate but shared builders/options mutate',async()=>{
     let calls=0;
     const session=(await reference.client.auth.getSession()).data.session;

@@ -12,7 +12,7 @@ export async function deadline<T>(promise: Promise<T>, milliseconds = 10000, lab
   } finally { clearTimeout(timer!); }
 }
 
-export type Context = { id: string; project: string; directory: string; origins: string[]; trailUrl: string; supabaseUrl: string; mailUrl: string; anonKey: string; authVariant: 'stock' | 'candidate-email-reservation'; nativeAuthProfile: 'default'|'short-native-auth' };
+export type Context = { id: string; project: string; directory: string; origins: string[]; trailUrl: string; supabaseUrl: string; mailUrl: string; anonKey: string; authVariant: 'stock' | 'candidate-email-reservation' | 'private-native-prototype'; prototypePatchSha256?: string; nativeAuthProfile: 'default'|'short-native-auth' };
 export async function context(): Promise<Context> {
   const path = process.env.PHASE_A_CONTEXT;
   if (!path || !path.endsWith('/context.json')) throw new Error('Run this suite via npm run test:phase-a (not a hosted backend)');
@@ -20,7 +20,10 @@ export async function context(): Promise<Context> {
   assertRunDirectory(data.directory);
   if (resolve(path) !== resolve(data.directory, 'context.json')) throw new Error('Fixture context mismatch');
   const owner = JSON.parse(await readFile(resolve(data.directory, 'owner.json'), 'utf8'));
-  if (owner.id !== data.id || owner.project !== data.project || owner.authVariant !== data.authVariant || owner.nativeAuthProfile !== data.nativeAuthProfile || !['default','short-native-auth'].includes(data.nativeAuthProfile) || !['stock','candidate-email-reservation'].includes(data.authVariant)) throw new Error('Fixture ownership/variant mismatch');
+  const variantsMatch = data.authVariant === 'private-native-prototype'
+    ? data.prototypePatchSha256 === 'c76f14a0bff3f391435a10073c2fb741d0c27528bdd29dfad464022d1d0f86c9'
+    : data.prototypePatchSha256 === undefined;
+  if (owner.id !== data.id || owner.project !== data.project || owner.authVariant !== data.authVariant || owner.nativeAuthProfile !== data.nativeAuthProfile || owner.prototypePatchSha256 !== data.prototypePatchSha256 || !['default','short-native-auth'].includes(data.nativeAuthProfile) || !['stock','candidate-email-reservation','private-native-prototype'].includes(data.authVariant) || !variantsMatch) throw new Error('Fixture ownership/variant mismatch');
   for (const url of [data.trailUrl, data.supabaseUrl, data.mailUrl]) assertLocalUrl(url, data.origins);
   return data;
 }

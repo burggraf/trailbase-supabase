@@ -1,0 +1,77 @@
+{
+  "scope": "Stock G3 missing/foreign mutation and CHECK-constraint characterization; not adapter verification/signoff",
+  "status": "passed",
+  "baseline": {
+    "trailbaseVersion": "0.34.3",
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2"
+  },
+  "runs": [
+    {
+      "runId": "1791055932327-276fa36f66b4",
+      "sourceSha256": "c9c4aa4dd3b9c66eb459e74cf32ed9c99970a6a812b71285ea3e835d3a060661",
+      "suite": "database",
+      "status": "passed",
+      "cases": 6,
+      "cleanup": "passed"
+    },
+    {
+      "runId": "1791056056162-50504e68e7ed",
+      "sourceSha256": "b556d057ce06476506404f07329b8f42e664cdb5487df3528bbfecdd4bf515b4",
+      "suite": "database",
+      "status": "passed",
+      "cases": 6,
+      "cleanup": "passed"
+    },
+    {
+      "runId": "1791057671723-94f6c72b3a3b",
+      "sourceSha256": "1f2ff04c13e747e66de7356b1fc338d2dc5f0d83c66ee9ed9d249f8c70b18680",
+      "suite": "database",
+      "status": "passed",
+      "cases": 6,
+      "cleanup": "passed"
+    },
+    {
+      "runId": "1791055635050-de5681a570d8",
+      "sourceSha256": "afd07c0ee8677bbd55739ec527aa09483439317ebe54843649561ccb320b4450",
+      "suite": "characterization",
+      "status": "failed",
+      "passed": 9,
+      "failed": 1,
+      "cleanup": "passed",
+      "preservedFailure": "The existing strict stock G1 unconfirmed-duplicate confirmation/recovery regression remained red; the G3 missing-row case passed."
+    }
+  ],
+  "observations": {
+    "missingRowUpdateDelete": {
+      "trailbase": { "updateStatus": 403, "deleteStatus": 403 },
+      "supabase": { "updateStatus": 204, "deleteStatus": 204, "errors": null, "data": null }
+    },
+    "foreignOwnerUpdateDelete": {
+      "trailbase": { "updateStatus": 403, "deleteStatus": 403 },
+      "supabase": { "updateStatus": 204, "deleteStatus": 204, "errors": null, "data": null },
+      "postcondition": "Owner A's row remained unchanged and readable after User B's no-op update/delete attempts."
+    },
+    "checkConstraint": {
+      "trailbase": { "status": 400 },
+      "supabase": { "status": 400, "code": "23514" },
+      "postcondition": "Invalid negative-priority writes were rejected; valid control row counts/content remained unchanged."
+    },
+    "otherConstraints": {
+      "unique": { "trailbaseStatus": 400, "supabaseStatus": 409, "supabaseCode": "23505" },
+      "notNull": { "trailbaseStatus": 400, "supabaseStatus": 400, "supabaseCode": "23502" },
+      "nativeBooleanCheckInsert": { "trailbaseStatus": 400 },
+      "postcondition": "All rejected writes left the valid control rows/counts unchanged."
+    }
+  },
+  "interpretation": "The reference reports zero-affected-row RLS update/delete as successful 204/no-data, while native rejects missing and foreign records with 403. Both reject tested constraints; PostgreSQL exposes SQLSTATEs 23505/23502/23514 with status 409/400/400, while native status is 400 for these constraints. These are raw backend differences; the approved policy preserves backend error details rather than mapping them.",
+  "relatedEvidence": "docs/evidence/phase-a-g3-missing-write-node22.json",
+  "evidenceCorrection": "Removed an unexecuted reference boolean-CHECK claim: the reference insert vectors did not include completed=2 and Postgres declares a boolean type, not the native integer CHECK. The new update probe tests the reference type error separately.",
+  "explicitNonClaims": [
+    "No G3 gate/SDK signoff.",
+    "No broader FK/type/trigger/overflow constraint matrix or production adapter.",
+    "No normalization of native 403 to reference success and no permission weakening."
+  ]
+}

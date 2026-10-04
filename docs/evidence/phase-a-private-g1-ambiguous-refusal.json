@@ -1,0 +1,62 @@
+{
+  "scope": "Owned existing-depot stock-to-private G1 migration-refusal rehearsal; NOT stock recovery behavior, deployment readiness, or G1 signoff",
+  "status": "passed",
+  "authVariant": "stock-to-private-native-prototype-ambiguous-refusal",
+  "baseline": {
+    "upstreamVersion": "TrailBase v0.34.3",
+    "upstreamCommit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+    "stockBinaryAssetSha256": "211132ece889b373317ce7339c13992bd2ccfe02298458a9e6104a7b8454fe43",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2"
+  },
+  "source": {
+    "privatePatchSha256": "c76f14a0bff3f391435a10073c2fb741d0c27528bdd29dfad464022d1d0f86c9",
+    "harnessSourceSha256": "775e1a37eed5bd2d59f9309c7e21bf517786edb25c434098608a88687df84e41"
+  },
+  "setup": {
+    "status": "passed",
+    "pinnedServices": 6,
+    "strictImageDigestChecks": "passed",
+    "publishedBindings": "loopback-only",
+    "cleanup": "passed"
+  },
+  "scenario": {
+    "stockSeed": "Two case-insensitive ordinary public signups while the owned SMTP container was stopped both returned HTTP 424 and created two distinct pending legacy identities in the stock depot; neither client obtained a session.",
+    "prototypeStartup": "After stock server shutdown, the exact-patch-verified private binary attempted the same depot and exited before health/readiness with the ambiguous-identity preflight CHECK constraint failure.",
+    "postFailureAssertions": {
+      "allPendingUserRowsIncludingIdsAndPasswordHashes": "unchanged",
+      "applicationSchemaObjectsAndDefinitions": "unchanged",
+      "migrationHistory": "unchanged",
+      "temporarySchema": "unchanged",
+      "sqliteOptimizerMetadata": "PRAGMA optimize created only sqlite_stat1 and sqlite_stat4 at startup; these SQLite-owned statistics tables were explicitly recorded and excluded from application-schema comparison"
+    }
+  },
+  "failedRunsBeforePass": 4,
+  "attemptHistory": [
+    "Run 1: full snapshot comparison failed because it treated SQLite optimizer statistics as auth migration schema; refusal and owned cleanup were observed.",
+    "Run 2: field-only diagnostic localized the delta to SQLite schema metadata; user rows, migration history and temporary schema matched.",
+    "Run 3: schema-object-name set comparison failed; changed names were not printed to evidence.",
+    "Run 4: private diagnostic identified only sqlite_stat1 and sqlite_stat4, created by TrailBase connection initialization's PRAGMA optimize.",
+    "Run 5: final assertion compares application schema SQL, pending user rows and migration history exactly, and separately requires exactly those two optimizer-stat additions; both tests passed and cleanup passed."
+  ],
+  "tests": [
+    {
+      "name": "stock TrailBase can leave ambiguous legacy pending identities in an existing depot",
+      "status": "passed"
+    },
+    {
+      "name": "private G1 migration refuses ambiguous existing identities without changing rows, schema or history",
+      "status": "passed"
+    }
+  ],
+  "limitations": [
+    "One owned macOS SQLite depot with two case-insensitive duplicate pending identities; no Linux/browser/PostgreSQL or multi-server run.",
+    "SQLite optimizer statistics are an ordinary startup side effect, explicitly distinguished from the auth/application schema and included here rather than hidden.",
+    "No backup/restore or repeated migration restart rehearsal; those remain pending.",
+    "This is a private source prototype test only; no stock/candidate recovery result changes."
+  ],
+  "explicitNonClaims": [
+    "No stock v0.34.3 G1 recovery fix, release build or deployment approval.",
+    "No G1 signoff."
+  ]
+}

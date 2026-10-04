@@ -5,6 +5,7 @@ import { context,confirmedTrailUser,nativeUuid,deadline,type Context } from './h
 import { nativeSseProof } from '../proofs/native-sse.js';
 import { authCoordinationProof } from '../proofs/auth-coordination.js';
 import { httpStreamFixture } from '../proofs/http-stream-fixture.js';
+import { redirectSink } from '../proofs/redirect-sink.js';
 
 let env:Context;
 beforeAll(async()=>{env=await context();});
@@ -85,6 +86,196 @@ describe('L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff',
       await api.create({id,user_id:account.user.id,title});await failed;
       expect(response.body.locked).toBe(false);expect((await api.read(id)).title===title).toBe(true);
     } finally {await parser.return(undefined);}
+  });
+  for(const credential of ['genuine','anonymous','invalid'] as const)it(`fixed native global acknowledgement with ${credential} credentials is not interpreted from final HTTP 200 alone`,async()=>{
+    const account=await confirmedTrailUser(env,`ack-${credential}`),second=authCoordinationProof(forward);
+    await second.login(account.email,account.password);
+    const one=account.client.tokens()!,two=second.tokens()!.refresh_token!;
+    const headers:Record<string,string>=credential==='anonymous'?{}:{Authorization:`Bearer ${credential==='genuine'?one.auth_token:'fixture-invalid-jwt'}`};
+    const response=await forward('/api/auth/v1/logout?redirect_uri=%2Fapi%2Fhealthcheck',{method:'GET',headers,credentials:'omit',redirect:'follow'});
+    expect(response.status).toBe(200);expect(response.redirected).toBe(true);
+    expect(response.url).toBe(`${env.trailUrl}/api/healthcheck`);await response.body?.cancel();
+    const expected=credential==='genuine'?401:200;
+    expect((await remoteRefresh(one.refresh_token!)).status).toBe(expected);
+    expect((await remoteRefresh(two)).status).toBe(expected);
+    // A readable same-origin health response also follows anonymous/invalid logout;
+    // it is not an authenticated revocation receipt or production strategy signoff.
+    await second.logout();await account.client.logout();
+  });
+  it('real native foreign redirect strips standard Bearer authorization and contains no other credentials, but is not accepted as native acknowledgement',async()=>{
+    const account=await confirmedTrailUser(env,'redirect-owner'),sink=await redirectSink();
+    try {
+      const original=account.client.tokens()!;
+      const target=new URL(sink.url),relative=`//${target.host}${target.pathname}`;
+      const response=await forward(`/api/auth/v1/logout?redirect_uri=${encodeURIComponent(relative)}`,{method:'GET',headers:{Authorization:`Bearer ${original.auth_token}`},credentials:'omit',redirect:'follow'});
+      expect(response.status).toBe(200);expect(response.url).toBe(sink.url);expect(response.redirected).toBe(true);await response.body?.cancel();
+      expect(new URL(response.url).origin===env.trailUrl).toBe(false);
+      expect(sink.stats()).toEqual({requests:1,getRequests:1,authorization:false,refresh:false,csrf:false,cookie:false,bodyBytes:0,listening:true});
+      expect((await remoteRefresh(original.refresh_token!)).status).toBe(401);
+    } finally {await deadline(sink.close());expect(sink.stats().listening).toBe(false);}
+  });
+  for(const scope of ['local','global'] as const)it(`explicit ${scope} proof logout revokes the intended real sessions without affecting another user`,async()=>{
+    const account=await confirmedTrailUser(env,`scope-${scope}`),control=await confirmedTrailUser(env,`control-${scope}`);
+    let calls=0;
+    const proof=authCoordinationProof(async(path,init)=>{
+      if(path==='/api/auth/v1/logout'){
+        calls++;expect(init?.method).toBe(scope==='local'?'POST':'GET');
+        if(scope==='global')expect(init?.redirect).toBe('manual');
+      }
+      return forward(path,init);
+    });
+    await proof.login(account.email,account.password);
+    const genuine=proof.tokens()!,sibling=account.client.tokens()!.refresh_token!,other=control.client.tokens()!.refresh_token!;
+    await expect(proof.logout('others' as never)).rejects.toThrow('Unsupported proof logout scope');
+    expect(proof.tokens()===genuine).toBe(true);expect(calls).toBe(0);
+    expect((await remoteRefresh(genuine.refresh_token!)).status).toBe(200);
+    expect((await remoteRefresh(sibling)).status).toBe(200);
+    await proof.logout(scope);expect(proof.tokens()).toBeUndefined();expect(calls).toBe(1);
+    expect((await remoteRefresh(genuine.refresh_token!)).status).toBe(401);
+    expect((await remoteRefresh(sibling)).status).toBe(scope==='local'?200:401);
+    expect((await remoteRefresh(other)).status).toBe(200);
+    expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).status).toBe(403);
+    // Refresh revocation is not instantaneous revocation of a stateless access JWT.
+    expect((await forward('/api/records/v1/todos',{headers:{Authorization:`Bearer ${genuine.auth_token}`}})).status).toBe(200);
+    await proof.logout(scope);expect(calls).toBe(1);
+    await account.client.logout();await control.client.logout();
+  });
+  it('concurrent and repeated proof logout sends one real revocation and leaves no local flight',async()=>{
+    const account=await confirmedTrailUser(env,'repeat-logout');let calls=0;
+    const ready=Promise.withResolvers<void>(),release=Promise.withResolvers<void>();
+    const proof=authCoordinationProof(async(path,init)=>{
+      if(path==='/api/auth/v1/logout'){calls++;ready.resolve();await release.promise;}
+      return forward(path,init);
+    });
+    await proof.login(account.email,account.password);const before=proof.tokens()!.refresh_token!;
+    const first=proof.logout();
+    try {
+      await deadline(ready.promise);expect(proof.tokens()).toBeUndefined();
+      await proof.logout();await proof.logout('global');expect(calls).toBe(1);expect(await proof.refresh()).toBe(false);
+      release.resolve();await deadline(first);
+      expect((await remoteRefresh(before)).status).toBe(401);
+      expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).status).toBe(403);
+    } finally {release.resolve();await Promise.allSettled([first]);}
+  });
+  for(const stage of ['response','json'] as const)it(`late real login at ${stage} completion cannot restore state after proof logout`,async()=>{
+    const account=await confirmedTrailUser(env,`login-${stage}`);
+    const ready=Promise.withResolvers<void>(),release=Promise.withResolvers<void>();
+    let created:ReturnType<typeof account.client.tokens>;
+    const proof=authCoordinationProof(async(path,init)=>{
+      const response=await forward(path,init);
+      if(path==='/api/auth/v1/login'){
+        created=await response.clone().json();
+        if(stage==='response'){ready.resolve();await release.promise;}
+        else {
+          const json=response.json.bind(response);
+          response.json=async()=>{const actual=await json();ready.resolve();await release.promise;return actual;};
+        }
+      }
+      return response;
+    });
+    const pending=proof.login(account.email,account.password);
+    try {
+      await deadline(ready.promise);await proof.logout();expect(proof.tokens()).toBeUndefined();
+      release.resolve();await expect(deadline(pending)).rejects.toMatchObject({name:'StaleAuthProofOperation'});
+      expect(proof.tokens()).toBeUndefined();expect(await proof.refresh()).toBe(false);
+      expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).status).toBe(403);
+      // The coordinator revokes exactly the discarded genuine session, not siblings.
+      expect((await remoteRefresh(created!.refresh_token!)).status).toBe(401);
+      expect((await remoteRefresh(account.client.tokens()!.refresh_token!)).status).toBe(200);
+    } finally {
+      release.resolve();await Promise.allSettled([pending]);
+      if(created)expect((await forward('/api/auth/v1/logout',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({refresh_token:created.refresh_token})})).status).toBe(200);
+    }
+  });
+  for(const failure of ['none','transport','method'] as const)it(`discarded-login cleanup ${failure} preserves a newer account and sibling sessions with one exact revocation attempt`,async()=>{
+    const first=await confirmedTrailUser(env,`clean-old-${failure}`),second=await confirmedTrailUser(env,`clean-new-${failure}`);
+    const ready=Promise.withResolvers<void>(),release=Promise.withResolvers<void>();
+    let created:ReturnType<typeof first.client.tokens>,logins=0,attempts=0;
+    const proof=authCoordinationProof(async(path,init)=>{
+      if(path==='/api/auth/v1/logout'&&created&&JSON.parse(String(init?.body)).refresh_token===created.refresh_token){
+        attempts++;expect(init?.method).toBe('POST');expect(init?.credentials).toBe('omit');expect(init?.redirect).toBe('error');
+        expect(new Headers(init?.headers).get('authorization')).toBeNull();
+        expect(new Headers(init?.headers).get('refresh-token')).toBeNull();
+        expect(new Headers(init?.headers).get('csrf-token')).toBeNull();
+        if(failure==='transport')throw new TypeError('Injected discarded-session cleanup outage');
+        if(failure==='method')return forward(path,{...init,method:'PUT'}); // Genuine native 405, not a fake auth response.
+      }
+      const response=await forward(path,init);
+      if(path==='/api/auth/v1/login'&&logins++===0){
+        created=await response.clone().json();const json=response.json.bind(response);
+        response.json=async()=>{const actual=await json();ready.resolve();await release.promise;return actual;};
+      }
+      return response;
+    });
+    const pending=proof.login(first.email,first.password);
+    try {
+      await deadline(ready.promise);await proof.login(second.email,second.password);const current=proof.tokens();
+      release.resolve();
+      const failed=await deadline(Promise.allSettled([pending]));expect(failed[0].status).toBe('rejected');
+      if(failed[0].status==='rejected'){
+        expect(failed[0].reason).toMatchObject({name:'StaleAuthProofOperation',cleanupFailed:failure!=='none'});
+        if(failure==='method')expect(failed[0].reason.cause).toMatchObject({name:'AuthProofHttpError',status:405});
+        if(failure==='transport')expect(failed[0].reason.cause).toMatchObject({name:'TypeError'});
+      }
+      expect(attempts).toBe(1);expect(proof.tokens()===current).toBe(true);
+      expect((await remoteRefresh(created!.refresh_token!)).status).toBe(failure==='none'?401:200);
+      expect((await remoteRefresh(first.client.tokens()!.refresh_token!)).status).toBe(200);
+      expect(await proof.refresh()).toBe(true);
+      const id=nativeUuid(randomUUID());await second.client.records('todos').create({id,user_id:second.user.id,title:`cleanup-${randomUUID()}`});
+      const read=await forward('/api/records/v1/todos',{headers:proof.headers()});expect(read.status).toBe(200);
+      expect((await read.json()).records.map((row:Record<string,unknown>)=>row.id)).toEqual([id]);
+      await proof.logout();expect(attempts).toBe(1);
+    } finally {
+      release.resolve();await Promise.allSettled([pending]);
+      if(created)expect((await forward('/api/auth/v1/logout',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({refresh_token:created.refresh_token})})).status).toBe(200);
+    }
+  });
+  for(const delivery of ['missing','truncated'] as const)it(`genuine successful login with ${delivery} HTTP delivery cannot claim exact-session cleanup or install local state`,async()=>{
+    const account=await confirmedTrailUser(env,`undecoded-${delivery}`);
+    let request:RequestInit|undefined,created:ReturnType<typeof account.client.tokens>,attempts=0;
+    const fixture=await httpStreamFixture(async signal=>{
+      if(!request)throw new Error('Owned login request missing');
+      const actual=await fetch(new URL('/api/auth/v1/login',env.trailUrl),{...request,signal});
+      expect(actual.status).toBe(200);created=await actual.clone().json();
+      if(delivery==='missing'){await actual.body?.cancel();throw new TypeError('Injected missing genuine login delivery');}
+      return actual;
+    },'disconnect');
+    const proof=authCoordinationProof((path,init)=>{
+      if(path==='/api/auth/v1/login'){request=init;return fetch(fixture.url,{signal:AbortSignal.timeout(10000)});}
+      if(path==='/api/auth/v1/logout')attempts++;
+      return forward(path,init);
+    });
+    try {
+      await expect(deadline(proof.login(account.email,account.password))).rejects.toMatchObject({name:'TypeError'});
+      expect(proof.tokens()).toBeUndefined();expect(attempts).toBe(0);
+      expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).status).toBe(403);
+      expect((await remoteRefresh(created!.refresh_token!)).status).toBe(200);
+      await deadline(fixture.idle());expect(fixture.stats()).toMatchObject({active:0,cancelled:delivery==='missing'?0:1,bytesWritten:delivery==='missing'?0:32});
+    } finally {
+      await deadline(fixture.close());expect(fixture.stats()).toMatchObject({active:0,listening:false});
+      if(created)expect((await forward('/api/auth/v1/logout',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({refresh_token:created.refresh_token})})).status).toBe(200);
+    }
+  });
+  it('late completed local logout does not clear a genuinely signed-in different account',async()=>{
+    const first=await confirmedTrailUser(env,'old-logout'),second=await confirmedTrailUser(env,'new-logout');
+    const ready=Promise.withResolvers<void>(),release=Promise.withResolvers<void>();let hold=true;
+    const proof=authCoordinationProof(async(path,init)=>{
+      const response=await forward(path,init);
+      if(hold&&path==='/api/auth/v1/logout'){await response.body?.cancel();ready.resolve();await release.promise;}
+      return response;
+    });
+    await proof.login(first.email,first.password);const oldToken=proof.tokens()!.refresh_token!;
+    const pending=proof.logout();
+    try {
+      await deadline(ready.promise);expect((await remoteRefresh(oldToken)).status).toBe(401);
+      await proof.login(second.email,second.password);const current=proof.tokens();
+      release.resolve();await deadline(pending);expect(proof.tokens()===current).toBe(true);
+      expect(await proof.refresh()).toBe(true);
+      const id=nativeUuid(randomUUID());await second.client.records('todos').create({id,user_id:second.user.id,title:`new-logout-${randomUUID()}`});
+      const rows=await forward('/api/records/v1/todos',{headers:proof.headers()});expect(rows.status).toBe(200);
+      expect((await rows.json()).records.map((row:Record<string,unknown>)=>row.id)).toEqual([id]);
+      hold=false;await proof.logout();expect(proof.tokens()).toBeUndefined();
+    } finally {release.resolve();await Promise.allSettled([pending]);}
   });
   it('single-flight proof issues one real refresh and clears its slot for the next refresh',async()=>{
     const account=await confirmedTrailUser(env,'proof-refresh');
@@ -256,14 +447,14 @@ describe('L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff',
       expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).ok).toBe(true);await proof.logout();expect(proof.tokens()).toBeUndefined();
     } finally {await deadline(fixture.close());expect(fixture.stats()).toMatchObject({active:0,listening:false});}
   });
-  it('logout proof clears locally before I/O and surfaces an undelivered remote revocation',async()=>{
+  for(const scope of ['local','global'] as const)it(`${scope} logout proof clears locally before I/O and surfaces an undelivered remote revocation`,async()=>{
     const account=await confirmedTrailUser(env,'proof-outage');let outage=false;
     const proof=authCoordinationProof((path,init)=>{
       if(outage&&path==='/api/auth/v1/logout')throw new TypeError('Injected owned logout failure');
       return forward(path,init);
     });
     await proof.login(account.email,account.password);const before=proof.tokens()!.refresh_token!,beforeHeaders=proof.headers();
-    outage=true;const pending=proof.logout();expect(proof.tokens()).toBeUndefined();
+    outage=true;const pending=proof.logout(scope);expect(proof.tokens()).toBeUndefined();
     await expect(pending).rejects.toThrow('Injected owned logout failure');
     expect((await forward('/api/records/v1/todos',{headers:proof.headers()})).status).toBe(403);
     expect((await remoteRefresh(before)).status).toBe(200);

@@ -1,0 +1,74 @@
+{
+  "scope": "One owned existing SQLite depot initialized and populated by stock TrailBase v0.34.3, then stopped and reopened using the isolated exact-base private G1 prototype; NOT stock recovery behavior, deployment readiness, or G1 signoff",
+  "status": "passed",
+  "authVariant": "stock-to-private-native-prototype-upgrade",
+  "baseline": {
+    "upstreamVersion": "TrailBase v0.34.3",
+    "upstreamCommit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+    "stockBinaryAssetSha256": "211132ece889b373317ce7339c13992bd2ccfe02298458a9e6104a7b8454fe43",
+    "localRepositoryBase": "915afbd44cd5822955d6cf2986842e948a5fc4fc",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2"
+  },
+  "source": {
+    "patchSha256": "c76f14a0bff3f391435a10073c2fb741d0c27528bdd29dfad464022d1d0f86c9",
+    "harnessSourceSha256": "775e1a37eed5bd2d59f9309c7e21bf517786edb25c434098608a88687df84e41",
+    "prototypeBinarySha256": "8d29850d9b28b23d0bb20af94b3e3765c47d78dd5a67ad583e8d7dd9b009c235"
+  },
+  "setup": {
+    "status": "passed",
+    "pinnedServices": 6,
+    "strictImageDigestChecks": "passed",
+    "publishedBindings": "loopback-only",
+    "cleanup": "passed"
+  },
+  "tests": [
+    {
+      "name": "stock TrailBase leaves a private pending identity in the existing depot for upgrade",
+      "status": "passed",
+      "assertions": [
+        "Owned stock server initialized a clean depot; the actual local SMTP container was stopped.",
+        "Ordinary stock registration returned HTTP 424 and left one pending _user identity in the SQLite depot; session was not established.",
+        "The owned mail container was restored before server shutdown."
+      ]
+    },
+    {
+      "name": "private G1 prototype upgrades a real existing depot without replacing its pending identity",
+      "status": "passed",
+      "assertions": [
+        "Stock TrailBase server stopped before the exact-patch-verified private binary opened the same depot and completed startup/migration.",
+        "The pending identity's ID, address and password hash matched exactly across the migration and before/after confirmation.",
+        "The prototype public verification-trigger route sent real mail; its link confirmed the same identity and login with the original password succeeded."
+      ]
+    },
+    {
+      "name": "private G1 prototype preserves a confirmed identity across a second server restart",
+      "status": "passed",
+      "assertions": [
+        "The same owned depot was closed and opened a second time with the exact private binary after the successful stock-to-private upgrade.",
+        "The confirmed identity ID, email, null unverified address and password hash were unchanged after restart.",
+        "The original password still authenticated after the second restart."
+      ]
+    },
+    {
+      "name": "stock G1 backup restore recovers the original pending identity and schema after prototype migration",
+      "status": "passed",
+      "assertions": [
+        "Stock TrailBase created and listed exactly one backup of the owned depot containing the original pending identity.",
+        "After prototype upgrade, real confirmation and repeat restart, the private server was stopped and the pinned stock CLI restored that backup.",
+        "Stock TrailBase started from the restored depot; the original pending identity ID/address/password hash returned exactly, and private migration index/trigger/history artifacts were absent."
+      ]
+    }
+  ],
+  "limitations": [
+    "One owned macOS SQLite depot with exactly one preexisting pending identity; no PostgreSQL backend or Linux/browser run.",
+    "One on-depot TrailBase CLI backup/restore cycle only; this does not establish off-host recovery, retention policy, corruption recovery, or production disaster-recovery readiness.",
+    "One successful stock-to-private migration followed by one private-to-private restart on this fixture; further restart cycles and production upgrade safety remain open.",
+    "Reservation-only candidate and stock/default SMTP recovery results are unchanged; this is a separate source prototype only.",
+    "The debug CLI reports stale build metadata from the shallow checkout; the private patch/base/file/submodule gate and binary SHA are separately recorded."
+  ],
+  "explicitNonClaims": [
+    "No stock/default G1 recovery fix, release binary or deployment approval.",
+    "No G1 gate signoff."
+  ]
+}

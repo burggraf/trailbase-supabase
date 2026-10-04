@@ -1,0 +1,28 @@
+{
+  "scope": "Stock Phase A G5/G6 realtime and streaming characterization; upstream clients only, NOT complete SDK/security signoff",
+  "status": "passed",
+  "runId": "1791058230196-b0d14f04ede0",
+  "sourceSha256": "23ce2700480a6748e577520e1232b9c4f72ebbbda668c6cb08b707f60ecfe9b7",
+  "baseline": {
+    "trailbase": "0.34.3",
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2",
+    "platform": "darwin-arm64"
+  },
+  "suite": "streaming",
+  "passedCases": 4,
+  "cleanup": "passed",
+  "observations": [
+    "Native real Insert/Update/Delete events arrived with expected fields; whole-buffer installed-parser replay worked while byte-fragmented replay reproduced the known parser defect.",
+    "Reference real INSERT/UPDATE/DELETE events arrived; DELETE carried only the row key in `old`, as approved for the backend difference.",
+    "Native two-owner insert/update/delete isolation and reader cancellation passed.",
+    "Reference two-owner insert/update isolation and the approved key-only foreign DELETE visibility passed; channel cleanup left no active channels."
+  ],
+  "explicitNonClaims": [
+    "No production SDK transport selection, cross-browser streaming signoff, backpressure/reconnect corpus, or complete security/lifecycle/resource signoff.",
+    "The four passing upstream assertions do not establish end-to-end network fragmentation behavior beyond the captured parser replay."
+  ],
+  "rawArtifact": "artifacts/phase-a/1791058230196-b0d14f04ede0.json"
+}

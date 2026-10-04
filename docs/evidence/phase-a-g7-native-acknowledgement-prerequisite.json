@@ -1,0 +1,10 @@
+{
+  "scope": "Maintainer direction only; NOT G7/SDK signoff or server-change permission",
+  "status": "approved",
+  "sourceSha256": "49db187ee385b52a326824d9eebbc679fdac73fb48ae4e00935fd676e4807160",
+  "decision": "Require an authenticated native revocation acknowledgement as a backend prerequisite; keep G7 blocked and continue other approved Phase A characterization.",
+  "reason": "Genuine anonymous/invalid/expired-token controls produced readable same-origin health 200 without revoking either sibling refresh session. No redirect normalization or client-only success inference is adopted.",
+  "evidence": ["docs/evidence/phase-a-g7-ack-cleanup-revised-proofs-node22.json", "docs/evidence/phase-a-g7-ack-cleanup-revised-browser-node22.json", "docs/evidence/phase-a-g7-ack-cleanup-revised-expiry-node22.json"],
+  "constraints": "Manual global coordinator remains unchanged; public default-global contract is not reduced to local. No new server patch, maintained fork, baseline repin, deployment, public submission, identity repair, Phase B, commit/push or gate signoff is authorized. Other already-approved bounded Phase A characterization may continue.",
+  "residual": "Permissive foreign-origin/custom-fetch/TLS/WAN, storage/timer/lifecycle/resource matrices and SDK implementation remain incomplete. Exact-session discarded-login cleanup is still test-only and best effort."
+}

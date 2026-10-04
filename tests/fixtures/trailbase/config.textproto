@@ -27,6 +27,23 @@ record_apis {
   read_access_rule: "_USER_.id = _ROW_.user_id"
 }
 record_apis {
+  name: "todo_links"
+  table_name: "todo_links"
+  acl_authenticated: [CREATE, READ, UPDATE, DELETE, SCHEMA]
+  listing_hard_limit: 1000
+  create_access_rule: "_USER_.id = _REQ_.user_id"
+  read_access_rule: "_USER_.id = _ROW_.user_id"
+  update_access_rule: "_USER_.id = _ROW_.user_id AND (_REQ_.user_id IS NULL OR _REQ_.user_id = _USER_.id)"
+  delete_access_rule: "_USER_.id = _ROW_.user_id"
+}
+record_apis {
+  name: "todo_audit"
+  table_name: "todo_audit"
+  acl_authenticated: [READ]
+  listing_hard_limit: 1000
+  read_access_rule: "_USER_.id = _ROW_.user_id"
+}
+record_apis {
   name: "integer_todos"
   table_name: "integer_todos"
   acl_authenticated: [CREATE, READ, UPDATE, DELETE]

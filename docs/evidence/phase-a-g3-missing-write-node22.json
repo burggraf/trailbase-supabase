@@ -1,0 +1,46 @@
+{
+  "scope": "Stock TrailBase and official Supabase JS missing-row update/delete characterization; G3 subcase only, not SDK verification/signoff",
+  "status": "passed",
+  "baseline": {
+    "trailbaseVersion": "0.34.3",
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2"
+  },
+  "sourceSha256": "afd07c0ee8677bbd55739ec527aa09483439317ebe54843649561ccb320b4450",
+  "baseCommit": "915afbd44cd5822955d6cf2986842e948a5fc4fc",
+  "runId": "1791055635050-de5681a570d8",
+  "platform": "darwin-arm64",
+  "fixture": {
+    "strictSixImageChecks": "passed",
+    "loopbackOnly": true,
+    "cleanup": "passed"
+  },
+  "enclosingSuite": {
+    "name": "characterization",
+    "status": "failed",
+    "passed": 9,
+    "failed": 1,
+    "preservedFailure": "Stock G1 unconfirmed-duplicate confirmation/recovery regression; the assertion remains strict and was not normalized.",
+    "cleanup": "passed"
+  },
+  "g3Case": {
+    "name": "G3 native missing writes error; reference missing writes succeed without modifying another row",
+    "status": "passed",
+    "missingIdUpdate": {
+      "trailbase": { "clientErrorHttpStatus": 403 },
+      "supabase": { "httpStatus": 204, "error": null, "data": null }
+    },
+    "missingIdDelete": {
+      "trailbase": { "clientErrorHttpStatus": 403 },
+      "supabase": { "httpStatus": 204, "error": null, "data": null }
+    },
+    "postcondition": "The separately seeded control row remained readable and unchanged on both backends."
+  },
+  "interpretation": "Missing-row writes differ observably: native returns an authorization-style 403 while the reference treats zero affected rows as a successful minimal 204. This informs a G3 decision; it does not approve changing authorization or hiding errors.",
+  "explicitNonClaims": [
+    "No G3 mutation error/result policy approval or gate signoff.",
+    "No foreign-owner status matrix, constraint-error matrix, production adapter, or permission change."
+  ]
+}

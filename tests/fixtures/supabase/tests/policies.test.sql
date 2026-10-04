@@ -1,7 +1,7 @@
 BEGIN;
 CREATE EXTENSION IF NOT EXISTS pgtap WITH SCHEMA extensions;
 SET LOCAL search_path = public, extensions;
-SELECT plan(10);
+SELECT plan(22);
 SELECT ok((SELECT relrowsecurity FROM pg_class WHERE oid = 'public.todos'::regclass), 'todos RLS enabled');
 SELECT ok((SELECT relrowsecurity FROM pg_class WHERE oid = 'public.integer_todos'::regclass), 'integer_todos RLS enabled');
 SELECT ok(NOT has_table_privilege('anon', 'public.todos', 'select,insert,update,delete'), 'anonymous has no todos grants');
@@ -12,5 +12,17 @@ SELECT ok(NOT has_table_privilege('authenticated', 'public.todos_read', 'insert,
 SELECT ok((SELECT reloptions @> ARRAY['security_invoker=true'] FROM pg_class WHERE oid = 'public.todos_read'::regclass), 'view obeys caller RLS');
 SELECT is((SELECT count(*)::integer FROM pg_policies WHERE schemaname = 'public' AND tablename = 'todos'), 4, 'one policy per CRUD operation');
 SELECT ok(EXISTS(SELECT 1 FROM pg_publication_tables WHERE pubname = 'supabase_realtime' AND tablename = 'todos'), 'todos realtime publication enabled');
+SELECT ok((SELECT relrowsecurity FROM pg_class WHERE oid = 'public.todo_links'::regclass), 'todo_links RLS enabled');
+SELECT ok((SELECT relrowsecurity FROM pg_class WHERE oid = 'public.todo_audit'::regclass), 'todo_audit RLS enabled');
+SELECT ok(NOT has_table_privilege('anon', 'public.todo_links', 'select,insert,update,delete'), 'anonymous has no link grants');
+SELECT ok((SELECT bool_and(has_table_privilege('authenticated', 'public.todo_links', privilege)) FROM unnest(ARRAY['select','insert','update','delete']) AS privilege), 'authenticated has every link CRUD grant');
+SELECT is((SELECT count(*)::integer FROM pg_policies WHERE schemaname = 'public' AND tablename = 'todo_links'), 4, 'one link policy per CRUD operation');
+SELECT ok(NOT has_table_privilege('anon', 'public.todo_audit', 'select'), 'anonymous cannot read audit');
+SELECT ok(has_table_privilege('authenticated', 'public.todo_audit', 'select'), 'authenticated can read own audit');
+SELECT ok(NOT has_table_privilege('authenticated', 'public.todo_audit', 'insert,update,delete'), 'audit has no client mutation grants');
+SELECT ok(NOT has_function_privilege('authenticated', 'public.audit_todo_changes()', 'execute') AND NOT has_function_privilege('anon', 'public.audit_todo_changes()', 'execute'), 'audit function cannot be directly invoked by clients');
+SELECT ok((SELECT prosecdef AND proconfig @> ARRAY['search_path=pg_catalog'] FROM pg_proc WHERE oid = 'public.audit_todo_changes()'::regprocedure), 'audit function has fixed search path and narrow definer capability');
+SELECT ok(EXISTS(SELECT 1 FROM pg_trigger WHERE tgrelid = 'public.todos'::regclass AND tgname = 'todos_audit' AND NOT tgisinternal AND tgenabled = 'O'), 'todos audit trigger enabled');
+SELECT is((SELECT count(*)::integer FROM pg_constraint WHERE conrelid = 'public.todo_links'::regclass AND confrelid = 'public.todos'::regclass AND confdeltype IN ('r','c')), 2, 'link references retain RESTRICT and CASCADE behavior');
 SELECT * FROM finish();
 ROLLBACK;

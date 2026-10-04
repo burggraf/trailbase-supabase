@@ -1,8 +1,9 @@
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { assertLocalUrl, assertRunDirectory, verifyOwner, verifyImages, verifyLoopbackBindings, replaceTokens, freePort, waitReady, stopChild, nativeAuthConfig, setupImageInventory } from '../../scripts/harness.mjs';
+import { assertLocalUrl, assertRunDirectory, verifyOwner, verifyImages, verifyLoopbackBindings, replaceTokens, freePort, waitReady, stopChild, nativeAuthConfig, setupImageInventory, fixtureAuthVariant } from '../../scripts/harness.mjs';
 import { verifyChecksum } from '../../scripts/tools.mjs';
+import { vitestArguments } from '../../scripts/run-phase-a.mjs';
 
 describe('L1-27/U27 harness safety', () => {
   const origin = 'http://127.0.0.1:55431';
@@ -50,6 +51,18 @@ describe('L1-27/U27 harness safety', () => {
     expect(() => verifyChecksum(bytes, digest)).not.toThrow();
     expect(() => verifyChecksum(Buffer.from('corrupt'), digest)).toThrow('checksum');
     expect(() => verifyChecksum(bytes, '0'.repeat(64))).toThrow('checksum');
+  });
+  it('keeps stock/candidate/source-prototype fixtures disjoint and explicitly labelled',()=>{
+    expect(fixtureAuthVariant()).toBe('stock');
+    expect(fixtureAuthVariant({authMitigation:true})).toBe('candidate-email-reservation');
+    expect(fixtureAuthVariant({privateNativePrototype:true})).toBe('private-native-prototype');
+    expect(() => fixtureAuthVariant({authMitigation:true,privateNativePrototype:true})).toThrow('mutually exclusive');
+  });
+  it('excludes private G1 rehearsals from stock all, but not from explicitly selected suites',()=>{
+    expect(vitestArguments('tests/phase-a','report.json')).toEqual(['run','tests/phase-a','--exclude','**/private-g1-*.test.ts','--reporter=json','--outputFile','report.json']);
+    for(const path of ['tests/phase-a/database.test.ts','tests/phase-a/private-g1-prototype.test.ts','tests/phase-a/private-g1-ambiguous-stock.test.ts']) {
+      expect(vitestArguments(path,'report.json')).toEqual(['run',path,'--reporter=json','--outputFile','report.json']);
+    }
   });
   it('keeps default auth configuration unchanged and confines short TTL to a labelled owned profile',()=>{
     const config='auth { user_identifier: ONLY_EMAIL }';

@@ -1,0 +1,53 @@
+{
+  "scope": "Private isolated TrailBase source prototype real HTTP/SMTP-outage rehearsal; NOT stock behavior, SQL-reservation-candidate behavior, SDK verification, deployment readiness, or G1 signoff",
+  "status": "passed",
+  "authVariant": "private-native-prototype",
+  "baseline": {
+    "upstreamVersion": "TrailBase v0.34.3",
+    "commit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2"
+  },
+  "source": {
+    "privateBranch": "private/g1-pending-recovery",
+    "patchSha256": "c76f14a0bff3f391435a10073c2fb741d0c27528bdd29dfad464022d1d0f86c9",
+    "harnessSourceSha256": "4e988bf4135d552df946d27e59760f034d63efa951c478c336fb101ddc182476"
+  },
+  "setup": {
+    "status": "passed",
+    "pinnedServices": 6,
+    "strictImageDigestChecks": "passed",
+    "publishedBindings": "loopback-only",
+    "mailService": "pinned local Mailpit/Inbucket fixture"
+  },
+  "tests": [
+    {
+      "name": "Private G1 source prototype preserves the pending identity and recovers through real HTTP/mail after SMTP outage",
+      "status": "passed",
+      "assertions": [
+        "Stopping the owned SMTP/mail container caused real registration HTTP 424; no session/user was installed, and the protected native read returned explicit authorization status 401 or 403 (not merely an arbitrary request failure).",
+        "The genuine pending _user row's ID and password hash were captured privately after SMTP failure.",
+        "With mail restored, duplicate registration using a different password remained opaque and preserved exactly the original pending identity/hash.",
+        "The ordinary public verification-trigger HTTP route sent genuine mail for that same pending identity; its signed link confirmed the same row.",
+        "After confirmation, the ID/hash remained unchanged; replacement-password login was denied and original-password login succeeded."
+      ]
+    },
+    {
+      "name": "Private G1 prototype retains one identity across concurrent case-insensitive signups",
+      "status": "passed",
+      "assertions": [
+        "Two independent ordinary HTTP clients concurrently registered the same randomly generated address with different case and passwords against one prototype server.",
+        "At least one public registration completed; neither client obtained a session.",
+        "After both requests, the depot contained exactly one pending identity for that address with a password hash."
+      ]
+    }
+  ],
+  "cleanup": "passed; owned TrailBase process, six pinned services, network, depot and context were cleaned; no unrelated Docker resources targeted",
+  "limitations": [
+    "Two bounded macOS loopback prototype cases: one SMTP outage/recovery and one concurrent case-insensitive signup race on a single server. No browser, Linux, multi-server stress, outage during public resend, or four-hour throttle expiry matrix.",
+    "No existing-depot restart/upgrade or backup-restore rehearsal for the embedded migration; legacy ambiguity rollback was tested only in the separate native test fixture.",
+    "Native public resend throttle stays four hours; immediate retry after a failed public resend remains unsupported.",
+    "This isolated private prototype does not change stock/default evidence, the pinned baseline or the reservation-only SQL-candidate failure.",
+    "No deployment readiness or G1 signoff."
+  ]
+}

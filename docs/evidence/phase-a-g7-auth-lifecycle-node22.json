@@ -1,0 +1,33 @@
+{
+  "scope": "Stock G7 auth-lifecycle characterization; upstream clients only, NOT SDK lifecycle signoff",
+  "status": "failed",
+  "runId": "1791058686575-074e467b1ec0",
+  "sourceSha256": "7f84f344b73cba2b9fafbf62878f51087519d837c7f81e4bf519d1fe4ecc8e3d",
+  "baseline": {
+    "trailbase": "0.34.3",
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2",
+    "platform": "darwin-arm64"
+  },
+  "suite": "auth-lifecycle",
+  "passedCases": 8,
+  "failedCases": 2,
+  "cleanup": "passed",
+  "passedObservations": [
+    "Reference persistent-session hydration, shared-store logout, observable storage-write failure and real-login recovery passed.",
+    "Native hydration exposed cached claims before revoked status validation cleared them; native concurrent forced refresh sent two real requests rather than single-flight.",
+    "Reference concurrent refresh was single-flight; a late reference refresh after logout was discarded.",
+    "Native logout transport failure cleared local state and returned true while the remote refresh token remained live; reference reported its transport failure while local state cleared and remote refresh remained usable."
+  ],
+  "strictFailures": [
+    "A real successful native late refresh response restored local auth after logout; the test required tokens/user to remain cleared.",
+    "A real successful native late status response restored local auth after logout; the test required tokens/user to remain cleared."
+  ],
+  "explicitNonClaims": [
+    "The two strict failures remain blockers, not normalized exceptions.",
+    "No SDK lifecycle strategy, browser/timer/persistence/cross-tab matrix, or G7 signoff."
+  ],
+  "rawArtifact": "artifacts/phase-a/1791058686575-074e467b1ec0.json"
+}

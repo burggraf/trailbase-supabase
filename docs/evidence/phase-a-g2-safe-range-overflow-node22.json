@@ -1,0 +1,30 @@
+{
+  "scope": "Stock G2/G4 safe-range arithmetic characterization; installed upstream clients only, NOT adapter validation/signoff",
+  "status": "passed",
+  "runId": "1791058528114-fa0bf4c6ee32",
+  "sourceSha256": "7f84f344b73cba2b9fafbf62878f51087519d837c7f81e4bf519d1fe4ecc8e3d",
+  "baseline": {
+    "trailbase": "0.34.3",
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "node": "22.23.2",
+    "platform": "darwin-arm64"
+  },
+  "suite": "pagination",
+  "passedCases": 7,
+  "cleanup": "passed",
+  "probe": {
+    "offset": "Number.MAX_SAFE_INTEGER",
+    "limit": 2,
+    "inclusiveEnd": "9007199254740992 (not a safe integer)",
+    "trailbase": "Serialized the safe offset and limit in one request; returned an empty page.",
+    "supabase": "Serialized the equivalent range as offset=9007199254740991&limit=2 in one request; returned HTTP 200 with an empty page."
+  },
+  "interpretation": "The installed clients accept a safe offset whose requested page end is outside the safe-integer domain. The approved future adapter contract rejects page bounds when safe range arithmetic overflows before sending a request; this probe does not implement that guard.",
+  "explicitNonClaims": [
+    "No adapter request-count/rejection implementation or G2/G4 gate signoff.",
+    "No exact count or cross-backend out-of-range total guarantee."
+  ],
+  "rawArtifact": "artifacts/phase-a/1791058528114-fa0bf4c6ee32.json"
+}

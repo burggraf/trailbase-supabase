@@ -1,0 +1,20 @@
+{
+  "scope": "Explicit maintainer Phase A direction approval; NOT runtime verification or gate/SDK signoff",
+  "status": "direction-approved",
+  "recordedAt": "2026-10-03T21:57:46Z",
+  "approvedBy": "burggraf",
+  "interviewId": "ef996dac-be47-4c9d-8ec6-a2dba294b5a1",
+  "answeredChoices": [
+    "Investigate constrained native/browser acknowledgement in test-only proofs",
+    "Investigate best-effort revocation of only the discarded login's genuine refresh credential"
+  ],
+  "requirements": [
+    "Fixed same-origin acknowledgement candidate, Bearer-only global request, omitted cookies; no Refresh-Token/CSRF forwarding",
+    "Prove browser/Node redirect and foreign-origin credential boundaries, authenticated/anonymous/expired behavior and two-session revocation",
+    "A final HTTP 200 is not alone evidence of authenticated global revocation; retain observable failures and keep unverified paths blocked",
+    "After decoding a genuine successful but stale login, make one local native POST revocation of that exact new credential only",
+    "Never clear a newer account, revoke siblings, globally log out, replay login or restore stale local state",
+    "Surface cleanup failure and remaining remote-session risk; no remote-revocation claim for missing/undecodable responses"
+  ],
+  "exclusions": "No production SDK/Phase B, signoff, deployment, maintained fork, repin, identity repair, commit/push or public submission"
+}

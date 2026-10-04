@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "scope": "Progress JSON exact-text edit only; no backend run or authorization change",
+  "sourceSha256": "c55d6fe0b44c4c6342257e33bf89e3071fb8ad70d59d95c0bfc622903e55b695",
+  "error": "Could not find edits[3] in docs/progress.json. The oldText must match exactly including all whitespace and newlines.",
+  "cause": "The targeted G3 gate was assumed to contain a testIds block; the real gate has an evidence block instead.",
+  "correction": "Read the actual G3 block and repeat the atomic edit using its unique title/status lines. JSON validation and final checks still required; no failed invocation counted as passing."
+}

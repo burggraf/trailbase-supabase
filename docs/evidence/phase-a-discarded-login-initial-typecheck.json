@@ -1,0 +1,11 @@
+{
+  "scope": "Initial test-only cleanup helper typecheck; NOT runtime/backend evidence",
+  "status": "failed",
+  "node": "v22.23.2",
+  "command": "tsc --noEmit",
+  "diagnostics": [
+    "tests/proofs/auth-coordination.ts(34,25): TS2345: string | null is not assignable to string | undefined",
+    "tests/proofs/auth-coordination.ts(67,38): TS2345: string | null is not assignable to string | undefined"
+  ],
+  "resolution": "Use the installed Tokens refresh_token type plus undefined for the helper argument; preserve runtime rejection of absent/null/nonstring credentials before I/O. No auth or cleanup assertions weakened."
+}

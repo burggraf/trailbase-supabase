@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "scope": "Static evidence-freshness check ordering only, not TypeScript or backend failure",
+  "sourceSha256": "f493c853999f932dc1c3266dffb5b5cc5d6e1bdcc9854f9e4a53dd1a2043e743",
+  "runtime": "v22.23.2",
+  "error": "Error: Stale/missing current-source evidence: A01",
+  "cause": "Fixture/source edits preceded npm run check, but current-source unit evidence had not yet been regenerated.",
+  "correction": "Run pinned current-source units first; 44/44 passed, then TypeScript/docs/traceability/evidence/secret checks passed. Historical static failure is preserved, not counted as a passing invocation."
+}
