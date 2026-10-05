@@ -1,0 +1,59 @@
+{
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37247146638",
+  "commit": "c89cba8e6b033c04b8ab972437996ce7fc182779",
+  "sourceSha256": "e5948c5e77676196beb24af85ae7e4086fc7e4e7deb91aeea7a4b134ba04f44f",
+  "workflowConclusion": "failure-preserved-strict-failures",
+  "units": {
+    "node22": "50/50 passed",
+    "node24": "50/50 passed"
+  },
+  "realScopes": {
+    "all-node22": "101/6",
+    "browser-node22": "60/6",
+    "expiry-node22": "2/0",
+    "candidate-characterization-node22": "10/0",
+    "candidate-smtp-node22": "0/1",
+    "migration-node22": "1/0",
+    "cleanup-node22": "1/0"
+  },
+  "comparison": [
+    {
+      "suite": "all",
+      "commonChanged": 0,
+      "addedPassing": 1
+    },
+    {
+      "suite": "browser",
+      "commonChanged": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "expiry",
+      "commonChanged": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "characterization",
+      "commonChanged": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "smtp",
+      "commonChanged": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "auth-migration",
+      "commonChanged": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "lifecycle",
+      "commonChanged": 0,
+      "addedPassing": 0
+    }
+  ],
+  "verification": "All nine unit/real reports match exact source/commit/runtime/counts/status. Seven real scopes independently verified with six exact pinned ECR references/digests, loopback-only bindings, setup and cleanup. Private G1 excluded from stock; the new referencedTable/foreignTable limit/range case passed on Linux stock.",
+  "privacySanitization": "One static proof test-title phrase in the stock report changed to Authorization header for credential-pattern scanning; behavior and status unchanged.",
+  "strict": "Workflow red only for preserved strict stock/browser/candidate-SMTP failures. Common test outcomes are unchanged; stock adds exactly the new passing G4 case; no setup/artifact failure."
+}
