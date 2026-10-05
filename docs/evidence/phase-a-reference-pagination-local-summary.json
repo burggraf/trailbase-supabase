@@ -1,0 +1,27 @@
+{
+  "sourceSha256": "e5948c5e77676196beb24af85ae7e4086fc7e4e7deb91aeea7a4b134ba04f44f",
+  "localNode22": "50/50",
+  "localNode24": "50/50",
+  "focused": "boundaries 13/13",
+  "realScopes": {
+    "boundaries": "13/0",
+    "browser": "60/6",
+    "network": "6/1",
+    "constraints": "6/0",
+    "streaming": "5/0",
+    "auth-lifecycle": "9/3",
+    "all": "101/6",
+    "proofs": "34/0",
+    "expiry": "2/0",
+    "candidate-characterization": "10/0",
+    "candidate-smtp": "0/1",
+    "migration": "1/0",
+    "cleanup": "1/0"
+  },
+  "behavior": "Installed Supabase JS 2.117.2 emitted todo_links.limit=1 for referencedTable limit and todo_links.offset=0 plus todo_links.limit=2 for deprecated foreignTable range. Both requests omitted an embedded relation and returned HTTP 400/PGRST108/null data. This is raw client/backend characterization only; relationships and referenced-table modifiers remain unsupported, with no SDK contract expansion.",
+  "verified": "All thirteen immutable-source scopes and focused boundaries matched source/runtime/counts/status. Six pinned ECR image references/digests, loopback-only bindings, setup/cleanup and private-G1 exclusion verified. New test passes focused, boundaries and stock. Common named outcomes in boundaries, stock, browser, network, auth lifecycle and candidate SMTP match previous source; only new passing test added in boundaries and stock.",
+  "failureComparison": "Compared common test names/statuses in boundaries, stock, browser, network, auth lifecycle and candidate SMTP against current-source JSON-shape local scope: zero changed common outcomes; one new passing G4 test in boundaries and stock.",
+  "privacySanitization": "Two static proof-test titles in local stock/proofs evidence replace a false-positive credential-like phrase with Authorization header; behavior/status unchanged.",
+  "missing": "Relationship support, production before-wire rejection, remaining builder options and full adapter/security/type/package tests plus maintainer signoff remain incomplete.",
+  "strict": "Preserved strict stock/browser/network/auth-lifecycle/candidate-SMTP failures remain unchanged; no setup failure, retry or assertion weakening."
+}

@@ -2,6 +2,12 @@
 
 **Current phase: A — proof harness; G1 contract completion is blocked. No SDK feature is signed off.**
 
+## Current approved G4 referenced-table pagination-option characterization
+
+Added a raw installed-client probe for table-scoped Supabase `.limit()`/`.range()` options, with no relationship/embed support. Installed Supabase JS 2.117.2 emitted `todo_links.limit=1` for `{ referencedTable:'todo_links' }` and `todo_links.offset=0&todo_links.limit=2` for deprecated `{ foreignTable:'todo_links' }`; both requests selected no embedded relation and returned HTTP **400/PGRST108** with null data. These are upstream wire/results only. Referenced-table modifiers and relationships remain unsupported; any future adapter must reject these options before wire. No rows were mutated; no SDK contract expansion.
+
+Focused boundaries **13/13** at source `e5948c5e77676196beb24af85ae7e4086fc7e4e7deb91aeea7a4b134ba04f44f`. All thirteen immutable-source local scopes audited: Node 22/24 units **50/50**; boundaries **13/0**, browser **60/6**, network **6/1**, constraints **6/0**, streaming **5/0**, auth lifecycle **9/3**, stock **101/6**, proofs **34/0**, expiry **2/0**, candidate characterization **10/0**, candidate SMTP **0/1**, migration **1/0**, cleanup **1/0**. The new case passes focused/boundaries/stock; common named outcomes in boundaries, stock, browser, network, auth lifecycle and candidate SMTP match the prior source, with one added passing G4 test in boundaries and stock. Other local scope counts/statuses match expectations. Six exact ECR image pins/digests, loopback-only bindings, setup/cleanup, and private-G1 exclusion verified. [Local summary](evidence/phase-a-reference-pagination-local-summary.json) and per-scope evidence. Exact-source Linux CI remains pending. Strict failures unchanged; no setup failure or retry.
+
 ## Current approved G2 JSON-shaped scalar-input characterization
 
 Added raw installed-client characterization for a JSON object sent to mapped `TEXT` column `todos.title`; no adapter or fixture changes. TrailBase client 0.14.3 sent object unchanged and server rejected with HTTP 400; complete rows/audits stayed unchanged. Supabase JS 2.117.2 sent same object, Postgres accepted it as JSON text (HTTP 201), and selected value parsed back to the original object. Exact generated IDs were cleaned; final full rows returned to baseline and audit showed only expected INSERT/DELETE. Focused and full boundaries **12/12** at source `d893c0eac21e96c6461d9be67dceaacfd54a0846a240738d3072426cbe4c93d1`.

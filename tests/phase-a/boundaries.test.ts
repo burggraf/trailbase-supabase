@@ -162,6 +162,28 @@ describe('L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation',(
     expect(urls.map(url=>url.searchParams.get('order'))).toEqual(['priority.desc','priority.desc']);
     expect(urls.map(url=>url.searchParams.get('todo_links.order'))).toEqual(['title.asc','title.asc']);
   });
+  it('L1-11/G4 referencedTable/foreignTable limit and range options require an embedded relation',async()=>{
+    const session=(await reference.client.auth.getSession()).data.session;
+    if(!session)throw new Error('Confirmed reference session missing');
+    const requests:{url:URL;method:string}[]=[];
+    const client=createClient(env.supabaseUrl,env.anonKey,{
+      auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},
+      accessToken:async()=>session.access_token,
+      global:{fetch:(input,init)=>{
+        requests.push({url:new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url),method:init?.method??'GET'});
+        return fetch(input,init);
+      }}
+    });
+    try{
+      const limited=await client.from('todos').select('id').limit(1,{referencedTable:'todo_links'});
+      const ranged=await client.from('todos').select('id').range(0,1,{foreignTable:'todo_links'});
+      for(const result of [limited,ranged]){expect(result.status).toBe(400);expect(result.error?.code).toBe('PGRST108');expect(result.data).toBeNull();}
+      expect(requests).toHaveLength(2);expect(requests.every(request=>request.method==='GET'&&request.url.pathname==='/rest/v1/todos')).toBe(true);
+      expect(requests.map(request=>request.url.searchParams.get('todo_links.limit'))).toEqual(['1','2']);
+      expect(requests.map(request=>request.url.searchParams.get('todo_links.offset'))).toEqual([null,'0']);
+      expect(requests.every(request=>!request.url.searchParams.has('limit')&&!request.url.searchParams.has('offset'))).toBe(true);
+    }finally{client.realtime.disconnect();}
+  });
   it('G4 repeated order keys retain first-key precedence; bounds/order call order selects the same page',async()=>{
     const api=native.client.records('todos');
     for(const ascending of [true,false]) {
