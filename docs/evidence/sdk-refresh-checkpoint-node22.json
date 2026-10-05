@@ -1,0 +1,21 @@
+{
+  "scope": "Guarded native single-flight manual/request refresh development checkpoint",
+  "status": "passed",
+  "node": "v22.23.2",
+  "sourceSha256": "acf837e8e820e0d3b7e9d08e048051e59151a46dad76db11d14466509b1283a5",
+  "checks": [
+    "Plan before code; refresh RED0/7 then88/88 SDK",
+    "Initial all83/4 failed only older expired/unsupported-method expectations; preserved and updated to stronger renewal-failure/no-anonymous assertions",
+    "Build/source types passed; parent parser/own-option/failed hydration/import/latch fixes retained",
+    "Supervisor approved native401-only current-generation clear/removal/latch and dedicated short3sec scope; default fixture untouched",
+    "Real owned expiry/refresh case authored, not launched",
+    "Final actual Node22.23.2 mixed138/138; check/progress/diff passed; no staged files/owned jobs/fixture lock"
+  ],
+  "missing": [
+    "Parent final-source re-review/real shortTTL SDK refresh/auth/browser/package/data/database/constraints/mixed Node22/24 controls pending",
+    "Real shared Supabase expiry semantics and packed/browser refresh proof not run; source inspection not compatibility proof",
+    "No background timers/default-true/getUser/logout/events/auth app/full security/coverage/CI/release/signoff; G1/G7/null-user approval open"
+  ],
+  "runtimeNote": "Absolute Node22 executable actual process.version verified. Prior sdk-auth-storage-review-mixed-node22 report remains historical Node26 as audited; parent corrected22/24 reports preserved.",
+  "noStagedFiles": true
+}

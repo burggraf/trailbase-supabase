@@ -1,0 +1,21 @@
+{
+  "scope": "All6 refresh review fixes, no deferred lifecycle expansion",
+  "status": "passed",
+  "node": "v22.23.2",
+  "sourceSha256": "f03191feb286b3456358ca96639876e1bc2dd978603be7337327d1ec83d401a4",
+  "checks": [
+    "Pre-code test matrix and BLOCK/all6 findings read",
+    "RED1/7 then SDK95/95, build/source types passed",
+    "Captured state/commit version plus epoch guards, delivered401 no body read/owned abort/handled cancellation, own mandatory JWT fields, exact refresh200 only",
+    "No-manual expiry trigger regression proved with deliberate deleted-trigger mutation0/1 failure; source restored then95/95",
+    "Real short3sec test now expired data/getSession starts renewal, independent manual join; cleanup fresh same-owner ordinary login independent storage/expired session, absent/rejected storage injected postexpiry cases authored",
+    "Final actual22.23.2 SDK95/95 from mixed145/145; build/types/check/progress/diff passed; owned jobs/lock/staged clear"
+  ],
+  "mutationInterruption": "Initial deliberate mutation tool command exceeded15sec (Vitest default30sec); no child remained, source restored from owned backup immediately, reran bounded1sec mutation failure and restored source. Private initial log retained.",
+  "approval": "Supervisor approved status-aware delivered401 no-body-read/owned abort/nonawaited handled cancellation; custom transports may ignore signal, no guaranteed hostile cancellation claim",
+  "missing": [
+    "Parent all6 re-review and new real3-case expiry/cleanup/auth/browser/package/data/database/constraints/mixed22/24 controls pending; acf historical reports retained",
+    "Full lifecycle/reference expiry/browser refresh/defaults/security/coverage/CI/release/G1/G7/null-user approval incomplete"
+  ],
+  "noStagedFiles": true
+}

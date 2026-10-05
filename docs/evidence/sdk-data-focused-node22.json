@@ -1,0 +1,124 @@
+{
+  "scope": "Focused SDK data unit/property tests; not coverage/signoff",
+  "status": "passed",
+  "node": "v22.23.2",
+  "sourceSha256": "7928f63f338f67eff7742887808f2c951b230b09d1d47ebe540a8febe69764b9",
+  "tests": [
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 0 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 1 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 2 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 61 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 1000 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality retains caller bounds, mutable state and builder isolation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-05/U05 S02 rejects select/count/head and inherited/unmapped responses",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 preserves backend errors ahead of cardinality",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 exports the createClient factory",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 L1-03/U03 L1-05/U05 select is lazy and maps declared TrailBase fields",
+      "status": "passed"
+    },
+    {
+      "name": "L1-06/U06 L1-07/U07 L1-08/U08 lazy one-record writes return null without reads",
+      "status": "passed"
+    },
+    {
+      "name": "L1-07/U07 L1-08/U08 exactly one explicit primary-key eq, including nonstandard integer keys",
+      "status": "passed"
+    },
+    {
+      "name": "L1-06/U06 L1-07/U07 S02 rejects shapes, fields, key changes, options and read-only writes before wire",
+      "status": "passed"
+    },
+    {
+      "name": "L1-04/U04 L1-06/U06 L1-07/U07 L1-08/U08 every await is fresh, isolated and never replayed on failure",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/U09 adds mapped eq filter through TrailBase structured query",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/U09 supports all six scalar filters with safe value encoding",
+      "status": "passed"
+    },
+    {
+      "name": "L1-10/U10 L1-11/U11 orders fields and uses inclusive ranges with last effective bounds",
+      "status": "passed"
+    },
+    {
+      "name": "L1-11/U11 zero limit sends a genuine zero-width page with filters and order",
+      "status": "passed"
+    },
+    {
+      "name": "L1-11/U11 zero limit preserves backend permission errors rather than fabricating empty success",
+      "status": "passed"
+    },
+    {
+      "name": "L1-11/U11 positive offset plus zero limit returns adapter range error without request",
+      "status": "passed"
+    },
+    {
+      "name": "L1-04/U04 L1-11/U11 repeated awaits use current bounds while independent builders isolate",
+      "status": "passed"
+    },
+    {
+      "name": "L1-10/U10 L1-11/U11 S02 rejects invalid options and bounds before requests",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 S02 mutation UUID codec has 1000 deterministic round trips through real native serialization",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 S02 rejects nonportable mutation values and inherited/getter/symbol fields before requests",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 L1-03/U03 S02 mapping is owned and inherited/malformed mapping shapes are rejected",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 L1-04/U04 rejects unmapped/incomplete or invalid native response shapes",
+      "status": "passed"
+    },
+    {
+      "name": "L1-06/U06 L1-07/U07 L1-08/U08 S02 unsupported key codecs and adversarial keys cannot reach mutation endpoints",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 own scalar fields with prototype-like names retain their values on wire and reads",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/U09 L1-07/U07 L1-08/U08 S02 extra predicate arguments are not silently ignored",
+      "status": "passed"
+    }
+  ]
+}

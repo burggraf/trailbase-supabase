@@ -1,0 +1,25 @@
+{
+  "scope": "Bounded L1-17 getUser only; development not compatibility or signoff",
+  "status": "passed",
+  "sourceSha256": "371579481cd729abb79b24bf2c182d185a9b8b64103d09e3b2ea7c5f47fba3b7",
+  "node": "v22.23.2",
+  "checks": [
+    "Initial RED0/7 then new7/7; mixed153/153 actual22.23.2 verified; build/source types",
+    "Reproduced exact-source unsupported public boundary RED0/7, source restored before final153",
+    "Preserved parent cancelResponse and redirected401 order/test8th; no deps/server/defaultfixture/repin/staging/commits/fixtures",
+    "Source status with both genuine bearer/refresh does live session+DbUser, supervisor approved guarded genuine rotation and conservative failures",
+    "Unit/types/32 distinct property/privacy/own-field/header/missing/hydration/expiry/fetch/JSON/refresh/storage race proof",
+    "Real sdk-auth live DB email/forgery/revoked/deleted/anonymous owned SQL/resource postconditions authored; sdk-refresh actual expired native status200null assertion authored",
+    "Final SDK103/103 mixed153/153, build/types/check/progress/diff passed; actual22.23.2/source verified, jobs/lock/staged clear"
+  ],
+  "missing": [
+    "Parent independent review and final real auth now2/2, refresh3/3, browsers/data/DB/constraints/package/mixed22/24 controls",
+    "Real shared-reference/user expiry parity and packed/browser live-user tamper/deletion cases, full security/coverage/CI/release/defaults/timers/logout/events/G1/G7/null-user signoff incomplete"
+  ],
+  "limitations": [
+    "getUser GET installs native returned credential rotation; not Supabase token side-effect parity",
+    "Failures preserve prior auth state, no data/status401 terminal classification; cached getSession not live",
+    "Custom transports can ignore abort/cancellation; no hostile resource guarantee"
+  ],
+  "noStagedFiles": true
+}

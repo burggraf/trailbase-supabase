@@ -144,7 +144,7 @@ export async function verifyPrivateG1Prototype() {
   return { binary, baseCommit, branch: branch.trim(), patchSha256 };
 }
 
-export async function createHarness({ authMitigation = false, nativeAuthProfile = 'default', privateNativePrototype = false } = {}) {
+export async function createHarness({ authMitigation = false, nativeAuthProfile = 'default', privateNativePrototype = false, sdkBrowser = false } = {}) {
   const authVariant = fixtureAuthVariant({ authMitigation, privateNativePrototype });
   const nativeConfig = nativeAuthConfig(await readFile('tests/fixtures/trailbase/config.textproto','utf8'),nativeAuthProfile);
   const id = `${Date.now()}-${randomUUID().replaceAll('-', '').slice(0,12)}`;
@@ -203,6 +203,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     // Diagnostics stay private and gitignored. Delete only the owned depot (including keys/data).
     await rm(resolve(directory, 'traildepot'), { recursive: true, force: true });
     await rm(resolve(directory, 'context.json'), { force: true });
+    await rm(resolve(directory, 'sdk-package'), { recursive: true, force: true });
     await rm(resolve(directory, 'private-g1-upgrade-fixture.json'), { force: true });
   }
   async function launchTrail(binary, logName) {
@@ -255,6 +256,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await writeFile(resolve(publicDirectory, 'index.html'), '<!doctype html><html lang="en"><meta charset="utf-8"><title>Phase A verification complete</title><main><h1>Verification complete</h1><p>Sign in explicitly.</p></main></html>');
     await writeFile(resolve(publicDirectory, 'phase-a-owner.txt'), id);
     await copyBrowserSdks(publicDirectory);
+    if (sdkBrowser) context.packedBrowser = await (await import('./sdk-browser.mjs')).preparePackedBrowser(directory);
     // Installed pinned upstream UMD is characterization-only; proof modules are
     // type-erased test files, not a production adapter/package build.
     try {

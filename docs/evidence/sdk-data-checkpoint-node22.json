@@ -1,0 +1,29 @@
+{
+  "scope": "Bounded CRUD data checkpoint validation; incomplete real/browser/package/security layers, no signoff",
+  "status": "passed",
+  "node": "v22.23.2",
+  "sourceSha256": "7928f63f338f67eff7742887808f2c951b230b09d1d47ebe540a8febe69764b9",
+  "checks": [
+    "SDK focused units 29/29 on revival",
+    "Full mixed harness/SDK units 79/79 at same source before interruption",
+    "npm run build:sdk passed",
+    "tsc --noEmit: source positive/negative consumer checks passed",
+    "Emitted-declaration positive/negative consumer passed with --ignoreConfig",
+    "git diff --check passed",
+    "npm run check passed: 15 markdown files, 27 feature rows, 7 gates, evidence freshness/secret scan",
+    "npm run progress and git diff --check passed"
+  ],
+  "initialFailures": [
+    "Initial emitted-declaration consumer invocation failed TS5112 (explicit files require --ignoreConfig on pinned TypeScript7); original stderr preserved in session and summarized here",
+    "Initial real/source-unit red evidence retained separately; final-source real refresh interrupted, not a passing run"
+  ],
+  "runtimeChecksum": "Official Node22.23.2 darwin-arm64 archive verified against nodejs.org SHASUMS256.txt",
+  "resources": "Exact dead-run cleanup passed for 1791221042357-4fef9686cc96; no phase-a.lock, Docker container inventory empty",
+  "missing": [
+    "Final-source real sdk-data rerun (interrupted during startup; older 5/5 real evidence predates final validation/key-codec changes)",
+    "Relevant database/constraints controls did not start after interruption; fixture/security baseline not refreshed",
+    "Complete >1000 cap/shared contract and credential/fault/constraint matrices; three-browser built app, packed consumers, coverage thresholds, Node24 supported-runtime refresh and CI",
+    "Named independent review and maintainer signoff; G1/G7 strict unresolved auth failures unchanged"
+  ],
+  "noStagedFiles": true
+}

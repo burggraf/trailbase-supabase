@@ -1,0 +1,20 @@
+{
+  "scope": "Packed data browser import/UI-query unit subset; no real browser execution",
+  "status": "passed",
+  "node": "v22.23.2",
+  "sourceSha256": "f559a98636689f9e692d1e0b68dc6fa6e41619d0f52258a1f9d74d478c4dd388",
+  "tests": [
+    {
+      "name": "L1-26/E13 packed browser import map guard accepts only complete standalone native graph",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 L1-11/E05 example query builds scalar filter, stable order and inclusive caller page",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 S02 example rejects unsupported filter syntax and boolean coercion",
+      "status": "passed"
+    }
+  ]
+}

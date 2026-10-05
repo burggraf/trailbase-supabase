@@ -1,0 +1,23 @@
+{
+  "scope": "Bounded browser cleanup/control revision unit subset; no real browser run",
+  "status": "failed",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-27/E13 cleanup attempts every later owner/logout/route step and preserves primary plus cleanup failures",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27/E13 cleanup retains a primary failure unchanged when cleanup succeeds",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27/S10 exact owned-row cleanup never deletes an unrelated row and continues later keys",
+      "status": "failed"
+    },
+    {
+      "name": "L1-27/E13 an early exact-key delete failure does not prevent later key cleanup",
+      "status": "failed"
+    }
+  ]
+}

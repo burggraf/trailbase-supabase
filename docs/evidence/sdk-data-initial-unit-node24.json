@@ -1,0 +1,54 @@
+{
+  "scope": "SDK cardinality/mutation TDD red",
+  "node": "v24.11.0",
+  "tests": [
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 0 rows, without implicit truncation",
+      "status": "failed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 1 rows, without implicit truncation",
+      "status": "failed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 2 rows, without implicit truncation",
+      "status": "failed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 61 rows, without implicit truncation",
+      "status": "failed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 1000 rows, without implicit truncation",
+      "status": "failed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality retains caller bounds, mutable state and builder isolation",
+      "status": "failed"
+    },
+    {
+      "name": "L1-05/U05 S02 rejects select/count/head and inherited/unmapped responses",
+      "status": "failed"
+    },
+    {
+      "name": "L1-12/U12 preserves backend errors ahead of cardinality",
+      "status": "failed"
+    },
+    {
+      "name": "L1-06/U06 L1-07/U07 L1-08/U08 lazy one-record writes return null without reads",
+      "status": "failed"
+    },
+    {
+      "name": "L1-07/U07 L1-08/U08 exactly one explicit primary-key eq, including nonstandard integer keys",
+      "status": "failed"
+    },
+    {
+      "name": "L1-06/U06 L1-07/U07 S02 rejects shapes, fields, key changes, options and read-only writes before wire",
+      "status": "failed"
+    },
+    {
+      "name": "L1-04/U04 L1-06/U06 L1-07/U07 L1-08/U08 every await is fresh, isolated and never replayed on failure",
+      "status": "failed"
+    }
+  ]
+}

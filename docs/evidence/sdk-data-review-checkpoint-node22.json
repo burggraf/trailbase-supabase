@@ -1,0 +1,23 @@
+{
+  "scope": "Bounded SDK review-fix checkpoint: focused units, build, source/emitted types, ledger validation; no real fixtures/full signoff",
+  "status": "passed",
+  "node": "v22.23.2",
+  "sourceSha256": "9306c1a6db16e1a412386402987968c061ce976d60405ff05c306289cc489607",
+  "checks": [
+    "Review regressions red 1 passed/4 failed; preserved separately",
+    "SDK focused units green 34/34",
+    "npm run build:sdk passed",
+    "tsc --noEmit source compile-positive/negative consumers passed",
+    "Emitted-declaration consumer --ignoreConfig compile-positive/negative passed",
+    "npm run progress and npm run check passed: ledger schema, types/docs/links/traceability/freshness/secret scan",
+    "git diff --check passed; no staged files or fixture lock/owned jobs"
+  ],
+  "nativeAcknowledgementDomain": "Installed trailbase@0.14.3 CreateOperation.query returns parseJSON(reply).ids[0] unchanged. Pinned server create_record.rs CreateRecordResponse.ids is Vec<String>; extract_record_id uses BASE64_URL_SAFE.encode for blobs and i.to_string() for integers. Validate padded URL-safe UUIDv4 or canonical safe-integer decimal string; numeric JSON IDs are not native server acknowledgements.",
+  "priorSource": "7928f63f338f67eff7742887808f2c951b230b09d1d47ebe540a8febe69764b9",
+  "priorEvidence": "Parent confirmed real sdk-data 5/5, database 9/9, constraints 6/6 with source/setup/cleanup verified, and Node24 full units 79/79. Historical after these source fixes.",
+  "missing": [
+    "Final-source real sdk-data/database/constraints and full Node22/24 refresh (parent owns final checks)",
+    "Full cap/security/fault/browser/package/coverage/CI layers and independent reviewer/maintainer signoff"
+  ],
+  "noStagedFiles": true
+}

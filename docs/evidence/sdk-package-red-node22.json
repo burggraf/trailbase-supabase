@@ -1,0 +1,23 @@
+{
+  "scope": "Private package guard unit TDD subset; no backend/browser/package signoff",
+  "status": "failed",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-02/P02 L1-26/P26 package guard accepts only the private built ESM/declaration subset",
+      "status": "failed"
+    },
+    {
+      "name": "L1-26/P26 package guard rejects missing and extra source/runtime/test/credential or traversal files",
+      "status": "failed"
+    },
+    {
+      "name": "L1-26/P26 package guard rejects public-name/entry/pin drift",
+      "status": "failed"
+    },
+    {
+      "name": "L1-26/P26 package content guard rejects credential material without logging its content",
+      "status": "failed"
+    }
+  ]
+}

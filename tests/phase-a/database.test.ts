@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { beforeAll, describe, expect, it } from 'vitest';
+import { createClient } from '../../src/index.js';
 import { exec, } from '../../scripts/tools.mjs';
 import { cli } from '../../scripts/harness.mjs';
 import { context, confirmedTrailUser, confirmedSupabaseUser, nativeUuid, canonicalUuid, supabase, trailbase, type Context } from './helpers.js';
@@ -148,5 +149,61 @@ describe('L1-27/I27/C27 cold-start fixtures (upstream, not SDK)', () => {
     expect((await a.client.records('integer_todos').read(key)).todo_key).toBe(key);
     expect((await sa.client.from('integer_todos').insert({ todo_key: key, user_id: sa.user.id, title: 'reference key' })).error === null).toBe(true);
     expect((await sa.client.from('integer_todos').select('*').eq('todo_key',key).single()).data?.todo_key).toBe(key);
+  });
+  it('L1-05/I05 C05 adapter reads owner rows with explicit UUID/boolean mapping', async () => {
+    const id = randomUUID();
+    const title = `adapter-read-${id}`;
+    const nativeRow = { id: nativeUuid(id), user_id: a.user.id, title, completed: 1, priority: 7, note: null };
+    const referenceRow = { id, user_id: sa.user.id, title, completed: true, priority: 7, note: null };
+    await a.client.records('todos').create(nativeRow);
+    expect((await sa.client.from('todos').insert(referenceRow)).error).toBeNull();
+
+    const makeAdapter = (headers: Record<string, string>) => createClient(env.trailUrl, undefined, {
+      trailbase: { tables: { todos: { api: 'todos', primaryKey: 'id', fields: {
+        id: { type: 'uuid' }, user_id: { type: 'uuid' }, title: { type: 'text' }, completed: { type: 'boolean' },
+        priority: { type: 'integer' }, note: { type: 'text', nullable: true }, created_at: { type: 'integer' },
+      } } } },
+      global: { fetch: (input, init) => fetch(input, { ...init, headers: { ...Object.fromEntries(new Headers(init?.headers).entries()), ...headers } }) },
+    });
+
+    try {
+      const ownerRows = await makeAdapter(a.client.headers()).from('todos').select('*');
+      expect(ownerRows.error).toBeNull();
+      expect(ownerRows.data).toContainEqual(expect.objectContaining({ id, user_id: canonicalUuid(a.user.id), title, completed: true, priority: 7, note: null }));
+      const foreignRows = await makeAdapter(b.client.headers()).from('todos').select('*');
+      expect(foreignRows.error).toBeNull();
+      expect(foreignRows.data?.some(row => row.id === id)).toBe(false);
+      const expected = await sa.client.from('todos').select('*').eq('id', id).single();
+      expect(expected.error).toBeNull();
+      expect(expected.data).toMatchObject(referenceRow);
+
+      // Bounded adapter query checks, not full SDK feature verification.
+      const adapter = makeAdapter(a.client.headers());
+      const before = await a.client.records('todos').read(nativeUuid(id));
+      const auditBefore = (await a.client.records('todo_audit').list({ pagination: { limit: 1000 } })).records;
+      const page = await adapter.from('todos').select().eq('id', id).gte('priority', 7).lte('priority', 7).order('priority', { ascending: false }).order('title').range(0, 0);
+      expect(page.error).toBeNull();
+      expect(page.data).toHaveLength(1);
+      expect(page.data?.[0]).toMatchObject({ id, title, completed: true, priority: 7 });
+      for (const zero of [
+        await adapter.from('todos').select().eq('id', id).order('title').limit(0),
+        await sa.client.from('todos').select('*').eq('id', id).order('title').limit(0),
+      ]) expect(zero).toMatchObject({ data: [], error: null });
+      const anonymousZero = await makeAdapter({}).from('todos').select().limit(0);
+      expect(anonymousZero.data).toBeNull();
+      expect(anonymousZero.error?.status).toBe(403);
+      const adapterRange = await adapter.from('todos').select().range(1, 3).limit(0);
+      expect(adapterRange.data).toBeNull();
+      expect(adapterRange.error?.name).toBe('RangeError');
+      expect(adapterRange.error?.status).toBeUndefined();
+      const referenceRange = await sa.client.from('todos').select('*').range(1, 3).limit(0);
+      expect(referenceRange.data).toBeNull();
+      expect(referenceRange.error?.code).toBe('PGRST103');
+      expect(await a.client.records('todos').read(nativeUuid(id))).toEqual(before);
+      expect((await a.client.records('todo_audit').list({ pagination: { limit: 1000 } })).records).toEqual(auditBefore);
+    } finally {
+      await a.client.records('todos').delete(nativeUuid(id));
+      await sa.client.from('todos').delete().eq('id', id);
+    }
   });
 });

@@ -1,0 +1,22 @@
+{
+  "scope": "Approved technical fixture schema metadata guard correction, NOT auth compatibility exception or real behavior signoff",
+  "status": "passed",
+  "sourceSha256": "42c5ce014d9c67877b87d1a83fa00c1b2dd6fb752a83b857f1af2739235bb7aa",
+  "node": "v22.23.2",
+  "checks": [
+    "Read full reviewer203635a6 advisory; parent diagnostic actualdc9 first CLI only two canonical optimizer tables added,30existing identical/config/identities/sessions unchanged; original failure retained",
+    "Pinned extension/core connection PRAGMA optimize0x10002 source traced; no manual schema writes/path/privilege/verbs changes",
+    "Own exact4attrs schema records validated, duplicates rejected; canonical sqlite_stat1/stat4 required in BOTH snapshots; only new absent-before canonical records filtered, all remaining records exact/no SQL normalization",
+    "Raw schema changed/prohibited schema change/fixed allowed added names reported distinctly; config/identity/session/owner/native constraints/pin/ownership/private snapshots unchanged; metadata only, no statcontents/sample/queryplan/physicalbytes claim",
+    "RED0/4 beforecode then focused10/10; initial inferredType TS7053 retained, corrected explicit safe report fields, final source build/types passed",
+    "Final actual22.23.2 SDK114/114 mixed164/164, no fixture launch or SDK/auth code change",
+    "Initial source type TS7053 twice (dynamic test keys) preserved; replaced dynamic keys with typed explicit flag tuple/const key union, final source types actually passed. Initial unchecked shell checkpoint superseded, preserved privately not acceptance evidence.",
+    "Final check/progress/diff passed; initial check rejected markdown advisory as ledger evidence (JSON-only paths), preserved private then removed that evidence pointer, advisory still read/referenced in scope. Jobs/lock/staged clear."
+  ],
+  "missing": [
+    "Parent re-review narrow comparator/negativefixture/reporting then actual SDKauth2 and separately SDKrefresh3/native ownercascadeaudit proof; neither real signed off",
+    "Node24/final browser/data/DB/constraints/package/full controls pending; previousdc9 controls historical",
+    "Full reference/browser/security/lifecycle/G1/G7/null-user/coverage/CI/release/signoff incomplete"
+  ],
+  "noStagedFiles": true
+}

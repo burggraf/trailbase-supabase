@@ -1,0 +1,12 @@
+{
+  "scope": "Reviewed stale-success-response cancellation regression before narrow resource fix",
+  "status": "failed",
+  "sourceSha256": "78c3bbc2f9e35655fc6277166ef896f43b57ffa334e9e4afa81fb72eb5dbb9eb",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-17/S08 discarded successful status owns abort/cancel even rejected or held cancellation, never replaces stale result or reads body",
+      "status": "failed"
+    }
+  ]
+}

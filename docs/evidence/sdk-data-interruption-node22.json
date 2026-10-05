@@ -1,0 +1,11 @@
+{
+  "scope": "SDK data checkpoint interruption and exact owned-fixture recovery; not assertion proof",
+  "status": "failed",
+  "node": "v22.23.2",
+  "runId": "1791221042357-4fef9686cc96",
+  "sourceSha256": "7928f63f338f67eff7742887808f2c951b230b09d1d47ebe540a8febe69764b9",
+  "summary": "Final-source sdk-data refresh was interrupted by workflow timeout during Supabase startup. No completed sanitized test report or assertions; no runtime outcomes inferred. Scheduled database/constraints controls did not start. Revival found runner PID 52927 absent, stale owned lock and five owned containers. Exact fixtures:cleanup completed; lock clear and Docker container inventory empty.",
+  "cleanupCommand": "npm run fixtures:cleanup -- 1791221042357-4fef9686cc96",
+  "cleanup": "passed",
+  "tests": []
+}

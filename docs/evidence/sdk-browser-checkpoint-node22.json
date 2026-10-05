@@ -1,0 +1,23 @@
+{
+  "scope": "Auth-free data UI and actual packed-browser fixture authoring checkpoint; real execution pending",
+  "status": "passed",
+  "node": "v22.23.2",
+  "sourceSha256": "f559a98636689f9e692d1e0b68dc6fa6e41619d0f52258a1f9d74d478c4dd388",
+  "checks": [
+    "Plan written before code",
+    "Import graph/UI-query guards RED0/3 then GREEN3/3",
+    "SDK build and source types passed",
+    "Dedicated Playwright discovery found one data case on each of Chromium/Firefox/WebKit (3 total), no resources started",
+    "Existing native/reference proof module copy routine and routes unchanged; package checker/consumer files not edited",
+    "npm run progress/check and git diff --check passed; no active resources or staged files"
+  ],
+  "initialFailure": "Browser JS-misuse insert array initially failed TypeScript negative runtime test; switched to Reflect invocation, source typecheck passed",
+  "packedReadiness": "Inspected native0.14.3 installed dist/index.js: standalone without static/dynamic imports. Dedicated owned fixture branch clean-installs tarball and copies installed SDK/native modules with code/tarball hashes; complete minimal trailbase import map. Actual browser module loading/runtime is unverified until dedicated real command runs.",
+  "readyCommand": "npm run test:sdk:browser",
+  "missing": [
+    "Real focused Chromium/Firefox/WebKit run not started due remaining bounded-session budget; setup/module-serving/three-engine runtime/cleanup proof pending",
+    "Real Supabase shared-browser, full auth/app, packed backend, complete security/fault/coverage/package/CI and signoff layers incomplete",
+    "Parent final-source unit/real evidence refresh required; old reports historical"
+  ],
+  "noStagedFiles": true
+}

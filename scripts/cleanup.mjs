@@ -38,6 +38,7 @@ async function main() {
   }
   await rm(resolve(directory,'traildepot'),{recursive:true,force:true});
   await rm(resolve(directory,'context.json'),{force:true});
+  await rm(resolve(directory,'sdk-package'),{recursive:true,force:true});
   let lock;
   try { lock=JSON.parse(await readFile('.runtime/phase-a.lock/owner.json','utf8')); }
   catch(error) { if(error.code!=='ENOENT') throw error; }

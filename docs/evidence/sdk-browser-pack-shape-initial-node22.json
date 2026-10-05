@@ -1,0 +1,55 @@
+{
+  "scope": "Packed SDK data-only browser/UI subset; fixture-auth bootstrap, NOT auth application/full E2E/signoff",
+  "authVariant": "stock",
+  "suite": "sdk-browser",
+  "nativeAuthProfile": "default",
+  "status": "failed",
+  "startedAt": "2026-10-05T18:42:01.670Z",
+  "baseline": {
+    "trailbase": {
+      "version": "0.34.3",
+      "commit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+      "assets": {
+        "darwin-arm64": {
+          "name": "trailbase_v0.34.3_aarch64_apple_darwin.zip",
+          "sha256": "211132ece889b373317ce7339c13992bd2ccfe02298458a9e6104a7b8454fe43"
+        },
+        "darwin-x64": {
+          "name": "trailbase_v0.34.3_x86_64_apple_darwin.zip",
+          "sha256": "c4e66e48165f3dcd1c9292b26f46203a8a2123652e05926f6c1a79b4fdd7fc4f"
+        },
+        "linux-arm64": {
+          "name": "trailbase_v0.34.3_aarch64_linux.zip",
+          "sha256": "88156ee1008e6fdd4d71784014fc970e0abdddd88ea952eddf04f25aa32fe99a"
+        },
+        "linux-x64": {
+          "name": "trailbase_v0.34.3_x86_64_linux.zip",
+          "sha256": "aa5a08fa50c06c026b652afa265cf392438675a2bb26ec174096c941fdb67b97"
+        }
+      }
+    },
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "nodeMajors": [
+      22,
+      24
+    ],
+    "nodeVersions": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "playwright": "1.63.0",
+    "commonRowCap": 1000,
+    "startupTimeoutMs": 300000
+  },
+  "node": "v22.23.2",
+  "platform": "darwin-arm64",
+  "tests": [],
+  "cleanup": "passed",
+  "sourceSha256": "174c0f89ae6a9af5414c64b373132ad3389b5ec72310e4a75665c9c23f2ade6b",
+  "baseCommit": "e4cdfa61694eea386b0e602b2abc66de7ef260f9",
+  "runId": "1791225721761-5382caa06e62",
+  "setupStage": "native-config-and-proof-build",
+  "finishedAt": "2026-10-05T18:42:42.710Z"
+}

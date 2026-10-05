@@ -1,0 +1,27 @@
+{
+  "scope": "Bounded storage P1/P2 review-fix unit checkpoint; no new real controls",
+  "status": "failed",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-16/S08 held hydration plus current failed login reconciles expired/unexpired authoritative C without anonymous dispatch",
+      "status": "failed"
+    },
+    {
+      "name": "L1-16/S08 stale failed login cannot reconcile over a newer committed login",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/S07 required auth settings must be own fields even when Object.prototype supplies flags",
+      "status": "failed"
+    },
+    {
+      "name": "L1-16/S07 stored version must be own and exactly supported; inherited version plus unexpected own field rejected",
+      "status": "failed"
+    },
+    {
+      "name": "L1-16/S07 inherited optional storage/key/URL-adoption fields are never selected; legitimate storage prototype methods work",
+      "status": "failed"
+    }
+  ]
+}

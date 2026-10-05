@@ -1,0 +1,35 @@
+{
+  "scope": "Persistent/hydrated session unit checkpoint; no real/full lifecycle verification",
+  "status": "failed",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-16/U16 S07 sync/async exact credential persistence reload preserves csrf privately and unrelated keys",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 disabled persistence has zero storage calls; Node default stores never cross clients",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 S08 held hydration cannot install old A after newer B login invocation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 S08 held stale write A plus failed B restores preexisting good C before responses settle",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 S08 rejected compensation latches sanitized failure and zero auth/data dispatch, disk remains explicit A",
+      "status": "failed"
+    },
+    {
+      "name": "L1-16/U16 write rejection restores C without installing new memory; empty stale write removes only owned key",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 corrupt/property stored vectors and read failures are private/request-free; expired refresh is retained",
+      "status": "passed"
+    }
+  ]
+}

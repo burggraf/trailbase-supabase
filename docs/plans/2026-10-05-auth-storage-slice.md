@@ -1,0 +1,13 @@
+# Auth slice 2: explicit persistence and guarded hydration
+
+Parent checkpoint 5c55be11 passed real auth/data/database/constraints, clean package Node22/24 and packed data browsers. Preserve parent sanitized JSON errors and complete import graph fixes. This bounded slice adds L1-16/S07/S08 storage only; no refresh/timers/live getUser/logout/events or default-auto-refresh support.
+
+## Pre-code contract and tests
+
+- Explicit persistSession boolean plus autoRefreshToken:false. Configured sync/async Storage methods and nonempty owned key validated. Default key is stable origin-namespaced; Node fallback memory is per client, browser default localStorage only when persistence enabled. Disabled persistence calls no storage methods.
+- Persist exactly version1 native auth/refresh/nullable-CSRF credentials, never cached user/expiry. Hydration safely parses strict envelope and native claims. Corrupt/truncated/unknown-version input returns sanitized named error without deleting keys. Expired genuine credentials remain stored/cached for next refresh slice; record dispatch fails expired without anonymous fallback.
+- Auth and opted-in data await initialization. Invocation generations guard hydration and login through every await. Serialize storage commits; memory installs only after a current successful write. Stale/failed writes restore last committed credentials (or remove only owned key if empty). Newer failed login waits for pending restoration. Restoration failure is observable, preserves prior memory internally and blocks successful operations in that client rather than claiming disk consistency.
+- Unit/type/property first: sync/async reload, defaults/isolation, disabled-zero-calls, exact envelope/CSRF/privacy, corrupt vectors/expired credentials, held hydration vs newer login, held stale setItem vs failed newer login with committed C, read/write/removal/restore rejections, untouched unrelated keys/defensive snapshots. Existing auth/data/package/import graph tests remain required.
+- Extend owned real sdk-auth suite for genuine custom-storage reload/owner read and database postconditions. Parent runs fixtures/final controls; worker launches no real services. Packed Chromium/Firefox/WebKit real localStorage reload/auth-user isolation remains planned mandatory runtime evidence, not N/A or a passed test.
+
+Acceptance checkpoint: exact-source unit/type/build evidence and authored real cases only; full persistent lifecycle, shared-reference races, browser/packed auth/security/fault/property/coverage/CI/signoff still incomplete. G1/G7/null-user approval untouched. Next slice is single-flight generation-guarded refresh, not global success inference.

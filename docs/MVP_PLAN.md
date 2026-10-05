@@ -4,7 +4,7 @@
 
 Maintainer approved narrowing delivery to database CRUD and auth, then selected **self-service signup and full persistent session lifecycle** in the scope interview. This supersedes the pre-created-user POC recommendation. Approval authorizes implementation of this subset, not release signoff or backend changes.
 
-No SDK is implemented yet. Target remains a Supabase-shaped TypeScript client for TrailBase, not PocketBase compatibility. No automatic migration or import-only migration claim.
+Initial data-query SDK code is under development; no feature is verified or signed off yet. Target remains a Supabase-shaped TypeScript client for TrailBase, not PocketBase compatibility. No automatic migration or import-only migration claim.
 
 ### Included
 
@@ -22,8 +22,8 @@ Realtime/subscriptions and every capability in [FUTURE_PLAN.md](FUTURE_PLAN.md).
 
 1. **Build data slice now:** client/types/mappings/results and CRUD against existing pinned fixtures. Existing auth blockers do not prevent implementing and testing this slice using fixture users; that does not substitute for final signup tests.
 2. **Build core auth:** guarded native HTTP where installed client behavior is insufficient; awaited hydration, single-flight refresh, session generation guards, owned storage/timer cleanup and observable errors. Reuse existing proof helpers as evidence/patterns, not production code without review.
-3. **Resolve release blockers:** G1 duplicate pending signup/SMTP recovery and signup return-shape exception; G7 authenticated global revocation acknowledgement. Keep original failures. Do not deploy private G1 patch, repin, alter server, fabricate signup identity or weaken logout scope under this approval. Seek a bounded maintainer decision when backend action/compatibility exception is needed.
-4. **Ship tested app/package:** exercise same supported operations with real TrailBase and official Supabase reference; pack/install in clean consumers; document exact limits and obtain maintainer release signoff.
+3. **Carry G1/G7 as documented open auth edge cases:** preserve original strict failures and evidence; record signup/SMTP ambiguity and logout/late-response limitations in public-facing docs and tests. These are not prerequisites for implementing the main CRUD/auth MVP. Do not claim they are fixed, invent a workaround, or infer a compatibility exception or release signoff. No private G1 patch deployment, repin, or server change is authorized.
+4. **Ship tested app/package:** exercise supported operations with real TrailBase and official Supabase reference; pack/install in clean consumers; document exact limits. Obtain maintainer release signoff separately.
 
 Stop adding unrelated raw characterization. Add characterization only when it answers a concrete CRUD/auth implementation question. Preserve historical evidence and fixtures; do not delete tests to make CI green.
 

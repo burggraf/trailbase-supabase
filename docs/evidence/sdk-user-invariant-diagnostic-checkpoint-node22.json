@@ -1,0 +1,22 @@
+{
+  "scope": "Narrow native CLI unchanged-invariant diagnostics, not root resolution or real liveuser proof",
+  "status": "passed",
+  "sourceSha256": "dc9b402a954e0951c7a28d2af8265257f39710d572ebd3c41d1eb53fe719fd15",
+  "node": "v22.23.2",
+  "checks": [
+    "Preserved source3c auth1pass/1fail combined invariant, wholefixturecleanup passed; SDKrefresh never executed due && stop",
+    "Read actual CLI parameterized user mutations/AppState connection migrations/config/default/new-admin/job-building paths; no actual mismatch/root confirmed, invariant/path unchanged",
+    "Before/after readonly complete schema/config/unrelated identities/sessions/owned identity snapshots0600 unique private files; CLI stdout/stderr saved on success/failure before invariants",
+    "Public error fixed four enum booleans only; snapshot failure sanitized, before/CLI retained; no values/hashes/config/rows/tokens in publicdiagnostics",
+    "Cleanup same captured acquired UUID verifies independently read current email equals exact known original OR changed generated email, including unknown successful mutation/failed invariant; rejects other generated addresses",
+    "RED4passed/2failed then focused6/6; final actual22.23.2 mixed160/160/SDK110/110, build/types; no authcode change/fixtures/deps/server/schema/constraints/privilegepolicy expansion",
+    "Final check/progress/diff passed; no staged files/owned processes/fixture lock; exact source and actual22.23.2 confirmed"
+  ],
+  "missing": [
+    "Parent rerun real sdk-auth2 now diagnoses exact categories, inspect owned private files before determining root/policy; SDKrefresh3 never executed at3c",
+    "Any confirmed CLI config/schema/unrelated identity/session mutation requires supervisor before new path/exception/repair; no benign assumption",
+    "Reviewer2aa source-only recheck historical, refreshed independent review/full controls22/24/package/browser/data/DB/constraints pending",
+    "Full reference/browser/security/lifecycle/G1/G7/null-user/signoff incomplete"
+  ],
+  "noStagedFiles": true
+}

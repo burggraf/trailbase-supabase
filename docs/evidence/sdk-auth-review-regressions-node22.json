@@ -1,0 +1,11 @@
+{
+  "scope": "Targeted P1 auth decoding privacy and P2 closed packed import graph regressions",
+  "sourceSha256": "5c55be11da347fec83739dc43394c222b2f73ffb45f9372bd456698cef4c8c56",
+  "red": [
+    {"command": "npx vitest run tests/unit/sdk-auth-faults.test.ts tests/unit/sdk-auth-package.test.ts", "passed": 4, "failed": 2, "privateRawLog": ".runtime/sdk-auth-review-red-node22.log", "failures": ["SyntaxError instead of fixed auth payload error", "Missing side-effect import not rejected"]},
+    {"command": "npx vitest run tests/unit/sdk-auth-faults.test.ts tests/unit/sdk-auth-package.test.ts", "passed": 6, "failed": 1, "privateRawLog": ".runtime/sdk-auth-review-native-red-node22.log", "failure": "Native inline/compact import guard missed undeclared dependency"}
+  ],
+  "green": {"focusedPassed": 7, "focusedFailed": 0, "mixedNode22Passed": 114, "mixedNode24Passed": 114, "build": "passed", "check": "passed", "diffCheck": "passed"},
+  "fixes": ["Login response and JWT JSON decoding use fixed AuthInvalidPayloadError without parser-quoted payload fragments; failed replacement preserves good session", "Module graph checks side-effect imports, nested auth/common dependencies, compact from syntax and native inline imports"],
+  "proofLimit": "Real final-source suite and independent recheck pending; no compatibility/signoff"
+}

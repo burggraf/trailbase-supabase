@@ -1,0 +1,24 @@
+{
+  "scope": "Pre-code narrow canonical new-statistics schema guard regressions",
+  "status": "failed",
+  "sourceSha256": "a748bb59636f19556562ffc139a997c6c119203c0c5fd46d5b7c16e234dcb7c1",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-17 schema metadata guard accepts only newly added exact canonical stats and reports raw change, unchanged preexisting stats",
+      "status": "failed"
+    },
+    {
+      "name": "L1-17 schema metadata guard rejects every app/internal object addition/drop/modification even alongside canonical stats",
+      "status": "failed"
+    },
+    {
+      "name": "L1-17 reserved statistics own4 canonical records required in either snapshot, duplicates and malformed records never silently collapse",
+      "status": "failed"
+    },
+    {
+      "name": "L1-17 allowed bookkeeping cannot mask protected config/identity/session changes, public report never contains secret metadata values",
+      "status": "failed"
+    }
+  ]
+}

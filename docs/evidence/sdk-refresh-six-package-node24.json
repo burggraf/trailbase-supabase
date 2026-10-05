@@ -1,0 +1,80 @@
+{
+  "scope": "Focused private SDK data tarball/clean Node consumer check; NOT full package/backend/browser/release verification or signoff",
+  "status": "passed",
+  "node": "v24.21.0",
+  "baseline": {
+    "trailbase": {
+      "version": "0.34.3",
+      "commit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+      "assets": {
+        "darwin-arm64": {
+          "name": "trailbase_v0.34.3_aarch64_apple_darwin.zip",
+          "sha256": "211132ece889b373317ce7339c13992bd2ccfe02298458a9e6104a7b8454fe43"
+        },
+        "darwin-x64": {
+          "name": "trailbase_v0.34.3_x86_64_apple_darwin.zip",
+          "sha256": "c4e66e48165f3dcd1c9292b26f46203a8a2123652e05926f6c1a79b4fdd7fc4f"
+        },
+        "linux-arm64": {
+          "name": "trailbase_v0.34.3_aarch64_linux.zip",
+          "sha256": "88156ee1008e6fdd4d71784014fc970e0abdddd88ea952eddf04f25aa32fe99a"
+        },
+        "linux-x64": {
+          "name": "trailbase_v0.34.3_x86_64_linux.zip",
+          "sha256": "aa5a08fa50c06c026b652afa265cf392438675a2bb26ec174096c941fdb67b97"
+        }
+      }
+    },
+    "trailbaseClient": "0.14.3",
+    "supabaseClient": "2.117.2",
+    "supabaseCli": "2.119.0",
+    "nodeMajors": [
+      22,
+      24
+    ],
+    "nodeVersions": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "playwright": "1.63.0",
+    "commonRowCap": 1000,
+    "startupTimeoutMs": 300000
+  },
+  "checks": [
+    "Exact five-file tarball; built ESM/declarations, private identity, native pin, no source/runtime/test/credential/symlink files",
+    "Offline clean Node install from tarball; no repository/source/workspace import or SDK symlink",
+    "Generated Database positive/negative consumer compiled against installed tarball declarations and installed native dependency",
+    "Installed package transport boundary: lazy/fresh/isolated reads, codecs/filters/bounds/cardinality, null CRUD, validation and no automatic replay"
+  ],
+  "cleanup": "passed",
+  "sourceSha256": "f03191feb286b3456358ca96639876e1bc2dd978603be7337327d1ec83d401a4",
+  "tarballSha256": "88fe2439ea143c00ed429cdbfacad67b657219aaf23ac55c47437a26a991379c",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/auth.d.ts",
+    "dist/auth.js",
+    "dist/common.d.ts",
+    "dist/common.js",
+    "dist/index.d.ts",
+    "dist/index.js",
+    "package.json"
+  ],
+  "installed": {
+    "sdk": "trailbase-supabase@0.0.0",
+    "native": "trailbase@0.14.3",
+    "compiler": "7.0.2"
+  },
+  "browser": {
+    "entry": "./dist/index.js",
+    "format": "ESM",
+    "nativeImport": "trailbase@0.14.3",
+    "requirement": "Bundler or complete import map must resolve trailbase and its transitive ESM imports; no standalone browser bundle is shipped",
+    "executed": false
+  },
+  "missing": [
+    "Installed-tarball real backend proof",
+    "Real Chromium/Firefox/WebKit consumer and built application proof",
+    "Auth/full package/security/coverage/CI/release layers and maintainer signoff"
+  ]
+}

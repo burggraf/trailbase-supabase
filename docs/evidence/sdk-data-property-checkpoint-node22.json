@@ -1,0 +1,170 @@
+{
+  "scope": "Bounded SDK codec/property unit and pagination test-authoring checkpoint; no real/full-suite regeneration",
+  "status": "passed",
+  "node": "v22.23.2",
+  "sourceSha256": "e25fe264bf84edb3bfb06b5c8c203e61d1eab75f71c4c07103e470c2aefdc6fc",
+  "tests": [
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 0 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 1 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 2 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 61 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 1000 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality retains caller bounds, mutable state and builder isolation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-05/U05 S02 rejects select/count/head and inherited/unmapped responses",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 preserves backend errors ahead of cardinality",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 exports the createClient factory",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 L1-03/U03 L1-05/U05 select is lazy and maps declared TrailBase fields",
+      "status": "passed"
+    },
+    {
+      "name": "L1-06/U06 L1-07/U07 L1-08/U08 lazy one-record writes return null without reads",
+      "status": "passed"
+    },
+    {
+      "name": "L1-07/U07 L1-08/U08 exactly one explicit primary-key eq, including nonstandard integer keys",
+      "status": "passed"
+    },
+    {
+      "name": "L1-06/U06 L1-07/U07 S02 rejects shapes, fields, key changes, options and read-only writes before wire",
+      "status": "passed"
+    },
+    {
+      "name": "L1-04/U04 L1-06/U06 L1-07/U07 L1-08/U08 every await is fresh, isolated and never replayed on failure",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/U09 adds mapped eq filter through TrailBase structured query",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/U09 supports all six scalar filters with safe value encoding",
+      "status": "passed"
+    },
+    {
+      "name": "L1-10/U10 L1-11/U11 orders fields and uses inclusive ranges with last effective bounds",
+      "status": "passed"
+    },
+    {
+      "name": "L1-11/U11 zero limit sends a genuine zero-width page with filters and order",
+      "status": "passed"
+    },
+    {
+      "name": "L1-11/U11 zero limit preserves backend permission errors rather than fabricating empty success",
+      "status": "passed"
+    },
+    {
+      "name": "L1-11/U11 positive offset plus zero limit returns adapter range error without request",
+      "status": "passed"
+    },
+    {
+      "name": "L1-04/U04 L1-11/U11 repeated awaits use current bounds while independent builders isolate",
+      "status": "passed"
+    },
+    {
+      "name": "L1-10/U10 L1-11/U11 S02 rejects invalid options and bounds before requests",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 S02 mapping field.type must be a primitive enum, never coerced",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 L1-03/U03 S02 rejects every unknown mapping property including readonly typo",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 S02 factory/from arity and every defined nonfunction fetch fail before wire",
+      "status": "passed"
+    },
+    {
+      "name": "L1-04/U04 L1-06/U06 malformed create acknowledgements are errors after exactly one POST, no read/replay",
+      "status": "passed"
+    },
+    {
+      "name": "L1-06/U06 validates actual padded UUID and canonical decimal-string integer acknowledgements before discard",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 S02 mutation UUID codec has 1000 deterministic round trips through real native serialization",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 S02 rejects nonportable mutation values and inherited/getter/symbol fields before requests",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 L1-03/U03 S02 mapping is owned and inherited/malformed mapping shapes are rejected",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 L1-04/U04 rejects unmapped/incomplete or invalid native response shapes",
+      "status": "passed"
+    },
+    {
+      "name": "L1-06/U06 L1-07/U07 L1-08/U08 S02 unsupported key codecs and adversarial keys cannot reach mutation endpoints",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 own scalar fields with prototype-like names retain their values on wire and reads",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/U09 L1-07/U07 L1-08/U08 S02 extra predicate arguments are not silently ignored",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 L1-09/U09 S02 scalar boundary vectors fail writes and filters before any request",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 S02 invalid native UUID/scalar response vectors never fabricate data",
+      "status": "passed"
+    }
+  ],
+  "checks": [
+    "SDK focused units 36/36",
+    "npm run build:sdk passed",
+    "Source positive/negative type consumers passed after correcting generated randomUUID Set<string> inference",
+    "Emitted-declaration positive/negative consumer passed",
+    "npm run progress/check passed (schema/types/docs/traceability/freshness/secret scan)",
+    "git diff --check passed; no staged files or owned runtime resources"
+  ],
+  "propertyCoverage": "1000 deterministic insert/read/filter round trips with 2000 distinct UUIDv4 primary/owner vectors (high-byte seeded LCG), independent Buffer encoding expectations, 1000 POST and 1000 GET assertions; booleans, safe integer minimum/maximum, Unicode/metacharacter text and nullable text round trip; wrong-type/null/Date/bytes/unsafe-number writes and all six filters reject before wire; malformed native scalar responses error/no data.",
+  "realTestsAdded": "Dedicated 1001-row owned fixture-owner case: 61/1000/1001 pages, priority+ASCII-title tie-breaker, boundary/inclusive/out-of-range pages, capped/unbounded/bounded cardinality, zero-request over-cap guards, complete three-page row/audit invariants and exact owned cleanup including partial setup. Test authored/typechecked only, not executed. Explicit new-case 180s budget stays within existing runner 300s bound.",
+  "initialFailure": "New real test initially failed compile because Node randomUUID inferred Set of UUID template-literal type; fixed with Set<string>. No production-code failure identified or SDK code changes needed.",
+  "preserved": "Parent native-fetch single-ID create-envelope fix and its regression cases preserved; no production source edits in this task.",
+  "missing": [
+    "New real 1001-row test not executed; parent owns final-source real/full evidence checks",
+    "Browser/package tasks reserved parent; full security/fault/coverage/CI and independent review/maintainer signoff incomplete",
+    "Historical G1/G7 strict failures unchanged"
+  ],
+  "noStagedFiles": true
+}

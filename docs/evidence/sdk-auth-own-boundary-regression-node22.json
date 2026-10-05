@@ -1,0 +1,9 @@
+{
+  "scope": "Own required password credentials and native login token fields",
+  "sourceSha256": "29a6845a6a0d928df07310ad617ea73e439b58ed3173edcd9acc71afa9f80e2d",
+  "red": {"passed": 0, "failed": 4, "privateRawLog": ".runtime/sdk-auth-own-credentials-red-node22.log"},
+  "green": {"focusedPassed": 4, "mixedNode22Passed": 168, "mixedNode24Passed": 168, "build": "passed", "check": "passed", "diffCheck": "passed"},
+  "assertions": ["Inherited email/password rejected before signup/login request", "Inherited auth_token/refresh_token cannot complete a missing native login field", "Prior good session remains unchanged on malformed replacement", "Prototype descriptors restored unconditionally"],
+  "threatLimit": "Conditional prototype boundary defect, not demonstrated server authorization bypass",
+  "missing": "Final-source real scopes, packed checks and targeted review; full lifecycle/parity/security/coverage/CI/release; no signoff"
+}

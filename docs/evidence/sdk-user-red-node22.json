@@ -1,0 +1,36 @@
+{
+  "scope": "Reproduced getUser unsupported boundary RED after main implementation; initial precode0/7 raw RED retained privately, not falsely assigned this source",
+  "status": "failed",
+  "sourceSha256": "ae4bed016b3425aff45cac148d3fde9ffeac90d4fc9d8db9b00d1e5e8cb89992",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-17/U17 missing cache/configuration/overload have no wire, live result only canonical id/email and genuine guarded rotation",
+      "status": "failed"
+    },
+    {
+      "name": "L1-17/S04 anonymous/non200/redirect/malformed/private/identity-or-refresh mismatch never authorize cached user or clear disk",
+      "status": "failed"
+    },
+    {
+      "name": "L1-17/S08 held status fetch/JSON cannot return C user after pendingB invocation same-gen commit or newer refresh rotation",
+      "status": "failed"
+    },
+    {
+      "name": "L1-17/S08 queued status rotation behind held B commit cannot install or return stale user",
+      "status": "failed"
+    },
+    {
+      "name": "L1-17/S08 held status persistence superseded by newer failed/success login compensates without stale user",
+      "status": "failed"
+    },
+    {
+      "name": "L1-17/U17 hydration waits and expired getUser shares native refresh before live status, failed write cannot claim user",
+      "status": "failed"
+    },
+    {
+      "name": "L1-17/P17 32 distinct canonical native identities, own required status/JWT fields and safe parser failures",
+      "status": "failed"
+    }
+  ]
+}

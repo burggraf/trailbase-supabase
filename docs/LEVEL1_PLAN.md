@@ -6,7 +6,7 @@ Read [RESEARCH.md](RESEARCH.md) for verified documentation/source observations a
 
 ## Current MVP override
 
-[MVP_PLAN.md](MVP_PLAN.md) governs first delivery. Maintainer authorized CRUD plus self-service signup/persistent core password auth implementation. Phases B/C/D and applicable security/package work are active; Phase E and Phase F migration rehearsal move to [FUTURE_PLAN.md](FUTURE_PLAN.md). G5/G6 do not block CRUD/auth implementation or its release solely for streaming. G1/G7 remain release blockers; no server patch/deployment/repin or compatibility exception inferred. Broader contract below is retained for future work; channel APIs are not in MVP.
+[MVP_PLAN.md](MVP_PLAN.md) governs first delivery. Maintainer authorized CRUD plus self-service signup/persistent core password auth implementation. Phases B/C/D and applicable security/package work are active; Phase E and Phase F migration rehearsal move to [FUTURE_PLAN.md](FUTURE_PLAN.md). G5/G6 do not block CRUD/auth implementation. G1/G7 remain unresolved documented auth edge cases, not prerequisites for main implementation; preserve strict failures and do not claim a fix, workaround, compatibility exception, or signoff. No server patch/deployment/repin is authorized. Broader contract below is retained for future work; channel APIs are not in MVP.
 
 ## 1. Release contract
 

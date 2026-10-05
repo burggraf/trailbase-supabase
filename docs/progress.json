@@ -1,16 +1,38 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "CRUD/auth MVP — scope approved; implementation planned",
+  "currentPhase": "CRUD/auth MVP — paused at verified CRUD, persistent auth, refresh and live-user checkpoint; remaining lifecycle pending",
+  "pauseCheckpoint": {
+    "requestedBy": "operator",
+    "state": "paused-no-next-slice-started",
+    "sourceSha256": "29a6845a6a0d928df07310ad617ea73e439b58ed3173edcd9acc71afa9f80e2d",
+    "implemented": "Narrow CRUD/query/type/package/data example; email-password signup/login; explicit persistent sync/async storage and hydration; guarded manual/request-time single-flight refresh; live DB-backed getUser with genuine native rotation. Own-field/privacy/epoch/baseline/serialized persistence/resource cleanup guards tested.",
+    "verified": "Mixed168/168 actualNode22.23.2 and24.21.0; cleanpackage22/24; Node22 realauth2/2, genuineexpiryrefresh3/3, packedbrowser6/6 Chromium/Firefox/WebKit, SDKdata6/6, DB9/9,constraints6/6. Every real source/setup/cleanup passed; fixturelock clear; all managed jobs complete. Bounded independent reviews resolved known findings; no maintainer signoff.",
+    "missing": "signOut local/global, onAuthStateChange, background refresh/resources and default auth options; full signup/auth app and browser live-user/refresh/logout flows; full shared Supabase/reference/security/fault/coverage/CI/release gates. G1/G7 and null-user signup compatibility approval unresolved. Full SDK release gates not passed.",
+    "restart": [
+      "Resume only when operator requests; preserve dirty main and current source/evidence, no commit/publish authorization inferred",
+      "Plan/test guarded local/default-global signOut with honest unconfirmed-native-global acknowledgement; do not implement redirect/local fallback or claim G7 fix",
+      "Add notifications/background/default lifecycle with owned cleanup, then full packed/browser/shared-reference/security/coverage/CI gates; only maintainer signoff"
+    ]
+  },
   "currentMilestone": {
     "plan": "docs/MVP_PLAN.md",
     "futurePlan": "docs/FUTURE_PLAN.md",
     "authorization": "Maintainer approved narrow MVP and selected self-service signup/full persistent core password sessions in follow-up interview. Authorizes subset implementation, not release signoff or backend changes.",
     "activeFeatures": "L1-01–L1-20, L1-24, L1-26, L1-27",
     "futureFeatures": "L1-21–L1-23 and L1-25; other deferred capabilities",
-    "releaseBlockers": ["G1 duplicate pending signup/SMTP recovery and null-user exception", "G7 authenticated global revocation acknowledgement and full lifecycle verification"],
-    "status": "planned-not-implemented",
-    "checks": "Documentation-only scope revision; existing backend evidence retained as historical after contract hash change. Current pinned Node 22 harness units 50/50. No new backend/adapter compatibility proof.",
-    "restart": ["Implement client/mapping/result and CRUD slice with applicable tests", "Implement core password auth; seek explicit bounded decision for G1/G7 backend prerequisites before release", "Verify built app and packed consumers across real TrailBase/Supabase and all three browsers; obtain maintainer signoff"]
+    "knownUnresolvedAuthEdgeCases": [
+      "G1 duplicate pending signup/SMTP recovery and null-user response behavior",
+      "G7 logout acknowledgement and late-response/session races"
+    ],
+    "status": "in-progress",
+    "checks": "Paused current source29a6845a: mixed168/168 actualNode22/24, cleanpackage22/24, realauth2/2,refresh3/3,browser6/6,data6/6,DB9/9,constraints6/6. Every real source/setup/cleanup verified, lock clear. Ownboundary review no issues; full lifecycle/release/signoff pending. See pauseCheckpoint for exact scope/restart; no next slice started.",
+    "historicalFixtureCheckpoint": "Read full advisory203635a6 and source PRAGMAoptimize0x10002; parent actualdc9 firstsuccess CLI only adds canonical stat1/stat4,30existingobjects identical, config/unrelatedidentity/session unchanged, cleanup unchanged. Preserve original failed report/snapshots. Exact own4attrs/table-index-trigger-view metadata arrays validated, duplicates(type,name) rejected. Reserved stat1/stat4 records canonical in either snapshot including case variants rejected by exact values; only new canonical absent-before records removed forcomparison. Everyremaining object exact, existingstats removal/modification forbidden, no SQLnormalization/broadinternal exclusions. Separate rawSchemaChanged/prohibitedSchemaChange/fixedallowedBookkeepingAdded report, config/identity/session exact plus ownednative/pin/cleanup/private0600snapshots unchanged. No statistics samples/contents export or physicalbytes/queryplan claim, no manual schema write. TDD RED0/4 -> focused10/10; initialTS7053 dynamic testkeys failures retained plus temporary incorrectly unchecked shellcheckpoint retained private/superseded; corrected typed tuple/const union, final actual22.23.2 SDK114/114 mixed164/164 build/types. No SDK/auth implementation/server/default/deps/repin/privilege/verbs/stage/commit/fixtures or signoff.",
+    "historicalStorageParentChecks": "Historical source93345a16: mixed units125/125 on Node22/24, clean package checks Node22/24, check/diff pass. Real persistent auth1/1 and packed browser6/6 (data UI plus genuine password/localStorage reload on Chromium/Firefox/WebKit) passed with exact-source/setup/cleanup checks. Data/database/constraints refresh proc_ee08 and independent storage reviewer370c214b running. Refresh/live getUser/logout/events/default refresh still unsupported; G1/G7 open; no compatibility/signoff.",
+    "parentPreviousDataChecks": "Historical source5c55be11: targeted auth parser privacy/import-graph regressions GREEN7/7 after preserved4pass/2fail and6pass/1fail REDs; mixed units114/114 on Node22/24, build/check/diff passed. Current clean package Node22/24 passed. Final-source proc_27fc passed: real memory-auth1/1,data6/6,database9/9,constraints6/6,packed data browsers3/3 Chromium/Firefox/WebKit; every source/setup/cleanup check passed and lock clear. Reviewer recheck2601f0f5 resolved both findings with no new issues; no maintainer signoff. Prior9fcb2e9f real auth1/1,data6/6,database9/9,constraints6/6,browsers3/3 and package22/24 passed source/setup/cleanup, now historical. Auth explicitly memory-only, no persistence/defaults/refresh/logout implemented; G1/G7 open; no compatibility/signoff.",
+    "restart": [
+      "Paused at operator request; resume only on request and read pauseCheckpoint plus exact-source evidence",
+      "Next guarded logout, notifications/background/default lifecycle then complete shared/browser/security/coverage/CI gates; preserve G1/G7 failures and no inferred signoff"
+    ]
   },
   "maintainer": "burggraf",
   "licenseDecision": {
@@ -22,12 +44,30 @@
     {
       "id": "A01",
       "title": "Restartable progress and signoff ledger",
-      "status": "verified",
+      "status": "in-progress",
       "tests": [
         "L1-27/U27",
         "docs/traceability"
       ],
       "evidence": [
+        "docs/evidence/sdk-auth-mixed-unit-node22.json",
+        "docs/evidence/sdk-auth-initial-mixed-node22.json",
+        "docs/evidence/sdk-browser-status-full-unit-node22.json",
+        "docs/evidence/sdk-browser-status-full-unit-node24.json",
+        "docs/evidence/sdk-browser-labels-full-unit-node22.json",
+        "docs/evidence/sdk-browser-labels-full-unit-node24.json",
+        "docs/evidence/sdk-browser-pack-format-full-unit-node22.json",
+        "docs/evidence/sdk-browser-pack-format-full-unit-node24.json",
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-package-node22.json",
+        "docs/evidence/sdk-data-envelope-full-unit-node22.json",
+        "docs/evidence/sdk-data-envelope-full-unit-node24.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-query-unit-node22.json",
+        "docs/evidence/sdk-query-unit-node24.json",
         "docs/evidence/mvp-scope-unit-node22.json",
         "docs/evidence/phase-a-ledger-edit-failure-node22.json",
         "docs/evidence/phase-a-json-text-shape-focused-boundaries-node22.json",
@@ -49,7 +89,9 @@
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569",
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601"
       ],
-      "missing": [],
+      "missing": [
+        "Auth source split changes current source; previous verified tooling checkpoint retained as historical, parent fresh packed/fixture controls pending"
+      ],
       "reviewer": null,
       "reviewedAt": null,
       "reviewedSourceSha256": null
@@ -471,10 +513,27 @@
     {
       "id": "L1-01",
       "title": "Client/config",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -483,10 +542,32 @@
     {
       "id": "L1-02",
       "title": "Public types",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-package-node22.json",
+        "docs/evidence/sdk-package-unit-node22.json",
+        "docs/evidence/sdk-package-red-node22.json",
+        "docs/evidence/sdk-package-initial-node22.json",
+        "docs/evidence/sdk-package-diagnostic-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -495,10 +576,27 @@
     {
       "id": "L1-03",
       "title": "Field/ID mapping",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -507,10 +605,27 @@
     {
       "id": "L1-04",
       "title": "Results/execution/errors",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -519,10 +634,27 @@
     {
       "id": "L1-05",
       "title": "Select/list/view",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -531,10 +663,27 @@
     {
       "id": "L1-06",
       "title": "Insert",
-      "status": "planned",
-      "evidence": [],
+      "status": "implemented",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -543,10 +692,27 @@
     {
       "id": "L1-07",
       "title": "Update",
-      "status": "planned",
-      "evidence": [],
+      "status": "implemented",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -555,10 +721,27 @@
     {
       "id": "L1-08",
       "title": "Delete",
-      "status": "planned",
-      "evidence": [],
+      "status": "implemented",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -567,10 +750,36 @@
     {
       "id": "L1-09",
       "title": "Six read filters",
-      "status": "planned",
-      "evidence": ["docs/evidence/phase-a-null-predicate-boundaries-node22.json","docs/evidence/phase-a-null-predicate-summary.json","docs/evidence/phase-a-ci-null-predicate-summary.json","docs/evidence/phase-a-json-filter-shape-focused-boundaries-node22.json","docs/evidence/phase-a-json-filter-shape-boundaries-node22.json","docs/evidence/phase-a-json-filter-shape-all-node22.json","docs/evidence/phase-a-json-filter-shape-local-summary.json","docs/evidence/phase-a-ci-json-filter-shape-all-node22.json","docs/evidence/phase-a-ci-json-filter-shape-summary.json"],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json",
+        "docs/evidence/phase-a-null-predicate-boundaries-node22.json",
+        "docs/evidence/phase-a-null-predicate-summary.json",
+        "docs/evidence/phase-a-ci-null-predicate-summary.json",
+        "docs/evidence/phase-a-json-filter-shape-focused-boundaries-node22.json",
+        "docs/evidence/phase-a-json-filter-shape-boundaries-node22.json",
+        "docs/evidence/phase-a-json-filter-shape-all-node22.json",
+        "docs/evidence/phase-a-json-filter-shape-local-summary.json",
+        "docs/evidence/phase-a-ci-json-filter-shape-all-node22.json",
+        "docs/evidence/phase-a-ci-json-filter-shape-summary.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -579,10 +788,35 @@
     {
       "id": "L1-10",
       "title": "Ordering",
-      "status": "planned",
-      "evidence": ["docs/evidence/phase-a-null-order-boundaries-node22.json","docs/evidence/phase-a-null-order-summary.json","docs/evidence/phase-a-ci-null-order-all-node22.json","docs/evidence/phase-a-referenced-order-focused-boundaries-node22.json","docs/evidence/phase-a-referenced-order-boundaries-node22.json","docs/evidence/phase-a-referenced-order-summary.json","docs/evidence/phase-a-ci-referenced-order-all-node22.json","docs/evidence/phase-a-ci-referenced-order-summary.json"],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json",
+        "docs/evidence/phase-a-null-order-boundaries-node22.json",
+        "docs/evidence/phase-a-null-order-summary.json",
+        "docs/evidence/phase-a-ci-null-order-all-node22.json",
+        "docs/evidence/phase-a-referenced-order-focused-boundaries-node22.json",
+        "docs/evidence/phase-a-referenced-order-boundaries-node22.json",
+        "docs/evidence/phase-a-referenced-order-summary.json",
+        "docs/evidence/phase-a-ci-referenced-order-all-node22.json",
+        "docs/evidence/phase-a-ci-referenced-order-summary.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -591,10 +825,35 @@
     {
       "id": "L1-11",
       "title": "Limit/range/caps",
-      "status": "planned",
-      "evidence": ["docs/evidence/phase-a-reference-pagination-focused-boundaries-node22.json", "docs/evidence/phase-a-reference-pagination-boundaries-node22.json", "docs/evidence/phase-a-reference-pagination-all-node22.json", "docs/evidence/phase-a-reference-pagination-local-summary.json", "docs/evidence/phase-a-reference-pagination-unit-node22.json", "docs/evidence/phase-a-reference-pagination-unit-node24.json", "docs/evidence/phase-a-ci-reference-pagination-all-node22.json", "docs/evidence/phase-a-ci-reference-pagination-summary.json"],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json",
+        "docs/evidence/phase-a-reference-pagination-focused-boundaries-node22.json",
+        "docs/evidence/phase-a-reference-pagination-boundaries-node22.json",
+        "docs/evidence/phase-a-reference-pagination-all-node22.json",
+        "docs/evidence/phase-a-reference-pagination-local-summary.json",
+        "docs/evidence/phase-a-reference-pagination-unit-node22.json",
+        "docs/evidence/phase-a-reference-pagination-unit-node24.json",
+        "docs/evidence/phase-a-ci-reference-pagination-all-node22.json",
+        "docs/evidence/phase-a-ci-reference-pagination-summary.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -603,10 +862,27 @@
     {
       "id": "L1-12",
       "title": "single",
-      "status": "planned",
-      "evidence": [],
+      "status": "implemented",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -615,10 +891,27 @@
     {
       "id": "L1-13",
       "title": "maybeSingle",
-      "status": "planned",
-      "evidence": [],
+      "status": "implemented",
+      "evidence": [
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-data-property-checkpoint-node22.json",
+        "docs/evidence/sdk-data-review-red-node22.json",
+        "docs/evidence/sdk-data-review-green-node22.json",
+        "docs/evidence/sdk-data-review-checkpoint-node22.json",
+        "docs/evidence/sdk-data-focused-node22.json",
+        "docs/evidence/sdk-data-unit-node22.json",
+        "docs/evidence/sdk-data-integration-initial-node22.json",
+        "docs/evidence/sdk-data-checkpoint-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence",
+        "Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -627,10 +920,50 @@
     {
       "id": "L1-14",
       "title": "Signup/confirmation",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-red-node22.json",
+                "docs/evidence/sdk-user-diagnostic-real-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-checkpoint-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-mixed-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-red-node22.json",
+        "docs/evidence/sdk-user-fixture-repaired-initial-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-checkpoint-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-mixed-node22.json",
+        "docs/evidence/sdk-user-stale-response-red-node22.json",
+        "docs/evidence/sdk-user-real-initial-node22.json",
+        "docs/evidence/sdk-user-checkpoint-node22.json",
+        "docs/evidence/sdk-user-mixed-node22.json",
+        "docs/evidence/sdk-user-red-node22.json",
+        "docs/evidence/sdk-refresh-six-review-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-six-review-unit-node22.json",
+        "docs/evidence/sdk-refresh-six-review-red-node22.json",
+        "docs/evidence/sdk-refresh-expiry-mutation-node22.json",
+        "docs/evidence/sdk-refresh-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-unit-node22.json",
+        "docs/evidence/sdk-refresh-red-node22.json",
+        "docs/evidence/sdk-refresh-initial-all-node22.json",
+        "docs/evidence/sdk-auth-storage-review-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-storage-review-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-review-red-node22.json",
+        "docs/evidence/sdk-auth-storage-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-storage-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-red-node22.json",
+        "docs/evidence/sdk-auth-storage-initial-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-initial-expanded-unit-node22.json",
+        "docs/evidence/sdk-auth-mixed-unit-node22.json",
+        "docs/evidence/sdk-auth-initial-mixed-node22.json",
+        "docs/evidence/sdk-auth-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-unit-node22.json",
+        "docs/evidence/sdk-auth-red-node22.json",
+        "docs/evidence/sdk-auth-package-red-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Parent re-review exact comparator/native bookkeeping reporting then actual SDKauth2 and separately SDKrefresh3/nativeowner-cascade-audit proof; original failed liveuser attempts remainfailed, not relabelled",
+        "Parent actual24 and full22/24/browser/data/DB/constraints/package controls required, previousdc9 sourcecontrols historical after fixture guard change",
+        "Full reference/browser/security/coverage/CI/lifecycle/G1/G7/null-user/signoff incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -639,10 +972,50 @@
     {
       "id": "L1-15",
       "title": "Password login",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-red-node22.json",
+                "docs/evidence/sdk-user-diagnostic-real-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-checkpoint-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-mixed-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-red-node22.json",
+        "docs/evidence/sdk-user-fixture-repaired-initial-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-checkpoint-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-mixed-node22.json",
+        "docs/evidence/sdk-user-stale-response-red-node22.json",
+        "docs/evidence/sdk-user-real-initial-node22.json",
+        "docs/evidence/sdk-user-checkpoint-node22.json",
+        "docs/evidence/sdk-user-mixed-node22.json",
+        "docs/evidence/sdk-user-red-node22.json",
+        "docs/evidence/sdk-refresh-six-review-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-six-review-unit-node22.json",
+        "docs/evidence/sdk-refresh-six-review-red-node22.json",
+        "docs/evidence/sdk-refresh-expiry-mutation-node22.json",
+        "docs/evidence/sdk-refresh-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-unit-node22.json",
+        "docs/evidence/sdk-refresh-red-node22.json",
+        "docs/evidence/sdk-refresh-initial-all-node22.json",
+        "docs/evidence/sdk-auth-storage-review-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-storage-review-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-review-red-node22.json",
+        "docs/evidence/sdk-auth-storage-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-storage-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-red-node22.json",
+        "docs/evidence/sdk-auth-storage-initial-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-initial-expanded-unit-node22.json",
+        "docs/evidence/sdk-auth-mixed-unit-node22.json",
+        "docs/evidence/sdk-auth-initial-mixed-node22.json",
+        "docs/evidence/sdk-auth-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-unit-node22.json",
+        "docs/evidence/sdk-auth-red-node22.json",
+        "docs/evidence/sdk-auth-package-red-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Parent re-review exact comparator/native bookkeeping reporting then actual SDKauth2 and separately SDKrefresh3/nativeowner-cascade-audit proof; original failed liveuser attempts remainfailed, not relabelled",
+        "Parent actual24 and full22/24/browser/data/DB/constraints/package controls required, previousdc9 sourcecontrols historical after fixture guard change",
+        "Full reference/browser/security/coverage/CI/lifecycle/G1/G7/null-user/signoff incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -651,10 +1024,50 @@
     {
       "id": "L1-16",
       "title": "Session/persistence",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-red-node22.json",
+                "docs/evidence/sdk-user-diagnostic-real-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-checkpoint-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-mixed-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-red-node22.json",
+        "docs/evidence/sdk-user-fixture-repaired-initial-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-checkpoint-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-mixed-node22.json",
+        "docs/evidence/sdk-user-stale-response-red-node22.json",
+        "docs/evidence/sdk-user-real-initial-node22.json",
+        "docs/evidence/sdk-user-checkpoint-node22.json",
+        "docs/evidence/sdk-user-mixed-node22.json",
+        "docs/evidence/sdk-user-red-node22.json",
+        "docs/evidence/sdk-refresh-six-review-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-six-review-unit-node22.json",
+        "docs/evidence/sdk-refresh-six-review-red-node22.json",
+        "docs/evidence/sdk-refresh-expiry-mutation-node22.json",
+        "docs/evidence/sdk-refresh-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-unit-node22.json",
+        "docs/evidence/sdk-refresh-red-node22.json",
+        "docs/evidence/sdk-refresh-initial-all-node22.json",
+        "docs/evidence/sdk-auth-storage-review-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-storage-review-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-review-red-node22.json",
+        "docs/evidence/sdk-auth-storage-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-storage-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-red-node22.json",
+        "docs/evidence/sdk-auth-storage-initial-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-initial-expanded-unit-node22.json",
+        "docs/evidence/sdk-auth-mixed-unit-node22.json",
+        "docs/evidence/sdk-auth-initial-mixed-node22.json",
+        "docs/evidence/sdk-auth-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-unit-node22.json",
+        "docs/evidence/sdk-auth-red-node22.json",
+        "docs/evidence/sdk-auth-package-red-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Parent re-review exact comparator/native bookkeeping reporting then actual SDKauth2 and separately SDKrefresh3/nativeowner-cascade-audit proof; original failed liveuser attempts remainfailed, not relabelled",
+        "Parent actual24 and full22/24/browser/data/DB/constraints/package controls required, previousdc9 sourcecontrols historical after fixture guard change",
+        "Full reference/browser/security/coverage/CI/lifecycle/G1/G7/null-user/signoff incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -663,10 +1076,28 @@
     {
       "id": "L1-17",
       "title": "Validated getUser",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-red-node22.json",
+                "docs/evidence/sdk-user-diagnostic-real-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-checkpoint-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-mixed-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-red-node22.json",
+        "docs/evidence/sdk-user-fixture-repaired-initial-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-checkpoint-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-mixed-node22.json",
+        "docs/evidence/sdk-user-stale-response-red-node22.json",
+        "docs/evidence/sdk-user-real-initial-node22.json",
+        "docs/evidence/sdk-user-checkpoint-node22.json",
+        "docs/evidence/sdk-user-mixed-node22.json",
+        "docs/evidence/sdk-user-red-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Parent re-review exact comparator/native bookkeeping reporting then actual SDKauth2 and separately SDKrefresh3/nativeowner-cascade-audit proof; original failed liveuser attempts remainfailed, not relabelled",
+        "Parent actual24 and full22/24/browser/data/DB/constraints/package controls required, previousdc9 sourcecontrols historical after fixture guard change",
+        "Full reference/browser/security/coverage/CI/lifecycle/G1/G7/null-user/signoff incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -675,10 +1106,36 @@
     {
       "id": "L1-18",
       "title": "Refresh/auto-refresh",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-red-node22.json",
+                "docs/evidence/sdk-user-diagnostic-real-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-checkpoint-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-mixed-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-red-node22.json",
+        "docs/evidence/sdk-user-fixture-repaired-initial-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-checkpoint-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-mixed-node22.json",
+        "docs/evidence/sdk-user-stale-response-red-node22.json",
+        "docs/evidence/sdk-user-real-initial-node22.json",
+        "docs/evidence/sdk-user-checkpoint-node22.json",
+        "docs/evidence/sdk-user-mixed-node22.json",
+        "docs/evidence/sdk-user-red-node22.json",
+        "docs/evidence/sdk-refresh-six-review-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-six-review-unit-node22.json",
+        "docs/evidence/sdk-refresh-six-review-red-node22.json",
+        "docs/evidence/sdk-refresh-expiry-mutation-node22.json",
+        "docs/evidence/sdk-refresh-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-unit-node22.json",
+        "docs/evidence/sdk-refresh-red-node22.json",
+        "docs/evidence/sdk-refresh-initial-all-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Parent re-review exact comparator/native bookkeeping reporting then actual SDKauth2 and separately SDKrefresh3/nativeowner-cascade-audit proof; original failed liveuser attempts remainfailed, not relabelled",
+        "Parent actual24 and full22/24/browser/data/DB/constraints/package controls required, previousdc9 sourcecontrols historical after fixture guard change",
+        "Full reference/browser/security/coverage/CI/lifecycle/G1/G7/null-user/signoff incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -771,10 +1228,56 @@
     {
       "id": "L1-26",
       "title": "Package/docs/release",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-red-node22.json",
+                "docs/evidence/sdk-user-diagnostic-real-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-checkpoint-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-mixed-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-red-node22.json",
+        "docs/evidence/sdk-user-fixture-repaired-initial-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-checkpoint-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-mixed-node22.json",
+        "docs/evidence/sdk-user-stale-response-red-node22.json",
+        "docs/evidence/sdk-user-real-initial-node22.json",
+        "docs/evidence/sdk-user-checkpoint-node22.json",
+        "docs/evidence/sdk-user-mixed-node22.json",
+        "docs/evidence/sdk-user-red-node22.json",
+        "docs/evidence/sdk-refresh-six-review-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-six-review-unit-node22.json",
+        "docs/evidence/sdk-refresh-six-review-red-node22.json",
+        "docs/evidence/sdk-refresh-expiry-mutation-node22.json",
+        "docs/evidence/sdk-refresh-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-unit-node22.json",
+        "docs/evidence/sdk-refresh-red-node22.json",
+        "docs/evidence/sdk-refresh-initial-all-node22.json",
+        "docs/evidence/sdk-auth-storage-review-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-storage-review-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-review-red-node22.json",
+        "docs/evidence/sdk-auth-storage-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-storage-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-red-node22.json",
+        "docs/evidence/sdk-auth-storage-initial-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-initial-expanded-unit-node22.json",
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
+        "docs/evidence/sdk-package-node22.json",
+        "docs/evidence/sdk-package-unit-node22.json",
+        "docs/evidence/sdk-package-red-node22.json",
+        "docs/evidence/sdk-package-initial-node22.json",
+        "docs/evidence/sdk-package-diagnostic-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Parent re-review exact comparator/native bookkeeping reporting then actual SDKauth2 and separately SDKrefresh3/nativeowner-cascade-audit proof; original failed liveuser attempts remainfailed, not relabelled",
+        "Parent actual24 and full22/24/browser/data/DB/constraints/package controls required, previousdc9 sourcecontrols historical after fixture guard change",
+        "Full reference/browser/security/coverage/CI/lifecycle/G1/G7/null-user/signoff incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -785,6 +1288,44 @@
       "title": "harness work is partially implemented/tested",
       "status": "in-progress",
       "evidence": [
+        "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
+        "docs/evidence/sdk-user-statistics-guard-red-node22.json",
+                "docs/evidence/sdk-user-diagnostic-real-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-checkpoint-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-mixed-node22.json",
+        "docs/evidence/sdk-user-invariant-diagnostic-red-node22.json",
+        "docs/evidence/sdk-user-fixture-repaired-initial-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-checkpoint-node22.json",
+        "docs/evidence/sdk-user-fixture-repair-mixed-node22.json",
+        "docs/evidence/sdk-user-stale-response-red-node22.json",
+        "docs/evidence/sdk-user-real-initial-node22.json",
+        "docs/evidence/sdk-user-checkpoint-node22.json",
+        "docs/evidence/sdk-user-mixed-node22.json",
+        "docs/evidence/sdk-user-red-node22.json",
+        "docs/evidence/sdk-refresh-six-review-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-six-review-unit-node22.json",
+        "docs/evidence/sdk-refresh-six-review-red-node22.json",
+        "docs/evidence/sdk-refresh-expiry-mutation-node22.json",
+        "docs/evidence/sdk-refresh-checkpoint-node22.json",
+        "docs/evidence/sdk-refresh-unit-node22.json",
+        "docs/evidence/sdk-refresh-red-node22.json",
+        "docs/evidence/sdk-refresh-initial-all-node22.json",
+        "docs/evidence/sdk-auth-storage-review-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-storage-review-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-review-red-node22.json",
+        "docs/evidence/sdk-auth-storage-checkpoint-node22.json",
+        "docs/evidence/sdk-auth-storage-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-red-node22.json",
+        "docs/evidence/sdk-auth-storage-initial-unit-node22.json",
+        "docs/evidence/sdk-auth-storage-initial-expanded-unit-node22.json",
+        "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-revision-unit-node22.json",
+        "docs/evidence/sdk-browser-cleanup-red-node22.json",
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-node22.json",
+        "docs/evidence/sdk-browser-unit-node22.json",
+        "docs/evidence/sdk-browser-unit-red-node22.json",
         "docs/evidence/phase-a-unit-node22.json",
         "docs/evidence/phase-a-all-node22.json",
         "docs/evidence/phase-a-lifecycle-node22.json",
@@ -802,7 +1343,9 @@
         "docs/evidence/phase-a-ci-json-text-shape-unit-node24.json"
       ],
       "missing": [
-        "Current-source harness/CI evidence, remaining G1-G7 characterization, and maintainer signoff"
+        "Parent re-review exact comparator/native bookkeeping reporting then actual SDKauth2 and separately SDKrefresh3/nativeowner-cascade-audit proof; original failed liveuser attempts remainfailed, not relabelled",
+        "Parent actual24 and full22/24/browser/data/DB/constraints/package controls required, previousdc9 sourcecontrols historical after fixture guard change",
+        "Full reference/browser/security/coverage/CI/lifecycle/G1/G7/null-user/signoff incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -927,7 +1470,11 @@
       "id": "G3",
       "title": "Mutation no-op/error differences",
       "status": "in-progress",
-      "configuredSideEffectsDirection": { "status": "approved-direction-not-signoff", "evidence": "docs/evidence/phase-a-g3-configured-side-effects-direction.json", "decision": "One explicit primary-key operation; preserve configured FK/trigger effects, including foreign-owner dependencies. Backend constraints enforce owner-consistent dependencies when needed; no SDK preflight/cascade/replay or relationship-query feature." },
+      "configuredSideEffectsDirection": {
+        "status": "approved-direction-not-signoff",
+        "evidence": "docs/evidence/phase-a-g3-configured-side-effects-direction.json",
+        "decision": "One explicit primary-key operation; preserve configured FK/trigger effects, including foreign-owner dependencies. Backend constraints enforce owner-consistent dependencies when needed; no SDK preflight/cascade/replay or relationship-query feature."
+      },
       "evidence": [
         "docs/evidence/phase-a-update-order-all-node22.json",
         "docs/evidence/phase-a-all-node22.json",
@@ -999,7 +1546,15 @@
       "id": "G5",
       "title": "Installed SSE transport selection",
       "status": "in-progress",
-      "resourceCharacterization": { "scope": "100 native proof HTTP connect/update/consume/close cycles; independent control, task/reader/listener counters; 100 direct cycles per browser", "evidence": ["docs/evidence/phase-a-stream-lifecycle-revised-network-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-browser-node22.json", "docs/evidence/phase-a-stream-lifecycle-revised-unit-node22.json"], "limits": "No server-internal accounting, auth timer/storage/reference-channel/TLS/WAN/SDK signoff" },
+      "resourceCharacterization": {
+        "scope": "100 native proof HTTP connect/update/consume/close cycles; independent control, task/reader/listener counters; 100 direct cycles per browser",
+        "evidence": [
+          "docs/evidence/phase-a-stream-lifecycle-revised-network-node22.json",
+          "docs/evidence/phase-a-stream-lifecycle-revised-browser-node22.json",
+          "docs/evidence/phase-a-stream-lifecycle-revised-unit-node22.json"
+        ],
+        "limits": "No server-internal accounting, auth timer/storage/reference-channel/TLS/WAN/SDK signoff"
+      },
       "approvedDirection": "Maintainer follow-up after interview 1a566198-4ddd-4fb3-a40c-1e28035d3fa7 approved minimal buffered authenticated Fetch/SSE: bounded framing, persistent sequence/loss state and cancellation. No protocol emulation, new dependency, durable replay or production implementation now. Direction only, not gate signoff.",
       "directionApprovalEvidence": "docs/evidence/phase-a-auth-stream-policy-directions.json",
       "evidence": [
@@ -1041,7 +1596,15 @@
       "id": "G6",
       "title": "Realtime payload and security limits",
       "status": "in-progress",
-      "resourceCharacterization": { "scope": "Native proof 100-cycle abort/return reader cleanup plus installed reference SDK/UMD 100-cycle CDC-ready channel removal, registry bounds, live-control/retired callback barriers, unchanged row and explicit socket disconnect in every browser", "evidence": ["docs/evidence/phase-a-pinned-registry-streaming-node22.json", "docs/evidence/phase-a-pinned-registry-browser-node22.json", "docs/evidence/phase-a-pinned-registry-network-node22.json"], "limits": "Upstream/proof scope only, not production SDK/channel parity, auth timers or server-internal resource accounting; Linux verified at registry checkpoint db5cc89" },
+      "resourceCharacterization": {
+        "scope": "Native proof 100-cycle abort/return reader cleanup plus installed reference SDK/UMD 100-cycle CDC-ready channel removal, registry bounds, live-control/retired callback barriers, unchanged row and explicit socket disconnect in every browser",
+        "evidence": [
+          "docs/evidence/phase-a-pinned-registry-streaming-node22.json",
+          "docs/evidence/phase-a-pinned-registry-browser-node22.json",
+          "docs/evidence/phase-a-pinned-registry-network-node22.json"
+        ],
+        "limits": "Upstream/proof scope only, not production SDK/channel parity, auth timers or server-internal resource accounting; Linux verified at registry checkpoint db5cc89"
+      },
       "approvedDirection": "Maintainer follow-up after interview 1a566198-4ddd-4fb3-a40c-1e28035d3fa7 approved common eventType/schema/table/new and DELETE-key-only old using declared mappings. No full previous UPDATE row, invented commit timestamp, full Supabase parity or durable replay. Approved connection-scoped auth/native owner-only versus reference foreign DELETE-key behavior remains unchanged. Direction only, not gate signoff.",
       "directionApprovalEvidence": "docs/evidence/phase-a-auth-stream-policy-directions.json",
       "evidence": [
@@ -1094,9 +1657,26 @@
       "status": "blocked",
       "followupDirectionApproval": "Completed interview ef996dac-be47-4c9d-8ec6-a2dba294b5a1 explicitly approved test-only constrained native/browser acknowledgement and one best-effort local revocation of an exactly decoded discarded-login refresh credential. Preserve newer/sibling state, surface failures and do not claim cleanup for missing/undecodable replies. No SDK/gate signoff.",
       "followupDirectionEvidence": "docs/evidence/phase-a-g7-acknowledgement-cleanup-directions.json",
-      "nativeAcknowledgementPrerequisite": { "status": "approved-direction-not-signoff", "evidence": "docs/evidence/phase-a-g7-native-acknowledgement-prerequisite.json", "decision": "Require authenticated native revocation acknowledgement as backend prerequisite; keep G7 blocked, preserve global-default contract, continue other approved Phase A. No new server patch/repin/deployment/submission." },
-      "asyncHydrationCharacterization": { "evidence": ["docs/evidence/phase-a-async-hydration-focused-diagnosis.json", "docs/evidence/phase-a-async-hydration-browser-diagnosis.json", "docs/evidence/phase-a-async-hydration-all-node22.json"], "scope": "Unawaited genuine async recovery emits old A SIGNED_IN after B login in Node/all browsers while stored/cached/live identity and protected rows remain B; explicit initialization orders A recovery before B in the measured control. All notification failures strict, no session resurrection/protected-data leak claimed", "limits": "Test-only installed reference; not production awaited-hydration implementation or general callback/storage/timer parity; no signoff" },
-      "currentScopeEvidence": ["docs/evidence/phase-a-g7-ack-cleanup-revised-proofs-node22.json", "docs/evidence/phase-a-g7-ack-cleanup-revised-browser-node22.json", "docs/evidence/phase-a-g7-ack-cleanup-revised-expiry-node22.json", "docs/evidence/phase-a-g7-ack-cleanup-revised-all-node22.json"],
+      "nativeAcknowledgementPrerequisite": {
+        "status": "approved-direction-not-signoff",
+        "evidence": "docs/evidence/phase-a-g7-native-acknowledgement-prerequisite.json",
+        "decision": "Require authenticated native revocation acknowledgement as backend prerequisite; keep G7 blocked, preserve global-default contract, continue other approved Phase A. No new server patch/repin/deployment/submission."
+      },
+      "asyncHydrationCharacterization": {
+        "evidence": [
+          "docs/evidence/phase-a-async-hydration-focused-diagnosis.json",
+          "docs/evidence/phase-a-async-hydration-browser-diagnosis.json",
+          "docs/evidence/phase-a-async-hydration-all-node22.json"
+        ],
+        "scope": "Unawaited genuine async recovery emits old A SIGNED_IN after B login in Node/all browsers while stored/cached/live identity and protected rows remain B; explicit initialization orders A recovery before B in the measured control. All notification failures strict, no session resurrection/protected-data leak claimed",
+        "limits": "Test-only installed reference; not production awaited-hydration implementation or general callback/storage/timer parity; no signoff"
+      },
+      "currentScopeEvidence": [
+        "docs/evidence/phase-a-g7-ack-cleanup-revised-proofs-node22.json",
+        "docs/evidence/phase-a-g7-ack-cleanup-revised-browser-node22.json",
+        "docs/evidence/phase-a-g7-ack-cleanup-revised-expiry-node22.json",
+        "docs/evidence/phase-a-g7-ack-cleanup-revised-all-node22.json"
+      ],
       "approvedDirection": "Maintainer follow-up after interview 1a566198-4ddd-4fb3-a40c-1e28035d3fa7 approved guarded native-HTTP auth: single-flight refresh, session-generation guard, awaited hydration, stale-response discard, locally cleared logout with observable remote failures, explicit scopes and genuine native tokens. Extend test-only Phase A evidence now; not production implementation or gate signoff.",
       "directionApprovalEvidence": "docs/evidence/phase-a-auth-stream-policy-directions.json",
       "evidence": [
@@ -1156,16 +1736,8 @@
     }
   ],
   "nextSteps": [
-    "Follow docs/MVP_PLAN.md: CRUD plus self-service signup/full persistent core password auth now authorized; move realtime/migration and unrelated research to docs/FUTURE_PLAN.md.",
-    "Implement and test client/types/mappings/results then CRUD using existing fixtures. Resolve G1/G7 release blockers explicitly; no server patch/deployment/repin or gate signoff inferred.",
-    "#299 is closed after upstream clarified connection-scoped stream authorization; #298 (signup recovery) remains open. Keep both installed-client reports as drafts.",
-    "Preserve the bounded private G1 prototype evidence separately: SMTP recovery, same-server signup race, existing-depot upgrade/repeat restart, stock CLI backup/restore and ambiguous-depot refusal/rollback passed on owned fixtures. These do not change strict stock or reservation-only SQL-candidate failures or confer signoff. No deployment, repin, public submission or identity repair.",
-    "Obtain maintainer triage for bounded S01 observation: raw Fetch follow stripped Authorization but sent custom Refresh-Token/CSRF-Token headers to permissive foreign receiver despite credentials:omit. Test-only GET global proof revokes before redirect; installed trailbase@0.14.3 ClientImpl.logout instead POSTs the exact refresh token when present and swallows remote errors. No live-session compromise or public installed logout-method impact is established. Do not submit upstream, change transport/contract, add workaround or assign severity without authorization. No SDK/patch/repin/signoff.",
-    "Keep current G1/G7 blockers and known strict characterization failures intact; no SDK/gate signoff, deployment, repin, identity repair, public submission or production/runtime change without explicit authorization.",
-    "Keep G1/G7 blocked, private G1 patch isolated, #298/#299 drafts unchanged, Levels 2/3 documentation-only. No deployment, public submission, identity repair, SDK/package claim, logout contract reduction or acknowledgement workaround.",
-
-    "Previous native ECR registry and Linux corrections remain verified without tag/digest changes; old unknown-image setup root cause remains unproven. Do not relax pins or verification.",
-    "Keep G1/G7 blocked and Levels 2/3 documentation-only. No SDK feature/gate signoff, deployment, repin, identity repair, public submission or production/runtime change without explicit authorization."
+    "Parent independent comparator implementation re-review + actual SDKauth2 then separatelySDKrefresh3, preserve main/cleanup/postconditions and source/runtime/setup/cleanup",
+    "Inspect reported rawSchemaChanged/prohibitedSchemaChange/allowednames; no raw schema unchanged or physical/queryplan sameness inference. Full22/24 controls then next lifecycle decision separately"
   ],
   "lastContractVerification": {
     "date": "2026-10-03T13:42:43.569Z",
@@ -1259,13 +1831,35 @@
     "evidence": ["docs/evidence/phase-a-ci-reference-pagination-ledger-followup-stock-startup.json", "docs/evidence/phase-a-ci-reference-pagination-ledger-followup-summary.json"]
   },
   "lastSession": {
-    "scope": "Maintainer-approved CRUD/auth MVP scope revision; self-service signup and full persistent core password sessions selected",
-    "state": "scope-approved-implementation-planned",
-    "sourceSha256": "d97d4f8dc94102c753f4c9c93240ffb0b6af6d373de7bdd84f279f2c7bcdb34c",
-    "checks": "npm run check/progress, pinned Node 22 harness unit tests 50/50 and git diff --check passed. Documentation-only revision; no backend/adapter runtime checks run. Initial docs check correctly failed stale A01 evidence; current unit evidence added without changing old reports.",
-    "evidence": ["docs/evidence/mvp-scope-unit-node22.json"],
-    "missing": "SDK unimplemented. G1/G7 remain release blockers; broader existing backend evidence predates revised contract hash. No release/exception/deployment approval inferred.",
-    "restart": ["Implement client/types/mappings/results and CRUD slice with full applicable tests", "Implement approved password-auth lifecycle and explicitly resolve G1/G7 before release", "Keep realtime and migration work in future plan"]
+    "parentOwnCredentialFix": {
+      "sourceSha256": "29a6845a6a0d928df07310ad617ea73e439b58ed3173edcd9acc71afa9f80e2d",
+      "checks": "Own email/password and login auth_token/refresh_token boundary verified and fixed test-first: RED0/4 thenGREEN4/4. Mixed168/168 actualNode22.23.2/24.21.0, build/check/diff and cleanpackages22/24 pass. No other SDK/helper/lifecycle behavior changed. Current immutable proc_8ffa passed auth2/2,refresh3/3,browser6/6,data6/6,DB9/9,constraints6/6 with every actualNode22/source/setup/cleanup check passed, lock clear. Bounded reviewerf315d2fd resolved ownfieldfinding, no issues. Operator requested pause; no next slice started. Earlier42c auth2/refresh3/browser6/data6/DB9/constraints6 all source/setup/cleanup passed; historical after fix.",
+      "evidence": ["docs/evidence/sdk-auth-own-boundary-regression-node22.json", "docs/evidence/sdk-auth-own-full-unit-node22.json", "docs/evidence/sdk-auth-own-full-unit-node24.json", "docs/evidence/sdk-auth-own-package-node22.json", "docs/evidence/sdk-auth-own-package-node24.json", "docs/evidence/sdk-user-native-refresh-node22.json", "docs/evidence/sdk-user-native-browser-node22.json", "docs/evidence/sdk-user-native-data-node22.json", "docs/evidence/sdk-user-native-database-node22.json", "docs/evidence/sdk-user-native-constraints-node22.json", "docs/evidence/sdk-auth-own-real-node22.json", "docs/evidence/sdk-auth-own-refresh-node22.json", "docs/evidence/sdk-auth-own-browser-node22.json", "docs/evidence/sdk-auth-own-data-node22.json", "docs/evidence/sdk-auth-own-database-node22.json", "docs/evidence/sdk-auth-own-constraints-node22.json"],
+      "missing": " full default/background/logout/events/reference/browserliveuser/security/coverage/CI/release/G1/G7/signoff"
+    },
+    "parentNativeLiveVerification": {
+      "sourceSha256": "42c5ce014d9c67877b87d1a83fa00c1b2dd6fb752a83b857f1af2739235bb7aa",
+      "checks": "Real SDKauth2/2 passed genuine live DB email/forged/revoked/deleted identity and exact native owner cascade/audit cleanup; actualNode22.23.2/source/setup/cleanup verified. Comparator reviewer4bf2 no issues; allowed first canonical native optimizer bookkeeping reported separately from protected application schema. Mixed164/164 actualNode22/24 and cleanpackages22/24/check/diff passed. Remaining realrefresh/browser/data/DB/constraints proc_2153 active, not counted.",
+      "evidence": ["docs/evidence/sdk-user-native-real-node22.json", "docs/evidence/sdk-user-statistics-parent-unit-node24.json", "docs/evidence/sdk-user-native-package-node22.json", "docs/evidence/sdk-user-native-package-node24.json"],
+      "newBoundaryFinding": "Parent reproduced inherited email/password accepted for empty credential input and inherited auth_token/refresh_token accepted for missing login-response fields under temporary prototype properties. Conditional own-field boundary defect, not proved server authorization bypass. No source change during current immutable real run; regressions/fix pending.",
+      "missing": "Remaining source-frozen controls; verified own credential/login-response boundary fix then recheck; full defaults/background/logout/events/reference/browserliveuser/security/coverage/CI/release/G1/G7/signoff"
+    },
+    "scope": "Approved narrow native optimizer statistics schema metadata fixture-guard correction",
+    "state": "implemented-unit-tested-review-real-parent-pending",
+    "sourceSha256": "42c5ce014d9c67877b87d1a83fa00c1b2dd6fb752a83b857f1af2739235bb7aa",
+    "checks": "Read full advisory203635a6 and source PRAGMAoptimize0x10002; parent actualdc9 firstsuccess CLI only adds canonical stat1/stat4,30existingobjects identical, config/unrelatedidentity/session unchanged, cleanup unchanged. Preserve original failed report/snapshots. Exact own4attrs/table-index-trigger-view metadata arrays validated, duplicates(type,name) rejected. Reserved stat1/stat4 records canonical in either snapshot including case variants rejected by exact values; only new canonical absent-before records removed forcomparison. Everyremaining object exact, existingstats removal/modification forbidden, no SQLnormalization/broadinternal exclusions. Separate rawSchemaChanged/prohibitedSchemaChange/fixedallowedBookkeepingAdded report, config/identity/session exact plus ownednative/pin/cleanup/private0600snapshots unchanged. No statistics samples/contents export or physicalbytes/queryplan claim, no manual schema write. TDD RED0/4 -> focused10/10; initialTS7053 dynamic testkeys failures retained plus temporary incorrectly unchecked shellcheckpoint retained private/superseded; corrected typed tuple/const union, final actual22.23.2 SDK114/114 mixed164/164 build/types. No SDK/auth implementation/server/default/deps/repin/privilege/verbs/stage/commit/fixtures or signoff.",
+    "evidence": [
+      "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
+      "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
+      "docs/evidence/sdk-user-statistics-guard-red-node22.json",
+            "docs/evidence/sdk-user-diagnostic-real-node22.json"
+    ],
+    "missing": "Parent re-review exact comparator/native bookkeeping reporting then actual SDKauth2 and separately SDKrefresh3/nativeowner-cascade-audit proof; original failed liveuser attempts remainfailed, not relabelled; Parent actual24 and full22/24/browser/data/DB/constraints/package controls required, previousdc9 sourcecontrols historical after fixture guard change; Full reference/browser/security/coverage/CI/lifecycle/G1/G7/null-user/signoff incomplete",
+    "restart": [
+      "Parent independent comparator implementation re-review + actual SDKauth2 then separatelySDKrefresh3, preserve main/cleanup/postconditions and source/runtime/setup/cleanup",
+      "Inspect reported rawSchemaChanged/prohibitedSchemaChange/allowednames; no raw schema unchanged or physical/queryplan sameness inference. Full22/24 controls then next lifecycle decision separately"
+    ],
+    "signoff": "none"
   },
   "previousJsonFilterShapeSession": {
     "date": "2026-10-05",
@@ -1944,5 +2538,420 @@
     "supersedesInterview": "157455ba-1c16-460a-86f8-cd1ce3598087",
     "selection": "Use connection-scoped authentication: check credentials at establishment; retain access for that stream's lifetime, including after JWT expiry; reject new connections with expired tokens",
     "scope": "The earlier server-side revalidation requirement is superseded. Expiry is no longer a G6 blocker; historical failing evidence is retained as characterization, and client-side deadline cancellation is not server enforcement. G6 remains in progress: the DELETE-key backend difference is separately approved, but complete payload/lifecycle/resource evidence and named signoff remain pending."
+  },
+  "previousSdkQuerySession": {
+    "scope": "CRUD/auth MVP implementation: initial TrailBase-backed query and mapping slice, with test-first query expansion",
+    "state": "implementation-in-progress",
+    "sourceSha256": "984d39082fcd667a1c9aed6934d235a66230f34b9e263c3d0b0ea5664bedbeca",
+    "checks": "TDD order/range RED then GREEN; zero-limit/access-error tests initially 3 failed/5 passed, then GREEN. Initial real database run 8 passed/1 failed at f556ea3: order:[] emitted order= and rejected ordinary reads. Regression reproduced RED, fixed by omitting empty ordering, then GREEN. Final mixed harness/SDK units 60/60 on Node 22.23.2 and 24.21.0; database 9/9 on Node22, setup/cleanup passed and owned lock clear. All three final reports match current source 984d390. npm run build:sdk, npx tsc --noEmit including query consumer, npm run check and git diff --check passed. Database scope includes bounded adapter reads/order/range/zero-limit/access denial and unchanged-row/audit checks; not full SDK feature verification.",
+    "evidence": [
+      "docs/evidence/sdk-query-unit-node22.json",
+      "docs/evidence/sdk-query-unit-node24.json",
+      "docs/evidence/sdk-query-database-node22.json",
+      "docs/evidence/sdk-query-database-initial-node22.json",
+      "docs/evidence/sdk-query-initial-unit-node22.json",
+      "docs/evidence/sdk-query-initial-unit-node24.json"
+    ],
+    "missing": "Cardinality, insert/update/delete, complete real query/CRUD matrix (>50/1000 cap boundaries), runtime/compile field restrictions, codecs, security/browser/package layers and maintainer signoff. G1/G7 remain unresolved documented auth edge cases. No compatibility or release signoff.",
+    "restart": [
+      "Continue cardinality and mutation TDD, plus validation/type/property cases on main; no worktrees",
+      "Add dedicated real SDK data contract scope and full >50/1000 cap, permission and fault matrices",
+      "Run browser/package layers; then persistent password auth while retaining G1/G7 caveats"
+    ]
+  },
+  "previousSdkDataCheckpointSession": {
+    "scope": "Approved CRUD data SDK slice on main: cardinality, single-record mutations, generated schema types, runtime guards and focused real reference tests",
+    "state": "implemented-partial-checkpoint-not-verified",
+    "sourceSha256": "7928f63f338f67eff7742887808f2c951b230b09d1d47ebe540a8febe69764b9",
+    "checks": "Initial cardinality/mutation red 0 passed/12 failed on Node24.11.0 before implementation; subsequent Node22 validation red 25/1, key-codec red 27/1 and argument-arity red 28/1 preserved. Final focused SDK units 29/29; full mixed harness/SDK units 79/79 on Node22.23.2 at current source. SDK build, source compile-positive/negative consumers and emitted-declaration compile-positive/negative consumer passed; initial emitted consumer invocation failed TS5112 then passed with TypeScript7 --ignoreConfig. Earlier dedicated real sdk-data suite 5/5 with pinned stock fixtures and cleanup passed at 95fe2d506aebd1617724c5df1bd72e370281b33756aadc60386760b8c6f6fc66 (not final-source proof). Final-source rerun timed out during Supabase startup with no completed assertions/report; database/constraints controls never started. Revival recovered exact owned dead-run resources with fixtures:cleanup; lock clear and Docker container inventory empty. No historical strict failure was removed or claimed fixed.",
+    "evidence": [
+      "docs/evidence/sdk-data-focused-node22.json",
+      "docs/evidence/sdk-data-unit-node22.json",
+      "docs/evidence/sdk-data-integration-initial-node22.json",
+      "docs/evidence/sdk-data-initial-unit-node24.json",
+      "docs/evidence/sdk-data-validation-initial-node22.json",
+      "docs/evidence/sdk-data-key-initial-node22.json",
+      "docs/evidence/sdk-data-arity-initial-node22.json",
+      "docs/evidence/sdk-data-initial-types-node22.json",
+      "docs/evidence/sdk-data-interruption-node22.json",
+      "docs/evidence/sdk-data-checkpoint-node22.json",
+      "docs/evidence/sdk-data-integration-node22.json",
+      "docs/evidence/sdk-data-database-node22.json",
+      "docs/evidence/sdk-data-constraints-node22.json",
+      "docs/evidence/sdk-data-unit-node24.json"
+    ],
+    "parentVerification": "Current source 7928f63: Node24.21.0 mixed units79/79; build/check/diff pass. Node22.23.2 real sdk-data5/5, database9/9 and constraints6/6 completed under proc_0f61; every report exact-source, setup/cleanup passed. Interrupted initial refresh stays separate. Independent reviewer 0140fdaa running.",
+    "missing": "Complete >1000 cap/shared contract and credential/fault/constraint matrices; three-browser built app, packed consumers, coverage thresholds and CI; independent review outcome and maintainer signoff; G1/G7 strict unresolved auth failures unchanged",
+    "restart": [
+      "Independent review of src/index.ts, runtime/type tests and dedicated real-suite assertions before further edits",
+      "Rerun focused sdk-data on final source, then database/constraints controls; preserve interrupted/initial evidence",
+      "Complete cap/security/fault/browser/package/coverage/CI layers before any compatibility verification; next persistent password-auth work retains unresolved G1/G7 failures"
+    ],
+    "signoff": "none"
+  },
+  "previousSdkPropertyPredecessorSession": {
+    "scope": "Bounded parent-confirmed data SDK review fixes on main; no fixture/full-suite launches",
+    "state": "implemented-partial-not-verified",
+    "sourceSha256": "9306c1a6db16e1a412386402987968c061ce976d60405ff05c306289cc489607",
+    "checks": "Test-first review regressions RED 1 passed/4 failed, then all focused SDK units GREEN 34/34 on pinned Node22.23.2. Build/source compile-positive/negative and emitted-declaration consumers passed. Mapping enum values now require primitive strings; defensive codec defaults throw. Mapping property allowlists reject readonly typo/unknown keys. Factory/from arity and every defined nonfunction fetch reject before requests. Create acknowledgement IDs validate against actual pinned server/client representation before discard; malformed replies issue one POST with observable error, no replay/read. Parent verified earlier source7928f63 real sdk-data5/5,database9/9,constraints6/6 with setup/cleanup/source checks and Node24 units79/79; these are historical after fixes.",
+    "evidence": [
+      "docs/evidence/sdk-data-review-red-node22.json",
+      "docs/evidence/sdk-data-review-green-node22.json",
+      "docs/evidence/sdk-data-review-checkpoint-node22.json",
+      "docs/evidence/sdk-data-integration-node22.json",
+      "docs/evidence/sdk-data-database-node22.json",
+      "docs/evidence/sdk-data-constraints-node22.json",
+      "docs/evidence/sdk-data-unit-node24.json"
+    ],
+    "missing": "Final-source SDK-data/database/constraints and full Node22/24 refresh: parent owns final checks; prior 7928f63 real 5/5, database 9/9, constraints 6/6 and Node24 units 79/79 are now historical; Complete cap/security/fault/browser/package/coverage/CI layers and required independent review/maintainer signoff; G1/G7 historical strict failures unchanged",
+    "restart": [
+      "Parent final-source checks and fresh independent review of five bounded fixes",
+      "Complete remaining mandatory real/browser/package/security/fault/coverage layers before verification/signoff"
+    ],
+    "signoff": "none"
+  },
+  "previousSdkPackagePredecessorSession": {
+    "parentEnvelopeVerification": {
+      "sourceSha256": "f7786a4fad319763f61c20b84131c067d3d29ded45bd8263810e55bd38b1c165",
+      "checks": "Native create envelope validated before ID discard. Malformed-container/multiple-ID regression RED4/1 then GREEN. First real refresh at e25fe264 passed large1001 case but failed five insert-dependent cases: duplicate Content-Type casing merged to application/json, application/json. Wire-header regression RED4/1; matching native Content-Type casing fixed it. Focused SDK36/36; complete mixed units86/86 on Node22/24; build/types pass. Real refresh proc_3ee1 completed at current f7786a4: SDK-data6/6 (including1001-row case), database9/9, constraints6/6; all source/setup/cleanup checks passed and owned lock clear. Independent read-only reviewer bc9efc39 completed: no issues found in bounded envelope/header/property/large-page follow-up; this is model review, not maintainer signoff.",
+      "evidence": [
+        "docs/evidence/sdk-data-large-pages-initial-node22.json",
+        "docs/evidence/sdk-data-envelope-full-unit-node22.json",
+        "docs/evidence/sdk-data-envelope-full-unit-node24.json",
+        "docs/evidence/sdk-data-envelope-integration-node22.json",
+        "docs/evidence/sdk-data-envelope-database-node22.json",
+        "docs/evidence/sdk-data-envelope-constraints-node22.json"
+      ],
+      "missing": "Browser/package/coverage/CI, broader security/fault corpus and auth implementation; no signoff"
+    },
+    "scope": "Bounded SDK codec property coverage and owned 1000/1001 pagination/cardinality real-test authoring; no production edits or fixture launches",
+    "state": "tests-added-real-execution-pending",
+    "sourceSha256": "e25fe264bf84edb3bfb06b5c8c203e61d1eab75f71c4c07103e470c2aefdc6fc",
+    "checks": "Focused SDK units36/36, build/source and emitted-declaration types passed. Strengthened seeded 1000-round-trip property to generate 2000 distinct UUIDv4 primary/owner values and exercise actual public SDK insert/read/filter encoding with independent wire expectations; high-byte generator avoids former low-byte short cycle. Added wrong-type/null/Date/bytes/unsafe-number mutation and all-six-filter vectors plus invalid native scalar response vectors. Added dedicated 1001-row real fixture-owner case with priority+title ties, >50/default1000/last1001/inclusive/out-of-range pages, cardinality before/after bounds, zero-request cap rejection, complete paged row/audit invariants and exact partial-setup cleanup; not run. New case has180s budget within existing300s runner. Initial compile-only Set<UUID-template> error fixed with Set<string>, preserved in partial report. Parent create-envelope change preserved; no SDK production fix required.",
+    "evidence": [
+      "docs/evidence/sdk-data-property-checkpoint-node22.json"
+    ],
+    "missing": "New 1001-row real SDK-data case authored/typechecked but not executed; parent owns final-source real SDK-data/database/constraints and full Node22/24 refresh; Complete security/fault/coverage/CI and independent review/maintainer signoff remain pending; browser/package tasks reserved parent; Historical G1/G7 strict failures preserved and unresolved",
+    "restart": [
+      "Parent executes new real 1001-row test and final-source SDK-data/database/constraints/full-unit checks; preserve any initial failures",
+      "Fresh independent review, then parent-owned browser/package/security/fault/coverage layers; no signoff inference"
+    ],
+    "signoff": "none"
+  },
+  "previousSdkBrowserPredecessorSession": {
+    "scope": "Bounded private data package exports/tarball/clean Node consumer slice; no fixtures/browser/auth/dependency changes",
+    "state": "implemented-focused-package-checked-not-full-verified",
+    "sourceSha256": "21f9f569fd44df9a88fa7673c4b3fa30908992c6413791bd0f54ba191d596800",
+    "checks": "Package guard TDD RED0/4 then GREEN4/4. npm run test:sdk:package passed: build, exact five-file tarball, private identity/native pin/credential/regular-file guards, offline clean Node tarball installation without SDK source/workspace links, shipped generated Database positive/negative declaration consumer, and installed data transport-boundary assertions. Source types/check/progress/diff passed. First two package attempts failed a clean-install path guard because macOS tmpdir lexical alias differed from realpath; both failure artifacts retained, fixed by canonicalizing newly owned temporary root, subsequent focused package runs green with cleanup passed. Browser readiness is ESM with pinned trailbase plus transitive imports requiring bundler/complete import map, not browser runtime proof. Full test:package stays intentionally incomplete. No public package naming/publish or signoff.",
+    "evidence": [
+      "docs/evidence/sdk-package-node22.json",
+      "docs/evidence/sdk-package-unit-node22.json",
+      "docs/evidence/sdk-package-red-node22.json",
+      "docs/evidence/sdk-package-initial-node22.json",
+      "docs/evidence/sdk-package-diagnostic-node22.json"
+    ],
+    "missing": "Packed tarball real TrailBase/Supabase backend proof and Chromium/Firefox/WebKit browser consumer/application proof remain pending; focused check uses injected transport only; Parent owns final-source real/full unit checks; prior f7786a4 real SDK-data6/6,database9/9,constraints6/6,Node22/24 units86/86 are historical after packaging edits; Full auth/package/security/fault/coverage/CI/release layers and independent review/maintainer signoff incomplete; G1/G7 unchanged",
+    "restart": [
+      "Independent package-guard/consumer review, parent final-source real/full checks",
+      "Parent-owned real packed-backend and three-browser checks, then remaining full layers before signoff"
+    ],
+    "signoff": "none"
+  },
+  "previousSdkBrowserReviewPredecessorSession": {
+    "scope": "Bounded auth-free accessible data UI and actual packed-SDK three-browser fixture suite authoring",
+    "state": "implemented-runtime-browser-proof-pending",
+    "sourceSha256": "f559a98636689f9e692d1e0b68dc6fa6e41619d0f52258a1f9d74d478c4dd388",
+    "checks": "Scoped plan written before code. Import-graph/UI-query guard RED0/3 then GREEN3/3 on Node22. Build/source types passed; Playwright --list discovered three engine cases without launching fixtures/browsers. New dedicated fixture branch clean-installs actual tarball and serves installed SDK/native ESM with code hashes/minimal complete trailbase import map; old installed native/reference proof copies and routes unchanged. Read-only package checker/consumer untouched. UI takes explicit client/owner, labels CRUD/filter/order/page/cardinality/error output and disposes listeners. Real test asserts ordinary A/B isolation, forbidden write complete row/audit invariants, default-null mutations, zero-request unsupported inputs, fresh reads, cleanup/disposal. Fixture bearer-only bootstrap does not claim auth app. SDK browser command ready but not run because remaining bounded budget cannot safely include cold setup/teardown; full E2E/package remain incomplete.",
+    "evidence": [
+      "docs/evidence/sdk-browser-checkpoint-node22.json",
+      "docs/evidence/sdk-browser-unit-node22.json",
+      "docs/evidence/sdk-browser-unit-red-node22.json"
+    ],
+    "missing": "Dedicated packed Chromium/Firefox/WebKit suite authored/discovered/typechecked but not executed; parent run npm run test:sdk:browser for actual setup/module-serving/data/permissions/teardown proof; Full shared Supabase browser, auth/app, packed-backend, security/fault/coverage/package/CI/release and independent review/maintainer signoff incomplete; Parent final-source unit/real evidence refresh; historical G1/G7 strict failures unchanged",
+    "restart": [
+      "Parent run dedicated npm run test:sdk:browser and preserve first runtime failure if any; independent review of UI/bootstrap/serving guards",
+      "Parent final-source full unit/database/data/constraint/package controls and remaining mandatory layers before any signoff"
+    ],
+    "signoff": "none"
+  },
+  "previousAuthSlicePredecessorSession": {
+    "parentBrowserStatusFix": {
+      "sourceSha256": "f065cc08d5b34e0b4e9fd9a4a37cce35fee3da7f0ea4e593310a4f6a65236bd6",
+      "checks": "Label-fixed browser failed3/3 at optional-row assertion because getByRole(status) matches both query p and implicit output status. Actual p contained Optional row absent; this is locator ambiguity, not query failure. Query status now has explicit accessible name and exact locator. Original assertion preserved. Mixed units100/100 on Node22/24 and SDK build pass. Actual proc_4281 completed packed data browser3/3 on Chromium/Firefox/WebKit; setup/cleanup passed at current source. Current Node22/24 clean package checks passed; real data/control refresh proc_4806 completed SDK-data6/6,database9/9,constraints6/6 with all exact-source/setup/cleanup checks passed; lock clear.",
+      "evidence": [
+        "docs/evidence/sdk-browser-labels-fixed-initial-node22.json",
+        "docs/evidence/sdk-browser-status-full-unit-node22.json",
+        "docs/evidence/sdk-browser-status-full-unit-node24.json",
+        "docs/evidence/sdk-browser-data-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-package-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-package-node24.json"
+      ],
+      "currentRealEvidence": [
+        "docs/evidence/sdk-browser-checkpoint-data-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-database-node22.json",
+        "docs/evidence/sdk-browser-checkpoint-constraints-node22.json"
+      ],
+      "missing": "Auth/shared Supabase browser/coverage/security/CI/release; no signoff"
+    },
+    "parentBrowserLabelFix": {
+      "sourceSha256": "b555ed06db6d91de3fd55ececce07da0c584e5d4e54dba64b6170540b6ffe010",
+      "checks": "Initial actual browser run failed3/3 at exact Filter field locator; setup/cleanup passed. Minimal real Chromium DOM probe exact0/nonexact1 confirms wrapped label includes option contents. Added explicit aria-labels and exact-count runtime guards. Mixed units100/100 on Node22/24. Corrected browser proc_6d4f active, not counted.",
+      "evidence": [
+        "docs/evidence/sdk-browser-runtime-initial-node22.json",
+        "docs/evidence/sdk-browser-labels-diagnosis-node22.json",
+        "docs/evidence/sdk-browser-labels-full-unit-node22.json",
+        "docs/evidence/sdk-browser-labels-full-unit-node24.json"
+      ],
+      "missing": "Corrected browser runtime result, current-source real SDK/control/package refresh, auth/shared browser/coverage/CI/release layers; no signoff"
+    },
+    "parentBrowserPreparation": {
+      "sourceSha256": "e856e16b4aeb050403e85a593bd1ec3de98c5827096769577540807f1f9e1775",
+      "checks": "Source-reviewed cleanup/query fixes resolved. Initial exit13 TLA cycle recovered through exact owned cleanup and lazy entrypoint import. Subsequent browser/package attempts failed before assertions because active npm pack JSON is a package-keyed object instead of array; reports preserved. Pack metadata guard RED4/1 then GREEN5/5; supports both exact single-package shapes without relaxing identity/file guards. Mixed units100/100 on Node22/24. Clean package checks pass on Node22/24 with cleanup. Actual browser proc_0a9b running, not yet counted.",
+      "evidence": [
+        "docs/evidence/sdk-browser-initial-startup-interruption-node22.json",
+        "docs/evidence/sdk-browser-pack-shape-initial-node22.json",
+        "docs/evidence/sdk-package-pack-shape-initial-node22.json",
+        "docs/evidence/sdk-browser-pack-format-full-unit-node22.json",
+        "docs/evidence/sdk-browser-pack-format-full-unit-node24.json",
+        "docs/evidence/sdk-browser-pack-format-fixed-package-node22.json",
+        "docs/evidence/sdk-browser-pack-format-fixed-package-node24.json"
+      ],
+      "missing": "Actual browser outcome and current-source real data/control refresh; auth, shared Supabase browser app, coverage/CI/release; no signoff"
+    },
+    "scope": "Bounded independently reviewed browser P1 cleanup and P2 control-matrix fixes; no fixture launches",
+    "state": "implemented-tested-unit-browser-runtime-pending",
+    "sourceSha256": "174c0f89ae6a9af5414c64b373132ad3389b5ec72310e4a75665c9c23f2ade6b",
+    "checks": "Test-first cleanup RED0/4 then GREEN9/9 focused browser cleanup/query/import guards; build/source types passed. Acquisitions and route registration now inside protected body. Browser disposal, each exact-key owned-user row cleanup, each logout and route removal attempted independently; original failure rethrown unchanged when cleanup succeeds, or preserved with all cleanup failures after every attempt. Each key verifies exact ID plus owner before delete, continues after earlier failure, never deletes unrelated rows. Real test now covers all six numeric operators, Unicode/metacharacter literal title equality, true/false boolean filters, descending order and ID-tied page boundaries including empty page, multiple/one/zero single/maybeSingle, visible invalid boolean/nonfinite/fractional/unsafe query zero requests, unchanged full row/audit postconditions. Parent lazy sourceHash import cycle fix and static regression preserved; initial startup-interruption artifact retained. No real browser run started.",
+    "evidence": [
+      "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
+      "docs/evidence/sdk-browser-revision-unit-node22.json",
+      "docs/evidence/sdk-browser-cleanup-red-node22.json",
+      "docs/evidence/sdk-browser-initial-startup-interruption-node22.json"
+    ],
+    "missing": "Actual dedicated packed Chromium/Firefox/WebKit suite pending after P1/P2 fixes; parent owns next fixture run and final-source real/full evidence; Complete shared-reference/browser/package/auth/security/fault/coverage/CI/release and independent review/maintainer signoff incomplete; G1/G7 unchanged",
+    "restart": [
+      "Parent run npm run test:sdk:browser on final source and retain every first failure; re-review cleanup/control assertions",
+      "Parent final-source checks then remaining required layers before compatibility/signoff"
+    ],
+    "signoff": "none"
+  },
+  "previousStorageSliceParentSession": {
+    "scope": "Auth slice1 L1-14/15 and explicit memory-only L1-16, following parent immutable data checkpoint f065cc08",
+    "state": "implemented-memory-auth-first-real-check-passed-review-controls-and-full-lifecycle-pending",
+    "parentReviewFixes": {
+      "sourceSha256": "5c55be11da347fec83739dc43394c222b2f73ffb45f9372bd456698cef4c8c56",
+      "checks": "Parser privacy and side-effect import findings verified and corrected test-first. Focused7/7, mixed114/114 on Node22/24, build/check/diff pass; clean package checks Node22/24 pass. Final-source real suites proc_27fc passed memory-auth1/1,data6/6,database9/9,constraints6/6,packed data browsers3/3; all source/setup/cleanup checks passed, lock clear. Read-only reviewer recheck2601f0f5 confirms P1/P2 resolved and no new issues; no commands or signoff by reviewer.",
+      "evidence": [
+        "docs/evidence/sdk-auth-review-regressions-node22.json",
+        "docs/evidence/sdk-auth-review-full-unit-node22.json",
+        "docs/evidence/sdk-auth-review-full-unit-node24.json",
+        "docs/evidence/sdk-auth-review-package-node22.json",
+        "docs/evidence/sdk-auth-review-package-node24.json",
+        "docs/evidence/sdk-auth-review-real-node22.json",
+        "docs/evidence/sdk-auth-review-data-node22.json",
+        "docs/evidence/sdk-auth-review-database-node22.json",
+        "docs/evidence/sdk-auth-review-constraints-node22.json",
+        "docs/evidence/sdk-auth-review-data-browser-node22.json"
+      ],
+      "missing": "Persistent core lifecycle, shared/browser auth, full security/property/fault/coverage/CI/release; no signoff"
+    },
+    "parentPreReviewChecks": "Historical source9fcb2e9f real SDK auth1/1 passed fresh adapter signup/real email confirmation/password login/reference failed-login preservation/A-B-anonymous owner isolation; setup/cleanup passed. Clean package checks Node22/24 passed; parent Node24 mixed units/check/diff passed. Current data/database/constraints/three-engine packed data browser refresh proc_b9bb running, read-only independent reviewer a8513e81 running. No auth browser/session-persistence/refresh/logout claims.",
+    "sourceSha256": "9fcb2e9feb9120413b2595494e84fa7bc7b7d5bface436245626d7ed469f9ba6",
+    "checks": "Read full auth advisory and installed native flows; proportional pre-code plan. Auth RED0/7 and source-split pack/browser graph RED0/2 retained; focused SDK units61/61, build/source types passed. New auth.ts owns separate cookie-omitted redirect-refusing native HTTP and per-client guarded memory; common.ts preserves original data codecs/validation/error normalization. Exact public credentials/user/session types; native signup sends password_repeat, no user/session synthesis/retry. Login validates native credentials/JWT/email/UUID/time and guards through JSON decode; failed replacement preserves good state. Cached defensive getSession only. Tokenless native record client gets current bearer without native hydration/refresh; expired dispatch errors without anonymous fallback. Only explicit persistSession:false/autoRefreshToken:false supported, absent auth preserves tokenless data-only use with unsupported auth calls; settings/deferred lifecycle and metadata/phone/JWT overloads fail zero-wire. Exact packed allowlist/closed graph extended for new auth/common modules; parent lazy sourceHash import fix preserved. Dedicated stock owned sdk-auth fresh signup/mail/login/reference failed-replacement/owner checks authored and wired, not launched. Development-only docs; no compatibility exception/signoff. Initial ledger partial status failed check/progress/mixed108/3, retained and corrected to in-progress; mixed111/111 passed. A01 stale-source verified evidence exposed by docs check; previous verified checkpoint remains historical, current status in-progress until parent final tooling/fixture proof.",
+    "evidence": [
+      "docs/evidence/sdk-auth-checkpoint-node22.json",
+      "docs/evidence/sdk-auth-unit-node22.json",
+      "docs/evidence/sdk-auth-red-node22.json",
+      "docs/evidence/sdk-auth-package-red-node22.json",
+      "docs/evidence/sdk-auth-memory-real-node22.json",
+      "docs/evidence/sdk-auth-memory-parent-unit-node24.json",
+      "docs/evidence/sdk-auth-memory-package-node22.json",
+      "docs/evidence/sdk-auth-memory-package-node24.json"
+    ],
+    "missing": "New-source browser/data/database/constraint refresh and independent review in flight; previous f065cc08 data controls historical; persistence/hydration/refresh/live getUser/logout/notifications/auth app not implemented; G1/G7 strict failures and signup null-user approval unresolved; complete security/fault/property/coverage/CI/release and maintainer signoff incomplete",
+    "restart": [
+      "Parent independently review auth/options/generation/native response/transport/type and split-pack changes; run npm run test:sdk:auth on stock owned fixtures preserving first failure",
+      "Parent refresh final-source mixed Node22/24 units, SDK data/database/constraints/packed Node22/24 and three browsers",
+      "Then implement next approved persistent session slice with storage failure/race tests; retain G1/G7/null-user limitation"
+    ],
+    "signoff": "none"
+  },
+  "previousStorageReviewParentSession": {
+    "scope": "Auth slice2 explicit persistent/hydrated L1-16 sessions following parent immutable 5c55be11 checkpoint",
+    "state": "implemented-unit-tested-real-full-lifecycle-pending",
+    "sourceSha256": "93345a161ec87c3c136bd44c86ab8c8fe74c1d3e2fe754a84d7c2617ea25a09a",
+    "parentChecks": "Current real persistent auth1/1 and packed browser6/6 passed genuine password/default localStorage reload and all prior data UI tests on Chromium/Firefox/WebKit; source/setup/cleanup checks passed. Node24 mixed125/125 and clean packages22/24 passed; check/diff passed. Real data/control proc_ee08 and independent reviewer370c214b active, not counted.",
+    "parentEvidence": [
+      "docs/evidence/sdk-auth-storage-real-node22.json",
+      "docs/evidence/sdk-auth-storage-browser-node22.json",
+      "docs/evidence/sdk-auth-storage-parent-unit-node24.json",
+      "docs/evidence/sdk-auth-storage-package-node22.json",
+      "docs/evidence/sdk-auth-storage-package-node24.json"
+    ],
+    "checks": "Pre-code plan; storage guards RED0/7 then SDK75/75, build/source types passed. Exact version1 native credentials persisted, csrf internal; cached state reconstructed with original UUID codec. Explicit autoRefreshToken:false/persistSession boolean only. Configured sync/async storage/key supported; browser localStorage default and per-client Node memory, stable origin namespace, disabled zero calls. Init awaited for auth/data opting into auth; no native tokens/implicit refresh. Generation guards through hydration/decode/storage writes, serialized commits with stale/failed write compensation of last committed C; newer failed B waits restoration. Failed persistence never installs success. Supervisor approved restore-failure latch: sanitized AuthStorageRestoreError with safe primary/restoration/operation categories, retain C internally but expose no usable session/auth/data dispatch; external repair and new validated instance needed. Expired genuine credentials retained/cached, dispatch fails without anonymous fallback. Corrupt/truncated/unknown version privacy vectors plus64 distinct UUID envelopes; read/write/remove/restore rejections, namespace/Node isolation and snapshot guards. Parent JSON privacy and import graph fixes preserved. Auth scope extended real custom-storage reload and packed browser genuine localStorage reload authored, not launched. Initial unit assertion on null data failed6/1, then outdated unsupported persistent option guard failed13/1; both preserved and corrected. No fixture launches/dependencies/backend changes or compatibility claims.",
+    "evidence": [
+      "docs/evidence/sdk-auth-storage-checkpoint-node22.json",
+      "docs/evidence/sdk-auth-storage-unit-node22.json",
+      "docs/evidence/sdk-auth-storage-red-node22.json",
+      "docs/evidence/sdk-auth-storage-initial-unit-node22.json",
+      "docs/evidence/sdk-auth-storage-initial-expanded-unit-node22.json"
+    ],
+    "missing": "Current data/database/constraints refresh and independent storage review pending; complete security/fault/property/coverage/CI evidence pending; old5c55be11 controls historical. Refresh/timers/live getUser/logout/events/full auth app/default refresh unimplemented; G1/G7/null-user approval unresolved; no signoff",
+    "restart": [
+      "Parent independent review storage/init/queue/compensation/latch and run npm run test:sdk:auth plus test:sdk:browser (now storage case on each engine); preserve first failures",
+      "Parent refresh final-source Node22/24 mixed/package/data/database/constraint and full controls",
+      "Next approved slice single-flight guarded refresh and genuine expiry/security tests; no G7 global success inference"
+    ],
+    "signoff": "none"
+  },
+  "previousRefreshParentSession": {
+    "scope": "Bounded storage-review P1/P2 fixes only, following parent93345a16 immutable controls",
+    "state": "implemented-unit-tested-parent-real-review-pending",
+    "sourceSha256": "0ddcc3f3d02415c9d6348ce271e4a6f5bb30d69c64566a5036a90656994686fa",
+    "parentValidation": {
+      "checks": "Reviewer745a6690 recheck found P1/P2 resolved, no new issues. Detected original sdk-auth-storage-review-mixed-node22 report actually recordsNode26.7.0: preserved unchanged, cannot certifyNode22. Parent reran current full mixed on verifiedNode22.23.2:130/130. Node24.21.0 fullmixed130/130, clean packages22/24 passed. Audit SDK-node22/24 evidence runtime fields found no other filename/runtime mismatch. Final real proc_dd03 passed auth1/1,browser6/6,data6/6,DB9/9,constraints6/6; all Node22.23.2/source/setup/cleanup checks passed, lock clear.",
+      "evidence": [
+        "docs/evidence/sdk-storage-review-parent-unit-node22.json",
+        "docs/evidence/sdk-storage-review-parent-unit-node24.json",
+        "docs/evidence/sdk-storage-review-package-node22.json",
+        "docs/evidence/sdk-storage-review-package-node24.json",
+        "docs/evidence/sdk-storage-review-real-node22.json",
+        "docs/evidence/sdk-storage-review-browser-node22.json",
+        "docs/evidence/sdk-storage-review-data-node22.json",
+        "docs/evidence/sdk-storage-review-database-node22.json",
+        "docs/evidence/sdk-storage-review-constraints-node22.json"
+      ],
+      "missing": "Full persistent lifecycle/shared/security/fault/coverage/CI/release; no signoff"
+    },
+    "checks": "Read preserved initial-review findings and actual code. TDD regressions RED1/5, then SDK80/80 plus build/types. Current-generation failed login awaits storageTail then reconciles authoritative committed hydration only without latch; stale initializer still cannot install and stale failed login cannot clobber newer state. Held hydrated expired/unexpired C + failedB retain refresh, expired zero data dispatch, live C correct bearer. Required own persistSession/autoRefreshToken and own supported version enforced; optional storage/key/detectSessionInUrl use own reads, Object.prototype sink/namespace ignored; legitimate class storage methods retain inherited-method support. Prototype descriptors restored finally. Parent parser privacy/import graph fixes and all existing held-write/latched-error/security tests preserved. No fixture launches/dependencies/server/repin or refresh scope.",
+    "evidence": [
+      "docs/evidence/sdk-auth-storage-review-checkpoint-node22.json",
+      "docs/evidence/sdk-auth-storage-review-unit-node22.json",
+      "docs/evidence/sdk-auth-storage-review-red-node22.json"
+    ],
+    "missing": "Parent final-source P1/P2 re-review and fresh real auth/browser/data/database/constraints/package/mixed Node22/24 controls pending; prior93345a16 immutable green reports historical and retained; Refresh/timers/live getUser/logout/events/auth app/full defaults/security/coverage/CI/release and maintainer signoff incomplete; G1/G7/null-user approval unchanged",
+    "restart": [
+      "Parent P1/P2 re-review and final immutable real auth/browser/data/DB/constraints/package/mixed22/24 controls, retain every failure",
+      "Only after review-fix checkpoint, next approved guarded single-flight refresh slice"
+    ],
+    "signoff": "none"
+  },
+  "previousSixRefreshReviewParentSession": {
+    "scope": "Approved slice3 native manual/expired-request single-flight refresh only",
+    "state": "implemented-unit-tested-real-and-full-lifecycle-pending",
+    "sourceSha256": "acf837e8e820e0d3b7e9d08e048051e59151a46dad76db11d14466509b1283a5",
+    "parentChecks": "Current genuine shortTTL SDK refresh1/1 passed backend wall-clock expiry/shared renewal/persistent owner reload/rejected-refresh cleanup; source/setup/cleanup and actualNode22.23.2 verified. Fullmixed138/138 at actualNode22.23.2 and Node24.21.0, cleanpackages22/24 pass; check/diff pass. Current auth/browser/data/DB/constraints refresh proc_cdf3 and independentreview d4a74f6e active, not counted.",
+    "parentEvidence": [
+      "docs/evidence/sdk-refresh-real-node22.json",
+      "docs/evidence/sdk-refresh-parent-unit-node24.json",
+      "docs/evidence/sdk-refresh-package-node22.json",
+      "docs/evidence/sdk-refresh-package-node24.json"
+    ],
+    "checks": "Read parentValidation, installed native/client/reference and pinned refresh/token source. Verified absolute Node22 actual process.version before commands/report names; original Node26 misnamed report retained. Plan before code: RED0/7 thenSDK88/88; initial all83/4 obsolete expired/method expectations preserved and updated to renewal-failure/no-anonymous assertions. Argumentfree refresh/getSession/data-at-exp share flight per generation, narrow actual native two-field response/same ID; only captured genuine refresh retained, new CSRF internal. Tokenless client/cookie omission/redirect refusal/bearer-only records; no signup/CRUD replay. Guards through JSON/storage/install; prior restoration/latch/failed-newer-login/ownflags/privacy/import fixes retained. Transient/other4xx preserve disk/state; only native refresh401 current state invalidated before queue/removal, never a rejected compensation baseline; newer commits queue behind owned removal. Supervisor approved removal fail-closed AuthStorageRemoveError/latch, disk unknown/no global or JWT revocation inference. Real short3sec sdk-refresh scope uses existing owned profile, default baseline unchanged; case authored genuine backend denial/concurrency/persistent reload/owner/native retain/revoked refresh, not launched. Source observation Supabase false-background getSession refresh with margin not runtime/parity proof; adapter only exact cachedexp boundary.",
+    "evidence": [
+      "docs/evidence/sdk-refresh-checkpoint-node22.json",
+      "docs/evidence/sdk-refresh-unit-node22.json",
+      "docs/evidence/sdk-refresh-red-node22.json",
+      "docs/evidence/sdk-refresh-initial-all-node22.json"
+    ],
+    "missing": "New dedicated short-native-auth SDK refresh real scope authored but not run; parent owns final re-review/auth/browser/data/database/constraint/package/mixed22/24 controls; Real shared Supabase expiry and packed/browser refresh proof, full security/fault/coverage/CI/release and signoff incomplete; no background/default refresh/timers/getUser/logout/events/auth app; G1/G7/null-user approval unresolved; original mislabeled Node26 mixed report retained and parent corrected Node22/24 validation preserved",
+    "restart": [
+      "Parent refresh/revocation/queue/runtime review and run npm run test:sdk:refresh on stock owned short3sec fixture, then final-source full controls, preserve every first failure",
+      "Then next approved live validation/background-resource slice, keep default refresh true unsupported until implemented/tested; G1/G7 no exception/signoff"
+    ],
+    "signoff": "none"
+  },
+  "previousLiveUserParentSession": {
+    "parentRedirectFix": {
+      "sourceSha256": "7b23133b26e7a9c563ef054248767a659f75c9c75733db8ecf8e1630fa752ff3",
+      "checks": "Six originalrefresh findings resolved per recheck; new redirected401 status-ordering finding independently reproduced. Targeted RED7pass/1fail retained, GREEN8/8 after rejecting redirects before refreshstatusclassification with handled ownedabort/cancel. Mixed146/146 actualNode22.23.2/24.21.0; cleanpackages22/24 build/check/diff pass. Priorf031 genuineexpiry/partialcleanup3/3 passed source/setup/cleanup, historical after newfix. Current finalreal proc_23f2 passed refresh3/3,auth1/1,browser6/6,data6/6,DB9/9,constraints6/6; actualNode22.23.2/exact-source/setup/cleanup verified for every report, lock clear. Bounded reviewer5fb30d01 confirms redirectfix resolved, no issues; no commands or maintainer signoff.",
+      "evidence": [
+        "docs/evidence/sdk-refresh-six-real-node22.json",
+        "docs/evidence/sdk-refresh-six-recheck-review.md",
+        "docs/evidence/sdk-refresh-redirect-regression-node22.json",
+        "docs/evidence/sdk-refresh-redirect-full-unit-node22.json",
+        "docs/evidence/sdk-refresh-redirect-full-unit-node24.json",
+        "docs/evidence/sdk-refresh-redirect-package-node22.json",
+        "docs/evidence/sdk-refresh-redirect-package-node24.json",
+        "docs/evidence/sdk-refresh-redirect-recheck-review.md",
+        "docs/evidence/sdk-refresh-redirect-real-node22.json",
+        "docs/evidence/sdk-refresh-redirect-auth-node22.json",
+        "docs/evidence/sdk-refresh-redirect-browser-node22.json",
+        "docs/evidence/sdk-refresh-redirect-data-node22.json",
+        "docs/evidence/sdk-refresh-redirect-database-node22.json",
+        "docs/evidence/sdk-refresh-redirect-constraints-node22.json"
+      ],
+      "missing": " livegetUser/background/logout/events/defaults/fullreference/browserrefresh/security/coverage/CI/release; G1/G7/signoff open"
+    },
+    "scope": "Bounded all6 refresh-review fixes before any next lifecycle work",
+    "state": "implemented-unit-tested-block-review-recheck-and-real-pending",
+    "sourceSha256": "f03191feb286b3456358ca96639876e1bc2dd978603be7337327d1ec83d401a4",
+    "checks": "Read all6 BLOCK findings, wrote pre-code matrix; actual Node22.23.2 verified. RED1/7 then SDK95/95/build/types. Refresh compares captured authoritative state and epoch before/inside serialized install/after awaits; commit revision protects queued terminal removal and compensation selects current committed baseline if terminal invalidates old C during held write. Same-generation pending loginB before C200/401 protected, same-owner different session and waiting expired data no dispatch. Delivered401 never reads text; actual fixed401, owned abort and cancellation with handled rejection, body cannot hang/erase terminal error; supervisor approved no hostile custom transport cancellation guarantee. Own alg/sub/iat/exp required all auth parser paths; exact refresh200, valid201/202 preserve C/error/no data. Expired data/getSession no-manual trigger tested and actual mutation deletion failed0/1 (initial tool timeout preserved/source restored, bounded retry completed/source restored). Real shortTTL case now independent expired data/getSession initiates one renew/one original read/persist; manual join separate; cleanup owner/row independent storage/expired JWT uses fresh ordinary password login exact deletion+absence, injected postexpiry absent/rejected storage cases authored. No fixtures/deps/server/default changes or signoff.",
+    "evidence": [
+      "docs/evidence/sdk-refresh-six-review-checkpoint-node22.json",
+      "docs/evidence/sdk-refresh-six-review-unit-node22.json",
+      "docs/evidence/sdk-refresh-six-review-red-node22.json",
+      "docs/evidence/sdk-refresh-expiry-mutation-node22.json"
+    ],
+    "missing": "All6 BLOCK findings implementation requires parent independent re-review plus new real3-case shortTTL/cleanup and fresh auth/browser/data/DB/constraints/package/mixed22/24 controls; old acf immutable greens historical retained; Full lifecycle/reference expiry/browser refresh/defaults/security/fault/coverage/CI/release/signoff and G1/G7/null-user approval incomplete",
+    "restart": [
+      "Parent all6 re-review; run dedicated SDK refresh now3 genuine-expiry cases with existing80s grace budget/120s each, preserve first failures, then final immutable full controls",
+      "Only after reviewed current checkpoint consider next approved lifecycle slice; no happy-path approval inference"
+    ],
+    "signoff": "none"
+  },
+  "previousLiveUserFixtureParentSession": {
+    "scope": "Bounded approved L1-17 live getUser only",
+    "state": "implemented-unit-tested-review-real-pending",
+    "sourceSha256": "371579481cd729abb79b24bf2c182d185a9b8b64103d09e3b2ea7c5f47fba3b7",
+    "checks": "Pinned status.rs/tokens.rs optional extractor/server DbUser live path, native client checkAuthStatus/headers and Supabase getUser source read. Supervisor approved both genuine bearer+Refresh-Token GET/status, exact200 own3 fields, same ID/refresh, fresh JWT/CSRF validated; native returned rotation installed only after guarded persistence. Missing cache request-free, all-null200 AuthSessionMissingError, failures preserve prior cache/disk/no status terminal-clear. Captured baseline+gen guards through fetch/JSON/queued and held writes/current refresh, samegen pendingB protection, no stale user/state overwrite. Parent cancelResponse/redirected4018th case preserved. Initial RED0/7 retained, exact-source unsupported boundary RED0/7 reproduced (not misattributed initial source), final mixed153/153 actual22.23.2 report.node verified; build/source types. Own fields/privacy/header/cookie/redirect/hydration/expiry/storage and32 distinct UUID property vectors. Real owned SDK auth DBemail/forged/revoked/deleted/anonymous with exact SQL/postconditions and independent closes authored, sdk-refresh actual expired status200null assertion added. No fixture launch/dependency/server/default/repin/worktree/stage/commit/publish. GET native rotation disclosed, not token-side-effect parity or G1/G7/signoff.",
+    "evidence": [
+      "docs/evidence/sdk-user-checkpoint-node22.json",
+      "docs/evidence/sdk-user-mixed-node22.json",
+      "docs/evidence/sdk-user-red-node22.json"
+    ],
+    "missing": "L1-17 new code requires independent review and final real auth2/2/refreshed refresh3/3/browser/data/DB/constraints/packed/mixed22/24 controls; previous7b parent controls/reviewer5fb historical retained; Real reference live-user/expiry parity and browser/packed live validation security cases, full security/fault/coverage/CI/release/defaults/timers/logout/events/G1/G7/null-user approval incomplete",
+    "restart": [
+      "Parent review L1-17 source/protocol/baseline/storage/races and launch sdk-auth now2 cases +sdk-refresh still3 cases; retain first failures, inspect source/runtime/ownership/postconditions",
+      "Refresh full parent controls Node22/24 and real browser/data/DB/constraints/clean package; then decide next resources/background slice separately, no implementation yet"
+    ],
+    "signoff": "none"
+  },
+  "previousNativeInvariantParentSession": {
+    "scope": "Bounded real L1-17 fixture native-UDF root repair plus reviewed stale-status resource P1",
+    "state": "implemented-unit-tested-parent-real-retry-and-review-pending",
+    "sourceSha256": "3c3d823168e992cf7e36d404cff7ac3664f6a6cff8decbf78f8c291580f37615",
+    "checks": "Initial actual22 auth1passed/1failed retained, wholefixturecleanup passed but test primary is_email UPDATE and cleanup is_uuid_v4 native cascade compile failed separately; no clientauthbug inferred, refresh never ran due parent &&. Inspected harness/readonly prior NodeSQLite patterns/native validators+UUID/CLI exact parameterized change-email/delete; no sanctioned admin credentials path. Supervisor approved pinned existing native CLI only2 targeted userverbs on verified ownedrealpath/depot/canonical acquiredowner/generatedemail, independent readonly preconditions/postconditions/schema/config/unrelated identity-session digests; checksum existingarchive/binaryversion/path, no downloads/builds/newserver/constraintbypass/UDF guesses. Main NodeSQLite readonly, exact working owned session mutation retained, independent cleanup all steps. Auth real now genuine owner todo INSERT and native CLI userdelete cascade must assert rowabsent/audit INSERTDELETE, invalid operand leaves email unchanged. Authored parent pending. Read reviewer3267 P1; exact-source RED0/1 before narrow owned response cancellation closure. Stale successful status discarded before consume aborts only ownedcontroller/cancels body, rejection/held cancel handled nonawait, preserves staleerror/Bdisk/memory, no bodyread. Sourcefixture focused initially11/1 unit root assertion failed because CREATE already rejects missing UDF, corrected assertion without validator/constraint relaxation; retained rawfailure. Final actual22.23.2 SDK108/108 mixed158/158 build/types; no fixture launch/ownedjobs/lock/stage/commit, no lifecycle/API changes or signoff.",
+    "evidence": [
+      "docs/evidence/sdk-user-fixture-repair-checkpoint-node22.json",
+      "docs/evidence/sdk-user-fixture-repair-mixed-node22.json",
+      "docs/evidence/sdk-user-stale-response-red-node22.json",
+      "docs/evidence/sdk-user-real-initial-node22.json"
+    ],
+    "missing": "Parent immediate owned real sdk-auth2 retry required: initial secondcase failed is_email main/ is_uuid_v4 cleanup before behavior proof, initial report retained; sdk-refresh3 never ran at371 due &&; Native CLI actual constraints/cascade/schema/config/unrelated sentinel proof and reviewed P1 resource fix recheck pending; parent all final controls22/24 real browser/data/DB/constraints/package, previous371 controls historical; Full live-user browser/reference/security/coverage/CI/release/G1/G7/null-user approval and deferred lifecycle incomplete",
+    "restart": [
+      "Parent rerun owned real SDKauth2 immediately then SDKrefresh3 separately (do not imply stopped && execution passed), retain all first failures and exact source/runtime/setup/cleanup/SQL/resource assertions",
+      "Parent re-review3267 P1/helper privilege path and refresh all final controls22/24/browser/data/DB/constraints/cleanpackage; no next lifecycle until checkpoint approved"
+    ],
+    "signoff": "none"
+  },
+  "previousNativeStatisticsParentSession": {
+    "scope": "Bounded native owned-user unchanged invariant category/private diagnostics and exact unknown-outcome cleanup",
+    "state": "implemented-unit-tested-root-unproven-parent-real-diagnostic-retry-pending",
+    "sourceSha256": "dc9b402a954e0951c7a28d2af8265257f39710d572ebd3c41d1eb53fe719fd15",
+    "checks": "Preserved actual3c authfirstpass/livefailure combined invariant, wholefixturecleanup passed but test errors separate, SDKrefresh && didnotexecute. Read actual CLI/AppState migrations/config defaults/metadata/newDBadmin/job initialization and target UUID SQL; source potential side effects not proven root. Added public four fixed category booleans only, no values/hash/rows/config/token output; complete readonly before/after ownedprivate0600 exclusive per-invocation snapshots and CLI stdout/stderr retained on success and errors, before invariant checks; never overwrite main with cleanup diagnostics. Snapshot read failure fixedsafeerror with before/CLI capture retained. Invariant remains all four unchanged, no restore/ignore/benign assumption. Cleanup validates captured loginUUID and actual DB current email against ONLY exact planned original/new owned generated values before native delete, unknownsuccessful change followed by invariantfailure allowed cleanup, unexpectedother generated email denied. RED4/2 beforecode -> focused6/6, final actual22.23.2 SDK110/110 mixed160/160/build/types. No authcode/otherfeatures/privilege/backend/schema/default/constraint/repin/dependency/stage/commit/fixture launch; parent owns root rerun.",
+    "evidence": [
+      "docs/evidence/sdk-user-invariant-diagnostic-checkpoint-node22.json",
+      "docs/evidence/sdk-user-invariant-diagnostic-mixed-node22.json",
+      "docs/evidence/sdk-user-invariant-diagnostic-red-node22.json",
+      "docs/evidence/sdk-user-fixture-repaired-initial-node22.json"
+    ],
+    "missing": "Parent real sdk-auth2 retry to distinguish unchanged schema/config/unrelated identity/session categories and inspect private complete snapshots/CLI success logs; prior3c auth1pass/1fail before liveuser proof, SDKrefresh3 never ran due &&; Actual mismatch/root not confirmed; any CLI necessary config/schema/unrelated mutation needs supervisor before path/policy/exception/restore; invariant unchanged; Reviewer2aa source-only recheck and prior15822/24/package controls historical after helper/tests source changes; independent review/full22/24/browser/data/DB/constraints/package real controls required; Full reference/browser/security/coverage/CI/lifecycle/G1/G7/null-user/signoff incomplete",
+    "restart": [
+      "Parent SDKauth2 rerun inspect exact public category booleans and private owned native-owned-user-UUID-before/cli/after-private.json; preserve main and cleanup failures, do not publish raw snapshots/logs",
+      "If confirmed CLI modifies forbidden schema/config/unrelated state escalate supervisor before changingpath/invariant or hiding restoration; SDKrefresh3 separately pending, never infer && pass",
+      "Independent re-review and fresh full parent controls22/24; no next lifecycle implementation"
+    ],
+    "signoff": "none"
   }
 }

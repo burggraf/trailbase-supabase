@@ -1,0 +1,8 @@
+{
+  "scope": "Targeted refresh redirect/status ordering regression",
+  "sourceSha256": "7b23133b26e7a9c563ef054248767a659f75c9c75733db8ecf8e1630fa752ff3",
+  "red": {"passed": 7, "failed": 1, "privateRawLog": ".runtime/sdk-refresh-redirect-red-node22.log", "failure": "Redirected401 classified as native terminal rejection instead of AuthRedirectError"},
+  "green": {"focusedPassed": 8, "mixedNode22Passed": 146, "mixedNode24Passed": 146, "build": "passed", "check": "passed", "diffCheck": "passed"},
+  "assertions": ["Redirected and opaque-redirect401 rejected before native terminal classification", "Owned memory/storage/unrelated key preserved", "Zero owned removals and joined data dispatch", "No body reads; owned signal aborted and cancellation rejection handled", "Ordinary native401 terminal and cancellation regressions remain passing"],
+  "missing": "Final-source real scope outcomes and bounded independent recheck; full lifecycle/reference/browser-refresh/security/coverage/CI/release; no signoff"
+}

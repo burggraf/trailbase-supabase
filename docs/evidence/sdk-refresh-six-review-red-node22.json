@@ -1,0 +1,35 @@
+{
+  "scope": "Six refresh review fixes unit checkpoint, NOT real/full lifecycle signoff",
+  "status": "failed",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-18/S08 C refresh started after login B invocation cannot overwrite/remove same-user B or dispatch old waiting data",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/S08 queued refresh install checks captured baseline after same-generation B commits before its write",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/S07 terminal invalidation during same-generation held login write never restores rejected C on disk",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/S07 delivered401 ignores rejecting/held text, aborts/cancels resources and settles joined operations without body release",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/U18 own JWT alg/sub/iat/exp required in login/hydration/refresh despite prototype values, no waiting dispatch",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/U18 exact-body201/202 refresh are observable failures, unchanged C and no waiting data",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/U18 expired data/getSession initiate one renewal without manual refresh and persist before one original dispatch",
+      "status": "passed"
+    }
+  ]
+}

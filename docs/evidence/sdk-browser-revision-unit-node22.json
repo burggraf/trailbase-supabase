@@ -1,0 +1,44 @@
+{
+  "scope": "Bounded browser cleanup/control revision unit subset; no real browser run",
+  "status": "passed",
+  "node": "v22.23.2",
+  "sourceSha256": "174c0f89ae6a9af5414c64b373132ad3389b5ec72310e4a75665c9c23f2ade6b",
+  "tests": [
+    {
+      "name": "L1-27/E13 cleanup attempts every later owner/logout/route step and preserves primary plus cleanup failures",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/E13 cleanup retains a primary failure unchanged when cleanup succeeds",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/S10 exact owned-row cleanup never deletes an unrelated row and continues later keys",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/E13 an early exact-key delete failure does not prevent later key cleanup",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 example routes all six operators and exact title/boolean scalars without coercing text",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 browser preparation must not statically import its active runner entrypoint",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/E13 packed browser import map guard accepts only complete standalone native graph",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 L1-11/E05 example query builds scalar filter, stable order and inclusive caller page",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 S02 example rejects unsupported filter syntax and boolean coercion",
+      "status": "passed"
+    }
+  ]
+}

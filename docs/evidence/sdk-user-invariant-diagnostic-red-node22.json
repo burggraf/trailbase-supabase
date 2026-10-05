@@ -1,0 +1,32 @@
+{
+  "scope": "New diagnostic/known-original-new cleanup regressions before implementation",
+  "status": "failed",
+  "sourceSha256": "93ed14a06a2cde9c1f0a3a8025ff15d39a828fd5d3c0495d836cec59ac39dcf2",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-17 fixture native argv accepts only exact generated owner/email and two targeted verbs, no shell or privileged identity creation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17 fixture helper refuses nonowned paths before database or native execution",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17 missing native UDF root reproduced without weakening checks; repaired main path is readonly and official CLI only",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17 unrelated sentinel digest detects mutation without exposing identity/session values, refuses caller SQL",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17 diagnostic categories expose booleans only for all16 changes and cleanup permits only captured original/new emails",
+      "status": "failed"
+    },
+    {
+      "name": "L1-17 private diagnostics retain complete snapshots and successful CLI output in exclusive0600 files, never suppress invariant",
+      "status": "failed"
+    }
+  ]
+}

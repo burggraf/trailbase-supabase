@@ -1,0 +1,35 @@
+{
+  "scope": "Auth slice1 plus existing data/pack/browser graph unit subset; NOT real auth/full lifecycle verification",
+  "status": "failed",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-14/U14 signup sends native repeat once without session or synthetic user",
+      "status": "failed"
+    },
+    {
+      "name": "L1-15/U15 L1-16/U16 login owns canonical memory/issuance lifetime and bearer-only native data dispatch",
+      "status": "failed"
+    },
+    {
+      "name": "L1-15/U15 failed replacement retains good session and genuine backend status",
+      "status": "failed"
+    },
+    {
+      "name": "L1-15/U15 S08 stale login through held JSON decode cannot overwrite newer state",
+      "status": "failed"
+    },
+    {
+      "name": "L1-15/U15 malformed credential/JWT/claim/MFA replies never install synthetic state",
+      "status": "failed"
+    },
+    {
+      "name": "L1-14/U14 L1-15/U15 unsupported inputs/settings/deferred lifecycle methods are request-free",
+      "status": "failed"
+    },
+    {
+      "name": "L1-16/U16 memory state never crosses client instances or leaks to auth requests",
+      "status": "failed"
+    }
+  ]
+}

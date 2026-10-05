@@ -1,0 +1,35 @@
+{
+  "scope": "Refresh slice unit checkpoint, NOT real/full auth verification",
+  "status": "failed",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-18/U18 manual/data/getSession actual-expiry preflight share one refresh and send original data once with bearer only",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/U18 malformed/private JSON, wrong identity and unsupported refresh fields preserve prior disk without retry",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/S08 held refresh JSON cannot replace newer login or authorize an old waiting query",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/S08 held refresh write plus failed newer login compensates C; no stale refreshed disk survives",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/U18 transient/network/other4xx preserve state and expired data never falls back or retries",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/S07 only refresh401 clears owned credentials; held removal cannot resurrect C after newer failed/successful login",
+      "status": "failed"
+    },
+    {
+      "name": "L1-18/S07 rejected terminal removal latches sanitized errors, leaves disk explicit and dispatches zero further requests",
+      "status": "failed"
+    }
+  ]
+}

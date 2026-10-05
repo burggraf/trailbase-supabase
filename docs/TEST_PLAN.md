@@ -1,12 +1,12 @@
 # Project-wide test and signoff plan
 
-**Mandatory for all project work, including future levels.** This is the full SDK test specification, not a blanket report of passing tests. Phase A now has a partial executable upstream/database/browser infrastructure harness; the compatibility SDK is not implemented. Actual statuses and evidence live in [progress.json](progress.json), with restart instructions in [PROGRESS.md](PROGRESS.md). SDK features remain **NOT IMPLEMENTED / NOT RUN / NOT SIGNED OFF**; L1-27 harness work is in progress, not signed off.
+**Mandatory for all project work, including future levels.** This is the full SDK test specification, not a blanket report of passing tests. Phase A now has a partial executable upstream/database/browser infrastructure harness; the initial data-query SDK implementation is partial. Actual statuses and evidence live in [progress.json](progress.json), with restart instructions in [PROGRESS.md](PROGRESS.md). SDK features remain **PARTIAL OR PLANNED / NOT VERIFIED / NOT SIGNED OFF**; L1-27 harness work is in progress, not signed off.
 
 Related documents: [Level 1 implementation](LEVEL1_PLAN.md), [research and open gates](RESEARCH.md), [top-level roadmap](../PLAN.md), [contributor rules](../AGENTS.md).
 
 ## Approved MVP test boundary
 
-[MVP_PLAN.md](MVP_PLAN.md) scopes first release to L1-01–L1-20, L1-24, L1-26 and L1-27. L1-21–L1-23, L1-25, G5/G6, E09/E12 and S09 streaming requirements move to [FUTURE_PLAN.md](FUTURE_PLAN.md); they are deferred, not waived or counted passing. Mixed mapping/security/package/browser rows retain all CRUD/auth checks and auth timer/listener cleanup; realtime and migration portions apply on future promotion. All applicable layers, coverage thresholds, real confirmation/three-browser flows, race/permission/fault tests, packed consumers and maintainer signoff remain mandatory. No signup/global-logout blocker is waived.
+[MVP_PLAN.md](MVP_PLAN.md) scopes first release to L1-01–L1-20, L1-24, L1-26 and L1-27. L1-21–L1-23, L1-25, G5/G6, E09/E12 and S09 streaming requirements move to [FUTURE_PLAN.md](FUTURE_PLAN.md); they are deferred, not waived or counted passing. Mixed mapping/security/package/browser rows retain all CRUD/auth checks and auth timer/listener cleanup; realtime and migration portions apply on future promotion. All applicable layers, coverage thresholds, real confirmation/three-browser flows, race/permission/fault tests, packed consumers and maintainer signoff remain mandatory. G1 signup/SMTP and G7 logout/session findings remain unresolved and strictly evidenced; they do not block implementation of the main MVP. No fix, workaround, compatibility exception or signoff is inferred.
 
 ## 1. What counts as proof
 

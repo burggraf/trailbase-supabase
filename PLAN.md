@@ -10,11 +10,11 @@ This plan follows the [source discussion](https://chatgpt.com/share/6ac02347-6a4
 
 ## Current delivery priority — approved scope change
 
-[CRUD + password-auth MVP](docs/MVP_PLAN.md) now governs first delivery: data APIs plus self-service signup and full persistent core password sessions. Implementation of that subset is authorized without completing unrelated streaming research. Security/testing and G1/G7 release blockers remain effective. Realtime, migration rehearsal and every other capability move to [future plan](docs/FUTURE_PLAN.md). Broader milestones below are retained specifications, not first-MVP prerequisites where explicitly deferred.
+[CRUD + password-auth MVP](docs/MVP_PLAN.md) now governs first delivery: data APIs plus self-service signup and full persistent core password sessions. Implementation of that subset is authorized without completing unrelated streaming research. G1/G7 remain unresolved documented auth edge cases; preserve their failures and do not claim fixes or signoff, but do not block main implementation. Realtime, migration rehearsal and every other capability move to [future plan](docs/FUTURE_PLAN.md). Broader milestones below are retained specifications, not first-MVP prerequisites where explicitly deferred.
 
 ## Current development and restart point
 
-**Phase A is in progress; the compatibility SDK is not implemented.** See [docs/PROGRESS.md](docs/PROGRESS.md) and run `npm run progress` before resuming. [docs/progress.json](docs/progress.json) is the authoritative status/evidence/signoff ledger; update it after every work session. Next work is implementing the approved CRUD/auth slice with its tests, resolving only relevant contract questions and release blockers; no Levels 2/3 work.
+**Phase A evidence is retained; CRUD SDK implementation is in progress, with no feature verified or signed off.** See [docs/PROGRESS.md](docs/PROGRESS.md) and run `npm run progress` before resuming. [docs/progress.json](docs/progress.json) is the authoritative status/evidence/signoff ledger; update it after every work session. Next work is implementing the approved CRUD/auth slice with its tests, recording only relevant contract decisions, and keeping G1/G7 limitations visible; no Levels 2/3 work.
 
 A private MIT-licensed npm harness now provisions disposable real backends/mail, runs upstream/database/browser infrastructure probes, and validates progress/evidence. Required full SDK gates remain explicitly incomplete until implemented. Local green probes do not mean Phase A or an SDK feature is signed off.
 
@@ -24,7 +24,7 @@ A private MIT-licensed npm harness now provisions disposable real backends/mail,
 - [Project-wide test plan](docs/TEST_PLAN.md): 27 feature signoff rows, unit/type/database/integration/shared-contract/browser E2E/security/fault/package tests, CI requirements, and evidence rules.
 - [Upstream research](docs/RESEARCH.md): official sources, pinned reference versions, substantive API differences, and seven open contract/characterization decisions.
 
-A full test plan is required throughout this project, not a final release task. Every behavior change includes tests at all applicable layers and explicit signoff criteria. Mocks alone cannot establish compatibility. All SDK features remain planned and unverified; documentation/source research is not runtime proof.
+A full test plan is required throughout this project, not a final release task. Every behavior change includes tests at all applicable layers and explicit signoff criteria. Mocks alone cannot establish compatibility. SDK features remain partial or planned and unverified; documentation/source research is not runtime proof.
 
 ## Level 1 — Supabase-shaped TrailBase SDK
 

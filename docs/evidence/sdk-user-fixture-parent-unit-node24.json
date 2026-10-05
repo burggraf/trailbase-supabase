@@ -1,0 +1,642 @@
+{
+  "scope": "Phase A harness unit/traceability checks, NOT SDK coverage/signoff",
+  "status": "passed",
+  "node": "v24.21.0",
+  "platform": "darwin-arm64",
+  "sourceSha256": "3c3d823168e992cf7e36d404cff7ac3664f6a6cff8decbf78f8c291580f37615",
+  "finishedAt": "2026-10-05T21:39:27.204Z",
+  "tests": [
+    {
+      "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior blocks pending/verified/cross-column case-insensitive insert collisions without changing rows",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior permits same-user confirmation and anonymous null addresses but rejects conflicting updates atomically",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior refuses ambiguous existing accounts and rolls back without dropping or merging identities",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/G1/U27 investigational auth reservation SQL, not stock server behavior does not reject a row reserving the same address in both fields",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7 stale cleanup failure exposes a failure flag/cause without changing its stale-operation category",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G7 test-only logout rejects unsupported scopes and is request-free when already signed out",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 G3 native fixture SQL enforces FK/trigger row rollback, not native HTTP compatibility",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 G3 fixture audit stays read-only and trigger definer SQL has no direct client execution",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 G2 fixture UUID inputs (not production codec) bounds asynchronous probes without changing results or hiding failures",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 G2 fixture UUID inputs (not production codec) uses padding required by the native BLOB input decoder",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 G2 fixture UUID inputs (not production codec) round-trips 1000 seeded UUIDv4 fixture values exactly",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety allows only exact owned loopback origins",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety rejects traversal and non-owned cleanup directories",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety refuses foreign/comment-spoofed project ownership before cleanup",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety refuses externally published fixture ports",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety rejects service image/digest/count drift",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety setup inventory exposes only public image refs/digests and a port-safety boolean",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety verifies downloaded AND cached bytes rather than filenames",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety forces the pinned ECR registry for every fixture while excluding inherited backend configuration",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety keeps stock/candidate/source-prototype fixtures disjoint and explicitly labelled",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety budgets the three-engine 100-channel corpus without removing deadlines or extending other suites",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety excludes private G1 rehearsals from stock all, but not from explicitly selected suites",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety keeps default auth configuration unchanged and confines short TTL to a labelled owned profile",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety fails closed on missing fixture variables",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety serves byte-identical installed native ESM and reference UMD distributions, not replacements",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety allocates local ports and releases the allocation socket",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety fails a stopped child immediately rather than reporting a skipped setup",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety has a finite readiness deadline",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 harness safety cleanup tolerates an absent or already stopped child",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27/S05 owned HTTP drop completes one upstream POST but delivers no response and closes resources",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff validates the real checked-in ledger",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects missing or duplicate feature IDs",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects undocumented states and missing restart actions",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff cannot claim verification without evidence",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff cannot sign off with missing tests, reviewer, date or evidence",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff a fresh report cannot silently carry old maintainer approval onto changed sources",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff cannot sign off a feature while compatibility decisions remain open",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects an approval attached to work that remains unsigned",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 resumable progress and honest signoff rejects external/private-token style evidence references",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/S01/S07 owned redirect sink rejects other routes and records only credential-presence booleans",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/S01/S07 permissive owned sink accepts preflight without accepting credentials as an auth receipt",
+      "status": "passed"
+    },
+    {
+      "name": "L1-14/U14 L1-15/U15 HTTP/network/redirect/malformed JSON faults are observable and never retried",
+      "status": "passed"
+    },
+    {
+      "name": "L1-15/U15 malformed response/JWT JSON errors never expose payload fragments or replace a good session",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 disabled background refresh still performs expired preflight, failure never becomes anonymous",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/P26 auth module split must ship all and only runtime/declaration modules",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/E13 browser serving validates complete closed auth/common module graph",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/E13 rejects missing or foreign side-effect imports at every shipped module depth",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/E13 rejects native inline side-effect imports and compact reexports without import-map entries",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/P18 32 distinct same-owner refresh vectors retain only original genuine credential",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S08 C refresh started after login B invocation cannot overwrite/remove same-user B or dispatch old waiting data",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S08 queued refresh install checks captured baseline after same-generation B commits before its write",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S07 terminal invalidation during same-generation held login write cannot remove good B or restore rejected C",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S07 delivered401 ignores rejecting/held text, aborts/cancels resources and settles joined operations without body release",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S07 redirected or opaque-redirect401 is not native terminal rejection and preserves C",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 own JWT alg/sub/iat/exp required in login/hydration/refresh despite prototype values, no waiting dispatch",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 exact-body201/202 refresh are observable failures, unchanged C and no waiting data",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 expired data/getSession initiate one renewal without manual refresh and persist before one original dispatch",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 manual/data/getSession actual-expiry preflight share one refresh and send original data once with bearer only",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 malformed/private JSON, wrong identity and unsupported refresh fields preserve prior disk without retry",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S08 held refresh JSON cannot replace newer login or authorize an old waiting query",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S08 held refresh write plus failed newer login compensates C; no stale refreshed disk survives",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 transient/network/other4xx preserve state and expired data never falls back or retries",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S07 only refresh401 clears owned credentials; held removal cannot resurrect C after newer failed/successful login",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S07 rejected terminal removal latches sanitized errors, leaves disk explicit and dispatches zero further requests",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 default browser storage keys are stable origin-namespaced; invalid methods/keys fail before effects",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 unavailable browser storage returns a sanitized named envelope and no anonymous data request",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/P16 64 distinct stored native credentials reconstruct only genuine session fields",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/S08 stale initial write removal rejection is observable and latched without deleting unrelated data",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/S08 held hydration plus current failed login reconciles expired/unexpired authoritative C without anonymous dispatch",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/S08 stale failed login cannot reconcile over a newer committed login",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/S07 required auth settings must be own fields even when Object.prototype supplies flags",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/S07 stored version must be own and exactly supported; inherited version plus unexpected own field rejected",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/S07 inherited optional storage/key/URL-adoption fields are never selected; legitimate storage prototype methods work",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 S07 sync/async exact credential persistence reload preserves csrf privately and unrelated keys",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 disabled persistence has zero storage calls; Node default stores never cross clients",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 S08 held hydration cannot install old A after newer B login invocation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 S08 held stale write A plus failed B restores preexisting good C before responses settle",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 S08 rejected compensation latches sanitized failure and zero auth/data dispatch, disk remains explicit A",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 write rejection restores C without installing new memory; empty stale write removes only owned key",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 corrupt/property stored vectors and read failures are private/request-free; expired refresh is retained",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17/U17 missing cache/configuration/overload have no wire, live result only canonical id/email and genuine guarded rotation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17/S04 anonymous/non200/redirect/malformed/private/identity-or-refresh mismatch never authorize cached user or clear disk",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17/S08 held status fetch/JSON cannot return C user after pendingB invocation same-gen commit or newer refresh rotation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17/S08 queued status rotation behind held B commit cannot install or return stale user",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17/S08 held status persistence superseded by newer failed/success login compensates without stale user",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17/U17 hydration waits and expired getUser shares native refresh before live status, failed write cannot claim user",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17/P17 32 distinct canonical native identities, own required status/JWT fields and safe parser failures",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17/S08 discarded successful status owns abort/cancel even rejected or held cancellation, never replaces stale result or reads body",
+      "status": "passed"
+    },
+    {
+      "name": "L1-14/U14 signup sends native repeat once without session or synthetic user",
+      "status": "passed"
+    },
+    {
+      "name": "L1-15/U15 L1-16/U16 login owns canonical memory/issuance lifetime and bearer-only native data dispatch",
+      "status": "passed"
+    },
+    {
+      "name": "L1-15/U15 failed replacement retains good session and genuine backend status",
+      "status": "passed"
+    },
+    {
+      "name": "L1-15/U15 S08 stale login through held JSON decode cannot overwrite newer state",
+      "status": "passed"
+    },
+    {
+      "name": "L1-15/U15 malformed credential/JWT/claim/MFA replies never install synthetic state",
+      "status": "passed"
+    },
+    {
+      "name": "L1-14/U14 L1-15/U15 unsupported inputs/settings/deferred lifecycle methods are request-free",
+      "status": "passed"
+    },
+    {
+      "name": "L1-16/U16 memory state never crosses client instances or leaks to auth requests",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/E13 cleanup attempts every later owner/logout/route step and preserves primary plus cleanup failures",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/E13 cleanup retains a primary failure unchanged when cleanup succeeds",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/S10 exact owned-row cleanup never deletes an unrelated row and continues later keys",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/E13 an early exact-key delete failure does not prevent later key cleanup",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 example routes all six operators and exact title/boolean scalars without coercing text",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 browser preparation must not statically import its active runner entrypoint",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/E13 packed browser import map guard accepts only complete standalone native graph",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 L1-11/E05 example query builds scalar filter, stable order and inclusive caller page",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 S02 example rejects unsupported filter syntax and boolean coercion",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 0 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 1 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 2 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 61 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality for 1000 rows, without implicit truncation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 L1-13/U13 cardinality retains caller bounds, mutable state and builder isolation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-05/U05 S02 rejects select/count/head and inherited/unmapped responses",
+      "status": "passed"
+    },
+    {
+      "name": "L1-12/U12 preserves backend errors ahead of cardinality",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 exports the createClient factory",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 L1-03/U03 L1-05/U05 select is lazy and maps declared TrailBase fields",
+      "status": "passed"
+    },
+    {
+      "name": "L1-06/U06 L1-07/U07 L1-08/U08 lazy one-record writes return null without reads",
+      "status": "passed"
+    },
+    {
+      "name": "L1-07/U07 L1-08/U08 exactly one explicit primary-key eq, including nonstandard integer keys",
+      "status": "passed"
+    },
+    {
+      "name": "L1-06/U06 L1-07/U07 S02 rejects shapes, fields, key changes, options and read-only writes before wire",
+      "status": "passed"
+    },
+    {
+      "name": "L1-04/U04 L1-06/U06 L1-07/U07 L1-08/U08 every await is fresh, isolated and never replayed on failure",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17 fixture native argv accepts only exact generated owner/email and two targeted verbs, no shell or privileged identity creation",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17 fixture helper refuses nonowned paths before database or native execution",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17 missing native UDF root reproduced without weakening checks; repaired main path is readonly and official CLI only",
+      "status": "passed"
+    },
+    {
+      "name": "L1-17 unrelated sentinel digest detects mutation without exposing identity/session values, refuses caller SQL",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/P26 pack metadata accepts one exact package in array or keyed-object form",
+      "status": "passed"
+    },
+    {
+      "name": "L1-02/P02 L1-26/P26 package guard accepts only the private built ESM/declaration subset",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/P26 package guard rejects missing and extra source/runtime/test/credential or traversal files",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/P26 package guard rejects public-name/entry/pin drift",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/P26 package content guard rejects credential material without logging its content",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/U09 adds mapped eq filter through TrailBase structured query",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/U09 supports all six scalar filters with safe value encoding",
+      "status": "passed"
+    },
+    {
+      "name": "L1-10/U10 L1-11/U11 orders fields and uses inclusive ranges with last effective bounds",
+      "status": "passed"
+    },
+    {
+      "name": "L1-11/U11 zero limit sends a genuine zero-width page with filters and order",
+      "status": "passed"
+    },
+    {
+      "name": "L1-11/U11 zero limit preserves backend permission errors rather than fabricating empty success",
+      "status": "passed"
+    },
+    {
+      "name": "L1-11/U11 positive offset plus zero limit returns adapter range error without request",
+      "status": "passed"
+    },
+    {
+      "name": "L1-04/U04 L1-11/U11 repeated awaits use current bounds while independent builders isolate",
+      "status": "passed"
+    },
+    {
+      "name": "L1-10/U10 L1-11/U11 S02 rejects invalid options and bounds before requests",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 S02 mapping field.type must be a primitive enum, never coerced",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 L1-03/U03 S02 rejects every unknown mapping property including readonly typo",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 S02 factory/from arity and every defined nonfunction fetch fail before wire",
+      "status": "passed"
+    },
+    {
+      "name": "L1-04/U04 L1-06/U06 malformed create acknowledgements are errors after exactly one POST, no read/replay",
+      "status": "passed"
+    },
+    {
+      "name": "L1-06/U06 validates actual padded UUID and canonical decimal-string integer acknowledgements before discard",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 S02 mutation UUID codec has 1000 deterministic round trips through real native serialization",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 S02 rejects nonportable mutation values and inherited/getter/symbol fields before requests",
+      "status": "passed"
+    },
+    {
+      "name": "L1-01/U01 L1-03/U03 S02 mapping is owned and inherited/malformed mapping shapes are rejected",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 L1-04/U04 rejects unmapped/incomplete or invalid native response shapes",
+      "status": "passed"
+    },
+    {
+      "name": "L1-06/U06 L1-07/U07 L1-08/U08 S02 unsupported key codecs and adversarial keys cannot reach mutation endpoints",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 own scalar fields with prototype-like names retain their values on wire and reads",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/U09 L1-07/U07 L1-08/U08 S02 extra predicate arguments are not silently ignored",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 L1-09/U09 S02 scalar boundary vectors fail writes and filters before any request",
+      "status": "passed"
+    },
+    {
+      "name": "L1-03/U03 S02 invalid native UUID/scalar response vectors never fabricate data",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK preserves UTF-8 at every single split and byte-fragmentation boundary",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK accepts byte-split CRLF, multiline data and keepalive comments",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK keeps sequence state across chunks and signals gaps, duplicate/reordered sequence and explicit loss",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK does not signal gaps for consecutive frames or absent sequence metadata",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK fails closed on malformed, truncated, unsafe-integer and invalid event/sequence/status frames",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK enforces the declared proof buffer ceiling",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK consumer return cancels an open source and releases its reader lock",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK 100 alternating return/abort lifecycles cancel once, detach abort listeners and never deliver after close",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27 G5 proof parser unit/property checks, NOT real network or production SDK abort unblocks a pending read, surfaces AbortError and cancels once",
+      "status": "passed"
+    }
+  ]
+}

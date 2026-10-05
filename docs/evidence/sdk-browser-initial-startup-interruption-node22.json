@@ -1,0 +1,15 @@
+{
+  "scope": "Packed data-only browser initial startup failure; no assertions or compatibility proof",
+  "node": "v22.23.2",
+  "sourceSha256": "f559a98636689f9e692d1e0b68dc6fa6e41619d0f52258a1f9d74d478c4dd388",
+  "process": "proc_20e6",
+  "runId": "1791224810246-9d032a872d05",
+  "status": "failed-before-assertions",
+  "exitCode": 13,
+  "error": "Warning: Detected unsettled top-level await at scripts/run-phase-a.mjs:158",
+  "diagnosis": "Active runner dynamically loads sdk-browser; its package validator import statically imports active runner through run-sdk-package, creating an unsettled top-level-await cycle.",
+  "tests": [],
+  "cleanup": "Exact runner PID 8949 absent; fixtures:cleanup for this owned run succeeded, credentials/depot removed. No completed runner report; counts not inferred.",
+  "fix": "Deferred runner sourceHash import inside package main, avoiding validator module import cycle; static graph guard regression added. Final browser runtime verification pending.",
+  "signoff": "none"
+}

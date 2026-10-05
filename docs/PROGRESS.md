@@ -1,8 +1,10 @@
 # Development progress and restart guide
 
-**Current priority: approved CRUD + password-auth MVP. No SDK feature implemented or signed off yet.**
+**Current checkpoint: paused CRUD + password-auth MVP.** Source `29a6845a` passed mixed units 168/168 on Node 22/24, clean package checks on both, real auth 2/2, refresh 3/3, packed three-engine browsers 6/6, SDK data 6/6, database 9/9 and constraints 6/6. Setup/cleanup and exact-source checks passed; no maintainer signoff or full release verification. Logout, events, background/default auth lifecycle and broader parity/security/coverage/CI remain incomplete. See `pauseCheckpoint` in [progress.json](progress.json) for authoritative restart instructions. Earlier narrative below records historical checkpoints, including then-pending checks subsequently run.
 
-Maintainer selected self-service signup and full persistent core password sessions, not pre-created-user-only POC. [MVP plan](MVP_PLAN.md) governs first delivery; [future plan](FUTURE_PLAN.md) holds realtime, migration and other capabilities. Begin client/mapping/result + CRUD implementation with existing fixtures and applicable tests; stop expanding unrelated characterization. G1 signup/SMTP and G7 global-logout prerequisites remain release blockers, not reasons to defer all data implementation. No backend change/deployment/repin/exception/signoff authorized.
+Development code in `src/index.ts` now provides generated Row/Insert/Update/read-only View types, explicit client/mapping, lazy reads, six scalar filters, non-null ordering, bounded pagination, exact single/maybeSingle and guarded single-record mutations. Every await executes freshly; successful writes have null data without read-after-write/replay. Exactly one explicit primary-key eq is required for update/delete; mutation keys must be non-null UUIDv4/safe integers. Unsupported shapes/options throw before wire. Zero-limit requests use native HTTP because the pinned client omits zero; positive offset plus zero limit returns an adapter-origin range error without a request. `npm run test:sdk:unit`, `npm run build:sdk` and `npm run test:sdk:data` are focused development checks, not full SDK verification. Exact red/green evidence and remaining layers are in `progress.json`. Auth, complete cap/security/fault, three-browser and packed-consumer coverage remain pending. Work directly on `main`; no worktrees.
+
+Maintainer selected self-service signup and full persistent core password sessions, not pre-created-user-only POC. [MVP plan](MVP_PLAN.md) governs first delivery; [future plan](FUTURE_PLAN.md) holds realtime, migration and other capabilities. Begin client/mapping/result + CRUD implementation with existing fixtures and applicable tests; stop expanding unrelated characterization. G1 signup/SMTP and G7 logout/session races remain unresolved documented auth edge cases; they do not block main CRUD/auth implementation. Preserve strict failures and do not claim fixes, workarounds, compatibility exceptions, or signoff. No backend change/deployment/repin authorized.
 
 Latest docs-only CI 37253135327 at `185b99c` was audited against primary 37251715161: same source hash, units 50/50 each, all seven real scope counts/outcomes/pins/setup/cleanup matched; red only for preserved strict assertions. Earlier startup anomaly remains unexplained. Scope revision here is docs-only; no new adapter/runtime proof.
 
@@ -395,7 +397,9 @@ npm run test:cleanup
 | `npm run test:unit` | Harness/ledger/fixture guard checks plus 1000 seeded fixture UUID vectors; not SDK unit coverage |
 | `npm run test:phase-a` | Provision real backends, run database/characterization/stream tests and all three browser infrastructure scenarios, then always clean up |
 | `npm run test:db` | Isolated real fixture/database tests only (includes 10 pgTAP assertions) |
-| `npm run test:integration` | Isolated upstream characterization only; not the unimplemented adapter integration suite |
+| `npm run test:integration` | Isolated upstream characterization only; not the adapter integration suite |
+| `npm run test:sdk:data` | Dedicated real adapter + official Supabase data slice with owned row/audit/request/permission postconditions; not complete SDK verification |
+| `npm run test:sdk:unit`, `npm run build:sdk` | Focused data unit/property checks and emitted declarations; no full coverage/package signoff |
 | `npm run test:phase-a:browser` | Isolated three-browser infrastructure subset |
 | `npm run test:cleanup` | Deliberately fail setup after both servers start; pass only if owned native/Docker resources are torn down |
 | `npm run tools:install` | Download/check/extract the exact native TrailBase archive |
@@ -426,3 +430,11 @@ Feature signoff also requires all seven research decisions to have maintainer ap
 ## Next development boundary
 
 Finish missing Phase A characterization (especially stream authorization/expiry/loss and native auth hydration/refresh/logout races), review G1–G7 with the maintainer, and obtain Phase A signoff. Then begin Phase B's smallest tested client/types/mapping/results slice. No Level 2/3 implementation is authorized.
+
+## Current bounded live-user slice (L1-17)
+
+Argument-free getUser now uses live GET/native status with both genuine bearer and Refresh-Token; source traces current session then DbUser (bearer alone is insufficient). Maps canonical id/email from returned fresh server JWT and installs genuine rotation only after baseline/generation guarded successful persistence. Native status rotation is disclosed, not Supabase side-effect parity. Missing cache is request-free; anonymous200/errors never cached-user success, no new status terminal-clear policy. Explicit auth flags required; timers/defaulttrue/logout/events remain unsupported. New owned sdk-auth live-user/database/forged/revoked/deleted case and shortTTL raw-expiry status assertions authored for parent launch, not worker verified. Prior7b controls/reviewer5fb historical after source changes. Exact RED/GREEN, actual runtime, remaining layers and restart are in progress.json. No G1/G7 fixes/exception/signoff.
+
+## Native live-user fixture schema guard refinement
+
+Parent diagnostic run proved canonical sqlite_stat1/stat4 creation from pinned native optimizer connection startup, with 30 existing objects identical and other protected categories unchanged. Fixture guard now permits only newly added exact canonical metadata; reserved records in either snapshot must validate, all existing/other objects and config/identity/session/pin/owner/native constraints remain exact. Report raw schema change separately from prohibited change and fixed bookkeeping names; no SQL normalization, broad internal exclusion, statistic samples/content or physical/query-plan equality claim. Original failed auth1/1 reports remain failed; getUser/auth2 and refresh3 real proof/re-review pending. This is a technical fixture correction, not auth/compatibility exception/signoff.

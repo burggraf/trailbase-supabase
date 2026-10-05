@@ -1,0 +1,15 @@
+{
+  "scope": "Auth slice1 plus existing data/pack/browser graph unit subset; NOT real auth/full lifecycle verification",
+  "status": "failed",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-26/P26 auth module split must ship all and only runtime/declaration modules",
+      "status": "failed"
+    },
+    {
+      "name": "L1-26/E13 browser serving validates complete closed auth/common module graph",
+      "status": "failed"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "scope": "Packed data browser label diagnosis, not passing runtime proof",
+  "failedSourceSha256": "e856e16b4aeb050403e85a593bd1ec3de98c5827096769577540807f1f9e1775",
+  "initialReport": "docs/evidence/sdk-browser-runtime-initial-node22.json",
+  "outcome": "All three engines timed out; Firefox error identifies exact Filter field select locator. Setup and cleanup passed.",
+  "minimalChromiumProbe": {"exactLabelCount": 0, "nonExactLabelCount": 1},
+  "rootCause": "Wrapped label includes option text, so exact Filter field lookup does not match.",
+  "fix": "Explicit aria-label for Filter field, Filter operator, Order field and Cardinality selects; exact-count assertions added to real browser suite.",
+  "verification": "Node22/24 mixed units100/100 at b555ed06; actual corrected three-engine run proc_6d4f pending.",
+  "signoff": "none"
+}

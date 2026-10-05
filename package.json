@@ -4,9 +4,25 @@
   "private": true,
   "license": "MIT",
   "type": "module",
-  "engines": { "node": ">=22" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" }
+  },
+  "files": ["dist/index.js", "dist/index.d.ts", "dist/auth.js", "dist/auth.d.ts", "dist/common.js", "dist/common.d.ts", "README.md", "LICENSE"],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "check": "tsc --noEmit && node scripts/check-docs.mjs",
+    "build:sdk": "tsc -p tsconfig.sdk.json",
+    "prepack": "npm run build:sdk",
+    "test:sdk:package": "node scripts/run-sdk-package.mjs",
+    "test:sdk:unit": "vitest run tests/unit/sdk-*.test.ts",
+    "test:sdk:browser": "node scripts/run-phase-a.mjs sdk-browser",
+    "test:sdk:refresh": "node scripts/run-phase-a.mjs sdk-refresh",
+    "test:sdk:auth": "node scripts/run-phase-a.mjs sdk-auth",
+    "test:sdk:data": "node scripts/run-phase-a.mjs sdk-data",
     "progress": "node scripts/progress.mjs",
     "test:unit": "node scripts/run-unit.mjs",
     "test:phase-a": "node scripts/run-phase-a.mjs",
@@ -26,9 +42,11 @@
     "@playwright/test": "1.63.0",
     "@supabase/supabase-js": "2.117.2",
     "@types/node": "22.19.15",
-    "trailbase": "0.14.3",
+    "supabase": "2.119.0",
     "typescript": "7.0.2",
-    "vitest": "5.0.3",
-    "supabase": "2.119.0"
+    "vitest": "5.0.3"
+  },
+  "dependencies": {
+    "trailbase": "0.14.3"
   }
 }

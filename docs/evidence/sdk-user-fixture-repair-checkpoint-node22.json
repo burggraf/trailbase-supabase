@@ -1,0 +1,22 @@
+{
+  "scope": "Fixture-native constraints root repair plus reviewed response-owned stale cancellation only; real retry not launched",
+  "status": "passed",
+  "sourceSha256": "3c3d823168e992cf7e36d404cff7ac3664f6a6cff8decbf78f8c291580f37615",
+  "node": "v22.23.2",
+  "checks": [
+    "Read preserved initial real auth1passed/1failed main is_email and separate cleanup is_uuid_v4; wholefixturecleanup passed; SDKrefresh not executed due parent &&",
+    "No sanctioned admin transport; supervisor approved exact owned native CLI change-email/delete, readonly main; registered original native UDFs, no guesses/disable/bypass",
+    "Owned context/realpath/depot/owner email/schema/config/unrelated identity/session digests, archive checksum/existing installedbinary/version, bounded argv exec, fixed public errors/private diagnostics",
+    "Exact owned session NodeSQLite delete unchanged, independent session/user cleanup and handles close; invalid operands/native valid change/delete postconditions authored",
+    "P1 resource RED0/1 captured exact source, then resource+helper focused initially11passed/1failed because unit schema creation already reports unknownfunction; corrected root assertion, retained initial raw failure",
+    "Final mixed158/158 actual22.23.2 verified; SDK108/108, build/source types; parent redirected401/otherexpired/native status cases preserved",
+    "Auth real case now includes genuine owned todo INSERT and native CLI identity-delete cascade: exact row absence and audit INSERT/DELETE prove native is_uuid_v4 triggers remain effective (authored, pending real).",
+    "Final actual22 SDK108/108/mixed158/158 build/types/check/progress/diff passed; no owned processes/lock/staged"
+  ],
+  "missing": [
+    "Parent owns immediate real SDKauth2 retry and SDKrefresh3 (never executed at371), native CLI constraints/cascade/unrelated/schema/config actual proof pending",
+    "Independent reviewed P1 recheck and refreshed full controls22/24; previous371 unit/packagecontrols historical afterfixture/source edits",
+    "Full live-user browser/reference/security/coverage/CI/release/defaults/G1/G7/signoff incomplete"
+  ],
+  "noStagedFiles": true
+}

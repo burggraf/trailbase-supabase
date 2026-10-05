@@ -1,0 +1,27 @@
+{
+  "scope": "Bounded SDK review-fix unit regressions; no real fixtures/full evidence regeneration/signoff",
+  "status": "failed",
+  "node": "v22.23.2",
+  "tests": [
+    {
+      "name": "L1-03/U03 S02 mapping field.type must be a primitive enum, never coerced",
+      "status": "failed"
+    },
+    {
+      "name": "L1-01/U01 L1-03/U03 S02 rejects every unknown mapping property including readonly typo",
+      "status": "failed"
+    },
+    {
+      "name": "L1-01/U01 S02 factory/from arity and every defined nonfunction fetch fail before wire",
+      "status": "failed"
+    },
+    {
+      "name": "L1-04/U04 L1-06/U06 malformed create acknowledgements are errors after exactly one POST, no read/replay",
+      "status": "failed"
+    },
+    {
+      "name": "L1-06/U06 validates actual padded UUID and canonical decimal-string integer acknowledgements before discard",
+      "status": "passed"
+    }
+  ]
+}
