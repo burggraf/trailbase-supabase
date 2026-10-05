@@ -1,0 +1,59 @@
+{
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37251715161",
+  "commit": "12145e85d03c5b6cafe46613d7940763dae1bdc2",
+  "sourceSha256": "5184631706237ced99f57c3758bb754dbd092e526c08934c95904fbf8031066b",
+  "workflowConclusion": "failure-preserved-strict-assertions",
+  "units": {
+    "node22": "50/50 passed",
+    "node24": "50/50 passed"
+  },
+  "realScopes": {
+    "all": "102/6",
+    "browser": "60/6",
+    "expiry": "2/0",
+    "candidate-characterization": "10/0",
+    "candidate-smtp": "0/1",
+    "migration": "1/0",
+    "cleanup": "1/0"
+  },
+  "comparison": [
+    {
+      "suite": "all",
+      "commonChanged": 0,
+      "addedPassing": 1
+    },
+    {
+      "suite": "browser",
+      "commonChanged": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "expiry",
+      "commonChanged": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "characterization",
+      "commonChanged": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "smtp",
+      "commonChanged": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "auth-migration",
+      "commonChanged": 0,
+      "addedPassing": 0
+    },
+    {
+      "suite": "lifecycle",
+      "commonChanged": 0,
+      "addedPassing": 0
+    }
+  ],
+  "verification": "Seven Linux real-backend reports and both unit reports match exact source/commit/runtime/count/status. All seven setups/cleanups passed; six pinned ECR image/digests and loopback bindings were independently checked. The new JSON-shaped equality-filter test passed in stock; common named outcomes match primary G4 source run 37247146638. Strict failures retained.",
+  "privacySanitization": "One static proof test title in copied stock artifact normalizes a credential-like phrase to Authorization header; behavior/status unchanged.",
+  "strict": "Existing strict stock/browser/candidate-SMTP outcomes unchanged. No setup/artifact failure, retry, gate or SDK signoff."
+}
