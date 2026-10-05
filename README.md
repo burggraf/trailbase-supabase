@@ -2,6 +2,8 @@
 
 A planned Supabase-shaped TypeScript SDK for TrailBase: start with a lightweight TrailBase backend, then move to Supabase with fewer application changes.
 
+**Current delivery scope: CRUD + password-auth MVP.** Self-service signup and persistent sessions included; realtime and migration work deferred. See [MVP plan](docs/MVP_PLAN.md) and [future plan](docs/FUTURE_PLAN.md). Approval permits subset implementation; signup/global-logout blockers still prevent release claims.
+
 **Status: Phase A development in progress.** A private, MIT-licensed proof harness exists; the public compatibility SDK, migration command, and gateway are not implemented. This is an independent project, not an official TrailBase or Supabase product.
 
 ## Resume development and review progress
@@ -34,7 +36,7 @@ The first release will target a deliberately small subset:
 - Table reads and basic insert/update/delete operations.
 - Basic filters, sorting, pagination, and single-row results. Planned positive-offset/zero-limit queries expose an explicitly adapter-generated range error, not a fabricated native HTTP 416.
 - Password signup, login, and logout with the session handling those flows need.
-- Basic database change subscriptions, backed by TrailBase subscriptions.
+- Database change subscriptions are deferred beyond MVP.
 
 TrailBase SSE authentication is connection-scoped: a valid token establishes a stream, and access lasts for that connection's lifetime even after token expiry. New connections require valid credentials. Logout/teardown must cancel local subscriptions; that is not server-side revalidation or full Supabase authorization parity.
 
@@ -48,7 +50,7 @@ The [full test plan](docs/TEST_PLAN.md) defines unit/type/property, database, re
 
 Release requires reproducible CI evidence and maintainer signoff—not mocks alone. [Upstream research](docs/RESEARCH.md) records seven open decisions, including signup return shapes, field conversions, auth lifecycle, and streaming behavior. Upstream/harness checks are being implemented and exercised; SDK feature implementation and signoff remain pending.
 
-## Migration goal
+## Future migration goal (not MVP deliverable)
 
 For applications that stay within the documented subset, the goal is to change the SDK import and backend configuration without rewriting application queries:
 

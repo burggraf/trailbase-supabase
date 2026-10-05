@@ -6,6 +6,10 @@ Start with [docs/PROGRESS.md](docs/PROGRESS.md) and run `npm run progress`; [doc
 
 The linked discussion explains the motivation, not a verified specification. Research records documentation/source observations, not runtime proof. Resolve the seven research gates through real characterization before advertising an API mapping.
 
+## Current approved MVP priority
+
+Read [docs/MVP_PLAN.md](docs/MVP_PLAN.md) and [docs/FUTURE_PLAN.md](docs/FUTURE_PLAN.md). Maintainer approved CRUD + password-auth MVP implementation and explicitly chose self-service signup/full persistent core password lifecycle. Build data slice first; do not keep expanding unrelated Phase A research. Realtime (L1-21–23/G5/G6), migration rehearsal (L1-25), and all other deferred features are future work. Preserve historical evidence/tests. Full applicable CRUD/auth security/tests remain mandatory; G1/G7 remain release blockers. No server patch/deployment/repin, compatibility exception, public submission or signoff is inferred. Earlier test-only approval language does not prohibit newly approved CRUD/auth implementation.
+
 ## Scope guardrails
 
 - Implement only the minimal **Level 1 — Supabase-shaped TrailBase SDK** contract in `PLAN.md` unless the maintainer explicitly approves more.

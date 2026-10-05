@@ -4,6 +4,10 @@
 
 Related documents: [Level 1 implementation](LEVEL1_PLAN.md), [research and open gates](RESEARCH.md), [top-level roadmap](../PLAN.md), [contributor rules](../AGENTS.md).
 
+## Approved MVP test boundary
+
+[MVP_PLAN.md](MVP_PLAN.md) scopes first release to L1-01–L1-20, L1-24, L1-26 and L1-27. L1-21–L1-23, L1-25, G5/G6, E09/E12 and S09 streaming requirements move to [FUTURE_PLAN.md](FUTURE_PLAN.md); they are deferred, not waived or counted passing. Mixed mapping/security/package/browser rows retain all CRUD/auth checks and auth timer/listener cleanup; realtime and migration portions apply on future promotion. All applicable layers, coverage thresholds, real confirmation/three-browser flows, race/permission/fault tests, packed consumers and maintainer signoff remain mandatory. No signup/global-logout blocker is waived.
+
 ## 1. What counts as proof
 
 A feature is supported only when its documented behavior has reproducible evidence against the pinned backend and, where compatibility is claimed, the real reference Supabase SDK/backend. Passing unit mocks, type checks, screenshots, a successful HTTP status, or a happy-path demo alone is insufficient.

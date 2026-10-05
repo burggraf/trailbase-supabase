@@ -1,6 +1,10 @@
 # Development progress and restart guide
 
-**Current phase: A — proof harness; G1 contract completion is blocked. No SDK feature is signed off.**
+**Current priority: approved CRUD + password-auth MVP. No SDK feature implemented or signed off yet.**
+
+Maintainer selected self-service signup and full persistent core password sessions, not pre-created-user-only POC. [MVP plan](MVP_PLAN.md) governs first delivery; [future plan](FUTURE_PLAN.md) holds realtime, migration and other capabilities. Begin client/mapping/result + CRUD implementation with existing fixtures and applicable tests; stop expanding unrelated characterization. G1 signup/SMTP and G7 global-logout prerequisites remain release blockers, not reasons to defer all data implementation. No backend change/deployment/repin/exception/signoff authorized.
+
+Latest docs-only CI 37253135327 at `185b99c` was audited against primary 37251715161: same source hash, units 50/50 each, all seven real scope counts/outcomes/pins/setup/cleanup matched; red only for preserved strict assertions. Earlier startup anomaly remains unexplained. Scope revision here is docs-only; no new adapter/runtime proof.
 
 ## Current approved G2 JSON-shaped equality-filter characterization
 

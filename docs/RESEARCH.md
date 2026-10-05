@@ -2,6 +2,10 @@
 
 Research date: **2026-10-02**. The original findings below came from official documentation/pinned source review. Phase A now adds executable **upstream/infrastructure characterization**, tracked in [PROGRESS.md](PROGRESS.md) and [progress.json](progress.json). It does not verify a compatibility SDK or approve an exception; those remain separate gates.
 
+## Current delivery boundary
+
+Maintainer now authorizes [CRUD/auth MVP](MVP_PLAN.md) implementation with self-service signup and persistent core password sessions. Earlier test-only/no-production authorization statements below describe historical approvals, not a ban on the newly approved subset. G1–G4/G7 remain relevant; G5/G6 move to [future plan](FUTURE_PLAN.md). Historical observations remain unchanged; implementation authorization is not gate/exception/release signoff, backend modification, deployment or repinning approval.
+
 ## Reference baseline
 
 | Component | Researched version | Evidence / implementation requirement |

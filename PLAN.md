@@ -8,9 +8,13 @@ This plan follows the [source discussion](https://chatgpt.com/share/6ac02347-6a4
 
 **Only the minimal Level 1 prototype is in initial scope.** Levels 2 and 3 are documented eventual goals, not work to start now. Do not fork TrailBase, emulate Supabase wire protocols, or build a migration CLI for the first release.
 
+## Current delivery priority — approved scope change
+
+[CRUD + password-auth MVP](docs/MVP_PLAN.md) now governs first delivery: data APIs plus self-service signup and full persistent core password sessions. Implementation of that subset is authorized without completing unrelated streaming research. Security/testing and G1/G7 release blockers remain effective. Realtime, migration rehearsal and every other capability move to [future plan](docs/FUTURE_PLAN.md). Broader milestones below are retained specifications, not first-MVP prerequisites where explicitly deferred.
+
 ## Current development and restart point
 
-**Phase A is in progress; the compatibility SDK is not implemented.** See [docs/PROGRESS.md](docs/PROGRESS.md) and run `npm run progress` before resuming. [docs/progress.json](docs/progress.json) is the authoritative status/evidence/signoff ledger; update it after every work session. The next boundary is finishing Phase A characterization and maintainer decisions, not expanding the SDK or starting Levels 2/3.
+**Phase A is in progress; the compatibility SDK is not implemented.** See [docs/PROGRESS.md](docs/PROGRESS.md) and run `npm run progress` before resuming. [docs/progress.json](docs/progress.json) is the authoritative status/evidence/signoff ledger; update it after every work session. Next work is implementing the approved CRUD/auth slice with its tests, resolving only relevant contract questions and release blockers; no Levels 2/3 work.
 
 A private MIT-licensed npm harness now provisions disposable real backends/mail, runs upstream/database/browser infrastructure probes, and validates progress/evidence. Required full SDK gates remain explicitly incomplete until implemented. Local green probes do not mean Phase A or an SDK feature is signed off.
 

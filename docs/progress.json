@@ -1,6 +1,17 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "A \u2014 proof harness (in progress)",
+  "currentPhase": "CRUD/auth MVP — scope approved; implementation planned",
+  "currentMilestone": {
+    "plan": "docs/MVP_PLAN.md",
+    "futurePlan": "docs/FUTURE_PLAN.md",
+    "authorization": "Maintainer approved narrow MVP and selected self-service signup/full persistent core password sessions in follow-up interview. Authorizes subset implementation, not release signoff or backend changes.",
+    "activeFeatures": "L1-01–L1-20, L1-24, L1-26, L1-27",
+    "futureFeatures": "L1-21–L1-23 and L1-25; other deferred capabilities",
+    "releaseBlockers": ["G1 duplicate pending signup/SMTP recovery and null-user exception", "G7 authenticated global revocation acknowledgement and full lifecycle verification"],
+    "status": "planned-not-implemented",
+    "checks": "Documentation-only scope revision; existing backend evidence retained as historical after contract hash change. Current pinned Node 22 harness units 50/50. No new backend/adapter compatibility proof.",
+    "restart": ["Implement client/mapping/result and CRUD slice with applicable tests", "Implement core password auth; seek explicit bounded decision for G1/G7 backend prerequisites before release", "Verify built app and packed consumers across real TrailBase/Supabase and all three browsers; obtain maintainer signoff"]
+  },
   "maintainer": "burggraf",
   "licenseDecision": {
     "license": "MIT",
@@ -17,6 +28,7 @@
         "docs/traceability"
       ],
       "evidence": [
+        "docs/evidence/mvp-scope-unit-node22.json",
         "docs/evidence/phase-a-ledger-edit-failure-node22.json",
         "docs/evidence/phase-a-json-text-shape-focused-boundaries-node22.json",
         "docs/evidence/phase-a-reference-pagination-focused-boundaries-node22.json",
@@ -1144,8 +1156,8 @@
     }
   ],
   "nextSteps": [
-    "G2 JSON-shaped equality-filter characterization and thirteen local scopes plus exact-source Linux run 37251715161 audited at source 51846317/commit 12145e8. CI red only for preserved strict failures; no setup/artifact issue. Prior docs-only startup failure 37248673998 remains separately recorded with unproven cause.",
-    "Commit/push sanitized CI reports and progress update; audit any resulting docs-only workflow separately. Continue approved Phase A characterization without SDK/gate signoff.",
+    "Follow docs/MVP_PLAN.md: CRUD plus self-service signup/full persistent core password auth now authorized; move realtime/migration and unrelated research to docs/FUTURE_PLAN.md.",
+    "Implement and test client/types/mappings/results then CRUD using existing fixtures. Resolve G1/G7 release blockers explicitly; no server patch/deployment/repin or gate signoff inferred.",
     "#299 is closed after upstream clarified connection-scoped stream authorization; #298 (signup recovery) remains open. Keep both installed-client reports as drafts.",
     "Preserve the bounded private G1 prototype evidence separately: SMTP recovery, same-server signup race, existing-depot upgrade/repeat restart, stock CLI backup/restore and ambiguous-depot refusal/rollback passed on owned fixtures. These do not change strict stock or reservation-only SQL-candidate failures or confer signoff. No deployment, repin, public submission or identity repair.",
     "Obtain maintainer triage for bounded S01 observation: raw Fetch follow stripped Authorization but sent custom Refresh-Token/CSRF-Token headers to permissive foreign receiver despite credentials:omit. Test-only GET global proof revokes before redirect; installed trailbase@0.14.3 ClientImpl.logout instead POSTs the exact refresh token when present and swallows remote errors. No live-session compromise or public installed logout-method impact is established. Do not submit upstream, change transport/contract, add workaround or assign severity without authorization. No SDK/patch/repin/signoff.",
@@ -1247,6 +1259,15 @@
     "evidence": ["docs/evidence/phase-a-ci-reference-pagination-ledger-followup-stock-startup.json", "docs/evidence/phase-a-ci-reference-pagination-ledger-followup-summary.json"]
   },
   "lastSession": {
+    "scope": "Maintainer-approved CRUD/auth MVP scope revision; self-service signup and full persistent core password sessions selected",
+    "state": "scope-approved-implementation-planned",
+    "sourceSha256": "d97d4f8dc94102c753f4c9c93240ffb0b6af6d373de7bdd84f279f2c7bcdb34c",
+    "checks": "npm run check/progress, pinned Node 22 harness unit tests 50/50 and git diff --check passed. Documentation-only revision; no backend/adapter runtime checks run. Initial docs check correctly failed stale A01 evidence; current unit evidence added without changing old reports.",
+    "evidence": ["docs/evidence/mvp-scope-unit-node22.json"],
+    "missing": "SDK unimplemented. G1/G7 remain release blockers; broader existing backend evidence predates revised contract hash. No release/exception/deployment approval inferred.",
+    "restart": ["Implement client/types/mappings/results and CRUD slice with full applicable tests", "Implement approved password-auth lifecycle and explicitly resolve G1/G7 before release", "Keep realtime and migration work in future plan"]
+  },
+  "previousJsonFilterShapeSession": {
     "date": "2026-10-05",
     "node": "v22.23.2",
     "scope": "Approved G2 raw JSON-shaped equality-filter characterization; no adapter implementation or contract expansion",
