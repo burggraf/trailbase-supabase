@@ -4,6 +4,7 @@
   "pauseCheckpoint": {
     "requestedBy": "operator",
     "state": "paused-no-next-slice-started",
+    "resumeAttempt": "Operator requested continuation, then pause during read-only logout tracing. Re-read plans and native GET/global versus POST/local handlers; no implementation, tests, background jobs or subagents launched. Paused before the next slice; pushed checkpoint remains 934c430. Only this ledger note changed.",
     "sourceSha256": "29a6845a6a0d928df07310ad617ea73e439b58ed3173edcd9acc71afa9f80e2d",
     "implemented": "Narrow CRUD/query/type/package/data example; email-password signup/login; explicit persistent sync/async storage and hydration; guarded manual/request-time single-flight refresh; live DB-backed getUser with genuine native rotation. Own-field/privacy/epoch/baseline/serialized persistence/resource cleanup guards tested.",
     "verified": "Mixed168/168 actualNode22.23.2 and24.21.0; cleanpackage22/24; Node22 realauth2/2, genuineexpiryrefresh3/3, packedbrowser6/6 Chromium/Firefox/WebKit, SDKdata6/6, DB9/9,constraints6/6. Every real source/setup/cleanup passed; fixturelock clear; all managed jobs complete. Bounded independent reviews resolved known findings; no maintainer signoff.",
