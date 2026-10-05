@@ -1,0 +1,27 @@
+{
+  "sourceSha256": "5184631706237ced99f57c3758bb754dbd092e526c08934c95904fbf8031066b",
+  "localNode22": "50/50",
+  "localNode24": "50/50",
+  "focused": "boundaries 14/14",
+  "realScopes": {
+    "boundaries": "14/0",
+    "browser": "60/6",
+    "network": "6/1",
+    "constraints": "6/0",
+    "streaming": "5/0",
+    "auth-lifecycle": "9/3",
+    "all": "102/6",
+    "proofs": "34/0",
+    "expiry": "2/0",
+    "candidate-characterization": "10/0",
+    "candidate-smtp": "0/1",
+    "migration": "1/0",
+    "cleanup": "1/0"
+  },
+  "behavior": "Installed TrailBase 0.14.3 coerced a JSON-shaped equality value to [object Object] on filter[title][$eq]; installed Supabase JS 2.117.2 emitted title=eq.[object Object]. Both read requests returned HTTP 200/success with empty results and left complete table rows/audits unchanged. This is raw client behavior only; a future adapter must reject JSON-shaped scalar filter values before wire. No SDK support or contract expansion.",
+  "verified": "All thirteen immutable-source scopes and focused boundaries matched source/runtime/counts/status. Six pinned ECR image references/digests, loopback-only bindings, setup/cleanup and private-G1 exclusion verified. New G2 test passes focused, boundaries and stock. Common named outcomes in boundaries, stock, browser, network, auth lifecycle and candidate SMTP match previous source; only the new pass was added in boundaries and stock.",
+  "failureComparison": "Compared common test names/statuses in boundaries, stock, browser, network, auth lifecycle and candidate SMTP against current-source referenced-pagination local scope: zero changed common outcomes; one new passing G2 test in boundaries and stock.",
+  "privacySanitization": "Two static proof-test titles in local stock/proofs evidence replace a false-positive credential-like phrase with Authorization header; behavior/status unchanged.",
+  "missing": "Production before-wire rejection, JSON field mapping, remaining portable domains and full adapter/security/type/package tests plus maintainer signoff remain incomplete.",
+  "strict": "Preserved strict stock/browser/network/auth-lifecycle/candidate-SMTP failures remain unchanged; no setup failure, retry or assertion weakening."
+}

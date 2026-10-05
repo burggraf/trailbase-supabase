@@ -259,6 +259,46 @@ describe('L1-27 G2/G4/S02 upstream boundaries, NOT adapter runtime validation',(
       expect((await rb.client.auth.signOut({scope:'local'})).error).toBeNull();expect((await rb.client.auth.getSession()).data.session).toBeNull();client.realtime.disconnect();
     }
   });
+  it('G2 installed equality filters stringify JSON-shaped values instead of rejecting them',async()=>{
+    const value={nested:['alpha',7],enabled:true},api=native.client.records('todos');
+    const nativeRowsBefore=(await api.list({pagination:{limit:1000},order:['+id']})).records;
+    const nativeAuditBefore=(await native.client.records('todo_audit').list({pagination:{limit:1000},order:['+audit_key']})).records;
+    const referenceRowsBefore=await reference.client.from('todos').select('*').order('id');
+    const referenceAuditBefore=await reference.client.from('todo_audit').select('*').order('audit_key');
+    expect(referenceRowsBefore.error).toBeNull();expect(referenceAuditBefore.error).toBeNull();
+    const session=(await reference.client.auth.getSession()).data.session;
+    if(!session)throw new Error('Confirmed reference session missing');
+    const referenceUrls:URL[]=[];
+    const client=createClient(env.supabaseUrl,env.anonKey,{
+      auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},
+      accessToken:async()=>session.access_token,
+      global:{fetch:(input,init)=>{
+        referenceUrls.push(new URL(typeof input==='string'?input:input instanceof URL?input.href:input.url));
+        return fetch(input,init);
+      }}
+    });
+    const nativeSpy=vi.spyOn(native.client,'fetch');
+    try{
+      const nativeResult=await api.list({filters:[{column:'title',op:'equal',value:value as unknown as string}]});
+      expect(nativeResult.records).toEqual([]);
+      const nativeCalls=nativeSpy.mock.calls.filter(([path])=>new URL(path,env.trailUrl).pathname.includes('/todos'));
+      expect(nativeCalls).toHaveLength(1);
+      const nativeFetch=nativeSpy.mock.results[0]?.value;
+      if(!nativeFetch)throw new Error('Native equality fetch did not return a response');
+      expect((await nativeFetch).status).toBe(200);
+      const nativeUrl=new URL(nativeCalls[0][0],env.trailUrl);
+      expect(nativeUrl.searchParams.get('filter[title][$eq]')).toBe('[object Object]');
+      const referenceResult=await client.from('todos').select('id').eq('title',value);
+      expect(referenceResult.status).toBe(200);expect(referenceResult.error).toBeNull();expect(referenceResult.data).toEqual([]);
+      expect(referenceUrls).toHaveLength(1);expect(referenceUrls[0].searchParams.get('title')).toBe('eq.[object Object]');
+      expect((await api.list({pagination:{limit:1000},order:['+id']})).records).toEqual(nativeRowsBefore);
+      expect((await native.client.records('todo_audit').list({pagination:{limit:1000},order:['+audit_key']})).records).toEqual(nativeAuditBefore);
+      const referenceRowsAfter=await reference.client.from('todos').select('*').order('id');
+      const referenceAuditAfter=await reference.client.from('todo_audit').select('*').order('audit_key');
+      expect(referenceRowsAfter.error).toBeNull();expect(referenceRowsAfter.data).toEqual(referenceRowsBefore.data);
+      expect(referenceAuditAfter.error).toBeNull();expect(referenceAuditAfter.data).toEqual(referenceAuditBefore.data);
+    }finally{nativeSpy.mockRestore();client.realtime.disconnect();}
+  });
   it('G2 rejects unsupported JSON-shaped text input natively while reference coerces it to JSON text',async()=>{
     const value={nested:['alpha',7],enabled:true},nativeId=randomUUID(),referenceId=randomUUID();
     const api=native.client.records('todos');

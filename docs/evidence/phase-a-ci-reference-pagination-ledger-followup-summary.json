@@ -1,0 +1,25 @@
+{
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37248673998",
+  "commit": "47d69b6f7795de00cbf7b7a2f758d9b44daadb17",
+  "primarySourceCommit": "c89cba8e6b033c04b8ab972437996ce7fc182779",
+  "sourceSha256": "e5948c5e77676196beb24af85ae7e4086fc7e4e7deb91aeea7a4b134ba04f44f",
+  "workflowConclusion": "failure-with-stock-startup-failure-and-preserved-strict-failures",
+  "trigger": "Automatic push workflow from docs-only evidence/ledger commit. Git diff c89cba8..47d69b6 changed only docs; test/package/scripts inputs unchanged.",
+  "units": {
+    "node22": "50/50 passed",
+    "node24": "50/50 passed"
+  },
+  "stock": {
+    "status": "failed-before-assertions",
+    "setupStage": "supabase-start",
+    "tests": "0; no assertions executed",
+    "setupCheck": "absent",
+    "imageInventory": "absent",
+    "cleanup": "passed",
+    "evidence": "docs/evidence/phase-a-ci-reference-pagination-ledger-followup-stock-startup.json",
+    "cause": "Unproven; do not infer root cause from step label or workflow status."
+  },
+  "otherRealScopes": "Browser 60/6, expiry 2/0, candidate characterization 10/0, SMTP 0/1, migration 1/0 and cleanup 1/0. Exact-source metadata matched e5948c5e/commit 47d69b6; six pinned ECR images/digests, loopback, setup and cleanup passed. Common named outcomes match primary source run 37247146638 exactly.",
+  "comparison": "Run 37247146638 at source commit c89cba8 exercised stock 101/6 and is separately audited as the primary exact-source Linux run. Docs-only run 37248673998 does not supersede that assertion report: its stock scope never reached tests. No source/test input changed between these runs; the startup failure remains a separate preserved CI setup failure, not a repair or test pass.",
+  "strict": "Workflow also remains red for the already-preserved strict browser and candidate SMTP outcomes. No setup cause is assigned and no assertion was retried or weakened."
+}
