@@ -1,0 +1,14 @@
+{
+  "scope": "Same initially cold cache that reproduced uuid14.0.3 ENOTCACHED; no cache clearing/newer patch priming",
+  "status": "passed",
+  "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+  "before": {
+    "uuid1402Tarball": true,
+    "uuid1403Tarball": false
+  },
+  "after": {
+    "uuid1402Tarball": true,
+    "uuid1403Tarball": false
+  },
+  "offline": true
+}

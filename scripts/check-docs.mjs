@@ -1,18 +1,17 @@
-import { readFile, readdir, access } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { readFile, readdir } from 'node:fs/promises';
+import { validateMarkdownLinks } from './markdown-links.mjs';
 import { loadProgress, validateReviewHash } from './progress.mjs';
 import { sourceHash } from './run-phase-a.mjs';
 import { exec } from './tools.mjs';
 for (const name of await readdir('scripts')) if (name.endsWith('.mjs')) await exec(process.execPath,['--check',`scripts/${name}`]);
 
-const files=['README.md','PLAN.md','AGENTS.md',...(await readdir('docs')).filter(name=>name.endsWith('.md')).map(name=>`docs/${name}`)];
+const indexedFiles = new Set((await exec('git', ['ls-files', '--cached', '-z'])).stdout.split('\0').filter(Boolean));
+const files = [...indexedFiles].filter(name => name.endsWith('.md'));
+const structuredFiles = new Set(['README.md', 'PLAN.md', 'AGENTS.md', ...(await readdir('docs')).filter(name => name.endsWith('.md')).map(name => `docs/${name}`)]);
 for (const file of files) {
   const text=await readFile(file,'utf8');
-  if (!text.startsWith('# ') || !text.endsWith('\n') || (text.match(/^```/gm) ?? []).length % 2) throw new Error(`Invalid markdown structure: ${file}`);
-  for (const match of text.matchAll(/\]\(([^)]+)\)/g)) {
-    if (/^(https?:|#)/.test(match[1])) continue;
-    await access(resolve(file,'..',match[1].split('#')[0]));
-  }
+  if (structuredFiles.has(file) && (!text.startsWith('# ') || !text.endsWith('\n') || (text.match(/^```/gm) ?? []).length % 2)) throw new Error(`Invalid markdown structure: ${file}`);
+  validateMarkdownLinks(file, text, indexedFiles);
 }
 const plan=await readFile('docs/TEST_PLAN.md','utf8');
 for (let i=1;i<=27;i++) if (!plan.includes(`**L1-${String(i).padStart(2,'0')} `)) throw new Error('Missing test matrix row');

@@ -1,0 +1,42 @@
+{
+  "scope": "L1-26/L1-27 bounded clean-CI package reproducibility and Git-index Markdown readiness; NOT full SDK/browser/backend/release certification",
+  "status": "passed",
+  "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+  "parentPushedCommit": "55dfaa20884198c2bfe3e06f4b205d0f9218f3c2",
+  "parentCiRun": "https://github.com/burggraf/trailbase-supabase/actions/runs/41324363569",
+  "parentCiStatus": "failed clean-install both pinned Nodes; downstream real-fixture jobs skipped",
+  "fix": "Consumer-only overrides derived from existing lock native runtime graph; installed actual versions and consumer-lock integrity asserted. Root package/lock dependency versions unchanged. All indexed Markdown relative targets use Git inventory; original root/docs structure/fence scope retained.",
+  "verification": {
+    "nodes": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "staticEach": "passed",
+    "fullUnitsEach": 211,
+    "offlinePackageChecksEach": 4,
+    "offlinePackedBrowserAssetPreparationEach": "passed, no backend/browser launch",
+    "sameColdCache": "Previously selected missing uuid14.0.3; now installed original locked14.0.2 with no14.0.3 tarball fetched",
+    "cliDocs": "Expected red on existing ignored file, green after exact restoration; nested historical ## Review retained"
+  },
+  "evidence": [
+    "docs/evidence/ci-readiness-unit-node22.json",
+    "docs/evidence/ci-readiness-unit-node24.json",
+    "docs/evidence/ci-readiness-package-node22.json",
+    "docs/evidence/ci-readiness-package-node24.json",
+    "docs/evidence/ci-readiness-browser-assets-node22.json",
+    "docs/evidence/ci-readiness-browser-assets-node24.json",
+    "docs/evidence/ci-readiness-cold-install-red-node22.json",
+    "docs/evidence/ci-readiness-ci-package-red-node22.json",
+    "docs/evidence/ci-readiness-ci-package-red-node24.json",
+    "docs/evidence/ci-readiness-cache-witness.json",
+    "docs/evidence/ci-readiness-docs-index-cli.json",
+    "docs/evidence/ci-readiness-live-preservation.json",
+    "docs/evidence/ci-readiness-attempts.json"
+  ],
+  "live": "Same original run/lock/four PIDs and seven served asset hashes; no accounts/data inspection or reset/restart/network/credential change",
+  "missing": [
+    "Commit/push follow-up and inspect exact new CI (not historical failure/local greens)",
+    "No runtime feature expansion/backend matrix; full security/fault/coverage/reference/release/G1/G7/null-user approval and maintainer signoff remain incomplete"
+  ],
+  "finishedAt": "2026-11-01T16:30:48.822Z"
+}

@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile, cp, lstat, realpath } from 'node:fs/promises';
 import { resolve, relative } from 'node:path';
 import { exec } from './tools.mjs';
-import { packedFilename, validatePackage, validatePackedText } from './run-sdk-package.mjs';
+import { packedFilename, packedConsumerManifest, verifyPackedConsumerRuntime, validatePackage, validatePackedText } from './run-sdk-package.mjs';
 
 export const todosLandingPage = '<!doctype html><html lang="en"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/sdk-data/index.html"><title>Todos</title><a href="/sdk-data/index.html">Open todos</a></html>';
 
@@ -48,8 +48,13 @@ export async function preparePackedBrowser(directory) {
   if (listing.some(line => !line.startsWith('-'))) throw new Error('Phase A packed browser archive contains links');
   for (const file of files) validatePackedText(await run('tar', ['-xOzf', tarball, `package/${file}`]));
   const consumer = resolve(work, 'consumer'); await mkdir(consumer);
-  await writeFile(resolve(consumer, 'package.json'), JSON.stringify({ private: true, type: 'module' }));
+  const lock = JSON.parse(await readFile('package-lock.json', 'utf8'));
+  await writeFile(resolve(consumer, 'package.json'), JSON.stringify(packedConsumerManifest(lock)));
   await run('npm', ['install', '--offline', '--ignore-scripts', '--no-audit', '--no-fund', tarball], consumer, 120000);
+  const runtimeDependencies = verifyPackedConsumerRuntime(lock, JSON.parse(await readFile(resolve(consumer, 'package-lock.json'), 'utf8')));
+  for (const [name, expected] of Object.entries(runtimeDependencies)) {
+    if (JSON.parse(await readFile(resolve(consumer, 'node_modules', name, 'package.json'), 'utf8')).version !== expected.version) throw new Error('Installed runtime dependency lock drift');
+  }
   const sdkPath = resolve(consumer, 'node_modules/trailbase-supabase/dist/index.js');
   const nativePath = resolve(consumer, 'node_modules/trailbase/dist/index.js');
   for (const file of [sdkPath, nativePath]) if (!(await lstat(file)).isFile() || await realpath(file) !== file) throw new Error('Phase A packed browser installed module is a link');
@@ -74,5 +79,5 @@ export async function preparePackedBrowser(directory) {
   // Historical manual mounts need no automatically booted client or duplicate listeners.
   await writeFile(resolve(target, 'harness.html'), `<!doctype html><html lang="en"><meta charset="utf-8"><title>Private SDK test mount</title>${importMap}<main id="todos"></main></html>`);
   const digest = value => createHash('sha256').update(value).digest('hex');
-  return { package: 'trailbase-supabase@0.0.0', native: 'trailbase@0.14.3', tarballSha256: digest(await readFile(tarball)), sdkSha256: digest(sdk), moduleSha256: Object.fromEntries(Object.entries(modules).map(([name, source]) => [name, digest(source)])), nativeSha256: digest(native), imports };
+  return { package: 'trailbase-supabase@0.0.0', native: 'trailbase@0.14.3', tarballSha256: digest(await readFile(tarball)), sdkSha256: digest(sdk), moduleSha256: Object.fromEntries(Object.entries(modules).map(([name, source]) => [name, digest(source)])), nativeSha256: digest(native), imports, runtimeDependencies };
 }

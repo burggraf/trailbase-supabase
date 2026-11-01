@@ -1,0 +1,39 @@
+{
+  "scope": "Packed browser asset preparation/actual isolated offline install only; no server/browser/backend/fixture lock",
+  "status": "passed",
+  "node": "v24.21.0",
+  "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+  "runtimeDependencies": {
+    "trailbase": {
+      "version": "0.14.3",
+      "integrity": "sha512-nWc+DozEa0Jmv1WQJltUPUExfqYU/hIZEpyHeCpmpRz7uzqQh5fnbxBdE4PArz1tvyDV64NUbU0Dhh/+igXHXg=="
+    },
+    "@types/geojson": {
+      "version": "7946.0.16",
+      "integrity": "sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg=="
+    },
+    "@ungap/raw-json": {
+      "version": "0.4.4",
+      "integrity": "sha512-mUDobz3DeEItDmI34Hg+eL9hTTJSZbIvsvGAr42YoK4IyS7SWKmF5Xa0pI8RWFZSijL8QmfvCNH3s8HYJNxKaw=="
+    },
+    "geojson": {
+      "version": "0.5.0",
+      "integrity": "sha512-/Bx5lEn+qRF4TfQ5aLu6NH+UKtvIv7Lhc487y/c8BdludrCTpiWf9wyI0RTyqg49MFefIAvFDuEi5Dfd/zgNxQ=="
+    },
+    "jwt-decode": {
+      "version": "4.0.0",
+      "integrity": "sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA=="
+    },
+    "uuid": {
+      "version": "14.0.2",
+      "integrity": "sha512-xZe/16rV4aa+HGSOCiY2YeLT1OybRLrrkL/Rqaq7p7GMVXjFh+6wN4oMYgjFmnSnhY8t6Xpdl2l9qmnHYuMHwQ=="
+    }
+  },
+  "tarballSha256": "db8bfaa64e6ebdc7ce311609d8ced566f6b8f321c01292a9dacdc4cd2f98c095",
+  "sdkSha256": "678e408062049340912881da0fc5bac4c674b809ce25d693a2335ee511f4958f",
+  "nativeSha256": "e7c9879aa97fd81fa87219bf82cad88e48d5074b4e81a2eb00d3c0ca406604f3",
+  "imports": {
+    "trailbase": "/sdk-data/trailbase.js",
+    "/sdk-data/app.js": "/sdk-data/app.js?v=c794c98e370866e71571f4032bb82f180dc1dde1a1bc8a1dd6de98cca3ab6f00"
+  }
+}

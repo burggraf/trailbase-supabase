@@ -1,0 +1,79 @@
+{
+  "scope": "Honest bounded CI reproducibility red/green history; raw command/npm logs remain private, not artifact uploads",
+  "status": "passed",
+  "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+  "oldSourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
+  "attempts": [
+    {
+      "kind": "actual pushed CI55dfaa2 run41324363569",
+      "status": "failed",
+      "stage": "clean-install",
+      "nodes": [
+        "22.23.2",
+        "24.21.0"
+      ],
+      "downstream": "Both real-fixture jobs skipped due upstream package failures; not passes"
+    },
+    {
+      "kind": "initial archive-only fresh-cache attempt",
+      "status": "failed",
+      "stage": "initialize",
+      "cause": "Missing Git index prevents sourceHash; setup error, NOT same-failure reproduction"
+    },
+    {
+      "kind": "owned indexed copy, initially empty cache, npm ci plus unchanged six exact runtime cache primes",
+      "status": "failed",
+      "stage": "clean-install",
+      "diagnosis": "ENOTCACHED uuid14.0.3 tarball; cached registry metadata selects ^14.0.2 newer patch, root lock/primed tarball14.0.2"
+    },
+    {
+      "kind": "consumer selection unit red",
+      "status": "failed",
+      "passed": 5,
+      "failed": 1,
+      "reason": "Missing lock-derived consumer manifest helper"
+    },
+    {
+      "kind": "consumer integrity unit red",
+      "status": "failed",
+      "passed": 6,
+      "failed": 1,
+      "reason": "Missing installed runtime integrity validator"
+    },
+    {
+      "kind": "documentation link validator unit red",
+      "status": "failed",
+      "passed": 0,
+      "failed": 2,
+      "reason": "Missing index-only validator"
+    },
+    {
+      "kind": "initial expanded documentation static check",
+      "status": "failed",
+      "reason": "Accidentally extended H1 policy to nested historical ## Review; fixed by preserving original structureFiles scope and expanding links only; raw historical evidence unchanged"
+    },
+    {
+      "kind": "final same initially cold cache, unchanged dependency pins",
+      "status": "passed",
+      "nodes": [
+        "22.23.2",
+        "24.21.0"
+      ],
+      "unitEach": 211,
+      "packageChecksEach": 4,
+      "browserAssetConsumerEach": "actual offline tarball install, runtime versions/integrities, no backend startup",
+      "cache": "uuid14.0.3 tarball absent before and after;14.0.2 present; no consumer source/node_modules shortcuts"
+    },
+    {
+      "kind": "actual check-docs CLI ignored-file red/green",
+      "status": "passed",
+      "reason": "Existing ignored PNG rejected, original README restored, full indexed Markdown check passes incl nested historical ## Review"
+    }
+  ],
+  "missing": [
+    "Actual follow-up pushed CI not yet observed at evidence write",
+    "No current real backend/reference/browser matrix, broad security/coverage/release/signoff; no waiver"
+  ],
+  "secretReview": "Whole-file staged scanner flagged the existing header-only private-key rejection sentinel in sdk-package.test.ts. Compared exact unchanged canary line to parent55dfaa2, reviewed no key body (synthetic repeated-x JWT/Bearer canaries only), and exempted only that exact unchanged line for this one-off scan. Independent GitHub review corroborated. Production validator and meaningful rejection tests unchanged; all other staged content/evidence scanned, zero credential findings or private paths.",
+  "noWeakening": "--offline --ignore-scripts actual tarball consumer, compiler/transport assertions and cleanup retained; exact installed runtime versions/integrities added"
+}

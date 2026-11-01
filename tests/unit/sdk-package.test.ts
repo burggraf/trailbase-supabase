@@ -10,6 +10,30 @@ it('L1-26/P26 pack metadata accepts one exact package in array or keyed-object f
   for (const result of [[], [entry, entry], {}, { other: entry }, { 'trailbase-supabase': entry, other: entry }, [{ ...entry, filename: '../foreign.tgz' }], [{ ...entry, name: 'other' }], null]) expect(() => Reflect.apply(validate, undefined, [result])).toThrow();
 });
 
+it('L1-26/P26 clean consumer uses only existing locked native runtime versions despite newer registry metadata', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const module = await import('../../scripts/run-sdk-package.mjs');
+  const manifest = Reflect.get(module, 'packedConsumerManifest');
+  expect(manifest).toBeTypeOf('function');
+  const lock = JSON.parse(await readFile('package-lock.json', 'utf8'));
+  expect(manifest(lock)).toEqual({ private: true, type: 'module', overrides: { '@types/geojson': '7946.0.16', '@ungap/raw-json': '0.4.4', geojson: '0.5.0', 'jwt-decode': '4.0.0', uuid: '14.0.2' } });
+  for (const invalid of [{ packages: {} }, { packages: { 'node_modules/trailbase': { version: '0.14.3', dependencies: { missing: '^1.0.0' } } } }]) expect(() => manifest(invalid)).toThrow();
+});
+
+it('L1-26/P26 installed consumer native runtime versions and integrity must match the original lock', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const module = await import('../../scripts/run-sdk-package.mjs');
+  const verify = Reflect.get(module, 'verifyPackedConsumerRuntime');
+  expect(verify).toBeTypeOf('function');
+  const lock = JSON.parse(await readFile('package-lock.json', 'utf8'));
+  expect(() => verify(lock, structuredClone(lock))).not.toThrow();
+  for (const name of ['trailbase', ...Object.keys(module.packedConsumerManifest(lock).overrides)]) for (const field of ['version', 'integrity']) {
+    const installed = structuredClone(lock);
+    installed.packages[`node_modules/${name}`][field] = 'unexpected';
+    expect(() => verify(lock, installed)).toThrow('Installed runtime dependency lock drift');
+  }
+});
+
 const files = ['LICENSE', 'README.md', 'dist/auth.d.ts', 'dist/auth.js', 'dist/common.d.ts', 'dist/common.js', 'dist/index.d.ts', 'dist/index.js', 'package.json'];
 const manifest = { name: 'trailbase-supabase', version: '0.0.0', private: true, license: 'MIT', type: 'module', main: './dist/index.js', types: './dist/index.d.ts', exports: { '.': { types: './dist/index.d.ts', import: './dist/index.js' } }, files: files.filter(file => file !== 'package.json'), dependencies: { trailbase: '0.14.3' } };
 

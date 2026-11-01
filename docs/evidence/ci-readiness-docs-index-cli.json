@@ -1,0 +1,9 @@
+{
+  "scope": "Actual check-docs CLI in isolated indexed checkout; ignored generated file exists but cannot satisfy link, then restored exact README passes",
+  "status": "passed",
+  "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+  "red": "expected rejection: relative target absent from Git index despite ignored file existing on disk",
+  "green": "PASS docs/links/traceability: 41 markdown files, 27 feature rows, 7 gates, evidence freshness and secret scan.",
+  "historicalReview": "Existing nested ## Review remains unchanged and its links validate; original root/docs H1/fence checks retained",
+  "cleanup": "README restored byte-for-byte; only owned generated stand-in removed; original live tree/fixture untouched"
+}

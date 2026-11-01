@@ -1,0 +1,24 @@
+{
+  "scope": "Read-only original live owner/PID/static asset preservation; no user data/session inspection",
+  "status": "passed",
+  "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "originalPids": [
+    365086,
+    372131,
+    372164,
+    370592
+  ],
+  "allOriginalServedAssetHashesMatch": true,
+  "files": [
+    "main.js",
+    "sdk.js",
+    "auth.js",
+    "common.js",
+    "trailbase.js",
+    "app.js",
+    "index.html"
+  ],
+  "noRestartResetCleanupNetworkCredentialChanges": true,
+  "finishedAt": "2026-11-01T16:27:53.997Z"
+}

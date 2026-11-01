@@ -1,6 +1,27 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "CRUD/auth MVP — mutation diagnostics/cache repair live at sourcee570c562; Mark confirmed Chrome add restored, original failure cause unproven; scoped checks passed, release/signoff incomplete",
+  "currentPhase": "CRUD/auth MVP — reviewed checkpoint55dfaa2 pushed; bounded cold-CI consumer/index-doc reproducibility fix47bddb41 locally verified, follow-up push/new CI next; same live UIe570c562 and original jobs preserved, broad release/signoff incomplete",
+  "lastSession": {
+    "scope": "Authorized full intended-tree review/commit/push, then one live-safe CI readiness milestone L1-26/L1-27",
+    "state": "verified-local-cold-cache-followup-awaiting-push-and-actual-new-CI",
+    "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+    "plan": "docs/plans/2026-11-01-clean-checkout-docs.md",
+    "evidence": "docs/evidence/ci-readiness-summary.json",
+    "checkpoint": "55dfaa20884198c2bfe3e06f4b205d0f9218f3c2 committed114 intended files and pushed canonical origin/main; remote SHA matched",
+    "actualParentCI": "Run41324363569 failed offline clean-install on both pinned Nodes; downstream fixtures skipped, not green. Sanitized CI artifacts retained",
+    "rootCause": "Fresh-cache indexed-copy ENOTCACHED uuid14.0.3 selected via native ^14.0.2; unchanged root lock/cache contains14.0.2. Initial archive-without-index initialize error is distinct setup failure. Devtool-metadata hypothesis not cause",
+    "fix": "Both actual offline consumers use existing lock-derived runtime exact overrides and verify installed version/integrity. No root dependency upgrade/newer cache priming/assertion relaxation. All indexed Markdown links checked against index inventory; original15 root/docs structure/fence rules retained; nested historical ## Review unchanged",
+    "checks": "Pinned Node22.23.2/24.21.0 each static,211 full units,4 actual offline package checks and pure packed-browser asset preparation. Same cold cache still lacks14.0.3. Actual docs CLI rejects present ignored PNG, exact README restoration passes. Red/fail attempts preserved. No backend/browser matrix",
+    "live": "Same owner/run1793540668685-32d6c1a05a9c, original four PIDs and seven served asset hashes verified unchanged. No user-data/session inspection, restart/reset/cleanup/network/credentials/publication",
+    "missing": "Push verified followup and inspect actual current-HEAD CI; broad runtime/reference/security/coverage/release/G1/G7/null-user decisions and maintainer signoff remain incomplete"
+  },
+  "gitCheckpoint": {
+    "commit": "55dfaa20884198c2bfe3e06f4b205d0f9218f3c2",
+    "scope": "Approved guarded auth lifecycle, standalone responsive todos, safe mutation/cache fixes, tests/docs/sanitized evidence",
+    "push": "Canonical origin/main pushed without force and exact remote SHA verified; subsequent bounded47bddb41 follow-up locally verified, commit/push/new CI next",
+    "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41324363569",
+    "ciStatus": "Failed both offline clean-install jobs; downstream fixtures skipped, no green inference"
+  },
   "activeExampleMilestone": {
     "plan": "docs/plans/2026-11-01-todos-add-diagnosis.md",
     "sourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
@@ -51,12 +72,12 @@
       "G7 logout acknowledgement and late-response/session races"
     ],
     "status": "in-progress",
-    "checks": "Current UIe570c562: static/diff, focused30/30 units, real private task flow3/3 engines plus native22 UI creates/exact21-task pagination20/1/20/owned cleanup/local logout200/screenshots. User confirmed Chrome add restored; original distinct-title cause unknown. Safe mutation status/codes and warm-cache import map fixed without SDK/schema/network/reset. Historical matrices remain historical. Same app/Serve/lock retained. Broad release/signoff/G1/G7/null-user decisions remain unresolved; see todos-add-summary.",
+    "checks": "Current CI-readiness47bddb41: both Nodes static/211 units/4 offline package checks/packed-browser assets; existing lock runtime version/integrity assertions, same cold cache no14.0.3; index-only Markdown guard red/green. Parent55dfaa2 pushed CI failed clean-install; inspect exact followup CI after push. Current UIe570c562: static/diff, focused30/30 units, real private task flow3/3 engines plus native22 UI creates/exact21-task pagination20/1/20/owned cleanup/local logout200/screenshots. User confirmed Chrome add restored; original distinct-title cause unknown. Safe mutation status/codes and warm-cache import map fixed without SDK/schema/network/reset. Historical matrices remain historical. Same app/Serve/lock retained. Broad release/signoff/G1/G7/null-user decisions remain unresolved; see todos-add-summary.",
     "historicalFixtureCheckpoint": "Read full advisory203635a6 and source PRAGMAoptimize0x10002; parent actualdc9 firstsuccess CLI only adds canonical stat1/stat4,30existingobjects identical, config/unrelatedidentity/session unchanged, cleanup unchanged. Preserve original failed report/snapshots. Exact own4attrs/table-index-trigger-view metadata arrays validated, duplicates(type,name) rejected. Reserved stat1/stat4 records canonical in either snapshot including case variants rejected by exact values; only new canonical absent-before records removed forcomparison. Everyremaining object exact, existingstats removal/modification forbidden, no SQLnormalization/broadinternal exclusions. Separate rawSchemaChanged/prohibitedSchemaChange/fixedallowedBookkeepingAdded report, config/identity/session exact plus ownednative/pin/cleanup/private0600snapshots unchanged. No statistics samples/contents export or physicalbytes/queryplan claim, no manual schema write. TDD RED0/4 -> focused10/10; initialTS7053 dynamic testkeys failures retained plus temporary incorrectly unchecked shellcheckpoint retained private/superseded; corrected typed tuple/const union, final actual22.23.2 SDK114/114 mixed164/164 build/types. No SDK/auth implementation/server/default/deps/repin/privilege/verbs/stage/commit/fixtures or signoff.",
     "historicalStorageParentChecks": "Historical source93345a16: mixed units125/125 on Node22/24, clean package checks Node22/24, check/diff pass. Real persistent auth1/1 and packed browser6/6 (data UI plus genuine password/localStorage reload on Chromium/Firefox/WebKit) passed with exact-source/setup/cleanup checks. Data/database/constraints refresh proc_ee08 and independent storage reviewer370c214b running. Refresh/live getUser/logout/events/default refresh still unsupported; G1/G7 open; no compatibility/signoff.",
     "parentPreviousDataChecks": "Historical source5c55be11: targeted auth parser privacy/import-graph regressions GREEN7/7 after preserved4pass/2fail and6pass/1fail REDs; mixed units114/114 on Node22/24, build/check/diff passed. Current clean package Node22/24 passed. Final-source proc_27fc passed: real memory-auth1/1,data6/6,database9/9,constraints6/6,packed data browsers3/3 Chromium/Firefox/WebKit; every source/setup/cleanup check passed and lock clear. Reviewer recheck2601f0f5 resolved both findings with no new issues; no maintainer signoff. Prior9fcb2e9f real auth1/1,data6/6,database9/9,constraints6/6,browsers3/3 and package22/24 passed source/setup/cleanup, now historical. Auth explicitly memory-only, no persistence/defaults/refresh/logout implemented; G1/G7 open; no compatibility/signoff.",
     "restart": [
-      "Read lastSession/todos-add-summary.json; preserve dirty main/current UIe570c562, frozen SDK/startup78ad127c and historical evidence. Three jobs LIVE for Mark, sole executor; do not restart/reset fixture, alter title UNIQUE or launch competing stacks",
+      "Read lastSession/ci-readiness-summary.json; first checkpoint55dfaa2 pushed and followup47bddb41 locally verified; inspect current-HEAD CI, preserve live UIe570c562/frozen startup78ad127c and all historical evidence. Three jobs LIVE for Mark, sole executor; do not restart/reset fixture, alter title UNIQUE or launch competing stacks",
       "Mark can open https://aspire.tailb03e.ts.net:18443/ and inbox18444 from already-connected/allowed Mac/iPhone; signup once with fresh disposable address, real confirmation then explicit login. No public exposure/ACL/firewall/443/service/account changes",
       "If stopping is requested, stop owned foreground Serve jobs proc_a651/proc_dc58 first, then send quit to proc_a84f and wait for guarded cleanup. Verify exact project/lock/routes gone; never reuse stale PIDs or reset global Serve",
       "Complete broader shared/security/coverage/release gates; retain explicit unconfirmed native global logout, unresolved G1/G7 and signup null-user approval"
@@ -1318,6 +1339,7 @@
       "title": "Package/docs/release",
       "status": "in-progress",
       "evidence": [
+        "docs/evidence/ci-readiness-summary.json",
         "docs/evidence/todos-redesign-summary.json",
         "docs/evidence/todos-redesign-browser-node22.json",
         "docs/evidence/todos-redesign-screenshots.json",
@@ -1385,6 +1407,7 @@
       "title": "harness work is partially implemented/tested",
       "status": "in-progress",
       "evidence": [
+        "docs/evidence/ci-readiness-summary.json",
         "docs/evidence/todos-redesign-deployment.json",
         "docs/evidence/todos-redesign-focused-unit-node22.json",
         "docs/evidence/todos-remote-network.json",
@@ -1842,10 +1865,10 @@
     }
   ],
   "nextSteps": [
-    "User testing LIVE: read lastSession/todos-add-summary. Mark confirmed Chrome add works after hard refresh. Leave proc_a84f/proc_a651/proc_dc58 and owned lock intact. No reset/new signup/schema change or competing agents/stacks",
+    "Commit/push verified47bddb41 CI-readiness followup; verify canonical remote SHA and inspect exact new HEAD CI, not old41324363569/local greens. Read ci-readiness-summary/attempts. Preserve proc_a84f/proc_a651/proc_dc58 and owned lock; no reset/new signup/schema change or competing stacks",
     "No pending action solely for restored Chrome add. Exact original distinct-title rejection is unproven; if recurrence obtain only displayed HTTP/TASK code plus safe operation/browser/session-age details, never credentials/private titles. App18443/inbox18444 unchanged. Physical iPhone/acceptance and global-ack limitations remain",
     "Only on Mark-requested downtime, stop owned proxies then quit launcher; require passed cleanup and exact owned resource/lock/route absence. Its original source-drift guard will report failed after approved UI edits: preserve diagnostic, do not confuse with cleanup failure or relabel green. Deployment manifest is UI provenance",
-    "Full shared/security/fault/accessibility/resource/coverage/actual CI/release, three clean candidates and maintainer signoff remain incomplete; G1/G7/null-user approval unchanged, no public deployment/commit/push/new credentials or waiver inferred"
+    "Full shared/security/fault/accessibility/resource/coverage/actual CI/release, three clean candidates and maintainer signoff remain incomplete; G1/G7/null-user approval unchanged; reviewed commit/push expressly authorized, no public deployment/new credentials/waiver inferred"
   ],
   "lastContractVerification": {
     "date": "2026-10-03T13:42:43.569Z",
@@ -1938,7 +1961,7 @@
     "checks": "Units 50/50 on Node 22/24. Six of seven real scopes matched primary run 37247146638, including exact pins/loopback/setup/cleanup. Stock had zero tests, no setup inventory, cleanup passed. It does not supersede primary stock 101/6 result.",
     "evidence": ["docs/evidence/phase-a-ci-reference-pagination-ledger-followup-stock-startup.json", "docs/evidence/phase-a-ci-reference-pagination-ledger-followup-summary.json"]
   },
-  "lastSession": {
+  "previousTodosAddSession": {
     "scope": "Repeated-add diagnosis, safe mutation outcome codes, verified warm-cache UI import repair; original live fixture/schema/SDK/jobs unchanged",
     "state": "verified-scoped-fixes-user-confirmed-Chrome-add-restored-original-cause-unproven",
     "authorizedContinuation": { "scope": "User explicitly authorized full intended-tree review, commit and canonical push, then bounded live-safe MVP/CI readiness work", "gitPreflight": "main tracking origin/main at d7bd53253130171a405e2f306a444fb7b24aad5c; git fetch succeeded and divergence0/0", "checks": "Actual pinned Node22/24 each static/build,207 full units,4 clean packed-consumer checks; entire intended diff/untracked secret review passed; all40 intended Markdown files/517 relative links resolve within intended Git inventory, no ignored screenshot target", "evidence": ["docs/evidence/precommit-unit-node22.json", "docs/evidence/precommit-unit-node24.json", "docs/evidence/precommit-package-node22.json", "docs/evidence/precommit-package-node24.json", "docs/evidence/precommit-review.json"], "nextBoundedMilestone": "Prevent clean-checkout CI doc failures with regression-tested Git-inventory relative Markdown target validation. Existing dirty workflow already adds supported SDK/package/app jobs; do not duplicate them or hide monolithic research failures", "liveSafety": "Same original app/proxies/lock; no backend matrix/cleanup/reset/security/network/credential changes or package publication" },
@@ -2286,7 +2309,7 @@
     "realScopes": "COMPLETE: network 5/5, constraints 6/6, stock 91 passed/4 strict failures, browser 42 passed/3 new fixture failures, proofs 34/34, expiry 2/2, candidate characterization 10/10, candidate SMTP 0/1, migration 1/1, fault cleanup 1/1. All ten hashes/setup/cleanup passed; owned lock cleared. Aggregate exit 1 preserves every failure, not a hidden retry.",
     "missing": "Browser JSON-header fixture failures diagnosed/preserved; revised source runs separately. Server-internal resource counters, reference channel/auth timer parity, TLS/WAN/package/full SDK/CI/signoff remain unverified."
   },
-  "gitCheckpoint": { "commit": "12145e85d03c5b6cafe46613d7940763dae1bdc2", "scope": "Approved G2 raw JSON-shaped equality-filter characterization; no adapter implementation or contract expansion", "push": "Source/local evidence commit pushed; exact-source CI 37251715161 audited with strict failures preserved", "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37251715161" },
+  "previousResearchGitCheckpoint": { "commit": "12145e85d03c5b6cafe46613d7940763dae1bdc2", "scope": "Approved G2 raw JSON-shaped equality-filter characterization; no adapter implementation or contract expansion", "push": "Source/local evidence commit pushed; exact-source CI 37251715161 audited with strict failures preserved", "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37251715161" },
   "previousPinnedRegistryGitCheckpoint": { "commit": "db5cc89ddaafa0cd5be2ad20f6d4c553b8621438", "scope": "Force original pinned ECR registry in shared owned-fixture environment, preserve exact image verification and strict regressions", "push": "Pushed to origin/main after final eleven-scope validation", "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37171114810" },
   "previousReferenceChannelGitCheckpoint": { "commit": "7f986a26f59b2d819eb940b4982462e849f91608", "scope": "Reference 100-channel lifecycle characterization and measured bounded test budgets, no gate signoff", "push": "Pushed to origin/main after final eleven-scope local validation", "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37169131000" },
   "previousNativeStreamGitCheckpoint": { "commit": "a452e4a47323b03ea385adec0cf1d21a7953c787", "scope": "Bounded Phase A stream lifecycle characterization and safe image-format diagnostics, no gate signoff", "push": "Pushed to origin/main after final local validation", "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37166397354" },

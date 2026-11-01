@@ -15,6 +15,26 @@ export function packedFilename(metadata) {
   return entry.filename;
 }
 
+export function packedConsumerManifest(lock) {
+  const native = lock.packages?.['node_modules/trailbase'];
+  if (native?.version !== '0.14.3' || !native.dependencies) throw new Error('Missing pinned native dependency graph');
+  const overrides = Object.fromEntries(Object.keys(native.dependencies).map(name => {
+    const version = lock.packages[`node_modules/${name}`]?.version;
+    if (typeof version !== 'string' || !/^\d+\.\d+\.\d+$/.test(version)) throw new Error('Missing exact locked runtime dependency');
+    return [name, version];
+  }));
+  return { private: true, type: 'module', overrides };
+}
+
+export function verifyPackedConsumerRuntime(lock, installedLock) {
+  const names = ['trailbase', ...Object.keys(packedConsumerManifest(lock).overrides)];
+  return Object.fromEntries(names.map(name => {
+    const expected = lock.packages[`node_modules/${name}`], actual = installedLock.packages?.[`node_modules/${name}`];
+    if (!actual || actual.version !== expected.version || !expected.integrity || actual.integrity !== expected.integrity) throw new Error('Installed runtime dependency lock drift');
+    return [name, { version: actual.version, integrity: actual.integrity }];
+  }));
+}
+
 const allowedFiles = ['LICENSE', 'README.md', 'dist/auth.d.ts', 'dist/auth.js', 'dist/common.d.ts', 'dist/common.js', 'dist/index.d.ts', 'dist/index.js', 'package.json'];
 export function validatePackage(manifest, files) {
   if (manifest.name !== 'trailbase-supabase' || manifest.private !== true || manifest.type !== 'module' || manifest.license !== 'MIT' || manifest.main !== './dist/index.js' || manifest.types !== './dist/index.d.ts') throw new Error('Invalid private package identity/entries');
@@ -67,11 +87,13 @@ async function main() {
     for (const file of allowedFiles) validatePackedText(await run('tar', ['-xOzf', tarball, `package/${file}`], directory));
     report.tarballSha256 = createHash('sha256').update(await readFile(tarball)).digest('hex');
     report.files = allowedFiles;
-    report.checks.push('Exact five-file tarball; built ESM/declarations, private identity, native pin, no source/runtime/test/credential/symlink files');
+    report.checks.push('Exact allowlisted tarball; built ESM/declarations, private identity, native pin, no source/runtime/test/credential/symlink files');
     stage = 'clean-install';
     const consumer = join(directory, 'consumer');
     await mkdir(consumer);
-    await writeFile(join(consumer, 'package.json'), JSON.stringify({ private: true, type: 'module' }));
+    const lock = JSON.parse(await readFile(join(root, 'package-lock.json'), 'utf8'));
+    const consumerManifest = packedConsumerManifest(lock);
+    await writeFile(join(consumer, 'package.json'), JSON.stringify(consumerManifest));
     // Use npm cache only: no registry or live-backend access, no lifecycle scripts.
     await run('npm', ['install', '--offline', '--ignore-scripts', '--no-audit', '--no-fund', tarball], consumer, 120000);
     const installed = join(consumer, 'node_modules/trailbase-supabase');
@@ -81,6 +103,10 @@ async function main() {
     validatePackage(installedManifest, allowedFiles);
     const nativeManifest = JSON.parse(await readFile(join(consumer, 'node_modules/trailbase/package.json'), 'utf8'));
     if (nativeManifest.version !== '0.14.3') throw new Error('Installed native client pin drift');
+    report.runtimeDependencies = verifyPackedConsumerRuntime(lock, JSON.parse(await readFile(join(consumer, 'package-lock.json'), 'utf8')));
+    for (const [name, expected] of Object.entries(report.runtimeDependencies)) {
+      if (JSON.parse(await readFile(join(consumer, 'node_modules', name, 'package.json'), 'utf8')).version !== expected.version) throw new Error('Installed runtime dependency lock drift');
+    }
     report.installed = { sdk: `${installedManifest.name}@${installedManifest.version}`, native: `trailbase@${nativeManifest.version}`, compiler: JSON.parse(await readFile(join(root, 'node_modules/typescript/package.json'), 'utf8')).version };
     report.checks.push('Offline clean Node install from tarball; no repository/source/workspace import or SDK symlink');
     stage = 'shipped-type-consumer';
