@@ -1,0 +1,43 @@
+{
+  "scope": "Approved basic responsive task UI and safe auth messages, live data-preserving update; NOT full SDK/release/physical-device signoff",
+  "status": "passed",
+  "sourceSha256": "bd30be6d4179947c0699527b8debfcba9658be74c6f480631512e231e5ba1e9c",
+  "plan": "docs/plans/2026-11-01-todos-ui.md",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "app": "https://aspire.tailb03e.ts.net:18443/sdk-data/index.html",
+  "inbox": "https://aspire.tailb03e.ts.net:18444/",
+  "implemented": [
+    "Calm light task app, simple login/create-account and real confirmation guidance/private inbox link; no developer ID/query/JSON controls in primary flow",
+    "Add task/Enter, native completion checkbox, focused inline edit/Save/Cancel/Escape, explicit Delete dialog with Cancel initially focused and no-write cancellation; no fake undo or mutation replay",
+    "Server All/Active/Completed filters, deterministic created_at/id ordering and bounded20-row pages using only supported select(*), eq, order and range; optional counts omitted",
+    "Account/sign-out header, secondary account settings, useful empty/loading/read-error/recovery and safe unknown-write guidance,44px button/checkbox-label targets and focus styles",
+    "Operation-aware auth error display retains structured status; missing/unconfirmed/wrong-password401 share safe guidance, backend URLs/details/credentials not rendered, global logout uncertainty preserved",
+    "Existing private characterization entrypoints/options retained through diagnostics:true; default task app and private old test harness remain distinct modes of existing exports, no SDK/DB/query extension"
+  ],
+  "verified": {
+    "static": "npm run check and git diff --check passed",
+    "focusedUnit": { "passed": 16, "failed": 0, "node": "v22.23.2" },
+    "browser": { "passed": 3, "failed": 0, "skipped": 0, "flaky": 0, "attemptsPerProject": 1, "projects": ["chromium", "firefox", "webkit"], "mobile": "WebKit390x844 mobile/touch config; not physical iPhone" },
+    "browserCoverage": "Both users obtain sessions through real SDK signup/mail confirmation/login; own payload field/value/origin checks, missing/unconfirmed/wrong-password401 vs confirmed200; real add/edit/complete/server filters and served-SDK order/range probe, full unchanged owner rows after denied foreign read/update/delete/spoof/transfer, delete Cancel no-write and confirmed exact deletion, persisted reload/manual refresh, one deterministic failed GET/recovery, logout, owned rows/session/context cleanup; no successful auth/data response stubs",
+    "visual": "Inspected original screenshot before implementation and final desktop1280x892/mobile390x844 and sign-in1280x853 PNGs; no horizontal overflow asserted in real desktop/mobile browser flows; baba/management coordinator also inspected the mobile image; Mark has not accepted the redesign or verified a physical device"
+  },
+  "evidence": ["docs/evidence/todos-redesign-deployment.json", "docs/evidence/todos-redesign-focused-unit-node22.json", "docs/evidence/todos-redesign-browser-node22.json", "docs/evidence/todos-redesign-screenshots.json"],
+  "screenshots": ["artifacts/todos-ui/desktop.png", "artifacts/todos-ui/mobile.png", "artifacts/todos-ui/sign-in.png"],
+  "preservation": "Same original fixture/runner/TrailBase/proxy processes and lock, no restart/reset/admin/DB/network/security/account commands. Only three owned UI assets atomically updated with original rollback backups. Main/SDK/auth/common/native module hashes unchanged; actual HTTPS SDK equals original owned copy and installed build. Mark data/accounts untouched; only fresh disposable test rows/sessions cleaned.",
+  "liveJobs": { "app": "proc_a84f", "appRunnerPid": 365086, "appServe": "proc_a651", "appServePid": 372131, "inboxServe": "proc_dc58", "inboxServePid": 372164 },
+  "operationalCaution": "Original launcher retains startup source78ad127c. Approved UI/test edits mean its unchanged source-drift guard will report failed at eventual shutdown even if guarded cleanup passes. Keep that raw diagnostic, evaluate cleanup separately; deployment manifest is current UI provenance. Do not restart merely to refresh source hash or remove live lock.",
+  "attemptsPreserved": [
+    "Before changes current HTTPS real signup/mail/login/CRUD baseline3/3: docs/evidence/todos-login-baseline-browser.json; original Mark401 cause remains unknown and user explicitly reported login restored before redesign; no credential investigation/reset",
+    "Auth helper RED1pass4fail and raw401 UI RED preserved .runtime/login-message-*.json; new page helper RED0/2 .runtime/todos-redesign-unit-red.json",
+    "Initial redesign browser0/3: unsupported optional select(id) count preflight prevented task load, plus WebKit empty401 resource body unavailable; docs/evidence/todos-redesign-browser-initial-failure.json. Counts removed, actual frozen SDK select(*) restriction verified, no SDK widening.401 status/UI assertions remain on every engine, raw body check on Chromium/Firefox only",
+    "Second browser0/3 reached UI CRUD then asserted hidden empty alert with visible-role locator; docs/evidence/todos-redesign-browser-second-attempt.json. Corrected to exact DOM emptiness AND hidden assertion",
+    "Third browser2pass1fail: Firefox offline emulation/cache did not force failed read; docs/evidence/todos-redesign-browser-third-attempt.json. Deterministic one-GET abort now proves error/recovery, successful flows still real",
+    "Intermediate205/205 units on earlier source remain docs/evidence/todos-redesign-unit-node22.json, not final-source certification. Initial TS2322 refresh return mismatch corrected to existing Promise<void> contract"
+  ],
+  "missing": [
+    "Physical Mac/iPhone Safari and full keyboard/accessibility/resource/fault/coverage/reference/CI/release corpus not certified; no extra historical fixture matrix rerun while user owns live app",
+    "G1 duplicate-pending/SMTP and null-user signup compatibility approval, G7 authenticated global acknowledgement, prior dev-transitive Vite advisory remain unchanged; no new audit/dependency upgrade",
+    "No live cross-tab synchronization, public deployment/new credentials/SDK compatibility expansion/commit/push/delegates. Original Mark401 account-specific reason unknown; access restored per user"
+  ],
+  "handoff": "Same private URL: refresh page; Mac Cmd+Shift+R if cached, iPhone reload or close/reopen tab. No new signup/reset needed for working account. Leave three jobs running. Stop only on user request using recorded process manager IDs then quit app; see original remote summary for guarded cleanup/PID verification."
+}

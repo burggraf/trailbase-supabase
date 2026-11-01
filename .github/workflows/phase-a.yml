@@ -1,4 +1,4 @@
-name: Phase A proof harness (not SDK release gates)
+name: Phase A and focused CRUD-auth checks (not release gates)
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   static-unit:
-    name: Harness checks / Node ${{ matrix.node }}
+    name: Static, units and packed consumer / Node ${{ matrix.node }}
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     strategy:
@@ -26,11 +26,69 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run test:unit
+      - name: Cache pinned runtime metadata for offline consumers
+        run: |
+          npm cache add trailbase@0.14.3
+          npm cache add @types/geojson@7946.0.16
+          npm cache add @ungap/raw-json@0.4.4
+          npm cache add geojson@0.5.0
+          npm cache add jwt-decode@4.0.0
+          npm cache add uuid@14.0.2
+      - run: npm run build:sdk
+      - run: npm run test:sdk:package
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
           name: phase-a-unit-node-${{ matrix.node }}
-          path: artifacts/unit/*.json
+          path: |
+            artifacts/unit/*.json
+            artifacts/sdk-package/*.json
+          if-no-files-found: error
+          retention-days: 14
+
+  sdk-mvp:
+    name: Focused SDK CRUD-auth / real fixtures / packed browsers
+    needs: static-unit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '22.23.2'
+          cache: npm
+      - run: npm ci
+      - name: Cache pinned runtime metadata for offline browser consumers
+        run: |
+          npm cache add trailbase@0.14.3
+          npm cache add @types/geojson@7946.0.16
+          npm cache add @ungap/raw-json@0.4.4
+          npm cache add geojson@0.5.0
+          npm cache add jwt-decode@4.0.0
+          npm cache add uuid@14.0.2
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npm run test:sdk:auth
+      - run: npm run test:sdk:refresh
+        if: always()
+      - run: npm run test:sdk:data
+        if: always()
+      - run: npm run test:db
+        if: always()
+      - run: npm run test:phase-a -- constraints
+        if: always()
+      - run: npm run test:sdk:browser
+        if: always()
+      - run: npm run test:example:todos
+        if: always()
+      - run: npm run test:cleanup
+        if: always()
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: sdk-crud-auth-sanitized
+          path: |
+            artifacts/phase-a/*.json
+            artifacts/todos/*.json
           if-no-files-found: error
           retention-days: 14
 

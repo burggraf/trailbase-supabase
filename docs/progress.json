@@ -1,9 +1,34 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "CRUD/auth MVP — paused at verified CRUD, persistent auth, refresh and live-user checkpoint; remaining lifecycle pending",
+  "currentPhase": "CRUD/auth MVP — mutation diagnostics/cache repair live at sourcee570c562; Mark confirmed Chrome add restored, original failure cause unproven; scoped checks passed, release/signoff incomplete",
+  "activeExampleMilestone": {
+    "plan": "docs/plans/2026-11-01-todos-add-diagnosis.md",
+    "sourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
+    "frozenSdkAndOriginalLauncherSourceSha256": "78ad127cc6d0be800f25745641207bf088ba686b199a9ba5d3185c1ffa79517d",
+    "status": "in-progress",
+    "state": "LIVE; safe mutation status/TASK outcomes and content-versioned UI. Mark confirmed Chrome adding restored after hard refresh; original distinct-title cause unproven, no all-features certification",
+    "runId": "1793540668685-32d6c1a05a9c",
+    "app": "https://aspire.tailb03e.ts.net:18443/",
+    "inbox": "https://aspire.tailb03e.ts.net:18444/",
+    "running": "Owned loopback app proc_a84f / Node runner365086; foreground app Serve proc_a651/PID372131 -> loopback42231, inbox Serve proc_dc58/PID372164 -> loopback38763. Leave all three running as requested; fixture lock intentionally held",
+    "verified": "Current static/diff and focused units30/30 including existing expiry/background renewal; three real browser engines3/3 no retry/skip/flaky: repeated distinct adds, fresh IDs/current unexpired JWT owner/payload, duplicate400 no-write/safe UI, fast Enter, edit/cancel, complete/uncomplete, filters, delete/cancel, reload/versioned app/manual refresh/short idle/recovery/logout/two-owner isolation/cleanup. Native Chromium22 successful UI creates; exact21-task UI Next/Previous20/1/20 and unchanged full rows; scoped21-row cleanup and real local logout200; desktop/narrow screenshots inspected. Only app.js/generated index.html changed in this session, plus future UI import generator. Frozen SDK/main/native/schema/access rules/original fixture/jobs/network preserved",
+    "pending": "Mark said it’s working now after Chrome hard-refresh/retry; exact original distinct-title rejection cause remains unproven, not retroactively duplicate/expiry/cache. No idle wait for further response. If recurrence obtain only HTTP/TASK code, operation and safe browser/session-age info. Physical Safari/full accessibility/fault/coverage/reference/CI/release and global acknowledgement remain uncertified. Original launcher source-drift diagnostic expected at eventual approved teardown; require cleanup separately",
+    "evidence": ["docs/evidence/todos-add-summary.json", "docs/evidence/todos-add-deployment.json", "docs/evidence/todos-add-focused-unit-node22.json", "docs/evidence/todos-add-browser-node22.json", "docs/evidence/todos-add-native.json", "docs/evidence/todos-add-screenshots.json", "docs/evidence/todos-add-regressions-red.json"]
+  },
+  "previousLocalExampleMilestone": {
+    "plan": "docs/plans/2026-11-01-standalone-todos.md",
+    "sourceSha256": "48608fc68718fd860cb116e3300c5a05440248e604a5f9e280a0a34a970c5bca",
+    "status": "verified",
+    "implemented": "Self-booting same-origin packed-SDK entrypoint, row selection/edit/delete and loading/error UI; guarded loopback launcher with local inbox and owned cleanup; real two-SDK-authenticated-owner browser case; documented commands and focused CI wiring",
+    "verified": "Actual Node22.23.2/24.21.0 static,197/197 units and4/4 clean-package checks each; SDK build passed. Browser15/15, launcher --check2/2, interactive launch/stdin quit2/2, real auth3/3, genuine short-TTL refresh4/4,data6/6,DB9/9,constraints6/6,teardown-fault1/1. All13 green reports exact source; all nine real-run inventories/pins/loopback/setup/cleanup verified, owned resources/lock absent. Initial red unit0/2/browser12passed3failed and CI red retained",
+    "running": "None known: every started app/test job has exited; no app server intentionally retained",
+    "pending": "Only broader release requirements remain: G1/G7/null-user decisions, full shared/security/fault/accessibility/resource/coverage/CI/candidate-run/signoff gates; see summary, no layer waived",
+    "evidence": ["docs/evidence/todos-standalone-summary.json", "docs/evidence/todos-standalone-unit-node22.json", "docs/evidence/todos-standalone-unit-node24.json", "docs/evidence/todos-standalone-package-node22.json", "docs/evidence/todos-standalone-package-node24.json", "docs/evidence/todos-standalone-browser-node22.json", "docs/evidence/todos-standalone-launcher-node22.json", "docs/evidence/todos-standalone-interactive-quit-node22.json", "docs/evidence/todos-standalone-sdk-auth-node22.json", "docs/evidence/todos-standalone-sdk-refresh-node22.json", "docs/evidence/todos-standalone-sdk-data-node22.json", "docs/evidence/todos-standalone-database-node22.json", "docs/evidence/todos-standalone-constraints-node22.json", "docs/evidence/todos-standalone-lifecycle-node22.json", "docs/evidence/todos-standalone-red-browser-node22.json", "docs/evidence/todos-standalone-tdd.json"]
+  },
   "pauseCheckpoint": {
     "requestedBy": "operator",
-    "state": "paused-no-next-slice-started",
+    "state": "historical-pause-superseded-by-lastSession",
+    "supersededBy": "lastSession",
     "resumeAttempt": "Operator requested continuation, then pause during read-only logout tracing. Re-read plans and native GET/global versus POST/local handlers; no implementation, tests, background jobs or subagents launched. Paused before the next slice; pushed checkpoint remains 934c430. Only this ledger note changed.",
     "sourceSha256": "29a6845a6a0d928df07310ad617ea73e439b58ed3173edcd9acc71afa9f80e2d",
     "implemented": "Narrow CRUD/query/type/package/data example; email-password signup/login; explicit persistent sync/async storage and hydration; guarded manual/request-time single-flight refresh; live DB-backed getUser with genuine native rotation. Own-field/privacy/epoch/baseline/serialized persistence/resource cleanup guards tested.",
@@ -26,13 +51,15 @@
       "G7 logout acknowledgement and late-response/session races"
     ],
     "status": "in-progress",
-    "checks": "Paused current source29a6845a: mixed168/168 actualNode22/24, cleanpackage22/24, realauth2/2,refresh3/3,browser6/6,data6/6,DB9/9,constraints6/6. Every real source/setup/cleanup verified, lock clear. Ownboundary review no issues; full lifecycle/release/signoff pending. See pauseCheckpoint for exact scope/restart; no next slice started.",
+    "checks": "Current UIe570c562: static/diff, focused30/30 units, real private task flow3/3 engines plus native22 UI creates/exact21-task pagination20/1/20/owned cleanup/local logout200/screenshots. User confirmed Chrome add restored; original distinct-title cause unknown. Safe mutation status/codes and warm-cache import map fixed without SDK/schema/network/reset. Historical matrices remain historical. Same app/Serve/lock retained. Broad release/signoff/G1/G7/null-user decisions remain unresolved; see todos-add-summary.",
     "historicalFixtureCheckpoint": "Read full advisory203635a6 and source PRAGMAoptimize0x10002; parent actualdc9 firstsuccess CLI only adds canonical stat1/stat4,30existingobjects identical, config/unrelatedidentity/session unchanged, cleanup unchanged. Preserve original failed report/snapshots. Exact own4attrs/table-index-trigger-view metadata arrays validated, duplicates(type,name) rejected. Reserved stat1/stat4 records canonical in either snapshot including case variants rejected by exact values; only new canonical absent-before records removed forcomparison. Everyremaining object exact, existingstats removal/modification forbidden, no SQLnormalization/broadinternal exclusions. Separate rawSchemaChanged/prohibitedSchemaChange/fixedallowedBookkeepingAdded report, config/identity/session exact plus ownednative/pin/cleanup/private0600snapshots unchanged. No statistics samples/contents export or physicalbytes/queryplan claim, no manual schema write. TDD RED0/4 -> focused10/10; initialTS7053 dynamic testkeys failures retained plus temporary incorrectly unchecked shellcheckpoint retained private/superseded; corrected typed tuple/const union, final actual22.23.2 SDK114/114 mixed164/164 build/types. No SDK/auth implementation/server/default/deps/repin/privilege/verbs/stage/commit/fixtures or signoff.",
     "historicalStorageParentChecks": "Historical source93345a16: mixed units125/125 on Node22/24, clean package checks Node22/24, check/diff pass. Real persistent auth1/1 and packed browser6/6 (data UI plus genuine password/localStorage reload on Chromium/Firefox/WebKit) passed with exact-source/setup/cleanup checks. Data/database/constraints refresh proc_ee08 and independent storage reviewer370c214b running. Refresh/live getUser/logout/events/default refresh still unsupported; G1/G7 open; no compatibility/signoff.",
     "parentPreviousDataChecks": "Historical source5c55be11: targeted auth parser privacy/import-graph regressions GREEN7/7 after preserved4pass/2fail and6pass/1fail REDs; mixed units114/114 on Node22/24, build/check/diff passed. Current clean package Node22/24 passed. Final-source proc_27fc passed: real memory-auth1/1,data6/6,database9/9,constraints6/6,packed data browsers3/3 Chromium/Firefox/WebKit; every source/setup/cleanup check passed and lock clear. Reviewer recheck2601f0f5 resolved both findings with no new issues; no maintainer signoff. Prior9fcb2e9f real auth1/1,data6/6,database9/9,constraints6/6,browsers3/3 and package22/24 passed source/setup/cleanup, now historical. Auth explicitly memory-only, no persistence/defaults/refresh/logout implemented; G1/G7 open; no compatibility/signoff.",
     "restart": [
-      "Paused at operator request; resume only on request and read pauseCheckpoint plus exact-source evidence",
-      "Next guarded logout, notifications/background/default lifecycle then complete shared/browser/security/coverage/CI gates; preserve G1/G7 failures and no inferred signoff"
+      "Read lastSession/todos-add-summary.json; preserve dirty main/current UIe570c562, frozen SDK/startup78ad127c and historical evidence. Three jobs LIVE for Mark, sole executor; do not restart/reset fixture, alter title UNIQUE or launch competing stacks",
+      "Mark can open https://aspire.tailb03e.ts.net:18443/ and inbox18444 from already-connected/allowed Mac/iPhone; signup once with fresh disposable address, real confirmation then explicit login. No public exposure/ACL/firewall/443/service/account changes",
+      "If stopping is requested, stop owned foreground Serve jobs proc_a651/proc_dc58 first, then send quit to proc_a84f and wait for guarded cleanup. Verify exact project/lock/routes gone; never reuse stale PIDs or reset global Serve",
+      "Complete broader shared/security/coverage/release gates; retain explicit unconfirmed native global logout, unresolved G1/G7 and signup null-user approval"
     ]
   },
   "maintainer": "burggraf",
@@ -91,7 +118,7 @@
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601"
       ],
       "missing": [
-        "Auth source split changes current source; previous verified tooling checkpoint retained as historical, parent fresh packed/fixture controls pending"
+        "Current standalone app summary and all prior failed/interrupted/correction evidence preserved separately; full shared/CI/coverage/release verification and maintainer signoff remain incomplete"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -923,6 +950,11 @@
       "title": "Signup/confirmation",
       "status": "in-progress",
       "evidence": [
+        "docs/evidence/todos-remote-browser-node22.json",
+        "docs/evidence/todos-remote-summary.json",
+        "docs/evidence/todos-standalone-sdk-auth-node22.json",
+        "docs/evidence/todos-standalone-browser-node22.json",
+        "docs/evidence/todos-standalone-summary.json",
         "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
         "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
         "docs/evidence/sdk-user-statistics-guard-red-node22.json",
@@ -975,6 +1007,11 @@
       "title": "Password login",
       "status": "in-progress",
       "evidence": [
+        "docs/evidence/todos-remote-browser-node22.json",
+        "docs/evidence/todos-remote-summary.json",
+        "docs/evidence/todos-standalone-sdk-auth-node22.json",
+        "docs/evidence/todos-standalone-browser-node22.json",
+        "docs/evidence/todos-standalone-summary.json",
         "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
         "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
         "docs/evidence/sdk-user-statistics-guard-red-node22.json",
@@ -1027,6 +1064,11 @@
       "title": "Session/persistence",
       "status": "in-progress",
       "evidence": [
+        "docs/evidence/todos-remote-browser-node22.json",
+        "docs/evidence/todos-remote-summary.json",
+        "docs/evidence/todos-standalone-sdk-refresh-node22.json",
+        "docs/evidence/todos-standalone-browser-node22.json",
+        "docs/evidence/todos-standalone-summary.json",
         "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
         "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
         "docs/evidence/sdk-user-statistics-guard-red-node22.json",
@@ -1079,6 +1121,9 @@
       "title": "Validated getUser",
       "status": "in-progress",
       "evidence": [
+        "docs/evidence/todos-standalone-sdk-auth-node22.json",
+        "docs/evidence/todos-standalone-browser-node22.json",
+        "docs/evidence/todos-standalone-summary.json",
         "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
         "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
         "docs/evidence/sdk-user-statistics-guard-red-node22.json",
@@ -1109,6 +1154,18 @@
       "title": "Refresh/auto-refresh",
       "status": "in-progress",
       "evidence": [
+        "docs/evidence/todos-remote-browser-node22.json",
+        "docs/evidence/todos-remote-unit-node22.json",
+        "docs/evidence/todos-standalone-sdk-refresh-node22.json",
+        "docs/evidence/todos-standalone-browser-node22.json",
+        "docs/evidence/todos-standalone-unit-node22.json",
+        "docs/evidence/sdk-auth-app-correction-unit-node22.json",
+        "docs/evidence/sdk-auth-app-correction-unit-node24.json",
+        "docs/evidence/sdk-auth-app-correction-browser-node22.json",
+        "docs/evidence/sdk-lifecycle-final-unit-node22.json",
+        "docs/evidence/sdk-lifecycle-final-unit-node24.json",
+        "docs/evidence/sdk-lifecycle-final-sdk-refresh-node22.json",
+        "docs/evidence/sdk-lifecycle-final-sdk-browser-node22.json",
         "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
         "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
         "docs/evidence/sdk-user-statistics-guard-red-node22.json",
@@ -1134,9 +1191,9 @@
         "docs/evidence/sdk-refresh-initial-all-node22.json"
       ],
       "missing": [
-        "Parent re-review exact comparator/native bookkeeping reporting then actual SDKauth2 and separately SDKrefresh3/nativeowner-cascade-audit proof; original failed liveuser attempts remainfailed, not relabelled",
-        "Parent actual24 and full22/24/browser/data/DB/constraints/package controls required, previousdc9 sourcecontrols historical after fixture guard change",
-        "Full reference/browser/security/coverage/CI/lifecycle/G1/G7/null-user/signoff incomplete"
+        "Full background/cross-tab/browser expiry/storage-fault matrix remains incomplete; focused unit, earlier-source short-TTL proof and current complete packed app flows do not replace it",
+        "Broader shared reference/security/fault/coverage/CI/release proof and maintainer signoff",
+        "G1/G7 and signup null-user compatibility approval remain unresolved; no global acknowledgement claim"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -1145,10 +1202,26 @@
     {
       "id": "L1-19",
       "title": "Logout scopes",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/todos-remote-browser-node22.json",
+        "docs/evidence/todos-remote-summary.json",
+        "docs/evidence/todos-standalone-sdk-auth-node22.json",
+        "docs/evidence/todos-standalone-browser-node22.json",
+        "docs/evidence/todos-standalone-summary.json",
+        "docs/evidence/sdk-auth-app-correction-unit-node22.json",
+        "docs/evidence/sdk-auth-app-correction-unit-node24.json",
+        "docs/evidence/sdk-auth-app-correction-browser-node22.json",
+        "docs/evidence/sdk-lifecycle-final-unit-node22.json",
+        "docs/evidence/sdk-lifecycle-final-unit-node24.json",
+        "docs/evidence/sdk-lifecycle-final-sdk-auth-node22.json",
+        "docs/evidence/sdk-lifecycle-final-sdk-refresh-node22.json",
+        "docs/evidence/sdk-lifecycle-final-sdk-browser-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Guarded local/default-global logout implemented; real exact-session revocation/reference scopes and native global uncertainty observed. G7 authenticated global acknowledgement remains unavailable, not fixed",
+        "Corrected packed local/global logout assertions now pass in six real app flows; original e02fc4f1 failures remain preserved, and broader hostile-transport/cross-tab/fault/coverage proof is incomplete",
+        "Full shared/security/fault/coverage/CI/release verification and maintainer signoff"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -1157,10 +1230,24 @@
     {
       "id": "L1-20",
       "title": "Auth notifications",
-      "status": "planned",
-      "evidence": [],
+      "status": "in-progress",
+      "evidence": [
+        "docs/evidence/todos-remote-unit-node22.json",
+        "docs/evidence/todos-standalone-sdk-auth-node22.json",
+        "docs/evidence/todos-standalone-sdk-refresh-node22.json",
+        "docs/evidence/todos-standalone-unit-node22.json",
+        "docs/evidence/sdk-auth-app-correction-unit-node22.json",
+        "docs/evidence/sdk-auth-app-correction-unit-node24.json",
+        "docs/evidence/sdk-auth-app-correction-browser-node22.json",
+        "docs/evidence/sdk-lifecycle-final-unit-node22.json",
+        "docs/evidence/sdk-lifecycle-final-unit-node24.json",
+        "docs/evidence/sdk-lifecycle-final-sdk-auth-node22.json",
+        "docs/evidence/sdk-lifecycle-final-sdk-refresh-node22.json",
+        "docs/evidence/sdk-lifecycle-final-sdk-browser-node22.json"
+      ],
       "missing": [
-        "All applicable test-plan families and maintainer signoff"
+        "Broader shared event ordering/resource/fault/coverage proof remains incomplete; implemented notifications and focused unit, earlier-source real renewal and current complete packed app flows are not full signoff",
+        "Full shared/browser/security/fault/coverage/CI/release verification and maintainer signoff"
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -1231,6 +1318,15 @@
       "title": "Package/docs/release",
       "status": "in-progress",
       "evidence": [
+        "docs/evidence/todos-redesign-summary.json",
+        "docs/evidence/todos-redesign-browser-node22.json",
+        "docs/evidence/todos-redesign-screenshots.json",
+        "docs/evidence/todos-remote-package-node22.json",
+        "docs/evidence/todos-remote-package-node24.json",
+        "docs/evidence/todos-remote-summary.json",
+        "docs/evidence/todos-standalone-package-node22.json",
+        "docs/evidence/todos-standalone-package-node24.json",
+        "docs/evidence/todos-standalone-summary.json",
         "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
         "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
         "docs/evidence/sdk-user-statistics-guard-red-node22.json",
@@ -1289,6 +1385,15 @@
       "title": "harness work is partially implemented/tested",
       "status": "in-progress",
       "evidence": [
+        "docs/evidence/todos-redesign-deployment.json",
+        "docs/evidence/todos-redesign-focused-unit-node22.json",
+        "docs/evidence/todos-remote-network.json",
+        "docs/evidence/todos-remote-readiness.json",
+        "docs/evidence/todos-remote-summary.json",
+        "docs/evidence/todos-standalone-launcher-node22.json",
+        "docs/evidence/todos-standalone-interactive-quit-node22.json",
+        "docs/evidence/todos-standalone-lifecycle-node22.json",
+        "docs/evidence/todos-standalone-summary.json",
         "docs/evidence/sdk-user-statistics-guard-checkpoint-node22.json",
         "docs/evidence/sdk-user-statistics-guard-mixed-node22.json",
         "docs/evidence/sdk-user-statistics-guard-red-node22.json",
@@ -1737,8 +1842,10 @@
     }
   ],
   "nextSteps": [
-    "Parent independent comparator implementation re-review + actual SDKauth2 then separatelySDKrefresh3, preserve main/cleanup/postconditions and source/runtime/setup/cleanup",
-    "Inspect reported rawSchemaChanged/prohibitedSchemaChange/allowednames; no raw schema unchanged or physical/queryplan sameness inference. Full22/24 controls then next lifecycle decision separately"
+    "User testing LIVE: read lastSession/todos-add-summary. Mark confirmed Chrome add works after hard refresh. Leave proc_a84f/proc_a651/proc_dc58 and owned lock intact. No reset/new signup/schema change or competing agents/stacks",
+    "No pending action solely for restored Chrome add. Exact original distinct-title rejection is unproven; if recurrence obtain only displayed HTTP/TASK code plus safe operation/browser/session-age details, never credentials/private titles. App18443/inbox18444 unchanged. Physical iPhone/acceptance and global-ack limitations remain",
+    "Only on Mark-requested downtime, stop owned proxies then quit launcher; require passed cleanup and exact owned resource/lock/route absence. Its original source-drift guard will report failed after approved UI edits: preserve diagnostic, do not confuse with cleanup failure or relabel green. Deployment manifest is UI provenance",
+    "Full shared/security/fault/accessibility/resource/coverage/actual CI/release, three clean candidates and maintainer signoff remain incomplete; G1/G7/null-user approval unchanged, no public deployment/commit/push/new credentials or waiver inferred"
   ],
   "lastContractVerification": {
     "date": "2026-10-03T13:42:43.569Z",
@@ -1832,6 +1939,189 @@
     "evidence": ["docs/evidence/phase-a-ci-reference-pagination-ledger-followup-stock-startup.json", "docs/evidence/phase-a-ci-reference-pagination-ledger-followup-summary.json"]
   },
   "lastSession": {
+    "scope": "Repeated-add diagnosis, safe mutation outcome codes, verified warm-cache UI import repair; original live fixture/schema/SDK/jobs unchanged",
+    "state": "verified-scoped-fixes-user-confirmed-Chrome-add-restored-original-cause-unproven",
+    "authorizedContinuation": { "scope": "User explicitly authorized full intended-tree review, commit and canonical push, then bounded live-safe MVP/CI readiness work", "gitPreflight": "main tracking origin/main at d7bd53253130171a405e2f306a444fb7b24aad5c; git fetch succeeded and divergence0/0", "checks": "Actual pinned Node22/24 each static/build,207 full units,4 clean packed-consumer checks; entire intended diff/untracked secret review passed; all40 intended Markdown files/517 relative links resolve within intended Git inventory, no ignored screenshot target", "evidence": ["docs/evidence/precommit-unit-node22.json", "docs/evidence/precommit-unit-node24.json", "docs/evidence/precommit-package-node22.json", "docs/evidence/precommit-package-node24.json", "docs/evidence/precommit-review.json"], "nextBoundedMilestone": "Prevent clean-checkout CI doc failures with regression-tested Git-inventory relative Markdown target validation. Existing dirty workflow already adds supported SDK/package/app jobs; do not duplicate them or hide monolithic research failures", "liveSafety": "Same original app/proxies/lock; no backend matrix/cleanup/reset/security/network/credential changes or package publication" },
+    "sourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
+    "originalLauncherAndFrozenSdkSourceSha256": "78ad127cc6d0be800f25745641207bf088ba686b199a9ba5d3185c1ffa79517d",
+    "runId": "1793540668685-32d6c1a05a9c",
+    "app": "https://aspire.tailb03e.ts.net:18443/sdk-data/index.html",
+    "inbox": "https://aspire.tailb03e.ts.net:18444/",
+    "summary": "docs/evidence/todos-add-summary.json",
+    "plan": "docs/plans/2026-11-01-todos-add-diagnosis.md",
+    "checks": "30 focused units/static/diff;3/3 real browser engines; native22 UI creates, exact21-task Next/Previous20/1/20/full-row invariants, own21-row cleanup/local logout200/storage-session removal/screenshots. Auth request JWT/owner/payload verified before/after reload/manual refresh. Background/request-expiry unit paths pass, not real current long-idle timing proof",
+    "userConfirmation": "Coordinator relayed Mark: it’s working now after Chrome CmdShiftR/retry. Original distinct-title rejection cause unproven; do not retroactively attribute to duplicate/expiry/cache or infer redesign/physical-device acceptance",
+    "fixes": "Confirmed rejection now shows controlled HTTP/TASK category rather than uncertain-write fiction; raw backend details never rendered. Verified warm reload used old app.js; content-addressed UI import map fixed actual warm-tab reload without changing frozen main/SDK/native bytes. No schema workaround or mutation replay",
+    "liveJobs": { "app": "proc_a84f", "nodeRunnerPid": 365086, "appServe": "proc_a651", "appServePid": 372131, "inboxServe": "proc_dc58", "inboxServePid": 372164 },
+    "evidence": ["docs/evidence/todos-add-summary.json", "docs/evidence/todos-add-deployment.json", "docs/evidence/todos-add-focused-unit-node22.json", "docs/evidence/todos-add-browser-node22.json", "docs/evidence/todos-add-native.json", "docs/evidence/todos-add-screenshots.json", "docs/evidence/todos-add-regressions-red.json"],
+    "preservation": "Original title-UNIQUE/schema/auth/access rules/data and same fixture/proxies retained. Only exact fresh generated test identity rows read/deleted, no Mark credential/title/mail read. App.js and generated index.html owned backups/hash manifest; no dependency/network/security/reset/commit/push",
+    "knownDiagnostic": "Original launcher startup78ad127c source guard will report failed on eventual approved shutdown after authorized hot edits; preserve it and assess guarded cleanup separately. Do not restart/reset merely for source provenance",
+    "missing": ["Original distinct-title failure exact cause", "Current live real long-idle/background expiry timing, physical Safari and redesign acceptance", "Full release matrix/signoff/G1/G7/null-user decisions; global logout acknowledgement remains explicit limitation"],
+    "restart": ["Leave app/proxies/owned lock running for Mark; no idle wait or new work solely for restored Chrome add", "If failure recurs request only displayed HTTP/TASK code, operation and safe browser/session age; reconcile before uncertain mutation retry", "No schema reset or title-UNIQUE removal; no credential inspection, competing fixture run or public/network change", "Future teardown only on user request with owned PID verification/guarded cleanup and source-drift diagnostic preserved"]
+  },
+  "previousRedesignSession": {
+    "scope": "Approved basic responsive task UI plus safe auth error messages, data-preserving hot update, same original private fixture/SDK/jobs",
+    "state": "live-ui-scoped-verification-passed-not-full-sdk-or-physical-device-certification",
+    "sourceSha256": "bd30be6d4179947c0699527b8debfcba9658be74c6f480631512e231e5ba1e9c",
+    "originalLauncherAndFrozenSdkSourceSha256": "78ad127cc6d0be800f25745641207bf088ba686b199a9ba5d3185c1ffa79517d",
+    "runId": "1793540668685-32d6c1a05a9c",
+    "app": "https://aspire.tailb03e.ts.net:18443/sdk-data/index.html",
+    "inbox": "https://aspire.tailb03e.ts.net:18444/",
+    "changes": "Simple light auth/tasks, Add/Enter, checkbox completion, focused inline edit/cancel, protected native-dialog delete, server filters/bounded20-row order/range, useful state/errors/account header. Counts omitted (actual frozen SDK select(*) only), no unreliable undo or replay. Old private characterizations retain diagnostics:true entrypoint/options. Safe status-aware auth messages do not claim which account state caused401",
+    "checks": "Static/diff and targeted16/16 units; real HTTPS browser3/3 Chromium/Firefox/mobile-configured WebKit no retry/skip/flaky; real confirmation/login/missing-unconfirmed-wrong401 vs confirmed200, own payload fields, add/edit/complete/filter/order/range/delete protection, complete owner-row foreign deny postconditions, reload/refresh, injected failed GET/recovery/logout/owned cleanup. Final1280x892 desktop and390x844 mobile PNGs inspected; baba/management coordinator inspected the mobile image, not Mark. Mark redesign acceptance/physical device verification remains pending. Earlier failed attempts preserved, no full historical matrix rerun",
+    "preservation": "Same Node runner365086/TrailBase PID and original proxies; no restart/reset/DB/admin/network/security commands. Three UI assets only, original rollback backup/hash manifest; main/SDK/auth/common/native modules unchanged. All generated test rows/session/context cleanup scoped to fresh own users; Mark data/accounts untouched",
+    "liveJobs": { "app": "proc_a84f", "nodeRunnerPid": 365086, "appServe": "proc_a651", "appServePid": 372131, "inboxServe": "proc_dc58", "inboxServePid": 372164 },
+    "evidence": ["docs/evidence/todos-redesign-summary.json", "docs/evidence/todos-redesign-deployment.json", "docs/evidence/todos-redesign-focused-unit-node22.json", "docs/evidence/todos-redesign-browser-node22.json", "docs/evidence/todos-redesign-screenshots.json"],
+    "knownDiagnostic": "Original running launcher keeps startup78ad127c; its unchanged guard will report failed on eventual shutdown because approved source edits occurred. Cleanup still executes and must separately pass. Preserve diagnostic; current deployment manifest verifies served UI, never restart/delete data to refresh startup hash",
+    "originalLoginReport": "Mark explicitly confirmed I can log in now before redesign. Own real account-state matrix401 is ambiguous by design; original account-specific reason unknown. No private credential investigation/reset or replacement account for Mark",
+    "handoff": "Same URL, normal refresh or Mac Cmd+Shift+R / iPhone reload/reopen if cached. Existing working account remains valid. Three live jobs/lock intentionally retained, management chat sole executor; no more optional polish/features or historical full matrix needed for this UI handoff",
+    "missing": ["Physical Mac/iPhone Safari and full accessibility/resource/fault/reference/coverage/CI/release not certified", "G1/G7/null-user signup approval and existing Vite advisory remain; no new audit/dependency upgrade", "No SDK compatibility expansion/network changes/commit/push/subagents"],
+    "restart": ["Leave original app/proxies/lock intact for Mark; no restart/reset/competing fixture runners", "Use deployment manifest/rollback only for verified owned UI assets, never restore DB or alter credentials", "Future teardown only on user request; original remote summary has process IDs/guarded cleanup, preserve source-drift diagnostic separately"]
+  },
+  "previousPrivateRemoteSetupSession": {
+    "scope": "Run12 user-approved private HTTPS todos18443/inbox18444, fixture-only canonical origin and root redirect; leave live for remote testing",
+    "state": "live-for-user-focused-checks-passed-not-full-sdk-release-or-physical-device-signoff",
+    "sourceSha256": "78ad127cc6d0be800f25745641207bf088ba686b199a9ba5d3185c1ffa79517d",
+    "runId": "1793540668685-32d6c1a05a9c",
+    "app": "https://aspire.tailb03e.ts.net:18443/",
+    "directApp": "https://aspire.tailb03e.ts.net:18443/sdk-data/index.html",
+    "inbox": "https://aspire.tailb03e.ts.net:18444/",
+    "changes": "--tailnet accepts only approved canonical site_url, no listener/bind/host override; default remains unchanged. Packed SDK browser fixture root HTML refresh/link to app, browser location.origin unchanged/no CORS relaxation. Real email links use remote HTTPS. Only two approved foreground Serve routes, original443/services/pins/security rules untouched; pre-existing cached certificate reused without new setup/privilege/credential prompts",
+    "checks": "Focused TDD2pass2fail before ->4/4; first static TS2345 narrow JS inferred type fixed with JSDoc and no assertion weakened. Actual Node22.23.2/24.21.0 static,199/199 units and4/4 clean-package checks each; HTTPS readiness9/9; real remote browsers3/3 zero retry/skip/flaky across Chromium/Firefox/mobile-configured WebKit. Both users SDK signup/login, real HTTPS email/approved redirects, secure context/root/assets/API/no privileged browser calls, persistence/manual refresh, CRUD and full owner-row deny postconditions plus scoped cleanup. Six original image tags/digests/loopback bindings, exactly approved foreground tailnet routes/no Funnel/no persistent Serve/443/cache cert verified",
+    "evidence": ["docs/evidence/todos-remote-summary.json", "docs/evidence/todos-remote-readiness.json", "docs/evidence/todos-remote-network.json", "docs/evidence/todos-remote-browser-node22.json", "docs/evidence/todos-remote-unit-node22.json", "docs/evidence/todos-remote-unit-node24.json", "docs/evidence/todos-remote-package-node22.json", "docs/evidence/todos-remote-package-node24.json"],
+    "live": {
+      "appJob": "proc_a84f", "nodeRunnerPid": 365086, "loopbackApp": "http://127.0.0.1:42231",
+      "appServeJob": "proc_a651", "appServePid": 372131, "appServeCommand": "tailscale serve --https=18443 http://127.0.0.1:42231",
+      "inboxServeJob": "proc_dc58", "inboxServePid": 372164, "inboxServeCommand": "tailscale serve --https=18444 http://127.0.0.1:38763",
+      "lock": "Intentionally held for this run; not stale and must not be bypassed",
+      "testCleanup": "Each test-owned row absent, refresh sessions locally revoked and browser contexts closed. Disposable auth accounts/mail remain until fixture shutdown; Mark data not touched. No global JWT invalidation claim"
+    },
+    "stop": "Prefer process stop proc_a651 then proc_dc58, process write proc_a84f input quit\\n and wait for guarded cleanup. Shell alternative ONLY after verifying recorded PIDs still match this run: kill -INT 372131 372164; kill -TERM 365086. Require launcher cleanup passed, exact project containers/network/volumes/lock absent and owned routes gone; no global reset/prune. After confirmed hard-killed dead runner only: npm run fixtures:cleanup -- 1793540668685-32d6c1a05a9c",
+    "missing": [
+      "Physical Mac/iPhone Safari and remote-device ACL/connectivity/usability await user. Existing tailnet policy only; no permission changes inferred",
+      "Default local/shared-reference/auth/short-TTL/data/database/constraints/lifecycle scopes not rerun on78ad127c because user prioritized live access and lock intentionally held. Schedule agreed downtime; old48608fc6 passes remain historical, no layer waived",
+      "Full hostile fault/SMTP/cross-tab/browser-expiry/accessibility/resource/coverage/actual CI/release/three clean candidates and maintainer signoff incomplete. G1/G7/null-user decisions unchanged; existing Vite advisory unchanged, no fresh audit"
+    ],
+    "restart": [
+      "Leave three approved live jobs running for Mark; source frozen and no second fixture or implicit cleanup",
+      "Open provided HTTPS root/inbox on already-connected/allowed tailnet devices; confirm real mail, then explicit SDK login. No new account settings/credentials/public exposure/443 changes",
+      "Preserve all historical failed/interrupted evidence. No commit/push/publish or dependency/security waiver inferred. Run remaining dedicated suites only after coordinated teardown"
+    ]
+  },
+  "previousStandaloneLocalSession": {
+    "scope": "Approved existing client-only auth todos standalone local entrypoint, usable launcher and two-SDK-authenticated-user ownership milestone",
+    "state": "focused-app-milestone-verified-not-full-sdk-release-or-signoff",
+    "sourceSha256": "48608fc68718fd860cb116e3300c5a05440248e604a5f9e280a0a34a970c5bca",
+    "implementation": "Same-origin main.js boots the packed compatibility client with public mapping/owned persisted auth; existing UI gets activity/error/recovery and row selection/edit/delete controls. Guarded launcher reuses isolated native/mail fixture, prints App/inbox, accepts only optional --check and pinned Node; no host/target or browser secret configuration. Historical manual mount tests use a private shell to avoid a second client",
+    "checks": "Pinned actual Node22.23.2/24.21.0: static,197/197 units and4/4 clean-package checks each; SDK build passed. Node22 browsers15/15 (three full two-SDK-authenticated-owner entrypoint cases, six shared TrailBase/reference auth-app and six existing data/storage cases), launcher check2/2, normal interactive startup/stdin quit2/2,auth3/3,shortTTLrefresh4/4,data6/6,DB9/9,constraints6/6,teardown-fault1/1. Every started verification job exited0; all13 green reports exact-source. No SDK/dependency/server/access-rule/pin change in this milestone",
+    "postconditions": "Complete A/B rows unchanged after denied foreign reads/update/delete/spoof/reassignment; real confirmation/password login, UI reload/manual refresh/offline recovery and local/global semantics observed. All nine current-source real projects have no remaining containers/network/volume; shared fixture lock absent; private diagnostics retained and no app server kept running",
+    "run": "Follow examples/todos/README.md; from root on pinned Node/local Docker run npm run example:todos. Open printed loopback App URL and local inbox; signup once/real link/explicit login, separate contexts for A/B. Quit or Ctrl-C deletes disposable server accounts/data. Actual interactive smoke used quit; no full signal matrix claim",
+    "evidence": [
+      "docs/evidence/todos-standalone-summary.json",
+      "docs/evidence/todos-standalone-unit-node22.json",
+      "docs/evidence/todos-standalone-unit-node24.json",
+      "docs/evidence/todos-standalone-package-node22.json",
+      "docs/evidence/todos-standalone-package-node24.json",
+      "docs/evidence/todos-standalone-browser-node22.json",
+      "docs/evidence/todos-standalone-launcher-node22.json",
+      "docs/evidence/todos-standalone-interactive-quit-node22.json",
+      "docs/evidence/todos-standalone-sdk-auth-node22.json",
+      "docs/evidence/todos-standalone-sdk-refresh-node22.json",
+      "docs/evidence/todos-standalone-sdk-data-node22.json",
+      "docs/evidence/todos-standalone-database-node22.json",
+      "docs/evidence/todos-standalone-constraints-node22.json",
+      "docs/evidence/todos-standalone-lifecycle-node22.json",
+      "docs/evidence/todos-standalone-red-browser-node22.json",
+      "docs/evidence/todos-standalone-tdd.json"
+    ],
+    "missing": [
+      "Full contract/security/E2E/package/all commands each freshly observed exit1 for explicitly unimplemented full release suites, not passing focused replacements",
+      "Full fault/SMTP/cross-tab/browser-expiry/accessibility/100-resource/coverage/proxy/TLS/WAN corpus, three clean full candidates, actual new-source CI and maintainer signoff remain incomplete; no layer waived",
+      "G1 duplicate-pending/SMTP and signup null-user compatibility approval plus G7 authenticated global revocation acknowledgement remain unresolved; no workaround/backend fix/exception inferred",
+      "Existing dev-transitive Vite advisory unchanged; no new audit or dependency update. Local proof Linuxx64, no new macOS/other-host verification"
+    ],
+    "decision": "No new decision needed to run this approved isolated local demo. Persistent/deployed/multi-machine services, external SMTP/credentials, wider APIs and policy changes require explicit approval; compatibility/release signoff still requires maintainer decisions",
+    "restart": [
+      "Read current-source summary and original preserved failed/interrupted evidence; no current orphan cleanup or ongoing app process is expected",
+      "Do not infer commit, push, public deployment/publication, ongoing credentials or dependency/security waiver from this app milestone",
+      "Any changed source must obtain fresh applicable evidence; do not relabel prior passes or waive G1/G7/full release gates"
+    ]
+  },
+  "previousAuthAppCorrectionSession": {
+    "scope": "User-requested bounded authenticated browser-test and owned-row cleanup corrections with affected checks",
+    "state": "bounded-correction-verified-not-full-sdk-signoff",
+    "sourceSha256": "9ec4a20a7d1e6421fd36b041285b5e292bc107fb9eed0dca50b528e74d9bde2e",
+    "previousSourceSha256": "e02fc4f13cadd119e4e86cc0a7f1228d7a3e1952315efc0fd4517f49ef664af3",
+    "changes": "Only executable change is tests/sdk-browser/auth-app.spec.ts: refill required title after reload, exact-ID read-before-delete cleanup with explicit absent-row exercise/final absence/error assertions, assert cleanup local logout. No SDK, example implementation, fixture, dependency, server or pin changes in this correction",
+    "checks": "Actual Node22.23.2 and24.21.0: check,195/195 units and4/4 clean-package checks each; SDK build passed. Node22 packed browsers12/12 including six full auth-app flows and existing six data/storage flows across Chromium/Firefox/WebKit; injected-teardown-fault1/1. Both managed verification jobs exited0. Reports independently match current source/runtime/setup/cleanup and original six exact ECR pins/digests/loopback bindings",
+    "browserRegression": "Original e02fc4f1 failed6/6 new app cases at second create; corrected flows now reach and pass local/global logout assertions. Native global logout still explicitly reports unconfirmed acknowledgement; reference succeeds. Same cleanup function tested on already-absent and recreated-present rows; no suppressed backend errors",
+    "cleanup": "Both fresh projects have no owned containers/network/volumes; shared fixture lock absent. No known remaining test jobs; completed job notifications observed. Original recovered run diagnostics remain retained",
+    "provenance": "Previous five auth/refresh/data/database/constraints reports belong to e02fc4f1 and were not rerun or relabelled current-source proof. Interrupted attempt and failed browser rerun retained separately; passing corrected runs use distinct IDs and source9ec4a20a",
+    "evidence": [
+      "docs/evidence/sdk-auth-app-correction-summary.json",
+      "docs/evidence/sdk-auth-app-correction-unit-node22.json",
+      "docs/evidence/sdk-auth-app-correction-unit-node24.json",
+      "docs/evidence/sdk-auth-app-correction-package-node22.json",
+      "docs/evidence/sdk-auth-app-correction-package-node24.json",
+      "docs/evidence/sdk-auth-app-correction-browser-node22.json",
+      "docs/evidence/sdk-auth-app-correction-cleanup-node22.json",
+      "docs/evidence/sdk-lifecycle-final-sdk-browser-node22.json",
+      "docs/evidence/sdk-lifecycle-browser-interruption-node22.json",
+      "docs/evidence/sdk-lifecycle-browser-recovery-node22.json"
+    ],
+    "missing": [
+      "Existing auth todos app still needs standalone local bootstrap and two users obtaining browser sessions through our SDK with owner-isolation postconditions; no duplicate example started here",
+      "Full shared/security/E2E/package/all release gates, broad fault/coverage and actual new-source Linux CI verification remain incomplete; not rerun during this bounded correction",
+      "G1/signup null-user approval and G7 authenticated global acknowledgement unresolved; no backend fix/workaround/compatibility exception/signoff inferred",
+      "Previously observed locked dev-transitive Vite advisory remains; no dependency changes or fresh audit in this correction"
+    ],
+    "authorization": "User explicitly requested these test/cleanup corrections and affected reruns. No public deployment, production service changes, ongoing credentials, dependency waiver, commit or publication inferred",
+    "restart": [
+      "Read current-source correction summary and preserve original failed/interrupted evidence; no orphan cleanup or duplicate test services needed as of final owned-resource check",
+      "Continue the previously requested existing client-only auth todos example milestone only within approved isolated local scope",
+      "Keep full compatibility/release/maintainer signoff distinct from this passing bounded correction"
+    ]
+  },
+  "previousLifecycleImplementationSession": {
+    "scope": "CRUD/password-auth lifecycle implementation plus explicitly approved interrupted-fixture recovery and missing browser/teardown rerun",
+    "state": "implemented-with-passing-focused-library-checks-and-six-failing-auth-app-browser-cases",
+    "sourceSha256": "e02fc4f13cadd119e4e86cc0a7f1228d7a3e1952315efc0fd4517f49ef664af3",
+    "implemented": "Guarded local/default-global signOut; stale-login exact-session cleanup; four auth notifications; opt-in auth defaults and owned timer/focus/visibility background refresh; existing todos auth UI; real/reference/packed tests and focused CI job",
+    "checks": "195/195 units and four clean-package checks on each actual Node22.23.2/24.21.0. Node22 auth3/3, refresh4/4, data6/6, database9/9, constraints6/6 and injected-teardown1/1 pass. Browser12 total:6 existing data/storage pass,6 new auth-app cases fail on both backends/all three engines. All completed real report hashes/runtime/setup/cleanup verified. Final check/diff/progress pending after this ledger edit.",
+    "browserFailure": "All new cases fail at auth-app.spec.ts:53 second Add todo: page reload reset required New title, test never refills it. TrailBase cleanup also attempts delete of an already absent row and gets403. Diagnosis only, no test/implementation fix yet; later local/global logout assertions unexecuted",
+    "recovery": "Original proc_2086 tracking lost on provider restart; OS metadata showed matrix/runner/native PIDs absent. Explicitly approved exact six-service/image/digest/loopback/network-label/owner/lock preflight then guarded cleanup.mjs succeeded. Original diagnostics retained; fresh missing-scope batch exited1 for genuine browser failures. Exact old/new project containers/network/volumes and fixture lock absent afterward",
+    "exampleCoverage": "Reuse mountAuthTodos in examples/todos/app.js: client-only SDK auth+CRUD UI; authored packed test has genuine signup/mail/login/reload/manual refresh/local/global logout but currently fails before logout. Existing data browser test injects fixture-obtained auth. Standalone local bootstrap and two users obtaining browser sessions through our SDK remain needed",
+    "missing": [
+      "Correct test-flow/absent-row cleanup and obtain passing complete packed auth-app evidence on all three engines",
+      "Standalone local example bootstrap and two SDK-authenticated users with isolation postconditions after stable library checkpoint",
+      "Full contract/security/E2E/package/all release commands remain intentionally incomplete and each observed exit1; broad fault/coverage/Linux CI proof and maintainer signoff absent",
+      "G1/signup null-user compatibility approval and G7 authenticated global revocation acknowledgement unresolved; global logout returns explicit uncertainty",
+      "Existing locked dev-transitive Vite has a high-severity audit aggregate; production-only audit reported zero. No dependency-policy waiver or version change"
+    ],
+    "evidence": [
+      "docs/evidence/sdk-lifecycle-final-unit-node22.json",
+      "docs/evidence/sdk-lifecycle-final-unit-node24.json",
+      "docs/evidence/sdk-lifecycle-final-package-node22.json",
+      "docs/evidence/sdk-lifecycle-final-package-node24.json",
+      "docs/evidence/sdk-lifecycle-final-sdk-auth-node22.json",
+      "docs/evidence/sdk-lifecycle-final-sdk-refresh-node22.json",
+      "docs/evidence/sdk-lifecycle-final-sdk-data-node22.json",
+      "docs/evidence/sdk-lifecycle-final-database-node22.json",
+      "docs/evidence/sdk-lifecycle-final-constraints-node22.json",
+      "docs/evidence/sdk-lifecycle-final-sdk-browser-node22.json",
+      "docs/evidence/sdk-lifecycle-final-lifecycle-node22.json",
+      "docs/evidence/sdk-lifecycle-browser-interruption-node22.json",
+      "docs/evidence/sdk-lifecycle-browser-recovery-node22.json",
+      "docs/evidence/sdk-lifecycle-tdd-attempts.json"
+    ],
+    "authorization": "Supervised continuation; Mark explicitly approved exact orphan fixture recovery and missing browser/cleanup rerun. No deployment, production service changes, ongoing credentials, dependency waivers or new publication permission",
+    "restart": [
+      "Do not start duplicate services; no recovery/rerun resources remain as of final owned check",
+      "Preserve exact-source passes, original interrupted attempt, genuine failed browser report and its unexecuted assertions separately",
+      "Use normal approval flow for bounded corrections and applicable reruns, then finish existing real client-only SDK example; do not infer compatibility/signoff"
+    ]
+  },
+  "previousPausedImplementationSession": {
     "parentOwnCredentialFix": {
       "sourceSha256": "29a6845a6a0d928df07310ad617ea73e439b58ed3173edcd9acc71afa9f80e2d",
       "checks": "Own email/password and login auth_token/refresh_token boundary verified and fixed test-first: RED0/4 thenGREEN4/4. Mixed168/168 actualNode22.23.2/24.21.0, build/check/diff and cleanpackages22/24 pass. No other SDK/helper/lifecycle behavior changed. Current immutable proc_8ffa passed auth2/2,refresh3/3,browser6/6,data6/6,DB9/9,constraints6/6 with every actualNode22/source/setup/cleanup check passed, lock clear. Bounded reviewerf315d2fd resolved ownfieldfinding, no issues. Operator requested pause; no next slice started. Earlier42c auth2/refresh3/browser6/data6/DB9/constraints6 all source/setup/cleanup passed; historical after fix.",

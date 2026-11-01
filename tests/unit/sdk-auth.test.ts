@@ -46,11 +46,12 @@ it('L1-15/U15 malformed credential/JWT/claim/MFA replies never install synthetic
   const sdk = client(async () => Response.json({ mfa_token: 'private-challenge' }, { status: 403 }));
   const result = await sdk.auth.signInWithPassword(credentials); expect(result.error?.status).toBe(403); expect(result.error?.name).toBe('AuthMfaUnsupportedError'); expect(result.error?.message).not.toContain('private-challenge');
 });
-it('L1-14/U14 L1-15/U15 unsupported inputs/settings/deferred lifecycle methods are request-free', async () => {
+it('L1-14/U14 L1-15/U15 unsupported inputs/settings/overloads are request-free', async () => {
   let calls = 0; const fetch = async () => { calls++; return Response.json(reply()); }; const sdk = client(fetch);
   for (const method of [sdk.auth.signUp, sdk.auth.signInWithPassword]) for (const input of [{ ...credentials, options: {} }, { phone: 'placeholder', password: 'placeholder' }, { ...credentials, email: '' }, Object.create(credentials)]) expect(() => Reflect.apply(method, sdk.auth, [input])).toThrow();
-  for (const invoke of [() => Reflect.apply(sdk.auth.getSession, sdk.auth, ['jwt']), () => Reflect.apply(sdk.auth.getUser, sdk.auth, ['jwt']), () => Reflect.apply(sdk.auth.refreshSession, sdk.auth, [{}]), () => sdk.auth.signOut(), () => sdk.auth.onAuthStateChange(() => {})]) expect(invoke).toThrowError(expect.objectContaining({ name: 'UnsupportedFeatureError' }));
-  for (const auth of [{}, { persistSession: true }, { persistSession: false, autoRefreshToken: true }, { ...memory, future: true }]) expect(() => createClient('http://localhost:4000', undefined, { trailbase: mapping, auth, global: { fetch } })).toThrowError(expect.objectContaining({ name: 'UnsupportedFeatureError' }));
+  for (const invoke of [() => Reflect.apply(sdk.auth.getSession, sdk.auth, ['jwt']), () => Reflect.apply(sdk.auth.getUser, sdk.auth, ['jwt']), () => Reflect.apply(sdk.auth.refreshSession, sdk.auth, [{}])]) expect(invoke).toThrowError(expect.objectContaining({ name: 'UnsupportedFeatureError' }));
+  expect(() => createClient('http://localhost:4000', undefined, { trailbase: mapping, auth: { ...memory, ...{ future: true } }, global: { fetch } })).toThrowError(expect.objectContaining({ name: 'UnsupportedFeatureError' }));
+  for (const auth of [{ persistSession: 'yes' }, { autoRefreshToken: 1 }]) expect(() => Reflect.apply(createClient, undefined, ['http://localhost:4000', undefined, { trailbase: mapping, auth, global: { fetch } }])).toThrow(TypeError);
   const tokenless = createClient('http://localhost:4000', undefined, { trailbase: mapping, global: { fetch } }); expect(() => tokenless.auth.signInWithPassword(credentials)).toThrowError(expect.objectContaining({ name: 'UnsupportedFeatureError' })); expect(calls).toBe(0);
 });
 it('L1-16/U16 memory state never crosses client instances or leaks to auth requests', async () => {

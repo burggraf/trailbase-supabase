@@ -1,0 +1,54 @@
+{
+  "scope": "Owned existing private HTTPS app/inbox; real two-SDK-authenticated-owner email/session/CRUD checks, NOT physical iPhone/full release signoff",
+  "status": "passed",
+  "node": "v22.23.2",
+  "sourceSha256": "78ad127cc6d0be800f25745641207bf088ba686b199a9ba5d3185c1ffa79517d",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "origin": "https://aspire.tailb03e.ts.net:18443",
+  "inbox": "https://aspire.tailb03e.ts.net:18444",
+  "finishedAt": "2026-11-01T13:48:08.704Z",
+  "tests": [
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS root/assets, real email, SDK sessions, two-owner CRUD and cleanup",
+      "project": "chromium",
+      "status": "expected",
+      "attemptStatuses": [
+        "passed"
+      ]
+    },
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS root/assets, real email, SDK sessions, two-owner CRUD and cleanup",
+      "project": "firefox",
+      "status": "expected",
+      "attemptStatuses": [
+        "passed"
+      ]
+    },
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS root/assets, real email, SDK sessions, two-owner CRUD and cleanup",
+      "project": "webkit",
+      "status": "expected",
+      "attemptStatuses": [
+        "passed"
+      ]
+    }
+  ],
+  "stats": {
+    "startTime": "2026-11-01T13:47:51.592Z",
+    "duration": 16958.98,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cleanup": "Per-test owned rows absent and refresh sessions locally revoked; contexts closed; app/proxies intentionally running",
+  "webkitConfiguration": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "isMobile": true,
+    "hasTouch": true,
+    "proof": "playwright.todos-remote.config.ts; installed Playwright runBeforeCreateBrowserContext merges project options into explicit browser.newContext calls; not physical iPhone/Safari proof"
+  }
+}

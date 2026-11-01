@@ -1,0 +1,54 @@
+{
+  "scope": "Recovery inspection after provider restart; not a browser assertion result or completed matrix",
+  "status": "incomplete",
+  "sourceSha256": "e02fc4f13cadd119e4e86cc0a7f1228d7a3e1952315efc0fd4517f49ef664af3",
+  "matrixTracking": "proc_2086 no longer present in restarted process registry; registry absence alone was not accepted as termination proof",
+  "interruptedSuite": "sdk-browser",
+  "runId": "1793497175625-9482f0b93fe2",
+  "recordedRunnerPid": 244559,
+  "recordedTrailPid": 249662,
+  "osMetadataObservations": {
+    "originalMatrixPid210385Present": false,
+    "recordedRunnerPidPresent": false,
+    "recordedTrailPidPresent": false,
+    "scope": "Current OS process namespace; process status metadata only, no environment or unrelated command contents"
+  },
+  "preservedFiles": {
+    "ownerRecordPresent": true,
+    "contextPresent": true,
+    "packedBrowserPreparationLogPresent": true,
+    "trailLogPresent": true,
+    "browserAssertionReportPresent": false,
+    "browserSanitizedFinalReportPresent": false,
+    "stopLogPresent": false,
+    "contextSetupStage": "native-health",
+    "contextStageCaveat": "Harness writes context.json after native readiness/ownership checks and before image verification; this snapshot does not prove the final setup stage or a setup failure"
+  },
+  "remainingOwnedResources": {
+    "containersRunning": 6,
+    "networkPresent": true,
+    "databaseVolumePresent": true,
+    "lockPresent": true,
+    "cleanup": "not-run-during-read-only-recovery"
+  },
+  "completedCurrentSourceRealScopes": {
+    "sdk-auth": { "passed": 3, "failed": 0, "setup": "ready", "cleanup": "passed" },
+    "sdk-refresh": { "passed": 4, "failed": 0, "setup": "ready", "cleanup": "passed" },
+    "sdk-data": { "passed": 6, "failed": 0, "setup": "ready", "cleanup": "passed" },
+    "database": { "passed": 9, "failed": 0, "setup": "ready", "cleanup": "passed" },
+    "constraints": { "passed": 6, "failed": 0, "setup": "ready", "cleanup": "passed" }
+  },
+  "runtime": "v22.23.2 for completed real scopes; no completed interrupted-browser runtime report",
+  "conclusions": [
+    "Provider interruption/lost tracking is not an assertion failure or a passing test result.",
+    "No browser test counts or outcomes are inferred from setup logs or missing reports.",
+    "The following lifecycle/cleanup fault scope has no current-source result and is not counted as executed.",
+    "No duplicate test jobs, cleanup, dependency changes, deployment or server changes were started during this inspection.",
+    "G1/G7 and unconfirmed native global logout semantics remain unresolved; no compatibility or signoff inference."
+  ],
+  "nextSteps": [
+    "Request approval for exact owned recovery: npm run fixtures:cleanup -- 1793497175625-9482f0b93fe2; preserve private logs and re-check recorded PID/resource ownership before mutation.",
+    "After confirmed cleanup, rerun only the interrupted packed browser scope and missing lifecycle scope; retain this original attempt as incomplete, never relabel it passing.",
+    "Finish the existing authenticated todos app after a stable verified library checkpoint: standalone local bootstrap and two SDK-authenticated users with ownership postconditions, not a duplicate example."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "scope": "Final desktop/mobile/sign-in screenshot artifacts, not physical iPhone proof",
+  "status": "passed",
+  "sourceSha256": "bd30be6d4179947c0699527b8debfcba9658be74c6f480631512e231e5ba1e9c",
+  "screenshots": [
+    {
+      "path": "artifacts/todos-ui/desktop.png",
+      "width": 1280,
+      "height": 892,
+      "sha256": "fbe1b790334898bfd723b03691b27a9213e18ac767d18d35fb2a0d7557f61931",
+      "content": "Actual final rendered UI using disposable own test accounts/tasks only"
+    },
+    {
+      "path": "artifacts/todos-ui/mobile.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "007b3a3419d68f09153b5615695259f123637aca7a5477eb5d0a9b17136430a5",
+      "content": "Actual final rendered UI using disposable own test accounts/tasks only"
+    },
+    {
+      "path": "artifacts/todos-ui/sign-in.png",
+      "width": 1280,
+      "height": 853,
+      "sha256": "1b1758d492b586a43b0438277ae6947fcd4ab1120b80096757af25e7d8cbf12e",
+      "content": "Actual final rendered UI using disposable own test accounts/tasks only"
+    }
+  ]
+}

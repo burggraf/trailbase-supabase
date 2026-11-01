@@ -1,0 +1,72 @@
+{
+  "scope": "Focused task UI/auth errors/launcher/private query regression; not full SDK certification",
+  "status": "passed",
+  "node": "v22.23.2",
+  "sourceSha256": "bd30be6d4179947c0699527b8debfcba9658be74c6f480631512e231e5ba1e9c",
+  "tests": [
+    {
+      "name": "L1-14–20/E02–08 auth example mounts through the same module as the existing data application",
+      "status": "passed"
+    },
+    {
+      "name": "L1-14–20/E08 login 401 gives actionable guidance without claiming a specific account state",
+      "status": "passed"
+    },
+    {
+      "name": "L1-14–20/E08 auth status survives plain SDK errors and remains operation-specific",
+      "status": "passed"
+    },
+    {
+      "name": "L1-19/E08 explicit global logout uncertainty is retained, never changed into success",
+      "status": "passed"
+    },
+    {
+      "name": "L1-14–20/E08 unexpected auth failures never render backend messages, URLs, details or credentials",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 example routes all six operators and exact title/boolean scalars without coercing text",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 browser preparation must not statically import its active runner entrypoint",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/E13 packed browser import map guard accepts only complete standalone native graph",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 L1-11/E05 example query builds scalar filter, stable order and inclusive caller page",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 S02 example rejects unsupported filter syntax and boolean coercion",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/E01 standalone todos has an executable browser entrypoint, not only a test mount",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/E01 SDK fixture root lands on the standalone app without adopting URL auth",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/S10 approved tailnet mode changes only the fixture canonical origin, never listeners",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/S10 local todos launcher rejects target/binding options and unpinned runtimes",
+      "status": "passed"
+    },
+    {
+      "name": "L1-05–13/E04 UI uses only supported select(*), bounded server pagination and completion filters",
+      "status": "passed"
+    },
+    {
+      "name": "L1-05–13/E08 UI invalid bounds/filters and failed reads cannot produce fabricated success",
+      "status": "passed"
+    }
+  ]
+}

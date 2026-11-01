@@ -1,0 +1,40 @@
+{
+  "scope": "Before UI fix: current existing live private HTTPS real SDK signup/email/login/CRUD baseline; not Mark account diagnosis",
+  "status": "passed",
+  "sourceSha256": "78ad127cc6d0be800f25745641207bf088ba686b199a9ba5d3185c1ffa79517d",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "stats": {
+    "startTime": "2026-11-01T14:07:36.162Z",
+    "duration": 17246.888000000003,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS root/assets, real email, SDK sessions, two-owner CRUD and cleanup",
+      "project": "chromium",
+      "status": "expected",
+      "attemptStatuses": [
+        "passed"
+      ]
+    },
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS root/assets, real email, SDK sessions, two-owner CRUD and cleanup",
+      "project": "firefox",
+      "status": "expected",
+      "attemptStatuses": [
+        "passed"
+      ]
+    },
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS root/assets, real email, SDK sessions, two-owner CRUD and cleanup",
+      "project": "webkit",
+      "status": "expected",
+      "attemptStatuses": [
+        "passed"
+      ]
+    }
+  ]
+}

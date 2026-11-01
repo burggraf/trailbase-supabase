@@ -1,0 +1,31 @@
+import { expect, it } from 'vitest';
+import * as app from '../../examples/todos/app.js';
+
+it('L1-14–20/E02–08 auth example mounts through the same module as the existing data application', () => {
+  expect(Reflect.get(app, 'mountAuthTodos')).toBeTypeOf('function');
+});
+
+it('L1-14–20/E08 login 401 gives actionable guidance without claiming a specific account state', () => {
+  const message = Reflect.get(app, 'authErrorMessage');
+  expect(message({ name: 'FetchError', status: 401, message: 'FetchError(401, , https://private.example.test/api/auth/v1/login)' }, 'login')).toBe('Sign-in rejected (HTTP 401). Check the email and password and confirm the signup email in the test inbox. Accounts from other apps or earlier disposable runs are not available here.');
+});
+
+it('L1-14–20/E08 auth status survives plain SDK errors and remains operation-specific', () => {
+  const message = Reflect.get(app, 'authErrorMessage');
+  for (const action of ['refresh', 'validate']) expect(message({ status: 401 }, action)).toBe('Your session was rejected (HTTP 401). Sign in again.');
+  expect(message({ status: 429 }, 'login')).toBe('Too many authentication requests (HTTP 429). Wait before retrying; do not repeatedly submit sign-up.');
+  expect(message({ status: 503 }, 'login')).toBe('The authentication service could not complete the request (HTTP 503). Try again later; do not repeatedly submit sign-up.');
+});
+
+it('L1-19/E08 explicit global logout uncertainty is retained, never changed into success', () => {
+  expect(Reflect.get(app, 'authErrorMessage')({ name: 'AuthGlobalSignOutUnconfirmedError', message: 'private diagnostic' }, 'global')).toBe('Global sign-out could not be authenticated. Local state was cleared, but server-wide revocation remains unconfirmed.');
+});
+
+it('L1-14–20/E08 unexpected auth failures never render backend messages, URLs, details or credentials', () => {
+  const message = Reflect.get(app, 'authErrorMessage');
+  for (const failure of [new TypeError('private-canary'), 'private-canary', null, { name: 'FetchError', message: 'FetchError(401, private-canary, https://private.example.test/?token=private-canary)', details: 'private-canary', hint: 'private-canary' }]) {
+    expect(message(failure, 'login')).toBe('Authentication could not be completed. Check your connection and Tailscale, then try again. If it persists, report the operation and HTTP status without sharing credentials.');
+  }
+  expect(message({ status: 403, message: 'private-canary' }, 'signup')).toBe('Authentication request was rejected (HTTP 403). Check the app requirements and test inbox. If signing up, do not repeatedly register a pending address.');
+  for (const status of ['401', 401.5, -1, 0, 600, Infinity, NaN]) expect(message({ status }, 'login')).not.toContain('(HTTP');
+});

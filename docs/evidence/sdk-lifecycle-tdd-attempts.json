@@ -1,0 +1,279 @@
+{
+  "scope": "Preserved intermediate test-first attempts; no final-source or feature verification claim",
+  "status": "recorded",
+  "phases": {
+    "logoutRed": {
+      "passed": 1,
+      "failed": 9,
+      "tests": [
+        {
+          "name": "L1-19/U19/S07 local signOut clears owned memory/storage and sends captured refresh only once",
+          "status": "failed"
+        },
+        {
+          "name": "L1-19/U19/S01 default global never follows or accepts a redirect/health response as authenticated acknowledgement",
+          "status": "failed"
+        },
+        {
+          "name": "L1-19/U19 unsupported scopes/options/arity reject before invalidating a session or dispatching",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/U19/S07 local transport/HTTP/unexpected success/redirect failures remain observable after local clearing",
+          "status": "failed"
+        },
+        {
+          "name": "L1-19/S08 held hydration cannot restore a signed-out session and still revokes its captured credential",
+          "status": "failed"
+        },
+        {
+          "name": "L1-19/S08 pending login is invalidated at signOut invocation; only discarded new session is cleaned",
+          "status": "failed"
+        },
+        {
+          "name": "L1-19/S08 held remote logout completion cannot clear a newer successful login",
+          "status": "failed"
+        },
+        {
+          "name": "L1-19/S08 late refresh and live status never revive logout or emit a data request",
+          "status": "failed"
+        },
+        {
+          "name": "L1-19/S07 removal failure is sanitized and fail-closed even when remote revocation succeeds",
+          "status": "failed"
+        },
+        {
+          "name": "L1-19/S08 stale login cleanup failure is observable without overwriting a newer session",
+          "status": "failed"
+        }
+      ]
+    },
+    "logoutGreen": {
+      "passed": 10,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "L1-19/U19/S07 local signOut clears owned memory/storage and sends captured refresh only once",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/U19/S01 default global never follows or accepts a redirect/health response as authenticated acknowledgement",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/U19 unsupported scopes/options/arity reject before invalidating a session or dispatching",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/U19/S07 local transport/HTTP/unexpected success/redirect failures remain observable after local clearing",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 held hydration cannot restore a signed-out session and still revokes its captured credential",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 pending login is invalidated at signOut invocation; only discarded new session is cleaned",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 held remote logout completion cannot clear a newer successful login",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 late refresh and live status never revive logout or emit a data request",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S07 removal failure is sanitized and fail-closed even when remote revocation succeeds",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 stale login cleanup failure is observable without overwriting a newer session",
+          "status": "passed"
+        }
+      ]
+    },
+    "eventsRed": {
+      "passed": 0,
+      "failed": 6,
+      "tests": [
+        {
+          "name": "L1-20/U20 initial/login/refresh/logout notifications are ordered, cloned and reentrant without deadlock",
+          "status": "failed"
+        },
+        {
+          "name": "L1-20/S08 late hydration never emits recovered A after newer login B",
+          "status": "failed"
+        },
+        {
+          "name": "L1-20/U20 callback throws/rejections and snapshot mutation cannot affect independent listeners or auth state",
+          "status": "failed"
+        },
+        {
+          "name": "L1-20/U20 unsubscribe before initialization suppresses all late callbacks and invalid registration has no side effects",
+          "status": "failed"
+        },
+        {
+          "name": "L1-20/S08 failed/stale login and failed refresh never emit successful state transitions",
+          "status": "failed"
+        },
+        {
+          "name": "L1-20/U20 100 listener lifecycles leave no retired callbacks receiving later transitions",
+          "status": "failed"
+        }
+      ]
+    },
+    "lifecycleGreen": {
+      "passed": 19,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "L1-20/U20 initial/login/refresh/logout notifications are ordered, cloned and reentrant without deadlock",
+          "status": "passed"
+        },
+        {
+          "name": "L1-20/S08 late hydration never emits recovered A after newer login B",
+          "status": "passed"
+        },
+        {
+          "name": "L1-20/U20 callback throws/rejections and snapshot mutation cannot affect independent listeners or auth state",
+          "status": "passed"
+        },
+        {
+          "name": "L1-20/U20 unsubscribe before initialization suppresses all late callbacks and invalid registration has no side effects",
+          "status": "passed"
+        },
+        {
+          "name": "L1-20/S08 failed/stale login and failed refresh never emit successful state transitions",
+          "status": "passed"
+        },
+        {
+          "name": "L1-20/U20 100 listener lifecycles leave no retired callbacks receiving later transitions",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/U19/S07 local signOut clears owned memory/storage and sends captured refresh only once",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/U19/S01 default global never follows or accepts a redirect/health response as authenticated acknowledgement",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/U19 unsupported scopes/options/arity reject before invalidating a session or dispatching",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/U19/S07 local transport/HTTP/unexpected success/redirect failures remain observable after local clearing",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 held hydration cannot restore a signed-out session and still revokes its captured credential",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 pending login is invalidated at signOut invocation; only discarded new session is cleaned",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 held remote logout completion cannot clear a newer successful login",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 late refresh and live status never revive logout or emit a data request",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S07 removal failure is sanitized and fail-closed even when remote revocation succeeds",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 concurrent same-scope logout shares one request and refuses a conflicting scope",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 held old login write compensates to signed-out authority before a newer failed login settles",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 held logout removal cannot delete a newer queued successful login",
+          "status": "passed"
+        },
+        {
+          "name": "L1-19/S08 stale login cleanup failure is observable without overwriting a newer session",
+          "status": "passed"
+        }
+      ]
+    },
+    "backgroundRed": {
+      "passed": 0,
+      "failed": 5,
+      "tests": [
+        {
+          "name": "L1-18/U18 explicit false owns no timer; opted-in defaults renew before expiry and logout clears every timer",
+          "status": "failed"
+        },
+        {
+          "name": "L1-18/U18 auth option defaults persist per-client Node memory and own background renewal, not inherited flags",
+          "status": "failed"
+        },
+        {
+          "name": "L1-18/S08 background and manual refresh share one flight and a late result cannot revive logout",
+          "status": "failed"
+        },
+        {
+          "name": "L1-18/U18 transient background errors have bounded retries; terminal401 clears credentials and resources",
+          "status": "failed"
+        },
+        {
+          "name": "L1-18/U18 focus/visibility renewal is owned once and both listeners detach on logout",
+          "status": "failed"
+        }
+      ]
+    },
+    "backgroundGreenFirst": {
+      "passed": 4,
+      "failed": 1,
+      "tests": [
+        {
+          "name": "L1-18/U18 explicit false owns no timer; opted-in defaults renew before expiry and logout clears every timer",
+          "status": "passed"
+        },
+        {
+          "name": "L1-18/U18 auth option defaults persist per-client Node memory and own background renewal, not inherited flags",
+          "status": "passed"
+        },
+        {
+          "name": "L1-18/S08 background and manual refresh share one flight and a late result cannot revive logout",
+          "status": "passed"
+        },
+        {
+          "name": "L1-18/U18 transient background errors have bounded retries; terminal401 clears credentials and resources",
+          "status": "failed"
+        },
+        {
+          "name": "L1-18/U18 focus/visibility renewal is owned once and both listeners detach on logout",
+          "status": "passed"
+        }
+      ]
+    },
+    "appRed": {
+      "passed": 0,
+      "failed": 1,
+      "tests": [
+        {
+          "name": "L1-14–20/E02–08 auth example mounts through the same module as the existing data application",
+          "status": "failed"
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Initial logout red is nine expected missing-method/cleanup failures and one existing argument-rejection pass.",
+    "Initial background green attempt has one failure caused by fractional fake-clock epoch vs JWT integer seconds; fixed test epoch explicitly, without removing assertions.",
+    "Mixed unit regressions preserved storage fail-closed/no-dispatch policy: stale cleanup is not attempted under an inconsistent-storage latch and existing diagnostic details are retained.",
+    "SDK browser declaration build initially rejected Node-only timer.unref typing; optional native handle support now compiles under both declaration targets.",
+    "Prior package clean-install cache miss and missing unzip were environment prerequisites, not passing package/backend checks."
+  ]
+}

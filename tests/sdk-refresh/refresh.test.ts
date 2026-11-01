@@ -1,7 +1,7 @@
 import { it, expect } from 'vitest';
 import { randomUUID } from 'node:crypto';
 import { createClient, type AuthStorage } from '../../src/index.js';
-import { context, confirmEmail, nativeUuid, type Context } from '../phase-a/helpers.js';
+import { context, confirmEmail, nativeUuid, deadline, type Context } from '../phase-a/helpers.js';
 import { withCleanup, cleanupOwnedRows } from '../sdk-browser/cleanup.js';
 
 const mapping = { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' as const }, user_id: { type: 'uuid' as const }, title: { type: 'text' as const }, completed: { type: 'boolean' as const }, priority: { type: 'integer' as const }, note: { type: 'text' as const, nullable: true }, created_at: { type: 'integer' as const } } } } };
@@ -73,6 +73,24 @@ it('L1-18/I18 genuine expired data/getSession initiate shared renewal, independe
   }, run.cleanup);
   expect(run.cleanupVerified()).toBe(true);
 }, 120000);
+it('L1-18/I18 L1-19/I19 L1-20/I20 real short-TTL background renewal notifies and explicit local logout revokes the retained credential', async () => {
+  const env = await context(); if (env.nativeAuthProfile !== 'short-native-auth') throw new Error('Short native fixture required');
+  const credentials = { email: `sdk-background-${randomUUID()}@example.test`, password: `Fixture-${randomUUID()}-Aa1!` };
+  const client = createClient(env.trailUrl, undefined, { trailbase: mapping, auth: {} });
+  let renewed!: () => void; const observed = new Promise<void>(yes => { renewed = yes; }); const events: string[] = [];
+  const subscription = client.auth.onAuthStateChange(event => { events.push(event); if (event === 'TOKEN_REFRESHED') renewed(); }).data.subscription;
+  await withCleanup(async () => {
+    expect((await client.auth.signUp(credentials)).error).toBeNull(); await confirmEmail(env, credentials.email);
+    const login = await client.auth.signInWithPassword(credentials); expect(login.error).toBeNull(); expect(login.data.session?.expires_in).toBe(3);
+    await deadline(observed, 10000, 'Background renewal');
+    const cached = await client.auth.getSession(); expect(cached.error).toBeNull(); expect(cached.data.session?.refresh_token).toBe(login.data.session!.refresh_token);
+    expect((await client.from('todos').select('*')).error).toBeNull();
+    expect((await client.auth.signOut({ scope: 'local' })).error).toBeNull(); expect((await client.auth.getSession()).data.session).toBeNull();
+    const response = await fetch(`${env.trailUrl}/api/auth/v1/refresh`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ refresh_token: login.data.session!.refresh_token }), credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(10000) });
+    expect(response.status).toBe(401); await response.body?.cancel(); expect(events).toEqual(['INITIAL_SESSION', 'SIGNED_IN', 'TOKEN_REFRESHED', 'SIGNED_OUT']);
+  }, [async () => { subscription.unsubscribe(); await client.auth.signOut({ scope: 'local' }); }]);
+}, 120000);
+
 for (const unavailable of ['absent', 'rejected'] as const) it(`L1-18/I18 cleanup verifies owned row absence after genuine expiry/injected failure with ${unavailable} storage`, async () => {
   const env = await context(), run = fixture(env), injected = new Error('Injected failure after genuine backend expiry'); let failure: unknown;
   try {

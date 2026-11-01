@@ -1,0 +1,65 @@
+{
+  "scope": "Approved existing client-only todos standalone local app milestone; focused verification, NOT full SDK compatibility/release signoff",
+  "status": "passed",
+  "sourceSha256": "48608fc68718fd860cb116e3300c5a05440248e604a5f9e280a0a34a970c5bca",
+  "commands": {
+    "interactive": "npm run example:todos",
+    "launcherCheck": "npm run test:example:todos",
+    "browser": "npm run test:sdk:browser",
+    "instructions": "examples/todos/README.md"
+  },
+  "implemented": [
+    "Reuse existing auth todos; index.html boots main.js with same-origin packed compatibility SDK and public mapping only, no injected session or privileged bootstrap",
+    "Existing protected fixture/native static server and local mail, loopback-only generated endpoints; one guarded owner lock shared with tests, no target/host flags",
+    "Real confirmation guidance, explicit login, persistent reload, live user validation/manual refresh and default background renewal configuration; exact local logout and honest unconfirmed-global error",
+    "Visible auth/data activity and errors, offline read recovery, explicit ID row selection/edit/delete with textContent rendering",
+    "Both fresh users obtain their browser sessions via SDK signup/login in independent contexts; denied foreign reads/update/delete/spoof/reassignment leave both complete owner rows unchanged",
+    "Normal interactive startup/printed entrypoint and stdin quit verified, as well as launcher --check; original diagnostics retained and ephemeral server resources removed"
+  ],
+  "checks": {
+    "node22": { "actualNode": "v22.23.2", "static": "passed", "build:sdk": "passed", "unitPassed": 197, "unitFailed": 0, "packageChecks": 4 },
+    "node24": { "actualNode": "v24.21.0", "static": "passed", "unitPassed": 197, "unitFailed": 0, "packageChecks": 4 },
+    "realNode22": {
+      "sdk-browser": { "passed": 15, "failed": 0, "engines": ["chromium", "firefox", "webkit"], "newTwoSdkAuthenticatedUserCases": 3, "retainedSharedAuthAppCases": 6, "retainedDataAndStorageCases": 6 },
+      "launcherCheck": { "passed": 2, "failed": 0 },
+      "interactiveLauncherQuit": { "passed": 2, "failed": 0 },
+      "sdk-auth": { "passed": 3, "failed": 0 },
+      "sdk-refresh": { "passed": 4, "failed": 0, "nativeProfile": "short-native-auth, genuine 3-second TTL" },
+      "sdk-data": { "passed": 6, "failed": 0 },
+      "database": { "passed": 9, "failed": 0 },
+      "constraints": { "passed": 6, "failed": 0 },
+      "lifecycle": { "passed": 1, "failed": 0, "scope": "Injected setup failure reaches unconditional owned cleanup" }
+    },
+    "fullSdkPlaceholderCommands": { "contract": 1, "security": 1, "e2e": 1, "package": 1, "all": 1, "meaning": "Each observed exit1 because its full release suite is explicitly unimplemented; focused commands are not substituted or full-suite passes" }
+  },
+  "runtimePins": { "trailbase": "0.34.3", "trailbaseClient": "0.14.3", "supabaseClient": "2.117.2", "supabaseCli": "2.119.0", "playwright": "1.63.0", "node": ["22.23.2", "24.21.0"], "images": "Original exact six ECR service names/tags/digests and loopback bindings independently checked in all nine real reports" },
+  "evidence": [
+    "docs/evidence/todos-standalone-unit-node22.json",
+    "docs/evidence/todos-standalone-unit-node24.json",
+    "docs/evidence/todos-standalone-package-node22.json",
+    "docs/evidence/todos-standalone-package-node24.json",
+    "docs/evidence/todos-standalone-browser-node22.json",
+    "docs/evidence/todos-standalone-launcher-node22.json",
+    "docs/evidence/todos-standalone-interactive-quit-node22.json",
+    "docs/evidence/todos-standalone-sdk-auth-node22.json",
+    "docs/evidence/todos-standalone-sdk-refresh-node22.json",
+    "docs/evidence/todos-standalone-sdk-data-node22.json",
+    "docs/evidence/todos-standalone-database-node22.json",
+    "docs/evidence/todos-standalone-constraints-node22.json",
+    "docs/evidence/todos-standalone-lifecycle-node22.json"
+  ],
+  "postconditions": "All 13 green reports match current source; all nine real runs report ready setup and successful cleanup, and independent exact-project queries found no containers/network/volumes. Shared fixture lock absent. No ongoing app server intentionally retained.",
+  "provenance": [
+    "Initial standalone unit red0/2 and browser12passed/3newfailed retained in todos-standalone-tdd.json and todos-standalone-red-browser-node22.json; CI missing-command red also retained",
+    "Previous lifecycle interruption, failed auth-app browser rerun, bounded correction and all earlier research reports remain unchanged, not relabelled current proof",
+    "No dependency/server/access-rule/SDK implementation changes, deployment, public publication, external credentials or signoff in this milestone. Shared fixture asset preparation and focused CI wiring changed for the standalone entrypoint only."
+  ],
+  "gapsAndDecisions": [
+    "No new decision needed to run the approved isolated local demo. A persistent/deployed/multi-machine service, external SMTP/credentials, broader auth/query APIs or security/dependency policy changes require explicit approval.",
+    "G1 duplicate-pending signup/SMTP recovery and signup null-user compatibility approval remain unresolved; no identity repair or compatibility workaround. G7 authenticated global acknowledgement remains unavailable; app explicitly displays uncertainty, never global success fiction.",
+    "Manual browser refresh and persisted reload are exercised in the app; genuine automatic short-TTL expiry is proved in focused SDK integration, not a full browser expiry/cross-tab/SMTP/resource corpus.",
+    "Full shared/security/fault/coverage thresholds, keyboard-only/accessibility/resource repetitions, proxy/TLS/WAN, three clean full candidate runs and actual new-source CI/maintainer release signoff remain incomplete. No layer waived or declared N/A.",
+    "Existing dev-transitive Vite advisory remains; no dependency changes or fresh audit during this milestone. Local proof is Linux x64; other host platforms not newly verified.",
+    "Ctrl-C handler is implemented; actual interactive smoke used stdin quit. Hard-kill recovery guard is existing infrastructure, not a newly exhaustive signal/failure matrix."
+  ]
+}

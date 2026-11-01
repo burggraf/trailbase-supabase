@@ -144,9 +144,20 @@ export async function verifyPrivateG1Prototype() {
   return { binary, baseCommit, branch: branch.trim(), patchSha256 };
 }
 
-export async function createHarness({ authMitigation = false, nativeAuthProfile = 'default', privateNativePrototype = false, sdkBrowser = false } = {}) {
+export const todosPublicOrigin = 'https://aspire.tailb03e.ts.net:18443';
+
+/** @param {string | undefined} publicOrigin */
+export function nativeSiteConfig(config, publicOrigin = undefined) {
+  if (publicOrigin === undefined) return config;
+  const original = 'site_url: "http://127.0.0.1:__TRAIL_PORT__"';
+  if (publicOrigin !== todosPublicOrigin || config.split(original).length !== 2) throw new Error('Only the approved todos fixture HTTPS origin is accepted');
+  return config.replace(original, `site_url: "${publicOrigin}"`);
+}
+
+export async function createHarness({ authMitigation = false, nativeAuthProfile = 'default', privateNativePrototype = false, sdkBrowser = false, publicOrigin } = {}) {
+  if (publicOrigin !== undefined && !sdkBrowser) throw new Error('Remote origin is only supported for the owned SDK browser fixture');
   const authVariant = fixtureAuthVariant({ authMitigation, privateNativePrototype });
-  const nativeConfig = nativeAuthConfig(await readFile('tests/fixtures/trailbase/config.textproto','utf8'),nativeAuthProfile);
+  const nativeConfig = nativeSiteConfig(nativeAuthConfig(await readFile('tests/fixtures/trailbase/config.textproto','utf8'),nativeAuthProfile), publicOrigin);
   const id = `${Date.now()}-${randomUUID().replaceAll('-', '').slice(0,12)}`;
   const directory = resolve('.runtime/runs', id);
   assertRunDirectory(directory);
@@ -158,7 +169,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
   }
   const origins = ['API_PORT','MAIL_PORT','TRAIL_PORT'].map(key => `http://127.0.0.1:${ports[key]}`);
   const childEnv = fixtureEnvironment();
-  const context = { id, project, directory, setupStage:'created', origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, authVariant };
+  const context = { id, project, directory, setupStage:'created', origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, authVariant, ...(publicOrigin ? { publicOrigin } : {}) };
   const ownerRecord = { id, project, nativeAuthProfile, authVariant, runnerPid: process.pid, trailPid: null };
   await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
   let trail, log, stockBinary, stockBackupTimestamp;

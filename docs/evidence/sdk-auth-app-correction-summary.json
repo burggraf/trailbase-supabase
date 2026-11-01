@@ -1,0 +1,43 @@
+{
+  "scope": "Bounded authenticated browser-test and owned-row cleanup correction, not full SDK compatibility or release signoff",
+  "status": "passed",
+  "sourceSha256": "9ec4a20a7d1e6421fd36b041285b5e292bc107fb9eed0dca50b528e74d9bde2e",
+  "previousSourceSha256": "e02fc4f13cadd119e4e86cc0a7f1228d7a3e1952315efc0fd4517f49ef664af3",
+  "changes": [
+    "Refill required New title after reload before the second create; retain all original CRUD/reload/logout assertions",
+    "Use an exact-ID maybeSingle read before owned-row DELETE; reject read/delete errors and always verify final row absence",
+    "Exercise the same cleanup function with an already-absent row during each real primary flow, then with the recreated present row during teardown",
+    "Assert successful exact-session logout for the ordinary cleanup client"
+  ],
+  "implementationFixtureDependencyChanges": "None in this correction; executable change is confined to tests/sdk-browser/auth-app.spec.ts",
+  "redEvidence": "docs/evidence/sdk-lifecycle-final-sdk-browser-node22.json",
+  "originalInterruptionEvidence": "docs/evidence/sdk-lifecycle-browser-interruption-node22.json",
+  "approvedRecoveryEvidence": "docs/evidence/sdk-lifecycle-browser-recovery-node22.json",
+  "freshChecks": {
+    "node22": { "actualNode": "v22.23.2", "unitPassed": 195, "unitFailed": 0, "packageChecks": 4, "static": "passed", "build:sdk": "passed" },
+    "node24": { "actualNode": "v24.21.0", "unitPassed": 195, "unitFailed": 0, "packageChecks": 4, "static": "passed" },
+    "sdk-browser": { "actualNode": "v22.23.2", "passed": 12, "failed": 0, "authAppPassed": 6, "existingDataAndStoragePassed": 6, "engines": ["chromium", "firefox", "webkit"], "backendsForAuthApp": ["trailbase", "supabase"], "setup": "ready", "cleanup": "passed" },
+    "lifecycle": { "actualNode": "v22.23.2", "passed": 1, "failed": 0, "scope": "Injected setup failure reaches unconditional owned fixture cleanup", "setup": "ready", "cleanup": "passed" }
+  },
+  "freshEvidence": [
+    "docs/evidence/sdk-auth-app-correction-unit-node22.json",
+    "docs/evidence/sdk-auth-app-correction-unit-node24.json",
+    "docs/evidence/sdk-auth-app-correction-package-node22.json",
+    "docs/evidence/sdk-auth-app-correction-package-node24.json",
+    "docs/evidence/sdk-auth-app-correction-browser-node22.json",
+    "docs/evidence/sdk-auth-app-correction-cleanup-node22.json"
+  ],
+  "pins": { "trailbase": "0.34.3", "trailbaseClient": "0.14.3", "supabaseClient": "2.117.2", "supabaseCli": "2.119.0", "playwright": "1.63.0", "fixtureImages": "Original exact six ECR image tags/digests and loopback bindings independently verified from both new real reports" },
+  "resourcePostconditions": "Both corrected runs exited successfully; exact owned containers, networks and volumes absent, shared fixture lock absent",
+  "provenance": [
+    "Original interrupted attempt remains incomplete; original failed browser rerun remains failed. Corrected executions have distinct run IDs and source hash.",
+    "The five previous real auth/refresh/data/database/constraints reports are for e02fc4f1 and were not rerun during this bounded correction; do not relabel them current-source proof.",
+    "No source-changing edits occurred after starting the corrected verification; only ledger/restart/evidence documents excluded from sourceHash were updated."
+  ],
+  "remaining": [
+    "Standalone local client-only bootstrap and two users obtaining browser sessions through our SDK remain next-example work; existing fixture-auth ownership test is not that complete flow.",
+    "Full shared contract/security/E2E/package/all release gates, broad fault/coverage/CI proof and maintainer signoff remain incomplete and were not rerun in this bounded correction.",
+    "G1/signup null-user approval and G7 authenticated global revocation acknowledgement remain unresolved. TrailBase browser global logout explicitly reports uncertainty; reference succeeds. No backend fix, workaround or exception inferred.",
+    "Previously observed high-severity dev-transitive Vite audit aggregate remains; no dependency changes or fresh audit in this correction."
+  ]
+}

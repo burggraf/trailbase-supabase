@@ -1,0 +1,132 @@
+{
+  "sourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "finishedAt": "2026-11-01T15:52:44.507Z",
+  "scope": "Node22.23.2 focused task/auth UI, launcher/import map/query, existing request-expiry/refresh and background units; static/docs/diff passed separately",
+  "status": "passed",
+  "passed": 30,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "L1-14–20/E02–08 auth example mounts through the same module as the existing data application",
+      "status": "passed"
+    },
+    {
+      "name": "L1-14–20/E08 login 401 gives actionable guidance without claiming a specific account state",
+      "status": "passed"
+    },
+    {
+      "name": "L1-14–20/E08 auth status survives plain SDK errors and remains operation-specific",
+      "status": "passed"
+    },
+    {
+      "name": "L1-19/E08 explicit global logout uncertainty is retained, never changed into success",
+      "status": "passed"
+    },
+    {
+      "name": "L1-14–20/E08 unexpected auth failures never render backend messages, URLs, details or credentials",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 explicit false owns no timer; opted-in defaults renew before expiry and logout clears every timer",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 auth option defaults persist per-client Node memory and own background renewal, not inherited flags",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S08 background and manual refresh share one flight and a late result cannot revive logout",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 transient background errors have bounded retries; terminal401 clears credentials and resources",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 focus/visibility renewal is owned once and both listeners detach on logout",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 manual/data/getSession actual-expiry preflight share one refresh and send original data once with bearer only",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 malformed/private JSON, wrong identity and unsupported refresh fields preserve prior disk without retry",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S08 held refresh JSON cannot replace newer login or authorize an old waiting query",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S08 held refresh write plus failed newer login compensates C; no stale refreshed disk survives",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/U18 transient/network/other4xx preserve state and expired data never falls back or retries",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S07 only refresh401 clears owned credentials; held removal cannot resurrect C after newer failed/successful login",
+      "status": "passed"
+    },
+    {
+      "name": "L1-18/S07 rejected terminal removal latches sanitized errors, leaves disk explicit and dispatches zero further requests",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 example routes all six operators and exact title/boolean scalars without coercing text",
+      "status": "passed"
+    },
+    {
+      "name": "E08 changing UI bytes versions only the UI module, not frozen SDK/main/native modules",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/U27 browser preparation must not statically import its active runner entrypoint",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/E13 packed browser import map guard accepts only complete standalone native graph",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 L1-11/E05 example query builds scalar filter, stable order and inclusive caller page",
+      "status": "passed"
+    },
+    {
+      "name": "L1-09/E05 S02 example rejects unsupported filter syntax and boolean coercion",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/E01 standalone todos has an executable browser entrypoint, not only a test mount",
+      "status": "passed"
+    },
+    {
+      "name": "L1-26/E01 SDK fixture root lands on the standalone app without adopting URL auth",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/S10 approved tailnet mode changes only the fixture canonical origin, never listeners",
+      "status": "passed"
+    },
+    {
+      "name": "L1-27/S10 local todos launcher rejects target/binding options and unpinned runtimes",
+      "status": "passed"
+    },
+    {
+      "name": "E08 mutation failures distinguish auth/rejection from uncertain outcomes without backend details",
+      "status": "passed"
+    },
+    {
+      "name": "L1-05–13/E04 UI uses only supported select(*), bounded server pagination and completion filters",
+      "status": "passed"
+    },
+    {
+      "name": "L1-05–13/E08 UI invalid bounds/filters and failed reads cannot produce fabricated success",
+      "status": "passed"
+    }
+  ],
+  "rawPrivateSha256": "e23dad2d489820d7b5361b67828cf1d7b68ec04eb2df96cfd145687bd48380d8"
+}

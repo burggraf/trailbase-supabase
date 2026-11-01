@@ -1,0 +1,135 @@
+{
+  "scope": "Approved live private foreground Serve inventory and owned loopback fixture; NOT external-device reachability or release signoff",
+  "status": "passed",
+  "sourceSha256": "78ad127cc6d0be800f25745641207bf088ba686b199a9ba5d3185c1ffa79517d",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "finishedAt": "2026-11-01T13:53:51.074Z",
+  "routes": [
+    {
+      "port": "18443",
+      "https": true,
+      "targets": [
+        "http://127.0.0.1:42231"
+      ]
+    },
+    {
+      "port": "18444",
+      "https": true,
+      "targets": [
+        "http://127.0.0.1:38763"
+      ]
+    }
+  ],
+  "persistentServeUnchanged": true,
+  "funnel": false,
+  "tailnetOnlyHttpsListeners": true,
+  "existing443StillListening": true,
+  "existingCachedCertificateDates": [
+    "notBefore=Oct 22 13:52:45 2026 GMT",
+    "notAfter=Jan 20 13:52:44 2027 GMT"
+  ],
+  "containers": [
+    {
+      "service": "supabase_rest",
+      "image": "public.ecr.aws/supabase/postgrest:v16.4",
+      "imageId": "sha256:d155c6718ed9a9f990d159a2ab7c0a3f16944dbb6d0a0344557421042acfe0df",
+      "repoDigests": [
+        "public.ecr.aws/supabase/postgrest@sha256:d155c6718ed9a9f990d159a2ab7c0a3f16944dbb6d0a0344557421042acfe0df"
+      ],
+      "publishedPorts": {
+        "3000/tcp": null
+      }
+    },
+    {
+      "service": "supabase_realtime",
+      "image": "public.ecr.aws/supabase/realtime:v2.140.3",
+      "imageId": "sha256:f66c721c71b576f5854c78f86df0c78a98368d900dcf62e4ddd96c6913139999",
+      "repoDigests": [
+        "public.ecr.aws/supabase/realtime@sha256:f66c721c71b576f5854c78f86df0c78a98368d900dcf62e4ddd96c6913139999"
+      ],
+      "publishedPorts": {
+        "4000/tcp": null
+      }
+    },
+    {
+      "service": "supabase_inbucket",
+      "image": "public.ecr.aws/supabase/mailpit:v1.31.3",
+      "imageId": "sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d",
+      "repoDigests": [
+        "public.ecr.aws/supabase/mailpit@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d"
+      ],
+      "publishedPorts": {
+        "1025/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "44879"
+          }
+        ],
+        "1110/tcp": null,
+        "8025/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "38763"
+          }
+        ]
+      }
+    },
+    {
+      "service": "supabase_auth",
+      "image": "public.ecr.aws/supabase/gotrue:v2.197.0",
+      "imageId": "sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b",
+      "repoDigests": [
+        "public.ecr.aws/supabase/gotrue@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+      ],
+      "publishedPorts": {
+        "9999/tcp": null
+      }
+    },
+    {
+      "service": "supabase_kong",
+      "image": "public.ecr.aws/supabase/kong:2.8.1",
+      "imageId": "sha256:1b53405d8680a09d6f44494b7990bf7da2ea43f84a258c59717d4539abf09f6d",
+      "repoDigests": [
+        "public.ecr.aws/supabase/kong@sha256:1b53405d8680a09d6f44494b7990bf7da2ea43f84a258c59717d4539abf09f6d"
+      ],
+      "publishedPorts": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "36483"
+          }
+        ],
+        "8001/tcp": null,
+        "8088/tcp": null,
+        "8443/tcp": null,
+        "8444/tcp": null
+      }
+    },
+    {
+      "service": "supabase_db",
+      "image": "public.ecr.aws/supabase/postgres:17.11.0.002",
+      "imageId": "sha256:0450166354dc9c1d25f0322ac8b580774d4fb0184d2b087f6e4fe9499c66cf53",
+      "repoDigests": [
+        "public.ecr.aws/supabase/postgres@sha256:0450166354dc9c1d25f0322ac8b580774d4fb0184d2b087f6e4fe9499c66cf53"
+      ],
+      "publishedPorts": {
+        "5432/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "41569"
+          }
+        ]
+      }
+    }
+  ],
+  "changes": "Only two approved foreground HTTPS proxies; no ACL/firewall/public listeners/account settings/new credentials commands issued",
+  "intentionallyRunning": {
+    "app": "proc_a84f",
+    "appRunnerPid": 365086,
+    "appServe": "proc_a651",
+    "appServePid": 372131,
+    "inboxServe": "proc_dc58",
+    "inboxServePid": 372164
+  },
+  "cleanup": "Pending intentionally while user tests; stop two foreground proxies first, then quit owned launcher"
+}

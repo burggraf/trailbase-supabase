@@ -25,7 +25,7 @@ test('L1-05–13/E04/E05/E06/E11/E13 packed data UI, permissions, zero-request g
     await a.client.records('todos').create({ id: nativeUuid(ids[0]), user_id: a.user.id, title: `control-${title}`, priority: 0 });
     await b.client.records('todos').create({ id: nativeUuid(ids[1]), user_id: b.user.id, title: `foreign-${title}`, priority: 0 });
     await a.client.records('todos').create({ id: nativeUuid(ids[4]), user_id: a.user.id, title: tiedTitle, priority: 1, completed: 1 });
-    await page.goto(`${env.trailUrl}/sdk-data/index.html`);
+    await page.goto(`${env.trailUrl}/sdk-data/harness.html`);
     const headers = [a, b].map(user => new Headers(user.client.headers()).get('authorization'));
     expect(headers.every(value => typeof value === 'string')).toBe(true);
     expect(await page.evaluate(async ({ base, headers, ownerId, ids }) => {
@@ -41,7 +41,7 @@ test('L1-05–13/E04/E05/E06/E11/E13 packed data UI, permissions, zero-request g
         return fetch(input, { ...init, headers: requestHeaders, credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(10000) });
       } } });
       const a = client(headers[0]), b = client(headers[1]), anonymous = client(null);
-      const ui = app.mountTodos(document.querySelector('#todos'), a, { ownerId, makeId: () => ids.shift()!, pageSize: 2 });
+      const ui = app.mountTodos(document.querySelector('#todos'), a, { diagnostics: true, ownerId, makeId: () => ids.shift()!, pageSize: 2 });
       window.sdkData = { a, b, anonymous, calls, ui };
       await ui.refresh();
       return true;
@@ -62,7 +62,9 @@ test('L1-05–13/E04/E05/E06/E11/E13 packed data UI, permissions, zero-request g
     const ordered = [{ id: ids[0], title: `control-${title}`, priority: 0 }, ...tied, { id: ids[3], title: secondTitle, priority: 2 }];
     const list = page.getByRole('list', { name: 'Todo rows' });
     const expectRows = async (rows: typeof ordered) => {
-      await expect(list.getByRole('listitem')).toHaveText(rows.map(row => `${row.title} (priority ${row.priority})`));
+      await expect(list.getByRole('listitem')).toHaveCount(rows.length);
+      await expect(list.locator('[data-row-summary]')).toHaveText(rows.map(row => `${row.title} (priority ${row.priority})`));
+      await expect(list.locator('code')).toHaveText(rows.map(row => row.id));
     };
     const apply = async (field: string, operator: string, value: string, cardinality = 'many', descending = false) => {
       await page.getByLabel('Filter field', { exact: true }).selectOption(field);

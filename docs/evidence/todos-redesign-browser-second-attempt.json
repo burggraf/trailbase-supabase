@@ -1,0 +1,143 @@
+{
+  "scope": "Private live responsive task app/auth error UX, supported frozen SDK, real mail/two-owner CRUD/filter/delete-protection/cleanup; not physical iPhone/full release signoff",
+  "status": "failed",
+  "sourceSha256": "e74fba9bcc646da4bfe67bd573b47f6b5826e089ef4bd8aa026ac35743d40876",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "stats": {
+    "startTime": "2026-11-01T14:47:03.517Z",
+    "duration": 37515.382999999994,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS usable tasks, account-state errors, real mail and two-owner isolation",
+      "project": "chromium",
+      "status": "unexpected",
+      "attemptStatuses": [
+        "failed"
+      ],
+      "authStages": [
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        }
+      ]
+    },
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS usable tasks, account-state errors, real mail and two-owner isolation",
+      "project": "firefox",
+      "status": "unexpected",
+      "attemptStatuses": [
+        "failed"
+      ],
+      "authStages": [
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        }
+      ]
+    },
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS usable tasks, account-state errors, real mail and two-owner isolation",
+      "project": "webkit",
+      "status": "unexpected",
+      "attemptStatuses": [
+        "failed"
+      ],
+      "authStages": [
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        }
+      ]
+    }
+  ],
+  "cleanup": "Inspect preserved private diagnostics and owned cleanup assertions"
+}

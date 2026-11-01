@@ -1,0 +1,52 @@
+{
+  "sourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "finishedAt": "2026-11-01T15:52:44.507Z",
+  "status": "passed",
+  "scope": "Only verified mutation-error diagnosis and stale-UI-cache fixes; scoped feature regression, not original user-incident root-cause or all-features certification",
+  "plan": "docs/plans/2026-11-01-todos-add-diagnosis.md",
+  "previousUiSourceSha256": "bd30be6d4179947c0699527b8debfcba9658be74c6f480631512e231e5ba1e9c",
+  "app": "https://aspire.tailb03e.ts.net:18443/sdk-data/index.html",
+  "userReport": {
+    "state": "Chrome add restored by user confirmation",
+    "message": "Coordinator relayed Mark: \"it’s working now\" after requested Chrome CmdShiftR/retry",
+    "originalDistinctTitleRejectionCause": "Unproven; not retroactively attributed to duplicate title, token expiry, UUID reuse or cache",
+    "acceptance": "Does not establish physical iPhone/Safari, redesign acceptance or broad release signoff"
+  },
+  "findings": [
+    "Own native sequential distinct adds and later reload/idle/manual refresh succeeded with actual200, distinct IDs, correct owner; final automation verifies exact payload and current unexpired JWT subject/owner",
+    "Own same-title400 was a confirmed rejection with unchanged rows, but UI formerly described an uncertain outcome. Safe HTTP/TASK presentation now distinguishes auth401/403, other rejected4xx/rate limit and uncertain408/transport/5xx; confirmed save/failed-read remains saved; no retry/fallback",
+    "Warm Chromium reload kept old app.js although fresh network bytes had mapper; content-addressed UI import map repaired actual warm-tab reload without changing frozen module bytes"
+  ],
+  "checks": {
+    "units": "30/30 focused Node22.23.2 including request-time refresh/background units",
+    "browsers": "3/3 Chromium, Firefox, mobile-configured WebKit, one passed attempt each/no skip/flaky",
+    "native": "22 own successful UI creates, deliberately rejected duplicate requests; 21-task exact UI pagination20/1/20, own cleanup/local logout200, desktop/mobile screenshots inspected",
+    "static": "npm run check and git diff --check passed"
+  },
+  "evidence": [
+    "docs/evidence/todos-add-deployment.json",
+    "docs/evidence/todos-add-focused-unit-node22.json",
+    "docs/evidence/todos-add-browser-node22.json",
+    "docs/evidence/todos-add-native.json",
+    "docs/evidence/todos-add-screenshots.json",
+    "docs/evidence/todos-add-regressions-red.json"
+  ],
+  "preserved": "Mark account/data not accessed/reset. Original fixture/title UNIQUE/access rules/SDK/main/native modules, loopback endpoints and approved proxies unchanged. Only app.js and generated index.html hot updated with owned backups; future fixture UI import generator versions app only. No dependency/network/public/credential/schema change, competing agent, commit/push.",
+  "liveJobs": {
+    "app": "proc_a84f",
+    "runnerPid": 365086,
+    "appServe": "proc_a651",
+    "appServePid": 372131,
+    "inboxServe": "proc_dc58",
+    "inboxServePid": 372164
+  },
+  "knownShutdownDiagnostic": "Original launcher keeps startup78ad127c; authorized hot source edits cause its unchanged source-drift guard to report failed at eventual approved shutdown. Preserve diagnostic and assess guarded cleanup separately; no restart merely to refresh hash.",
+  "nextStep": "No further work pending solely for this report. If Mark failure recurs, obtain only displayed HTTP/TASK code, operation and safe browser/session-age info; reconcile tasks before retrying an uncertain mutation. Do not request passwords, tokens or private titles.",
+  "notClaimed": [
+    "Exact cause of original distinct-title rejection",
+    "Real long-idle/background timing on current live fixture; no server TTL/config changes or wait for expiry",
+    "Global logout authenticated acknowledgement remains G7 limitation, not successful global-signout certification",
+    "Full historical/reference/package/coverage/security/accessibility/CI/release matrix not rerun; no maintainer signoff inferred"
+  ]
+}

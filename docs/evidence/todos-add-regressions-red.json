@@ -1,0 +1,102 @@
+{
+  "scope": "Preserved old-UI failures, before corresponding implementation",
+  "status": "failed",
+  "servedUiBeforeSha256": "2c4349989ce153700027855bd31d647fc5fa9cd28159998fc8fe7bd880fe8095",
+  "testDriverSourceSha256": null,
+  "note": "Test-driver aggregate hash was not recorded at red invocation; do not bind reds to final source. Raw reports retained privately.",
+  "mutationUnit": {
+    "passed": 2,
+    "failed": 1,
+    "rawSha256": "ba4d8bf62c37712cfa958c4d76cf79ea5b16274f6ff3272ef19e582719875181"
+  },
+  "cacheUnit": {
+    "passed": 4,
+    "failed": 1,
+    "rawSha256": "23a1b29258766b48c916e7efac097f24ee1a77017b00d5620b0164b5534e3b37"
+  },
+  "actualOldUiBrowser": {
+    "stats": {
+      "startTime": "2026-11-01T15:32:39.753Z",
+      "duration": 9461.529,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS usable tasks, account-state errors, real mail and two-owner isolation",
+        "project": "chromium",
+        "status": "unexpected",
+        "attemptStatuses": [
+          "failed"
+        ],
+        "annotations": [
+          {
+            "type": "auth-stage",
+            "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+          },
+          {
+            "type": "auth-stage",
+            "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+          },
+          {
+            "type": "auth-stage",
+            "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+          },
+          {
+            "type": "auth-stage",
+            "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+          },
+          {
+            "type": "task-mutation",
+            "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+          },
+          {
+            "type": "auth-stage",
+            "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+          },
+          {
+            "type": "auth-stage",
+            "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+          },
+          {
+            "type": "auth-stage",
+            "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+          },
+          {
+            "type": "auth-stage",
+            "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+          },
+          {
+            "type": "task-mutation",
+            "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+          },
+          {
+            "type": "task-mutation",
+            "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+          },
+          {
+            "type": "task-mutation",
+            "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+          }
+        ]
+      }
+    ],
+    "failure": "Own deliberate same-title HTTP400 left rows unchanged; old UI omitted HTTP400/TASK_REJECTED and claimed outcome uncertain",
+    "rawSha256": "3fb353ec7620c1405e765ce733114ebd2bf2ef34d6a86c12e4cc15d4396b6c31"
+  },
+  "nativeWarmCacheBefore": {
+    "error": "We couldn’t confirm that change. Refresh your tasks before trying again; it may already have been saved.",
+    "freshNetworkHasMapper": true,
+    "hasNewErrorMapper": false,
+    "ownRows": 5,
+    "resourceBodies": [
+      {
+        "status": 200,
+        "transfer": 0
+      }
+    ]
+  },
+  "nativeOldScreenshot": "artifacts/todos-add/duplicate-before.png"
+}

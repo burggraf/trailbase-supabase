@@ -1,0 +1,459 @@
+{
+  "scope": "Full intended tracked diff and all untracked project files review/credential scan and intended-checkout link closure; not exhaustive security/release signoff",
+  "status": "passed",
+  "sourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
+  "finishedAt": "2026-11-01T16:01:26.085Z",
+  "files": [
+    {
+      "path": ".github/workflows/phase-a.yml",
+      "sha256": "4ebab239c3c9023cd81a07f51366fcb265b7241d7a946e7b4dd6dc25fb476e93"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4e07b04896806a836b6a184b44884b34e1dc46b85d1ab05ae0a7beb6eb7883bd"
+    },
+    {
+      "path": "docs/PROGRESS.md",
+      "sha256": "0407682faf103fb3d153aaf75f87c752148b936621f27575a4b51d787c0ae51f"
+    },
+    {
+      "path": "docs/progress.json",
+      "sha256": "52850a972ba93eb63a95d30f8a4c868885935e6a12aeacc3332ec78e41dcd982"
+    },
+    {
+      "path": "examples/todos/app.js",
+      "sha256": "c794c98e370866e71571f4032bb82f180dc1dde1a1bc8a1dd6de98cca3ab6f00"
+    },
+    {
+      "path": "examples/todos/index.html",
+      "sha256": "d87a3b0582ee6fcddcf432a33c8309d694169e400ecc50cfc840f2dea03c6a02"
+    },
+    {
+      "path": "package.json",
+      "sha256": "3af7e74371d7df492177079e1689c0a23979e99dc66ab5c368e5cee54e5c0b0f"
+    },
+    {
+      "path": "scripts/harness.mjs",
+      "sha256": "c1177998a23addd79b78305d694dc5e185c602816bc57a96d8111875e40a3de0"
+    },
+    {
+      "path": "scripts/run-phase-a.mjs",
+      "sha256": "dbdd05c7202429b77eb9721d06480b1b47cce22e6315a6899b284f0753f28de3"
+    },
+    {
+      "path": "scripts/sdk-browser.mjs",
+      "sha256": "28ba577b550ec3f066b0fe0dc94fa6e95dd141eb0ffe4d6bc738bb6ffaac9276"
+    },
+    {
+      "path": "src/auth.ts",
+      "sha256": "49c9adf572b1e15ed5da35d76804742ab081875dfd066169c8a87ee63292c706"
+    },
+    {
+      "path": "tests/phase-a/helpers.ts",
+      "sha256": "b0f50aedb8b7419afd0dc81fcf1e35f3c3c0894a0aaacd4179e66d2f6732923b"
+    },
+    {
+      "path": "tests/phase-a/sdk-auth.test.ts",
+      "sha256": "c3b05578886704f0a0a61d5d62f0810498caa927e396316d709be133c0589e9f"
+    },
+    {
+      "path": "tests/sdk-browser/auth-storage.spec.ts",
+      "sha256": "196bdbaa069d58102f72546ea45a1c8f7bde7a914e9173df466106c23d1eb45e"
+    },
+    {
+      "path": "tests/sdk-browser/data.spec.ts",
+      "sha256": "f647c07d8b823ba46ea30e7aa2dac32e03b83c0e277e019d3cfcfef9fefdf8b9"
+    },
+    {
+      "path": "tests/sdk-refresh/refresh.test.ts",
+      "sha256": "ecf3a00f5ffa2dfb6710cd33e2eb1907cf794150d4e5b832784d086a7e841c8d"
+    },
+    {
+      "path": "tests/types/sdk-auth.ts",
+      "sha256": "a81abe06eae44692d81b5bb2d6256f991b698c4064f71cd7cf93828b69ec9e00"
+    },
+    {
+      "path": "tests/unit/sdk-auth-storage-review.test.ts",
+      "sha256": "227b0849fc775c9177b8dbb25e9c1421fae227fedaacc164d376682baa2b3b10"
+    },
+    {
+      "path": "tests/unit/sdk-auth.test.ts",
+      "sha256": "72dbd58d107d52c2b8fa44cad077fcd7719e2b01443e2e3527c3b068ed909375"
+    },
+    {
+      "path": "tests/unit/sdk-browser.test.ts",
+      "sha256": "3fb22acfea70eb22e75d72df93b04153119a217509c0420f30e1aba93c848d34"
+    },
+    {
+      "path": "docs/evidence/precommit-package-node22.json",
+      "sha256": "37e1e2c9d34b59597622fa2237fd5024c31c2596eb9d22cffdb50c5865f4e015"
+    },
+    {
+      "path": "docs/evidence/precommit-unit-node22.json",
+      "sha256": "b6a6a9a22936dfe4b107b6e0c3a9787d9b9c16913434e742f618be718aa3a048"
+    },
+    {
+      "path": "docs/evidence/sdk-auth-app-correction-browser-node22.json",
+      "sha256": "53f22a2846e090bcbd016c1152d847281ca224985f9b0e991948086b4a433b60"
+    },
+    {
+      "path": "docs/evidence/sdk-auth-app-correction-cleanup-node22.json",
+      "sha256": "e772ccb7c873598592049febfea9d0057cda5d0537cf1adda2f46ca74c85d51b"
+    },
+    {
+      "path": "docs/evidence/sdk-auth-app-correction-package-node22.json",
+      "sha256": "b04846be1779df28f4ae3d4feb042ec1c13ecbea136c39c0e081fce34846db77"
+    },
+    {
+      "path": "docs/evidence/sdk-auth-app-correction-package-node24.json",
+      "sha256": "a485c9c927d78dc363137eba3475d8231f18a88a6a77028ce7e5ad054ecbe0ee"
+    },
+    {
+      "path": "docs/evidence/sdk-auth-app-correction-summary.json",
+      "sha256": "2244f86cebca8dfcd488befe85d5f3d83e308727b29854dfa520232554201324"
+    },
+    {
+      "path": "docs/evidence/sdk-auth-app-correction-unit-node22.json",
+      "sha256": "c2bf2d8bab6df68afade17517036894d7e346f048c0291d47bef7f1adeedcbd9"
+    },
+    {
+      "path": "docs/evidence/sdk-auth-app-correction-unit-node24.json",
+      "sha256": "8e6117c19c5029c4a3352349f24d39d75cb431f3fd1bdc530a25fa58d7a46573"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-browser-interruption-node22.json",
+      "sha256": "916e7ee6ab33028a61ae95472776ccbca4f4d1df10cd2e9300893cde2d2febbf"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-browser-recovery-node22.json",
+      "sha256": "c4c6645cc23dd721d4562e10054f26928e7a8c49b60508a7388c792e6b9c7746"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-final-constraints-node22.json",
+      "sha256": "254ab7137ce4b5be71a90c691f7386d44cb6fff82f990efe23aa7265b466b1c1"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-final-database-node22.json",
+      "sha256": "325c34739ba3848b1cbc1690c269e3d3b8f092e2c8e12cf316be1cb03ddc0643"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-final-lifecycle-node22.json",
+      "sha256": "185477a8d11a27d20e61d3e073360eceff94310e2cc3902493075b4e5904d468"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-final-package-node22.json",
+      "sha256": "efa4c52cba8f5ec5921ab2e6c771d1262a0fca3b4556613ab163bc0ee9709e73"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-final-package-node24.json",
+      "sha256": "f8141689c3172d8ea2f78b9807e1a4e5a7c5fb73f1051a87db500086df7e8e33"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-final-sdk-auth-node22.json",
+      "sha256": "3acc1970a8ba5030bff8dd13f07f5f0368e7980fac83842faba8ffcc22cef34e"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-final-sdk-browser-node22.json",
+      "sha256": "59ac21176df967bf95e580d0eb78b64f472b080a7ec9cda1aae04c3adbc82a45"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-final-sdk-data-node22.json",
+      "sha256": "52760c9bff62964a02ea2ae2baec62969ea7c243b312101bee68d633d7c5ec14"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-final-sdk-refresh-node22.json",
+      "sha256": "187d8e7b44068b02217b4a5bc24ca8af059d97b9ae357b205606d03a9846300a"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-final-unit-node22.json",
+      "sha256": "dbaeae16446ad99674dbffb97f186185cc219348231e794fd8654f33b512f180"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-final-unit-node24.json",
+      "sha256": "26e0a764079daa518ef979fe99e75db3a625ff797775d014ac8c670e9b253d67"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-initial-auth-node22.json",
+      "sha256": "5305bdce76338571ad249ece912b5052303b20a155d2dde58fde21e3f82126b0"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-initial-package-node22.json",
+      "sha256": "f93b61fec9c7746af687e6a7bb37665a0dedc78470e37fda086465a152adbfe4"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-initial-package-node24.json",
+      "sha256": "cc1322ad26f9510c62f0beaafd2cfee1fd67544055923311fce55a80f0e8d8c8"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-initial-unit-node22.json",
+      "sha256": "63ac540969d9b190ad6ffa0c2a170cdd45d2407410536c6e2ee198118c661981"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-initial-unit-node24.json",
+      "sha256": "72ab082f70d73ebb234fc0eec40de9dd72aefbfc5f67e6ec13f4badb4e1219cb"
+    },
+    {
+      "path": "docs/evidence/sdk-lifecycle-tdd-attempts.json",
+      "sha256": "c18ee86bd9c6e77f6214b766db1df2fda61c536e7793a99acd2fbd8e7b54adea"
+    },
+    {
+      "path": "docs/evidence/todos-add-browser-node22.json",
+      "sha256": "42857725bcdd2f68f0513546a598ba08a9cc2ee2a18dff3e2786b8e8245e4ccf"
+    },
+    {
+      "path": "docs/evidence/todos-add-deployment.json",
+      "sha256": "981c6c92b31397ae8b2452ff8e9635ba5fad17cd5a8d8b18e09baa7926d1bfdd"
+    },
+    {
+      "path": "docs/evidence/todos-add-focused-unit-node22.json",
+      "sha256": "b31d503942d2d3b91576d6c4f3f1b899aaa2107259ba5328358f0b62ca0cc813"
+    },
+    {
+      "path": "docs/evidence/todos-add-native.json",
+      "sha256": "157b7f9dac19ba157caaa6a0069461b8d44f547f45c99fd67602e696e9c2cf73"
+    },
+    {
+      "path": "docs/evidence/todos-add-regressions-red.json",
+      "sha256": "f6f7bcc75d91628d4870e005452a943b9064d56b5eef6cc25d9c9f7bb9ae7ac1"
+    },
+    {
+      "path": "docs/evidence/todos-add-screenshots.json",
+      "sha256": "ad598252f2a38488334f0cfef853d530f3aed89e996d0da26d4adfaaf54c4252"
+    },
+    {
+      "path": "docs/evidence/todos-add-summary.json",
+      "sha256": "739d5853605aae6e490f1a81f73feb81e13365bab4da594f635bf66bf7571635"
+    },
+    {
+      "path": "docs/evidence/todos-login-baseline-browser.json",
+      "sha256": "d13686862711530d7cb077dc032ffbaec67e8443d9c2c923807699597cac331e"
+    },
+    {
+      "path": "docs/evidence/todos-redesign-browser-initial-failure.json",
+      "sha256": "ab2eb043404a362f97c2d80ca4250dff765030b2d9b933681a3d3e04cef34580"
+    },
+    {
+      "path": "docs/evidence/todos-redesign-browser-node22.json",
+      "sha256": "cd765bd6b227ebec446166344b57fb1c0eef1be0d34ee1eb37d0d8d24cf7b13e"
+    },
+    {
+      "path": "docs/evidence/todos-redesign-browser-second-attempt.json",
+      "sha256": "661099613386abe5fddd53c4b9a42eb223aaa09233527e73aff52661bc7770a6"
+    },
+    {
+      "path": "docs/evidence/todos-redesign-browser-third-attempt.json",
+      "sha256": "34dc657c62b2f91752c5f403b43a15f87adeea5a32a044b883b211feb3c0130d"
+    },
+    {
+      "path": "docs/evidence/todos-redesign-deployment.json",
+      "sha256": "de408d55f0324753e59806ec0513e64967d7cfe11345005d864ac25b5ad638a0"
+    },
+    {
+      "path": "docs/evidence/todos-redesign-focused-unit-node22.json",
+      "sha256": "c231c1a045c34f81813a545f33018afacd4fb974a59fed9e5eccdf53d2e943cf"
+    },
+    {
+      "path": "docs/evidence/todos-redesign-initial-deployment.json",
+      "sha256": "aa1a526017b94b6b95dd95fc39c6013efc8e65f351c0b32e939d9cc6908f664d"
+    },
+    {
+      "path": "docs/evidence/todos-redesign-screenshots.json",
+      "sha256": "6b03a413b1723d32788112910d97094f04d9c28b45877b5be602a11abc736550"
+    },
+    {
+      "path": "docs/evidence/todos-redesign-summary.json",
+      "sha256": "c18abc799bc3fe806d603dd8e6570128730d6cea46ed64fa6320e23dd8165d71"
+    },
+    {
+      "path": "docs/evidence/todos-redesign-unit-node22.json",
+      "sha256": "e0ade64c0a6b2351798ef0114c627720c5f02aff5cb533dfcb7b005833683340"
+    },
+    {
+      "path": "docs/evidence/todos-remote-browser-node22.json",
+      "sha256": "d93ddcc489535c0b88e48e0e5ea180254088562c12b050bc5ec2ec25e5942f5c"
+    },
+    {
+      "path": "docs/evidence/todos-remote-network.json",
+      "sha256": "5cf9fc9e585e74582a686d455fff526dc3c84a161ee4ccf939bd8908a010c10a"
+    },
+    {
+      "path": "docs/evidence/todos-remote-package-node22.json",
+      "sha256": "9fc572c27efbf9caff903781b5d63644eebd25afe601bf2268052f03862f7291"
+    },
+    {
+      "path": "docs/evidence/todos-remote-package-node24.json",
+      "sha256": "55dac52eb7e4a7229ffc86020f5e22249e795c24fc0ba9fca19d29a8c3f52232"
+    },
+    {
+      "path": "docs/evidence/todos-remote-readiness.json",
+      "sha256": "630e02a61f317d82b037fbc501527c057ca972591cb9c4fecfdbe2c1ca3ac9e1"
+    },
+    {
+      "path": "docs/evidence/todos-remote-summary.json",
+      "sha256": "16a5d4683b7982b2b5dfd07ca867cff31501f9d86b0ecc2ea2c5d7addf533a48"
+    },
+    {
+      "path": "docs/evidence/todos-remote-unit-node22.json",
+      "sha256": "8bbdfd64de156e32237c4a119d6a92b61f900f13f405aa39f7466d53715b483d"
+    },
+    {
+      "path": "docs/evidence/todos-remote-unit-node24.json",
+      "sha256": "eb5c83eccb4a75c6f5a735224512c24c675c51af57e2fffc96b69935deecc7b9"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-browser-node22.json",
+      "sha256": "bebe1ce68ad09ab25abf1b6d0f8963281f7c359fd9a9bd894b7e41e523c925f3"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-constraints-node22.json",
+      "sha256": "a3751b482da90a1b300a36ef784e7be71bf2f9e445fc2bf28c03215edcb18da9"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-database-node22.json",
+      "sha256": "836f513dc3a38814ccfe88675b04dbd2a3dced7bdf0d9d0f47bac672bcc8f1e2"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-interactive-quit-node22.json",
+      "sha256": "44f43115603062efffedd49a58ac67573acf414769dcd14846d93130465ce2e4"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-launcher-node22.json",
+      "sha256": "c490706cf08d5003ecfd6bebd2177861fa640adb5cb1d2638918c99e1d3c7c3d"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-lifecycle-node22.json",
+      "sha256": "5a1690240f6f36a3a6b6e7548e4704e21de909722d38456968b167232c1d823c"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-package-node22.json",
+      "sha256": "6b3c97d7c73c02dfbc36559e4dd7f2cafaae8bab9efa2caeaa36ac20736759da"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-package-node24.json",
+      "sha256": "70d53ba2f2d378fcbda55308ea5c14cd23cdefbf1a2e47f4bcbb9670ec4672d1"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-red-browser-node22.json",
+      "sha256": "b7fa79992cff0733a6e5fd6ded10cd6b28eeb92b4f65a3e3ef1beda4038975ef"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-sdk-auth-node22.json",
+      "sha256": "546d7fbcb7d4cc88829a7571cc31fc6c3631f9ae6ef3339df4f14595eefa76a6"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-sdk-data-node22.json",
+      "sha256": "16490296c830d7104b2162242ed0775977f0c2bb85cd0c7ff68b871fd9c7f7ee"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-sdk-refresh-node22.json",
+      "sha256": "19ae6fda04af0aac487dadcd8e47fb0da7e42cb18c2666a88f61faa398cf4a79"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-summary.json",
+      "sha256": "6e5e25d7efb70007254f28ba737505f0c4835b1e9ac82d6606aa574a915176a3"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-tdd.json",
+      "sha256": "cb387e9b400e210109f5b851ec8d31369669183c4c843acff51f6e64277b8c7f"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-unit-node22.json",
+      "sha256": "e7df705f06cfbddf24c14e6f3524dcd6e1474d074ef61704ab38eb26794108ba"
+    },
+    {
+      "path": "docs/evidence/todos-standalone-unit-node24.json",
+      "sha256": "84a6fb648a398ff2b97eeb081747cdc9c019811999facdc5e5262ad3d7e7bab5"
+    },
+    {
+      "path": "docs/plans/2026-10-06-auth-lifecycle-completion.md",
+      "sha256": "0a704e50748583f2ad6de2ce1f263d00151086711d1444fa8d1b8873a5b5574e"
+    },
+    {
+      "path": "docs/plans/2026-11-01-private-todos-run12.md",
+      "sha256": "d95b3e6a19706ad595a98ea0068d28cbde6dc85ac2b1c02a67d69d75b5edfca9"
+    },
+    {
+      "path": "docs/plans/2026-11-01-standalone-todos.md",
+      "sha256": "f88b50ce7d299f69b7e7d58276912883cde01f317db4ab9ef191acd52c26bb57"
+    },
+    {
+      "path": "docs/plans/2026-11-01-todos-add-diagnosis.md",
+      "sha256": "3508776780a5b33d4dc265f210ece8fc22a7b170a3589cb80840ca3327824b23"
+    },
+    {
+      "path": "docs/plans/2026-11-01-todos-ui.md",
+      "sha256": "f4c3c43e462ea22fec14115dde759639703aa6a9e7a04148e7a203890c23abf6"
+    },
+    {
+      "path": "examples/todos/README.md",
+      "sha256": "8afffee48880da2516444b5f0d557640009536c70d28c1f1bae10d18c52fed66"
+    },
+    {
+      "path": "examples/todos/main.js",
+      "sha256": "56748ed10c86c235b47ffd0d015129320dece3924f24ab26b043f224f053d510"
+    },
+    {
+      "path": "examples/todos/styles.css",
+      "sha256": "e98996681b68286b868c3c1c274c86156832ff69bd1fc2ef104b900001de0cfa"
+    },
+    {
+      "path": "playwright.todos-remote.config.ts",
+      "sha256": "da966dd7693ff59da897de540312e9832e3fafe09653d71dd78d00727f82b275"
+    },
+    {
+      "path": "scripts/run-todos.mjs",
+      "sha256": "2c7dadce27af2f44dce88168b19f99760d24cf1100df9aa0e17599e15c6dbf53"
+    },
+    {
+      "path": "tests/sdk-browser/auth-app.spec.ts",
+      "sha256": "982923659d684cf3b64d559990b3eedce34ca9683a715978d5ca7125d9f1b673"
+    },
+    {
+      "path": "tests/sdk-browser/standalone.spec.ts",
+      "sha256": "1ca2b3bc9b1c0b63eb299d8d99aa9819335efaaed5bdf479a7dae5f1b5fe627d"
+    },
+    {
+      "path": "tests/sdk-browser/task-flow.ts",
+      "sha256": "8974346505ea38335afad346276171140b4d16b66571c641746be048f65956f5"
+    },
+    {
+      "path": "tests/todos-remote/remote.spec.ts",
+      "sha256": "94fb41043a7aa75b583ab6a20559299bc372c06060944ed00460e7306d03be7c"
+    },
+    {
+      "path": "tests/unit/sdk-auth-app.test.ts",
+      "sha256": "614a9f024ca6baa55ec2fe795431820aa8b5562e30b3c97e23529d57b0f76832"
+    },
+    {
+      "path": "tests/unit/sdk-auth-background.test.ts",
+      "sha256": "232844993e94856a80f85228d2b71f00ccf85f5e9537e6c7c549a24f62ea76bf"
+    },
+    {
+      "path": "tests/unit/sdk-auth-events.test.ts",
+      "sha256": "5fa329f1c8ec5c784fa0668bf055b618f54fa09c32a61b89d51a779f5306df39"
+    },
+    {
+      "path": "tests/unit/sdk-auth-logout.test.ts",
+      "sha256": "477cc9088ac2d98574864c2ecba15f5a09835c49a7a02cf91cbf3240e9abf415"
+    },
+    {
+      "path": "tests/unit/sdk-ci.test.ts",
+      "sha256": "9f15798eab085daa638995b1e984262acff925a9edeec72d3192786effff02d1"
+    },
+    {
+      "path": "tests/unit/todos-launcher.test.ts",
+      "sha256": "17d6a152ff230a5ffe298ab23ac9ec51aff8576384eef125a62ed48e5807e9e0"
+    },
+    {
+      "path": "tests/unit/todos-ui.test.ts",
+      "sha256": "01a6f165e834e8049beb7dcb24ba60924e5e4125e48d3420cfc18f628c0a3942"
+    }
+  ],
+  "reviewed": {
+    "evidenceJson": 70,
+    "markdown": 8,
+    "codeOrConfig": 33
+  },
+  "findings": [],
+  "note": "Code/config/test changes reviewed with connected callers. All generated JSON parsed/scanned; historical statuses/source hashes and legacy recoveryStatus retained. Ignored .runtime/artifacts/caches not staged. Reviewed PNGs show own disposable identities and remain local, with sanitized fingerprints only. Initial scanner treated legacy recovery report as missing status; preserved its recoveryStatus/rerun failures instead of changing history."
+}

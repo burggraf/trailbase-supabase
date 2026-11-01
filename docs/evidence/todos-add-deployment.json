@@ -1,0 +1,45 @@
+{
+  "scope": "Mutation error-status UI and content-versioned UI import map only; main/SDK/native bytes and server/database unchanged",
+  "status": "passed",
+  "sourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "origin": "https://aspire.tailb03e.ts.net:18443",
+  "finishedAt": "2026-11-01T15:41:45.745Z",
+  "asset": "app.js",
+  "beforeSha256": "2c4349989ce153700027855bd31d647fc5fa9cd28159998fc8fe7bd880fe8095",
+  "afterSha256": "c794c98e370866e71571f4032bb82f180dc1dde1a1bc8a1dd6de98cca3ab6f00",
+  "backup": ".runtime/runs/1793540668685-32d6c1a05a9c/asset-backups/add-status-1793547255312",
+  "unchangedModules": {
+    "main.js": "56748ed10c86c235b47ffd0d015129320dece3924f24ab26b043f224f053d510",
+    "sdk.js": "678e408062049340912881da0fc5bac4c674b809ce25d693a2335ee511f4958f",
+    "auth.js": "f030e9d3c387a63afdbe6b66d2202d4ec3d183d7b0585ce4f9e77809426f7b3d",
+    "common.js": "429f8e79d930e762b33ebe6cfc0067578f88a65a54f36291b7f740cfec444e7a",
+    "trailbase.js": "e7c9879aa97fd81fa87219bf82cad88e48d5074b4e81a2eb00d3c0ca406604f3"
+  },
+  "runnerPid": 365086,
+  "trailPid": 370592,
+  "proxies": [
+    {
+      "id": "proc_a651",
+      "pid": 372131
+    },
+    {
+      "id": "proc_dc58",
+      "pid": 372164
+    }
+  ],
+  "noRestartOrDataReset": true,
+  "rollback": "After verifying same owned fixture/PIDs, restore only backup/app.js atomically. Never reset database/accounts. Original launcher source-drift diagnostic still expected at eventual approved shutdown.",
+  "index": {
+    "beforeSha256": "774d6bd370df889ad3993c67bc6ba5a60023f629bd2289872f01a89aa414e6d3",
+    "afterSha256": "baf084f5063429c4cdac336fa20667b8ac9bc3808663149539d5c871a2b2f087",
+    "imports": {
+      "trailbase": "/sdk-data/trailbase.js",
+      "/sdk-data/app.js": "/sdk-data/app.js?v=c794c98e370866e71571f4032bb82f180dc1dde1a1bc8a1dd6de98cca3ab6f00"
+    },
+    "backup": ".runtime/runs/1793540668685-32d6c1a05a9c/asset-backups/add-status-1793547255312/index.html"
+  },
+  "previousAppOnlySourceSha256": "2b43d8dbfd2b3f39e6f9c7d2a34ba56c169934a07e7f15a891ca30991e6cf097",
+  "lastAssetAppliedSourceSha256": "7828f300f4a0e47a171c4626513196333b1a6ddc7a712a1244d665d6d96f2def",
+  "verificationNote": "Final additional changes after asset update were test assertions only; actual app/index bytes and frozen module hashes reverified. No restart/database/schema change."
+}

@@ -1,0 +1,951 @@
+{
+  "sourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "finishedAt": "2026-11-01T15:52:44.507Z",
+  "scope": "Native Chromium manual interaction and actual UI pagination, fresh disposable identity only; not Mark account reproduction",
+  "status": "passed",
+  "manual": [
+    "3 sequential distinct title UI adds each HTTP200",
+    "Fast double Enter after reload: one saved row",
+    "Add after ordinary idle, manual session refresh HTTP200 and narrow viewport each succeeded",
+    "Edit cancel did not write; save persisted; complete/uncomplete and Active/Completed/All states checked",
+    "Delete cancel preserved complete own rows; confirm removed chosen own task",
+    "Deliberate own same-title HTTP400, no write; safe status/task code after cache repair",
+    "21 tasks created through ordinary UI; exact Next/Previous 20/1/20 against own server order, all21 full rows unchanged",
+    "Scoped SDK cleanup of exact fresh owner/known IDs; real UI local signout200; owned storage/session cleared; browser closed"
+  ],
+  "safeNetwork": {
+    "success": true,
+    "requests": [
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.14",
+        "timestamp": 1793546842689
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.15",
+        "timestamp": 1793546853468
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.16",
+        "timestamp": 1793546853468
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.17",
+        "timestamp": 1793546865768
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.18",
+        "timestamp": 1793546865768
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.19",
+        "timestamp": 1793546881555
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.20",
+        "timestamp": 1793546881568
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.21",
+        "timestamp": 1793546898033
+      },
+      {
+        "method": "POST",
+        "status": 400,
+        "requestId": "443672.22",
+        "timestamp": 1793546977168
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.33",
+        "timestamp": 1793547167983
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.44",
+        "timestamp": 1793547277879
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.45",
+        "timestamp": 1793547294631
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.46",
+        "timestamp": 1793547294669
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.48",
+        "timestamp": 1793547360374
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.49",
+        "timestamp": 1793547366600
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.50",
+        "timestamp": 1793547366668
+      },
+      {
+        "method": "PATCH",
+        "status": 200,
+        "requestId": "443672.51",
+        "timestamp": 1793547422816
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.52",
+        "timestamp": 1793547422868
+      },
+      {
+        "method": "PATCH",
+        "status": 200,
+        "requestId": "443672.53",
+        "timestamp": 1793547428854
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.54",
+        "timestamp": 1793547428891
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.55",
+        "timestamp": 1793547428892
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.56",
+        "timestamp": 1793547440035
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.57",
+        "timestamp": 1793547454620
+      },
+      {
+        "method": "PATCH",
+        "status": 200,
+        "requestId": "443672.58",
+        "timestamp": 1793547462592
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.59",
+        "timestamp": 1793547462699
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.60",
+        "timestamp": 1793547478002
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.61",
+        "timestamp": 1793547492618
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.62",
+        "timestamp": 1793547503739
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.63",
+        "timestamp": 1793547503845
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.64",
+        "timestamp": 1793547520633
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.65",
+        "timestamp": 1793547520744
+      },
+      {
+        "method": "POST",
+        "status": 400,
+        "requestId": "443672.66",
+        "timestamp": 1793547526307
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.67",
+        "timestamp": 1793547575929
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.79",
+        "timestamp": 1793547730958
+      },
+      {
+        "method": "POST",
+        "status": 400,
+        "requestId": "443672.80",
+        "timestamp": 1793547755070
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.81",
+        "timestamp": 1793547823714
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.82",
+        "timestamp": 1793547823823
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.83",
+        "timestamp": 1793547916409
+      },
+      {
+        "method": "POST",
+        "status": 400,
+        "requestId": "443672.84",
+        "timestamp": 1793547916409
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.85",
+        "timestamp": 1793547916409
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.86",
+        "timestamp": 1793547986374
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.87",
+        "timestamp": 1793547986481
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.88",
+        "timestamp": 1793547986919
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.89",
+        "timestamp": 1793547987025
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.90",
+        "timestamp": 1793547987427
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.91",
+        "timestamp": 1793547987536
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.92",
+        "timestamp": 1793547987980
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.93",
+        "timestamp": 1793547988088
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.94",
+        "timestamp": 1793547988454
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.95",
+        "timestamp": 1793547988561
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.96",
+        "timestamp": 1793547988915
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.97",
+        "timestamp": 1793547989022
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.98",
+        "timestamp": 1793547989383
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.99",
+        "timestamp": 1793547989489
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.100",
+        "timestamp": 1793547989829
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.101",
+        "timestamp": 1793547989936
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.102",
+        "timestamp": 1793547990371
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.103",
+        "timestamp": 1793547990486
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.104",
+        "timestamp": 1793547990885
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.105",
+        "timestamp": 1793547990994
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.106",
+        "timestamp": 1793547991384
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.107",
+        "timestamp": 1793547991494
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.108",
+        "timestamp": 1793547991859
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.109",
+        "timestamp": 1793547991970
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.110",
+        "timestamp": 1793547992338
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.111",
+        "timestamp": 1793547992447
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.112",
+        "timestamp": 1793547992807
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.113",
+        "timestamp": 1793547992919
+      },
+      {
+        "method": "POST",
+        "status": 200,
+        "requestId": "443672.114",
+        "timestamp": 1793547993291
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.115",
+        "timestamp": 1793547993399
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.116",
+        "timestamp": 1793548017039
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.117",
+        "timestamp": 1793548026089
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.118",
+        "timestamp": 1793548043037
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.119",
+        "timestamp": 1793548054780
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.120",
+        "timestamp": 1793548074613
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.121",
+        "timestamp": 1793548074613
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.122",
+        "timestamp": 1793548074613
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.123",
+        "timestamp": 1793548074613
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.124",
+        "timestamp": 1793548074613
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.125",
+        "timestamp": 1793548074613
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.126",
+        "timestamp": 1793548074613
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.127",
+        "timestamp": 1793548074613
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.128",
+        "timestamp": 1793548074613
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.129",
+        "timestamp": 1793548074613
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.130",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.131",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.132",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.133",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.134",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.135",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.136",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.137",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.138",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.139",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.140",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "DELETE",
+        "status": 200,
+        "requestId": "443672.141",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.142",
+        "timestamp": 1793548074614
+      },
+      {
+        "method": "GET",
+        "status": 200,
+        "requestId": "443672.143",
+        "timestamp": 1793548089365
+      }
+    ],
+    "creates": [
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 400,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 400,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 400,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 400,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      },
+      {
+        "status": 200,
+        "ownPrefixedTitle": true,
+        "fields": [
+          "id",
+          "priority",
+          "title",
+          "user_id"
+        ]
+      }
+    ],
+    "everyCreateIdDifferent": true,
+    "createOwnerCount": 1,
+    "successfulCreates": 22,
+    "rejectedCreates": 4
+  },
+  "ownSupplementaryFailureClassification": {
+    "bodyMentionsTitleConstraint": false,
+    "bodyMentionsUniqueConstraint": true,
+    "errorClass": "FetchError",
+    "fullOwnRowsUnchanged": true,
+    "noOverflow": true,
+    "ownRows": 6,
+    "sessionNotExpired": true,
+    "status": 400,
+    "taskErrorEmpty": true
+  },
+  "manualRefreshAndCancel": {
+    "authError": "",
+    "cancelDidNotSave": true,
+    "refreshResponses": [
+      200
+    ],
+    "rows": 4,
+    "sessionNotExpired": true,
+    "taskError": ""
+  },
+  "deleteCancel": {
+    "cancelDeleteLeftFullRowsUnchanged": true,
+    "ownRows": 5
+  },
+  "cacheFixed": {
+    "importMapUpdated": true,
+    "newMapperLoaded": true,
+    "sameOwnRowsVisible": true,
+    "versionedResource": true
+  },
+  "pagination": {
+    "first": {
+      "exactOrderedFirstPage": true,
+      "nextEnabled": true,
+      "previousDisabled": true,
+      "totalOwned": 21,
+      "visible": 20
+    },
+    "next": {
+      "exactOrderedSecondPage": true,
+      "nextDisabled": true,
+      "previousEnabled": true,
+      "visible": 1
+    },
+    "previous": {
+      "all21FullRowsUnchanged": true,
+      "combinedPagesUnique21": true,
+      "exactOriginalFirstPage": true,
+      "visible": 20
+    }
+  },
+  "cleanup": {
+    "deletedOwnedRows": 21,
+    "onlyExactFreshIdentityAndKnownIds": true,
+    "remainingOwnRows": 0
+  },
+  "logout": {
+    "authError": "",
+    "localLogoutResponses": [
+      0
+    ],
+    "noTaskList": true,
+    "ownedStorageCleared": true,
+    "sessionCleared": true,
+    "actualNetwork": [
+      {
+        "method": "POST",
+        "status": 200,
+        "path": "/api/auth/v1/logout"
+      }
+    ],
+    "performanceEntryNote": "responseStatus0 was a PerformanceResourceTiming observation, not HTTP failure; captured real POST logout status200 verified separately"
+  },
+  "privacy": "No user password/private title/email inbox read. Only exact generated signup recipient was read. No headers/tokens/raw bodies/backend codes published. Native diagnostic TASK codes are controlled UI categories, not claimed backend codes."
+}

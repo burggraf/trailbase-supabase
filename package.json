@@ -23,6 +23,8 @@
     "test:sdk:refresh": "node scripts/run-phase-a.mjs sdk-refresh",
     "test:sdk:auth": "node scripts/run-phase-a.mjs sdk-auth",
     "test:sdk:data": "node scripts/run-phase-a.mjs sdk-data",
+    "example:todos": "node scripts/run-todos.mjs",
+    "test:example:todos": "node scripts/run-todos.mjs --check",
     "progress": "node scripts/progress.mjs",
     "test:unit": "node scripts/run-unit.mjs",
     "test:phase-a": "node scripts/run-phase-a.mjs",

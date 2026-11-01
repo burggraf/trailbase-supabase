@@ -1,0 +1,244 @@
+{
+  "sourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "finishedAt": "2026-11-01T15:52:44.507Z",
+  "scope": "Actual served frozen SDK and ordinary UI: repeated distinct adds, fast Enter, own same-title400/rejection, edit/cancel, complete/uncomplete, filters/delete/cancel, reload/versioned app/manual refresh/short idle, owner isolation, recovery, local logout and scoped cleanup",
+  "status": "passed",
+  "stats": {
+    "startTime": "2026-11-01T15:42:49.869Z",
+    "duration": 29224.851,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS usable tasks, account-state errors, real mail and two-owner isolation",
+      "project": "chromium",
+      "status": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "annotations": [
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "Own same-title HTTP400; full owner rows unchanged; safe rejection code, no backend body/global-title inference"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        }
+      ]
+    },
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS usable tasks, account-state errors, real mail and two-owner isolation",
+      "project": "firefox",
+      "status": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "annotations": [
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "Own same-title HTTP400; full owner rows unchanged; safe rejection code, no backend body/global-title inference"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        }
+      ]
+    },
+    {
+      "name": "L1-14–20/L1-24/L1-26/E01 private HTTPS usable tasks, account-state errors, real mail and two-owner isolation",
+      "project": "webkit",
+      "status": "expected",
+      "attemptStatuses": [
+        "passed"
+      ],
+      "annotations": [
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "missing account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "unconfirmed account: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "wrong password after confirmation: HTTP 401; own same-origin JSON payload verified"
+        },
+        {
+          "type": "auth-stage",
+          "description": "confirmed correct password: HTTP 200; own same-origin JSON payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "Own same-title HTTP400; full owner rows unchanged; safe rejection code, no backend body/global-title inference"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        },
+        {
+          "type": "task-mutation",
+          "description": "UI add HTTP200; fresh ID, mapped owner, current unexpired JWT/subject and exact payload verified"
+        }
+      ]
+    }
+  ],
+  "rawPrivateSha256": "bcac3f88a1e883519ea14e9570181df8c04581baf7f0de6bce5d54b26903dad3",
+  "limitations": [
+    "Short idle/manual renewal is not real long-idle expiry or background timing certification",
+    "No physical Safari or authenticated global acknowledgement signoff"
+  ]
+}

@@ -4,6 +4,12 @@ import { resolve, relative } from 'node:path';
 import { exec } from './tools.mjs';
 import { packedFilename, validatePackage, validatePackedText } from './run-sdk-package.mjs';
 
+export const todosLandingPage = '<!doctype html><html lang="en"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/sdk-data/index.html"><title>Todos</title><a href="/sdk-data/index.html">Open todos</a></html>';
+
+export function todosBrowserImports(appSource) {
+  return { trailbase: '/sdk-data/trailbase.js', '/sdk-data/app.js': `/sdk-data/app.js?v=${createHash('sha256').update(appSource).digest('hex')}` };
+}
+
 export function validateBrowserModules(sdk, native, modules = {}) {
   const visited = new Set();
   function visit(name, source) {
@@ -59,9 +65,14 @@ export async function preparePackedBrowser(directory) {
   const target = resolve(directory, 'public/sdk-data'); await mkdir(target);
   await cp(sdkPath, resolve(target, 'sdk.js')); await cp(nativePath, resolve(target, 'trailbase.js'));
   for (const name of Object.keys(modules)) await cp(resolve(consumer, 'node_modules/trailbase-supabase/dist', name), resolve(target, name));
-  await cp('examples/todos/app.js', resolve(target, 'app.js'));
-  const html = (await readFile('examples/todos/index.html', 'utf8')).replace('<!-- sdk-import-map -->', '<script type="importmap">{"imports":{"trailbase":"/sdk-data/trailbase.js"}}</script>');
+  for (const name of ['app.js', 'main.js', 'styles.css']) await cp(resolve('examples/todos', name), resolve(target, name));
+  const imports = todosBrowserImports(await readFile(resolve(target, 'app.js'), 'utf8'));
+  const importMap = `<script type="importmap">${JSON.stringify({ imports })}</script>`;
+  const html = (await readFile('examples/todos/index.html', 'utf8')).replace('<!-- sdk-import-map -->', importMap);
   await writeFile(resolve(target, 'index.html'), html);
+  await writeFile(resolve(directory, 'public/index.html'), todosLandingPage);
+  // Historical manual mounts need no automatically booted client or duplicate listeners.
+  await writeFile(resolve(target, 'harness.html'), `<!doctype html><html lang="en"><meta charset="utf-8"><title>Private SDK test mount</title>${importMap}<main id="todos"></main></html>`);
   const digest = value => createHash('sha256').update(value).digest('hex');
-  return { package: 'trailbase-supabase@0.0.0', native: 'trailbase@0.14.3', tarballSha256: digest(await readFile(tarball)), sdkSha256: digest(sdk), moduleSha256: Object.fromEntries(Object.entries(modules).map(([name, source]) => [name, digest(source)])), nativeSha256: digest(native), imports: { trailbase: '/sdk-data/trailbase.js' } };
+  return { package: 'trailbase-supabase@0.0.0', native: 'trailbase@0.14.3', tarballSha256: digest(await readFile(tarball)), sdkSha256: digest(sdk), moduleSha256: Object.fromEntries(Object.entries(modules).map(([name, source]) => [name, digest(source)])), nativeSha256: digest(native), imports };
 }

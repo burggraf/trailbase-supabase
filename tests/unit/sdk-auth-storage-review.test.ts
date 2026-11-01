@@ -1,4 +1,4 @@
-import { expect, it } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import { createClient, type AuthStorage } from '../../src/index.js';
 const trailbase = { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' as const } } } } };
 const now = Math.floor(Date.now() / 1000);
@@ -36,10 +36,19 @@ it('L1-16/S08 stale failed login cannot reconcile over a newer committed login',
   const old = client.auth.signInWithPassword(credentials); await started.promise; expect((await client.auth.signInWithPassword(credentials)).error).toBeNull(); held.resolve(new Response('Rejected', { status: 401 }));
   expect((await old).error?.status).toBe(401); expect((await client.auth.getSession()).data.session?.user.email).toBe('newer');
 });
-it('L1-16/S07 required auth settings must be own fields even when Object.prototype supplies flags', async () => {
-  await withPrototype({ persistSession: true, autoRefreshToken: false }, async () => {
-    for (const auth of [{}, { persistSession: false }, { autoRefreshToken: false }]) expect(() => createClient('http://localhost:4000', undefined, { trailbase, auth })).toThrowError(expect.objectContaining({ name: 'UnsupportedFeatureError' }));
-  });
+it('L1-16/S07 inherited flags cannot override default persistence/background or explicit own flags', async () => {
+  vi.useFakeTimers();
+  try {
+    await withPrototype({ persistSession: false, autoRefreshToken: false }, async () => {
+      let reads = 0;
+      const storage: AuthStorage = { getItem: () => { reads++; return null; }, setItem: () => {}, removeItem: () => {} };
+      const client = createClient('http://localhost:4000', undefined, { trailbase, auth: { storage }, global: { fetch: async () => Response.json(tokens('C')) } });
+      expect((await client.auth.signInWithPassword(credentials)).error).toBeNull(); expect(reads).toBe(1); expect(vi.getTimerCount()).toBe(1);
+      await client.auth.signOut({ scope: 'local' }); expect(vi.getTimerCount()).toBe(0);
+      const explicit = createClient('http://localhost:4000', undefined, { trailbase, auth: { persistSession: false, autoRefreshToken: false, storage }, global: { fetch: async () => Response.json(tokens('C')) } });
+      await explicit.auth.signInWithPassword(credentials); expect(reads).toBe(1); expect(vi.getTimerCount()).toBe(0);
+    });
+  } finally { vi.useRealTimers(); }
 });
 it('L1-16/S07 stored version must be own and exactly supported; inherited version plus unexpected own field rejected', async () => {
   await withPrototype({ version: 1 }, async () => {

@@ -1,0 +1,40 @@
+{
+  "scope": "Data-preserving live fixture UI asset replacement, not server restart/package/release signoff",
+  "status": "passed",
+  "sourceSha256": "ea8b7d7eb330881f8840478ce60ca0b22c960241fe591c00ab0f6921a204f311",
+  "originalLauncherSourceSha256": "78ad127cc6d0be800f25745641207bf088ba686b199a9ba5d3185c1ffa79517d",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "finishedAt": "2026-11-01T14:37:40.272Z",
+  "origin": "https://aspire.tailb03e.ts.net:18443",
+  "assets": [
+    {
+      "name": "styles.css",
+      "beforeSha256": "76f4ff9e6e9fc27fc44f5a37e898957a5a71dce571419a742ebd7baae1682dd1",
+      "afterSha256": "3bc6412abb1dc69a207b1c5f832a93bbaa2903cd1b70e4844a087b2dfc1c4a49"
+    },
+    {
+      "name": "app.js",
+      "beforeSha256": "3cb6827499be6e2628363f34354fe2741825355ff396b9c17e5f514360e67ad2",
+      "afterSha256": "f721332e07f81de68ffa4a3f3702031c67567b4685459d4ed7486a5e4201a287"
+    },
+    {
+      "name": "index.html",
+      "beforeSha256": "4acf8c68bdd5c2be2d3760907b9885e712590ee065eb80724bae54505b913262",
+      "afterSha256": "774d6bd370df889ad3993c67bc6ba5a60023f629bd2289872f01a89aa414e6d3"
+    }
+  ],
+  "unchangedModules": {
+    "main.js": "56748ed10c86c235b47ffd0d015129320dece3924f24ab26b043f224f053d510",
+    "sdk.js": "678e408062049340912881da0fc5bac4c674b809ce25d693a2335ee511f4958f",
+    "auth.js": "f030e9d3c387a63afdbe6b66d2202d4ec3d183d7b0585ce4f9e77809426f7b3d",
+    "common.js": "429f8e79d930e762b33ebe6cfc0067578f88a65a54f36291b7f740cfec444e7a",
+    "trailbase.js": "e7c9879aa97fd81fa87219bf82cad88e48d5074b4e81a2eb00d3c0ca406604f3"
+  },
+  "backup": ".runtime/runs/1793540668685-32d6c1a05a9c/asset-backups/redesign-1793543860063",
+  "runnerPid": 365086,
+  "trailPid": 370592,
+  "processesUnchanged": true,
+  "networkUnchanged": true,
+  "notes": "Only three public UI assets atomically replaced after backup; import map preserved. No server restart/admin/database/reset or network commands. Test data changes use ordinary SDK under fresh disposable identities only. Original launcher retains old startup hash: on eventual shutdown its source-drift guard will report failed; cleanup must still pass and be evaluated separately. Do not suppress/relabel it; deployment manifest records current served UI provenance.",
+  "rollback": "After verifying same owner/run, atomically restore only backup app.js/styles.css/index.html to owned public/sdk-data and verify their beforeSha256; do not restart server or restore database."
+}

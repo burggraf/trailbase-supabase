@@ -1,0 +1,33 @@
+{
+  "scope": "Intermediate test-first observations, not final-source verification or SDK signoff",
+  "status": "intermediate-attempts",
+  "initialSourceSha256": "f8d652e9a3e235d70de784a72d8843d0ee1a389eb18ee3c4dad2718103478175",
+  "initialUnitRed": {
+    "passed": 0,
+    "failed": 2,
+    "observedFailures": [
+      "Existing index.html lacks the executable main.js module entrypoint",
+      "Standalone launcher file/options do not exist"
+    ],
+    "privateRawReport": ".runtime/todos-unit-red.json"
+  },
+  "initialRealBrowserRed": {
+    "evidence": "docs/evidence/todos-standalone-red-browser-node22.json",
+    "node": "v22.23.2",
+    "passed": 12,
+    "failed": 3,
+    "failureScope": "New standalone entrypoint cases in Chromium, Firefox and WebKit; app does not boot yet",
+    "setup": "ready",
+    "cleanup": "passed"
+  },
+  "intermediateCiRedAndEntrypointUnitGreen": {
+    "sourceSha256": null,
+    "sourceCaveat": "Direct focused Vitest run has no automatic whole-tree hash; not attributed to final immutable source",
+    "passed": 3,
+    "failed": 1,
+    "observedFailure": "Focused CI job lacks the new test:example:todos command",
+    "observedPasses": "Two entrypoint/launcher option cases and existing exact-pin cache check",
+    "privateRawReport": ".runtime/todos-ci-red.json"
+  },
+  "policy": "Keep raw reports/logs private and unchanged; these observations establish test-first failure/green transitions only, not complete runtime or release proof."
+}

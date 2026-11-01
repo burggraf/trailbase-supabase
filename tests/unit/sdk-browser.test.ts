@@ -1,6 +1,15 @@
 import { expect, it } from 'vitest';
 import { readFile } from 'node:fs/promises';
 
+it('E08 changing UI bytes versions only the UI module, not frozen SDK/main/native modules', async () => {
+  const prepare = await import('../../scripts/sdk-browser.mjs');
+  const imports = Reflect.get(prepare, 'todosBrowserImports');
+  const first = imports('UI version one'), second = imports('UI version two');
+  expect(first).toEqual({ trailbase: '/sdk-data/trailbase.js', '/sdk-data/app.js': expect.stringMatching(/^\/sdk-data\/app\.js\?v=[a-f0-9]{64}$/) });
+  expect(imports('UI version one')).toEqual(first);
+  expect(second['/sdk-data/app.js']).not.toBe(first['/sdk-data/app.js']);
+});
+
 it('L1-27/U27 browser preparation must not statically import its active runner entrypoint', async () => {
   const source = await readFile(new URL('../../scripts/run-sdk-package.mjs', import.meta.url), 'utf8');
   expect(source).not.toMatch(/^import .*from ['"]\.\/run-phase-a\.mjs['"]/m);

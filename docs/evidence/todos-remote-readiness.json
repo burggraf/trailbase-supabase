@@ -1,0 +1,48 @@
+{
+  "scope": "Live private HTTPS readiness, not full auth/mobile/release signoff",
+  "status": "passed",
+  "sourceSha256": "78ad127cc6d0be800f25745641207bf088ba686b199a9ba5d3185c1ffa79517d",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "finishedAt": "2026-11-01T13:46:54.693Z",
+  "origin": "https://aspire.tailb03e.ts.net:18443",
+  "inbox": "https://aspire.tailb03e.ts.net:18444",
+  "tests": [
+    {
+      "name": "HTTPS root landing",
+      "status": "passed"
+    },
+    {
+      "name": "HTTPS app",
+      "status": "passed"
+    },
+    {
+      "name": "HTTPS same-origin SDK bootstrap",
+      "status": "passed"
+    },
+    {
+      "name": "HTTPS SDK module",
+      "status": "passed"
+    },
+    {
+      "name": "HTTPS styles",
+      "status": "passed"
+    },
+    {
+      "name": "HTTPS native API health",
+      "status": "passed"
+    },
+    {
+      "name": "HTTPS owned backend",
+      "status": "passed"
+    },
+    {
+      "name": "HTTPS disposable inbox",
+      "status": "passed"
+    },
+    {
+      "name": "Same-origin record API denies unauthenticated access",
+      "status": "passed",
+      "httpStatus": 403
+    }
+  ]
+}

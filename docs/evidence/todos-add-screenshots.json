@@ -1,0 +1,57 @@
+{
+  "sourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "finishedAt": "2026-11-01T15:52:44.507Z",
+  "status": "passed",
+  "scope": "Native screenshots visually inspected, file fingerprints; narrow Chromium viewport is not physical iPhone",
+  "screenshots": [
+    {
+      "path": "artifacts/todos-add/duplicate-before.png",
+      "width": 1280,
+      "height": 633,
+      "sha256": "8635fa6030fa618ade78b56275ae24fb3e9e5f6213c0aa79fde3e6e98cae3d93",
+      "inspected": true,
+      "scope": "Historical old UI"
+    },
+    {
+      "path": "artifacts/todos-add/rejection-desktop.png",
+      "width": 1280,
+      "height": 1141,
+      "sha256": "e919b28589934c0aaca1c7a2f8fd319d1c4585afd205ba644e502c6cb21f6dba",
+      "inspected": true,
+      "scope": "Current deployed UI; generated own tasks only"
+    },
+    {
+      "path": "artifacts/todos-add/rejection-mobile.png",
+      "width": 390,
+      "height": 1082,
+      "sha256": "288ebd75e84c7e69c92cfc0a890fea74f003618e1fafb1874c33d345e7d7d044",
+      "inspected": true,
+      "scope": "Current deployed UI; generated own tasks only"
+    },
+    {
+      "path": "artifacts/todos-add/success-desktop.png",
+      "width": 1280,
+      "height": 1138,
+      "sha256": "6504c469ca72ec83b86542f6ba44eb7b34302454eeec141ee70b36f0cdbfc64c",
+      "inspected": true,
+      "scope": "Current deployed UI; generated own tasks only"
+    },
+    {
+      "path": "artifacts/todos-add/success-mobile.png",
+      "width": 390,
+      "height": 1057,
+      "sha256": "dc4ac4516092bbc17f1c09566afd33ce7552797742ca8c1ed163c974494372c5",
+      "inspected": true,
+      "scope": "Current deployed UI; generated own tasks only"
+    },
+    {
+      "path": "artifacts/todos-add/pagination-page2.png",
+      "width": 1280,
+      "height": 853,
+      "sha256": "0547b60a18a6128d0262366192480d973391d2e2de1232ba0aecfa194683ebb0",
+      "inspected": true,
+      "scope": "Current deployed UI; generated own tasks only"
+    }
+  ]
+}

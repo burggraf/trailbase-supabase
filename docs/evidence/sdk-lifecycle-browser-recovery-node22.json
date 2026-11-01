@@ -1,0 +1,57 @@
+{
+  "scope": "Explicitly approved exact owned-fixture recovery and missing-scope rerun; not full SDK signoff",
+  "sourceSha256": "e02fc4f13cadd119e4e86cc0a7f1228d7a3e1952315efc0fd4517f49ef664af3",
+  "recoveredRunId": "1793497175625-9482f0b93fe2",
+  "recoveryStatus": "passed",
+  "recoveryExitCode": 0,
+  "preflight": [
+    "Recorded runner and TrailBase PIDs absent immediately before recovery; cleanup.mjs independently checks runner liveness again",
+    "Owner/config project identity and associated stale lock agree",
+    "Exact six owned service names and original image tags/digests match tests/fixtures/service-images.json",
+    "Published bindings are loopback only and exact network ownership label matches run ID"
+  ],
+  "recoveryCommand": "npm exec --yes --package=node@22.23.2 -- node scripts/cleanup.mjs 1793497175625-9482f0b93fe2",
+  "postconditions": {
+    "ownedContainersAbsent": true,
+    "ownedNetworkAbsent": true,
+    "ownedVolumeAbsent": true,
+    "associatedLockAbsent": true,
+    "ownedDepotContextAndPackageRemoved": true,
+    "originalOwnerAndDiagnosticLogsRetained": true,
+    "unrelatedResourcesTargeted": false
+  },
+  "rerun": {
+    "requestedNode": "22.23.2",
+    "actualReportNode": "v22.23.2",
+    "combinedExitCode": 1,
+    "sdk-browser": {
+      "evidence": "docs/evidence/sdk-lifecycle-final-sdk-browser-node22.json",
+      "status": "failed",
+      "passed": 6,
+      "failed": 6,
+      "setup": "ready",
+      "cleanup": "passed",
+      "existingDataAndStorageCases": "passed in Chromium, Firefox and WebKit",
+      "newAuthAppCases": "failed for both TrailBase and Supabase in all three engines at auth-app.spec.ts:53, second Add todo after reload",
+      "diagnosis": "The test reload creates an empty required New title input; the second create step does not refill it, so HTML form validation prevents submission. Native test cleanup additionally attempts DELETE of the row already proved absent and receives 403. This is a test-flow diagnosis, not a verified fix.",
+      "notReached": "New app local/global logout assertions following the failed second create, and their associated postconditions"
+    },
+    "lifecycle": {
+      "evidence": "docs/evidence/sdk-lifecycle-final-lifecycle-node22.json",
+      "status": "passed",
+      "passed": 1,
+      "failed": 0,
+      "setup": "ready",
+      "cleanup": "passed",
+      "scope": "Injected setup failure reaches unconditional owned-resource cleanup; not full auth lifecycle coverage"
+    }
+  },
+  "finalResourceCheck": "No containers, network or volume for the recovered project or either fresh rerun project; shared fixture lock absent",
+  "limitations": [
+    "Interrupted original browser attempt remains incomplete and is not rewritten as this rerun.",
+    "Combined rerun failed; six passing existing browser tests do not certify the six failing auth-app flows.",
+    "No implementation/test fixes, dependency changes, repins, server changes, deployment or publication during this recovery.",
+    "Full SDK contract/security/E2E/package/all release commands remain intentionally incomplete; focused passing scopes are not substitutes.",
+    "G1/G7, signup null-user compatibility approval and authenticated global revocation acknowledgement remain unresolved; no maintainer signoff."
+  ]
+}

@@ -19,10 +19,19 @@ client.auth.refreshSession({ refresh_token: 'placeholder' });
 client.auth.signOut({ scope: 'others' });
 // @ts-expect-error no fabricated user metadata
 user.user_metadata;
-// Explicit persistent opt-in and asynchronous custom storage are supported; no full defaults.
+// Auth opt-in supports default persistence/background and asynchronous custom storage.
 void createClient('http://localhost:4000', undefined, { trailbase: { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' } } } } }, auth: { persistSession: true, autoRefreshToken: false, storageKey: 'owned', storage: { getItem: async () => null, setItem: async () => {}, removeItem: async () => {} } } });
 // @ts-expect-error storage read must return string/null, not parsed state
 const invalidStorage: import('../../src/index.js').AuthStorage = { getItem: () => ({}), setItem: () => {}, removeItem: () => {} };
 void invalidStorage;
 
 const liveUser: Promise<{ data: { user: AuthUser | null }; error: import('../../src/index.js').AuthError | null }> = client.auth.getUser(); void liveUser;
+const logout: Promise<{ error: import('../../src/index.js').AuthError | null }> = client.auth.signOut({ scope: 'local' }); void logout;
+const listener = client.auth.onAuthStateChange(async (event, session) => {
+  const supported: import('../../src/index.js').AuthChangeEvent = event; void supported;
+  const cached: AuthSession | null = session; void cached;
+  // @ts-expect-error native CSRF is not public session data
+  session?.csrf_token;
+});
+listener.data.subscription.unsubscribe();
+void createClient('http://localhost:4000', undefined, { trailbase: { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' } } } } }, auth: {} });

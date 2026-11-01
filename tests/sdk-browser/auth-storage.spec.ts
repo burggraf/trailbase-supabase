@@ -9,7 +9,7 @@ test('L1-16/E06 packed genuine password auth localStorage reload and owned-key i
   await withCleanup(async () => {
     user = await confirmedTrailUser(env, 'packed-storage');
     await page.context().route('**/*', route => env.origins.includes(new URL(route.request().url()).origin) ? route.continue() : route.abort());
-    await page.goto(`${env.trailUrl}/sdk-data/index.html`);
+    await page.goto(`${env.trailUrl}/sdk-data/harness.html`);
     expect(await page.evaluate(async ({ base, email, password, owner, unrelated, ownedKey }) => {
       const sdk: typeof import('../../src/index.js') = await import(`${base}/sdk-data/sdk.js`);
       const client = sdk.createClient(base, undefined, { trailbase: { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' } } } } }, auth: { persistSession: true, autoRefreshToken: false } });

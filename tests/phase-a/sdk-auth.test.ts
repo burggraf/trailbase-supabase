@@ -1,7 +1,7 @@
 import { it, expect } from 'vitest';
 import { randomUUID } from 'node:crypto';
 import { createClient, type AuthStorage } from '../../src/index.js';
-import { context, confirmEmail, supabase, nativeUuid } from './helpers.js';
+import { context, confirmEmail, supabase, nativeUuid, canonicalUuid, confirmedTrailUser, confirmedSupabaseUser } from './helpers.js';
 import { cleanupOwnedRows, withCleanup } from '../sdk-browser/cleanup.js';
 
 it('L1-14/I14 L1-15/I15 L1-16/I16 fresh SDK signup/real mail/login, reference failed replacement and bearer owner isolation', async () => {
@@ -15,7 +15,7 @@ it('L1-14/I14 L1-15/I15 L1-16/I16 fresh SDK signup/real mail/login, reference fa
   const credentials = [0, 1].map(() => ({ email: `sdk-auth-${randomUUID()}@example.test`, password: `Fixture-${randomUUID()}-Aa1!` }));
   const rowId = randomUUID(); let owner: string | undefined;
   const reference = supabase(env);
-  // The backend harness owns identities/sessions; slice1 signOut is deliberately unsupported.
+  // Fixture teardown owns any remaining sessions; the focused case also checks explicit local logout.
   await withCleanup(async () => {
     for (const [index, client] of [a, b].entries()) {
       const signup = await client.auth.signUp(credentials[index]); expect(signup.error).toBeNull(); expect(signup.data).toEqual({ user: null, session: null });
@@ -101,3 +101,54 @@ it('L1-17/I17/S04 live native status maps actual owned DB user, rejects forged/r
     async()=>{data.delete(key);expect(data.get('unrelated')).toBe('keep');},async()=>{sessions?.close();},async()=>{main?.close();}
   ]);
 },120000);
+
+it('L1-19/I19/C19/S08 real local/global refresh revocation, observable native global uncertainty and unchanged owner rows', async () => {
+  const env = await context();
+  const owner = await confirmedTrailUser(env, 'sdk-logout'), control = await confirmedTrailUser(env, 'sdk-logout-control');
+  const reference = await confirmedSupabaseUser(env, 'sdk-logout-reference');
+  const mapping = { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' as const } } } } };
+  const data = new Map<string, string>([['unrelated', 'keep']]);
+  const storage: AuthStorage = { getItem: k => data.get(k) ?? null, setItem: (k, v) => { data.set(k, v); }, removeItem: k => { data.delete(k); } };
+  const make = () => createClient(env.trailUrl, undefined, { trailbase: mapping, auth: { persistSession: true, autoRefreshToken: false, storage, storageKey: `logout-${randomUUID()}` } });
+  const a = make(), sibling = make(); const events: string[] = [];
+  const credentials = { email: owner.email, password: owner.password };
+  const listener = a.auth.onAuthStateChange(event => { events.push(event); }).data.subscription;
+  const id = randomUUID(), controlId = randomUUID();
+  const refresh = async (token: string) => {
+    const response = await fetch(`${env.trailUrl}/api/auth/v1/refresh`, { method: 'POST', body: JSON.stringify({ refresh_token: token }), headers: { 'content-type': 'application/json' }, credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(10000) });
+    await response.body?.cancel(); return response.status;
+  };
+  const snapshot = async () => Promise.all([owner, control].flatMap(user => ['todos', 'todo_audit'].map(async table => (await user.client.records(table).list({ pagination: { limit: 1000 }, order: [table === 'todos' ? '+id' : '+audit_key'] })).records)));
+  await withCleanup(async () => {
+    await owner.client.records('todos').create({ id: nativeUuid(id), user_id: owner.user.id, title: `logout-${id}` });
+    await control.client.records('todos').create({ id: nativeUuid(controlId), user_id: control.user.id, title: `control-${controlId}` });
+    const before = await snapshot();
+    const first = await a.auth.signInWithPassword(credentials), second = await sibling.auth.signInWithPassword(credentials);
+    expect(first.error).toBeNull(); expect(second.error).toBeNull(); expect(first.data.user?.id).toBe(canonicalUuid(owner.user.id));
+    expect((await a.auth.signOut({ scope: 'local' })).error).toBeNull();
+    expect(await refresh(first.data.session!.refresh_token)).toBe(401); expect(await refresh(second.data.session!.refresh_token)).toBe(200);
+    expect((await a.auth.getSession()).data.session).toBeNull(); expect(data.get('unrelated')).toBe('keep'); expect(events).toEqual(['INITIAL_SESSION', 'SIGNED_IN', 'SIGNED_OUT']);
+    const globalSession = await a.auth.signInWithPassword(credentials); expect(globalSession.error).toBeNull();
+    expect((await a.auth.signOut()).error?.name).toBe('AuthGlobalSignOutUnconfirmedError');
+    for (const token of [globalSession.data.session!.refresh_token, second.data.session!.refresh_token, owner.client.tokens()!.refresh_token!]) expect(await refresh(token)).toBe(401);
+    expect(await refresh(control.client.tokens()!.refresh_token!)).toBe(200); expect(await snapshot()).toEqual(before);
+    expect((await a.auth.getSession()).data.session).toBeNull();
+    // The real reference has an authenticated acknowledgement; keep its scope semantics separate.
+    const r1 = supabase(env), r2 = supabase(env);
+    try {
+      const login1 = await r1.auth.signInWithPassword(reference), login2 = await r2.auth.signInWithPassword(reference);
+      expect(login1.error).toBeNull(); expect(login2.error).toBeNull();
+      expect((await r1.auth.signOut({ scope: 'local' })).error).toBeNull();
+      expect((await r1.auth.refreshSession({ refresh_token: login1.data.session!.refresh_token })).error).not.toBeNull();
+      expect((await r2.auth.refreshSession()).error).toBeNull();
+      expect((await r1.auth.signInWithPassword(reference)).error).toBeNull(); expect((await r1.auth.signOut()).error).toBeNull();
+      expect((await r2.auth.refreshSession()).error).not.toBeNull();
+    } finally { await r1.auth.signOut({ scope: 'local' }); await r2.auth.signOut({ scope: 'local' }); }
+  }, [
+    async () => { listener.unsubscribe(); },
+    async () => { await cleanupOwnedRows(owner.client.records('todos'), owner.user.id, [nativeUuid(id)]); },
+    async () => { await cleanupOwnedRows(control.client.records('todos'), control.user.id, [nativeUuid(controlId)]); },
+    async () => { await a.auth.signOut({ scope: 'local' }); await sibling.auth.signOut({ scope: 'local' }); },
+    async () => { await owner.client.logout(); await control.client.logout(); await reference.client.auth.signOut({ scope: 'local' }); },
+  ]);
+}, 120000);

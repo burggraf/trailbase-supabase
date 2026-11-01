@@ -72,20 +72,74 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
   if (enabled) {
     plainObject(options, 'Auth options');
     for (const key of Object.keys(options)) if (!['persistSession', 'autoRefreshToken', 'detectSessionInUrl', 'storageKey', 'storage'].includes(key)) unsupported(`Unsupported auth option: ${key}`);
-    if (typeof ownOption('persistSession') !== 'boolean' || ownOption('autoRefreshToken') !== false) unsupported('Explicit persistSession boolean and autoRefreshToken:false required; default refresh is not implemented');
+    for (const key of ['persistSession', 'autoRefreshToken'] as const) if (ownOption(key) !== undefined && typeof ownOption(key) !== 'boolean') throw new TypeError(`${key} must be boolean`);
     const detectSessionInUrl = ownOption('detectSessionInUrl'), storageKey = ownOption('storageKey'), storage = ownOption('storage');
     if (detectSessionInUrl !== undefined && detectSessionInUrl !== false) unsupported('URL session adoption is not implemented');
     if (storageKey !== undefined && (typeof storageKey !== 'string' || !storageKey.trim() || /[\x00-\x1f\x7f]/.test(storageKey))) throw new TypeError('storageKey must be a nonempty control-free string');
     if (storage !== undefined) validateStorage(storage);
   }
-  const persist = ownOption('persistSession') === true;
+  const persist = ownOption('persistSession') ?? true;
+  const autoRefresh = enabled && (ownOption('autoRefreshToken') ?? true);
   const key = ownOption('storageKey') ?? `trailbase-supabase.auth:${base.origin}`;
   let storage: AuthStorage | undefined = ownOption('storage');
   let generation = 0, commitVersion = 0, state: AuthState | null = null, committed: AuthState | null = null;
-  let initialization: Promise<void> | undefined, storageTail: Promise<void> = Promise.resolve(), storageFailure: Error | null = null;
+  let initialization: Promise<AuthState | null> | undefined, hydrationPending = false;
+  let storageTail: Promise<void> = Promise.resolve(), storageFailure: Error | null = null;
   const requireAuth = () => { if (!enabled) unsupported('Auth defaults are not implemented; explicitly configure auth'); };
   const snapshot = () => state === null ? null : structuredClone(state.session);
-  function failClosed() { if (storageFailure) throw storageFailure; }
+  type Listener = { callback: (event: AuthChangeEvent, session: AuthSession | null) => void; initialized: boolean };
+  const listeners = new Set<Listener>();
+  function deliver(listener: Listener, event: AuthChangeEvent, session: AuthSession | null) {
+    if (!listeners.has(listener)) return;
+    try { void Promise.resolve(listener.callback(event, structuredClone(session))).catch(() => {}); }
+    catch { /* Consumer callbacks cannot break session ownership or other listeners. */ }
+  }
+  function notify(event: AuthChangeEvent) {
+    const current = [...listeners], session = snapshot();
+    queueMicrotask(() => {
+      for (const listener of current) {
+        if (!listeners.has(listener)) continue;
+        if (!listener.initialized) { listener.initialized = true; deliver(listener, 'INITIAL_SESSION', session); }
+        deliver(listener, event, session);
+      }
+    });
+  }
+  function subscribe(callback: Listener['callback']) {
+    const listener = { callback, initialized: false }; listeners.add(listener);
+    const initial = () => {
+      if (!listeners.has(listener) || listener.initialized) return;
+      listener.initialized = true; deliver(listener, 'INITIAL_SESSION', storageFailure ? null : snapshot());
+    };
+    void sessionReady().then(initial, () => { if (listeners.has(listener) && !listener.initialized) { listener.initialized = true; deliver(listener, 'INITIAL_SESSION', null); } });
+    return { data: { subscription: { unsubscribe() { listeners.delete(listener); } } } };
+  }
+  let refreshTimer: ReturnType<typeof setTimeout> | undefined;
+  let focusWindow: Window | undefined, visibilityDocument: Document | undefined;
+  function stopBackground() {
+    clearTimeout(refreshTimer); refreshTimer = undefined;
+    focusWindow?.removeEventListener('focus', focused); focusWindow = undefined;
+    visibilityDocument?.removeEventListener('visibilitychange', focused); visibilityDocument = undefined;
+  }
+  function focused() {
+    if (typeof document !== 'undefined' && document.visibilityState !== 'visible') return;
+    if (state && state.session.expires_at * 1000 - Date.now() <= 30000) backgroundRefresh();
+  }
+  function armBackground(retryDelay?: number) {
+    clearTimeout(refreshTimer); refreshTimer = undefined;
+    if (!autoRefresh || !state || storageFailure) { stopBackground(); return; }
+    if (!focusWindow && typeof window !== 'undefined' && typeof window.addEventListener === 'function') { focusWindow = window; focusWindow.addEventListener('focus', focused); }
+    if (!visibilityDocument && typeof document !== 'undefined' && typeof document.addEventListener === 'function') { visibilityDocument = document; visibilityDocument.addEventListener('visibilitychange', focused); }
+    const delay = retryDelay ?? Math.max(1000, state.session.expires_at * 1000 - Date.now() - 30000);
+    refreshTimer = setTimeout(backgroundRefresh, Math.min(delay, 2147483647));
+    (refreshTimer as unknown as { unref?: () => void }).unref?.();
+  }
+  function backgroundRefresh() {
+    clearTimeout(refreshTimer); refreshTimer = undefined;
+    if (!autoRefresh || !state || storageFailure) { stopBackground(); return; }
+    const epoch = generation;
+    void refresh().then(result => { if (epoch === generation) armBackground(result.error ? 10000 : undefined); });
+  }
+  function failClosed() { if (storageFailure) { stopBackground(); throw storageFailure; } }
   function ownedStorage(): AuthStorage {
     if (storage) return storage;
     try {
@@ -94,18 +148,22 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
       validateStorage(storage); return storage;
     } catch { throw namedError('AuthStorageUnavailableError', 'Persistent auth storage unavailable'); }
   }
-  function initialize(): Promise<void> {
+  function initialize(): Promise<AuthState | null> {
     if (!initialization) {
-      const epoch = generation;
+      const epoch = generation, version = commitVersion;
+      hydrationPending = true;
       initialization = (async () => {
-        if (!persist) return;
+        if (!persist) return null;
         const target = ownedStorage(); let value: unknown;
         try { value = await target.getItem(key); }
         catch { throw namedError('AuthStorageReadError', 'Auth storage read failed'); }
         const hydrated = decodeStored(value);
-        committed = hydrated; commitVersion++;
-        if (epoch === generation) state = hydrated;
-      })();
+        if (version === commitVersion) {
+          committed = hydrated; commitVersion++;
+          if (epoch === generation) { state = hydrated; armBackground(); }
+        }
+        return hydrated;
+      })().finally(() => { hydrationPending = false; });
     }
     return initialization;
   }
@@ -116,7 +174,7 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
       if (previous) await ownedStorage().setItem(key, encodeStored(previous));
       else await ownedStorage().removeItem(key);
     } catch {
-      storageFailure = namedError('AuthStorageRestoreError', 'Auth storage consistency unknown after restoration failure');
+      storageFailure = namedError('AuthStorageRestoreError', 'Auth storage consistency unknown after restoration failure'); stopBackground();
       Object.assign(storageFailure, { details: `primary=${primary}; restoration=AuthStorageRestoreError` });
       throw storageFailure;
     }
@@ -138,7 +196,7 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
           await restore(authoritative(), 'AuthStaleOperationError'); guard();
         }
       }
-      failClosed(); guard(); committed = next; state = next; commitVersion++;
+      failClosed(); guard(); committed = next; state = next; commitVersion++; armBackground();
     });
     storageTail = operation.catch(() => {});
     await operation;
@@ -191,20 +249,29 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
     catch (error) { await storageTail; return { data: { user: null, session: null }, error: operationError(error) }; }
   }
   async function login(input: PasswordCredentials, epoch: number): Promise<AuthResponse> {
+    let decoded: AuthState | undefined;
     try {
       failClosed(); await initialize(); failClosed(); stale(epoch);
       const response = await request('login', { email_or_username: input.email, password: input.password });
       let payload: unknown;
       try { payload = await response.json(); }
       catch { throw namedError('AuthInvalidPayloadError', 'Malformed native login JSON payload'); }
-      const next = stateFromNative(payload);
+      const next = stateFromNative(payload); decoded = next;
       stale(epoch); await install(next, epoch); stale(epoch);
+      notify('SIGNED_IN');
       return { data: { session: snapshot(), user: structuredClone(next.session.user) }, error: null };
     } catch (error) {
       await storageTail;
       // Only the current failed login may reconcile hydration suppressed by its invocation.
-      if (epoch === generation && !storageFailure) state = committed;
-      return { data: { user: null, session: null }, error: operationError(error) };
+      if (epoch === generation && !storageFailure) { state = committed; armBackground(); }
+      const result = operationError(error);
+      if (epoch !== generation && decoded && decoded.tokens.refresh_token !== committed?.tokens.refresh_token) {
+        let cleanup: string | undefined;
+        if (storageFailure) cleanup = 'not-attempted-storage-inconsistent';
+        else { try { await revoke(decoded.tokens, 'local'); } catch { cleanup = 'failed'; } }
+        if (cleanup) result.details = [result.details, `discardedSessionCleanup=${cleanup}`].filter(Boolean).join('; ');
+      }
+      return { data: { user: null, session: null }, error: result };
     }
   }
   let refreshFlight: { epoch: number; promise: Promise<AuthResponse> } | null = null;
@@ -212,7 +279,8 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
     failClosed(); activeState(epoch, baseline);
     // Invalidate before enqueueing: a newer failed login must not reconcile the
     // rejected baseline. New commits queue behind removal, so they cannot be removed.
-    state = committed = null;
+    state = committed = null; stopBackground();
+    notify('SIGNED_OUT');
     const clearedVersion = ++commitVersion;
     const operation = storageTail.then(async () => {
       failClosed();
@@ -220,7 +288,7 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
       if (persist) {
         try { await ownedStorage().removeItem(key); }
         catch {
-          storageFailure = namedError('AuthStorageRemoveError', 'Auth storage consistency unknown after rejected-session removal failed');
+          storageFailure = namedError('AuthStorageRemoveError', 'Auth storage consistency unknown after rejected-session removal failed'); stopBackground();
           Object.assign(storageFailure, { details: 'primary=AuthRefreshUnauthorized; status=401; removal=AuthStorageRemoveError' });
           throw storageFailure;
         }
@@ -245,6 +313,7 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
       const next = stateFromNative({ auth_token: payload.auth_token, refresh_token: previous.tokens.refresh_token, csrf_token: payload.csrf_token });
       if (next.session.user.id !== previous.session.user.id) throw namedError('AuthRefreshIdentityError', 'Native refresh identity differs from current session');
       activeState(epoch, previous); await install(next, epoch, previous); activeState(epoch, next);
+      notify('TOKEN_REFRESHED');
       return { data: { session: snapshot(), user: structuredClone(next.session.user) }, error: null };
     } catch (error) {
       if (error instanceof FetchError && error.status === 401 && baseline && !storageFailure) {
@@ -307,6 +376,67 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
       return { data: { user: null }, error: operationError(error) };
     }
   }
+  async function revoke(tokens: NativeCredentials, scope: 'local' | 'global'): Promise<void> {
+    const controller = new AbortController();
+    let response: Response;
+    try {
+      response = await fetcher(new URL('/api/auth/v1/logout', base), {
+        method: scope === 'local' ? 'POST' : 'GET',
+        headers: scope === 'local' ? { 'content-type': 'application/json' } : { authorization: `Bearer ${tokens.auth_token}` },
+        ...(scope === 'local' ? { body: JSON.stringify({ refresh_token: tokens.refresh_token }) } : {}),
+        credentials: 'omit', redirect: scope === 'local' ? 'error' : 'manual', signal: controller.signal,
+      });
+    } catch { controller.abort(); throw namedError('AuthSignOutRequestError', 'Remote session revocation request failed; remote sessions may remain active'); }
+    try {
+      if (scope === 'global') {
+        // Stock redirects cannot authenticate revocation, even when the server deleted sessions.
+        throw namedError('AuthGlobalSignOutUnconfirmedError', 'Local session cleared; native global revocation could not be authenticated');
+      }
+      if (response.redirected || response.type === 'opaqueredirect' || response.status >= 300 && response.status < 400) throw namedError('AuthRedirectError', 'Logout redirects are not accepted');
+      if (response.status !== 200) throw new FetchError(response.status, 'Native local session revocation was not acknowledged', new URL('/api/auth/v1/logout', base).href);
+    } finally {
+      controller.abort();
+      try { void response.body?.cancel().catch(() => {}); } catch { /* Cancellation cannot replace the revocation result. */ }
+    }
+  }
+  let logoutFlight: { epoch: number; scope: 'local' | 'global'; promise: Promise<{ error: AuthError | null }> } | null = null;
+  function signOut(scope: 'local' | 'global'): Promise<{ error: AuthError | null }> {
+    if (logoutFlight?.epoch === generation) {
+      if (logoutFlight.scope === scope) return logoutFlight.promise;
+      return Promise.resolve({ error: normalizeError(namedError('AuthSignOutInProgressError', 'A different logout scope is already in progress')) });
+    }
+    const needsHydration = !initialization || hydrationPending;
+    const previous = state ?? committed, hydration = initialize();
+    const epoch = ++generation;
+    state = committed = null; commitVersion++; stopBackground();
+    if (previous || needsHydration) notify('SIGNED_OUT');
+    const removal = storageTail.then(async () => {
+      try { await hydration; } catch { /* Explicit logout still removes only its owned key. */ }
+      if (persist) {
+        try { await ownedStorage().removeItem(key); }
+        catch { storageFailure = namedError('AuthStorageRemoveError', 'Local logout storage removal failed; stored credentials may remain'); throw storageFailure; }
+      }
+    });
+    storageTail = removal.catch(() => {});
+    const operation = (async () => {
+      let remoteError: AuthError | null = null;
+      try {
+        const hydrated = await hydration;
+        const captured = previous ?? (needsHydration ? hydrated : null);
+        if (captured) await revoke(captured.tokens, scope);
+      } catch (error) { remoteError = operationError(error); }
+      try { await removal; failClosed(); }
+      catch (error) {
+        const result = operationError(error);
+        if (remoteError) result.details = `remoteRevocation=${remoteError.name}`;
+        return { error: result };
+      }
+      return { error: remoteError };
+    })();
+    const flight = { epoch, scope, promise: operation }; logoutFlight = flight;
+    void operation.finally(() => { if (logoutFlight === flight) logoutFlight = null; });
+    return operation;
+  }
   return {
     api: {
       signUp(input: PasswordCredentials): Promise<AuthResponse> { requireAuth(); return register(credentials(input, arguments.length)); },
@@ -314,8 +444,19 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
       getSession(): Promise<{ data: { session: AuthSession | null }; error: AuthError | null }> { requireAuth(); if (arguments.length) unsupported('getSession accepts no arguments'); return (async () => { try { await sessionReady(); return { data: { session: snapshot() }, error: null }; } catch (error) { return { data: { session: null }, error: normalizeError(error) }; } })(); },
       getUser(): Promise<{ data: { user: AuthUser | null }; error: AuthError | null }> { requireAuth(); if (arguments.length) unsupported('getUser accepts no arguments'); return liveUser(generation); },
       refreshSession(): Promise<AuthResponse> { requireAuth(); if (arguments.length) unsupported('refreshSession accepts no arguments'); return refresh(); },
-      signOut(_options?: { scope?: 'global' | 'local' }): Promise<{ error: AuthError | null }> { return unsupported('Local/global signOut is not implemented'); },
-      onAuthStateChange(_callback: (event: AuthChangeEvent, session: AuthSession | null) => void): { data: { subscription: { unsubscribe(): void } } } { return unsupported('Auth notifications are not implemented'); },
+      signOut(options: { scope?: 'global' | 'local' } = {}): Promise<{ error: AuthError | null }> {
+        requireAuth();
+        if (arguments.length > 1) unsupported('Unsupported signOut arguments');
+        plainObject(options, 'Logout options');
+        const scope = Object.hasOwn(options, 'scope') ? options.scope : undefined;
+        if (Object.keys(options).some(key => key !== 'scope') || scope !== undefined && scope !== 'global' && scope !== 'local') unsupported('Only local/global logout scopes are supported');
+        return signOut(scope ?? 'global');
+      },
+      onAuthStateChange(callback: (event: AuthChangeEvent, session: AuthSession | null) => void): { data: { subscription: { unsubscribe(): void } } } {
+        requireAuth();
+        if (arguments.length !== 1 || typeof callback !== 'function') throw new TypeError('onAuthStateChange requires exactly one callback');
+        return subscribe(callback);
+      },
     },
     async recordFetch(path: string, init?: RequestInit): Promise<Response> {
       if (enabled) await sessionReady();

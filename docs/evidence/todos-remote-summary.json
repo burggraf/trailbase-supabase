@@ -1,0 +1,60 @@
+{
+  "scope": "Run12 approved live private todos/inbox endpoints and focused remote-origin verification; NOT public deployment/full SDK compatibility/release/physical-device signoff",
+  "status": "passed",
+  "sourceSha256": "78ad127cc6d0be800f25745641207bf088ba686b199a9ba5d3185c1ffa79517d",
+  "previousSourceSha256": "48608fc68718fd860cb116e3300c5a05440248e604a5f9e280a0a34a970c5bca",
+  "plan": "docs/plans/2026-11-01-private-todos-run12.md",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "urls": { "app": "https://aspire.tailb03e.ts.net:18443/", "directApp": "https://aspire.tailb03e.ts.net:18443/sdk-data/index.html", "inbox": "https://aspire.tailb03e.ts.net:18444/" },
+  "implementation": [
+    "Only explicit --tailnet mode allows the one approved canonical native site_url; arbitrary URL/host/port/runtime rejected; all default generated fixture and native access rules unchanged",
+    "SDK browser fixture root supplies fixed same-origin HTML refresh/link to standalone index; no URL auth adopted",
+    "Browser SDK already uses location.origin: entire app and auth/record API proxy share HTTPS18443, no CORS relaxation",
+    "Actual confirmation email links and redirect targets use approved HTTPS origin, not remote-device localhost",
+    "Individual foreground Tailscale Serve proxies to owned loopback42231 and inbox38763, no persistent/base Serve config, no public bind/Funnel/ACL/firewall/account/credential changes; existing443 preserved",
+    "Existing cached valid TLS certificate with Oct22-Jan20 dates reused; no additional enablement/credential prompt encountered"
+  ],
+  "checks": {
+    "focusedUnitTDD": { "before": { "passed": 2, "failed": 2 }, "after": { "passed": 4, "failed": 0 }, "rawBefore": ".runtime/run12-todos-red.json", "rawBeforeLog": ".runtime/run12-todos-red.log", "rawGreenLog": ".runtime/run12-focused-green.log", "redSourceHash": null, "note": "Red hash not captured; never relabelled current-source proof" },
+    "node22": { "actualNode": "v22.23.2", "static": "passed", "unitPassed": 199, "unitFailed": 0, "cleanPackageChecks": 4, "packageCleanup": "passed" },
+    "node24": { "actualNode": "v24.21.0", "static": "passed", "unitPassed": 199, "unitFailed": 0, "cleanPackageChecks": 4, "packageCleanup": "passed" },
+    "httpsReadiness": { "passed": 9, "failed": 0, "tlsValidation": "normal, no insecure bypass", "includes": "root redirect HTML, app/modules/styles, API health, owned marker, real inbox and unauthenticated record denial" },
+    "realRemoteBrowser": { "passed": 3, "failed": 0, "skipped": 0, "flaky": 0, "engines": ["chromium", "firefox", "webkit"], "webkit": "390x844 mobile/touch project options, inherited by explicit newContext through installed Playwright instrumentation; not physical iPhone proof", "coverage": "Both users use SDK signup/login, real email privately read and approved-origin redirect validation, unconfirmed rejection, TLS/secure context, all browser requests same-origin/no admin/apikey, persisted reload/manual refresh, CRUD, full A/B row preservation after denied foreign read/write/delete/spoof/transfer, local logout and owned cleanup" },
+    "networkAndFixture": "Six original exact images/tags/digests and loopback published bindings verified; exactly approved18443/18444 foreground HTTPS routes on tailnet interfaces; no Funnel/persistent Serve and existing443 still listening"
+  },
+  "evidence": [
+    "docs/evidence/todos-remote-readiness.json",
+    "docs/evidence/todos-remote-network.json",
+    "docs/evidence/todos-remote-browser-node22.json",
+    "docs/evidence/todos-remote-unit-node22.json",
+    "docs/evidence/todos-remote-unit-node24.json",
+    "docs/evidence/todos-remote-package-node22.json",
+    "docs/evidence/todos-remote-package-node24.json"
+  ],
+  "privateDiagnostics": [".runtime/run12-remote-browser-private.json", ".runtime/run12-remote-browser-private.log", ".runtime/run12-units-node22.log", ".runtime/run12-units-node24.log", ".runtime/run12-package-node22.log", ".runtime/run12-package-node24.log", ".runtime/runs/1793540668685-32d6c1a05a9c/"],
+  "intermediateDiagnostics": [
+    "First static check found four TS2345 errors: inferred optional JS origin was undefined-only; fixed with JSDoc string|undefined, no runtime/security assertion weakened",
+    "Auxiliary inspection initially assumed context.json contained containers; corrected to query only exact owned Docker resources, independently checked pins/bindings",
+    "Auxiliary report enrichment initially assumed serialized Playwright config projects retained use; corrected to retain configured viewport provenance, not fabricate a runtime measurement. Neither inspection failure was an app/test/Serve failure"
+  ],
+  "running": {
+    "app": { "job": "proc_a84f", "nodeRunnerPid": 365086, "command": "npm exec --yes --package=node@22.23.2 -- npm run example:todos -- --tailnet", "loopback": "http://127.0.0.1:42231" },
+    "appServe": { "job": "proc_a651", "pid": 372131, "command": "tailscale serve --https=18443 http://127.0.0.1:42231" },
+    "inboxServe": { "job": "proc_dc58", "pid": 372164, "command": "tailscale serve --https=18444 http://127.0.0.1:38763" },
+    "intent": "Leave all three running for user. Shared fixture lock is intentionally held; no other fixture runners allowed. No hot reload: do not edit source/restart until coordinated with user."
+  },
+  "cleanup": {
+    "testPostconditions": "All test-owned rows absent and refresh sessions locally revoked, contexts closed. Disposable auth identities/mail remain until server shutdown; issued JWT residual lifetime limitation unchanged. No claim entire app/user dataset is empty.",
+    "preferredManagedActions": ["process stop id=proc_a651", "process stop id=proc_dc58", "process write id=proc_a84f input=quit\\n; allow guarded fixture teardown to finish"],
+    "shellAlternativeAfterVerifyingPidsStillMatchThisOwnedRun": ["kill -INT 372131 372164", "kill -TERM 365086"],
+    "verify": "After launcher exits, require cleanup passed in artifacts/todos/1793540668685-32d6c1a05a9c.json, absence of this exact project's containers/network/volumes and owned lock, and absence of the two owned Serve routes; preserve unrelated services. Never blindly reuse stale PIDs.",
+    "hardKillRecovery": "Only after proving recorded runner dead, npm run fixtures:cleanup -- 1793540668685-32d6c1a05a9c; never remove/bypass a live lock or reset global Serve/prune Docker"
+  },
+  "missing": [
+    "Physical Mac/iPhone and laptop-tailnet/ACL reachability must be confirmed by Mark; verified HTTPS from VPS and real browsers, not another physical device. No ACL changes authorized if blocked.",
+    "Default all-local/shared-reference browser/auth/short-TTL/data/database/constraints/lifecycle suites not rerun on this source because user prioritized live access and app intentionally holds shared fixture lock; previous48608fc6 evidence remains historical, not current certification. Schedule downtime before dedicated fixture suites, no bypass or interruption.",
+    "Full hostile transport/storage/SMTP/cross-tab/browser expiry/accessibility/resource/coverage/actual CI/release and three clean full candidate runs/maintainer signoff remain incomplete. No test layer waived/N/A.",
+    "G1 duplicate-pending signup/SMTP and null-user compatibility approval plus G7 authenticated global acknowledgement remain unresolved; no repair/workaround/backend patch or signoff.",
+    "No new audit/dependency update; existing dev-transitive Vite advisory unchanged. No commit/push, public deployment, new ongoing credentials or external SMTP."
+  ]
+}
