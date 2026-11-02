@@ -1,0 +1,116 @@
+{
+  "scope": "Bounded independent pinned Supabase default/global logout reference, NOT native/private SDK parity, actual expiry, full fault/browser/release/security or signoff",
+  "sourceSha256": "9832850be86641323ef57305c6a0ded2e64a68e06f10eb052e14ed37cf3e95e5",
+  "baseCommit": "4273541d13a28edeaae95c58603fc1a095d0a6e7",
+  "reference": {
+    "authVersion": "2.197.0",
+    "sdkVersion": "2.117.2",
+    "cliVersion": "2.119.0",
+    "jwtExpirySeconds": 3600,
+    "emailConfirmation": true,
+    "phoneConfirmation": true,
+    "profile": "Unchanged owned stock/default native0.35.8 and pinned Supabase configuration; no shortened live or default policy"
+  },
+  "final": {
+    "runId": "1793621484865-459ace310791",
+    "status": "passed",
+    "setupStage": "ready",
+    "passed": 10,
+    "failed": 0,
+    "cleanup": "passed",
+    "newLogoutContracts": 3,
+    "existingSignupResendContracts": 7
+  },
+  "observations": [
+    "GL01 default and explicit global each have two independently created password sessions after genuine confirmation-session local revocation using its delivered JWT. The real SDK emits POST global logout and receives204 with an empty body; this is the observed authenticated acknowledgement, not an inferred redirect success.",
+    "Both owner refresh tokens are rejected400/refresh_token_not_found and owner session/active-refresh counts are0. Original account identity/password core and complete sibling session/token fingerprint remain unchanged; sibling genuine refresh/live-user succeeds.",
+    "Both already-issued, still-unexpired owner access JWTs continue to authorize exactly the preexisting generated REST row; owner data and permissions remain unchanged. This proves residual validity before expiry, NOT observed actual expiry or immediate access-token revocation.",
+    "The initiating persistent client removes its owned key, preserves unrelated storage and emits exactly one SIGNED_OUT. A separate remote client receives no invented immediate event. After its genuine rejected refresh, JS2.117.2 keeps the unexpired cached session; explicit local logout clears it and emits its one SIGNED_OUT.",
+    "GL02 separately labels absent caller Authorization401 and malformed JWT403/bad_jwt on the configured Kong/Auth path, both preserving full auth-table fingerprints. A client without a session returns local SDK success with zero logout requests and no auth writes; that is not remote revocation acknowledgement.",
+    "Independent cleanup aggregates primary/cleanup failures, attempts all client revocations, proves zero subject/sibling sessions and active refresh tokens and exact generated-row absence before fixture deletion. No SQL identity/session repair or fake successful responses."
+  ],
+  "retainedCharacterizationFailures": [
+    {
+      "runId": "1793620210704-64ef0e3b5d94",
+      "sourceSha256": "c9141a2c7abb9a373a4a2d511bc54e8672aba218ca385f6bf5a1ac0bd1a9ee8b",
+      "passed": 7,
+      "failed": 3,
+      "cleanup": "passed",
+      "sourcePreservation": "Reconstructed from exact edit payloads and verified against original complete run sourceSha256; not claimed as a contemporaneous copy"
+    },
+    {
+      "runId": "1793620407944-f7b07aeaa5d9",
+      "sourceSha256": "64f7b52d0493489ba08de29b56b1585130dcc8734634115332352c4649b462a8",
+      "passed": 7,
+      "failed": 3,
+      "cleanup": "passed",
+      "sourcePreservation": "Reconstructed from exact edit payloads and verified against original complete run sourceSha256; not claimed as a contemporaneous copy"
+    },
+    {
+      "runId": "1793620600364-0674828ecf3f",
+      "sourceSha256": "cfe9e7c8a112aa59ba2d4c1c882c8a7f4925f3393e262745364c3352af660872",
+      "passed": 7,
+      "failed": 3,
+      "cleanup": "passed",
+      "sourcePreservation": "Contemporaneous pre-run snapshot"
+    }
+  ],
+  "failureInterpretation": "First incorrect assumptions were confirmation already creating a server session, per-case missing/invalid status ordering, legacy raw-Auth API-version error shape, and unexpired remote-cache retention after failed refresh. These are reference-fixture/expectation characterization failures, not established native/SDK defects. No security assertion was waived to claim product parity. Exact first two sources reconstructed from authored edits match original full run sourceSha256; later snapshots are contemporaneous. Intermediate corrected10/10 and final L1-19-bound10/10 are retained separately from the final independent-cleanup source.",
+  "guards": {
+    "bothPinnedNodes": [
+      {
+        "node": "22.23.2",
+        "kind": "unit",
+        "passed": 242,
+        "sourceSha256": "9832850be86641323ef57305c6a0ded2e64a68e06f10eb052e14ed37cf3e95e5"
+      },
+      {
+        "node": "22.23.2",
+        "kind": "package",
+        "passed": 4,
+        "sourceSha256": "9832850be86641323ef57305c6a0ded2e64a68e06f10eb052e14ed37cf3e95e5"
+      },
+      {
+        "node": "24.21.0",
+        "kind": "unit",
+        "passed": 242,
+        "sourceSha256": "9832850be86641323ef57305c6a0ded2e64a68e06f10eb052e14ed37cf3e95e5"
+      },
+      {
+        "node": "24.21.0",
+        "kind": "package",
+        "passed": 4,
+        "sourceSha256": "9832850be86641323ef57305c6a0ded2e64a68e06f10eb052e14ed37cf3e95e5"
+      }
+    ],
+    "staticTypesDocs": "passed each Node",
+    "originalDemo": "Read-only preservation guard passed; original official supervisor, six containers, lock and resources unchanged; original cleanup never invoked"
+  },
+  "cleanup": {
+    "ownedProjectsAbsent": 6,
+    "hashArchivedFiles": 1291,
+    "ownedParentRemoved": true,
+    "originalCleanupInvoked": false
+  },
+  "sourceFiles": [
+    {
+      "path": "tests/auth-reference/global-logout.test.ts",
+      "sha256": "e6102261b1ef315afe606578bd898619fc7465e407dcac18be69c0169d91d59f"
+    },
+    {
+      "path": "tests/auth-reference/helpers.ts",
+      "sha256": "b9f4c587a23f33d3da3d99546785ff4b53494c47916cdce930a02e4b51105ebb"
+    },
+    {
+      "path": "docs/TEST_PLAN.md",
+      "sha256": "023ceab6abe9dff31f2d4218b3b5821ad89189035801c073578e78667267d36d"
+    }
+  ],
+  "missing": [
+    "Actual expired access-JWT and configured-short-TTL reference, valid versus expired SDK reauthentication behavior and authorization/fault variants",
+    "Fresh official0.35.8 and immutable private native/packed SDK comparisons against these measured contracts; explicit private capability-gated acknowledgement implementation if needed",
+    "Genuine in-flight/outage/revocation-failure/race controls, reusable cross-backend assertions and relevant native/SDK/package/three-engine regressions for any implementation",
+    "Full coverage/security/release/physical-device/OSL-maintenance/adoption and maintainer signoff; public supported contract and live custom deployment remain unchanged"
+  ],
+  "supportedCiBoundary": "Exact4273541/CI41438278896 is separately audited: supported auth failed at Supabase-start with0tests, exit1/no signal/not killed and six unavailable container inspections; underlying cause UNKNOWN. Later supported or independent reference passes do not diagnose or repair it or establish a common historical cause."
+}

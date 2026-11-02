@@ -45,6 +45,13 @@ export async function account(env: Context, email: string): Promise<Account | nu
   const core = "(to_jsonb(u)-ARRAY['confirmation_token','confirmation_sent_at','updated_at'])::text";
   return sql(env, `SELECT coalesce((SELECT json_build_object('id',id,'email',email,'confirmed',email_confirmed_at IS NOT NULL,'coreSha256',${digest(core)},'passwordSha256',${digest('encrypted_password')}) FROM auth.users u WHERE email='${email}'),'null'::json)`);
 }
+export async function sessionState(env: Context, email: string): Promise<{ sessions: number; activeRefreshTokens: number; sha256: string }> {
+  fixtureEmail(email);
+  // Fingerprint complete rows for this generated account, not merely response status or global counts.
+  const sessions = `SELECT to_jsonb(s)::text AS row FROM auth.sessions s JOIN auth.users u ON u.id=s.user_id WHERE u.email='${email}'`;
+  const tokens = `SELECT to_jsonb(t)::text AS row FROM auth.refresh_tokens t JOIN auth.users u ON u.id::text=t.user_id::text WHERE u.email='${email}'`;
+  return sql(env, `SELECT json_build_object('sessions',(SELECT count(*) FROM (${sessions}) s),'activeRefreshTokens',(SELECT count(*) FROM auth.refresh_tokens t JOIN auth.users u ON u.id::text=t.user_id::text WHERE u.email='${email}' AND NOT t.revoked),'sha256',${digest(`coalesce((SELECT string_agg(row,E'\\n' ORDER BY row) FROM (${sessions} UNION ALL ${tokens}) r),'')`)})`);
+}
 export async function mailCount(env: Context, email: string) {
   fixtureEmail(email);
   const response = await fetch(`${env.mailUrl}/api/v1/search?query=${encodeURIComponent(`to:${email}`)}`, { signal: AbortSignal.timeout(5000) });
