@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "Exact f39a0d6 CI: af883 reference7/supportedsDK/both Nodes237/package4/legacy1/upgrade9 passed; research stock112/6/browser60/6/candidates red. Prior7cf stock setup0 remains unresolved. Private0358 original corpus12/12, full SQLite core239+5 and CLI build pass; no deployment.",
+  "currentPhase": "Exact f39a0d6 CI: af883 reference7/supportedsDK/both Nodes237/package4/legacy1/upgrade9 passed; research stock112/6/browser60/6/candidates red. Prior7cf stock setup0 remains unresolved. Private0358 original corpus12/12, extended SQLite core241+5 and real CLI HTTP/SMTP/DB8 checks each pinned Node pass; no deployment.",
   "lastSession": {
     "state": "r08-pushed-exact-ci-audited-private-native-policy-candidate1-verified-work-continues",
     "sourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34",
@@ -82,10 +82,21 @@
       "draft": "confirmation_delivery.draft.rs remains an obsolete uncompiled draft; compiled and tested source is confirmation_delivery.rs with persistent receipt/cooldown/latest-token/consumption policy",
       "evidence": "docs/evidence/private-current0358-policy-candidate-1.json",
       "cleanup": "All100 logged full-suite temporary depots absent; owned TCP SMTP stopped and port rebound; no Docker project or original fixture cleanup",
+      "localExtension": {
+        "evidence": "docs/evidence/private-current0358-http-fault-extension.json",
+        "testOnlySourceDiffSha256": "03f37ce1d4aa0d737a06f1fe57ce991fcc9a048b59ae0aa86b7bae58eb16377a",
+        "runtimeUnchangedFromCandidate1": true,
+        "fullCore": { "libraryPassed": 241, "integrationTargetsPassed": 5, "failed": 0, "filtered": 0, "ignored": 0 },
+        "addedControls": "Stored SMTP DATA/lost acknowledgement rolls back DB but leaves external mail; genuine retry recovers. Concurrent same-process signup/resend exact200/429, one additional mail, no user/password/session damage.",
+        "realPrivateCli": "8 actual HTTP/SMTP/read-only DB checks on each Node22.23.2/24.21.0; same immutable binary818ae9d3/source593e1915; driverd6469a64, all6 attempted owned temp trees/native PIDs absent",
+        "failedDriverAttempts": "Missing sender_name startup0 checks; two immediate-rate assertions after login, timing proves1088ms age under1000ms interval. Corrected ordering, no native/throttle change; all raw attempts preserved. Unrelated to unresolved CI Supabase-start.",
+        "docsCommitCi": "Exactbc27e488/41404113055 overallfailure, all21 source/suite/profile/case-status/setup/cleanup/Node/package projections match f39; reference7 and supported SDK pass, research strict red",
+        "checks": "Read-only original supervisor preservation guard passed; no original cleanup, no custom deployment"
+      },
       "missing": [
-        "Cancellation/contention/cross-process race, partial SMTP acceptance/commit failure, global collision/refusal and full real migration/upgrade/rollback proof remain adoption blockers.",
+        "Cancellation/contention/cross-process race, commit failure/global collision/refusal and full real migration/upgrade/rollback proof remain adoption blockers; one stored-DATA/lost-ack case is not all partial-delivery proof.",
         "Full workspace/default-feature/PG/WASM/GEOS/MCP release is not covered by the verified SQLite core selection.",
-        "Private SDK/new private CLI real HTTP SMTP/browser/security/coverage/release and authenticated global-logout work remain; no live custom deployment or maintainer signoff.",
+        "Private SDK/signup/resend and shared pinned-reference contracts, browser/security/coverage/release and authenticated global-logout work remain; raw private CLI8-check proof is not SDK/browser signoff.",
         "OSL-3.0 server external-deployment/source/attribution and security/rebase/release-maintenance decision is separate from MIT SDK approval."
       ]
     },
@@ -2328,7 +2339,7 @@
   ],
   "nextSteps": [
     "Continue private candidate1 from exact593e1915 diff and built ELF: add cancellation/contention/cross-process race, partial SMTP acceptance/commit-failure and collision/refusal/real migration/upgrade/rollback preservation proof; rerun full affected native suite after edits.",
-    "Integrate new private CLI real HTTP SMTP/shared contracts and private SDK truthfully, then packed app Chromium/Firefox/WebKit and authenticated global logout; official supported SDK CI is not private binary certification.",
+    "Continue from verified private CLI HTTP/SMTP/DB8 checks per pinned Node and native241+5; integrate private SDK signup/resend and shared pinned-reference contracts truthfully, then packed app Chromium/Firefox/WebKit and authenticated global logout. Official supported SDK CI is not private binary certification.",
     "Keep exactf39 CI overall failure and prior7cf stock supabase-start0-test cause UNRESOLVED. Newstock112/6 setup success is not a diagnosis; add safe bounded diagnostics if setup blocks future runtime proof.",
     "Review/checkpoint sanitized exact CI/native evidence only; keep private OSL source/diff/binaries/tools/raw logs/depots/backups out of root commits. Adoption/public submission remains a later concrete maintenance/licensing decision, not a routine engineering permission pause.",
     "Keep official demo/transient supervisor/data/backups/lock/exact18443/18444 scope untouched; clean only new owned fixtures."

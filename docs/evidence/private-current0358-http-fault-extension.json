@@ -1,0 +1,78 @@
+{
+  "scope": "Private native test-only extension and actual owned candidate1 CLI HTTP/SMTP/database checks; NOT private SDK/browser/global-logout/adoption signoff",
+  "publicCheckpoint": "bc27e488997cfad4b49396007243236e01363c7d",
+  "runtime": {
+    "baseCommit": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+    "candidate1SourceDiffSha256": "593e1915009979725dfe3aacc55458bc3c23345aadafb1824f2235efc538dd69",
+    "binarySha256": "818ae9d30317fd0ab294a1daf4b73b1fa139fa61426972f20789b7975aaf2ef1",
+    "runtimeSourceUnchanged": true,
+    "testOnlyExtendedSourceDiffSha256": "03f37ce1d4aa0d737a06f1fe57ce991fcc9a048b59ae0aa86b7bae58eb16377a"
+  },
+  "fullNativeCore": {
+    "command": "cargo test --locked -p trailbase --no-default-features -- --test-threads=1",
+    "libraryPassed": 241,
+    "integrationTargetsPassed": 5,
+    "failed": 0,
+    "filtered": 0,
+    "ignored": 0,
+    "additionalControls": [
+      "Actual TCP SMTP stores DATA then drops acknowledgement: detected send failure rolls back full new-user main/session state but external stored mail remains; orphan link cannot confirm before or after genuine successful retry",
+      "Concurrent same-process pending signup/public resend share persistent cooldown: exact200/429, one additional mail, same ID and complete unchanged user/password/sibling/session table fingerprints"
+    ],
+    "loggedTemporaryDepotsVerifiedAbsent": 102,
+    "limits": "Not cross-process race, cancellation, arbitrary partial-acceptance or commit-failure proof; not full workspace/default-feature release"
+  },
+  "actualCliHttpSmtp": {
+    "driverSha256": "d6469a648ff67b70ad58a579736fb98cb22b297a7b9c4061f777c52b122baf64",
+    "runs": [
+      { "node": "22.23.2", "fixture": "715a5cef-9190-490a-883d-1ba5ded43f05", "checksPassed": 8, "cleanup": "passed" },
+      { "node": "24.21.0", "fixture": "b0dabcbb-aabd-4e15-bd24-d86ec42ec6fe", "checksPassed": 8, "cleanup": "passed" }
+    ],
+    "checks": [
+      "Actual new-user HTTP500 on real SMTP outage; complete main/session fingerprints unchanged and no accepted mail",
+      "Actual HTTP200 JSON real database signup ID/email and null session",
+      "Immediate signup/public-resend HTTP429 with unchanged complete state and no new mail",
+      "Real preconfirmation password login401",
+      "Existing-pending replacement-password signup and public resend HTTP500 preserve complete identity/password/token/session state and accepted-mail count",
+      "Real resend/mail rotation; stale link401/no writes, latest link200, consumed replay401/no writes",
+      "Unknown/confirmed public resend HTTP200 empty JSON with unchanged full state/no new mail",
+      "Replacement password401, original password200 with actual auth/refresh/CSRF tokens and exactly one native session row"
+    ],
+    "noAuthDataResponseStubs": true,
+    "readOnlyDatabaseAssertions": true,
+    "configuredCooldownSec": 1,
+    "ownedLoopbackOnly": true,
+    "newDockerProjects": 0,
+    "failedAttemptsPreserved": [
+      "First owned CLI startup rejected missing sender_name;0 HTTP checks. Added required sender name to new disposable fixture, not native behavior.",
+      "Two driver attempts expected immediate429 after a preconfirmation login; instrumented attempt proves retry began1088ms after successful delivery under1000ms cooldown, and login itself took1032ms. Moved rate checks before login, kept server interval1s and configured wait1150ms unchanged; no backdating, busy retry, fake success or backend repair."
+    ],
+    "allSixAttemptTemporaryTreesAndNativePidsVerifiedAbsent": true,
+    "rawControllersNativeLogsAndHashManifestsPrivateOnly": true
+  },
+  "exactDocumentationCi": {
+    "commit": "bc27e488997cfad4b49396007243236e01363c7d",
+    "run": 41404113055,
+    "sourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34",
+    "overall": "failure",
+    "reportCount": 21,
+    "allSuiteProfileCaseStatusSetupCleanupNodeAndPackageProjectionsMatchF39Ci": true,
+    "reference": "7/7",
+    "supportedSdk": "passed",
+    "nodes": "Both pinned static237 units/4 offline package checks passed",
+    "legacy": "1/1",
+    "nativeUpgrade": "9/9",
+    "research": "Stock112/6, candidate9/1, SMTP0/1, browser60/6 remain strictly red; cleanup passed",
+    "prior7cfStockSupabaseStartZeroTestCause": "UNRESOLVED; successful newer setup is not a diagnosis or repair. Private HTTP sender-name/timing defects are unrelated."
+  },
+  "remaining": [
+    "Cancellation/writer contention/cross-process races, commit failure, global collision/refusal and real migration/upgrade/rollback preservation",
+    "Private SDK signup/resend integration and real shared contracts, packed Chromium/Firefox/WebKit app, security/fault/coverage/release and authenticated global-logout acknowledgement",
+    "OSL-3.0 server external-deployment/source/attribution and security/rebase/release-maintenance decision before adoption or public submission"
+  ],
+  "originalFixtureCleanupInvoked": false,
+  "officialDemoReadOnlyPreservationGuard": "passed after HTTP work",
+  "liveCustomDeployment": false,
+  "publicUpstreamSubmission": false,
+  "maintainerSignoff": false
+}
