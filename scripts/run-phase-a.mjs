@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { baseline, exec } from './tools.mjs';
-import { createHarness } from './harness.mjs';
+import { createHarness, fixtureNativePin } from './harness.mjs';
 import { vitestCase, playwrightCase, runnerFailure } from './phase-a-diagnostics.mjs';
 
 export async function sourceHash() {
@@ -21,6 +21,8 @@ export async function sourceHash() {
 export function vitestArguments(testPath, outputFile) {
   return ['run', testPath, ...(testPath === 'tests/phase-a' ? ['--exclude', '**/private-g1-*.test.ts'] : []), '--reporter=json', '--outputFile', outputFile];
 }
+// Ambiguous duplicate-pending identities are genuine legacy behavior, not seedable on0.35.8.
+export const nativeServerProfileForSuite = suite => suite === 'auth-migration' ? 'legacy-upgrade' : 'default';
 // Three engines each run 100 CDC-ready channel cycles; keep other suites at 5m.
 export const testTimeoutMs = binary => binary === 'playwright' ? 600000 : 300000;
 async function main() {
@@ -33,6 +35,7 @@ async function main() {
   const privateNativeAmbiguousUpgrade = suite === 'private-g1-ambiguous-upgrade';
   if ((privateNativePrototype || privateNativeUpgrade || privateNativeAmbiguousUpgrade) && options.length) throw new Error('Private G1 suites have pinned source/auth variants; no fixture override is allowed');
   const nativeAuthProfile = (suite === 'expiry' || suite === 'sdk-refresh') ? 'short-native-auth' : 'default';
+  const nativeServerProfile = nativeServerProfileForSuite(suite), nativePin = fixtureNativePin(nativeServerProfile);
   if (!['all','sdk-data','sdk-auth','sdk-refresh','sdk-browser','database','constraints','characterization','domains','boundaries','auth-lifecycle','auth-migration','proofs','expiry','network','pagination','streaming','smtp','lifecycle','browser','private-g1-prototype','private-g1-upgrade','private-g1-ambiguous-upgrade'].includes(suite)) throw new Error('Unknown Phase A suite');
   if (suite === 'auth-migration' && authMitigation) throw new Error('Existing-depot migration rehearsal requires the stock fixture');
   await mkdir('.runtime', { recursive: true, mode: 0o700 });
@@ -41,7 +44,7 @@ async function main() {
   await mkdir('.runtime/phase-a.lock');
   await writeFile('.runtime/phase-a.lock/owner.json', JSON.stringify({ runnerPid: process.pid, runId: null }), { mode: 0o600 });
   let harness, testChild;
-  const report = { scope: privateNativePrototype ? 'Private pinned upstream G1 source prototype with owned disposable services; NOT stock/default behavior, SDK verification, or gate signoff' : privateNativeUpgrade ? 'Owned existing-depot stock-to-private G1 prototype upgrade rehearsal; NOT stock behavior, deployment readiness, or gate signoff' : privateNativeAmbiguousUpgrade ? 'Owned ambiguous legacy-depot refusal rehearsal on the private G1 prototype; NOT stock behavior, deployment readiness, or gate signoff' : suite === 'sdk-browser' ? 'Packed SDK data/storage and real password-auth application checks; NOT complete E2E/security/release signoff' : suite === 'sdk-refresh' ? 'Focused SDK request/manual/background refresh with owned short-native-auth; NOT complete lifecycle/compatibility/signoff' : suite === 'sdk-auth' ? 'Focused SDK signup/login/storage/live-user/logout checks; signup null-user and global acknowledgement unresolved, NOT compatibility/signoff' : suite === 'sdk-data' ? 'Focused SDK data adapter/official Supabase contract suite; incomplete feature layers, NOT signoff' : 'Phase A upstream/infrastructure harness; all scope includes focused SDK data checks, NOT complete SDK verification', authVariant:privateNativePrototype ? 'private-native-prototype' : privateNativeUpgrade ? 'stock-to-private-native-prototype-upgrade' : privateNativeAmbiguousUpgrade ? 'stock-to-private-native-prototype-ambiguous-refusal' : authMitigation ? 'candidate-email-reservation' : 'stock', suite, nativeAuthProfile, status: 'failed', startedAt: new Date().toISOString(), baseline, node: process.version, platform: `${process.platform}-${process.arch}`, tests: [], cleanup: 'not-started' };
+  const report = { scope: privateNativePrototype ? 'Private pinned upstream G1 source prototype with owned disposable services; NOT stock/default behavior, SDK verification, or gate signoff' : privateNativeUpgrade ? 'Owned existing-depot stock-to-private G1 prototype upgrade rehearsal; NOT stock behavior, deployment readiness, or gate signoff' : privateNativeAmbiguousUpgrade ? 'Owned ambiguous legacy-depot refusal rehearsal on the private G1 prototype; NOT stock behavior, deployment readiness, or gate signoff' : suite === 'sdk-browser' ? 'Packed SDK data/storage and real password-auth application checks; NOT complete E2E/security/release signoff' : suite === 'sdk-refresh' ? 'Focused SDK request/manual/background refresh with owned short-native-auth; NOT complete lifecycle/compatibility/signoff' : suite === 'sdk-auth' ? 'Focused SDK signup/login/storage/live-user/logout checks; signup null-user and global acknowledgement unresolved, NOT compatibility/signoff' : suite === 'sdk-data' ? 'Focused SDK data adapter/official Supabase contract suite; incomplete feature layers, NOT signoff' : suite === 'auth-migration' ? 'LEGACY0.34.3 ambiguous-depot SQL preflight/refusal; NOT current0.35.8 upgrade or G1 recovery signoff' : 'Phase A upstream/infrastructure harness; all scope includes focused SDK data checks, NOT complete SDK verification', nativeServerProfile, nativeServerPin: { version: nativePin.version, commit: nativePin.commit }, authVariant:privateNativePrototype ? 'private-native-prototype' : privateNativeUpgrade ? 'stock-to-private-native-prototype-upgrade' : privateNativeAmbiguousUpgrade ? 'stock-to-private-native-prototype-ambiguous-refusal' : authMitigation ? 'candidate-email-reservation' : 'stock', suite, nativeAuthProfile, status: 'failed', startedAt: new Date().toISOString(), baseline, node: process.version, platform: `${process.platform}-${process.arch}`, tests: [], cleanup: 'not-started' };
   let interrupted = false;
   const interrupt = () => { interrupted = true; testChild?.kill('SIGTERM'); };
   process.on('SIGINT', interrupt); process.on('SIGTERM', interrupt);
@@ -73,7 +76,7 @@ async function main() {
     report.sourceSha256 = await sourceHash();
     report.baseCommit = (await exec('git', ['rev-parse','HEAD'])).stdout.trim();
     if (process.env.GITHUB_RUN_ID) report.ci = { commit:process.env.GITHUB_SHA, runUrl:`https://github.com/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}` };
-    harness = await createHarness({ authMitigation, nativeAuthProfile, privateNativePrototype, sdkBrowser: suite === 'sdk-browser' });
+    harness = await createHarness({ authMitigation, nativeAuthProfile, nativeServerProfile, privateNativePrototype, sdkBrowser: suite === 'sdk-browser' });
     report.runId = harness.context.id;
     await writeFile('.runtime/phase-a.lock/owner.json', JSON.stringify({ runnerPid:process.pid, runId:harness.context.id }), { mode:0o600 });
     const environment = await harness.start();

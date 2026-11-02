@@ -1,0 +1,120 @@
+{
+  "scope": "L1-26/L1-27 focused legacy migration/CI repair; NOT G1/G7 or release signoff",
+  "status": "locally-verified-push-ci-pending",
+  "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658",
+  "parentCommit": "a3fc7d0638320df51a46900e6d983c20c2b2341e",
+  "changes": [
+    "Only auth-migration selects existing legacy-upgrade0.34.3; matching version-aware CLI and explicit selected/actual version reporting; owner/context profile binding",
+    "Preserve genuine duplicate seed, CLI fail-closed refusal and complete users/schema/history/control-row invariants",
+    "Candidate characterization and SMTP are separate strict always steps; neither failure masks the other",
+    "Existing current0.35.8 nine-check upgrade safety now independently executes in research CI with sanitized artifact upload"
+  ],
+  "tdd": {
+    "initial": {
+      "passed": 5,
+      "failed": 3
+    },
+    "assertionOnlyRed": {
+      "passed": 5,
+      "failed": 3
+    },
+    "green": {
+      "passed": 8,
+      "failed": 0
+    },
+    "note": "First red included missing selector TypeError; repeated before implementation with explicit missing-function assertion. Original private outputs retained."
+  },
+  "nodes": [
+    {
+      "node": "22.23.2",
+      "static": "passed",
+      "units": 235,
+      "unitStatus": "passed",
+      "packageChecks": 4,
+      "packageStatus": "passed",
+      "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+    },
+    {
+      "node": "24.21.0",
+      "static": "passed",
+      "units": 235,
+      "unitStatus": "passed",
+      "packageChecks": 4,
+      "packageStatus": "passed",
+      "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+    }
+  ],
+  "realScopes": [
+    {
+      "scope": "legacy-migration",
+      "runId": "1793589531993-da22c1aadbc0",
+      "status": "passed",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "selectedProfile": "legacy-upgrade",
+      "actualNativeVersion": "trail v0.34.3-0-geab50393 (2026-10-02)\nsqlite: 3.53.2",
+      "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+    },
+    {
+      "scope": "native-upgrade",
+      "status": "passed",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "actualNativeVersion": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1",
+      "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+    },
+    {
+      "scope": "candidate-characterization",
+      "runId": "1793589635847-54b283b60123",
+      "status": "failed",
+      "passed": 9,
+      "failed": 1,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "actualNativeVersion": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1",
+      "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+    },
+    {
+      "scope": "candidate-smtp",
+      "runId": "1793589686772-19ddb09ce4c0",
+      "status": "failed",
+      "passed": 0,
+      "failed": 1,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "actualNativeVersion": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1",
+      "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+    }
+  ],
+  "cleanup": {
+    "status": "passed",
+    "ownedRuns": 4,
+    "verifiedPrivateFiles": 90,
+    "ownedTempTreeRemoved": true,
+    "originalCleanupInvoked": false
+  },
+  "oldCiDiagnosis": {
+    "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41370641703",
+    "migration": "Default0.35.8 cannot seed genuine duplicate pending registrations; stale unversioned CLI is a second latent defect. Source localization, not an uploaded current-CI raw stack.",
+    "candidate": "Current0.35.8 duplicate registration conflicts rather than providing Supabase pending retry semantics; strict gap remains.",
+    "smtp": "Old combined bash-e step skipped candidate SMTP after characterization failure; no old candidate-SMTP execution/report."
+  },
+  "operations": {
+    "observedAt": "2026-11-02T03:16:16.002Z",
+    "originalStatus": "stopped",
+    "recordedReason": "requested-stop",
+    "statusRecordMtime": "2026-11-02T02:01:58.650Z",
+    "priorFourPidsAbsent": true,
+    "retainedOwnerAndLock": true,
+    "actorOrIntentEstablished": false,
+    "restoration": "Newly authorized exact-scope restoration requires fresh stopped backup/data/binary/ownership/ports and supervisor checks; NOT yet performed."
+  },
+  "missing": [
+    "Fresh exact pushed-SHA supported SDK CI, legacy guard, upgrade9 and independent candidate-scope execution",
+    "G1 parity/reference contracts and current0358 private prototype; no custom live deployment authorized",
+    "G7 authenticated logout acknowledgement, full security/fault/coverage/release and maintainer signoff"
+  ],
+  "signoff": false
+}

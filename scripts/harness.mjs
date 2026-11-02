@@ -177,8 +177,8 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
   }
   const origins = ['API_PORT','MAIL_PORT','TRAIL_PORT'].map(key => `http://127.0.0.1:${ports[key]}`);
   const childEnv = fixtureEnvironment();
-  const context = { id, project, directory, setupStage:'created', origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, authVariant, ...(publicOrigin ? { publicOrigin } : {}) };
-  const ownerRecord = { id, project, nativeAuthProfile, authVariant, runnerPid: process.pid, trailPid: null };
+  const context = { id, project, directory, setupStage:'created', origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, nativeServerProfile, authVariant, ...(publicOrigin ? { publicOrigin } : {}) };
+  const ownerRecord = { id, project, nativeAuthProfile, nativeServerProfile, authVariant, runnerPid: process.pid, trailPid: null };
   await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
   let trail, log, stockBinary, stockBackupTimestamp;
   let startAttempted = false;

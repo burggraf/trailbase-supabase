@@ -1,7 +1,102 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "Authorized official native0.35.8 upgrade and supported acceptance complete; original demo LIVE on exact existing18443/18444 scope. Source411f frozen, JS0.14.3/SDK implementation unchanged. All original51 accounts/6 tasks/preexisting data+session rows preserved;6 generated UI accounts/54 audit rows retained,0 generated tasks/sessions.17 owned isolated runs cleaned/archived/removed. Strict research reds/G1/G7/full release/CI signoff remain open; no commit/push",
+  "currentPhase": "L1-26/L1-27 CI repair locally verified; exact push CI next, then exact-scope demo restoration and real Supabase auth contracts/private0358 prototype",
   "lastSession": {
+    "date": "2026-11-02",
+    "scope": "Authorized focused CI repair and continuous management",
+    "status": "locally-verified-push-ci-pending",
+    "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658",
+    "evidence": "docs/evidence/ci-legacy-profile-repair-summary.json",
+    "plan": "docs/plans/2026-11-02-supabase-auth-parity.md",
+    "checks": [
+      {
+        "node": "22.23.2",
+        "static": "passed",
+        "units": 235,
+        "unitStatus": "passed",
+        "packageChecks": 4,
+        "packageStatus": "passed",
+        "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+      },
+      {
+        "node": "24.21.0",
+        "static": "passed",
+        "units": 235,
+        "unitStatus": "passed",
+        "packageChecks": 4,
+        "packageStatus": "passed",
+        "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+      }
+    ],
+    "realScopes": [
+      {
+        "scope": "legacy-migration",
+        "runId": "1793589531993-da22c1aadbc0",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed",
+        "selectedProfile": "legacy-upgrade",
+        "actualNativeVersion": "trail v0.34.3-0-geab50393 (2026-10-02)\nsqlite: 3.53.2",
+        "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+      },
+      {
+        "scope": "native-upgrade",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed",
+        "actualNativeVersion": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1",
+        "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+      },
+      {
+        "scope": "candidate-characterization",
+        "runId": "1793589635847-54b283b60123",
+        "status": "failed",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed",
+        "selectedProfile": "default",
+        "actualNativeVersion": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1",
+        "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+      },
+      {
+        "scope": "candidate-smtp",
+        "runId": "1793589686772-19ddb09ce4c0",
+        "status": "failed",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed",
+        "selectedProfile": "default",
+        "actualNativeVersion": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1",
+        "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658"
+      }
+    ],
+    "cleanup": {
+      "status": "passed",
+      "ownedRuns": 4,
+      "verifiedPrivateFiles": 90,
+      "ownedTempTreeRemoved": true,
+      "originalCleanupInvoked": false
+    },
+    "operations": {
+      "observedAt": "2026-11-02T03:16:16.002Z",
+      "originalStatus": "stopped",
+      "recordedReason": "requested-stop",
+      "statusRecordMtime": "2026-11-02T02:01:58.650Z",
+      "priorFourPidsAbsent": true,
+      "retainedOwnerAndLock": true,
+      "actorOrIntentEstablished": false,
+      "restoration": "Newly authorized exact-scope restoration requires fresh stopped backup/data/binary/ownership/ports and supervisor checks; NOT yet performed."
+    },
+    "approvedNextScope": "Observe exact pushed CI; restore exact existing private demo safely without custom deployment; strengthen real pinned Supabase contracts, then private current0358 native/SDK prototype and reliable authenticated logout. No routine approval pause; custom live adoption/upstream submission still requires concrete decision.",
+    "missing": [
+      "Fresh exact pushed-SHA supported SDK CI, legacy guard, upgrade9 and independent candidate-scope execution",
+      "G1 parity/reference contracts and current0358 private prototype; no custom live deployment authorized",
+      "G7 authenticated logout acknowledgement, full security/fault/coverage/release and maintainer signoff"
+    ]
+  },
+  "previousNativeUpgradeSession": {
     "scope": "Authorized official stable native0.35.8 repin/cache, existing supported acceptance and backed-up exact original demo rollout; not full SDK/release/CI signoff",
     "state": "native0358-supported-upgrade-verified-original-live-three-engine-ui-passed-left-running",
     "sourceSha256": "411f15feb242d02024cfcf2cbf7d1ed0862737629467dd71e1bcb99c091284da",
@@ -17,6 +112,35 @@
     "cleanup": "All17 exact owned isolated projects: containers/volumes/networks/native+runner PIDs/depot/context/backups/lock absent.377 raw run/artifact files copied/hash-verified privately; owned temporary tree removed. Raw controllers/failed attempts/prior screenshots preserved; only intentional original guardian/native/proxies left running, no verification jobs remain",
     "research": "Source551 stock characterization9/1,stockSMTP0/1,reservationSMTP0/1,lifecycle9/3 strictly failed with passed cleanup. G1/G7/null-user/global acknowledgement and missing private prototype remain unresolved/unwaived. No current CI/full security/fault/coverage/release/maintainer signoff inferred",
     "next": ["Leave exact original app/inbox/guardian running for Mark and independent Goldie recheck; no automatic stop/cleanup/rollback", "Review uncommitted native pin/cache/harness/exact-status tests and preserved earlier diagnostics work; no commit/push/publication without request", "Do not normalize strict research reds, reconstruct private G1 artifacts or broaden API scope; future security/CI/coverage/release and maintainer signoff need separate work", "Any eventual rollback must first protect accepted live writes; pre-upgrade snapshot is retained, not automatically restorable without a new preservation check"]
+  },
+  "previousSupabaseParityPlanningSession": {
+    "scope": "Docs-only reference-contract/next-steps clarification after Mark requests duplication of observable Supabase Auth behavior where possible",
+    "state": "supabase-parity-plan-recorded-no-implementation-or-runtime-tests",
+    "sourceSha256": "411f15feb242d02024cfcf2cbf7d1ed0862737629467dd71e1bcb99c091284da",
+    "plan": "docs/plans/2026-11-02-supabase-auth-parity.md",
+    "checkpointCommit": "a3fc7d0638320df51a46900e6d983c20c2b2341e",
+    "reference": "Root reviewed official docs and pinned Authv2.197.0 signup/mail/resend source; existing reference JS2.117.2 characterization/SMTP/lifecycle assertions inspected. Source-derived guarantees, historical reached assertions and missing runtime proof are explicitly distinct; no newly invented nicer contract",
+    "signup": "Confirmation-enabled ordinary signup returns real user/nullsession and denies pre-confirmation login; our nulluser success is an unresolved capability gap, not full parity. Source-derived new-user SMTP-error transaction rollback is different from preserving an existing pending identity/password on retry. Existing SMTP response/retry evidence does not prove every DB/no-mail postcondition or delivery guarantee",
+    "duplicatesResendRates": "Existing pending retry preserves original identity/password subject to configured429; public signup resend is target, not implemented. Unknown/confirmed generic200-empty/no-new-confirmation and alternative autoconfirm configuration422 user_already_exists require dedicated runtime controls. Do not universalize obfuscated duplicate user or hardcode60s/change native4hour throttle",
+    "logout": "Reference defaultglobal/local/others behavior governs; refresh revocation is distinct from JWT expiry and remote event timing. Retain native303 unconfirmed SDK error and explicit unsupported others; no fabricated authenticated acknowledgement",
+    "ci": {
+      "source": "Parent factual handoff; no independent CI/artifact investigation in this clarification",
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41370641703",
+      "headSha": "a3fc7d0638320df51a46900e6d983c20c2b2341e",
+      "completedAt": "2026-11-02T01:23:51Z",
+      "status": "failed",
+      "passed": "Both pinned Node jobs; COMPLETE focused SDK auth/data/browser/todos/cleanup; research expiry/cleanup",
+      "research": "Hydration/logout/signup/SMTP/rawredirect failures retained; candidate signup failing case changed. Migration-preflight newly failed after previous cc22730 CI pass; cause UNKNOWN, UNCLASSIFIED is not cause proof",
+      "priority": "Diagnose newly red migration-preflight/changed candidate case before further backend work; no automatic dismissal, repair or rerun"
+    },
+    "preservation": "No SDK/native/source/pin/fixture/service/live-policy changes; existing demo left untouched/running by instruction. Prior source/report bindings, native upgrade session, feature/gate/missing/review/signoff records and private artifacts preserved; no commit/push in this clarification",
+    "validationScope": "Only docs/progress/diff/source checks; no unit/backend/browser/full matrix and no new auth runtime proof",
+    "next": [
+      "Separately diagnose exact-run migration-preflight and changed candidate signup evidence before backend work",
+      "Strengthen real Supabase-vs-TrailBase0.35.8 reference contracts, then propose smallest actually necessary change",
+      "Do not rely on absent0343 private patch or invent purported-real new users to hide missing native output; distinguish Supabase's intentional confirmed-duplicate placeholder. No admin credential exposure/signup/throttle change",
+      "Keep G1/G7 and full security/coverage/release/maintainer signoff open; leave original services running"
+    ]
   },
   "previousG1PrivatePrototypeAssessmentSession": {
     "scope": "Authorized read-only G1 private recovery prototype/provenance assessment; conditional existing isolated regressions could not start without missing artifacts",
@@ -1997,11 +2121,11 @@
     }
   ],
   "nextSteps": [
-    "Keep original official0.35.8 demo LIVE on exact existing18443/18444 scope for Mark; guardian965539/native965809/proxies965827,965850 intentionally retained. No automatic stop/cleanup/rollback",
-    "Use docs/evidence/native0358-upgrade-summary.json and current411f ledger; current both-Node232 units/package4/static, SDKdata6/DB9/constraints6, live UI3 and original51-account/6-task preservation verified. Preserve mixed earlier auth8c/refresh+browser551/native-upgrade551 bindings, never rebind historical proof",
-    "All17 isolated projects cleaned,377 raw run/artifact files hash-archived, owned temporary tree removed. Six generated confirmed UI accounts/54 owned audit rows intentionally retained,0 generated tasks/sessions; all preexisting main/session rows unchanged",
-    "Keep strict source551 characterization9/1,stockSMTP0/1,reservationSMTP0/1,lifecycle9/3 and G1/G7 unresolved/unwaived. No private prototype reconstruction, identity/password/timestamp/history repair, API expansion or signup patch deployment",
-    "Future review/CI/security/fault/coverage/release and maintainer signoff require separate work. No commit/push/publication inferred. Any rollback must first preserve newly accepted live data; never ordinary launcher/fixtures:cleanup against original lock"
+    "Review exact staging/privacy/source and normal-push verified CI/parity-doc checkpoint; inspect the exact new SHA CI, not historical passes.",
+    "Safely restore exact retained18443/18444 demo/inbox after complete current stopped backup and data/ownership/binary/port/supervisor checks. No account edits, fixture reset or access expansion; actor/intent of prior stop unproven.",
+    "Run dedicated pinned Supabase-reference initial SMTP rollback versus existing-pending password/identity contracts, signup user output/resend/throttles. Keep current stock0358 strict gaps visible.",
+    "Build/test private versioned0358 auth compatibility prototype if needed with exact source/diff/binary provenance and race/identity/password/token invariants. Do not deploy fork or submit publicly without adoption/maintenance decision.",
+    "Then establish reliable authenticated global logout acknowledgement with refresh-session versus access-JWT-expiry semantics, without303/health fiction."
   ],
   "previousRecoveryNextSteps": [
     "Read ci-research-triage-41327240737.json: exact cc22730 CI supported SDK/Nodes passed, research red preserved. No Mark input needed. Recorded app/proxy PIDs/endpoints unavailable; diagnose ownership separately without restarting/removing original lock. Propose permanent synthetic SDK redirect coverage and safe assertion diagnostics before any implementation",

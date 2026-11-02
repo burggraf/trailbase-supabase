@@ -4,11 +4,14 @@ import { resolve } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { expect, it } from 'vitest';
 import { context, confirmedTrailUser, nativeUuid, trailbase } from '../phase-a/helpers.js';
-import { exec } from '../../scripts/tools.mjs';
+import { exec, trailToolPaths } from '../../scripts/tools.mjs';
+import { fixtureNativePin } from '../../scripts/harness.mjs';
 
-it('L1-27 G1/I27 existing owned-depot preflight refuses genuine duplicate pending identities and preserves rows/schema/history',async()=>{
+it('L1-27 G1/I27 LEGACY0.34.3 owned-depot preflight refuses genuine duplicate pending identities and preserves rows/schema/history',async()=>{
   const env=await context();
-  if(env.authVariant!=='stock'||env.nativeAuthProfile!=='default')throw new Error('Migration rehearsal requires an isolated stock/default owned depot');
+  if(env.authVariant!=='stock'||env.nativeAuthProfile!=='default'||env.nativeServerProfile!=='legacy-upgrade')throw new Error('Migration rehearsal requires an isolated legacy0.34.3 stock/default owned depot');
+  const pin=fixtureNativePin(env.nativeServerProfile),{binary}=trailToolPaths(pin);
+  expect((await exec(binary,['--version'],{timeout:10000})).stdout).toContain(pin.version);
   const depot=resolve(env.directory,'traildepot'),candidate=resolve(depot,'migrations/main/U1790991000__reserve_auth_email.sql');
   await expect(stat(candidate)).rejects.toMatchObject({code:'ENOENT'});
   const email=`migration-pending-${randomUUID()}@example.test`,password=`Fixture-${randomUUID()}-Aa1!`;
@@ -18,7 +21,6 @@ it('L1-27 G1/I27 existing owned-depot preflight refuses genuine duplicate pendin
   await expect(pending.login(email,password)).rejects.toMatchObject({status:401});
   const control=await confirmedTrailUser(env,'migration-control'),id=nativeUuid(randomUUID());
   await control.client.records('todos').create({id,user_id:control.user.id,title:`migration-control-${randomUUID()}`});
-  const binary=resolve('.runtime/tools',`${process.platform}-${process.arch}`,'trail');
   const inspect=()=>exec(binary,['--depot',depot,'schema','todos','--mode','select'],{timeout:30000});
   expect(JSON.parse((await inspect()).stdout)).toHaveProperty('properties');
   const db=new DatabaseSync(resolve(depot,'data/main.db'),{readOnly:true});

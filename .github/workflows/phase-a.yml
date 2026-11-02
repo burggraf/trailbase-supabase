@@ -110,14 +110,18 @@ jobs:
       - name: Explicit short-lived native auth fixture / real expiry
         if: always()
         run: npm run test:phase-a -- expiry
-      - name: Investigational candidate signup / strict SMTP recovery
+      - name: Investigational candidate signup / strict characterization
         if: always()
-        run: |
-          npm run test:phase-a -- characterization --auth-mitigation
-          npm run test:phase-a -- smtp --auth-mitigation
-      - name: Existing owned-depot auth migration preflight rollback
+        run: npm run test:phase-a -- characterization --auth-mitigation
+      - name: Investigational candidate / strict SMTP recovery
+        if: always()
+        run: npm run test:phase-a -- smtp --auth-mitigation
+      - name: LEGACY0.34.3 owned-depot auth migration preflight rollback
         if: always()
         run: npm run test:phase-a -- auth-migration
+      - name: Official current native upgrade / backup restore / rollback safety
+        if: always()
+        run: npm run test:native:upgrade
       - name: Three-browser isolated proof / infrastructure controls
         if: always()
         run: npm run test:phase-a -- browser
@@ -128,6 +132,8 @@ jobs:
         if: always()
         with:
           name: phase-a-real-backends-sanitized
-          path: artifacts/phase-a/*.json
+          path: |
+            artifacts/phase-a/*.json
+            artifacts/native-upgrade/*.json
           if-no-files-found: error
           retention-days: 14
