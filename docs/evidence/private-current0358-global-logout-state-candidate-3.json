@@ -1,0 +1,174 @@
+{
+  "scope": "C08 separate private SDK logout state/timing candidate over immutable native candidate2; bounded local evidence, not public SDK support, adoption, deployment or signoff",
+  "status": "Current private SDK5 review fix/guards/installed both-Node17/three-engine12 verified and audited; complete local public batch/fresh final-source guards/reference and23project/8parent archival/7artifact/original preservation audits passed. Final privacy staging, substantive publication and exact pushed CI pending",
+  "parentCheckpoint": {
+    "commit": "c1a7b07970afc869408ed1ea704324be316aea3f",
+    "ci": 41500268491,
+    "attempt": 1,
+    "audit": "ci-c1a7b07-global-logout-checkpoint.json",
+    "priorOperationalNotesPreserved": true,
+    "noWorkflowRerun": true
+  },
+  "authorization": {
+    "features": ["L1-15", "L1-16", "L1-17", "L1-18", "L1-19", "L1-20", "L1-24", "L1-26", "L1-27"],
+    "contractIds": ["C08-01", "C08-02", "C08-03", "C08-04", "C08-05", "C08-06", "C08-07", "C08-08"],
+    "publicSdkChanged": false,
+    "nativeImplementationChanged": false,
+    "privateImplementationPublished": false,
+    "liveDemoOrExposureChanged": false,
+    "adoptionApproved": false
+  },
+  "pins": {
+    "nativeUpstream": "0.35.8",
+    "nativeBaseCommit": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+    "trailbaseJs": "0.14.3",
+    "supabaseJs": "2.117.2",
+    "supabaseAuth": "2.197.0",
+    "supabaseCli": "2.119.0",
+    "nodes": ["22.23.2", "24.21.0"],
+    "playwright": "1.63.0",
+    "nativeProfile": "read-only reuse of privately frozen candidate2 SQLite/password debug artifact, not stock behavior or a new native release",
+    "serverAndDependencyRepin": false
+  },
+  "privateProvenance": {
+    "repository": "Separate own-Git SDK source copied without hardlinks from immutable prior working source; previous artifacts and operational notes hashed before preparation",
+    "version": "0.0.0-private.current0358.5",
+    "sdkBaseCommit": "8aef018cd26724ffaaa45b8f04ff3f117f0c8d93",
+    "sdkSourceSha256": "c65e2da7950779c0c1bd47b53f2c6496faaf24aa4b25fefac3ce8cdc28695530",
+    "sdkFullDiffSha256": "88d86aea5a39a88ee2d87857321b3ef59d7e58422be7de95dc09def32e6844cd",
+    "sdkTarballSha256": "bb964e4133ca6ddc48116159f2817ff1a65db2232a0854b1913fbbd2ad829c53",
+    "supersededSdk4": {"sourceSha256":"3456d9caca49cfc7c8edc7c92ecda682a432d6dcdae468d0dc2610d6c3d93299","fullDiffSha256":"1008cebfb6efabca8cb8a1a8f71f05bdf5e4c8f92f72530e3bb83f55d4f6688e","tarballSha256":"a256460ab9f5e7793c712237a47abb41638ede1e2195c67f89afd272c3490f7e","unitsEach":268,"installedContractsEach":16,"browserCases":12,"immutable":true,"qualification":"Verified bounded original scopes, then review found unarbitrated live-user credential installation. Not certification of SDK5 or the final candidate."},
+    "nativeBinarySha256": "5036f12a1de2a779d1764089c5878f57d368fc9b435bb0c229e029d8037aeb87",
+    "nativeFullDiffSha256": "ddcd44830a26fa4a0d7b9d25504745779d2982c0e67fd7df8566280b576889ba",
+    "nativeDeltaFromCandidate1Sha256": "bc888cf150e918e1c0fbf7986a2977ad4e0e47635bbfb359b6e4153db0253082",
+    "nativeRebuiltByC08": false,
+    "runtimeDependencyGraphAndIntegrityUnchanged": true,
+    "priorCandidate1AndSdk2Sdk3ArtifactsUnchanged": true,
+    "executedDriverRuntimeImportGuardSharedProofSources": "Hashes captured before/after genuine runs; exact executed source copies and raw failures retained privately. Public CI does not build or certify these artifacts."
+  },
+  "sdkContract": {
+    "capability": "auth.privateGlobalLogout='authenticated-json-state-v2'",
+    "selection": "Distinct exact opt-in; no autodetection. Legacy authenticated-json-v1, ungated and local behavior are preserved.",
+    "pendingState": "Owned credentials/storage remain installed while global request is pending; no early SIGNED_OUT. Local removal completes before the settlement notification. Native credential-rotating getUser validation queues behind global settlement, then observes the missing session without a status request. This conservative read queue differs from measured reference independent getUser: it prevents rotating captured state and making acknowledged logout cleanup stale, not a universal parity claim.",
+    "renewal": "Inside measured90second logout preflight margin, bounded genuine same-user renewal is actually persisted before TOKEN_REFRESHED; the renewed bearer authorizes the global request. Existing renewal is joined; manual renewal during a held global request is explicitly unavailable.",
+    "rejectedRenewal": "Only this opted-in logout preflight can retain a genuinely unexpired original JWT after an HTTP renewal failure and use it for independent authenticated revocation. Native401 remains native401; unrelated regular-auth terminal policy is not rewritten. Actual-expired native401 clears/errors once with zero global dispatch. Transient expired preflight failure preserves state and reports error.",
+    "receipt": "One bodyless Bearer POST, omitted cookies/refused redirects; exact same-origin200 application/json scope=global/revoked=true after owner-wide DELETE. Receipt512byte and renewal4096byte streamed bounds, strict UTF8/field checks and discarded non-2xx renewal bodies remain. No generic auth deadline/arbitrary-stall guarantee is added.",
+    "loginArbitration": "Same-client password login during global logout waits for authenticated DELETE plus local settlement. An unconfirmed operation blocks queued login without dispatch. After an actual unconfirmed global request, this client rejects future password login with AuthSignInBlockedByUnconfirmedLogoutError: outstanding DELETE cannot be excluded.",
+    "explicitLimitation": "This is conservative same-client arbitration, not universal reference parity. Other clients/processes cannot be serialized by this SDK. Independent backend quiescence/recovery is required before a separately constructed client is used; construction alone is not evidence the old DELETE is finished. Cancellation/lost response is not rollback; completed DELETE does not exclude later login or instantly revoke issued JWTs.",
+    "emptyOrRejected": "No credentials, rejected caller, malformed/redirect/lost receipt and HTTP/transport failure cannot become fabricated server acknowledgement. Global denial statuses remain observable even when the reference SDK might ignore them."
+  },
+  "testFirst": {
+    "behavioralBaseline": "Unchanged candidate2 SDK3 with its accepted v1 flag:8collected,7meaningful state/renewal/retention/arbitration failures and1expired401 control pass. First missing-storage JSON parse failure preserved; corrected explicit missing-state assertion again gives7assertion failures/1control. These host-runtime reds are not represented as both pinned-runtime proof.",
+    "distinctCapability": "Pinned Node22 targeted constructor contract fails because the new exact state capability is absent;9filtered tests are not claimed executed. Earlier behavior reds separately establish the state gaps.",
+    "distinctPackage": "Pinned Node22 exact version4 pack-metadata contract fails against version3 guard;6filtered controls are not counted as executed full-suite tests.",
+    "lateDeleteLimitation": "Pinned Node22 unit regression against real candidate implementation using labeled synthetic transport/credentials, not server-auth proof: after unconfirmed global transport, future login incorrectly succeeds;1meaningful assertion red/3filtered controls. Narrow uncertainty quarantine added, then included in both full pinned268-unit SDK4 and269-unit SDK5 runs. Separate installed genuine cancellation/late-DELETE contracts provide backend proof.",
+    "liveUserReview": "Connected-flow review traced live getUser credential installation during held global logout. Against exact frozen SDK4 auth source/diff and compiled-module hash, pinned Node22 gives1meaningful assertion red/4filtered controls: a status request runs while global is held. Minimal state-v2-only queue added in distinct version5; both pinned269units/package4, fresh actual17contracts eachNode and12three-engine flows passed. SDK4 source/artifact and all old proof preserved; no certification borrowed from4.",
+    "separateFailures": "Initial TypeScript declaration-order error, prefixture ownership-path controller failure and installed proxy local-route404 are not feature-missing runtime reds. All raw/source attempts retained."
+  },
+  "reference": {
+    "defaultProfile": {
+      "sourceSha256": "8f21cc3dda08b7761cce60e80dfdbe4d331e6c935fb5dfaafa895d55276bb1ba",
+      "runId": "1793647582403-e36da56b0f17",
+      "node": "22.23.2",
+      "passed": 16,
+      "failed": 0,
+      "cleanup": "passed",
+      "newRaces": 4,
+      "observed": "Pinned reference allows same/different-user replacement login while old logout is held before or after DELETE, then clears that replacement locally. A same-user remote replacement before DELETE is revoked; one after DELETE survives. Complete post-login account fingerprints, identity/password, control rows/sibling sessions and delivered-JWT cleanup verified. This unsafe replacement-clearing behavior is measured, not the candidate safety target."
+    },
+    "private120sProfile": {
+      "sourceSha256": "be43a7df0ed2e5fafab9f493d330dd20f0d0b0799373b06a577fd14c866eb97a",
+      "runId": "1793647585111-5bb3e758ea4c",
+      "node": "22.23.2",
+      "passed": 17,
+      "failed": 0,
+      "cleanup": "passed",
+      "actualExpiry": "Genuine120s claims and wall-clock exp+61, without forged JWTs, fake clocks, row edits or live3600s changes; not exact native leeway-boundary proof",
+      "observed": "Genuine renewed credentials are stored and TOKEN_REFRESHED delivered before held logout. Proactive revoked-refresh400 preserves the unexpired original JWT and proceeds to logout403, which the SDK ignores: local success is NOT a server revocation receipt. Actual-expired revoked refresh400 clears/emits once and sends no logout.",
+      "publicProofTemplate": "tests/auth-reference/c08-expiry-proof.ts is byte-identical to the executed private-profile test source. It is intentionally not a default .test.ts collection; normal public CI does not execute this120s profile."
+    },
+    "preservedFirstAttempt": "Source d74bc8ef63a2e851194d26bff55d6fbb3244fd0842f95a6e2df2c4d5e07e072f reached12passed/4failed: comparisons ignored legitimate sign-in metadata changes and cleanup attempted already-revoked JWTs then stopped before later independent cleanup. Whole-fixture cleanup passed. Corrected tests compare complete post-login fingerprints and independently revoke each remaining account with its latest genuinely delivered valid JWT; no SQL repair or ignored403 cleanup success.",
+    "liveUserReview": {"strictSourceSha256":"f11e9d9c2513d175d0af49d1a9e2eb9db456970f4abf23e9d3606bb2aa9278d6","runId":"1793652449284-551455e795d6","node":"22.23.2","passed":18,"cleanup":"passed","template":"tests/auth-reference/c08-live-user-proof.ts is byte-identical to the strict executed owned test; not collected by default CI","observed":"Reference getUser is independent, not queued: before DELETE actual200/owner user/unchanged owned key/no early event; after DELETE actual403/AuthSessionMissingError, key removed and SIGNED_OUT before held logout receipt, then a second SIGNED_OUT on genuine204 settlement. Complete post-login account/session/control-row and independent cleanup checks passed. Candidate queues its native credential-rotating read instead; explicit safety limitation, not replication or universal reference parity.","preservedMistakes":"First source55b89267e569faa46b465f7949c4c4d352b329603466596fb62a2cac5c4ab541 had12pass/4failed wrong reference getUser-queue assumptions, setup/cleanup passed. Separate observational source779c402cd36233764fed728b7b155fecee35965c3c27e67b5adb1588dc44f1b3 had18pass with protected-state/cleanup checks and exact tuple audit. Public template then asserts precise200/403/event/storage results and independently repeats18pass; no old runtime source/result relabeled."},
+    "transportCorrectionRetained": "Prior GL06 before-dispatch/lost-receipt reference retains local credentials while pending then clears/emits once after request errors; final clearing is not a mismatch. New state-v2 aligns that measured timing."
+  },
+  "verification": {
+    "privateGuards": [
+      {"node": "22.23.2", "unitPropertyPassed": 269, "offlinePackageChecksPassed": 4, "staticTypesDocs": "passed"},
+      {"node": "24.21.0", "unitPropertyPassed": 269, "offlinePackageChecksPassed": 4, "staticTypesDocs": "passed"}
+    ],
+    "installedRealPackage": {
+      "nodes": ["22.23.2", "24.21.0"],
+      "contractsPassedEach": 17,
+      "sourceArtifactAndCleanupAudit": "passed",
+      "contracts": [
+        "Genuine mail-confirmed owner/sibling, two independent owner sessions and mapped CRUD/permissions",
+        "Empty capability client has zero requests/no acknowledgement/full no-write state",
+        "Missing/invalid/cookie-only/signed-wrong-purpose caller denials with cookie positive control and complete no-write state",
+        "Authenticated DELETE receipt/all-owner revocation, unchanged sibling/main, rejected refresh, residual JWT data access and no immediate remote event",
+        "Real AFTER DELETE SQL trigger500, complete atomic rollback/no private canary, removal/recovery",
+        "Actual stopped SMTP/socket closure; password login and global logout remain effective",
+        "Genuine committed response drop,32actual-byte truncation and byte fragmentation; no replay or rollback inference",
+        "Before-DELETE held global operation queues live getUser with zero status requests or credential rotation; after authenticated receipt it observes missing session, local cleanup succeeds, sibling/main preserved",
+        "After-DELETE held genuine receipt retains local state; concurrent login dispatches only after authenticated settlement",
+        "Before-DELETE external same-user login is revoked, while same-client queued login is not sent until receipt and subsequently survives",
+        "Actual downstream abort before accepted buffered forwarding can still lead to later native DELETE revoking a real newly created external same-user session; candidate blocks/quarantines its own login without mutation",
+        "Actual downstream abort after completed DELETE leaves a genuine independent later login alive; full sibling/main preservation and no replay",
+        "Genuine proactive120s window: native refresh401 retains original unexpired JWT until authenticated200; no status remapping or false TOKEN_REFRESHED",
+        "Actual120s claims/exp+61: raw expired403/no writes, installed genuine renewal/TOKEN_REFRESHED then receipt, revoked expired refresh401/zero logout/clear and sibling recovery",
+        "Completed authenticated DELETE does not prohibit a subsequent genuine login"
+      ],
+      "cancellationBoundary": "Buffered downstream cancellation with real native operations is measured; this is NOT proof of cancelling a native handler before DELETE.",
+      "cleanup": "Both completed controllers independently audited: zero sessions/tasks, no cleanup failures, exact executed-source hashes, owned native PIDs and temporary runtime/consumer trees absent",
+      "preservedInitialNode22Failure": "Historical SDK4 run reached10genuine checks then local logout hit fixture proxy404 because its route allowed login/global only. Complete zero-session/task/process/temp cleanup passed. Only local fixture forwarding corrected; frozen package unchanged. Failed raw/source retained."
+    },
+    "browsers": {
+      "engines": ["Chromium", "Firefox", "Linux mobile-config WebKit"],
+      "profiles": ["app", "auth", "global", "state-expiry"],
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "retries": 0,
+      "observed": "Actual offline SDK5 packed artifact and real native/mail/data: existing app/confirmation/CRUD/permissions/persistence/refresh retained; held genuine200 followed by browser abort preserves pending state then errors/clears, blocks concurrent and future login without password dispatch; private3s claims/exp+61 proves actual renewal persisted before TOKEN_REFRESHED/held receipt and storage removed before SIGNED_OUT; getUser queues during held receipt and returns missing session afterward with zero status requests on all three engines; expired revoked refresh401 produces no global request. No successful auth/data stubs.",
+      "cleanup": "Four owner-verified native fixtures: zero sessions/tasks/pending users and owned native PIDs/temp trees absent, all source/asset hashes audited",
+      "physicalDeviceAcceptance": false
+    },
+    "supplementalRedirectControl": {
+      "nodes": ["22.23.2", "24.21.0"],
+      "casesEach": 4,
+      "statuses": [301, 303, 307, 308],
+      "result": "Actual installed default Fetch rejects redirects with zero foreign SDK requests/no acknowledgement, local clear and unrelated storage retained; raw-follow positive receiver control strips Bearer; both owned servers/consumer trees removed",
+      "syntheticNonsecretCredentialsOnly": true,
+      "genuineBackendAuthenticationOrRevocationProof": false
+    },
+    "publicRegressions": {
+      "sourceSha256": "5cd4714221c70c77f3f7d365c70f2f56dd973c7c1df7caaead1ef99f40275644",
+      "status": "Fresh final-source both pinnedNode261units/package4/static-types-docs and default reference16/setup-cleanup passed; exact normal pushed CI still pending",
+      "fullLocalBatch": {"sourceSha256":"f0d11703ff3177d78c4d4121cca6762c373482adb0c77a9b589508015ab59e32","reports":16,"supported":"passed","reference":16,"allSetupAndCleanup":"passed","strictResearchFailures":14,"exactHistoricalResearchNamesAndStatusesUnchanged":true},
+      "sourceBridge": "Every source-hash input byte compared: current5cd differs from full-local f0d only by added uncollected c08-live-user-proof.ts. Public SDK/runtime/harness/dependencies/config unchanged. Raw full runtime reports retain f0d; fresh final-source guards/reference and future exact CI remain separate, never relabeled.",
+      "scope": "Both pinned Node public guards and applicable real harness scopes, preserving strict historical research cases; public CI does not build or certify private SDK5/native artifacts"
+    }
+  },
+  "resourcesAndHistory": {
+    "completedReferenceArchives": [
+      {"generation": "red", "files": 1207, "ownedProjectsAbsent": 1},
+      {"generation": "v2", "files": 1207, "ownedProjectsAbsent": 1},
+      {"generation": "private120s", "files": 1209, "ownedProjectsAbsent": 1}
+    ],
+    "additionalCompletedArchives": [{"generation":"public-full-f0d","files":1588,"ownedProjectsAbsent":16},{"generation":"wrong-getUser-queue-assumption","files":1209,"ownedProjectsAbsent":1},{"generation":"observational-getUser-v2","files":1212,"ownedProjectsAbsent":1},{"generation":"strict-published-live-user-template","files":1213,"ownedProjectsAbsent":1},{"generation":"final-public5cd-guards-reference","files":1212,"ownedProjectsAbsent":1}],
+    "archiveScope": "Complete executed public source and raw reports/fixtures hash-manifested privately, no tool cache/hardlinks/symlinks. All8exact temporary parents/23owned projects removed; owned container/network/volume/native absence checked. Seven immutable artifact hashes reverified and current SDK5 own-Git base/source/packed files still match frozen proof.",
+    "originalOfficial": "Approved read-only supervisor/data/assets/config/keys/locks/six-container/tailnet guard passed; original57accounts/8tasks retained, no mutation or new device acceptance",
+    "historicalResearchFailures": "Full local f0d16report audit proves14exact historical names/statuses unchanged and unwaived. Final-source5cd exact pushed CI still pending; no new setup failures or release inference.",
+    "priorFailuresAndOperationalFieldsPreserved": true
+  },
+  "remaining": [
+    "Finish final privacy/history/scoped staging; substantive public proof/tests/evidence commit-push including prior CI audit, then audit one exact normal pushed CI",
+    "General cross-client/native-handler pre-DELETE cancellation/linearizability, arbitrary stalls and generic regular-auth error-body/deadline, configuration/quota/concurrency and exhaustive storage/security/fault coverage",
+    "Broader proactive non-HTTP renewal failure equivalence is not established by the measured HTTP401/reference400 cases; no universal refresh-failure parity claim",
+    "Native regular refresh401 retention/status and expired REST403 versus reference401 remain unchanged outside opted-in logout preflight",
+    "Full coverage/security/release, physical-device acceptance, OSL deployment/maintenance/adoption and maintainer decisions"
+  ],
+  "review": {"status": "Sole-executor connected-flow review found and reproduced SDK4 live-user installation race; minimal private SDK5 guard plus fresh both-Node/package/real17/three-engine12 proof. Reference independent user-read behavior separately measured and strictly reproduced, conservative queue limitation explicit. Final staging/privacy audit pending; no independent reviewer or maintainer signoff inferred."},
+  "signoff": false,
+  "readinessClaim": false
+}
