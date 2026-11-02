@@ -1,0 +1,125 @@
+{
+  "scope": "Reviewed private authenticated global-logout candidate2 and public proof/reference regression checkpoint; NOT stock/public SDK capability, compatibility exception, deployment, release, comprehensive security or maintainer signoff",
+  "publicSourceSha256": "9bbdf3fc563d7c9e416f2ea030eab026d501a7c0c174c397a6761ee5f4f9ff5c",
+  "currentPublicSourceSha256": "10d037672e4fc6dd4b443440c9bbcdf9d8ecc903e672a73cad2ec1a42b053862",
+  "finalSourceFormatting": "Final review removed one extra EOF newline in the reference test. Every other source-hash input byte was compared equal to the archived full16report source9bbdf3fc. Prior local runtime reports retain9bbdf3fc, are not rewritten as current10d03767. Fresh current bothNode guards and exact pushedCI are required before current-source CI claims.",
+  "finalCurrentSourceGuards": { "sourceSha256":"10d037672e4fc6dd4b443440c9bbcdf9d8ecc903e672a73cad2ec1a42b053862", "nodes":["22.23.2","24.21.0"], "unitEach":261, "offlinePackageEach":4, "staticTypesDocs":"passed", "exactPushedCi":"pending" },
+  "baselineCommit": "804903550e0a25b1650885cfad90dac36273cf15",
+  "pinsUnchanged": true,
+  "publicSdkImplementationChanged": false,
+  "native": {
+    "base": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+    "upstreamVersion": "0.35.8",
+    "profile": "private-candidate2",
+    "binarySha256": "5036f12a1de2a779d1764089c5878f57d368fc9b435bb0c229e029d8037aeb87",
+    "fullSourceDiffSha256": "ddcd44830a26fa4a0d7b9d25504745779d2982c0e67fd7df8566280b576889ba",
+    "deltaFromCandidate1Sha256": "bc888cf150e918e1c0fbf7986a2977ad4e0e47635bbfb359b6e4153db0253082",
+    "contract": "Dedicated explicit-single-Bearer POST, signed purpose/subject/expiry and existing confirmed identity validation; await one owner-scoped all-session DELETE; exact200JSON scope=global/revoked=true only after completion; no cookie, redirect or legacy fallback; safe500 on genuine database failure",
+    "verification": { "unit": 246, "integration": 5, "ownedUnitDepotsAbsent": 107 },
+    "provenance": "Independent own Git/exact base/submodules/locks and recorded Rust/Cargo1.99.1/owned LLVM18/Protobuf, copied independent build cache, locked offline selected SQLite/password-auth build; source/delta/binary/tool evidence retained privately",
+    "limits": "Debug private prototype, not clean-room reproducibility, full-feature/PG/WASM/GEOS/MCP/admin-asset/release/standalone deployment proof"
+  },
+  "sdk": {
+    "version": "0.0.0-private.current0358.3",
+    "sourceSha256": "017fb42f7a8065fafeafe618d0d5d34b2755a85f01c073df50cbebfe3bdce921",
+    "sourceDiffSha256": "ca403bb08f315dcb617908a941418a44014765ad3bb7b96f2345438e26b00b50",
+    "tarballSha256": "85adb34c78e73fc3c7b886ce125d07f6c47bea7063bd66adeb875c427184262f",
+    "capability": "auth.privateGlobalLogout='authenticated-json-v1'",
+    "contract": "Exact opt-in only; no stock capability detection; bodyless Bearer POST/omit cookies/refuse redirects; exact bounded512byte authenticated receipt; empty gated client errors with zero requests; captured expired credentials renew solely for logout with same-user/same-endpointJSON and4096byte bound, never installing renewed state or emitting TOKEN_REFRESHED; no replay/fallback",
+    "reviewHardening": "Two meaningful runtime reds proved non-2xx renewal body consumption and wrong-MIME renewal reaching global dispatch. Narrow private-only fix discards/cancels non-2xx bodies preserving delivered status and rejects wrong MIME/foreign response identity;11focused tests then pass. Generic regular-auth paths remain unchanged.",
+    "guards": [
+      { "node": "22.23.2", "staticTypesDocs": "passed", "unit": 254, "offlinePackage": 4 },
+      { "node": "24.21.0", "staticTypesDocs": "passed", "unit": 254, "offlinePackage": 4 }
+    ],
+    "installedGraphAndDeclarations": "Actual offline tarball consumers, exact locked native runtime versions/integrity, owned real regular package files/hashes and shipped declarations verified; no registry fallback or dependency change"
+  },
+  "meaningfulRedsPreserved": [
+    "Native3runtime404 before route implementation; earlier compile failures and later route-registration collision retained separately",
+    "SDK6missing-capability failures/1ungated control and isolated positive type failure before implementation; earlier invalid mapping/test typing retained separately",
+    "Otherwise-valid oversized receipt rejected only after bounded parser fix",
+    "Shared quiescent helper2reds/1control and allowed POST-wire-route3reds before implementations",
+    "Review2runtime reds before non-2xx renewal discard/MIME-response-identity hardening; compiler/controller/setup errors are not feature-missing runtime reds"
+  ],
+  "actualInstalledBackend": {
+    "nodes": ["22.23.2", "24.21.0"],
+    "checksEach": 12,
+    "nativeAndTarballBound": true,
+    "contracts": [
+      "Genuine confirmation, two owner sessions plus independent sibling, mapped CRUD/permissions and complete protected main/sibling fingerprints",
+      "Empty gated non-ack/zero requests and missing/invalid/genuine-cookie-only/signed-wrong-purpose denials/no writes; separate genuine-cookie positive status control",
+      "Exact genuine receipt/all-owner DELETE, sibling/main preservation, rejected refresh, no immediate remote event, residual issued JWT still authorizes data",
+      "Real AFTER DELETE abort trigger produces genuine500/no public SQL canary/full rollback; trigger removal recovery",
+      "Actual SMTP listener and sockets stopped; genuine password login/global revocation remain functional without mail",
+      "Genuine upstream response dropped, truncated after32actual bytes or fragmented; committed deletion preserved, truthful error versus receipt, one request/no replay",
+      "Completed DELETE with held receipt/same-flight; subsequent genuine same-user login survives the late receipt and remains persisted; future login is not prevented",
+      "Real120second claims and actual latest exp+61 wait; raw expired global403/native REST403/no writes; valid refresh then authenticated receipt; rejected revoked refresh401/zero global requests/local clear; sibling valid",
+      "Independent row/exact-session/subscription/wire/SMTP/native/temp teardown proves zero sessions and tasks"
+    ],
+    "controllerFailurePreserved": "SDK3 Node22 genuine12contracts/source/cleanup passed, then parent compared the new import-guard hash with the old helper. Original failed parent retained; independent exact-source/zero-state/process/temp re-audit passed. Only that projection was corrected, no blind Node22 runtime rerun. Node24 corrected parent and genuine12contracts passed. Driver source hashes agree.",
+    "finalSessions": 0,
+    "finalTasks": 0,
+    "ownedNativeAndTempAbsent": true
+  },
+  "browser": {
+    "actualInstalledTarball": true,
+    "engines": ["chromium", "firefox", "webkit-mobile-config"],
+    "app": 3,
+    "auth": 3,
+    "gatedGlobal": 3,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0,
+    "scope": "Real mail/browser confirmation, auth/CRUD/query/permissions/persistence/refresh/logout and actual upstream-completed200then browser lost-receipt abort; no successful auth/data stubs, no claimed raw-TCP browser fault",
+    "sourceAndCleanupAudit": "passed;zero pending/session/task and exact owned native/temp absence",
+    "physicalDeviceAcceptance": false
+  },
+  "supplementalRedirectSecurity": {
+    "scope": "Actual installed default-Fetch network failure control with synthetic nonsecret credentials; NOT genuine backend authentication or revocation proof",
+    "nodes": ["22.23.2", "24.21.0"],
+    "redirectStatuses": [301,303,307,308],
+    "sdkForeignRequests": 0,
+    "acknowledged": false,
+    "rawFollowReceiverPositiveControl": "passed; Bearer stripped",
+    "ownedServerAndTempCleanup": "passed"
+  },
+  "pinnedReference": {
+    "sourceSha256": "9bbdf3fc563d7c9e416f2ea030eab026d501a7c0c174c397a6761ee5f4f9ff5c",
+    "tests": 12,
+    "status": "passed",
+    "newCases": "Genuine before-dispatch ECONNREFUSED/zero backend calls/full no-write versus real completed204lost-receipt/all-owner deletion; stopped/recovered SMTP; one request/no automatic replay; complete account/data/sibling/session and independent cleanup",
+    "correction": "Initial source957f27e8 had10passed/2failed wrong final-local-retention assumptions and exposed incomplete failed-client cleanup. Pinned runtime and installed _signOut source clear locally after transport error, emitting one SIGNED_OUT. A held actual request proves credentials remain until completion. Private invalidation is earlier at invocation: final clearing on those two errors is NOT itself a mismatch. Empty SDK success after clearing still makes zero server requests; independent recovery uses an actually delivered valid JWT, never SQL repair or invented credentials.",
+    "firstFailureRawAndSourcePreserved": true
+  },
+  "remainingDifferencesAndMissingProof": [
+    "Private immediate local invalidation versus measured reference post-request clearing",
+    "Private logout-only renewal not installed/no TOKEN_REFRESHED versus reference GL03",
+    "Native refresh401 clears unexpired remote cache whereas pinned reference400 retains; expired native REST403 versus reference401",
+    "Receipt means completed DELETE, not future-login exclusion, instant stateless JWT invalidation, immediate remote event or rollback after cancellation/lost receipt",
+    "Actual exp+61 proof is not exact native leeway-boundary characterization; root/live3600second configuration unchanged",
+    "Before-DELETE new-login arbitration, arbitrary stalls/cancellation/commit faults, full generic auth-body/deadline bounds, wider configuration/concurrency/quota/transport/security/coverage/release corpus remain incomplete",
+    "No physical iPhone/Safari, custom deployment/adoption, upstream publication, public package release, OSL deployment/maintenance or maintainer signoff"
+  ],
+  "publicRegression": {
+    "sourceSha256": "9bbdf3fc563d7c9e416f2ea030eab026d501a7c0c174c397a6761ee5f4f9ff5c",
+    "bothNodes": { "unitEach": 261, "offlinePackageEach": 4, "staticTypesDocs": "passed" },
+    "reports": 16,
+    "allSetupAndCleanup": "passed",
+    "passed": { "sdkAuth": 3, "sdkRefresh": 4, "sdkData": 6, "database": 9, "constraints": 6, "sdkBrowser": 15, "todosLauncher": 2, "authReference": 12, "expiry": 2, "legacyAuthMigration": 1, "nativeUpgrade": 9, "lifecycle": 1 },
+    "strictResearch": { "stock": {"passed":112,"failed":6}, "candidate": {"passed":9,"failed":1}, "smtp": {"passed":0,"failed":1}, "browser": {"passed":60,"failed":6}, "exactHistoricalCaseNamesAndStatusesUnchanged":true, "failures":14, "waived":false },
+    "priorCiAuditFolded": "804903550e0a25b1650885cfad90dac36273cf15 /41468900266 supported/bothNode passed,14unchanged research red; earlier pull cause remains unknown",
+    "newPushedCi": "Pending exact normal substantive commit/push and audit; no rerun or CI readiness claim"
+  },
+  "preservationAndResources": {
+    "immutableCandidate1NativeSha256": "818ae9d30317fd0ab294a1daf4b73b1fa139fa61426972f20789b7975aaf2ef1",
+    "immutableCandidate1SdkSha256": "6e0ddb6e254ce7424f2c803c02eac54c07119a9a24021f4f35cdb78904fbec22",
+    "supersededCandidate2Sdk2Sha256": "e78b42f80e24b07c42d734ecfc57abe3b0728586465a4744e932895904aae4d3",
+    "allFiveArtifactHashesReverified": true,
+    "publicReferenceRedArchiveFiles": 1204,
+    "publicCorrectedFullArchiveFiles": 1582,
+    "ownedPublicProjectsAbsent": 17,
+    "bothExactTemporaryParentsRemoved": true,
+    "originalOfficialApprovedReadOnlyPreservationGuard": "passed after proof batch; original supervisor/data/assets/keys/locks/six containers/tailnet untouched",
+    "privateImplementationPatchesBinariesRawCredentialsExcludedFromPublicCheckpoint": true
+  },
+  "signoff": false
+}

@@ -4,11 +4,12 @@ import { setImmediate as nextTurn } from 'node:timers/promises';
 
 // Disposable loopback fault fixture, not a gateway/product. Forwards only genuine
 // owned native response bytes; never copies auth/cookie headers to downstream clients.
-export async function httpStreamFixture(upstream:(signal:AbortSignal)=>Promise<Response>, mode:'fragment'|'disconnect'|'drop') {
-  const route=`/${randomUUID()}`,controllers=new Set<AbortController>(),tasks=new Set<Promise<void>>();
+export async function httpStreamFixture(upstream:(signal:AbortSignal)=>Promise<Response>, mode:'fragment'|'disconnect'|'drop', postRoute?:'/api/auth/v1/logout/global'|'/auth/v1/logout?scope=global') {
+  if(postRoute!==undefined&&postRoute!=='/api/auth/v1/logout/global'&&postRoute!=='/auth/v1/logout?scope=global')throw new TypeError('Unsupported owned logout wire route');
+  const route=postRoute??`/${randomUUID()}`,method=postRoute?'POST':'GET',controllers=new Set<AbortController>(),tasks=new Set<Promise<void>>();
   let cancelled=0,bytesWritten=0;
   const server=createServer((request,response)=>{
-    if(request.method!=='GET'||request.url!==route){response.writeHead(404);response.end();return;}
+    if(request.method!==method||request.url!==route){response.writeHead(404);response.end();return;}
     const abort=new AbortController();controllers.add(abort);
     request.socket.setNoDelay(true);
     response.on('close',()=>abort.abort());
