@@ -1,0 +1,279 @@
+{
+  "scope": "Exact ba5f42e CI source/commit/21-report audit; supported and both Nodes green, overall strict research failure retained. NOT historical startup-cause repair/private SDK/native/browser/signoff",
+  "commit": "ba5f42ed02b8a7e671d6387d4ef6839177b97df2",
+  "sourceSha256": "d5fa1c8ef6a29fba8b1909f3bca26b91316347a18e7deea1d9c069773d542005",
+  "run": 41424547191,
+  "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41424547191",
+  "status": "completed",
+  "conclusion": "failure",
+  "jobs": [
+    {
+      "name": "Static, units and packed consumer / Node 22.23.2",
+      "conclusion": "success"
+    },
+    {
+      "name": "Static, units and packed consumer / Node 24.21.0",
+      "conclusion": "success"
+    },
+    {
+      "name": "Real backends / browser infrastructure / cleanup",
+      "conclusion": "failure"
+    },
+    {
+      "name": "Focused SDK CRUD-auth / real fixtures / packed browsers",
+      "conclusion": "success"
+    }
+  ],
+  "reports": [
+    {
+      "suite": "native-upgrade",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/native-upgrade/latest.json",
+      "artifactSha256": "5f73af587ef45ca15503e51b51d89fd17b768724510536fc342b7b1f1ef1b43c"
+    },
+    {
+      "suite": "all",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 112,
+      "failed": 6,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793613422265-99a2ddf1a1ac.json",
+      "artifactSha256": "3e48063dfe1280fdabb5697c5acf2662ec90c830a6d0ea413e30884382f0f17e"
+    },
+    {
+      "suite": "expiry",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793613644209-27f340015cb7.json",
+      "artifactSha256": "d737d974e937386df93583237e2f1e0b2140e6b8ee18fbf1880ba1d7a188cb0b"
+    },
+    {
+      "suite": "characterization",
+      "node": "v22.23.2",
+      "authVariant": "candidate-email-reservation",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 9,
+      "failed": 1,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793613807688-41c244e6a02f.json",
+      "artifactSha256": "d0bf319294c09a53fd0af6ab141d3a0c7192f039c180028cbcc98f768d1173f1"
+    },
+    {
+      "suite": "smtp",
+      "node": "v22.23.2",
+      "authVariant": "candidate-email-reservation",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 0,
+      "failed": 1,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793613847550-6886baf7ebed.json",
+      "artifactSha256": "b103e6e87acd90a02cde9a88f60bdf5d922ee2efdb981fd4ff39c6f036cab543"
+    },
+    {
+      "suite": "auth-reference",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 7,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793613884381-a376f0937d11.json",
+      "artifactSha256": "1ab20f40585e45ed1ea144aec40e424c82d1170f4bc39845ade2751f0581568f"
+    },
+    {
+      "suite": "auth-migration",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793613930979-ec4a6c01e013.json",
+      "artifactSha256": "fa8b33bb022017128a8445cbf39d5245e06b88ec3931669bece6a0e9f7d47a63"
+    },
+    {
+      "suite": "browser",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 60,
+      "failed": 6,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793614013618-dd860aa51396.json",
+      "artifactSha256": "7f66c086dc6eac87e1e3346e82d947cd2016c8136c3344f95317dd591bc943c8"
+    },
+    {
+      "suite": "lifecycle",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793614419236-0d469bf9481f.json",
+      "artifactSha256": "e0fdd717c9ad9b8a1e233313967a54e3aaac081d4952778869acf38c3a021684"
+    },
+    {
+      "suite": "package",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-unit-node-22.23.2/sdk-package/latest.json",
+      "artifactSha256": "b5490ab5696b44750f489c4b268f5ad945304430044e88912a9d2265a6c7b2bf"
+    },
+    {
+      "suite": "unit",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 242,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-22.23.2/unit/latest.json",
+      "artifactSha256": "cd98e1c495571eed9f2c350b491d8bbbce194335e30dd1116cc2f2f998f04fa6"
+    },
+    {
+      "suite": "package",
+      "node": "v24.21.0",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-unit-node-24.21.0/sdk-package/latest.json",
+      "artifactSha256": "036205345526e388a3db25bb4b7d0eedd05265a0f3838a04b9cd62682f67ef48"
+    },
+    {
+      "suite": "unit",
+      "node": "v24.21.0",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 242,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-24.21.0/unit/latest.json",
+      "artifactSha256": "2e6f100164eee22a9a60fc53afeea8dc1d5966dc9971aed3ce0482f6492b8291"
+    },
+    {
+      "suite": "sdk-auth",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 3,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793613433276-649ddbf35b49.json",
+      "artifactSha256": "9994cb34af7c630b5c7defa423821593744887fdc1199f6a4301cdcbb7e9eb10"
+    },
+    {
+      "suite": "sdk-refresh",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793613490106-0dfd14ad7f16.json",
+      "artifactSha256": "33a84c899510db52fc598bed70d6b28351ab895596005f031588e4cab2db8ad3"
+    },
+    {
+      "suite": "sdk-data",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793613717361-357236d99b2c.json",
+      "artifactSha256": "16e88ae68ad9ad9911e8b825e396db8044a7af4e04176b0d592ce0539185c237"
+    },
+    {
+      "suite": "database",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793613764951-bb69e3498f52.json",
+      "artifactSha256": "315cbf94a32d644dd055b52648aa9e67f79ed32b9d6d812f6f7f762c9b758272"
+    },
+    {
+      "suite": "constraints",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793613804277-b2ea81f60570.json",
+      "artifactSha256": "773e3892d1a6ee3451b6bcc3c6ce26d7d3cfefa1a2cf9aa9da74b80d6cfe943e"
+    },
+    {
+      "suite": "sdk-browser",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 15,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793613842024-697e79ef05a5.json",
+      "artifactSha256": "aa448fe8354cf9d88dd806bb584c781fb9ed806df1b66766f41c0d74b97aed16"
+    },
+    {
+      "suite": "lifecycle",
+      "node": "v22.23.2",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793613963709-8459382bc555.json",
+      "artifactSha256": "1870518d9bf0c27c10e526549806d56ce286cf2c5e693accac8667281b107c0a"
+    },
+    {
+      "suite": "todos-launcher",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/todos/1793613928206-2153aae26d76.json",
+      "artifactSha256": "495fefdc643e5b1313700e8aabf8b28e38852fdc7ea896151bc44c946f82c1d1"
+    }
+  ],
+  "strictResearch": "14 actual assertion failures across stock112/6, candidate9/1, SMTP0/1 and research browser60/6; exact names/statuses match final local d5fa characterization and preserved8aef research. No waiver or research reclassification of supported failures.",
+  "startup": "All real scopes ready in this exact run. No new startup failure occurred, so collector runtime is not exercised by this CI; genuine owned-port failure/state snapshots are separate local proof. Historical8aef supported auth0 and prior7cf stock startup0 causes remain independently UNKNOWN. Current auth3 is not retrospective diagnosis or repair.",
+  "private": "Private SDK candidate/source80e0b3b6/tarball6e0ddb6e and native593e/818ae9d3 are not built or certified by public SDK CI; separate private genuine tests/source bindings required.",
+  "signoff": "Coverage/release/full compatibility/global logout/OSL adoption/maintainer signoff remain open; no custom live deployment or upstream submission."
+}

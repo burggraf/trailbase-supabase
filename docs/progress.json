@@ -1,8 +1,10 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "Exact8aef/41406862169 has NEW supported sdk-auth Supabase-start failure/0tests/cleanup passed, cause unresolved; not historical research parity red. Other supported scopes/reference7/both Nodes237/package4/legacy1/upgrade9 passed; research remains strict red. Fixed-field startup diagnostics verified at d5fa1c8e with both Nodes242/package4 and17 real reports plus2 actual diagnostic cases; strict research red preserved. Private0358 cancellation242+5, cross-process4 and migration5 checks each Node pass; private SDK basic243/package4/compiled real3 each Node after exact-version guard fix, no complete fault/browser/adoption/deployment claim.",
+  "currentPhase": "Exactba5f42e/CI41424547191 audited21 reports at d5fa1c8e: supported and both Nodes242/package4 pass;14 strict research assertions remain. Prior8aef supported startup0 and7cf stock startup0 causes remain UNKNOWN, not repaired by later success. Frozen private SDK candidate1 packed basic3/fault15 each Node and C05 app3/auth3 Chromium/Firefox/mobile-config WebKit pass; private243units/package4 each Node. First C05 app session-leak3red and Firefox auth1red preserved; private-only fixture corrections, zero sessions/tasks before owned teardown. No SDK/native runtime change, public support/adoption/deployment/signoff inferred.",
   "lastSession": {
-    "state": "new-supported-ci-zero-test-failure-audited-diagnostics-and-private-milestone-in-progress",
+    "state": "private-current0358-packed-c04-c05-bounded-checkpoint-verified-no-adoption",
+    "checkpointCi": {"commit":"ba5f42ed02b8a7e671d6387d4ef6839177b97df2","run":41424547191,"evidence":"docs/evidence/ci-ba5f42e-startup-diagnostics.json","reports":21,"supported":"passed","bothNodes":"242units/package4 each passed","research":"14 exact assertion failures retained; names/statuses match local d5fa","cleanup":"all owned passed","historicalStartupRepair":false},
+    "checkpointC04C05": {"evidence":"docs/evidence/private-current0358-packed-sdk-browser.json","frozenTarballSha256":"6e0ddb6e254ce7424f2c803c02eac54c07119a9a24021f4f35cdb78904fbec22","privateFixtureSourceSha256":"56988b38f42f88a1b7c07de2efe851e42cdc9b1ae977829696efef1bcae70a28","packedEachNode":"basic3 and extended actual fault15 passed","privateGuardsEachNode":"static/types/docs,243units,4 offline package checks passed","browser":"Node22 runner, app3/auth3; real Chromium/Firefox/mobile-config WebKit;0skips/retries","postconditions":"9 generated confirmed users/12 genuine mails across2 owned fixtures;0pending/0sessions/0todos before removal; all owned processes/temp trees absent","preservedRed":"First app0/3 with1 leaked session per engine from test cleanup relogin; first auth2/1 Firefox navigation error. Private fixture reuses actual existing session and observes terminal401; no fabricated auth success, SQL repair or reduced assertions.","limits":"Not full reusable shared reference/alternate configs/global logout/arbitrary faults/coverage/release/physical-device/adoption signoff"},
     "latestSupportedCiFailure": {
       "commit": "8aef018cd26724ffaaa45b8f04ff3f117f0c8d93",
       "run": 41406862169,
@@ -16,13 +18,13 @@
       "bothPinnedNodes": "static/docs,242units and4 actual offline package checks each passed",
       "realScopes": "Complete17 real reports at d5fa1c8e audited: supported auth3/refresh4/data6/DB9/constraints6/browser15/launcher2; reference7/expiry2/legacy1/upgrade9 and both cleanup1 pass. Research stock112/6, candidate9/1, SMTP0/1, browser60/6 retain exact8aef names/statuses. Both genuine diagnostic cases pass. All owned projects absent, raw/source archive complete, temporary checkout removed.",
       "evidence": "docs/evidence/startup-diagnostics-local-verification.json",
-      "limits": "No current-commit CI, no startup-cause repair, no private SDK/browser/deployment certification"
+      "limits": "Exactba5f CI now audited separately; no historical startup-cause repair or private SDK/browser/deployment certification inferred from public CI"
     },
     "privateSdkCharacterization": {
       "scope": "C04 unchanged compiled public SDK against immutable private candidate1, not packed/browser proof",
       "result": "Strict compatibility red: signup discards native actual stored user; public signup resend method undefined. Actual signup/mail plus existing login/live getUser/local logout pass; owned cleanup passed.",
       "evidence": "docs/evidence/private-current0358-sdk-initial-characterization.json",
-      "next": "Independent private SDK version0.0.0-private.current0358.1 maps genuine signup JSON and adds only public signup resend. Target6 units/types, full243 units, exact-version-pinned offline package4 and basic real compiled signup/resend/login/getUser/local logout3 pass each Node. Initial compile failure, full242/1 old stock mock and package metadata guard failures retained; only private JSON fixture/result and exact private filename/version adapted, no weakened permission/dependency/file guards. Packed-real backend/full fault/shared-reference/three-engine layers still required; no public SDK expansion.",
+      "next": "Frozen basic candidate1 below retains its observation-time proof. New checkpointC04C05 adds actual installed-tarball basic3/fault15 each Node and six real browser contracts. Continue reusable shared reference/alternate configurations/global logout prerequisites and remaining fault/coverage/release gates; no public SDK expansion.",
       "candidate1": {
         "evidence": "docs/evidence/private-current0358-sdk-candidate-1.json",
         "sourceSha256": "80e0b3b603eee97a36a3a7d2b40058cf9f6cc7c674a34863e76adef6d777fed6",
@@ -33,8 +35,8 @@
       }
     },
     "currentWorkRemaining": {
-      "privateSdk": "C04 candidate1 frozen:243units/package4/compiled real3 each Node. Packed-real backend and full actual fault/shared contracts remain",
-      "privateBrowser": "C05 real Chromium/Firefox/WebKit with packed private SDK not yet run",
+      "privateSdk": "Selected packed actual basic3/fault15 each Node verified; reusable shared-reference/alternate configs and arbitrary faults remain",
+      "privateBrowser": "C05 bounded app3/auth3 passed on real Chromium/Firefox/mobile-config WebKit; full coverage/release/physical-device proof not claimed",
       "globalLogout": "Still requires pinned reference semantics and authenticated backend capability, not anonymous303/health"
     },
     "historicalR08Source": "The sourceSha256/checks/real/evidence fields immediately below remain frozen af883 historical R08 proof, not d5fa changed-source checks",
@@ -151,7 +153,7 @@
         "OSL-3.0 server external-deployment/source/attribution and security/rebase/release-maintenance decision is separate from MIT SDK approval."
       ]
     },
-    "allJobsTerminal": false
+    "allJobsTerminal": true
   },
   "previousSupabaseReferenceSession": {
     "scope": "L1-14/R01-R07 independent pinned Supabase reference contracts, NOT native/SDK auth parity or signoff",
@@ -2389,9 +2391,9 @@
     }
   ],
   "nextSteps": [
-    "Finish reviewed public harness/evidence checkpoint at d5fa1c8e: both Nodes242/package4 and17 real reports plus2 true diagnostic controls audited, owned tree/projects cleaned. Normal explicit commit/push authorized; inspect its exact CI without treating local auth3 as repair of8aef supported startup0 or prior7cf startup0 causes, both UNRESOLVED.",
-    "Continue frozen private SDK0.0.0-private.current0358.1 candidate1 from80e0b3b6/patch7be97cad/tarball6e0ddb6e: initial2 real gaps -> compiled real3 green,6 target/type/property and243units/package4 each Node. Exact private metadata guard red ->precise pin fix, no broad allowlist/dependency changes. Add genuinely installed-tarball/native backend and full actual SMTP/pending/password/throttle/generic/stale/latest/replay/transport/reference contracts, preserving immutable candidate1 and new bindings.",
-    "C05 real packed private SDK/app Chromium/Firefox/WebKit remains unrun. Use only generated owned fixtures and separately identified current0358 private binary; never route it through historical0343 private-g1 verifier or relabel public SDK/official CI as private proof. No successful auth/data stubs, privileged browser lookup or fake user/session.",
+    "Finish reviewed bounded evidence/docs checkpoint: exactba5f CI21 reports audited, supported/both Nodes green and14 exact research failures preserved; C04 packed basic3/fault15 each Node and C05 app3/auth3 pass with zero sessions/tasks before owned cleanup. Preserve first3app/1Firefox-auth failures and all source/runtime bindings; normal explicit commit/push authorized. Prior8aef/7cf startup0 causes remain UNKNOWN, not retrospectively repaired.",
+    "Continue from immutable private SDK candidate1 tarball6e0ddb6e/native818ae9d3 and private fixture source56988b38: selected real SMTP/pending/password/throttle/generic/token/transport/restart/storage/local-logout and three-engine app contracts verified. Next isolate reusable shared pinned-reference/private SDK assertions, alternate configurations and remaining partial-frame/cancellation/concurrency/coverage gates; no full compatibility/signoff inferred.",
+    "Private fixture cleanup now reuses a live owned session instead of creating an extra login; public root task-flow helper was not changed. Any separate public harness application needs its own regression/applicable checks. Firefox navigation error is permitted only after an observed real401 and unchanged DB. No fake auth success, privileged browser lookup, SQL repair or new live deployment.",
     "C01/C02/C03 latest242+5/4checks each Node/5migration checks each Node are bounded proofs; arbitrary cancellation/contention/commit/global quota/ambiguous legacy refusal remain open. Global logout requires genuine pinned reference semantics and authenticated backend capability; no anonymous303/health acknowledgement.",
     "Keep original official demo/supervisor57accounts/8tasks/data/keys/backups/lock/containers/tailnet/exact18443/18444 untouched. Keep private source/binaries/tools/keys/raw logs/depots/backups out of root commits; no custom deployment/upstream submission/adoption/OSL or signoff inferred."
   ],

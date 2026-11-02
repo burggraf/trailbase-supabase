@@ -1,0 +1,255 @@
+{
+  "scope": "PRIVATE frozen SDK candidate1 installed-tarball C04 and bounded real C05 contracts; not public API support/full compatibility/adoption/signoff",
+  "version": "0.0.0-private.current0358.1",
+  "sdkFrozenSourceSha256": "80e0b3b603eee97a36a3a7d2b40058cf9f6cc7c674a34863e76adef6d777fed6",
+  "sdkTarballSha256": "6e0ddb6e254ce7424f2c803c02eac54c07119a9a24021f4f35cdb78904fbec22",
+  "nativeCliSha256": "818ae9d30317fd0ab294a1daf4b73b1fa139fa61426972f20789b7975aaf2ef1",
+  "nativeRuntimeDiffSha256": "593e1915009979725dfe3aacc55458bc3c23345aadafb1824f2235efc538dd69",
+  "workingPrivateDiffSha256": "9692e4824fc9e0712d4b45d874942d98184a13341d00b58b738213805a91888f",
+  "runtimeSdkAndNativeCodeUnchanged": true,
+  "checks": [
+    {
+      "node": "22.23.2",
+      "sourceSha256": "56988b38f42f88a1b7c07de2efe851e42cdc9b1ae977829696efef1bcae70a28",
+      "staticTypesDocs": "passed",
+      "unitPassed": 243,
+      "offlinePackageChecks": 4
+    },
+    {
+      "node": "24.21.0",
+      "sourceSha256": "56988b38f42f88a1b7c07de2efe851e42cdc9b1ae977829696efef1bcae70a28",
+      "staticTypesDocs": "passed",
+      "unitPassed": 243,
+      "offlinePackageChecks": 4
+    }
+  ],
+  "packed": [
+    {
+      "node": "22.23.2",
+      "profile": "basic",
+      "checks": [
+        "actual-signup",
+        "actual-public-resend",
+        "genuine-confirmation-existing-login-local-logout"
+      ],
+      "driverSha256": "918034de6793ead5ceaa8a13163ddfdb7570fc2bc818f5bc0d011a1136dadfc8",
+      "sdkImportGuardSha256": "75894f8b675b79babc7a308d6b907e9f3ff69c89fa4d729aaca167dcc8466efc",
+      "ownedRuntimeSha256": "dd7ff24cc34740fafbd4de731e8027789ca592cf1d63bf1b8b9c9b09b0582c56",
+      "consumerAndNativeCleanup": "passed",
+      "ownedProcessesAbsent": 1
+    },
+    {
+      "node": "22.23.2",
+      "profile": "faults",
+      "checks": [
+        "real-confirmed-sibling-session",
+        "new-user-smtp-rollback",
+        "genuine-pending-user-no-authentication",
+        "shared-configured-immediate429",
+        "preconfirmation-password-denied",
+        "pending-smtp-failure-preserves-original-password-and-state",
+        "generic-confirmed-and-unknown-with-smtp-down",
+        "stopped-server-transport-no-replay-no-local-state-change",
+        "actual-same-depot-restart-preserves-pending-sibling-and-sessions",
+        "real-resend-recovery-rotation-and-throttle",
+        "genuine-stale-latest-replay-confirmation",
+        "confirmed-duplicate-is-intentional-placeholder-not-new-stored-user",
+        "confirmed-target-and-unknown-generic-no-send",
+        "replacement-denied-original-only-login-and-live-user",
+        "isolated-local-logout-persistent-storage-cleanup"
+      ],
+      "driverSha256": "29edb1eb96516b7c958e2d5bfef4231dd84b893fdd050271b1432a834660f7b0",
+      "sdkImportGuardSha256": "75894f8b675b79babc7a308d6b907e9f3ff69c89fa4d729aaca167dcc8466efc",
+      "ownedRuntimeSha256": "dd7ff24cc34740fafbd4de731e8027789ca592cf1d63bf1b8b9c9b09b0582c56",
+      "consumerAndNativeCleanup": "passed",
+      "ownedProcessesAbsent": 2
+    },
+    {
+      "node": "24.21.0",
+      "profile": "basic",
+      "checks": [
+        "actual-signup",
+        "actual-public-resend",
+        "genuine-confirmation-existing-login-local-logout"
+      ],
+      "driverSha256": "918034de6793ead5ceaa8a13163ddfdb7570fc2bc818f5bc0d011a1136dadfc8",
+      "sdkImportGuardSha256": "75894f8b675b79babc7a308d6b907e9f3ff69c89fa4d729aaca167dcc8466efc",
+      "ownedRuntimeSha256": "dd7ff24cc34740fafbd4de731e8027789ca592cf1d63bf1b8b9c9b09b0582c56",
+      "consumerAndNativeCleanup": "passed",
+      "ownedProcessesAbsent": 1
+    },
+    {
+      "node": "24.21.0",
+      "profile": "faults",
+      "checks": [
+        "real-confirmed-sibling-session",
+        "new-user-smtp-rollback",
+        "genuine-pending-user-no-authentication",
+        "shared-configured-immediate429",
+        "preconfirmation-password-denied",
+        "pending-smtp-failure-preserves-original-password-and-state",
+        "generic-confirmed-and-unknown-with-smtp-down",
+        "stopped-server-transport-no-replay-no-local-state-change",
+        "actual-same-depot-restart-preserves-pending-sibling-and-sessions",
+        "real-resend-recovery-rotation-and-throttle",
+        "genuine-stale-latest-replay-confirmation",
+        "confirmed-duplicate-is-intentional-placeholder-not-new-stored-user",
+        "confirmed-target-and-unknown-generic-no-send",
+        "replacement-denied-original-only-login-and-live-user",
+        "isolated-local-logout-persistent-storage-cleanup"
+      ],
+      "driverSha256": "29edb1eb96516b7c958e2d5bfef4231dd84b893fdd050271b1432a834660f7b0",
+      "sdkImportGuardSha256": "75894f8b675b79babc7a308d6b907e9f3ff69c89fa4d729aaca167dcc8466efc",
+      "ownedRuntimeSha256": "dd7ff24cc34740fafbd4de731e8027789ca592cf1d63bf1b8b9c9b09b0582c56",
+      "consumerAndNativeCleanup": "passed",
+      "ownedProcessesAbsent": 2
+    }
+  ],
+  "browser": [
+    {
+      "profile": "app",
+      "node": "v22.23.2",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "projects": [
+        {
+          "name": "chromium",
+          "status": "passed",
+          "observedVersion": "153.0.8010.12"
+        },
+        {
+          "name": "firefox",
+          "status": "passed",
+          "observedVersion": "155.0"
+        },
+        {
+          "name": "webkit",
+          "status": "passed",
+          "observedVersion": "26.6"
+        }
+      ],
+      "generatedUsers": 6,
+      "pendingUsers": 0,
+      "genuineMail": 6,
+      "sessionsRemaining": 0,
+      "todosRemaining": 0,
+      "ownedProcessAndTempCleanup": "passed",
+      "assetHashes": {
+        "sdk.js": "678e408062049340912881da0fc5bac4c674b809ce25d693a2335ee511f4958f",
+        "auth.js": "6b2c9c5f9b0d6222a885df761eed7aa9adf227a3f48b2e0b8f47b5e56190b48e",
+        "common.js": "429f8e79d930e762b33ebe6cfc0067578f88a65a54f36291b7f740cfec444e7a",
+        "trailbase.js": "e7c9879aa97fd81fa87219bf82cad88e48d5074b4e81a2eb00d3c0ca406604f3",
+        "app.js": "c794c98e370866e71571f4032bb82f180dc1dde1a1bc8a1dd6de98cca3ab6f00",
+        "main.js": "56748ed10c86c235b47ffd0d015129320dece3924f24ab26b043f224f053d510",
+        "styles.css": "e98996681b68286b868c3c1c274c86156832ff69bd1fc2ef104b900001de0cfa",
+        "index.html": "baf084f5063429c4cdac336fa20667b8ac9bc3808663149539d5c871a2b2f087",
+        "harness.html": "5f14e5914987245d880327d82cfbd20dbab0a3355c6c0da0c3b66f03368b5f0d"
+      },
+      "driverSha256": "2c3364e8dfc0487143e9625f61787f58e5aeffbcc568dd65f00f761bb679c5a1",
+      "specSha256": "104f4346fcfd29fda578e9d0e41ad26ff627f3c107ba6668d328dfe7412441cc",
+      "configSha256": "8d02f87728359f317069022f365eda661e2e9428ca8e7a536fbc592518223039",
+      "taskFlowSha256": "80b5a1e03b216338bd1d66fa93d89da1bdfe27c5243a3e7ffcd6acb4dc6c7a6b",
+      "reportSha256": "5a832c62cb9f7d666606306ff1866bba5c8ca1b59b1346a1678b49b0ff6de543"
+    },
+    {
+      "profile": "auth",
+      "node": "v22.23.2",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "projects": [
+        {
+          "name": "chromium",
+          "status": "passed"
+        },
+        {
+          "name": "firefox",
+          "status": "passed"
+        },
+        {
+          "name": "webkit",
+          "status": "passed"
+        }
+      ],
+      "generatedUsers": 3,
+      "pendingUsers": 0,
+      "genuineMail": 6,
+      "sessionsRemaining": 0,
+      "todosRemaining": 0,
+      "ownedProcessAndTempCleanup": "passed",
+      "assetHashes": {
+        "sdk.js": "678e408062049340912881da0fc5bac4c674b809ce25d693a2335ee511f4958f",
+        "auth.js": "6b2c9c5f9b0d6222a885df761eed7aa9adf227a3f48b2e0b8f47b5e56190b48e",
+        "common.js": "429f8e79d930e762b33ebe6cfc0067578f88a65a54f36291b7f740cfec444e7a",
+        "trailbase.js": "e7c9879aa97fd81fa87219bf82cad88e48d5074b4e81a2eb00d3c0ca406604f3",
+        "app.js": "c794c98e370866e71571f4032bb82f180dc1dde1a1bc8a1dd6de98cca3ab6f00",
+        "main.js": "56748ed10c86c235b47ffd0d015129320dece3924f24ab26b043f224f053d510",
+        "styles.css": "e98996681b68286b868c3c1c274c86156832ff69bd1fc2ef104b900001de0cfa",
+        "index.html": "baf084f5063429c4cdac336fa20667b8ac9bc3808663149539d5c871a2b2f087",
+        "harness.html": "5f14e5914987245d880327d82cfbd20dbab0a3355c6c0da0c3b66f03368b5f0d"
+      },
+      "driverSha256": "2c3364e8dfc0487143e9625f61787f58e5aeffbcc568dd65f00f761bb679c5a1",
+      "specSha256": "104f4346fcfd29fda578e9d0e41ad26ff627f3c107ba6668d328dfe7412441cc",
+      "configSha256": "8d02f87728359f317069022f365eda661e2e9428ca8e7a536fbc592518223039",
+      "taskFlowSha256": "80b5a1e03b216338bd1d66fa93d89da1bdfe27c5243a3e7ffcd6acb4dc6c7a6b",
+      "reportSha256": "313fb022dbe4551b100f5678dc6faafa12370def6ce9827a68942750910b64d9"
+    }
+  ],
+  "priorFailures": [
+    {
+      "profile": "app",
+      "passed": 0,
+      "failed": 3,
+      "sessionsBeforeFixtureRemoval": 3,
+      "todosBeforeFixtureRemoval": 0,
+      "ownedCleanup": "passed",
+      "reportSha256": "08e8ecf8e579ab616c965e06708e61038143e6655c683555b465c2c21609e66b"
+    },
+    {
+      "profile": "auth",
+      "passed": 2,
+      "failed": 1,
+      "sessionsBeforeFixtureRemoval": 0,
+      "todosBeforeFixtureRemoval": 0,
+      "ownedCleanup": "passed",
+      "reportSha256": "ad10136d7a1cb55307480e066033eeb4190ba33afa6320de2ae58fbc8b3765ec"
+    }
+  ],
+  "corrections": [
+    "Private copied task-flow cleanup previously reauthenticated a still-signed-in userB and orphaned its previous session:3 actual full UI flows each left1 session. Reuse actual existing session; otherwise perform real login. No synthetic success or session deletion workaround. New3/3 each zero sessions/tasks before fixture removal. Root public task-flow source not changed by this private correction.",
+    "First Firefox stale-link navigation failed NS_ERROR_NET_EMPTY_RESPONSE; original assertion did not capture its terminal status. Revised helper requires an actual response event with HTTP401 and unchanged full DB, and only then permits that Firefox navigation error. Corrected3-engine run proves401; no retroactive first-response or native-fix claim."
+  ],
+  "browserDistribution": {
+    "playwright": "1.63.0",
+    "installedEntries": [
+      {
+        "name": "chromium",
+        "entrySha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
+      },
+      {
+        "name": "firefox",
+        "entrySha256": "062272ac4d851eade5b75db2dc7c14569d96cb3ca38f949337cdc1b74367e35b"
+      },
+      {
+        "name": "webkit",
+        "entrySha256": "a85baad3d8c07173ac387a59b41500c382b21ed692afe0964d29aac247ccc63b"
+      }
+    ],
+    "limitation": "Entry hashes plus actual observed engine versions, not a manifest of every engine/system-library file; mobile WebKit is Linux emulation, not physical iPhone/Safari proof"
+  },
+  "browserCoverage": [
+    "Actual unchanged same-origin standalone app, real two-owner signup/mail/browser confirmation/password login/CRUD/query/403 permissions/no forbidden writes/reload/manual refresh/network abort recovery/local logout/owned task and backend session teardown",
+    "Actual private packed signup user/real identity/null session; real SMTP new-user rollback and pending-password preservation, configured3s cooldown and429, genuine resend rotation/older-link401/latest confirmation/replay401, replacement401/original login, actual3s JWT expiry and real refresh, persistent reload/live user/owned-key removal/unrelated-key preservation",
+    "Only Node test control can read generated mail/toggle owned SMTP outage; capability/context never sent to page or served public directory. Browser confirmation consumes actual delivered links; no privileged browser identity lookup or successful auth/data response stubs"
+  ],
+  "limits": [
+    "C04 transport proof stops the owned server before requests: no arbitrary lost-ack/in-flight cancellation/commit-rollback guarantee inferred. Native cancellation/SMTP ambiguity remains separately characterized.",
+    "Not one reusable full shared Supabase/private SDK contract runner; pinned reference7 remains separate, alternate auth configurations and full field/ID-generation parity unresolved.",
+    "Global authenticated logout semantics/capability, arbitrary concurrency/partial frames/global quota/legacy ambiguity, full coverage/three-release-candidate gates/maintainer signoff remain open.",
+    "Public SDK/root native pins and retained official demo unchanged; no custom deployment, upstream submission, OSL adoption or release approval.",
+    "Provider timeouts are interruptions, not test failures. Raw reports/contexts/mail/keys/source/binaries/screenshots stay private; no auth URLs/tokens/errors projected publicly."
+  ]
+}
