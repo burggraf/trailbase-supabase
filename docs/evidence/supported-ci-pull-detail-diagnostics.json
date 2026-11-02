@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "scope": "L1-27/D03 image-pull-detail diagnostic follow-up to exactf084832 supported CI failure; NOT registry/transport root-cause identification, historical repair, cold-registry reproduction, private auth parity, readiness or signoff",
+  "sourceSha256": "72c0246945d8df07f53aa8e3e71f26baa62f2e5acd355340c81460effec5cd0c",
+  "baseCommit": "f08483288317499110aae074d62a83271ef196ed",
+  "trigger": {
+    "evidence": "docs/evidence/ci-f084832-supported-auth-image-pull-failure.json",
+    "run": 41457447747,
+    "commit": "f08483288317499110aae074d62a83271ef196ed",
+    "observed": "CLI image-pull signature/no container-start markers; six pinned references absent before failed auth startup0/cleanup pass. Next successful refresh initially lacks only PostgREST.",
+    "unknown": "Actual failed image and HTTP/transport/registry reason; cache transition makes PostgREST only a candidate. No common historical cause inferred."
+  },
+  "implemented": {
+    "gating": "Only image-pull-signed bounded cached stdout/stderr text; inherited/accessor/proxy/non-string/over-budget fields retain earlier fail-closed behavior.",
+    "serviceAssociation": "Only exact pinned image-reference plus candidate-attempt wording from pinned CLI2.119.0 fatal aggregation; normal pull progress cannot name a reported failed service.",
+    "httpStatuses": [
+      401,
+      403,
+      404,
+      408,
+      429,
+      500,
+      502,
+      503,
+      504
+    ],
+    "fixedSignals": [
+      "rate-limit",
+      "dns",
+      "tls",
+      "timeout",
+      "connection",
+      "unexpected-eof",
+      "manifest",
+      "authorization",
+      "disk-space"
+    ],
+    "retry": "One observed upstream retry-banner-presence boolean, not added retry execution. Pinned source has existing4s/8s delays; no harness/test retry, rerun, warm-up or cache eviction.",
+    "privacy": "Only fixed service/signal enums, numeric status allowlist and boolean escape. No raw excerpts/image references/URLs/tokens/hostnames or unknown values forwarded.",
+    "meaning": "Reported failure/status/transport text signatures, not causal proof or authorization. Multiple observations may coexist; unknown stays unknown."
+  },
+  "tests": {
+    "featureMissingRed": {
+      "failed": 3,
+      "previousCasesPassed": 6
+    },
+    "diagnosticGreen": 18,
+    "guards": [
+      {
+        "node": "22.23.2",
+        "sourceSha256": "72c0246945d8df07f53aa8e3e71f26baa62f2e5acd355340c81460effec5cd0c",
+        "staticTypesDocs": "passed",
+        "units": 255,
+        "package": 4,
+        "packageCleanup": "passed"
+      },
+      {
+        "node": "24.21.0",
+        "sourceSha256": "72c0246945d8df07f53aa8e3e71f26baa62f2e5acd355340c81460effec5cd0c",
+        "staticTypesDocs": "passed",
+        "units": 255,
+        "package": 4,
+        "packageCleanup": "passed"
+      }
+    ],
+    "actualOwnedPortFault": {
+      "runId": "1793629597009-d38552774c0d",
+      "sourceSha256": "72c0246945d8df07f53aa8e3e71f26baa62f2e5acd355340c81460effec5cd0c",
+      "status": "passed",
+      "projection": {
+        "stage": "supabase-start",
+        "cause": "not-established",
+        "exitCode": 1,
+        "signal": null,
+        "killed": false,
+        "command": {
+          "kind": "nonzero-exit",
+          "stdout": "bounded",
+          "stderr": "bounded",
+          "progress": [
+            "containers-start",
+            "containers-stop"
+          ],
+          "signatures": [
+            "docker-port-bind"
+          ]
+        },
+        "services": [
+          {
+            "service": "supabase_auth",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_db",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_inbucket",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_kong",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_realtime",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_rest",
+            "inspection": "not-available"
+          }
+        ]
+      },
+      "cleanup": "passed",
+      "limit": "Genuine owner-held local port fault proves unchanged error/context pipeline; not a real registry failure."
+    },
+    "real": [
+      {
+        "suite": "sdk-auth",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 3,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "sdk-refresh",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "sdk-data",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "database",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "constraints",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "sdk-browser",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 15,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "auth-reference",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 10,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "expiry",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "auth-migration",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "all",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 112,
+        "failed": 6,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "characterization",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "smtp",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "browser",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 60,
+        "failed": 6,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "lifecycle",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "native-upgrade",
+        "status": "passed",
+        "setupStage": "owned-ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": false
+      },
+      {
+        "suite": "todos-launcher",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": false
+      }
+    ],
+    "scopes": 16,
+    "batchExit": 1,
+    "strictResearchFailures": 14,
+    "strictResearchExactNamesAndStatusesMatch8aef": true,
+    "limits": "Synthetic fine-detail classifier tests are not a registry outage reproduction. Full pinned real auth/data/database/three-engine/reference/legacy/upgrade/cleanup scopes exercise shared harness; they do not prove the new cold-CI detail observations."
+  },
+  "cleanup": {
+    "ownedProjectsAbsent": 17,
+    "ownedResourcesAndNativeProcessesAbsent": true,
+    "privateSourceAndRawFilesHashArchived": 1583,
+    "ownedTemporaryParentRemoved": true,
+    "ownedLockAbsent": true,
+    "originalReadOnlyPostBatchGuard": "passed",
+    "originalFixtureCleanupInvoked": false
+  },
+  "remaining": [
+    "Independently audit next exact pushed-commit CI. New detail has not yet been observed in genuine cold CI.",
+    "No underlying registry/transport cause or evidenced startup reliability repair established yet; old8aef/427/0ead causes independently UNKNOWN.",
+    "No private authenticated JSON/nonredirect endpoint, private SDK capability gating, revocation-failure/race/in-flight implementation or signoff.",
+    "Full coverage/release/security/OSL/adoption/physical-device/maintainer signoff remain separate."
+  ],
+  "retriesAdded": false,
+  "checksWeakened": false,
+  "pinsFlagsBudgetsChanged": false,
+  "newDaemonOrRegistry": false,
+  "imageCacheEvictedOrWarmed": false,
+  "liveOrPermissionScopeChanged": false,
+  "publicSDKOrNativeRuntimeChanged": false,
+  "readinessClaim": false,
+  "signoff": false
+}

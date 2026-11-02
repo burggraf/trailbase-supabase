@@ -22,6 +22,26 @@ function boundedOutput(value) {
   if (value.length > 1_048_576 || Buffer.byteLength(value, 'utf8') > 1_048_576) return { status: 'over-budget', text: '' };
   return { status: 'bounded', text: value };
 }
+function pullDiagnostic(text) {
+  const http = [[401, 'Unauthorized'], [403, 'Forbidden'], [404, 'Not Found'], [408, 'Request Timeout'], [429, 'Too Many Requests'], [500, 'Internal Server Error'], [502, 'Bad Gateway'], [503, 'Service Unavailable'], [504, 'Gateway Timeout']];
+  return {
+    // Pinned CLI aggregates candidate-attempt failures; normal pull progress is not failure evidence.
+    reportedFailedServices: services.filter(service => text.includes(`${imagePins[service].image} attempt `)),
+    httpStatuses: http.filter(([code, phrase]) => new RegExp(`\\b(?:${code}\\s+${phrase}|status(?: code)?\\s*[:=]?\\s*${code})\\b`, 'i').test(text)).map(([code]) => code),
+    signals: [
+      ['rate-limit', /toomanyrequests|too many requests|rate limit/i],
+      ['dns', /no such host|temporary failure in name resolution/i],
+      ['tls', /TLS handshake timeout|x509:|tls: handshake failure/i],
+      ['timeout', /i\/o timeout|context deadline exceeded|TLS handshake timeout|connection timed out/i],
+      ['connection', /connection reset by peer|connection refused/i],
+      ['unexpected-eof', /unexpected EOF/i],
+      ['manifest', /manifest unknown|manifest not found|no matching manifest/i],
+      ['authorization', /pull access denied|requested access to the resource is denied|unauthorized:|denied:/i],
+      ['disk-space', /no space left on device|insufficient disk space/i]
+    ].filter(([, pattern]) => pattern.test(text)).map(([name]) => name),
+    upstreamRetryBanner: text.includes('Retrying after ')
+  };
+}
 function commandDiagnostic(error, code, signal, killed) {
   const stdout = boundedOutput(own(error, 'stdout')), stderr = boundedOutput(own(error, 'stderr'));
   const text = `${stdout.text}\n${stderr.text}`;
@@ -41,7 +61,8 @@ function commandDiagnostic(error, code, signal, killed) {
   const kind = code === 'ENOENT' ? 'launch-not-found' : code === 'EACCES' ? 'launch-denied' :
     code === 'ERR_CHILD_PROCESS_STDIO_MAXBUFFER' ? 'output-limit' :
     killed === true || signals.has(signal) ? 'termination-observed' : number(code) > 0 ? 'nonzero-exit' : 'unknown';
-  return { kind, stdout: stdout.status, stderr: stderr.status, progress, signatures };
+  return { kind, stdout: stdout.status, stderr: stderr.status, progress, signatures,
+    ...(signatures.includes('image-pull') ? { pull: pullDiagnostic(text) } : {}) };
 }
 function verifyProject(project) {
   if (typeof project !== 'string' || !/^trailbase-supabase-test-[a-f0-9]{12}$/.test(project)) throw new Error('Invalid owned startup diagnostic project');
