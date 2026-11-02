@@ -1,0 +1,53 @@
+{
+  "scope": "PRIVATE C01 deterministic cancellation and C02 two-process generated-depot tests; NOT SDK/browser/upgrade/deployment/signoff",
+  "sourceDiffSha256": "82ef687d696061788adeccde3cff573a2434dd45f2e1b1ab8f0af96557d81bc5",
+  "libraryPassed": 242,
+  "integrationPassed": 5,
+  "failed": 0,
+  "filtered": 0,
+  "testExecutableSha256": "eaef3816933b0581e5f30944da85110fabc04220b65ff679dc7791a79076de6e",
+  "changedRelativeToCandidate1": [
+    "a/crates/core/src/auth/api/private_current0358_fault_tests.rs b/crates/core/src/auth/api/private_current0358_fault_tests.rs"
+  ],
+  "loggedNativeDepotsAbsent": 103,
+  "cancellation": {
+    "compileRed": "E0382 partial move; not runtime failure",
+    "focusedPassed": 17,
+    "observation": "Aborted caller at actual stored SMTP DATA barrier; writer completes exactly one delivery/receipt; original identity/password/sibling/session state preserved; stale token denied/latest confirms; all4permits and writer barrier available after bounded release",
+    "limit": "Cancellation is not rollback. Does not characterize all disconnect, delivery or commit-failure schedules."
+  },
+  "crossProcess": {
+    "node": "v22.23.2",
+    "node24": {
+      "node": "v24.21.0",
+      "checks": 4,
+      "sameDriverAndHelper": true,
+      "ownedNodesAbsent": 3,
+      "ownedTreeAbsent": true
+    },
+    "checks": [
+      "genuine-signup",
+      "cross-process-barrier-race",
+      "persistent-cooldown-restart",
+      "rotation-and-password"
+    ],
+    "configuredIntervalSeconds": 10,
+    "waitOnceMs": 10150,
+    "smtpHoldMs": 750,
+    "processes": "Two independent candidate1 CLIs simultaneously share one generated depot; second process is then stopped/restarted",
+    "outcomes": "Exact200/429 with one mail; no swallowed busy error; same identity/password/nonreceipt tables/sessions; cooldown survives restart; stale token denied/latest confirms; replacement password401/original200",
+    "driverSha256": "ebacbd8383e25842975adf119bf199d54ce3338caf506ffbe4ed6b68b265cc7c",
+    "helperSha256": "dd7ff24cc34740fafbd4de731e8027789ca592cf1d63bf1b8b9c9b09b0582c56",
+    "candidate1CliSha256": "818ae9d30317fd0ab294a1daf4b73b1fa139fa61426972f20789b7975aaf2ef1",
+    "ownedNodesAbsent": 3,
+    "ownedTreeAbsent": true
+  },
+  "missing": [
+    "C03 actual existing-pending official-depot additive migration/rollback",
+    "C04 unchanged/private SDK integration",
+    "C05 real three-engine private browser contracts",
+    "Commit failure/global quota/arbitrary cancellation schedules",
+    "Global logout reference/backend contract",
+    "Deployment/licensing/adoption/signoff"
+  ]
+}

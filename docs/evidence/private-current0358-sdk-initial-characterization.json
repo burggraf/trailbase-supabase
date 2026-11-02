@@ -1,0 +1,67 @@
+{
+  "scope": "C04 unchanged compiled public SDK against private native candidate1; strict compatibility characterization, NOT supported SDK regression or packed/browser proof",
+  "node": "v22.23.2",
+  "candidate1SourceDiffSha256": "593e1915009979725dfe3aacc55458bc3c23345aadafb1824f2235efc538dd69",
+  "candidate1CliSha256": "818ae9d30317fd0ab294a1daf4b73b1fa139fa61426972f20789b7975aaf2ef1",
+  "driverSha256": "7206f41a1d735b33bbff302a82462c378cdfe2ad1b94a0e2a19f7e1985eb012c",
+  "sdkFiles": [
+    {
+      "name": "index.js",
+      "sha256": "678e408062049340912881da0fc5bac4c674b809ce25d693a2335ee511f4958f"
+    },
+    {
+      "name": "auth.js",
+      "sha256": "f030e9d3c387a63afdbe6b66d2202d4ec3d183d7b0585ce4f9e77809426f7b3d"
+    },
+    {
+      "name": "common.js",
+      "sha256": "429f8e79d930e762b33ebe6cfc0067578f88a65a54f36291b7f740cfec444e7a"
+    }
+  ],
+  "result": "Strict red: two new private-compatibility expectations fail",
+  "gaps": [
+    {
+      "case": "C04_REAL_SIGNUP_USER",
+      "actual": "null-user-despite-stored-native-user",
+      "expected": "actual-stored-native-id-and-email"
+    },
+    {
+      "case": "C04_PUBLIC_SIGNUP_RESEND",
+      "actual": "undefined",
+      "expected": "function"
+    }
+  ],
+  "otherActualChecks": [
+    "actual-signup",
+    "genuine-confirmation-existing-login-local-logout"
+  ],
+  "wireCalls": [
+    {
+      "method": "POST",
+      "path": "/api/auth/v1/register"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/v1/login"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/v1/status"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/v1/logout"
+    }
+  ],
+  "cleanup": {
+    "ownedProcessesAbsent": 1,
+    "ownedTreeAbsent": true,
+    "originalFixtureCleanup": false
+  },
+  "limits": [
+    "Public SDK intentionally still has documented null-user signup and no resend; native JSON alone is not SDK support",
+    "Actual signup/genuine mail plus original-password login/live getUser/local logout SDK state and HTTP acknowledgment succeed; no new global logout or complete session/resource guarantees inferred",
+    "Unpacked compiled runtime characterization only; separate versioned private implementation, full unit/type/property/fault/package/shared-reference and Chromium/Firefox/WebKit proofs still required",
+    "No private deployment, public API claim or maintainer signoff"
+  ]
+}

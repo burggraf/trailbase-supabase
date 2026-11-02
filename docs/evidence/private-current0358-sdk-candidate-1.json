@@ -1,0 +1,75 @@
+{
+  "scope": "PRIVATE SDK candidate1 basic signup-user/resend compatibility; NOT public SDK support/full password lifecycle/browser/adoption/signoff",
+  "version": "0.0.0-private.current0358.1",
+  "baseCommit": "8aef018cd26724ffaaa45b8f04ff3f117f0c8d93",
+  "ownGit": true,
+  "originRemoved": true,
+  "sourceSha256": "80e0b3b603eee97a36a3a7d2b40058cf9f6cc7c674a34863e76adef6d777fed6",
+  "sourceDiffSha256": "7be97cad7ebad2ee5609a0be8cc24f25d37bb0445090deeb87aaf9f10230f4f1",
+  "runtimeDependenciesUnchanged": true,
+  "checks": [
+    {
+      "node": "22.23.2",
+      "static": "passed",
+      "unitPassed": 243,
+      "packageChecks": 4,
+      "tarballSha256": "6e0ddb6e254ce7424f2c803c02eac54c07119a9a24021f4f35cdb78904fbec22"
+    },
+    {
+      "node": "24.21.0",
+      "static": "passed",
+      "unitPassed": 243,
+      "packageChecks": 4,
+      "tarballSha256": "6e0ddb6e254ce7424f2c803c02eac54c07119a9a24021f4f35cdb78904fbec22"
+    }
+  ],
+  "real": [
+    {
+      "node": "22.23.2",
+      "checks": [
+        "actual-signup",
+        "actual-public-resend",
+        "genuine-confirmation-existing-login-local-logout"
+      ],
+      "driverSha256": "d252b7405ec4236dce79547c2997238516d442e4a8d17e985ed1d1de0db4bb9f",
+      "ownedProcessesAbsent": 1,
+      "ownedTempTreeAbsent": true
+    },
+    {
+      "node": "24.21.0",
+      "checks": [
+        "actual-signup",
+        "actual-public-resend",
+        "genuine-confirmation-existing-login-local-logout"
+      ],
+      "driverSha256": "d252b7405ec4236dce79547c2997238516d442e4a8d17e985ed1d1de0db4bb9f",
+      "ownedProcessesAbsent": 1,
+      "ownedTempTreeAbsent": true
+    }
+  ],
+  "nativeCandidate1": {
+    "base": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+    "runtimeDiffSha256": "593e1915009979725dfe3aacc55458bc3c23345aadafb1824f2235efc538dd69",
+    "cliSha256": "818ae9d30317fd0ab294a1daf4b73b1fa139fa61426972f20789b7975aaf2ef1"
+  },
+  "changes": [
+    "Map validated actual native JSON user.id/email/null session; never invent identity/session or perform privileged lookup",
+    "Only auth.resend({type:signup,email}), genuine safely encoded same-origin GET; exact200/emptyJSON, unchanged session and honest429/SMTP/transport/redirect failures",
+    "New6 unit/type/property shape/status/input/security tests; installed tarball positive/negative new-method types and real runtime presence/auth-opt-in guard"
+  ],
+  "failedAttempts": [
+    "Public/unchanged private SDK compiled runtime:2 real compatibility gaps, signup user discarded/resend absent",
+    "New6 units all red and positive type fails missing method before implementation; initial missing comma is compile/0collection failure, not runtime red",
+    "Full SDK243 initially242pass/1fail old stock-null-user mock. Only private JSON fixture/result adapted; request/header/session/security assertions retained, then all243 each Node",
+    "Both first private packages fail at pack because copied helper pins public0.0.0 filename/version. New exact-private-version regression1red/6pass; guard pins only precise private version/filename, still rejects old/foreign/traversal metadata. Both complete suites then pass",
+    "Only finalNode24 detailed first package log survives original latest-log overwrite; both first sanitized failure consoles retained. No invented Node22 raw trace. Later v2 controller archives each raw/package artifact separately"
+  ],
+  "limits": [
+    "Real native3 checks import compiled private files, not the installed tarball; tarball is independently clean-installed/type/runtime-tested. Packed real backend/browser/fault layers still required",
+    "No full actual SDK SMTP-fault/pending/password/throttle/unknown-confirmed resend/token-race/shared-reference proof yet; native raw HTTP tests do not certify SDK layers",
+    "No Chromium/Firefox/WebKit private SDK/app flow yet; public stock browser15 is not private proof",
+    "Minimal id/email user only; confirmed duplicate is intentional placeholder, not a stored new identity, and no full Supabase-user/ID-generation parity inferred",
+    "Authenticated global logout/reference/backend, arbitrary cancellation/commit/global quota/corrupt-legacy refusal, coverage/release/OSL/adoption/maintainer signoff remain open",
+    "No root SDK/API/dependency pin edits, private deployment, upstream submission or private source/binary/keys/log/backup publication"
+  ]
+}

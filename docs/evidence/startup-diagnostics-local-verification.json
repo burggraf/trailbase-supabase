@@ -1,0 +1,210 @@
+{
+  "scope": "Public harness-only startup diagnostics and exact local verification; NOT8aef startup root-cause repair/private SDK/browser/fork adoption or release signoff",
+  "sourceSha256": "d5fa1c8ef6a29fba8b1909f3bca26b91316347a18e7deea1d9c069773d542005",
+  "baseCommit": "8aef018cd26724ffaaa45b8f04ff3f117f0c8d93",
+  "checks": [
+    {
+      "node": "22.23.2",
+      "static": "passed",
+      "unitPassed": 242,
+      "packagePassed": 4
+    },
+    {
+      "node": "24.21.0",
+      "static": "passed",
+      "unitPassed": 242,
+      "packagePassed": 4
+    }
+  ],
+  "diagnostic": [
+    {
+      "name": "real-startup-failure",
+      "stage": "passed",
+      "cleanup": "passed",
+      "runId": "1793608120632-7273eb9758da"
+    },
+    {
+      "name": "real-diagnostic-fixture",
+      "stage": "passed",
+      "cleanup": "passed",
+      "runId": "1793608150199-1a86566764b6"
+    }
+  ],
+  "ownedCleanup": {
+    "ownedProjectsAbsent": 19,
+    "hashArchivedPrivateFiles": 1603,
+    "ownedTemporaryParentRemoved": true,
+    "originalCleanupInvoked": false,
+    "scope": "Exact generated generation2 owners only; all source/raw diagnostics and artifact evidence retained privately, reproducible tools excluded from archive"
+  },
+  "real": [
+    {
+      "suite": "sdk-auth",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 3,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "sdk-refresh",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "sdk-data",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "database",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "constraints",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "sdk-browser",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 15,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "auth-reference",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 7,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "all",
+      "authVariant": "stock",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 112,
+      "failed": 6,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "lifecycle",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "expiry",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "characterization",
+      "authVariant": "candidate-email-reservation",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 9,
+      "failed": 1,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "smtp",
+      "authVariant": "candidate-email-reservation",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 0,
+      "failed": 1,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "auth-migration",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "browser",
+      "authVariant": "stock",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 60,
+      "failed": 6,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "lifecycle",
+      "authVariant": "stock",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "native-upgrade",
+      "authVariant": "owned-generated",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    {
+      "suite": "todos-launcher",
+      "authVariant": "owned-generated",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed"
+    }
+  ],
+  "strictResearch": "Exact stock/candidate characterization/SMTP/browser names and statuses match8aef research; not hidden, waived or changed. Overall real-scope controllers exit1 for these strict assertion failures.",
+  "startupCause": "Exact8aef supported sdk-auth0-test Supabase-start cause remains UNKNOWN. Current local auth3/3 and diagnosed deliberately held own-port failure are not retrospective diagnosis or repair.",
+  "privacy": "Literal/validated exit/signal and6 exact owner-verified service status/health/OOM/restart fields only. No error text/stdout/stderr/env/health-output/credentials in public projection; no arbitrary Docker-name enumeration in collection.",
+  "regressions": [
+    "Initial new diagnostics3unit failures ->green",
+    "Mutable descriptor could swap validated signal on second read:1failed/4passed ->cache once ->5/5; exact raw attempts retained",
+    "Generation1 sourceacdba3fa separate and archived;3 incorrect npm command names are0-test invocation failures, not passed tests; complete generation2 commands above are executable canonical scopes",
+    "Earlier root guard controller failed while copying nonexistent artifacts/unit.json after check/unit passed; actual paths corrected and both complete suites rerun"
+  ],
+  "limits": [
+    "CLI may remove failed containers before observation; unavailable facts are unknown, not a cause. Fixed snapshots do not guarantee diagnosis of every startup fault.",
+    "CLI start stdout/stderr stay private; no new raw-log upload. Historical8aef underlying cause was not included in published artifacts.",
+    "D01/D02 actual direct-harness failure/state collection plus runner-wiring unit check; no all-fault/release/coverage/maintainer signoff inferred.",
+    "Private native/SDK proof is separately bound; official retained demo is not a custom deployment."
+  ]
+}

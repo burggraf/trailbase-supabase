@@ -1,8 +1,43 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "Exact f39a0d6 CI: af883 reference7/supportedsDK/both Nodes237/package4/legacy1/upgrade9 passed; research stock112/6/browser60/6/candidates red. Prior7cf stock setup0 remains unresolved. Private0358 original corpus12/12, extended SQLite core241+5 and real CLI HTTP/SMTP/DB8 checks each pinned Node pass; no deployment.",
+  "currentPhase": "Exact8aef/41406862169 has NEW supported sdk-auth Supabase-start failure/0tests/cleanup passed, cause unresolved; not historical research parity red. Other supported scopes/reference7/both Nodes237/package4/legacy1/upgrade9 passed; research remains strict red. Fixed-field startup diagnostics verified at d5fa1c8e with both Nodes242/package4 and17 real reports plus2 actual diagnostic cases; strict research red preserved. Private0358 cancellation242+5, cross-process4 and migration5 checks each Node pass; private SDK basic243/package4/compiled real3 each Node after exact-version guard fix, no complete fault/browser/adoption/deployment claim.",
   "lastSession": {
-    "state": "r08-pushed-exact-ci-audited-private-native-policy-candidate1-verified-work-continues",
+    "state": "new-supported-ci-zero-test-failure-audited-diagnostics-and-private-milestone-in-progress",
+    "latestSupportedCiFailure": {
+      "commit": "8aef018cd26724ffaaa45b8f04ff3f117f0c8d93",
+      "run": 41406862169,
+      "evidence": "docs/evidence/ci-8aef-supported-auth-startup-failure.json",
+      "auth": "Supabase-start failed/0tests/cleanup passed; underlying startup cause UNRESOLVED, not SDK auth assertion execution",
+      "watcher": "Existing proc_30ac completed exit1 for exact terminal CI; no replacement/rerun to hide failure",
+      "response": "Bounded fixed-field startup instrumentation: initial3-unit red, then4-green. Review exposed mutable-signal descriptor swap (1red/4pass); single-read fix gives5/5. New source d5fa1c8e passes both-Node static/242units/package4. Genuine owned port-bind startup failure and running/stopped/recovered Docker collection plus complete17 applicable real reports now audited/cleaned; strict research red preserved. Earlier sourceacdba3fa and3 incorrect npm-name invocation failures are preserved/archived, not certified as changed-source proof. Later auth3/3 is not retrospective repair of8aef."
+    },
+    "workingChecks": {
+      "sourceSha256": "d5fa1c8ef6a29fba8b1909f3bca26b91316347a18e7deea1d9c069773d542005",
+      "bothPinnedNodes": "static/docs,242units and4 actual offline package checks each passed",
+      "realScopes": "Complete17 real reports at d5fa1c8e audited: supported auth3/refresh4/data6/DB9/constraints6/browser15/launcher2; reference7/expiry2/legacy1/upgrade9 and both cleanup1 pass. Research stock112/6, candidate9/1, SMTP0/1, browser60/6 retain exact8aef names/statuses. Both genuine diagnostic cases pass. All owned projects absent, raw/source archive complete, temporary checkout removed.",
+      "evidence": "docs/evidence/startup-diagnostics-local-verification.json",
+      "limits": "No current-commit CI, no startup-cause repair, no private SDK/browser/deployment certification"
+    },
+    "privateSdkCharacterization": {
+      "scope": "C04 unchanged compiled public SDK against immutable private candidate1, not packed/browser proof",
+      "result": "Strict compatibility red: signup discards native actual stored user; public signup resend method undefined. Actual signup/mail plus existing login/live getUser/local logout pass; owned cleanup passed.",
+      "evidence": "docs/evidence/private-current0358-sdk-initial-characterization.json",
+      "next": "Independent private SDK version0.0.0-private.current0358.1 maps genuine signup JSON and adds only public signup resend. Target6 units/types, full243 units, exact-version-pinned offline package4 and basic real compiled signup/resend/login/getUser/local logout3 pass each Node. Initial compile failure, full242/1 old stock mock and package metadata guard failures retained; only private JSON fixture/result and exact private filename/version adapted, no weakened permission/dependency/file guards. Packed-real backend/full fault/shared-reference/three-engine layers still required; no public SDK expansion.",
+      "candidate1": {
+        "evidence": "docs/evidence/private-current0358-sdk-candidate-1.json",
+        "sourceSha256": "80e0b3b603eee97a36a3a7d2b40058cf9f6cc7c674a34863e76adef6d777fed6",
+        "sourceDiffSha256": "7be97cad7ebad2ee5609a0be8cc24f25d37bb0445090deeb87aaf9f10230f4f1",
+        "tarballSha256": "6e0ddb6e254ce7424f2c803c02eac54c07119a9a24021f4f35cdb78904fbec22",
+        "version": "0.0.0-private.current0358.1",
+        "proof": "Independent own Git at exact8aef baseline, origin removed; frozen private patch/dist/declarations/README/package/tarball. Runtime dependency graph unchanged. Actual new-method positive/negative shipped types and installed method/auth-opt-in guard tested. Real3 still compiled imports, not packed-native/browser proof."
+      }
+    },
+    "currentWorkRemaining": {
+      "privateSdk": "C04 candidate1 frozen:243units/package4/compiled real3 each Node. Packed-real backend and full actual fault/shared contracts remain",
+      "privateBrowser": "C05 real Chromium/Firefox/WebKit with packed private SDK not yet run",
+      "globalLogout": "Still requires pinned reference semantics and authenticated backend capability, not anonymous303/health"
+    },
+    "historicalR08Source": "The sourceSha256/checks/real/evidence fields immediately below remain frozen af883 historical R08 proof, not d5fa changed-source checks",
     "sourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34",
     "evidence": "docs/evidence/auth-reference-r08-contracts-2026-11-02.json",
     "checks": [
@@ -93,14 +128,30 @@
         "docsCommitCi": "Exactbc27e488/41404113055 overallfailure, all21 source/suite/profile/case-status/setup/cleanup/Node/package projections match f39; reference7 and supported SDK pass, research strict red",
         "checks": "Read-only original supervisor preservation guard passed; no original cleanup, no custom deployment"
       },
+      "cancellationCrossProcess": {
+        "evidence": "docs/evidence/private-current0358-cancellation-cross-process.json",
+        "sourceDiffSha256": "82ef687d696061788adeccde3cff573a2434dd45f2e1b1ab8f0af96557d81bc5",
+        "focused": "17/17; initial E0382 compile failure preserved, not runtime red",
+        "fullCore": "242 library +5 integration targets;0 failed/filtered/ignored;103 logged owned native depots absent",
+        "cancellation": "Real stored-DATA barrier/caller abort permits exactly one writer commit; no rollback fiction; identity/password/sibling/session preservation and bounded writer/all4permit release proved",
+        "crossProcess": "Two independent immutable candidate1 CLIs/same fresh depot; real overlapping signup/resend exact200/429/one mail; configured10s cooldown survives second-process restart, stale token denied/latest confirms, replacement password401/original200;4checks on each pinned Node, owned cleanup passed",
+        "scope": "Only cfg(test) fault module differs from frozen candidate1 runtime; no custom deployment or SDK/browser claim"
+      },
+      "existingDepot": {
+        "evidence": "docs/evidence/private-current0358-existing-depot.json",
+        "driverSha256": "9bbe567bc71b97f47bebfae075822b64c2036d48f910772662bcdd4f4375d56d",
+        "bothPinnedNodes": "5 real checks each; official pendingA/B plus confirmed sibling/session/todo/audit -> exact stop/full backup -> additive private migration, unchanged existing main/session rows/schema, empty receipt/one history row, FK checks, legacy fallback/resend/password, identical keys/config/metadata/migration files, untouched official backup-copy startup/data/session/old-token/login controls",
+        "failedDriver": "Unpadded native UUID bytes caused actual400/0completed checks; same-fixture control proves400/no writes versus documented padded encoding200. Driver fix, not native fix; initial and earlier weaker passes retained.",
+        "cleanup": "All owned CLI processes/temp trees absent; complete generated backup copies/manifests retained privately. No original fixture touch or auto-restore."
+      },
       "missing": [
-        "Cancellation/contention/cross-process race, commit failure/global collision/refusal and full real migration/upgrade/rollback proof remain adoption blockers; one stored-DATA/lost-ack case is not all partial-delivery proof.",
+        "C01 one cancellation schedule, C02 one cross-process schedule and C03 two-owned-pending migration/official-backup-copy are verified, not arbitrary contention/disconnect/SMTP delivery/commit failure/global quota or legacy corruption/cross-column ambiguity/refusal/adoption proof.",
         "Full workspace/default-feature/PG/WASM/GEOS/MCP release is not covered by the verified SQLite core selection.",
         "Private SDK/signup/resend and shared pinned-reference contracts, browser/security/coverage/release and authenticated global-logout work remain; raw private CLI8-check proof is not SDK/browser signoff.",
         "OSL-3.0 server external-deployment/source/attribution and security/rebase/release-maintenance decision is separate from MIT SDK approval."
       ]
     },
-    "allJobsTerminal": true
+    "allJobsTerminal": false
   },
   "previousSupabaseReferenceSession": {
     "scope": "L1-14/R01-R07 independent pinned Supabase reference contracts, NOT native/SDK auth parity or signoff",
@@ -2338,6 +2389,13 @@
     }
   ],
   "nextSteps": [
+    "Finish reviewed public harness/evidence checkpoint at d5fa1c8e: both Nodes242/package4 and17 real reports plus2 true diagnostic controls audited, owned tree/projects cleaned. Normal explicit commit/push authorized; inspect its exact CI without treating local auth3 as repair of8aef supported startup0 or prior7cf startup0 causes, both UNRESOLVED.",
+    "Continue frozen private SDK0.0.0-private.current0358.1 candidate1 from80e0b3b6/patch7be97cad/tarball6e0ddb6e: initial2 real gaps -> compiled real3 green,6 target/type/property and243units/package4 each Node. Exact private metadata guard red ->precise pin fix, no broad allowlist/dependency changes. Add genuinely installed-tarball/native backend and full actual SMTP/pending/password/throttle/generic/stale/latest/replay/transport/reference contracts, preserving immutable candidate1 and new bindings.",
+    "C05 real packed private SDK/app Chromium/Firefox/WebKit remains unrun. Use only generated owned fixtures and separately identified current0358 private binary; never route it through historical0343 private-g1 verifier or relabel public SDK/official CI as private proof. No successful auth/data stubs, privileged browser lookup or fake user/session.",
+    "C01/C02/C03 latest242+5/4checks each Node/5migration checks each Node are bounded proofs; arbitrary cancellation/contention/commit/global quota/ambiguous legacy refusal remain open. Global logout requires genuine pinned reference semantics and authenticated backend capability; no anonymous303/health acknowledgement.",
+    "Keep original official demo/supervisor57accounts/8tasks/data/keys/backups/lock/containers/tailnet/exact18443/18444 untouched. Keep private source/binaries/tools/keys/raw logs/depots/backups out of root commits; no custom deployment/upstream submission/adoption/OSL or signoff inferred."
+  ],
+  "previousNextStepsBeforeC01C02C03": [
     "Continue private candidate1 from exact593e1915 diff and built ELF: add cancellation/contention/cross-process race, partial SMTP acceptance/commit-failure and collision/refusal/real migration/upgrade/rollback preservation proof; rerun full affected native suite after edits.",
     "Continue from verified private CLI HTTP/SMTP/DB8 checks per pinned Node and native241+5; integrate private SDK signup/resend and shared pinned-reference contracts truthfully, then packed app Chromium/Firefox/WebKit and authenticated global logout. Official supported SDK CI is not private binary certification.",
     "Keep exactf39 CI overall failure and prior7cf stock supabase-start0-test cause UNRESOLVED. Newstock112/6 setup success is not a diagnosis; add safe bounded diagnostics if setup blocks future runtime proof.",

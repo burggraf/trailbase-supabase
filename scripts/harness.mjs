@@ -5,6 +5,8 @@ import { mkdir, readFile, writeFile, cp, rm, open, lstat } from 'node:fs/promise
 import { resolve, relative, sep } from 'node:path';
 import { once } from 'node:events';
 import { baseline, exec, installTrail } from './tools.mjs';
+import { collectSupabaseStartupEvidence, supabaseStartupEvidence } from './startup-diagnostics.mjs';
+export { supabaseStartupEvidence } from './startup-diagnostics.mjs';
 
 const legacyNativePin = JSON.parse(await readFile(new URL('../tests/fixtures/trailbase-v0.34.3.json', import.meta.url)));
 export function fixtureNativePin(profile = 'default') {
@@ -182,6 +184,14 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
   await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
   let trail, log, stockBinary, stockBackupTimestamp;
   let startAttempted = false;
+  async function collectStartupFailure(error) {
+    try {
+      const config = await readFile(resolve(directory, 'supabase/config.toml'), 'utf8');
+      verifyOwner(id, ownerRecord, config);
+      verifyOwner(id, JSON.parse(await readFile(resolve(directory, 'owner.json'), 'utf8')), config);
+      return await collectSupabaseStartupEvidence(project, error);
+    } catch { return supabaseStartupEvidence(error); }
+  }
   async function command(args, name) {
     try {
       const result = await exec(cli, [...args, '--workdir', directory, '--agent', 'no', '--network-id', `supabase_network_${project}`], { env: childEnv, timeout: baseline.startupTimeoutMs, maxBuffer: 20_000_000 });
@@ -189,6 +199,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
       return result.stdout;
     } catch (error) {
       await writeFile(resolve(directory, `${name}.log`), String(error.stdout ?? '') + String(error.stderr ?? ''), { mode: 0o600 });
+      if (name === 'start') context.supabaseStartup = await collectStartupFailure(error);
       throw new Error(`Local Supabase ${name} failed; private diagnostics: ${relative(process.cwd(), directory)}/${name}.log`);
     }
   }
@@ -257,8 +268,13 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     console.log('Starting disposable Supabase (first run may download images)...');
     context.setupStage='supabase-start';
     startAttempted = true;
-    await exec('docker',['network','create','--driver','bridge','--opt','com.docker.network.bridge.host_binding_ipv4=127.0.0.1','--label',`trailbase-supabase.run=${id}`,`supabase_network_${project}`]);
-    await command(['start', '--exclude', 'studio,postgres-meta,storage-api,imgproxy,edge-runtime,logflare,vector,supavisor'], 'start');
+    try {
+      await exec('docker',['network','create','--driver','bridge','--opt','com.docker.network.bridge.host_binding_ipv4=127.0.0.1','--label',`trailbase-supabase.run=${id}`,`supabase_network_${project}`]);
+      await command(['start', '--exclude', 'studio,postgres-meta,storage-api,imgproxy,edge-runtime,logflare,vector,supavisor'], 'start');
+    } catch (error) {
+      if (!context.supabaseStartup) context.supabaseStartup = await collectStartupFailure(error);
+      throw error;
+    }
     context.setupStage='supabase-status-and-mail';
     const status = JSON.parse(await command(['status', '-o', 'json'], 'status'));
     context.anonKey = status.ANON_KEY ?? status.api?.anon_key ?? status.api?.publishable_key;

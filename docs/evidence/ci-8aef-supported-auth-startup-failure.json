@@ -1,0 +1,40 @@
+{
+  "scope": "Exact8aef supported SDK auth startup failure audit; NOT historical research parity failure or a demonstrated repair",
+  "commit": "8aef018cd26724ffaaa45b8f04ff3f117f0c8d93",
+  "run": 41406862169,
+  "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41406862169",
+  "sourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34",
+  "status": "completed",
+  "conclusion": "failure",
+  "sourceBoundSanitizedReportsChecked": 21,
+  "supportedJob": {
+    "id": 125151036147,
+    "status": "failure",
+    "auth": {
+      "runId": "1793604804475-371e37ee0e1d",
+      "status": "failed",
+      "setupStage": "supabase-start",
+      "testsExecuted": 0,
+      "cleanup": "passed",
+      "cause": "UNRESOLVED. The exact sanitized artifact and directly downloaded job log contain no underlying Supabase-start stdout/stderr or container-state cause. No SDK auth assertion ran, so neither auth assertion regression nor current auth compatibility is established."
+    },
+    "laterScopes": {
+      "refresh": "4/4",
+      "data": "6/6",
+      "database": "9/9",
+      "constraints": "6/6",
+      "browsers": "15/15",
+      "todosLauncher": "2/2",
+      "cleanup": "passed"
+    },
+    "claimBoundary": "Later passes and prior all-supported-green runs do not certify this run's missing auth assertions or repair its setup failure."
+  },
+  "otherJobs": {
+    "bothPinnedNodes": "Static/237 units/4 offline package checks each passed",
+    "research": "Failed overall; stock112/6 actually executed at ready, expiry2/2, candidate characterization9/1, SMTP0/1, reference7/7, legacy1/1, upgrade9/9, browser60/6, cleanup passed"
+  },
+  "historyBoundary": "Prior7cf stock0-test Supabase-start cause remains separately unresolved. Current stock112/6 is not a setup failure. No common cause with current supported-auth0 inferred from setup-stage names or timing.",
+  "response": "Add bounded fixed-field owned-container/process diagnostics on future startup failures, retaining private raw logs and original failure semantics; verify unit security/ownership and real owned fixture collection/scopes. This instrumentation is not a retrospective root-cause diagnosis or assertion that a later pass repairs8aef.",
+  "privatePrototype": "Native cancellation/cross-process tests are independent owned work; no private binary or code is deployed or certified by this public-code CI.",
+  "maintainerSignoff": false
+}

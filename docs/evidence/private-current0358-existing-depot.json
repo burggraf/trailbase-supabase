@@ -1,0 +1,57 @@
+{
+  "scope": "PRIVATE C03 genuine official0.35.8 existing pending-depot migration and untouched official backup-copy controls; NOT adoption/release/browser/signoff",
+  "officialBase": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+  "stockCliSha256": "249ce40c394df2be2aa05fca36ae38cec103e50f138f49d86f6860b6bbfeda58",
+  "candidate1CliSha256": "818ae9d30317fd0ab294a1daf4b73b1fa139fa61426972f20789b7975aaf2ef1",
+  "candidate1RuntimeSourceDiffSha256": "593e1915009979725dfe3aacc55458bc3c23345aadafb1824f2235efc538dd69",
+  "driverSha256": "9bbe567bc71b97f47bebfae075822b64c2036d48f910772662bcdd4f4375d56d",
+  "helperSha256": "dd7ff24cc34740fafbd4de731e8027789ca592cf1d63bf1b8b9c9b09b0582c56",
+  "runs": [
+    {
+      "node": "22.23.2",
+      "checks": [
+        "official-existing-identities-session-data",
+        "private-additive-migration",
+        "genuine-legacy-link-fallback",
+        "legacy-pending-resend-rotation",
+        "untouched-official-backup-rollback-copy"
+      ],
+      "ownedProcessesAbsent": 3,
+      "ownedTempTreeAbsent": true,
+      "backupFiles": 13,
+      "backupManifestSha256": "6b9144efcac27905b97c5ee9b72e08a9fe63543ffb3986656fb0e38b8cd5a92e"
+    },
+    {
+      "node": "24.21.0",
+      "checks": [
+        "official-existing-identities-session-data",
+        "private-additive-migration",
+        "genuine-legacy-link-fallback",
+        "legacy-pending-resend-rotation",
+        "untouched-official-backup-rollback-copy"
+      ],
+      "ownedProcessesAbsent": 3,
+      "ownedTempTreeAbsent": true,
+      "backupFiles": 13,
+      "backupManifestSha256": "44480ff58038502bbab3f9044d86b7efaea8dcfa7930dbcf2e264ee0117d4d63"
+    }
+  ],
+  "postconditions": [
+    "Real official signup produces two pending accounts and a confirmed sibling; genuine SMTP links/original passwords, real sibling session plus owned todo/audit row",
+    "Exact stop/full copied depot manifest before additive migration; one new1793595000 history row and empty receipt table only, all existing main table digests and session schema/rows unchanged, main/session foreign_key_check empty",
+    "After actual private requests and exact stop: all nondata depot files including keys/config/metadata/migrations are byte/mode/UID/GID identical to original backup",
+    "One real legacy link uses documented receiptless fallback without changing original identity/password; second preserved pending identity resends/rotates, old link401/no writes/latest confirms, replacement passwords401/original200",
+    "Untouched full official backup copied to a different fresh owned rollback path; exact manifests before boot, official CLI restarts, initial DB/session schema/rows equal original except only source-proven sqlite_stat1/stat4 planner tables, original sibling token reads original todo, original pending link and original password still work",
+    "Owned runtime nodes and temp trees removed; original live fixture, supervisor, keys, accounts/tasks, locks, containers and tailnet never targeted; private backup evidence retained outside Git"
+  ],
+  "failedAttempts": [
+    "First driver used unpadded native UUID bytes and actual record creation returned400;0completed C03 checks, owned cleanup passed. Same-fixture negative control now proves unpadded400/no main/session writes, padded encoding matching src/common.ts gives200. This is a driver/encoding correction, not a native server fix.",
+    "Earlier5-check passes preceded added FK/nondata file postconditions; final runs above rerun the changed driver on both pinned Nodes"
+  ],
+  "limits": [
+    "No arbitrary legacy corruption/cross-column ambiguity/collision-refusal or destructive upgrade proof; no identity repair/deletion or blind restore",
+    "Receiptless fallback until successful resend is an explicit private upgrade policy, not global newest-token proof for preexisting accounts",
+    "No private SDK/shared-reference/three-engine browser/authenticated global logout proof yet",
+    "No live custom deployment, public upstream submission, OSL-3.0/legal/maintenance adoption approval or maintainer signoff"
+  ]
+}
