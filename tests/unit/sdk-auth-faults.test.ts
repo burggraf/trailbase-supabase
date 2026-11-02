@@ -11,6 +11,17 @@ it('L1-14/U14 L1-15/U15 HTTP/network/redirect/malformed JSON faults are observab
   const sdk = factory(async () => new Response('SMTP unavailable', { status: 500 }));
   const result = await sdk.auth.signUp(credentials); expect(result.error?.status).toBe(500); expect(result.error?.message).toContain('SMTP unavailable'); expect(result.data).toEqual({ user: null, session: null });
 });
+it('L1-14/OA01 official409 remains an error with no fabricated signup identity/session or retry', async () => {
+  let calls = 0;
+  const sdk = factory(async () => { calls++; return new Response('Conflict', { status: 409 }); });
+  const result = await sdk.auth.signUp(credentials);
+  expect(result.error?.status).toBe(409); expect(result.data).toEqual({ user: null, session: null });
+  expect((await sdk.auth.getSession()).data.session).toBeNull(); expect(calls).toBe(1);
+  expect(sdk.auth).not.toHaveProperty('resend');
+  for (const capability of ['authenticated-json-v1', 'authenticated-json-state-v2']) {
+    expect(() => Reflect.apply(createClient, undefined, ['http://localhost:4000', undefined, { trailbase: mapping, auth: { privateGlobalLogout: capability } }])).toThrowError(expect.objectContaining({ name: 'UnsupportedFeatureError' }));
+  }
+});
 it('L1-15/U15 malformed response/JWT JSON errors never expose payload fragments or replace a good session', async () => {
   const marker = 'private-refresh-synthetic';
   const encode = (input: unknown) => Buffer.from(JSON.stringify(input)).toString('base64url');

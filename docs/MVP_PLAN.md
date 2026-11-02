@@ -6,6 +6,12 @@ Maintainer approved narrowing delivery to database CRUD and auth, then selected 
 
 Initial data-query SDK code is under development; no feature is verified or signed off yet. Target remains a Supabase-shaped TypeScript client for TrailBase, not PocketBase compatibility. No automatic migration or import-only migration claim.
 
+### Official-only decision — active implementation path
+
+Mark's 2026-11-02 22:08 UTC decision is to stay on official **TrailBase0.35.8 / commit05238c02b54aabb483e9f6224b5e014d40e88a5d**, with **JS0.14.3**, document auth limitations and move on. No private native fork or private SDK capability adoption/deployment/publication; prototypes are historical private evidence, not MVP dependencies. No further fork parity work by default. A focused global-logout acknowledgement issue is drafted for baba/parent, the sole publisher; existing upstream signup#298 is related context, not a duplicate report.
+
+The accepted MVP boundary is narrower than full Supabase auth compatibility: signup returns null user/session, native registration409 remains an error, no supported SDK signup-resend/identity-repair flow is offered, and default-global logout reports uncertainty rather than authenticated success. Normal confirmed-password login, persistence/live validation/refresh, explicit local logout and owner-isolated CRUD remain the implementation path. Preserve strict incompatibility results and backend errors. This is approval to proceed with documented limitations, not a technical fix, security waiver, package-publication approval or feature/release signoff.
+
 ### Included
 
 - One TypeScript package, explicit schema/field mappings and useful `{ data, error }` results.
@@ -37,4 +43,4 @@ Stable active feature IDs: **L1-01–L1-20, L1-24, L1-26, L1-27**. L1-21–L1-23
 - Active security cases S01–S08 and S10 remain required. S09 streaming and E09/E12 realtime/migration are future requirements. Mixed E2E/security/package rows retain all CRUD/auth assertions and auth resource cleanup.
 - Existing coverage thresholds, no hidden retries, three clean full candidate runs, exact-source evidence and named maintainer signoff still apply to the advertised subset. Historical upstream failures remain separately labeled; no SDK command may alias upstream probes as adapter verification.
 
-No reliable release date until G1/G7 route is agreed. Earlier estimates are planning ranges, not a commitment. Data slice and usable app progress take priority over broader compatibility research.
+The official-only G1/G7 route is now agreed: document limitations and proceed without fork adoption. Release date/signoff still depends on the remaining full applicable official-supported checks, not private parity work. Earlier estimates are planning ranges, not a commitment. Data slice and usable app progress take priority over broader compatibility research.

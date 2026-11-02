@@ -1,0 +1,428 @@
+{
+  "scope": "Official-only auth contract and app guidance checkpoint, not full compatibility/release/security or maintainer signoff",
+  "sourceSha256": "6a3ee09a602e7087ba9e62e574a59f792de1821c922cd1e6d587f370990ab4c3",
+  "decision": {
+    "owner": "Mark",
+    "time": "2026-11-02T22:08:00Z",
+    "provenance": "Maintainer-supplied decision; official-only continuation with documented limitations, no inferred technical fixes"
+  },
+  "runtime": {
+    "trailbase": "0.35.8",
+    "commit": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+    "js": "0.14.3",
+    "nodes": [
+      "22.23.2",
+      "24.21.0"
+    ]
+  },
+  "product": {
+    "publicSdkAuthNativeDependenciesPinsUnchanged": true,
+    "appChange": "Operation-specific409/424 signup guidance and honest no-resend/global-uncertainty text",
+    "privatePrototypeAdoption": false,
+    "signupIdentityFabricated": false,
+    "native409NormalizedToSuccess": false,
+    "globalRevocationReceiptFabricated": false
+  },
+  "tdd": {
+    "meaningfulUxAssertionReds": 2,
+    "existingControlsPassed": 5,
+    "focusedGreenCases": 11,
+    "compilerAndIndexErrorsAreNotFeatureReds": true
+  },
+  "initialVerification": {
+    "sourceSha256": "3cc855ad0e2a144bd50ca8f27eed4a2650dad42afc4bd0accac9ec4927ea5fe2",
+    "reports": [
+      {
+        "suite": "sdk-auth",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-reference",
+        "passed": 16,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-refresh",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-data",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "database",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "constraints",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser",
+        "passed": 15,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "expiry",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-migration",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "all",
+        "passed": 114,
+        "failed": 7,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "characterization",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "smtp",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "browser",
+        "passed": 60,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "lifecycle",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "native-upgrade",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "todos-launcher",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      }
+    ],
+    "bothNodes": {
+      "units": 264,
+      "packageChecks": 4
+    },
+    "historicalFailureNamesStatusesUnchanged": true,
+    "historicalFailures": 14,
+    "additionalFailures": 1,
+    "additionalFailure": {
+      "name": "L1-19/OA03 official0358 identical303 logout target cannot authenticate DELETE; invalid callers preserve complete state",
+      "classification": "New test pre-operation whole-table snapshot RangeError on genuine unsafe integer; not accepted baseline, not complete global runtime proof"
+    },
+    "focusedOfficialAuthCasesPassed": 3,
+    "ownedProjectsAbsent": 16,
+    "ownedParentRemoved": true,
+    "rawAndSourceManifested": true,
+    "checkpointVerified": false,
+    "signoff": false
+  },
+  "currentVerification": {
+    "scope": "Official-only auth contract/app checkpoint; no SDK/native runtime adoption, full parity, release/security or maintainer signoff",
+    "sourceSha256": "6a3ee09a602e7087ba9e62e574a59f792de1821c922cd1e6d587f370990ab4c3",
+    "reports": [
+      {
+        "suite": "sdk-auth",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-reference",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 16,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-refresh",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-data",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "database",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "constraints",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 15,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "expiry",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-migration",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "all",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 115,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "characterization",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "smtp",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "browser",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 60,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "lifecycle",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "native-upgrade",
+        "status": "passed",
+        "setupStage": "owned-ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "todos-launcher",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      }
+    ],
+    "guards": [
+      {
+        "node": "22.23.2",
+        "sourceSha256": "6a3ee09a602e7087ba9e62e574a59f792de1821c922cd1e6d587f370990ab4c3",
+        "units": 264,
+        "packageChecks": 4
+      },
+      {
+        "node": "24.21.0",
+        "sourceSha256": "6a3ee09a602e7087ba9e62e574a59f792de1821c922cd1e6d587f370990ab4c3",
+        "units": 264,
+        "packageChecks": 4
+      }
+    ],
+    "strictResearchFailures": 14,
+    "exactHistoricalResearchCaseNamesAndStatusesUnchanged": true,
+    "allSetupAndCleanupPassed": true,
+    "signoff": false
+  },
+  "upstream": {
+    "repository": "https://github.com/trailbaseio/trailbase",
+    "public": true,
+    "fork": false,
+    "defaultBranch": "main",
+    "pinnedCommit": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+    "currentSourceOnlyCommit": "f7015b3d57b44bf9e88be0418d7f4c88eca0525e",
+    "logoutSourceSha256": "6ba97376cb5762aad4289396ca485a1f6676ddfc474508d749edb14b89bc1adf",
+    "logoutSourceByteIdentical": true,
+    "currentRuntimeCertified": false,
+    "issues": [
+      {
+        "number": 298,
+        "state": "closed",
+        "stateReason": "completed",
+        "updatedAt": "2026-10-05T04:22:15Z",
+        "commentsReviewed": 1,
+        "url": "https://github.com/trailbaseio/trailbase/issues/298"
+      },
+      {
+        "number": 299,
+        "state": "closed",
+        "stateReason": "completed",
+        "updatedAt": "2026-10-03T13:29:50Z",
+        "commentsReviewed": 2,
+        "url": "https://github.com/trailbaseio/trailbase/issues/299"
+      }
+    ],
+    "searches": [
+      {
+        "term": "logout",
+        "count": 1,
+        "issueOrPrNumbers": [
+          299
+        ]
+      },
+      {
+        "term": "signout",
+        "count": 0,
+        "issueOrPrNumbers": []
+      },
+      {
+        "term": "revocation",
+        "count": 1,
+        "issueOrPrNumbers": [
+          299
+        ]
+      },
+      {
+        "term": "acknowledgement",
+        "count": 1,
+        "issueOrPrNumbers": [
+          137
+        ]
+      },
+      {
+        "term": "resend",
+        "count": 1,
+        "issueOrPrNumbers": [
+          298
+        ]
+      },
+      {
+        "term": "smtp",
+        "count": 11,
+        "issueOrPrNumbers": [
+          308,
+          298,
+          266,
+          241,
+          208,
+          228,
+          163,
+          122,
+          125,
+          114,
+          139
+        ]
+      }
+    ],
+    "boundedSearchNotExhaustive": true,
+    "repositoryIssueTemplateOrContributingFileFound": false,
+    "organizationTemplateLookup": "404",
+    "readmeContributionPolicy": "Discuss proposals beyond bug fixes first; CLA described for contributions, none submitted",
+    "draft": "docs/upstream/TRAILBASE_GLOBAL_LOGOUT_ISSUE_DRAFT.md",
+    "publisher": "baba/parent only",
+    "executorPosted": false
+  },
+  "checkpointArchives": [
+    {
+      "generation": "initial-full",
+      "sourceSha256": "3cc855ad0e2a144bd50ca8f27eed4a2650dad42afc4bd0accac9ec4927ea5fe2",
+      "ownedProjectsAbsent": 16,
+      "files": 1628,
+      "allCopiedBytesReverified": true,
+      "ownedParentRemoved": true
+    },
+    {
+      "generation": "corrected-full",
+      "sourceSha256": "6a3ee09a602e7087ba9e62e574a59f792de1821c922cd1e6d587f370990ab4c3",
+      "ownedProjectsAbsent": 16,
+      "files": 1629,
+      "allCopiedBytesReverified": true,
+      "ownedParentRemoved": true
+    }
+  ],
+  "preservation": {
+    "scope": "Read-only historical/original preservation, not new private runtime work or MVP dependency",
+    "privateArtifactsUnchanged": 7,
+    "retainedPriorFilesHashVerified": 575,
+    "priorCompleteArchivesVerified": 8,
+    "priorArchivedFilesHashVerified": 10057,
+    "privateSdkSourceAndFrozenShippedFilesUnchanged": true,
+    "originalApprovedReadOnlyGuardPassed": true,
+    "originalDemoDataAssetsConfigurationKeysLocksContainersSupervisorTailnetUnchanged": true,
+    "privateAdoptionOrDeployment": false,
+    "signoff": false
+  },
+  "rawEvidenceLimit": "Source/raw runtime attempts and index-gate failure retained privately with manifests. The first private index-correction helper used a wrong archive filename and its overwritten initial helper log is unavailable; no backend cases came from that helper and exhaustive raw retention is not claimed.",
+  "nextOfficialMvpWork": "Real packed Node consumer integration for existing supported CRUD/password auth, without new API methods or fork parity",
+  "missing": [
+    "Exact current pushed CI audit (to follow normal scoped substantive commit/push)",
+    "Complete coverage/security/release and physical-device acceptance",
+    "Named maintainer feature/release signoff"
+  ],
+  "signoff": false
+}

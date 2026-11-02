@@ -1,6 +1,16 @@
 # Supabase Auth parity: reference contract and next steps
 
-## Active C08 continuation — separate private SDK logout state candidate
+## Active official-only decision — supersedes private parity work
+
+Mark's 2026-11-02 22:08 UTC decision, relayed by the maintainer: **stay on official TrailBase, document the auth limitations, prepare an upstream issue, and move on with those limitations**. The selected backend remains official0.35.8/commit05238c02b54aabb483e9f6224b5e014d40e88a5d, JS0.14.3. No private fork or private SDK capability is adopted/deployed/published; all prototypes remain historical private evidence and leave the active MVP path. Further fork parity work requires new approval. This is an approved MVP direction/limitation decision, not a claim that native behavior changed or a feature/release signoff.
+
+Current checkpoint: publish a clear official-only CRUD/password-auth contract, explicit version-bound tests/evidence and safe test-app guidance. Signup returns null user/session, repeated registration conflicts remain native409 errors, public signup resend is not supplied by this SDK, and default-global logout remains an observable unconfirmed operation. Never fabricate a signup identity, treat409 as success, follow a redirect as an authenticated receipt or silently make global local. Keep strict incompatibility tests and source-bound failures visible; separate documented upstream/reference/raw-transport limitations from any regression in supported SDK behavior or setup/cleanup.
+
+Upstream handoff is a **focused authenticated machine-readable global-logout acknowledgement draft**, not an omnibus auth issue. Verify official current/pinned source, contribution templates and existing issue status/comments; link#298 only for related signup/resend context and keep#299 SSE outside scope. Baba/parent is the sole publisher; this executor may only prepare repository URL, draft and public-safe evidence, never create an issue/comment. Original official demo/data/six containers/tailnet and all historical private artifacts stay unchanged.
+
+After applicable unit/type/package/real/security/browser checks and review, normal scoped project commit/push and one exact CI audit are authorized. Next work must use official-supported CRUD/password-auth capabilities, not continue fork parity. Exact result/restart state lives in [PROGRESS.md](../PROGRESS.md) and [progress.json](../progress.json).
+
+## Historical C08 continuation — separate private SDK logout state candidate
 
 The current instruction supersedes the observation-time main/status and candidate2-only scope below. At authorization/reconciliation main/origin were `c1a7b07970afc869408ed1ea704324be316aea3f`; current publication state is in `docs/PROGRESS.md` and `docs/progress.json`; first exactCI41500268491 attempt1 has been audited: both pinned Node jobs and supported scopes pass;14historical research assertions remain red/unwaived. Preserve its uncommitted operational audit for this next substantive checkpoint. No duplicate jobs, blind CI reruns or diagnostic-only cycle.
 

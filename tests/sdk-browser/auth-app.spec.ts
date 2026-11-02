@@ -41,6 +41,14 @@ for (const backend of ['trailbase', 'supabase'] as const) test(`L1-14â€“20/E02â€
     await page.getByLabel('Email', { exact: true }).fill(email); await page.getByLabel('Password', { exact: true }).fill(password);
     await page.getByRole('button', { name: 'Sign up', exact: true }).click();
     await expect(page.getByRole('status', { name: 'Auth status', exact: true })).toHaveText('Check your email, confirm, then sign in');
+    await expect(page.getByRole('note')).toContainText('no confirmation resend or account repair');
+    if (backend === 'trailbase') {
+      const duplicate = page.waitForResponse(response => new URL(response.url()).pathname === '/api/auth/v1/register' && response.request().method() === 'POST');
+      await page.getByRole('button', { name: 'Sign up', exact: true }).click();
+      expect((await duplicate).status()).toBe(409);
+      await expect(page.getByRole('alert', { name: 'Auth error' })).toContainText('Sign-up was rejected (HTTP 409). No new registration or verification email is confirmed.');
+      expect(await page.evaluate(async () => (await window.sdkAuthApp!.client.auth.getSession()).data.session)).toBeNull();
+    }
     await page.getByRole('button', { name: 'Sign in', exact: true }).click(); await expect(page.getByRole('alert', { name: 'Auth error' })).not.toBeEmpty();
     await confirmEmail(env, email);
     await page.getByRole('button', { name: 'Sign in', exact: true }).click(); await expect(page.getByRole('status', { name: 'Auth status', exact: true })).toHaveText(`Signed in: ${email}`);

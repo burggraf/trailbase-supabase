@@ -17,6 +17,14 @@ it('L1-14–20/E08 auth status survives plain SDK errors and remains operation-s
   expect(message({ status: 503 }, 'login')).toBe('The authentication service could not complete the request (HTTP 503). Try again later; do not repeatedly submit sign-up.');
 });
 
+it('L1-14/OA04 signup409 is a rejection, not proof of an account or delivered mail', () => {
+  expect(Reflect.get(app, 'authErrorMessage')({ status: 409, message: 'private-canary' }, 'signup')).toBe('Sign-up was rejected (HTTP 409). No new registration or verification email is confirmed. Check any earlier signup message; do not repeatedly register. This app has no confirmation resend or automatic account repair.');
+});
+
+it('L1-14/OA04 signup424 explains official pending-registration uncertainty without suggesting blind retry', () => {
+  expect(Reflect.get(app, 'authErrorMessage')({ status: 424, message: 'private-canary' }, 'signup')).toBe('Confirmation delivery failed (HTTP 424). A pending registration may remain on official TrailBase 0.35.8; retrying can return HTTP 409. Do not repeatedly sign up. This app cannot resend confirmation or repair the account.');
+});
+
 it('L1-19/E08 explicit global logout uncertainty is retained, never changed into success', () => {
   expect(Reflect.get(app, 'authErrorMessage')({ name: 'AuthGlobalSignOutUnconfirmedError', message: 'private diagnostic' }, 'global')).toBe('Global sign-out could not be authenticated. Local state was cleared, but server-wide revocation remains unconfirmed.');
 });

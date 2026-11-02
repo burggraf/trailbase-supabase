@@ -6,6 +6,10 @@ Research date: **2026-10-02**. The original findings below came from official do
 
 Maintainer now authorizes [CRUD/auth MVP](MVP_PLAN.md) implementation with self-service signup and persistent core password sessions. Earlier test-only/no-production authorization statements below describe historical approvals, not a ban on the newly approved subset. G1–G4/G7 remain relevant; G5/G6 move to [future plan](FUTURE_PLAN.md). Historical observations remain unchanged; implementation authorization is not gate/exception/release signoff, backend modification, deployment or repinning approval.
 
+### Official-only disposition (2026-11-02 decision)
+
+Mark chose to continue on official0.35.8/JS0.14.3 with the [explicit auth limitations](OFFICIAL_AUTH_CONTRACT.md), not a private fork/SDK capability. This removes private parity work from the active MVP path while preserving all historical source/runtime evidence and strict incompatibility tests. G1 null-user/SMTP/pending-resend and G7 authenticated-global-acknowledgement gaps are accepted documented MVP boundaries, not native fixes or feature/release signoff. Native409 is still an error; no signup identity/session or revocation acknowledgement is invented. Older unresolved-approval/private-investigation language below is historical, superseded for active direction by the official-only decision. Existing upstream#298 covers the old signup/resend report;#299 resolves separate SSE lifetime semantics. The new upstream handoff is a focused global-logout acknowledgement draft only, for baba/parent to publish.
+
 ## Reference baseline
 
 | Component | Researched version | Evidence / implementation requirement |

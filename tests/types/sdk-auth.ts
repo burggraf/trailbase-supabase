@@ -19,6 +19,11 @@ client.auth.refreshSession({ refresh_token: 'placeholder' });
 client.auth.signOut({ scope: 'others' });
 // @ts-expect-error no fabricated user metadata
 user.user_metadata;
+// @ts-expect-error official-only SDK has no supported resend capability
+client.auth.resend({ type: 'signup', email: 'placeholder@example.test' });
+// @ts-expect-error private global logout capability is not part of the official-only public surface
+const privateCapability: import('../../src/index.js').AuthOptions = { privateGlobalLogout: 'authenticated-json-state-v2' };
+void privateCapability;
 // Auth opt-in supports default persistence/background and asynchronous custom storage.
 void createClient('http://localhost:4000', undefined, { trailbase: { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' } } } } }, auth: { persistSession: true, autoRefreshToken: false, storageKey: 'owned', storage: { getItem: async () => null, setItem: async () => {}, removeItem: async () => {} } } });
 // @ts-expect-error storage read must return string/null, not parsed state

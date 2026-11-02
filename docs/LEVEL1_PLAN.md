@@ -8,6 +8,10 @@ Read [RESEARCH.md](RESEARCH.md) for verified documentation/source observations a
 
 [MVP_PLAN.md](MVP_PLAN.md) governs first delivery. Maintainer authorized CRUD plus self-service signup/persistent core password auth implementation. Phases B/C/D and applicable security/package work are active; Phase E and Phase F migration rehearsal move to [FUTURE_PLAN.md](FUTURE_PLAN.md). G5/G6 do not block CRUD/auth implementation. G1/G7 remain unresolved documented auth edge cases, not prerequisites for main implementation; preserve strict failures and do not claim a fix, workaround, compatibility exception, or signoff. No server patch/deployment/repin is authorized. Broader contract below is retained for future work; channel APIs are not in MVP.
 
+### Official-only decision supersedes private-parity continuation
+
+Mark selected official TrailBase0.35.8/JS0.14.3 with [documented auth limitations](OFFICIAL_AUTH_CONTRACT.md). Private native/SDK prototypes stay historical/private, outside active MVP dependencies; no adoption/deployment/publication or further parity work by default. Null signup user/session, native409 errors, no supported SDK resend/repair and unconfirmed default-global logout are accepted MVP boundaries, not fixed technical gates or release signoff. Historical test/approval requirements below remain evidence specifications, not instructions to restart a fork. Prepare only the focused global-logout issue draft for baba/parent; keep original demo/data/six containers/tailnet unchanged.
+
 ## 1. Release contract
 
 ### Application-facing subset
@@ -26,7 +30,7 @@ Supported constructor options: `db.schema: 'public'`, `global.fetch`, and the te
 
 ### Honest compatibility limits
 
-1. Signup returns null user/session on TrailBase because native registration supplies no user identity. **G1 approval is required.** The common application must only inspect signup success/error and explicitly log in after email verification.
+1. Signup returns null user/session on TrailBase because native registration supplies no user identity. **Accepted documented official-only MVP limitation; full compatibility/release signoff remains separate.** The common application must only inspect signup success/error and explicitly log in after email verification.
 2. Supported user fields are real `id` and `email` plus provable session fields (`access_token`, `refresh_token`, `token_type`, `expires_at`, `expires_in`, `user`). The narrow user type must not masquerade as a complete Supabase `User` with invented timestamps/metadata.
 3. The maintainer-approved G2 subset maps UUIDv4 columns, declared booleans, safe-integer Numbers, and declared text/null/default behavior explicitly. Unsupported large integers, implicit Date coercion, arbitrary BLOB/JSON operators, relation expansion, and unmapped fields are rejected; nullable/collation-sensitive ordering stays outside the portable domain. This is contract-direction approval, not G2 gate or SDK signoff.
 4. Default mutation result bodies can match; the maintainer-approved G3 direction preserves native 403 for missing/foreign rows versus reference 204/no-error/no-data for zero-row RLS writes, and preserves backend constraint-error details. Never blanket-normalize 403 or fake success to hide denied writes. The [approved configured-side-effect boundary](evidence/phase-a-g3-configured-side-effects-direction.json) promises one explicit primary-key operation, not a side-effect-free transaction: database triggers/FK cascades may affect additional or differently owned dependents. Owner-consistent dependency invariants belong in backend constraints, never SDK preflights/client loops. Direct owner rules remain mandatory and relationship queries remain deferred. This is direction approval, not G3 signoff.

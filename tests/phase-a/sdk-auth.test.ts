@@ -1,5 +1,10 @@
 import { it, expect } from 'vitest';
 import { randomUUID } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { DatabaseSync } from 'node:sqlite';
+import { verifyOwner, waitReady } from '../../scripts/harness.mjs';
+import { exec } from '../../scripts/tools.mjs';
 import { createClient, type AuthStorage } from '../../src/index.js';
 import { context, confirmEmail, supabase, nativeUuid, canonicalUuid, confirmedTrailUser, confirmedSupabaseUser } from './helpers.js';
 import { cleanupOwnedRows, withCleanup } from '../sdk-browser/cleanup.js';
@@ -152,3 +157,99 @@ it('L1-19/I19/C19/S08 real local/global refresh revocation, observable native gl
     async () => { await owner.client.logout(); await control.client.logout(); await reference.client.auth.signOut({ scope: 'local' }); },
   ]);
 }, 120000);
+
+const officialAuthMapping = { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' as const } } } } };
+
+it('L1-14/OA01 official0358 duplicate409 preserves pending identity/password; no fabricated user and original confirmation still works', async () => {
+  const env = await context(); expect(env.authVariant).toBe('stock');
+  const main = new DatabaseSync(resolve(env.directory, 'traildepot/data/main.db'), { readOnly: true });
+  const input = { email: `official-pending-${randomUUID()}@example.test`, password: `Fixture-${randomUUID()}-Aa1!` }, replacement = `Fixture-${randomUUID()}-Aa1!`;
+  let requests = 0;
+  const sdk = createClient(env.trailUrl, undefined, { trailbase: officialAuthMapping, auth: { persistSession: false, autoRefreshToken: false }, global: { fetch: (url, init) => { if (new URL(String(url)).pathname.endsWith('/register')) requests++; return fetch(url, { ...init, signal: AbortSignal.timeout(10000) }); } } });
+  const identity = () => main.prepare('SELECT * FROM _user WHERE unverified_email = ? OR email = ? ORDER BY id').all(input.email, input.email);
+  await withCleanup(async () => {
+    expect(await sdk.auth.signUp(input)).toEqual({ data: { user: null, session: null }, error: null });
+    const pending = identity(); expect(pending).toHaveLength(1);
+    const duplicate = await sdk.auth.signUp({ ...input, password: replacement });
+    expect(duplicate.error?.status).toBe(409); expect(duplicate.data).toEqual({ user: null, session: null }); expect(requests).toBe(2);
+    expect(identity()).toEqual(pending); expect((await sdk.auth.getSession()).data.session).toBeNull();
+    expect((await sdk.auth.signInWithPassword(input)).error?.status).toBe(401);
+    await confirmEmail(env, input.email);
+    const login = await sdk.auth.signInWithPassword(input); expect(login.error).toBeNull(); expect(login.data.user?.email).toBe(input.email);
+    expect((await sdk.auth.signInWithPassword({ ...input, password: replacement })).error?.status).toBe(401);
+    expect((await sdk.auth.getSession()).data.session?.user.id).toBe(login.data.user!.id);
+    const confirmed = identity(); expect(confirmed).toHaveLength(1); expect(confirmed[0]).toMatchObject({ id: pending[0].id, password_hash: pending[0].password_hash, email: input.email, unverified_email: null });
+  }, [async () => { expect((await sdk.auth.signOut({ scope: 'local' })).error).toBeNull(); }, async () => { main.close(); }]);
+}, 60000);
+
+it('L1-14/OA02 official0358 SMTP424 retains pending state; retry409 and resend200 are not successful recovery', async () => {
+  const env = await context(); expect(env.authVariant).toBe('stock');
+  const owner = JSON.parse(await readFile(resolve(env.directory, 'owner.json'), 'utf8'));
+  const project = verifyOwner(env.id, owner, await readFile(resolve(env.directory, 'supabase/config.toml'), 'utf8'));
+  const host = (await exec('docker', ['context', 'inspect', '--format', '{{.Endpoints.docker.Host}}'])).stdout.trim();
+  if (!host.startsWith('unix://') || process.env.DOCKER_HOST && !process.env.DOCKER_HOST.startsWith('unix://')) throw new Error('Owned SMTP fault requires local Docker');
+  const container = `supabase_inbucket_${project}`;
+  const main = new DatabaseSync(resolve(env.directory, 'traildepot/data/main.db'), { readOnly: true });
+  const input = { email: `official-smtp-${randomUUID()}@example.test`, password: `Fixture-${randomUUID()}-Aa1!` };
+  const sdk = createClient(env.trailUrl, undefined, { trailbase: officialAuthMapping, auth: { persistSession: false, autoRefreshToken: false }, global: { fetch: (url, init) => fetch(url, { ...init, signal: AbortSignal.timeout(10000) }) } });
+  const identity = () => main.prepare('SELECT * FROM _user WHERE unverified_email = ? OR email = ? ORDER BY id').all(input.email, input.email);
+  let control: Awaited<ReturnType<typeof confirmedTrailUser>> | undefined;
+  await withCleanup(async () => {
+    try {
+      expect((await exec('docker', ['inspect', '--format', '{{.State.Running}}', container])).stdout.trim()).toBe('true');
+      await exec('docker', ['stop', '--time', '1', container], { timeout: 15000 });
+      expect((await exec('docker', ['inspect', '--format', '{{.State.Running}}', container])).stdout.trim()).toBe('false');
+      const failed = await sdk.auth.signUp(input); expect(failed.error?.status).toBe(424); expect(failed.data).toEqual({ user: null, session: null });
+    } finally {
+      await exec('docker', ['start', container], { timeout: 15000 }); await waitReady(`${env.mailUrl}/api/v1/messages`, 10000);
+    }
+    const pending = identity(); expect(pending).toHaveLength(1); expect(pending[0]).toMatchObject({ email: null, unverified_email: input.email });
+    const retry = await sdk.auth.signUp(input); expect(retry.error?.status).toBe(409); expect(retry.data).toEqual({ user: null, session: null }); expect(identity()).toEqual(pending);
+    const resend = await fetch(new URL(`/api/auth/v1/verify_email/trigger?email=${encodeURIComponent(input.email)}`, env.trailUrl), { credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(10000) });
+    expect(resend.status).toBe(200); await resend.body?.cancel(); expect(identity()).toEqual(pending);
+    control = await confirmedTrailUser(env, 'official-smtp-control'); // Genuine delivered confirmation/login is the correlated healthy-mail barrier.
+    const mail = await fetch(`${env.mailUrl}/api/v1/search?query=${encodeURIComponent(`to:${input.email}`)}`, { signal: AbortSignal.timeout(10000) });
+    expect(mail.ok).toBe(true); expect((await mail.json()).messages).toHaveLength(0);
+    expect((await sdk.auth.signInWithPassword(input)).error?.status).toBe(401); expect((await sdk.auth.getSession()).data.session).toBeNull(); expect(identity()).toEqual(pending);
+  }, [async () => { if (control) await control.client.logout(); }, async () => { expect((await sdk.auth.signOut({ scope: 'local' })).error).toBeNull(); }, async () => { main.close(); }]);
+  // The unrecovered pending identity is intentionally not repaired; unconditional owned-fixture teardown removes it.
+}, 60000);
+
+it('L1-19/OA03 official0358 identical303 logout target cannot authenticate DELETE; invalid callers preserve complete state', async () => {
+  const env = await context(); expect(env.authVariant).toBe('stock');
+  const owner = await confirmedTrailUser(env, 'official-ack-owner'), sibling = await confirmedTrailUser(env, 'official-ack-control');
+  const second = createClient(env.trailUrl, undefined, { trailbase: officialAuthMapping, auth: { persistSession: false, autoRefreshToken: false } });
+  const main = new DatabaseSync(resolve(env.directory, 'traildepot/data/main.db'), { readOnly: true }), sessions = new DatabaseSync(resolve(env.directory, 'traildepot/data/session.db'), { readOnly: true });
+  const ownerId = Buffer.from(owner.user.id, 'base64url'), siblingId = Buffer.from(sibling.user.id, 'base64url');
+  const ownerSessions = () => sessions.prepare('SELECT * FROM _session WHERE user = ? ORDER BY id').all(ownerId);
+  const siblingSessions = () => sessions.prepare('SELECT * FROM _session WHERE user = ? ORDER BY id').all(siblingId);
+  const statements = { users: main.prepare('SELECT * FROM _user ORDER BY id'), rows: main.prepare('SELECT * FROM todos ORDER BY id'), audit: main.prepare('SELECT * FROM todo_audit ORDER BY audit_key') };
+  // The full stock suite retains genuine unsafe-integer fixtures: compare exact SQLite values, never coerce or omit those rows.
+  for (const statement of Object.values(statements)) statement.setReadBigInts(true);
+  const snapshot = () => ({ users: statements.users.all(), rows: statements.rows.all(), audit: statements.audit.all() });
+  const target = new URL('/api/health', env.trailUrl).href, url = new URL(`/api/auth/v1/logout?redirect_uri=${encodeURIComponent(target)}`, env.trailUrl);
+  const logout = (token?: string) => fetch(url, { credentials: 'omit', redirect: 'manual', headers: token ? { authorization: `Bearer ${token}` } : {}, signal: AbortSignal.timeout(10000) });
+  const ids = [nativeUuid(randomUUID()), nativeUuid(randomUUID())];
+  await withCleanup(async () => {
+    const login = await second.auth.signInWithPassword({ email: owner.email, password: owner.password }); expect(login.error).toBeNull();
+    for (const [index, user] of [owner, sibling].entries()) await user.client.records('todos').create({ id: ids[index], user_id: user.user.id, title: `official-ack-${randomUUID()}` });
+    const before = snapshot(), ownBefore = ownerSessions(), controlBefore = siblingSessions(); expect(ownBefore).toHaveLength(2); expect(controlBefore).toHaveLength(1);
+    for (const token of [undefined, 'invalid-not-a-jwt']) {
+      const response = await logout(token); expect(response.status).toBe(303); expect(response.headers.get('location')).toBe(target); await response.body?.cancel();
+      expect(ownerSessions()).toEqual(ownBefore); expect(siblingSessions()).toEqual(controlBefore); expect(snapshot()).toEqual(before);
+    }
+    const response = await logout(login.data.session!.access_token); expect(response.status).toBe(303); expect(response.headers.get('location')).toBe(target); await response.body?.cancel();
+    expect(ownerSessions()).toEqual([]); expect(siblingSessions()).toEqual(controlBefore); expect(snapshot()).toEqual(before);
+    for (const token of [owner.client.tokens()!.refresh_token!, login.data.session!.refresh_token]) {
+      const refresh = await fetch(new URL('/api/auth/v1/refresh', env.trailUrl), { method: 'POST', credentials: 'omit', redirect: 'error', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ refresh_token: token }), signal: AbortSignal.timeout(10000) });
+      expect(refresh.status).toBe(401); await refresh.body?.cancel();
+    }
+    const residual = await fetch(new URL('/api/records/v1/todos?limit=1&skip_cursor=true', env.trailUrl), { headers: { authorization: `Bearer ${login.data.session!.access_token}` }, credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(10000) });
+    expect(residual.status).toBe(200); await residual.body?.cancel(); expect(snapshot()).toEqual(before);
+  }, [
+    async () => { await cleanupOwnedRows(owner.client.records('todos'), owner.user.id, [ids[0]]); },
+    async () => { await cleanupOwnedRows(sibling.client.records('todos'), sibling.user.id, [ids[1]]); },
+    async () => { await owner.client.logout(); await sibling.client.logout(); expect((await second.auth.signOut({ scope: 'local' })).error).toBeNull(); expect(ownerSessions()).toEqual([]); expect(siblingSessions()).toEqual([]); },
+    async () => { main.close(); sessions.close(); },
+  ]);
+}, 60000);

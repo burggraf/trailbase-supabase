@@ -10,6 +10,10 @@ The linked discussion explains the motivation, not a verified specification. Res
 
 Read [docs/MVP_PLAN.md](docs/MVP_PLAN.md) and [docs/FUTURE_PLAN.md](docs/FUTURE_PLAN.md). Maintainer approved CRUD + password-auth MVP implementation and explicitly chose self-service signup/full persistent core password lifecycle. Build data slice first; do not keep expanding unrelated Phase A research. Realtime (L1-21–23/G5/G6), migration rehearsal (L1-25), and all other deferred features are future work. Preserve historical evidence/tests. Full applicable CRUD/auth security/tests remain mandatory. G1/G7 are unresolved documented auth edge cases, not prerequisites to main implementation; preserve failures and do not claim fixes, workarounds, compatibility exceptions or signoff. No server patch/deployment/repin, public submission or signoff is inferred. Earlier test-only approval language does not prohibit newly approved CRUD/auth implementation.
 
+### Official-only adoption decision (2026-11-02)
+
+Mark chose official TrailBase0.35.8/JS0.14.3 with documented auth limitations and continued CRUD/password-auth MVP work. This supersedes private-parity continuation plans: do not adopt/deploy/publish the private native fork or private SDK capability, and do not continue fork parity by default. Preserve prototypes as historical private evidence outside the active MVP path. Signup null-user/session, native409 conflicts, unavailable supported signup resend and unconfirmed global logout remain explicit limitations, never fabricated successes. This decision does not fix technical compatibility gates or sign off a release. Prepare a focused public-safe authenticated global-logout acknowledgement issue draft after verifying upstream templates/current source/duplicates; link existing signup#298 only as context. Baba/parent alone publishes; this executor must not file/comment externally. Keep the original official demo/data/six containers/tailnet unchanged.
+
 ## Scope guardrails
 
 - Implement only the minimal **Level 1 — Supabase-shaped TrailBase SDK** contract in `PLAN.md` unless the maintainer explicitly approves more.
