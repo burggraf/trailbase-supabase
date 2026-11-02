@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "Pinned Supabase reference R01-R06+R08 verified7/7 ataf883; both Nodes237/package4. Exact7cf CI reference6/supported SDK/legacy1/upgrade9 green, research red incl stock setup0. Private0358 focused native7/5, no deployment.",
+  "currentPhase": "Exact f39a0d6 CI: af883 reference7/supportedsDK/both Nodes237/package4/legacy1/upgrade9 passed; research stock112/6/browser60/6/candidates red. Prior7cf stock setup0 remains unresolved. Private0358 original corpus12/12, full SQLite core239+5 and CLI build pass; no deployment.",
   "lastSession": {
-    "state": "reference-token-rotation-verified-private-native-work-in-progress",
+    "state": "r08-pushed-exact-ci-audited-private-native-policy-candidate1-verified-work-continues",
     "sourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34",
     "evidence": "docs/evidence/auth-reference-r08-contracts-2026-11-02.json",
     "checks": [
@@ -36,6 +36,21 @@
       "originalCleanupInvoked": false,
       "sourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34"
     },
+    "exactPushedCi": {
+      "commit": "f39a0d6b49cd725df5ad4a428db8432bc7833eae",
+      "run": 41401170160,
+      "sourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34",
+      "reference": "7/7",
+      "supportedSdk": "passed",
+      "bothNodes": "237 units/4 offline package checks each; static passed",
+      "legacy": "1/1",
+      "upgrade": "9/9",
+      "stock": "setup ready;112 passed/6 failed, cleanup passed",
+      "research": "Candidate characterization9/1, SMTP0/1, browser60/6 remain strict red; names/statuses match prior7cf CI for these three scopes",
+      "overall": "failure",
+      "evidence": "docs/evidence/auth-reference-ci-41401170160.json",
+      "priorSetupCause": "Exact7cf stock supabase-start0-test failure remains UNRESOLVED. Downloaded direct exact job API log has no underlying startup cause; new successful setup is not a diagnosis or repair."
+    },
     "priorExactCi": {
       "commit": "7cf1838a442a60c7ec34df148dbf91cb6c5f0cee",
       "run": 41393488302,
@@ -52,17 +67,26 @@
     "privateNative": {
       "base": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
       "scope": "Private SQLite/password-auth prototype only, no live deployment",
-      "focused": {
-        "passed": 7,
-        "failed": 5,
-        "filtered": 225
+      "previousFocused": { "passed": 7, "failed": 5, "filtered": 225 },
+      "focusedOriginalCorpus": {
+        "passed": 12,
+        "failed": 0,
+        "filteredLibraryTests": 225,
+        "sourceDiffSha256": "206e73beeab832781c5476391a086c8660afb00e5f4e77221ea4a6dcd2feca3c"
       },
-      "proof": "Fresh raw/source/environment bindings retained privately; initial native2/6, then5/3,6/2,7/1; expanded resend/token/config corpus7/5. Compile failures preserved separately, not counted as runtime tests.",
-      "draft": "confirmation_delivery.draft.rs is not wired, compiled or verified; receipt schema/config field is present in private source",
+      "expandedFaultConfig": "Real TCP SMTP existing-pending signup/resend failure-preservation and recovery/password verification passes; config invalid-bound regression13/1 red then fixed in full suite",
+      "fullCore": { "libraryPassed": 239, "integrationTargetsPassed": 5, "failed": 0, "filtered": 0, "ignored": 0 },
+      "sourceDiffSha256": "593e1915009979725dfe3aacc55458bc3c23345aadafb1824f2235efc538dd69",
+      "cliBuild": "cargo build --locked -p trailbase-cli --no-default-features passed; preserved ELF SHA256818ae9d30317fd0ab294a1daf4b73b1fa139fa61426972f20789b7975aaf2ef1",
+      "proof": "Raw/source/environment/executable bindings retained privately. Historical2/6,5/3,6/2,7/1,expanded7/5 and compile failures preserved. Initial full225/12 stopped at shared old email-only Conflict assertion; exact email-only expectation becomes TooManyRequests, username conflicts/row counts/security assertions retained, then full239+5 passed.",
+      "draft": "confirmation_delivery.draft.rs remains an obsolete uncompiled draft; compiled and tested source is confirmation_delivery.rs with persistent receipt/cooldown/latest-token/consumption policy",
+      "evidence": "docs/evidence/private-current0358-policy-candidate-1.json",
+      "cleanup": "All100 logged full-suite temporary depots absent; owned TCP SMTP stopped and port rebound; no Docker project or original fixture cleanup",
       "missing": [
-        "Native private focused suite7 passed/5 strict failures;225 other native tests filtered, not full native coverage.",
-        "Private delivery-state helper is an uncompiled draft, not applied or verified.",
-        "Private SDK/real native HTTP SMTP/browser/race/security/coverage/release and authenticated global-logout work remain; no live custom deployment or maintainer signoff."
+        "Cancellation/contention/cross-process race, partial SMTP acceptance/commit failure, global collision/refusal and full real migration/upgrade/rollback proof remain adoption blockers.",
+        "Full workspace/default-feature/PG/WASM/GEOS/MCP release is not covered by the verified SQLite core selection.",
+        "Private SDK/new private CLI real HTTP SMTP/browser/security/coverage/release and authenticated global-logout work remain; no live custom deployment or maintainer signoff.",
+        "OSL-3.0 server external-deployment/source/attribution and security/rebase/release-maintenance decision is separate from MIT SDK approval."
       ]
     },
     "allJobsTerminal": true
@@ -2303,10 +2327,10 @@
     }
   ],
   "nextSteps": [
-    "Wire persistent native cooldown/resend/latest-token state to match the now-runtime-proven reference, preserving the five strict failures until actually fixed. Reuse private compiled base/provenance and regression tests; no live fork.",
-    "Validate configuration, original pending password/identity, failed-send token rollback, cancellation/contention/cross-process collision/refusal/upgrade safety; run full applicable native suite, not just focused tests.",
-    "Complete private SDK/real native HTTP SMTP and three-browser application proof, then authenticated global logout; only afterward present tested fork/build/migration/licensing/maintenance adoption tradeoffs.",
-    "Checkpoint the fresh R08 reference/code and exact prior CI audit after reviewed staging/checks; sourceaf883 has local7/7,237units/package4 each but no new pushed-SHA CI yet.",
+    "Continue private candidate1 from exact593e1915 diff and built ELF: add cancellation/contention/cross-process race, partial SMTP acceptance/commit-failure and collision/refusal/real migration/upgrade/rollback preservation proof; rerun full affected native suite after edits.",
+    "Integrate new private CLI real HTTP SMTP/shared contracts and private SDK truthfully, then packed app Chromium/Firefox/WebKit and authenticated global logout; official supported SDK CI is not private binary certification.",
+    "Keep exactf39 CI overall failure and prior7cf stock supabase-start0-test cause UNRESOLVED. Newstock112/6 setup success is not a diagnosis; add safe bounded diagnostics if setup blocks future runtime proof.",
+    "Review/checkpoint sanitized exact CI/native evidence only; keep private OSL source/diff/binaries/tools/raw logs/depots/backups out of root commits. Adoption/public submission remains a later concrete maintenance/licensing decision, not a routine engineering permission pause.",
     "Keep official demo/transient supervisor/data/backups/lock/exact18443/18444 scope untouched; clean only new owned fixtures."
   ],
   "previousRecoveryNextSteps": [

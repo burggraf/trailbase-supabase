@@ -1,0 +1,77 @@
+{
+  "scope": "PRIVATE current0358 SQLite/password-auth native policy candidate1; NOT stock behavior, public SDK implementation, live adoption or signoff",
+  "publicProjectCheckpoint": "f39a0d6b49cd725df5ad4a428db8432bc7833eae",
+  "referenceSourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34",
+  "baseCommit": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+  "privateSourceDiffSha256": "593e1915009979725dfe3aacc55458bc3c23345aadafb1824f2235efc538dd69",
+  "originalCorpus": {
+    "before": { "passed": 7, "failed": 5, "otherLibraryTestsFiltered": 225 },
+    "after": { "passed": 12, "failed": 0, "otherLibraryTestsFiltered": 225 },
+    "afterSourceDiffSha256": "206e73beeab832781c5476391a086c8660afb00e5f4e77221ea4a6dcd2feca3c",
+    "coverage": [
+      "Actual pending database identity/JSON/null session; no secret fields",
+      "Immediate retry429 with complete state preservation, configured post-cooldown retry reuses identity and original password/session state",
+      "Actual TCP SMTP rejection: new signup real500 and complete main/session rollback",
+      "Unknown/confirmed generic empty JSON resend with no auth writes or new mail",
+      "Genuine latest-token rotation, stale-link refusal with no writes, atomic confirmation/consumed replay refusal",
+      "Signed wrong subject/cross-pending address, all255 wrong token types, expiry and legitimate sibling/password/session preservation controls"
+    ]
+  },
+  "expandedRegression": {
+    "red": { "passed": 13, "failed": 1, "cause": "Configuration validation accepted out-of-bounds server cooldown" },
+    "additionalCoverage": [
+      "Actual ephemeral loopback TCP SMTP server accepts signup mail, rejects existing-pending replacement-password signup and public resend with real500; full main/session/receipt fingerprints unchanged, same pending ID and no new accepted mail; real recovery rotates token and actual original-password verification succeeds/replacement denied",
+      "Startup validation rejects i64 minimum/maximum, negative/zero/86401 cooldown; accepts unset and explicit1/86400 bounds"
+    ]
+  },
+  "fullNativeCore": {
+    "command": "cargo test --locked -p trailbase --no-default-features -- --test-threads=1",
+    "libraryPassed": 239,
+    "integrationTargetsPassed": 5,
+    "failed": 0,
+    "ignored": 0,
+    "filtered": 0,
+    "integrationTargets": ["admin_permissions_test", "core_integration_test", "public_dir_spa_test", "public_dir_test", "tls_test"],
+    "initialFullFailurePreserved": "225 passed/12 failed, all at the same shared old email-only retry Conflict assertion before downstream flows. Email-only now requires exact TooManyRequests; username/email+username collisions still require exact Conflict. Existing row-count/mail/password/session/permissions assertions preserved, then full239+5 passed.",
+    "notCovered": "Full workspace, official default-feature release, PG/WASM/GEOS/MCP; no such suite claim"
+  },
+  "build": {
+    "command": "cargo build --locked -p trailbase-cli --no-default-features",
+    "status": "passed",
+    "rustc": "1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "1.99.1 (5f94df478 2026-08-27)",
+    "binaryBytes": 522280048,
+    "binarySha256": "818ae9d30317fd0ab294a1daf4b73b1fa139fa61426972f20789b7975aaf2ef1",
+    "coreTestExecutableSha256": "0c83d1cd96a04e7c8da6e3a18f3fb25595c2eac5acabdf10eb706cdf7789fdb9",
+    "elf": "64-bit little-endian x86-64",
+    "versionOutput": "trail stale-v0.35.8-0-g05238c0 (stale-2026-10-30); sqlite: 3.54.1",
+    "versionLimit": "Upstream debug stale metadata is intentional and not a source identifier; exact base/diff/toolchain/lock/executable hashes bind this candidate",
+    "lockfilesUnchanged": true,
+    "tools": "Existing owned versioned/hash-verified LLVM18/Protobuf3.21 bundle; no host package/service installation",
+    "privateSourceLogsAndBinariesRetainedOnly": true
+  },
+  "cleanup": {
+    "loggedFullSuiteTemporaryDepots": 100,
+    "remainingLoggedDepots": 0,
+    "ownedSmtpListenerStoppedAndSamePortRebound": true,
+    "newDockerProjects": 0,
+    "originalFixtureCleanupInvoked": false
+  },
+  "implementedPolicy": [
+    "Persistent transactional successful-attempt timestamp/SHA256 token digest/consumption; no raw confirmation token stored in new receipt table",
+    "Four-hour default retained; explicit private cooldown field33 validated1..86400 seconds, no live policy change",
+    "SMTP construction/delivery cause retained privately under fixed public debug messages; capacity4 per process and5s SMTP wait per attempt",
+    "Signed subject/pending address plus latest unconsumed digest for receipt-bearing accounts; explicit receiptless legacy subject/address fallback until successful resend"
+  ],
+  "adoptionBlockers": [
+    "SMTP external acceptance cannot be rolled back; partial acceptance/disconnect, commit failure and request cancellation require more proof",
+    "Writer can be occupied5s per delivery; per-process capacity4 is not global distributed throttling. Queue latency, contention/cross-process races and cleanup remain unverified",
+    "Global cross-column reservation, ambiguous-depot refusal, full real migration/upgrade/rollback preservation remain incomplete; no identity repair/deletion",
+    "Existing native pending cleanup2h versus historical registration token4h remains unchanged/unverified long-age behavior",
+    "New private CLI real HTTP/SMTP contracts, private packed SDK/signup/resend, three-browser application/security/fault/coverage and authenticated global logout still missing",
+    "Server OSL-3.0 external-deployment/source/attribution and ongoing security/rebase/release-maintenance responsibilities need concrete review; SDK MIT approval is not server relicensing or adoption approval"
+  ],
+  "liveCustomDeployment": false,
+  "publicUpstreamSubmission": false,
+  "maintainerSignoff": false
+}
