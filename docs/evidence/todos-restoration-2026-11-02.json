@@ -1,0 +1,101 @@
+{
+  "scope": "Exact retained private demo restoration on official0358, NOT custom auth deployment/new API/signoff",
+  "status": "restored-independently-verified",
+  "verifiedAt": "2026-11-02T04:00:19.907Z",
+  "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658",
+  "officialNative": {
+    "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1\n",
+    "commit": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+    "binarySha256": "249ce40c394df2be2aa05fca36ae38cec103e50f138f49d86f6860b6bbfeda58",
+    "archiveSha256": "4b362e6f08da25b5349be317024260848c02fc336b4dea0c7b740e59d881622b",
+    "noNewMigration": true
+  },
+  "originalStop": {
+    "recordedStatus": "stopped",
+    "recordedReason": "requested-stop",
+    "statusRecordMtime": "2026-11-02T02:01:58.650Z",
+    "oldRecordedPidsAbsent": true,
+    "humanIntentActorAndExactSignalTimeUnknown": true,
+    "historyPreserved": true
+  },
+  "attempts": [
+    {
+      "status": "failed",
+      "stage": "native-same-depot-start",
+      "httpsExposed": false,
+      "reason": "Overbroad data invariant included derived sqlite_stat1/stat4; official startup PRAGMA optimize changed only those planner tables; all other table hashes unchanged",
+      "completeStoppedBackupRetained": true,
+      "noAutomaticRestore": true
+    },
+    {
+      "status": "passed",
+      "wholeCurrentStoppedBackupVerified": true,
+      "priorFailedAttemptRetained": true
+    }
+  ],
+  "data": {
+    "preExposureAccounts": 57,
+    "preExposureTasks": 8,
+    "notAssumedHistoricalSixTasks": true,
+    "allNonplannerMainAndSessionRowsPreserved": true,
+    "schemaHistorySequenceAuditAndSessionsPreserved": true,
+    "expectedPlannerExceptions": [
+      "main.db/sqlite_stat1",
+      "main.db/sqlite_stat4"
+    ],
+    "guardTests": {
+      "red": {
+        "passed": 3,
+        "failed": 1
+      },
+      "green": {
+        "passed": 4,
+        "failed": 0
+      },
+      "negativeControls": "Account/task/audit/session/schema-history/sequence hashes, nonplanner additions/deletions and unknown sqlite-prefixed tables must fail"
+    },
+    "sourceEvidence": "https://github.com/trailbaseio/trailbase/blob/05238c02b54aabb483e9f6224b5e014d40e88a5d/crates/extension/src/lib.rs#L61-L82",
+    "zeroDatabaseWritesClaimed": false
+  },
+  "supervisor": {
+    "unit": "trailbase-private-demo-32d6c1a05a9c-1793591823.service",
+    "guardian": 1128435,
+    "parentPid": 1,
+    "children": {
+      "native": 1128688,
+      "appServe": 1128707,
+      "inboxServe": 1128729
+    },
+    "transientOutsideT3Cgroup": true,
+    "noBootEnable": true,
+    "noAutomaticRestart": true,
+    "noForcedSigkill": true,
+    "completedLaunchProcessAbsent": true,
+    "guardianSurvivedLaunchExit": true,
+    "previousStopCauseNotAttributedToT3": true
+  },
+  "network": {
+    "app": "https://aspire.tailb03e.ts.net:18443/sdk-data/index.html",
+    "inbox": "https://aspire.tailb03e.ts.net:18444/",
+    "appTarget": "http://127.0.0.1:42231",
+    "inboxTarget": "http://127.0.0.1:38763",
+    "foregroundOnly": true,
+    "appReadyBeforeInboxStarted": true,
+    "validTls": true,
+    "anonymousRecordsStatus": 403,
+    "noFunnelAclFirewallExtraPortPersistentServeOrCertBypass": true
+  },
+  "preservation": {
+    "originalSixContainerIdsImagesPortsMountsUnchanged": true,
+    "assetsConfigMigrationsKeysUnchanged": true,
+    "allRetainedRecoverySnapshotsHashReverified": true,
+    "originalOwnerLineageAndLockRetainedWithAtomicSuccessorHandoff": true,
+    "noFixtureResetAccountRepairDeletionOrOriginalCleanup": true
+  },
+  "stopOnlyWhenAuthorized": "npm exec --offline --yes --package=node@22.23.2 -- node .runtime/demo-restore-20261102/restore2.mjs --stop; checks exact guardian argv/startTicks; foreground proxies first then native; never ordinary launcher/fixtures:cleanup against retained run",
+  "limits": [
+    "TLS/asset/health/authorization/supervisor checks, not fresh authenticated three-engine UI acceptance or physical-device proof",
+    "G1/G7 and full security/fault/coverage/release/maintainer signoff remain open",
+    "Any future rollback must first preserve all then-current accepted writes; never restore historical6-task snapshots automatically"
+  ]
+}

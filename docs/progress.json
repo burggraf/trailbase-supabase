@@ -1,10 +1,93 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "L1-26/L1-27 CI repair locally verified; exact push CI next, then exact-scope demo restoration and real Supabase auth contracts/private0358 prototype",
+  "currentPhase": "Independent pinned Supabase reference contracts verified6/6 at667267; Node237/package4 each; exact official0358 demo remains supervised; private0358 unmodified base built/provenance verified, native regressions next, no live fork adoption",
   "lastSession": {
+    "scope": "L1-14/R01-R07 independent pinned Supabase reference contracts, NOT native/SDK auth parity or signoff",
+    "state": "reference-contracts-local-verified-private0358-base-built-regressions-next",
+    "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+    "evidence": "docs/evidence/auth-reference-contracts-2026-11-02.json",
+    "plan": "docs/plans/2026-11-02-current0358-auth-prototype.md",
+    "checks": [
+      {
+        "node": "22.23.2",
+        "static": "passed",
+        "units": 237,
+        "unitStatus": "passed",
+        "packageChecks": 4,
+        "packageStatus": "passed",
+        "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27"
+      },
+      {
+        "node": "24.21.0",
+        "static": "passed",
+        "units": 237,
+        "unitStatus": "passed",
+        "packageChecks": 4,
+        "packageStatus": "passed",
+        "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27"
+      }
+    ],
+    "real": {
+      "passed": 6,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "L1-14/R01 reference NEW signup detected SMTP failure rolls back complete auth state, then returns real user and confirms after recovery",
+          "status": "passed"
+        },
+        {
+          "name": "L1-14/R02 reference EXISTING pending SMTP failure preserves identity/password/tokens and public resend genuinely recovers confirmation",
+          "status": "passed"
+        },
+        {
+          "name": "L1-14/R03 reference pending signup retry preserves original password and real identity, respecting configured public resend429 without busy retries",
+          "status": "passed"
+        },
+        {
+          "name": "L1-14/R04 reference public signup resend for UNKNOWN address is generic success with no auth rows or confirmation mail",
+          "status": "passed"
+        },
+        {
+          "name": "L1-14/R05 reference public signup resend for CONFIRMED address is generic success with unchanged complete auth state and no new confirmation mail",
+          "status": "passed"
+        },
+        {
+          "name": "L1-14/R06 reference aligned confirmation-enabled duplicate uses intentional placeholder, not a real new user or password/session overwrite",
+          "status": "passed"
+        }
+      ],
+      "cleanup": "passed"
+    },
+    "cleanup": {
+      "status": "passed",
+      "runId": "1793593801018-0c28730eb7cf",
+      "ownedProjectsRemoved": 1,
+      "verifiedPrivateFiles": 21,
+      "ownedTempTreeRemoved": true,
+      "originalCleanupInvoked": false,
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27"
+    },
+    "earlierExactCi": "232c9b6/run41383944896 supported green, legacy1/1 and upgrade9/9 green, both candidate scopes independently strict red; evidence remains source1c9012",
+    "demo": "Official0358 transient guardian1128435/native1128688/proxies1128707,1128729;57accounts/8tasks preserved before exposure; no custom binary/config/policy adoption",
+    "prototype": {
+      "base": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+      "state": "fresh independent exact source/submodules clean; unmodified SQLite/password-auth base built, standalone ELF/version/lock/hash verified and preserved; no changed native auth code or native tests yet",
+      "buildEvidence": "docs/evidence/private-current0358-base-build.json",
+      "buildAttempts": "Three preserved failures: missing libclang, matching stdarg resource headers, protoc. Final54s build passed using pinned/hash-verified owned LLVM18/Protobuf3.21 bundle, clean credential-env allowlist/private HOME; no host package installation or service changes. Debug stale- prefix is intentional upstream metadata, not provenance proof.",
+      "compiler": "rustc/cargo1.99.1",
+      "featureLimits": "--no-default-features; no WASM/PG/GEOS/MCP claims",
+      "liveDeployment": false
+    },
+    "missing": [
+      "Fresh exact pushed-SHA CI including new independent reference step",
+      "Private native/SDK regression implementation, exact build/diff/binary provenance and real app/race/security/fault proof",
+      "G1/G7, alternate reference configurations, full security/fault/coverage/release and maintainer signoff"
+    ]
+  },
+  "previousCiRepairAndRestorationSession": {
     "date": "2026-11-02",
     "scope": "Authorized focused CI repair and continuous management",
-    "status": "locally-verified-push-ci-pending",
+    "status": "exact-ci-verified-demo-restored-reference-contracts-next",
     "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658",
     "evidence": "docs/evidence/ci-legacy-profile-repair-summary.json",
     "plan": "docs/plans/2026-11-02-supabase-auth-parity.md",
@@ -80,21 +163,54 @@
       "originalCleanupInvoked": false
     },
     "operations": {
-      "observedAt": "2026-11-02T03:16:16.002Z",
-      "originalStatus": "stopped",
-      "recordedReason": "requested-stop",
-      "statusRecordMtime": "2026-11-02T02:01:58.650Z",
-      "priorFourPidsAbsent": true,
-      "retainedOwnerAndLock": true,
-      "actorOrIntentEstablished": false,
-      "restoration": "Newly authorized exact-scope restoration requires fresh stopped backup/data/binary/ownership/ports and supervisor checks; NOT yet performed."
+      "status": "restored-independently-verified",
+      "evidence": "docs/evidence/todos-restoration-2026-11-02.json",
+      "guardian": 1128435,
+      "children": {
+        "native": 1128688,
+        "appServe": 1128707,
+        "inboxServe": 1128729
+      },
+      "preExposureCounts": {
+        "accounts": 57,
+        "tasks": 8
+      },
+      "supervisor": {
+        "unit": "trailbase-private-demo-32d6c1a05a9c-1793591823.service",
+        "guardian": 1128435,
+        "parentPid": 1,
+        "children": {
+          "native": 1128688,
+          "appServe": 1128707,
+          "inboxServe": 1128729
+        },
+        "transientOutsideT3Cgroup": true,
+        "noBootEnable": true,
+        "noAutomaticRestart": true,
+        "noForcedSigkill": true,
+        "completedLaunchProcessAbsent": true,
+        "guardianSurvivedLaunchExit": true,
+        "previousStopCauseNotAttributedToT3": true
+      },
+      "oldStopActorUnknown": true,
+      "noCustomAuthDeployment": true
     },
     "approvedNextScope": "Observe exact pushed CI; restore exact existing private demo safely without custom deployment; strengthen real pinned Supabase contracts, then private current0358 native/SDK prototype and reliable authenticated logout. No routine approval pause; custom live adoption/upstream submission still requires concrete decision.",
     "missing": [
-      "Fresh exact pushed-SHA supported SDK CI, legacy guard, upgrade9 and independent candidate-scope execution",
       "G1 parity/reference contracts and current0358 private prototype; no custom live deployment authorized",
       "G7 authenticated logout acknowledgement, full security/fault/coverage/release and maintainer signoff"
-    ]
+    ],
+    "ci": {
+      "commit": "232c9b6f2c3b9b1349c7b2b34262fafa45397dc9",
+      "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41383944896",
+      "evidence": "docs/evidence/ci-legacy-profile-repair-ci-41383944896.json",
+      "supported": "passed",
+      "legacy": "1/1",
+      "upgrade": "9/9",
+      "candidateCharacterization": "9/1",
+      "candidateSmtp": "0/1",
+      "overall": "failure-strict-research"
+    }
   },
   "previousNativeUpgradeSession": {
     "scope": "Authorized official stable native0.35.8 repin/cache, existing supported acceptance and backed-up exact original demo rollout; not full SDK/release/CI signoff",
@@ -2121,11 +2237,11 @@
     }
   ],
   "nextSteps": [
-    "Review exact staging/privacy/source and normal-push verified CI/parity-doc checkpoint; inspect the exact new SHA CI, not historical passes.",
-    "Safely restore exact retained18443/18444 demo/inbox after complete current stopped backup and data/ownership/binary/port/supervisor checks. No account edits, fixture reset or access expansion; actor/intent of prior stop unproven.",
-    "Run dedicated pinned Supabase-reference initial SMTP rollback versus existing-pending password/identity contracts, signup user output/resend/throttles. Keep current stock0358 strict gaps visible.",
-    "Build/test private versioned0358 auth compatibility prototype if needed with exact source/diff/binary provenance and race/identity/password/token invariants. Do not deploy fork or submit publicly without adoption/maintenance decision.",
-    "Then establish reliable authenticated global logout acknowledgement with refresh-session versus access-JWT-expiry semantics, without303/health fiction."
+    "Review/privacy-check and normal-push verified reference contracts plus exact prior CI/restoration records; inspect the new exact CI while private work continues.",
+    "Use preserved provenance-bound unmodified private0358 base for native red/green regressions and explicit code/diff/binary proof; no host services/packages/pins changed.",
+    "Add native regression tests before private capability edits: actual signup ID, SMTP rollback versus pending preservation/resend/cooldown, signed-ID/address/expiry/token/collision invariants; preserve stock reds and measure queue/cancellation tradeoffs.",
+    "Then private SDK/shared-contract/three-browser real app and authenticated global-logout proof; only after tested diff/build/migration/maintenance/licensing tradeoffs request any live fork adoption or public submission decision.",
+    "Keep official demo transient supervisor/actual data/old stops/backups/lock/exact18443/18444 scope intact; clean only newly owned resources."
   ],
   "previousRecoveryNextSteps": [
     "Read ci-research-triage-41327240737.json: exact cc22730 CI supported SDK/Nodes passed, research red preserved. No Mark input needed. Recorded app/proxy PIDs/endpoints unavailable; diagnose ownership separately without restarting/removing original lock. Propose permanent synthetic SDK redirect coverage and safe assertion diagnostics before any implementation",

@@ -28,6 +28,7 @@
     "progress": "node scripts/progress.mjs",
     "test:unit": "node scripts/run-unit.mjs",
     "test:phase-a": "node scripts/run-phase-a.mjs",
+    "test:auth:reference": "node scripts/run-phase-a.mjs auth-reference",
     "test:cleanup": "node scripts/run-phase-a.mjs lifecycle",
     "test:phase-a:browser": "node scripts/run-phase-a.mjs browser",
     "fixtures:cleanup": "node scripts/cleanup.mjs",

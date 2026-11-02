@@ -1,0 +1,32 @@
+# Private current0358 password-auth compatibility prototype
+
+## Authority and boundaries
+
+Mark authorized continuous routine implementation/testing/verified commits and normal pushes, plus a **new private current0.35.8 native/SDK prototype** after real pinned-reference contracts. This supersedes the earlier missing0343-artifact engineering hold, not its historical failures. Live custom-server adoption or public upstream submission still requires a concrete maintenance/adoption decision. Keep the demo on official0358, its transient supervisor/actual data/lock/assets/keys/ports intact. Do not reconstruct or relabel the old prototype.
+
+The separate private source checkout must contain its own `.git` (reject parent-repository discovery), exact official base `05238c02b54aabb483e9f6224b5e014d40e88a5d`, pinned submodules, unchanged lockfiles, source/diff/compiler/feature/asset/binary hashes and build logs. Private SQLite/password-auth builds may explicitly omit unrelated WASM/PG/GEOS/MCP features; that is not an official full-feature release. Build-only tools stay in an owned versioned bundle, not host package/service configuration. Never overwrite the official live executable/cache or expose privileged credentials.
+
+## Reference measurement first
+
+L1-14/R01–R07 independent real contracts at source `6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27` prove detected new-user SMTP rollback versus existing pending preservation/recovery, real signup user/null session, public resend/cooldown, unknown/confirmed no-send, and aligned duplicate obfuscation. Exact results/evidence must remain separate from native capability proof. Alternate reference configurations, older-link invalidation and additional races still need explicit tests before broader parity claims.
+
+Do not invent supposedly real signup IDs; only use an actual newly inserted/preserved database identity. Intentional confirmed-duplicate placeholders are a different measured Supabase behavior. Preserve original pending passwords, no preconfirmation session, actionable detected-send failures and the distinction from accepted mail later lost. Never fix native409 by accepting it as compatible success, backdate throttle rows, fabricate500/SQLSTATE or infer logout success from303.
+
+## Bounded prototype contract
+
+1. Characterize current0358 source/build before edits. Add targeted native regression tests first. Keep official stock failures visible with their own version/source.
+2. Implement truthful JSON signup identity from the actual row, genuine pending retry/resend without password replacement, and detected new-signup SMTP rollback. Preserve existing HTML redirect/input/username boundaries outside the explicit email/password subset. SMTP failure must not strand new identities or alter an existing identity/password/session/token state.
+3. Bind confirmation to signed user ID **and** pending normalized address; wrong ID/address/type/expiry, ambiguous legacy identity and cross-column reservation collisions must fail closed with no unrelated writes. Evaluate old-link invalidation against actual reference behavior rather than assuming stateless tokens are equivalent.
+4. Respect configurable server cooldowns and persist/measure their semantics where necessary. Defaults/live policy are not silently shortened. New private settings are explicit, owned-profile-only. Unknown/confirmed resend remains generic without new confirmation. Do not create a race-prone client-side identity repair or unbounded lock/queue policy.
+5. Reuse SDK request/session/generation/redirect protections. Prototype signup/resend must expose only validated actual native output; official empty/opaque responses remain truthful gaps. No browser-admin lookup, secret delivery, invented identity, replay, global redirect-follow or unsupported-scope success.
+6. After G1 measurements, implement reliable **authenticated** global-logout acknowledgement: verified caller plus successful actual refresh-session revocation, explicit JSON/nonredirect acknowledgement, correct local storage/events. Prove two sessions and refresh revocation separately from already-issued access-JWT expiry; no invented immediate remote signout event.
+
+## Required evidence before adoption discussion
+
+- Native unit/property/race tests: reservation collisions, exact affected rows, original password/hash, real versus obfuscated IDs, signed-token subject/address/type/expiry and old-token controls, SMTP rollback/recovery/partial failure/cancellation, bounded cooldown, original failure propagation and cleanup.
+- SQLite/schema/migration tests on generated owned depots: reject ambiguous/incompatible state without identity repair/deletion; preserve complete existing user/password/session/data/audit/history columns and controls. New state/migrations must be explicit. No inference from absent0343 code or old successful tests.
+- Real HTTP/SMTP shared contracts against pinned Supabase and separate stock0358, with full database/session/mail postconditions and no successful-response mocks. Record every failed attempt and exact source/build binding.
+- Private packed SDK/real app on Chromium, Firefox and WebKit: genuine email confirmation, truthful signup result, persistence/refresh/logout, CRUD/permissions/errors and owned teardown. Keep ordinary data/security assertions intact. Full unit/type/static/package checks on both pinned Nodes, plus fault/race/secret/redirect/coverage/release layers as applicable; no layer waiver or signoff inferred.
+- Reviewable source diff, build reproducibility/provenance, private binary hashes, default/configuration changes, feature/build limitations, migration/rollback and SMTP-in-transaction contention/cancellation tradeoffs, operational ownership and fork/licensing/security-maintenance burden. Only then request a concrete adoption/public-submission decision. Until then: **no private binary on the live demo, no public compatibility/signoff claim**.
+
+The existing general test/release plan remains mandatory. A test-only/native prototype checkpoint is not an API release or maintainer signoff. Continue unblocked engineering; report genuine blockers rather than pausing at a plan-only milestone.

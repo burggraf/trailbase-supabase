@@ -34,6 +34,14 @@ it('L1-26/L1-27 CI independently executes current native upgrade safety and uplo
   expect(research).toContain('npm run test:cleanup'); expect(research).not.toContain('path: .runtime');
 });
 
+it('L1-14/R01-R06 independent pinned reference auth contracts execute strictly despite upstream native research failures', () => {
+  const research = readFileSync('.github/workflows/phase-a.yml', 'utf8').split('  real-backends:\n')[1]!;
+  const reference = research.split(/^      - /m).find(step => step.includes('npm run test:auth:reference'));
+  expect(reference).toBeDefined(); expect(reference).toContain('if: always()');
+  expect(reference).not.toMatch(/continue-on-error|\|\|\s*true/);
+  expect(reference!.match(/npm run/g)).toHaveLength(1);
+});
+
 it('L1-26/P26 CI cache warmup uses only exact currently locked runtime packages, not dependency upgrades', () => {
   const workflow = readFileSync('.github/workflows/phase-a.yml', 'utf8'), lock = JSON.parse(readFileSync('package-lock.json', 'utf8'));
   const references = [...workflow.matchAll(/npm cache add (\S+)/g)].map(match => match[1]); expect(references).toHaveLength(12);

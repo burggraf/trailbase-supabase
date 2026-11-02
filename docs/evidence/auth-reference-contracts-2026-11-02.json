@@ -1,0 +1,116 @@
+{
+  "scope": "L1-14/R01-R07 independent pinned Supabase reference contracts, NOT native/SDK auth parity or signoff",
+  "status": "verified-local-exact-push-ci-pending",
+  "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+  "parentCommit": "232c9b6f2c3b9b1349c7b2b34262fafa45397dc9",
+  "runId": "1793593801018-0c28730eb7cf",
+  "reference": {
+    "auth": "2.197.0",
+    "javascript": "2.117.2",
+    "nativeAlongside": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1",
+    "profile": "default",
+    "sourceFiles": [
+      {
+        "file": "signup.go",
+        "ref": "v2.197.0",
+        "githubBlob": "54c384e7e98348f2c4ace891275c37b0e34f5edb",
+        "sha256": "d1e91714c1057a6d2e7354d682b12c9d54d973a37f2c7f93f6cb6bad0dabfdf3"
+      },
+      {
+        "file": "resend.go",
+        "ref": "v2.197.0",
+        "githubBlob": "22bac98ece6a6bf916b7bdda08b21479796ea20c",
+        "sha256": "aea71c46bf24a5d8326872929d285495b66a11dff535f3f760fa2fa1de8afef5"
+      },
+      {
+        "file": "mail.go",
+        "ref": "v2.197.0",
+        "githubBlob": "ba9f80aa88416dd70f7ebcec393a10b1780d2822",
+        "sha256": "1ba60509401f6ec35b1cab59a98c9cffc8a641b2e74abcaf340f5dcda66f368c"
+      }
+    ]
+  },
+  "real": {
+    "passed": 6,
+    "failed": 0,
+    "tests": [
+      {
+        "name": "L1-14/R01 reference NEW signup detected SMTP failure rolls back complete auth state, then returns real user and confirms after recovery",
+        "status": "passed"
+      },
+      {
+        "name": "L1-14/R02 reference EXISTING pending SMTP failure preserves identity/password/tokens and public resend genuinely recovers confirmation",
+        "status": "passed"
+      },
+      {
+        "name": "L1-14/R03 reference pending signup retry preserves original password and real identity, respecting configured public resend429 without busy retries",
+        "status": "passed"
+      },
+      {
+        "name": "L1-14/R04 reference public signup resend for UNKNOWN address is generic success with no auth rows or confirmation mail",
+        "status": "passed"
+      },
+      {
+        "name": "L1-14/R05 reference public signup resend for CONFIRMED address is generic success with unchanged complete auth state and no new confirmation mail",
+        "status": "passed"
+      },
+      {
+        "name": "L1-14/R06 reference aligned confirmation-enabled duplicate uses intentional placeholder, not a real new user or password/session overwrite",
+        "status": "passed"
+      }
+    ],
+    "cleanup": "passed"
+  },
+  "proof": [
+    "Detected NEW signup SMTP500 returns null user/session and leaves complete users/identities/sessions/refresh/one-time-token/flow/audit row fingerprints unchanged; recovered signup returns actual stored real user, no session until real confirmation/password login.",
+    "EXISTING pending SMTP500 preserves exact identity/password/token/auth state; subsequent genuine public resend delivers confirmation and original-password login while replacement password fails.",
+    "Immediate public resend returns actual429 over_email_send_rate_limit under unchanged owned fixture1s setting; one configured cooldown wait then pending signup with replacement password preserves actual ID/original password; no busy retry/backdating/policy changes.",
+    "Unknown and confirmed signup resend use installed SDK with an observing real HTTP fetch (not a stub): actual200 empty-object body, null user/session, unchanged complete auth state and correlated no-new-mail postconditions.",
+    "Confirmed duplicate returns intentional placeholder/empty identities/null session, not a stored new user, with password/session/identity state unchanged and exactly one expected audit event."
+  ],
+  "unitGuard": "Generated fixture SQL/mail literals only; malformed/SQL/foreign/whitespace inputs rejected before wire",
+  "tdd": {
+    "standaloneCiStepRed": {
+      "passed": 5,
+      "failed": 1
+    },
+    "runnerBeforeRegistration": "Unknown Phase A suite, before any fixture/lock; independently owned checkout; raw/source evidence retained",
+    "note": "Existing valid fixture literal guard already passed; no invented boundary bug or extra behavior fix."
+  },
+  "nodes": [
+    {
+      "node": "22.23.2",
+      "static": "passed",
+      "units": 237,
+      "unitStatus": "passed",
+      "packageChecks": 4,
+      "packageStatus": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27"
+    },
+    {
+      "node": "24.21.0",
+      "static": "passed",
+      "units": 237,
+      "unitStatus": "passed",
+      "packageChecks": 4,
+      "packageStatus": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27"
+    }
+  ],
+  "ownedCleanup": {
+    "status": "passed",
+    "runId": "1793593801018-0c28730eb7cf",
+    "ownedProjectsRemoved": 1,
+    "verifiedPrivateFiles": 21,
+    "ownedTempTreeRemoved": true,
+    "originalCleanupInvoked": false,
+    "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27"
+  },
+  "limits": [
+    "Alternate Supabase confirmation/autoconfirm configurations remain untested here.",
+    "Older confirmation-link invalidation, additional concurrent/cancellation/partial-acceptance SMTP and token/race controls remain required.",
+    "No native/SDK runtime implementation change or public resend support; official0358 null-user/pending409/SMTP/global-logout gaps remain visible.",
+    "No new three-browser auth application, physical-device, full security/fault/coverage/release or maintainer signoff inferred.",
+    "SMTP accepted and later lost/spam is not detected failure; transaction rollback cannot retract externally accepted mail."
+  ]
+}

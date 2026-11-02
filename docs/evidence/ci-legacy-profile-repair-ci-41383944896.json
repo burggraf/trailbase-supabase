@@ -1,0 +1,280 @@
+{
+  "scope": "Exact pushed CI repair audit; NOT compatibility/release or G1/G7 signoff",
+  "sourceSha256": "1c9012a7cff856897b066c54fd969f628e00a109bba9065c02e966cf9186d658",
+  "commit": "232c9b6f2c3b9b1349c7b2b34262fafa45397dc9",
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41383944896",
+  "status": "complete-supported-and-repaired-guards-pass-strict-research-fails",
+  "overallCi": "failure",
+  "jobs": {
+    "node22": "success",
+    "node24": "success",
+    "supportedSdk": "success",
+    "research": "failure"
+  },
+  "artifacts": [
+    {
+      "file": "phase-a-real-backends-sanitized/native-upgrade/latest.json",
+      "scope": "Owned generated native release fresh/upgrade/complete backup/restore and destructive-migration characterization; NOT production adoption or release signoff",
+      "status": "passed",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "phase-a-real-backends-sanitized/phase-a/1793590625603-c28bba68ad69.json",
+      "scope": "all",
+      "status": "failed",
+      "passed": 112,
+      "failed": 6,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "phase-a-real-backends-sanitized/phase-a/1793590843974-ba67889a11b2.json",
+      "scope": "expiry",
+      "status": "passed",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "phase-a-real-backends-sanitized/phase-a/1793591008681-1c75050f4d6a.json",
+      "scope": "characterization",
+      "status": "failed",
+      "passed": 9,
+      "failed": 1,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "phase-a-real-backends-sanitized/phase-a/1793591049276-f4d3feedadba.json",
+      "scope": "smtp",
+      "status": "failed",
+      "passed": 0,
+      "failed": 1,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "phase-a-real-backends-sanitized/phase-a/1793591086641-c64656b6ac0f.json",
+      "scope": "auth-migration",
+      "status": "passed",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "selectedProfile": "legacy-upgrade",
+      "version": "trail v0.34.3-0-geab50393 (2026-10-02)\nsqlite: 3.53.2"
+    },
+    {
+      "file": "phase-a-real-backends-sanitized/phase-a/1793591169886-1be7508e10ba.json",
+      "scope": "browser",
+      "status": "failed",
+      "passed": 60,
+      "failed": 6,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "phase-a-real-backends-sanitized/phase-a/1793591589847-0ec89eada1c1.json",
+      "scope": "lifecycle",
+      "status": "passed",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "phase-a-unit-node-22.23.2/sdk-package/latest.json",
+      "scope": "Focused private SDK data tarball/clean Node consumer check; NOT full package/backend/browser/release verification or signoff",
+      "status": "passed",
+      "checks": 4,
+      "cleanup": "passed"
+    },
+    {
+      "file": "phase-a-unit-node-22.23.2/unit/latest.json",
+      "scope": "Phase A harness unit/traceability checks, NOT SDK coverage/signoff",
+      "status": "passed",
+      "passed": 235,
+      "failed": 0
+    },
+    {
+      "file": "phase-a-unit-node-24.21.0/sdk-package/latest.json",
+      "scope": "Focused private SDK data tarball/clean Node consumer check; NOT full package/backend/browser/release verification or signoff",
+      "status": "passed",
+      "checks": 4,
+      "cleanup": "passed"
+    },
+    {
+      "file": "phase-a-unit-node-24.21.0/unit/latest.json",
+      "scope": "Phase A harness unit/traceability checks, NOT SDK coverage/signoff",
+      "status": "passed",
+      "passed": 235,
+      "failed": 0
+    },
+    {
+      "file": "sdk-crud-auth-sanitized/phase-a/1793590629561-8ee6061845ff.json",
+      "scope": "sdk-auth",
+      "status": "passed",
+      "passed": 3,
+      "failed": 0,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "sdk-crud-auth-sanitized/phase-a/1793590688812-1c8ec0d376d2.json",
+      "scope": "sdk-refresh",
+      "status": "passed",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "sdk-crud-auth-sanitized/phase-a/1793590916420-4b18467cb66d.json",
+      "scope": "sdk-data",
+      "status": "passed",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "sdk-crud-auth-sanitized/phase-a/1793590963639-bbb2bc81089c.json",
+      "scope": "database",
+      "status": "passed",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "sdk-crud-auth-sanitized/phase-a/1793591001881-4cc378ddc38e.json",
+      "scope": "constraints",
+      "status": "passed",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "sdk-crud-auth-sanitized/phase-a/1793591038821-bb9159ce3b5e.json",
+      "scope": "sdk-browser",
+      "status": "passed",
+      "passed": 15,
+      "failed": 0,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "sdk-crud-auth-sanitized/phase-a/1793591158113-8c1d137194aa.json",
+      "scope": "lifecycle",
+      "status": "passed",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "selectedProfile": "default",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    },
+    {
+      "file": "sdk-crud-auth-sanitized/todos/1793591123525-e1c8619d843e.json",
+      "scope": "Owned local todos launcher readiness and shutdown; NOT browser/compatibility/release signoff",
+      "status": "passed",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "version": "trail v0.35.8-0-g05238c02 (2026-10-30)\nsqlite: 3.54.1"
+    }
+  ],
+  "comparisonsWithPreviousFailedRun": [
+    {
+      "suite": "all",
+      "failedCaseNamesAndStatusesUnchanged": true,
+      "failedCases": [
+        {
+          "name": "L1-27 G1/S04 real SMTP outage reports failure, creates no session, and distinguishes native retry from reference recovery",
+          "status": "failed"
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late refresh response must not restore a locally logged-out client",
+          "status": "failed"
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late status response must not restore a locally logged-out client",
+          "status": "failed"
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference unawaited async hydration must not notify recovered A after genuine newer B login",
+          "status": "failed"
+        },
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native unconfirmed duplicate keeps the original password and requires real confirmation",
+          "status": "failed"
+        },
+        {
+          "name": "L1-27/S01/S07 native header set at permissive foreign origin, NOT a logout acknowledgement strategy raw Fetch redirect follow must not export native credentials to permissive receiver",
+          "status": "failed"
+        }
+      ]
+    },
+    {
+      "suite": "browser",
+      "failedCaseNamesAndStatusesUnchanged": true,
+      "failedCases": [
+        {
+          "name": "L1-27/G7/S08 reference unawaited async hydration must not notify recovered A after newer B login [chromium]",
+          "status": "failed"
+        },
+        {
+          "name": "L1-27/G7/S08 reference unawaited async hydration must not notify recovered A after newer B login [firefox]",
+          "status": "failed"
+        },
+        {
+          "name": "L1-27/G7/S08 reference unawaited async hydration must not notify recovered A after newer B login [webkit]",
+          "status": "failed"
+        },
+        {
+          "name": "L1-27/S01/S07 raw Fetch redirect follow must not export native headers to permissive foreign receiver [chromium]",
+          "status": "failed"
+        },
+        {
+          "name": "L1-27/S01/S07 raw Fetch redirect follow must not export native headers to permissive foreign receiver [firefox]",
+          "status": "failed"
+        },
+        {
+          "name": "L1-27/S01/S07 raw Fetch redirect follow must not export native headers to permissive foreign receiver [webkit]",
+          "status": "failed"
+        }
+      ]
+    },
+    {
+      "suite": "characterization",
+      "failedCaseNamesAndStatusesUnchanged": true,
+      "failedCases": [
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native unconfirmed duplicate keeps the original password and requires real confirmation",
+          "status": "failed"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "All20 reports match tested source; current candidate characterization and SMTP executed independently and failed strictly with cleanup.",
+    "Legacy profile actual0.34.3 refusal1/1 and separately current0.35.8 upgrade9/9 pass; full supported SDK job passes.",
+    "Stock/browser/candidate-characterization failed names/statuses match prior CI; raw current CI runtime errors are not exported and UNCLASSIFIED is not cause proof.",
+    "G1 user-output/SMTP/resend/duplicate/throttle and G7 authenticated logout remain unapproved gaps; full security/fault/coverage/release/maintainer signoff remains missing."
+  ]
+}

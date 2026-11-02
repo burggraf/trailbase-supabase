@@ -116,6 +116,9 @@ jobs:
       - name: Investigational candidate / strict SMTP recovery
         if: always()
         run: npm run test:phase-a -- smtp --auth-mitigation
+      - name: Independent pinned Supabase auth reference contracts
+        if: always()
+        run: npm run test:auth:reference
       - name: LEGACY0.34.3 owned-depot auth migration preflight rollback
         if: always()
         run: npm run test:phase-a -- auth-migration
