@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest';
+import { assertLocalUrl } from '../../scripts/harness.mjs';
 import { confirmEmail, supabase, verificationLink, type Context } from '../phase-a/helpers.js';
 import { account, authSnapshot, confirmationCooldown, identity, mailCount, observedResendClient, referenceContext, replacementPassword, withSmtpStopped } from './helpers.js';
 
@@ -110,4 +111,24 @@ it('L1-14/R06 reference aligned confirmation-enabled duplicate uses intentional 
   await deliveryBarrier(env); expect(await mailCount(env, credentials.email)).toBe(mailBefore);
   const invalid = await supabase(env).auth.signInWithPassword({ email: credentials.email, password: wrong }); expect(invalid.error?.code).toBe('invalid_credentials');
   const original = await supabase(env).auth.signInWithPassword(credentials); expect(original.error).toBeNull(); expect(original.data.user?.id).toBe(first.user.id);
+}, 60000);
+
+it('L1-14/R08 reference successful public resend invalidates the older genuine confirmation link without auth writes, latest link confirms original identity/password', async () => {
+  const env = await referenceContext(), credentials = identity('older-link'), first = await signup(env, credentials);
+  const older = await verificationLink(env, credentials.email);
+  await confirmationCooldown(env);
+  const resend = await supabase(env).auth.resend({ type: 'signup', email: credentials.email });
+  expect(resend.error).toBeNull(); expect(resend.data).toEqual({ user: null, session: null });
+  const latest = await verificationLink(env, credentials.email); expect(latest === older).toBe(false);
+  const before = await authSnapshot(env);
+  assertLocalUrl(older, env.origins);
+  const rejected = await fetch(older, { redirect: 'manual', signal: AbortSignal.timeout(5000) });
+  expect(rejected.status).toBe(303);
+  const location = rejected.headers.get('location'); expect(location === null).toBe(false);
+  const target = new URL(location!, older); assertLocalUrl(target.href, env.origins);
+  const error = new URLSearchParams(target.hash.slice(1)).get('error_code') ?? target.searchParams.get('error_code');
+  expect(error).toBe('otp_expired');
+  expect(await authSnapshot(env)).toEqual(before); expect((await account(env, credentials.email))?.confirmed).toBe(false);
+  expect((await first.client.auth.getSession()).data.session).toBeNull();
+  await provePasswordAfterRealConfirmation(env, credentials, replacementPassword(), first.user.id);
 }, 60000);

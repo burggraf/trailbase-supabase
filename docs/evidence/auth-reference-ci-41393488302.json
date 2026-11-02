@@ -1,0 +1,314 @@
+{
+  "scope": "Exact pushed auth-reference checkpoint CI audit, NOT overall green, native prototype parity or signoff",
+  "commit": "7cf1838a442a60c7ec34df148dbf91cb6c5f0cee",
+  "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+  "run": {
+    "id": 41393488302,
+    "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41393488302",
+    "status": "completed",
+    "conclusion": "failure"
+  },
+  "jobs": [
+    {
+      "name": "Static, units and packed consumer / Node 22.23.2",
+      "id": 125109711245,
+      "conclusion": "success"
+    },
+    {
+      "name": "Static, units and packed consumer / Node 24.21.0",
+      "id": 125109711417,
+      "conclusion": "success"
+    },
+    {
+      "name": "Real backends / browser infrastructure / cleanup",
+      "id": 125109886665,
+      "conclusion": "failure"
+    },
+    {
+      "name": "Focused SDK CRUD-auth / real fixtures / packed browsers",
+      "id": 125109886690,
+      "conclusion": "success"
+    }
+  ],
+  "independentReference": {
+    "runId": "1793597302985-a99eac9018ae",
+    "passed": 6,
+    "failed": 0,
+    "cleanup": "passed",
+    "actualStrictStep": "success despite prior candidate characterization/SMTP failures"
+  },
+  "reports": [
+    {
+      "artifact": "phase-a-real-backends-sanitized/native-upgrade/latest.json",
+      "suite": "Owned generated native release fresh/upgrade/complete backup/restore and destructive-migration characterization; NOT production adoption or release signoff",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597388529-3a63fefa1df5",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27"
+    },
+    {
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793597029235-88c8e4f20ea9.json",
+      "suite": "all",
+      "status": "failed",
+      "node": "v22.23.2",
+      "runId": "1793597029235-88c8e4f20ea9",
+      "nativeServerProfile": "default",
+      "passed": 0,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "supabase-start"
+    },
+    {
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793597056145-70805f6b17fc.json",
+      "suite": "expiry",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597056145-70805f6b17fc",
+      "nativeServerProfile": "default",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793597223006-d21a6d5a9b26.json",
+      "suite": "characterization",
+      "status": "failed",
+      "node": "v22.23.2",
+      "runId": "1793597223006-d21a6d5a9b26",
+      "nativeServerProfile": "default",
+      "passed": 9,
+      "failed": 1,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793597264116-39904107763f.json",
+      "suite": "smtp",
+      "status": "failed",
+      "node": "v22.23.2",
+      "runId": "1793597264116-39904107763f",
+      "nativeServerProfile": "default",
+      "passed": 0,
+      "failed": 1,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793597302985-a99eac9018ae.json",
+      "suite": "auth-reference",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597302985-a99eac9018ae",
+      "nativeServerProfile": "default",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793597350023-3b65094566cc.json",
+      "suite": "auth-migration",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597350023-3b65094566cc",
+      "nativeServerProfile": "legacy-upgrade",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793597435752-2e9b4a518c91.json",
+      "suite": "browser",
+      "status": "failed",
+      "node": "v22.23.2",
+      "runId": "1793597435752-2e9b4a518c91",
+      "nativeServerProfile": "default",
+      "passed": 60,
+      "failed": 6,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793597856652-e13b6a0c3795.json",
+      "suite": "lifecycle",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597856652-e13b6a0c3795",
+      "nativeServerProfile": "default",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "phase-a-unit-node-22.23.2/sdk-package/latest.json",
+      "suite": "Focused private SDK data tarball/clean Node consumer check; NOT full package/backend/browser/release verification or signoff",
+      "status": "passed",
+      "node": "v22.23.2",
+      "checks": 4,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27"
+    },
+    {
+      "artifact": "phase-a-unit-node-22.23.2/unit/latest.json",
+      "suite": "Phase A harness unit/traceability checks, NOT SDK coverage/signoff",
+      "status": "passed",
+      "node": "v22.23.2",
+      "passed": 237,
+      "failed": 0,
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27"
+    },
+    {
+      "artifact": "phase-a-unit-node-24.21.0/sdk-package/latest.json",
+      "suite": "Focused private SDK data tarball/clean Node consumer check; NOT full package/backend/browser/release verification or signoff",
+      "status": "passed",
+      "node": "v24.21.0",
+      "checks": 4,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27"
+    },
+    {
+      "artifact": "phase-a-unit-node-24.21.0/unit/latest.json",
+      "suite": "Phase A harness unit/traceability checks, NOT SDK coverage/signoff",
+      "status": "passed",
+      "node": "v24.21.0",
+      "passed": 237,
+      "failed": 0,
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27"
+    },
+    {
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793596940879-71557976a88f.json",
+      "suite": "sdk-auth",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793596940879-71557976a88f",
+      "nativeServerProfile": "default",
+      "passed": 3,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793597006398-b33080bfcc13.json",
+      "suite": "sdk-refresh",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597006398-b33080bfcc13",
+      "nativeServerProfile": "default",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793597232891-5f9dd98606e2.json",
+      "suite": "sdk-data",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597232891-5f9dd98606e2",
+      "nativeServerProfile": "default",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793597278290-8e2f0a70ca43.json",
+      "suite": "database",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597278290-8e2f0a70ca43",
+      "nativeServerProfile": "default",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793597316251-109a72241456.json",
+      "suite": "constraints",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597316251-109a72241456",
+      "nativeServerProfile": "default",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793597352347-38c1b73252ef.json",
+      "suite": "sdk-browser",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597352347-38c1b73252ef",
+      "nativeServerProfile": "default",
+      "passed": 15,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793597466150-881dc7acbda8.json",
+      "suite": "lifecycle",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597466150-881dc7acbda8",
+      "nativeServerProfile": "default",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    },
+    {
+      "artifact": "sdk-crud-auth-sanitized/todos/1793597431853-e12236d94259.json",
+      "suite": "Owned local todos launcher readiness and shutdown; NOT browser/compatibility/release signoff",
+      "status": "passed",
+      "node": "v22.23.2",
+      "runId": "1793597431853-e12236d94259",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "setupStage": "ready"
+    }
+  ],
+  "researchFailures": {
+    "stockAll": {
+      "runId": "1793597029235-88c8e4f20ea9",
+      "status": "failed",
+      "setupStage": "supabase-start",
+      "testsExecuted": 0,
+      "cleanup": "passed",
+      "cause": "unproven; sanitized report contains no raw runtime stack, no setupImageInventory or proof of backend test assertion execution"
+    },
+    "candidateCharacterization": "9 passed /1 failed; independently executed strictly",
+    "candidateSmtp": "0 passed /1 failed; independently executed strictly",
+    "browser": "60 passed /6 failed; research, not supported SDK-browser job"
+  },
+  "limits": [
+    "Stock all setup failure is a failure, not a skip or evidence that its old assertions ran; preserve prior0358 strict failures separately.",
+    "Supported SDK job success/reference6/native-upgrade9/legacy1 do not make research CI green or constitute full compatibility/security/release/maintainer signoff.",
+    "No current private native code/binary was uploaded, deployed or certified by this public-code CI."
+  ]
+}

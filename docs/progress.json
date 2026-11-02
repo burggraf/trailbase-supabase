@@ -1,7 +1,73 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "Independent pinned Supabase reference contracts verified6/6 at667267; Node237/package4 each; exact official0358 demo remains supervised; private0358 unmodified base built/provenance verified, native regressions next, no live fork adoption",
+  "currentPhase": "Pinned Supabase reference R01-R06+R08 verified7/7 ataf883; both Nodes237/package4. Exact7cf CI reference6/supported SDK/legacy1/upgrade9 green, research red incl stock setup0. Private0358 focused native7/5, no deployment.",
   "lastSession": {
+    "state": "reference-token-rotation-verified-private-native-work-in-progress",
+    "sourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34",
+    "evidence": "docs/evidence/auth-reference-r08-contracts-2026-11-02.json",
+    "checks": [
+      {
+        "node": "22.23.2",
+        "static": "passed",
+        "units": 237,
+        "packageChecks": 4,
+        "sourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34"
+      },
+      {
+        "node": "24.21.0",
+        "static": "passed",
+        "units": 237,
+        "packageChecks": 4,
+        "sourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34"
+      }
+    ],
+    "real": {
+      "runId": "1793600088003-4f91f087f155",
+      "passed": 7,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    "ownedCleanup": {
+      "status": "passed",
+      "runId": "1793600088003-4f91f087f155",
+      "ownedProjectsRemoved": 1,
+      "verifiedPrivateFiles": 21,
+      "ownedTempTreeRemoved": true,
+      "originalCleanupInvoked": false,
+      "sourceSha256": "af883609c40120aaedbe99cd38909c135a3202052508baf42b3f5efd64fa4c34"
+    },
+    "priorExactCi": {
+      "commit": "7cf1838a442a60c7ec34df148dbf91cb6c5f0cee",
+      "run": 41393488302,
+      "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
+      "independentReference": "6/6",
+      "supportedSdk": "passed",
+      "bothNodes": "237 units /4 package checks each passed",
+      "legacy": "1/1",
+      "upgrade": "9/9",
+      "overall": "failure",
+      "stockAll": "supabase-start setup failure /0 tests /cleanup passed; cause unproven",
+      "evidence": "docs/evidence/auth-reference-ci-41393488302.json"
+    },
+    "privateNative": {
+      "base": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+      "scope": "Private SQLite/password-auth prototype only, no live deployment",
+      "focused": {
+        "passed": 7,
+        "failed": 5,
+        "filtered": 225
+      },
+      "proof": "Fresh raw/source/environment bindings retained privately; initial native2/6, then5/3,6/2,7/1; expanded resend/token/config corpus7/5. Compile failures preserved separately, not counted as runtime tests.",
+      "draft": "confirmation_delivery.draft.rs is not wired, compiled or verified; receipt schema/config field is present in private source",
+      "missing": [
+        "Native private focused suite7 passed/5 strict failures;225 other native tests filtered, not full native coverage.",
+        "Private delivery-state helper is an uncompiled draft, not applied or verified.",
+        "Private SDK/real native HTTP SMTP/browser/race/security/coverage/release and authenticated global-logout work remain; no live custom deployment or maintainer signoff."
+      ]
+    },
+    "allJobsTerminal": true
+  },
+  "previousSupabaseReferenceSession": {
     "scope": "L1-14/R01-R07 independent pinned Supabase reference contracts, NOT native/SDK auth parity or signoff",
     "state": "reference-contracts-local-verified-private0358-base-built-regressions-next",
     "sourceSha256": "6672672740bace73328ed0fbb8cf1ac6b1fd72c6ce0e886ff943b34e9b207d27",
@@ -2237,11 +2303,11 @@
     }
   ],
   "nextSteps": [
-    "Review/privacy-check and normal-push verified reference contracts plus exact prior CI/restoration records; inspect the new exact CI while private work continues.",
-    "Use preserved provenance-bound unmodified private0358 base for native red/green regressions and explicit code/diff/binary proof; no host services/packages/pins changed.",
-    "Add native regression tests before private capability edits: actual signup ID, SMTP rollback versus pending preservation/resend/cooldown, signed-ID/address/expiry/token/collision invariants; preserve stock reds and measure queue/cancellation tradeoffs.",
-    "Then private SDK/shared-contract/three-browser real app and authenticated global-logout proof; only after tested diff/build/migration/maintenance/licensing tradeoffs request any live fork adoption or public submission decision.",
-    "Keep official demo transient supervisor/actual data/old stops/backups/lock/exact18443/18444 scope intact; clean only newly owned resources."
+    "Wire persistent native cooldown/resend/latest-token state to match the now-runtime-proven reference, preserving the five strict failures until actually fixed. Reuse private compiled base/provenance and regression tests; no live fork.",
+    "Validate configuration, original pending password/identity, failed-send token rollback, cancellation/contention/cross-process collision/refusal/upgrade safety; run full applicable native suite, not just focused tests.",
+    "Complete private SDK/real native HTTP SMTP and three-browser application proof, then authenticated global logout; only afterward present tested fork/build/migration/licensing/maintenance adoption tradeoffs.",
+    "Checkpoint the fresh R08 reference/code and exact prior CI audit after reviewed staging/checks; sourceaf883 has local7/7,237units/package4 each but no new pushed-SHA CI yet.",
+    "Keep official demo/transient supervisor/data/backups/lock/exact18443/18444 scope untouched; clean only new owned fixtures."
   ],
   "previousRecoveryNextSteps": [
     "Read ci-research-triage-41327240737.json: exact cc22730 CI supported SDK/Nodes passed, research red preserved. No Mark input needed. Recorded app/proxy PIDs/endpoints unavailable; diagnose ownership separately without restarting/removing original lock. Propose permanent synthetic SDK redirect coverage and safe assertion diagnostics before any implementation",
