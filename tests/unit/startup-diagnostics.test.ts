@@ -7,7 +7,8 @@ const project: (error: unknown, observations?: unknown) => any = typeof candidat
 
 it('L1-27/D01 startup evidence preserves exit/owned container facts without inventing a cause', () => {
   const result = project({ code: 1, signal: null, killed: false }, { supabase_auth: { status: 'exited', health: 'unhealthy', exitCode: 137, oomKilled: true, restartCount: 2 } });
-  expect(result).toEqual({ stage: 'supabase-start', cause: 'not-established', exitCode: 1, signal: null, killed: false, services: [
+  expect(result).toEqual({ stage: 'supabase-start', cause: 'not-established', exitCode: 1, signal: null, killed: false,
+    command: { kind: 'nonzero-exit', stdout: 'unavailable', stderr: 'unavailable', progress: [], signatures: [] }, services: [
     { service: 'supabase_auth', inspection: 'available', status: 'exited', health: 'unhealthy', exitCode: 137, oomKilled: true, restartCount: 2 },
     ...['supabase_db','supabase_inbucket','supabase_kong','supabase_realtime','supabase_rest'].map(service => ({ service, inspection: 'not-available' }))
   ] });

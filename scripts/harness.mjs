@@ -5,7 +5,7 @@ import { mkdir, readFile, writeFile, cp, rm, open, lstat } from 'node:fs/promise
 import { resolve, relative, sep } from 'node:path';
 import { once } from 'node:events';
 import { baseline, exec, installTrail } from './tools.mjs';
-import { collectSupabaseStartupEvidence, supabaseStartupEvidence } from './startup-diagnostics.mjs';
+import { collectSupabaseStartupCache, collectSupabaseStartupEvidence, supabaseStartupEvidence } from './startup-diagnostics.mjs';
 export { supabaseStartupEvidence } from './startup-diagnostics.mjs';
 
 const legacyNativePin = JSON.parse(await readFile(new URL('../tests/fixtures/trailbase-v0.34.3.json', import.meta.url)));
@@ -256,7 +256,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     if (process.env.DOCKER_HOST && !process.env.DOCKER_HOST.startsWith('unix://') || !dockerHost.trim().startsWith('unix://')) {
       throw new Error('Fixture requires a local Unix-socket Docker daemon');
     }
-    const { stdout: version } = await exec(cli, ['--version']);
+    const { stdout: version } = await exec(cli, ['--version'], { env: childEnv });
     if (version.trim() !== baseline.supabaseCli) throw new Error('Supabase CLI version drift');
     await cp(resolve('tests/fixtures/supabase'), resolve(directory, 'supabase'), { recursive: true });
     const values = { ...ports, PROJECT_ID: project };
@@ -267,9 +267,25 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     if (!trailVersion.includes(nativePin.version)) throw new Error('TrailBase version drift');
     console.log('Starting disposable Supabase (first run may download images)...');
     context.setupStage='supabase-start';
+    const config = await readFile(resolve(directory, 'supabase/config.toml'), 'utf8');
+    verifyOwner(id, ownerRecord, config);
+    verifyOwner(id, JSON.parse(await readFile(resolve(directory, 'owner.json'), 'utf8')), config);
+    context.supabaseStartContext = {
+      operation: 'network-create', cliVersion: baseline.supabaseCli,
+      configSha256: createHash('sha256').update(config).digest('hex'),
+      timeoutMs: baseline.startupTimeoutMs, maxBufferBytes: 20_000_000,
+      environment: {
+        policy: 'fixture-prefix-stripping', registry: 'pinned-ecr', dockerTransport: 'verified-local-unix',
+        dockerHostOverridePresent: Boolean(childEnv.DOCKER_HOST), dockerContextOverridePresent: Boolean(childEnv.DOCKER_CONTEXT),
+        proxyVariablesPresent: ['HTTP_PROXY','HTTPS_PROXY','ALL_PROXY','NO_PROXY','http_proxy','https_proxy','all_proxy','no_proxy'].some(key => Boolean(childEnv[key])),
+        nodeOptionsPresent: Boolean(childEnv.NODE_OPTIONS)
+      },
+      imageCacheBeforeStart: await collectSupabaseStartupCache(project)
+    };
     startAttempted = true;
     try {
       await exec('docker',['network','create','--driver','bridge','--opt','com.docker.network.bridge.host_binding_ipv4=127.0.0.1','--label',`trailbase-supabase.run=${id}`,`supabase_network_${project}`]);
+      context.supabaseStartContext.operation = 'cli-start';
       await command(['start', '--exclude', 'studio,postgres-meta,storage-api,imgproxy,edge-runtime,logflare,vector,supavisor'], 'start');
     } catch (error) {
       if (!context.supabaseStartup) context.supabaseStartup = await collectStartupFailure(error);

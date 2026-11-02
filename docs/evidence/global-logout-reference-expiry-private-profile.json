@@ -1,0 +1,135 @@
+{
+  "scope": "Independent PRIVATE owned120-second pinned Supabase actual-expiry reference; NOT changed default/live policy, native/private SDK parity, generic fault/coverage/release/security/adoption signoff",
+  "baseCommit": "0ead14ea78df814bd0ab137db8e10ee21bbf54d6",
+  "sourceSha256": "d5cf90ebf9c64460fb509be26186d2b477a4a389f334bee053abd07294d061c6",
+  "rootDefaultSourceSha256": "9832850be86641323ef57305c6a0ded2e64a68e06f10eb052e14ed37cf3e95e5",
+  "pins": {
+    "auth": "2.197.0",
+    "sdk": "2.117.2",
+    "cli": "2.119.0"
+  },
+  "configuration": {
+    "supabaseJwtExpirySeconds": 120,
+    "unchangedRootDefaultSeconds": 3600,
+    "otherTemplateFieldsUnchanged": true,
+    "profile": "Generated owned checkout template overlay only; no public harness profile/API or live policy change"
+  },
+  "final": {
+    "runId": "1793622255217-4915d8341268",
+    "status": "passed",
+    "passed": 11,
+    "failed": 0,
+    "setupStage": "ready",
+    "cleanup": "passed",
+    "newActualExpiryContracts": 1,
+    "defaultGlobalAndAuthorizationContracts": 3,
+    "existingSignupResendContracts": 7
+  },
+  "observations": {
+    "wait": "One genuine wall-clock wait until latest issued claims.exp plus61s, bounded below190s; no forged token, altered row/clock or busy retry",
+    "rawExpiredAuthorization": {
+      "logout": 403,
+      "logoutCode": "bad_jwt",
+      "rest": 401,
+      "completeAuthFingerprintsUnchanged": true
+    },
+    "expiredAccessWithValidRefresh": {
+      "refreshStatus": 200,
+      "logoutStatus": 204,
+      "logoutUsesNewAuthorization": true,
+      "ownerSessionsAfter": 0,
+      "siblingCompleteSessionsUnchanged": true,
+      "localOwnedStorageRemoved": true,
+      "unrelatedStoragePreserved": true
+    },
+    "expiredAccessWithRevokedRefresh": {
+      "refreshStatus": 400,
+      "errorCode": "refresh_token_not_found",
+      "logoutRequests": 0,
+      "acknowledgement": false,
+      "localSessionCleared": true,
+      "oneSignedOutEvent": true
+    },
+    "sibling": {
+      "genuineRefreshStatus": 200,
+      "genuineLogoutStatus": 204,
+      "acknowledgementUsesNewAuthorization": true
+    },
+    "data": "Fresh genuine owner login after expiry reads exact original row unchanged, removes only generated row and revokes cleanup session;0owner/sibling sessions and0generated rows before fixture removal"
+  },
+  "guards": {
+    "commands": [
+      {
+        "node": "22.23.2",
+        "kind": "check",
+        "exitCode": 0
+      },
+      {
+        "node": "22.23.2",
+        "kind": "unit",
+        "exitCode": 0
+      },
+      {
+        "node": "22.23.2",
+        "kind": "package",
+        "exitCode": 0
+      },
+      {
+        "node": "24.21.0",
+        "kind": "check",
+        "exitCode": 0
+      },
+      {
+        "node": "24.21.0",
+        "kind": "unit",
+        "exitCode": 0
+      },
+      {
+        "node": "24.21.0",
+        "kind": "package",
+        "exitCode": 0
+      }
+    ],
+    "results": [
+      {
+        "node": "22.23.2",
+        "kind": "unit",
+        "passed": 242
+      },
+      {
+        "node": "22.23.2",
+        "kind": "package",
+        "passed": 4
+      },
+      {
+        "node": "24.21.0",
+        "kind": "unit",
+        "passed": 242
+      },
+      {
+        "node": "24.21.0",
+        "kind": "package",
+        "passed": 4
+      }
+    ],
+    "sourceReproduction": "After runtime archive, a separate owned checkout recreated the exact120s template/test overlay and matched original complete d5cf source hash before both-Node static/unit/package checks; no runtime rerun substituted for original11-test proof"
+  },
+  "cleanup": {
+    "ownedProjectsAbsent": 1,
+    "hashArchivedFiles": 1190,
+    "ownedParentRemoved": true,
+    "originalCleanupInvoked": false,
+    "guardCheckoutRemoved": true
+  },
+  "bindings": {
+    "privateTestSha256": "96e2c3ceb3d556b406cddf34c5a98bdf5061c593353ebc1d3d966e66c4e7a7d9",
+    "privateTemplateSha256": "570300772bfeccf5803ad50de67d1d74b790c6191bad7302938dc70fa9786a85"
+  },
+  "limits": [
+    "This proves denial at claims.exp+61s, not exact millisecond expiry/leeway boundaries or alternate lifetime policies.",
+    "No generic network/in-flight/commit/revocation-error/cancellation/concurrency proof or native/packed SDK/browser capability implementation.",
+    "Default/global reference10/10 and this private-profile11/11 are separate source/configuration bindings; public CI cannot certify private overlay.",
+    "Exact0ead14e supported Supabase-start0 cause remains separately UNKNOWN; neither this pass nor later scopes repairs or explains it.",
+    "Original official demo, lock/data/keys/Serve scope remain untouched. No custom live deployment/public API expansion/upstream submission/adoption/release/maintainer signoff."
+  ]
+}

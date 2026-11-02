@@ -1,4 +1,7 @@
+import { readFile } from 'node:fs/promises';
 import { exec } from './tools.mjs';
+
+const imagePins = JSON.parse(await readFile(new URL('../tests/fixtures/service-images.json', import.meta.url), 'utf8'));
 
 const services = ['supabase_auth', 'supabase_db', 'supabase_inbucket', 'supabase_kong', 'supabase_realtime', 'supabase_rest'];
 const statuses = new Set(['created', 'running', 'paused', 'restarting', 'removing', 'exited', 'dead']);
@@ -14,15 +17,62 @@ function own(object, field) {
 const number = value => Number.isSafeInteger(value) && value >= 0 && value <= 65535 ? value : null;
 const boolean = value => typeof value === 'boolean' ? value : null;
 
+function boundedOutput(value) {
+  if (typeof value !== 'string') return { status: 'unavailable', text: '' };
+  if (value.length > 1_048_576 || Buffer.byteLength(value, 'utf8') > 1_048_576) return { status: 'over-budget', text: '' };
+  return { status: 'bounded', text: value };
+}
+function commandDiagnostic(error, code, signal, killed) {
+  const stdout = boundedOutput(own(error, 'stdout')), stderr = boundedOutput(own(error, 'stderr'));
+  const text = `${stdout.text}\n${stderr.text}`;
+  // These are observed text signatures, NOT verified causes or service state. No excerpts escape.
+  const signatures = [
+    ['docker-port-bind', /port is already allocated|address already in use/i],
+    ['docker-daemon', /cannot connect to the docker daemon|is the docker daemon running/i],
+    ['image-pull', /failed to pull (?:docker )?image|error pulling image/i],
+    ['config-parse', /failed to parse config/i],
+    ['container-health', /is not healthy|container is not ready|health check timed out/i]
+  ].filter(([, pattern]) => pattern.test(text)).map(([name]) => name);
+  const progress = [
+    ['containers-start', 'Starting containers...'],
+    ['health-wait', 'Waiting for health checks...'],
+    ['containers-stop', 'Stopping containers...']
+  ].filter(([, marker]) => text.includes(marker)).map(([name]) => name);
+  const kind = code === 'ENOENT' ? 'launch-not-found' : code === 'EACCES' ? 'launch-denied' :
+    code === 'ERR_CHILD_PROCESS_STDIO_MAXBUFFER' ? 'output-limit' :
+    killed === true || signals.has(signal) ? 'termination-observed' : number(code) > 0 ? 'nonzero-exit' : 'unknown';
+  return { kind, stdout: stdout.status, stderr: stderr.status, progress, signatures };
+}
+function verifyProject(project) {
+  if (typeof project !== 'string' || !/^trailbase-supabase-test-[a-f0-9]{12}$/.test(project)) throw new Error('Invalid owned startup diagnostic project');
+}
+
+export async function collectSupabaseStartupCache(project) {
+  verifyProject(project);
+  return Promise.all(services.map(async service => {
+    let cache = 'unavailable';
+    try {
+      const { stdout } = await exec('docker', ['image', 'inspect', '--format', '{{json .RepoDigests}}', imagePins[service].image], { timeout: 5000, maxBuffer: 4096 });
+      const digests = JSON.parse(stdout);
+      if (Array.isArray(digests)) cache = imagePins[service].repoDigests.some(digest => digests.includes(digest)) ? 'pinned' : 'not-pinned';
+    } catch (error) {
+      const stderr = boundedOutput(own(error, 'stderr'));
+      if (stderr.text.startsWith('Error response from daemon: No such image:')) cache = 'not-present';
+    }
+    return { service, cache };
+  }));
+}
+
 // Reconstruct from literals/validated scalars only. Error text and health output may
 // contain credentials; never serialize, coerce or forward those source objects.
 export function supabaseStartupEvidence(error, observations = {}) {
-  const signal = own(error, 'signal');
+  const code = own(error, 'code'), signal = own(error, 'signal'), killed = own(error, 'killed');
   return {
     stage: 'supabase-start', cause: 'not-established',
-    exitCode: number(own(error, 'code')),
+    exitCode: number(code),
     signal: signals.has(signal) ? signal : null,
-    killed: boolean(own(error, 'killed')),
+    killed: boolean(killed),
+    command: commandDiagnostic(error, code, signal, killed),
     services: services.map(service => {
       const state = own(observations, service);
       if (state === null || typeof state !== 'object') return { service, inspection: 'not-available' };
@@ -36,7 +86,7 @@ export function supabaseStartupEvidence(error, observations = {}) {
 }
 
 export async function collectSupabaseStartupEvidence(project, error) {
-  if (typeof project !== 'string' || !/^trailbase-supabase-test-[a-f0-9]{12}$/.test(project)) throw new Error('Invalid owned startup diagnostic project');
+  verifyProject(project);
   const observations = {};
   const format = '{"status":{{json .State.Status}},"exitCode":{{json .State.ExitCode}},"oomKilled":{{json .State.OOMKilled}},"restartCount":{{json .RestartCount}},"health":{{if .State.Health}}{{json .State.Health.Status}}{{else}}null{{end}}}';
   await Promise.all(services.map(async service => {

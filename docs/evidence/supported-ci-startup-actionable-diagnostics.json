@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "scope": "L1-27/D03/D04 bounded actionable supported-CI startup diagnostic improvement and full local verification; NOT historical CI root-cause repair, private auth parity, readiness or signoff",
+  "sourceSha256": "34bad9e49ef77f6b80842fcbee133c423b58e15cf633af383c4b1923220783d3",
+  "baseCommit": "0ead14ea78df814bd0ab137db8e10ee21bbf54d6",
+  "investigation": {
+    "workflowIdenticalAcross": [
+      {
+        "commit": "8aef018cd26724ffaaa45b8f04ff3f117f0c8d93",
+        "workflowSha256": "6f8a5e4fb9be2b7ccf9c4c055c86e44d2d95d5aa3b08b2eb9e037089c468683e"
+      },
+      {
+        "commit": "4273541d13a28edeaae95c58603fc1a095d0a6e7",
+        "workflowSha256": "6f8a5e4fb9be2b7ccf9c4c055c86e44d2d95d5aa3b08b2eb9e037089c468683e"
+      },
+      {
+        "commit": "0ead14ea78df814bd0ab137db8e10ee21bbf54d6",
+        "workflowSha256": "6f8a5e4fb9be2b7ccf9c4c055c86e44d2d95d5aa3b08b2eb9e037089c468683e"
+      }
+    ],
+    "exactCI": 41443879311,
+    "exactSupportedJob": 125272316566,
+    "jobOrdering": [
+      {
+        "name": "Run npm ci",
+        "conclusion": "success"
+      },
+      {
+        "name": "Cache pinned runtime metadata for offline browser consumers",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npx playwright install --with-deps chromium firefox webkit",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:sdk:auth",
+        "conclusion": "failure"
+      },
+      {
+        "name": "Run npm run test:sdk:refresh",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:sdk:data",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:db",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:phase-a -- constraints",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:sdk:browser",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:example:todos",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:cleanup",
+        "conclusion": "success"
+      }
+    ],
+    "pinnedCLI": {
+      "npm": "2.119.0",
+      "tagObject": "c66274cc6dc278a9413a6b0f099367ce150555ac",
+      "launcherSha256": "21d25b4bfb1870db0aaf0963c028b10d0b0b431485f119abd704c1396c7991e6",
+      "platformPackage": "@supabase/cli-linux-x64@2.119.0",
+      "source": "apps/cli/src/commands/start/start.handler.ts at v2.119.0; NOT historical Go internal/start.go",
+      "installedPlatformBinarySha256": "2d142ea645f9fe1436b3b728e5873056b5390eeb2fc838024ae3d2905f5afd94"
+    },
+    "templateSha256": "382f4843364d47c10ad0a5d4e44e2ecceb9823eea06bc292d3201d166b46c676",
+    "sourceObservations": [
+      "npm cache action/add caches npm metadata/packages, not Docker image layers or Playwright engines",
+      "sdk-mvp depends on both static-unit jobs then gets a separate ubuntu-24.04 runner; research is another separate runner",
+      "sdk-auth is first fixture after npm ci/runtime-metadata cache/Playwright install; later independent always steps share that job runner, not the same fixture",
+      "CLI launcher is JS and forwards to installed @supabase/cli-linux-x64 binary; parent SUPABASE_CLI_BINARY_OVERRIDE can redirect launcher",
+      "fixtureEnvironment strips SUPABASE_/TRAILBASE_ overrides and sets pinned ECR; old --version probe omitted that environment, unlike actual start",
+      "pinned TypeScript start handler has image pre-pull before container creation and rollback on bring-up/health errors; this does not prove historical rollback or failure cause"
+    ],
+    "missingHistoricalEvidence": [
+      "original CLI stderr/stdout signature and progress before wrapper",
+      "exact launch operation network-create vs CLI-start",
+      "pre-start pinned image cache state",
+      "exact launch config hash and environment-presence facts",
+      "transient service state/logs before CLI rollback; existing collector only runs after CLI exit"
+    ],
+    "historicalCauses": "8aef/427/0ead supported failures remain independently UNKNOWN. Identical stage/exit/service projection does not prove common cause; npm caching is not image caching."
+  },
+  "implemented": [
+    "Capture fixed error signatures/progress and output availability within a1MiB-per-stream inspection bound; no raw excerpts or unknown values exported",
+    "Read each untrusted scalar/output own data descriptor once; inherited/accessor/non-string/revoked-proxy/oversized data fail closed",
+    "Distinguish nonzero exit, termination observed, missing/denied launch and maxBuffer failure; never infer timeout from a signal alone",
+    "Before start record owner-verified config SHA256, verified CLI version, unchanged300000ms/20000000-byte launch budgets, fixed environment policy and presence booleans",
+    "Read only six exact pinned image references with5000ms/4096-byte Docker image-inspection bounds; pinned/not-pinned/not-present/unavailable are distinct; never pull/evict/warm or weaken strict post-start digest checks",
+    "Record network-create versus cli-start and propagate sanitized evidence before harness cleanup",
+    "Use same fixture-sanitized child environment for CLI version probe as real launch"
+  ],
+  "establishedHarnessIssue": {
+    "old": "Version probe inherited SUPABASE_CLI_BINARY_OVERRIDE whereas actual start strips SUPABASE_/TRAILBASE_ overrides.",
+    "negativeControl": "One owned fake override causes old probe genuine version drift rejection before config/network. Fixed probe reaches installed pinned CLI and deliberate owned port conflict. No successful auth/data responses stubbed.",
+    "historicalCICauseEstablished": false
+  },
+  "tests": {
+    "guards": [
+      {
+        "node": "22.23.2",
+        "sourceSha256": "34bad9e49ef77f6b80842fcbee133c423b58e15cf633af383c4b1923220783d3",
+        "staticTypesDocs": "passed",
+        "units": 252,
+        "package": 4,
+        "packageCleanup": "passed"
+      },
+      {
+        "node": "24.21.0",
+        "sourceSha256": "34bad9e49ef77f6b80842fcbee133c423b58e15cf633af383c4b1923220783d3",
+        "staticTypesDocs": "passed",
+        "units": 252,
+        "package": 4,
+        "packageCleanup": "passed"
+      }
+    ],
+    "featureMissingRed": 10,
+    "diagnosticUnitsFinal": 15,
+    "preservedAdditionalRed": [
+      "Initial Vitest hook returned a mock as teardown; corrected hook produces clean10-feature-missing red, not hidden",
+      "Initial static check rejected mock PromiseWithChild typing; corrected test cast, no runtime weakening",
+      "First genuine port-fault assertion missed actual Docker address-already-in-use wording: retained failed control/cleanup passed, then1red/5pass unit regression before correction",
+      "Pinned TypeScript CLI container-is-not-ready wording gets separate1red/5pass before fixed-literal expansion"
+    ],
+    "actualFault": {
+      "sourceSha256": "34bad9e49ef77f6b80842fcbee133c423b58e15cf633af383c4b1923220783d3",
+      "runId": "1793625414586-7d5023e61296",
+      "control": "Deliberately held generated-owned API port; private raw diagnostics verified exact selected port/bind failure. This control cause does not explain any historical CI failure.",
+      "projection": {
+        "stage": "supabase-start",
+        "cause": "not-established",
+        "exitCode": 1,
+        "signal": null,
+        "killed": false,
+        "command": {
+          "kind": "nonzero-exit",
+          "stdout": "bounded",
+          "stderr": "bounded",
+          "progress": [
+            "containers-start",
+            "containers-stop"
+          ],
+          "signatures": [
+            "docker-port-bind"
+          ]
+        },
+        "services": [
+          {
+            "service": "supabase_auth",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_db",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_inbucket",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_kong",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_realtime",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_rest",
+            "inspection": "not-available"
+          }
+        ]
+      },
+      "launchContext": {
+        "operation": "cli-start",
+        "cliVersion": "2.119.0",
+        "configSha256": "3d24fa79515b19079a8b0c65424f55858cf5f9a436835fc08573251e2f1c10fc",
+        "timeoutMs": 300000,
+        "maxBufferBytes": 20000000,
+        "environment": {
+          "policy": "fixture-prefix-stripping",
+          "registry": "pinned-ecr",
+          "dockerTransport": "verified-local-unix",
+          "dockerHostOverridePresent": false,
+          "dockerContextOverridePresent": false,
+          "proxyVariablesPresent": false,
+          "nodeOptionsPresent": false
+        },
+        "imageCacheBeforeStart": [
+          {
+            "service": "supabase_auth",
+            "cache": "pinned"
+          },
+          {
+            "service": "supabase_db",
+            "cache": "pinned"
+          },
+          {
+            "service": "supabase_inbucket",
+            "cache": "pinned"
+          },
+          {
+            "service": "supabase_kong",
+            "cache": "pinned"
+          },
+          {
+            "service": "supabase_realtime",
+            "cache": "pinned"
+          },
+          {
+            "service": "supabase_rest",
+            "cache": "pinned"
+          }
+        ]
+      },
+      "cleanup": "passed"
+    },
+    "realScopes": [
+      {
+        "suite": "sdk-auth",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 3,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "sdk-refresh",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "sdk-data",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "database",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "constraints",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "sdk-browser",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 15,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "auth-reference",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 10,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "expiry",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "auth-migration",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "all",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 112,
+        "failed": 6,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "characterization",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "smtp",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "browser",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 60,
+        "failed": 6,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "lifecycle",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": true
+      },
+      {
+        "suite": "native-upgrade",
+        "status": "passed",
+        "setupStage": "owned-ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": false
+      },
+      {
+        "suite": "todos-launcher",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed",
+        "phaseARunnerLaunchContextRecorded": false
+      }
+    ],
+    "strictResearchFailures": 14,
+    "strictResearchExactCaseNamesAndStatusesMatch8aef": true,
+    "batchExit": 1,
+    "exitExplanation": "Four strict research command failures remain failures; supported/reference/upgrade/launcher/cleanup commands pass. No retry or rerun used to hide failed setup or assertions."
+  },
+  "cleanup": {
+    "ownedProjectsAbsent": 20,
+    "privateSourceAndRawFilesHashArchived": 1597,
+    "ownedTemporaryParentRemoved": true,
+    "ownedNativeProcessesAbsent": true,
+    "ownedLockAbsent": true,
+    "originalFixtureCleanupInvoked": false,
+    "originalReadOnlyPreservationGuard": "passed after full batch; supervisor/children/assets/keys/six containers/exact tailnet routes unchanged"
+  },
+  "privacy": {
+    "published": "Reconstructed literal/validated fields only; no tokens, raw output/errors/environment/health bodies, mail contents, account or row data.",
+    "raw": "Full source/raw logs/reports/owners retained under private0700 archive with1597-file hash manifest; never uploaded or committed.",
+    "markerMeaning": "Canonical text-marker presence, not reconstructed timestamp/order or verified service state.",
+    "classificationMeaning": "Observed CLI text signatures, not causal diagnosis or authorization. Unavailable and unknown facts stay unknown."
+  },
+  "remaining": [
+    "New exact instrumented CI has not run for this checkpoint. Audit its terminal artifacts independently before any readiness claim.",
+    "No historical raw CLI output/ephemeral container state can be recovered from sanitized artifacts that did not include it. New diagnostics do not reconstruct that lost evidence.",
+    "Fixed signatures may miss unfamiliar messages; over-budget output is deliberately not inspected. No guarantee to diagnose every startup fault.",
+    "Private gated authenticated JSON/nonredirect global logout, SDK capability handling and genuine revocation-fault/race/in-flight/cancellation contracts remain unimplemented.",
+    "Coverage/full release/OSL/adoption/physical-device/maintainer signoff remain separate."
+  ],
+  "retriesAdded": false,
+  "checksWeakened": false,
+  "publicSDKOrNativeRuntimeChanged": false,
+  "customDeployment": false,
+  "readinessClaim": false,
+  "signoff": false
+}

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "scope": "C06 real native HTTP/SMTP/database characterization of unchanged official0.35.8 and immutable private candidate1; NOT JSON-acknowledgement implementation, private SDK parity or signoff",
+  "reference": "Independent default Supabase10/10 and private configured120s11/11 are separate source/runtime profiles; no comparison is inferred from source inspection",
+  "configuration": "Each native profile in a separate generated-owned depot uses genuine120s claims and one wall-clock wait through exp+61s. Root/live TTL unchanged. Real delivered confirmation links/two owner password sessions/sibling/todo, no token/clock/SQL manipulation.",
+  "profiles": [
+    {
+      "label": "stock",
+      "binarySha256": "249ce40c394df2be2aa05fca36ae38cec103e50f138f49d86f6860b6bbfeda58",
+      "driverSha256": "2517ec4b7d93ac9547a5bfeeffba91003b6035d29b70c9ad2514b8d0caf51586",
+      "ownedRuntimeSha256": "af7382f7ac7a9b07e36be56f22ea8c557811388a61ec54312d579556dbe83359",
+      "status": "characterized-not-parity",
+      "checks": [
+        "Genuine mail-confirmed owner/sibling and two independent owner password sessions; exact configured120s JWT claims",
+        "Same-fixture read-only negative control: encrypted cursors differ, complete record rows equal; native skip_cursor disables randomized transport metadata only",
+        "Valid-caller revocation deletes both owner refresh sessions, preserves sibling/full main rows and unexpired owner JWT access; actual303 is not treated as acknowledgement",
+        "Actual expiry: no-op303/unchanged DB differs from Auth403; native REST403 denies expired JWT; genuine refresh recovers then authenticated cleanup leaves0 sessions/tasks"
+      ],
+      "observations": [
+        {
+          "kind": "unauthorized-missing",
+          "status": 303,
+          "redirectToRoot": true,
+          "jsonAcknowledgement": false,
+          "noWrites": true
+        },
+        {
+          "kind": "unauthorized-invalid",
+          "status": 303,
+          "redirectToRoot": true,
+          "jsonAcknowledgement": false,
+          "noWrites": true
+        },
+        {
+          "kind": "authenticated-global",
+          "status": 303,
+          "redirectToRoot": true,
+          "jsonAcknowledgement": false,
+          "ownerRefreshSessions": 0,
+          "siblingSessionsUnchanged": true,
+          "issuedUnexpiredJwtRestStatus": 200,
+          "revokedRefreshStatus": 401
+        },
+        {
+          "kind": "expired-global",
+          "status": 303,
+          "redirectToRoot": true,
+          "jsonAcknowledgement": false,
+          "noWrites": true,
+          "ownerRefreshSessions": 1,
+          "siblingRefreshSessions": 1,
+          "expiredJwtRestStatus": 403,
+          "waitedPastActualClaimsExpirySeconds": 61
+        }
+      ],
+      "compatibilityGaps": [
+        "GET global logout does not require a verified caller and redirects for absent/invalid authorization; not authenticated acknowledgement",
+        "Actual valid-caller all-session revocation occurs, but application-root GET response is303 rather than explicit JSON/nonredirect acknowledgement",
+        "Expired caller still receives the same303 logout response without revocation; response alone cannot distinguish authenticated revocation from denial/no-op"
+      ],
+      "cleanup": "passed",
+      "ownedTreeAndProcessesAbsent": true
+    },
+    {
+      "label": "private",
+      "binarySha256": "818ae9d30317fd0ab294a1daf4b73b1fa139fa61426972f20789b7975aaf2ef1",
+      "driverSha256": "2517ec4b7d93ac9547a5bfeeffba91003b6035d29b70c9ad2514b8d0caf51586",
+      "ownedRuntimeSha256": "af7382f7ac7a9b07e36be56f22ea8c557811388a61ec54312d579556dbe83359",
+      "status": "characterized-not-parity",
+      "checks": [
+        "Genuine mail-confirmed owner/sibling and two independent owner password sessions; exact configured120s JWT claims",
+        "Same-fixture read-only negative control: encrypted cursors differ, complete record rows equal; native skip_cursor disables randomized transport metadata only",
+        "Valid-caller revocation deletes both owner refresh sessions, preserves sibling/full main rows and unexpired owner JWT access; actual303 is not treated as acknowledgement",
+        "Actual expiry: no-op303/unchanged DB differs from Auth403; native REST403 denies expired JWT; genuine refresh recovers then authenticated cleanup leaves0 sessions/tasks"
+      ],
+      "observations": [
+        {
+          "kind": "unauthorized-missing",
+          "status": 303,
+          "redirectToRoot": true,
+          "jsonAcknowledgement": false,
+          "noWrites": true
+        },
+        {
+          "kind": "unauthorized-invalid",
+          "status": 303,
+          "redirectToRoot": true,
+          "jsonAcknowledgement": false,
+          "noWrites": true
+        },
+        {
+          "kind": "authenticated-global",
+          "status": 303,
+          "redirectToRoot": true,
+          "jsonAcknowledgement": false,
+          "ownerRefreshSessions": 0,
+          "siblingSessionsUnchanged": true,
+          "issuedUnexpiredJwtRestStatus": 200,
+          "revokedRefreshStatus": 401
+        },
+        {
+          "kind": "expired-global",
+          "status": 303,
+          "redirectToRoot": true,
+          "jsonAcknowledgement": false,
+          "noWrites": true,
+          "ownerRefreshSessions": 1,
+          "siblingRefreshSessions": 1,
+          "expiredJwtRestStatus": 403,
+          "waitedPastActualClaimsExpirySeconds": 61
+        }
+      ],
+      "compatibilityGaps": [
+        "GET global logout does not require a verified caller and redirects for absent/invalid authorization; not authenticated acknowledgement",
+        "Actual valid-caller all-session revocation occurs, but application-root GET response is303 rather than explicit JSON/nonredirect acknowledgement",
+        "Expired caller still receives the same303 logout response without revocation; response alone cannot distinguish authenticated revocation from denial/no-op"
+      ],
+      "cleanup": "passed",
+      "ownedTreeAndProcessesAbsent": true
+    }
+  ],
+  "preservedFailure": {
+    "firstAttempt": "Both native fixtures stopped before expiry on full list-response equality: encrypted cursor nonce differs although complete rows equal; owned cleanup passed. Not a server defect.",
+    "control": "Corrected same-fixture two-read proves different cursors/equal complete record rows/full unchanged DB; native skip_cursor=true removes only randomized transport metadata.",
+    "cursorSource": "Official records/list_records.rs encrypt_cursor uses encryption.rs encrypt fresh random nonce; source observation separated from runtime control."
+  },
+  "missing": [
+    "Authenticated mandatory-caller JSON/nonredirect revocation acknowledgement",
+    "Explicit private SDK capability gating and reuse of reference assertions",
+    "Genuine revocation-failure/in-flight/race/cancellation schedules and full applicable changed-code regressions",
+    "Coverage/release/maintainer adoption/OSL/physical-device signoff"
+  ],
+  "originalFixtureCleanupInvoked": false,
+  "customDeployment": false,
+  "signoff": false
+}
