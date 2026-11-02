@@ -1,7 +1,114 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "CRUD/auth MVP — reviewed checkpoint55dfaa2 pushed; bounded cold-CI consumer/index-doc reproducibility fix47bddb41 locally verified, follow-up push/new CI next; same live UIe570c562 and original jobs preserved, broad release/signoff incomplete",
+  "currentPhase": "Authorized official native0.35.8 upgrade and supported acceptance complete; original demo LIVE on exact existing18443/18444 scope. Source411f frozen, JS0.14.3/SDK implementation unchanged. All original51 accounts/6 tasks/preexisting data+session rows preserved;6 generated UI accounts/54 audit rows retained,0 generated tasks/sessions.17 owned isolated runs cleaned/archived/removed. Strict research reds/G1/G7/full release/CI signoff remain open; no commit/push",
   "lastSession": {
+    "scope": "Authorized official stable native0.35.8 repin/cache, existing supported acceptance and backed-up exact original demo rollout; not full SDK/release/CI signoff",
+    "state": "native0358-supported-upgrade-verified-original-live-three-engine-ui-passed-left-running",
+    "sourceSha256": "411f15feb242d02024cfcf2cbf7d1ed0862737629467dd71e1bcb99c091284da",
+    "evidence": "docs/evidence/native0358-upgrade-summary.json",
+    "provenance": "Official latest stable v0.35.8, commit05238c02b54aabb483e9f6224b5e014d40e88a5d; four official asset digests pinned. Linux archive/ELF/actual version verified; old54a09dad executable/nonversioned path unchanged. JS0.14.3, other dependencies and SDK implementation unchanged; no private signup fork",
+    "nativeUpgrade": "Source551 owned9/9: identity/password/task/audit/session preservation, repeat current startup,2 full0.34.3 rollback restores; aged unowned pending deletion1, aged owner/task FK refusal and duplicate pending index refusal preserve all rows. Earlier2 failures retained. Actual complete original-copy0.35 migration and restored original-copy verified0.34.3 startup both preserve51 accounts/6 tasks/all user/session rows/keys/config; original metadata-only wrapper failures retained",
+    "correction": "Original source551 SDKdata5/1,DB8/1,constraints4/2 failed exact legacy500-vs-native400 UPDATE assertions. Two-release16/16 probe verifies every complete data/audit snapshot unchanged and truthful SDK status/no invented SQLSTATE. Only7 exact literals across4 cases/3 test files plus versioned research note changed; SDK implementation, authorization, Supabase and full-row/audit invariants unchanged. Current411 full SDKdata6/6,DB9/9,constraints6/6 passed with cleanup",
+    "checks": "Current411 both pinned Nodes22.23.2/24.21.0 static/docs,232 units and4 actual offline package checks passed. Earlier unaffected auth3/3 source8c9c and refresh4/4/browser15/15 source551 retained with exact bindings, not rebound. Actual original HTTPS Chromium/Firefox/mobile-configured WebKit3/3,0skip/flaky passed using existing taskFlow plus owned capture/session cleanup; runtime driver hashes bound in evidence",
+    "originalSafety": "Protected stopped full depot/config/keys/WAL/metadata/public backup/byte-permission-owner restore; aggregate51 accounts,0 pending/deletion/duplicates/collisions/orphans,6 tasks. Whole original main/session rows verified before ANY HTTPS forward; native migration/version metadata only. Fresh complete rollout snapshot and old executable retained, no automatic restore after accepted live writes",
+    "live": "Guardian965539/native965809/appServe965827/inboxServe965850 intentionally live; bootstrap exited, independent parent/group/startTicks/owned-child proof. Exact app https://aspire.tailb03e.ts.net:18443/sdk-data/index.html then inbox https://aspire.tailb03e.ts.net:18444/ established serially. Valid TLS/health200/anonymous403/original assets/config/keys/cert/six containers/443 unchanged; noFunnel/backgroundServe/ACL/firewall/new exposure. Root independently reports actual Goldie/Mac app+inbox200/TLSverify0",
+    "postUI": "All original51 accounts,6 tasks,all preexisting non-system main/session rows unchanged. Exactly6 new confirmed ordinary generated accounts and54 own native audit rows retained with approval;0 own tasks and0 own sessions. Tasks deleted through SDK; bearer-only/manual own global endpoint303 not promoted to acknowledgement, actual own session DB0 independently proved. No direct row editing/account deletion/G7 repair/physical iPhone claim",
+    "ownership": "Original lock retained with controlled atomic successor PID handoff; prior588146/588372/588390/588405 stopped records/guard/script/config/full backups preserved. Never ordinary launcher/fixtures:cleanup against this retained original. Stop only when authorized via .runtime/upgrade-original-native0358.mjs --stop identity/startTicks/argv guard, proxies first then native, no cleanup",
+    "cleanup": "All17 exact owned isolated projects: containers/volumes/networks/native+runner PIDs/depot/context/backups/lock absent.377 raw run/artifact files copied/hash-verified privately; owned temporary tree removed. Raw controllers/failed attempts/prior screenshots preserved; only intentional original guardian/native/proxies left running, no verification jobs remain",
+    "research": "Source551 stock characterization9/1,stockSMTP0/1,reservationSMTP0/1,lifecycle9/3 strictly failed with passed cleanup. G1/G7/null-user/global acknowledgement and missing private prototype remain unresolved/unwaived. No current CI/full security/fault/coverage/release/maintainer signoff inferred",
+    "next": ["Leave exact original app/inbox/guardian running for Mark and independent Goldie recheck; no automatic stop/cleanup/rollback", "Review uncommitted native pin/cache/harness/exact-status tests and preserved earlier diagnostics work; no commit/push/publication without request", "Do not normalize strict research reds, reconstruct private G1 artifacts or broaden API scope; future security/CI/coverage/release and maintainer signoff need separate work", "Any eventual rollback must first protect accepted live writes; pre-upgrade snapshot is retained, not automatically restorable without a new preservation check"]
+  },
+  "previousG1PrivatePrototypeAssessmentSession": {
+    "scope": "Authorized read-only G1 private recovery prototype/provenance assessment; conditional existing isolated regressions could not start without missing artifacts",
+    "state": "assessment-complete-prototype-revalidation-blocked-missing-original-source-and-binary",
+    "sourceSha256": "cd3027216a726f61ab13432e205fed69bfb6ed828303af358e522e25164db513",
+    "evidence": "docs/evidence/g1-private-prototype-assessment.json",
+    "prerequisiteFailure": "ENOENT .runtime/upstream-g1/source and target/debug/trail; exact3 private files absent. verifyPrivateG1Prototype failed before fixture creation at Git HEAD lookup,exit128. Bounded repo/runtime search only; no complete-host/remote absence claim, no source reconstruction/unverified replacement/download/build",
+    "recordedProvenance": "v0.34.3 baseeab5039392a624736ab0c6a9f07f6793423dc979; branchprivate/g1-pending-recovery; patchc76f14a0bff3f391435a10073c2fb741d0c27528bdd29dfad464022d1d0f86c9. Historical macOS debug binary8d29850d9b28b23d0bb20af94b3e3765c47d78dd5a67ad583e8d7dd9b009c235 is not a Linux replacement; patch/binary bytes cannot currently be reverified",
+    "comparison": "Fresh G1_PENDING_CONFIRM/G1_SMTP_CONFIRM/G1_SMTP_MAIL failures align with intended reservation+signed-ID/address confirmation and dedicated handler-local pending-email resend. Historical23 native executions/22 tests and2 HTTP cases support those mechanisms; current exact native code review/runtime unavailable. Shared verified-email login/reset/OTP lookup must not widen; four-hour public-resend throttle unchanged, failed public-resend immediate retry not proved",
+    "currentPrototypeTests": "0 native,0 HTTP; prerequisite failed, not a passing/skipped prototype suite. Existing original upgrade/restart/backup/ambiguity results remain historical, no G1 signoff",
+    "decision": "HOLD production adoption and SQL-only candidate promotion. Minimum input: recover original owned three-file source/patch/build-provenance bundle; verify base/ref/diff/submodules plus independent binary digest/platform, then compatible isolated3 pending-recovery native regressions+2 existing HTTP cases. No automatic Linux rebuild, deployment/repin/identity repair/throttle change",
+    "preservation": "SDK source cd302721 and all reviewed uncommitted code/tests/recovery/CI evidence preserved. Read-only original metadata matches run18: stopped/requested-stop, same owner/lock/status bytes/mtime, four recorded PIDs absent and six original container IDs/images/ports/restart counts. No account/task/credential reads or service/network changes",
+    "cleanup": "0 new fixture runs,0 isolated checkout/service resources; no cleanup command issued against retained original run",
+    "next": ["Recover original private artifact bundle, not a reconstructed/replacement binary", "Resume only the existing authorized narrow regressions when exact provenance and compatible host prerequisites verify", "Production backend adoption requires a separate concrete decision; frozen SDK/stock baseline/stopped original fixture remain unchanged"]
+  },
+  "previousAuthDiagnosticsSession": {
+    "scope": "Authorized permanent eight-path actual-SDK redirect regression and closed-world Phase A auth diagnostics; isolated verification and bounded evidence only",
+    "state": "bounded-validation-complete-research-strictly-failed-original-collection-failure-preserved",
+    "sourceSha256": "cd3027216a726f61ab13432e205fed69bfb6ed828303af358e522e25164db513",
+    "plan": "docs/plans/2026-11-01-safe-auth-diagnostics.md",
+    "evidence": "docs/evidence/auth-safe-diagnostics-summary.json",
+    "checks": "Frozen Node22.23.2/24.21.0 each npm run check,229 unit tests and4 actual offline package checks passed. POST307/GET303 eight-path SDK guard removal fails all8 in isolated copy, exact restoration9/9; actual login access-token canary checked. Literal registry13 IDs, adversarial input/error tests, installed Vitest and actual3-engine reporter integration verified. No product SDK/API/dependency/server-pin changes",
+    "realResearch": "Source-bound stock characterization9pass1fail:G1_PENDING_CONFIRM; stockSMTP0/1:G1_SMTP_CONFIRM; reservation-onlySMTP0/1:G1_SMTP_MAIL; lifecycle9/3:reference event/native late refresh/status; focused genuine Chromium/Firefox/WebKit6/3:unawaited reference event ordering. All strict reds retained, setup/cleanup passed; no SDK defect or G1/G7 repair inferred",
+    "wrapperFailure": "Original controller exited1 after zero genuine-browser tests: copied .bin/playwright resolved parent installation, duplicate Playwright module instances; collection error tests/phase-a-browser/auth-storage.spec.ts:19:1, invocation temporary driver:1, config playwright.config.ts:6 unchanged. Raw artifact was valid JSON/LF, not newline defect. Original controller SHAee18b5a437fa437fa1e181d3c1784b0e4b897556b1231b6c04d5ccd2eb603ea6 and generated SHA24b0e59dd007e86ed5b9c1f81c32e0ebd67a39488f054e11096ecf6cf44cff1f retained; cleanup of all5 runs verified before correction",
+    "browserCorrection": "Separate private driver SHA2377d89f378e715c6226f9154daf8876cce60afccb3eec830e015f301b523122 invoked isolated direct CLI. Only focused genuine browser scope repeated once; four completed Node scopes not rerun, no frozen-source/config/dependency edits;9 tests actually ran,6pass3strictfail",
+    "cleanup": "All6 exact owned projects: containers/networks/volumes/native+runner PIDs/depot/context absent, isolated lock absent; no process cwd under owned temp checkout, marker/path/realpath checked before exact temporary-directory removal. Complete private raw logs/reports/controllers retained under .runtime/auth-safe-diagnostics-private. No managed jobs remain",
+    "preservedOriginal": "Run1793540668685-32d6c1a05a9c: stopped/requested-stop, recorded guardian588146/native588372/proxies588390,588405 absent. Run/lock owner bytes and status bytes/mtime unchanged, same6 original container IDs/images/ports/restart counts. Initial HTTPS refused; no original account/task reads, restart/cleanup/lock bypass/source-asset/config/credential/network changes",
+    "stopRecord": "mtime2026-11-01T19:26:55.821Z timestamps record write; exact signal time not recorded, actor not established. requested-stop identifies guardian stop-signal handling, not proof of a human request",
+    "nextAuthIssue": "G1: inspect existing private exact-base prototype pending-email/resend/idempotence logic against fresh confirmation/redelivery stages before proposing backend adoption. Preserve original identity/password; no SDK identity merge/admin confirmation/retry-password replacement/SQL-candidate promotion/deployment. G7: retain global acknowledgement uncertainty, no foreign redirect-follow workaround",
+    "missing": "Current CI, full SDK/reference/security/fault/coverage/release layers and maintainer signoff remain incomplete. Existing prototype proof historical, no stock repair or adoption authorized. Physical-device/demo acceptance not inferred",
+    "next": ["Present uncommitted changed files/results/evidence for user assessment; no commit/push", "Preserve stopped original fixture/data/lock and all historical recovery/CI evidence", "Only separately scoped auth repair may follow; do not auto-deploy/restart/repin or waive G1/G7"]
+  },
+  "previousRecoverySuccessSession": {
+    "scope": "Authorized serialized recovery of exact original private service after preserving three conservatively stopped attempts; runtime-only guardian/ownership/backup and documentation changes",
+    "state": "original-service-restored-verified-after-bootstrap-exit-left-intentionally-running",
+    "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+    "evidence": "docs/evidence/todos-recovery-summary-2026-11-01.json",
+    "runId": "1793540668685-32d6c1a05a9c",
+    "availability": "App https://aspire.tailb03e.ts.net:18443/sdk-data/index.html and inbox https://aspire.tailb03e.ts.net:18444/ verified with valid TLS. Same depot/native0343/public assets/app42231/admin42791/runtime2, no fixture setup or user/account operations",
+    "liveProcesses": {"guardian": 588146, "native": 588372, "appServe": 588390, "inboxServe": 588405},
+    "supervision": "Bootstrap588134 exited; guardian588146 adopted by716 in ownPGID/SID588146, all3 children live in guardian group with matching start ticks. No autostart unit/background Serve. Independent of transient bootstrap/Pi process group, not host reboot",
+    "ownership": "Original phase-a.lock retained, controlled atomic successor owner records now guardian588146/native588372. All prior owner/context/guard records archived privately. Never run historical launcher quit/fixtures:cleanup while preserving this service",
+    "snapshot": "All4 complete private0700 stopped-depot snapshots15/11/11/11 files locally reverified bytes/permissions/owners after success; DB/WAL/SHM/config/migrations/secrets/uploads included as present, public assets and metadata also archived. No automatic restore; normal startup/WAL writes allowed",
+    "integrity": "Full copy quick_check unavailable without native CHECK functions, preserved as unavailable; explicit structural-only check ok without native CHECK evaluation/stubs. No SQL on original/immutable backup",
+    "verification": "Exact2 foreground sessions/routes, existing certificate/public fingerprint and private-key metadata unchanged without reading key contents; IPv4/IPv6 ownIP/tailscale0 rows, daemon all-interface switch absent, noFunnel or443 change. Public marker/bootstrap/seven assets/style/health/inbox pass; anonymous records403. Same6 original container IDs/images/ports/mounts unchanged. No signup/login/userdata probes/fullmatrix/signoff",
+    "priorFailures": "Attempt1 raw listener rows missing remains a limit; attempt2 proved bracket-before-scope IPv6 parser bug, corrected and checked offline4real/8negative; attempt3 inbox Serve ETag race. All preserved failed. Final app LocalAPI/TLS/marker/bootstrap/health readiness awaited BEFORE inbox start; no force/reset/retry loop",
+    "externalReachability": "Root independently reported actual unsandboxed Goldie curl HEAD: app sdk-data/index.html200/TLSverify0 and inbox18444 200/TLSverify0. Earlier sandbox-only DNS failures were resolution limitations. Laptop reachability confirmed, not physical iPhone or authenticated browser acceptance",
+    "stopOnlyWhenAuthorized": "npm exec --offline --yes --package=node@24.21.0 -- node .runtime/reattach-1793540668685-32d6c1a05a9c.mjs --stop ; verifies guardianPID/startTicks/argv, proxies SIGINT first then native SIGTERM, no cleanup/delete. Leave running now",
+    "checks": "npm run check passed: tsc --noEmit and41 indexed Markdown/27 feature rows/7 gates/evidence freshness/secret scan; git diff --check passed. Only intentional docs/evidence modifications/untracked reports, existing triage preserved, ignored runtime resources. No unit/backend/browser matrix, commit or push",
+    "next": "Keep existing app/inbox available for user testing. Original outage cause/time unknown; do not infer it from HTTP idle-connection messages. No feature/dependency/credentials/network scope expansion, commit/push, compatibility exception or maintainer signoff"
+  },
+  "previousOperationalFailuresSession": {
+    "scope": "Three separately authorized original-service recovery startups and bounded runtime checker diagnosis; no feature or networking scope expansion",
+    "state": "third-attempt-stopped-on-serve-etag-conflict-no-further-retry",
+    "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+    "evidence": "docs/evidence/todos-recovery-attempt3-2026-11-01.json",
+    "earlierEvidence": ["docs/evidence/todos-recovery-attempt-2026-11-01.json", "docs/evidence/todos-recovery-attempt2-2026-11-01.json"],
+    "diagnosis": "Second retained actual local rows use own IPv4/IPv6 on tailscale0; faulty bracket-before-percent parsing left trailing IPv6 bracket. No foreign local bind in those rows; peer wildcards are not local addresses. Exact1.104.2 source permits no kernel listener under userspace netstack. Only named daemon all-interface switch inspected, absent. First raw rows missing remains an evidence limit",
+    "offlineCorrection": "Runtime-only parser corrected and checked against4 retained real rows and8 rejected wildcard/foreign/unknown-scope/wrong-port strings; read-only preflight passed. No project feature edits",
+    "latestAttempt": "Guardian583512/native583753/appServe583771/inboxServe583776; native health and unchanged config/migrations/secrets passed. App forward initialized, inbox exited: Preconditions failed: etag mismatch. Spawn-only serialization permits overlapping Serve config updates; no external actor established",
+    "current": "All four latest PIDs absent, four recovery ports closed, Serve config empty. Six original container IDs/images/ports/mounts still running unchanged, inbox38763/nginx443 survive; depot/data retained and no open descriptors/inaccessible checks. No restoration or post-bootstrap independent guardian proof",
+    "snapshots": "Three complete private0700 stopped-depot snapshots15/11/11 files, bytes/permissions/owners locally reverified after final failure. Original owner/context/assets archived, guard predecessors retained, no phase lock removal or automatic snapshot restore",
+    "integrity": "Copy-only full quick_check unavailable without native CHECK functions, failed attempt retained; explicit structural-only check ok without native CHECK evaluation or permissive stubs. No SQL on original/immutable backups",
+    "warning": "Current run and lock runnerPid583512/trailPid583753 are stopped successors. Ordinary fixture startup remains blocked, but fixtures:cleanup with dead owners can delete data. Do not run cleanup, bypass guards, retry or restore backup by inference",
+    "next": "Parent assessment of serialized foreground config establishment: verify18443 session first, then start18444 once, verify exact two sessions and noFunnel/foreign binds/443 changes, then prove guardian survival after bootstrap exits. Not yet executed or authorized by inference. No feature edits/dependencies/commit/push/authenticated probes/full matrix/signoff"
+  },
+  "previousRecoveryAttempt1Session": {
+    "scope": "Authorized original same-depot/identical-native-binary recovery, private complete backup, controlled owner handoff and two original foreground Serve forwards only",
+    "state": "recovery-attempt-stopped-at-listener-scope-verification-no-retry",
+    "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+    "evidence": "docs/evidence/todos-recovery-attempt-2026-11-01.json",
+    "snapshot": "Private0700 complete stopped depot15 files with DB/WAL/SHM/config/migrations/secrets/permissions/owners, plus public assets and original owner/context records. Byte hashes/metadata verified before startup and snapshot again after stopped attempt; no automatic restore",
+    "integrity": "Scratch copy full quick_check unavailable because native CHECK functions absent; failure retained privately. Explicit structural-only quick_check passed without evaluating native CHECKs; no permissive stubs. No SQL on original or immutable backup",
+    "attempt": "Guardian568726/native568946/proxies568964,568969 briefly started on exact original ports. Ownership transferred atomically without removing lock; existing cached certificate/public fingerprint and private-key metadata only, never key contents. TLS/root/public marker/bootstrap/seven assets/health/unauthenticated records denial/inbox/config/migrations/secrets/six container IDs/443/noFunnel assertions passed before final listener scope assertion failed",
+    "failure": "HTTPS listener not tailnet-only; raw ss rows not retained. Parser-versus-actual-bind mismatch unresolved, no public exposure or tailnet-only conclusion. Guardian survival after successful bootstrap exit not certified because attempt failed before ready",
+    "current": "All four new PIDs confirmed absent, app/admin18443/18444 ports closed, Serve config empty. Original inbox38763 and nginx443 survive; depot/snapshot/containers not deleted. No corruption/credential initialization marker in private native log. Original death cause/time remains unknown",
+    "warning": "phase-a.lock/recovery.guard retained, owner records name stopped recovery PIDs. Ordinary test startup remains blocked but fixtures:cleanup can delete data with dead owners; do not run it, remove guards, retry or restore backup by inference",
+    "next": "Parent assessment of failed listener verification and subsequent guarded owner transition. No automatic retry. Runtime-only guardian/ownership/backup and documentation changes; no feature edits/dependencies/commit/push/authenticated probes/full matrix/signoff"
+  },
+  "previousCiResearchTriageSession": {
+    "scope": "Authorized bounded investigation of failed exact-run41327240737; no production edits, commit/push, dependency/service/route changes",
+    "state": "initial-triage-complete-research-red-preserved-operational-unavailability-reported",
+    "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+    "evidence": "docs/evidence/ci-research-triage-41327240737.json",
+    "ci": "Both Node jobs and supported SDK job passed. Research stock112/6, candidate characterization10/0, SMTP0/1, browser60/6; expiry2/0,migration1/0,cleanup1/0 passed. All setup/cleanup passed, exact source/commit matched",
+    "classification": "13 failed executions in5 upstream/reference/raw-Fetch families; no new supported SDK implementation defect established. Raw follow containment invariant fails because arbitrary secret headers survive credentials:omit; SDK error/manual guards are distinct. G1 backend duplicate/SMTP edge cases still affect callers; no waiver",
+    "diagnostics": "Synthetic two-owned-origin real Node Fetch/SDK transport probe1/1 each Node22/24 covering8 SDK paths; zero foreign SDK requests, raw synthetic custom-header forwarding reproduced. Existing focused auth units42/42. Owned listeners closed/process exited, no real credentials/backend/browser stack/fixture lock access",
+    "gap": "CI intentionally exports only name/status; exact current private assertion line/received values unavailable. Source assertions/historical detailed matches labeled, not silently substituted. No full matrix rerun",
+    "operations": "Observed2026-11-01T09:47:06-08:00 on aspire.azabab.com; boot2026-10-22. Original owner/run unchanged but all4 recorded PIDs ESRCH, app loopback42231 and HTTPS18443/18444 ECONNREFUSED; inbox loopback38763 HTTP200. Available process registry has no running entries; distinct T3 registry unavailable. Exit cause/time unknown; no restart/remove lock/cleanup/route changes",
+    "next": "No Mark input needed. Separate read-only operational ownership diagnosis; proposed next code milestone is permanent8-path SDK redirect regression/custom-fetch trust note, not a production auth fix. Stable assertion-ID/boolean CI diagnostics can follow separately after scope review. Preserve original red evidence/G1/G7/full-signoff limits"
+  },
+  "previousCiReadinessSession": {
     "scope": "Authorized full intended-tree review/commit/push, then one live-safe CI readiness milestone L1-26/L1-27",
     "state": "verified-local-cold-cache-followup-awaiting-push-and-actual-new-CI",
     "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
@@ -16,22 +123,25 @@
     "missing": "Push verified followup and inspect actual current-HEAD CI; broad runtime/reference/security/coverage/release/G1/G7/null-user decisions and maintainer signoff remain incomplete"
   },
   "gitCheckpoint": {
-    "commit": "55dfaa20884198c2bfe3e06f4b205d0f9218f3c2",
-    "scope": "Approved guarded auth lifecycle, standalone responsive todos, safe mutation/cache fixes, tests/docs/sanitized evidence",
-    "push": "Canonical origin/main pushed without force and exact remote SHA verified; subsequent bounded47bddb41 follow-up locally verified, commit/push/new CI next",
-    "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41324363569",
-    "ciStatus": "Failed both offline clean-install jobs; downstream fixtures skipped, no green inference"
+    "commit": "cc22730fa5c4d66d9c01c5fe107455244ba1f446",
+    "scope": "Reviewed auth/todos checkpoint55dfaa2 followed by exact-lock offline consumer and indexed-doc readiness fixcc22730",
+    "push": "cc22730 canonical origin/main push and exact remote SHA verified in previous session; current bounded investigation makes no commit/push",
+    "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41327240737",
+    "ciStatus": "Both Node static/unit/package jobs and focused supported SDK job passed; research failed13 executions across5 known families, setup/cleanup passed; bounded triage recorded, no overall-green inference"
   },
   "activeExampleMilestone": {
+    "currentOperationalObservation": "Latest bounded auth milestone: stopped/requested-stop record unchanged, mtime2026-11-01T19:26:55.821Z, guardian588146/native588372/proxies588390,588405 absent; run/lock owner bytes and same6 original container IDs/images/ports/restart counts unchanged throughout isolated tests. Initial HTTPS refused. Signal-arrival time/actor not established; requested-stop is not a human-request attribution. Preserve stopped state/data/lock; no restart/cleanup/route/credentials/assets changes authorized.",
     "plan": "docs/plans/2026-11-01-todos-add-diagnosis.md",
     "sourceSha256": "e570c562a6aa4b3bb0eb36e7c87d0f2ce53de7594993768b22bb8ac910ef6ddd",
     "frozenSdkAndOriginalLauncherSourceSha256": "78ad127cc6d0be800f25745641207bf088ba686b199a9ba5d3185c1ffa79517d",
     "status": "in-progress",
-    "state": "LIVE; safe mutation status/TASK outcomes and content-versioned UI. Mark confirmed Chrome adding restored after hard refresh; original distinct-title cause unproven, no all-features certification",
+    "state": "STOPPED and preserved; current operational observation supersedes historical LIVE/UI evidence. No restart or destructive fixture cleanup authorized",
+    "historicalUiState": "LIVE; safe mutation status/TASK outcomes and content-versioned UI. Mark confirmed Chrome adding restored after hard refresh; original distinct-title cause unproven, no all-features certification",
     "runId": "1793540668685-32d6c1a05a9c",
     "app": "https://aspire.tailb03e.ts.net:18443/",
     "inbox": "https://aspire.tailb03e.ts.net:18444/",
-    "running": "Owned loopback app proc_a84f / Node runner365086; foreground app Serve proc_a651/PID372131 -> loopback42231, inbox Serve proc_dc58/PID372164 -> loopback38763. Leave all three running as requested; fixture lock intentionally held",
+    "running": "None of recorded guardian588146/native588372/proxies588390,588405 remains; original lock/data retained. Six original containers remain unchanged; no availability certification",
+    "historicalRunning": "Owned loopback app proc_a84f / Node runner365086; foreground app Serve proc_a651/PID372131 -> loopback42231, inbox Serve proc_dc58/PID372164 -> loopback38763. Leave all three running as requested; fixture lock intentionally held",
     "verified": "Current static/diff and focused units30/30 including existing expiry/background renewal; three real browser engines3/3 no retry/skip/flaky: repeated distinct adds, fresh IDs/current unexpired JWT owner/payload, duplicate400 no-write/safe UI, fast Enter, edit/cancel, complete/uncomplete, filters, delete/cancel, reload/versioned app/manual refresh/short idle/recovery/logout/two-owner isolation/cleanup. Native Chromium22 successful UI creates; exact21-task UI Next/Previous20/1/20 and unchanged full rows; scoped21-row cleanup and real local logout200; desktop/narrow screenshots inspected. Only app.js/generated index.html changed in this session, plus future UI import generator. Frozen SDK/main/native/schema/access rules/original fixture/jobs/network preserved",
     "pending": "Mark said it’s working now after Chrome hard-refresh/retry; exact original distinct-title rejection cause remains unproven, not retroactively duplicate/expiry/cache. No idle wait for further response. If recurrence obtain only HTTP/TASK code, operation and safe browser/session-age info. Physical Safari/full accessibility/fault/coverage/reference/CI/release and global acknowledgement remain uncertified. Original launcher source-drift diagnostic expected at eventual approved teardown; require cleanup separately",
     "evidence": ["docs/evidence/todos-add-summary.json", "docs/evidence/todos-add-deployment.json", "docs/evidence/todos-add-focused-unit-node22.json", "docs/evidence/todos-add-browser-node22.json", "docs/evidence/todos-add-native.json", "docs/evidence/todos-add-screenshots.json", "docs/evidence/todos-add-regressions-red.json"]
@@ -72,11 +182,18 @@
       "G7 logout acknowledgement and late-response/session races"
     ],
     "status": "in-progress",
-    "checks": "Current CI-readiness47bddb41: both Nodes static/211 units/4 offline package checks/packed-browser assets; existing lock runtime version/integrity assertions, same cold cache no14.0.3; index-only Markdown guard red/green. Parent55dfaa2 pushed CI failed clean-install; inspect exact followup CI after push. Current UIe570c562: static/diff, focused30/30 units, real private task flow3/3 engines plus native22 UI creates/exact21-task pagination20/1/20/owned cleanup/local logout200/screenshots. User confirmed Chrome add restored; original distinct-title cause unknown. Safe mutation status/codes and warm-cache import map fixed without SDK/schema/network/reset. Historical matrices remain historical. Same app/Serve/lock retained. Broad release/signoff/G1/G7/null-user decisions remain unresolved; see todos-add-summary.",
+    "checks": "Current frozen cd302721: both pinned Nodes static/229units/4offline package checks. Eight actual-SDK POST307/GET303 redirect cases fail with dispatch guards removed and pass after isolated restoration; actual installed reporter projections and hostile literal-only metadata verified. Real isolated characterization9/1,stockSMTP0/1,candidateSMTP0/1,lifecycle9/3,focused genuine browser6/3 remain strict red, all6 owned runs cleaned/temp checkout removed. Original zero-browser collection invocation failure retained and only affected browser scope repeated after private direct-CLI correction. Original stopped fixture/lock/resources preserved; no SDK/backend fix, commit/push or release/signoff",
+    "previousMilestoneChecks": "Current CI-readiness47bddb41: both Nodes static/211 units/4 offline package checks/packed-browser assets; existing lock runtime version/integrity assertions, same cold cache no14.0.3; index-only Markdown guard red/green. Parent55dfaa2 pushed CI failed clean-install; inspect exact followup CI after push. Current UIe570c562: static/diff, focused30/30 units, real private task flow3/3 engines plus native22 UI creates/exact21-task pagination20/1/20/owned cleanup/local logout200/screenshots. User confirmed Chrome add restored; original distinct-title cause unknown. Safe mutation status/codes and warm-cache import map fixed without SDK/schema/network/reset. Historical matrices remain historical. Same app/Serve/lock retained. Broad release/signoff/G1/G7/null-user decisions remain unresolved; see todos-add-summary.",
     "historicalFixtureCheckpoint": "Read full advisory203635a6 and source PRAGMAoptimize0x10002; parent actualdc9 firstsuccess CLI only adds canonical stat1/stat4,30existingobjects identical, config/unrelatedidentity/session unchanged, cleanup unchanged. Preserve original failed report/snapshots. Exact own4attrs/table-index-trigger-view metadata arrays validated, duplicates(type,name) rejected. Reserved stat1/stat4 records canonical in either snapshot including case variants rejected by exact values; only new canonical absent-before records removed forcomparison. Everyremaining object exact, existingstats removal/modification forbidden, no SQLnormalization/broadinternal exclusions. Separate rawSchemaChanged/prohibitedSchemaChange/fixedallowedBookkeepingAdded report, config/identity/session exact plus ownednative/pin/cleanup/private0600snapshots unchanged. No statistics samples/contents export or physicalbytes/queryplan claim, no manual schema write. TDD RED0/4 -> focused10/10; initialTS7053 dynamic testkeys failures retained plus temporary incorrectly unchecked shellcheckpoint retained private/superseded; corrected typed tuple/const union, final actual22.23.2 SDK114/114 mixed164/164 build/types. No SDK/auth implementation/server/default/deps/repin/privilege/verbs/stage/commit/fixtures or signoff.",
     "historicalStorageParentChecks": "Historical source93345a16: mixed units125/125 on Node22/24, clean package checks Node22/24, check/diff pass. Real persistent auth1/1 and packed browser6/6 (data UI plus genuine password/localStorage reload on Chromium/Firefox/WebKit) passed with exact-source/setup/cleanup checks. Data/database/constraints refresh proc_ee08 and independent storage reviewer370c214b running. Refresh/live getUser/logout/events/default refresh still unsupported; G1/G7 open; no compatibility/signoff.",
     "parentPreviousDataChecks": "Historical source5c55be11: targeted auth parser privacy/import-graph regressions GREEN7/7 after preserved4pass/2fail and6pass/1fail REDs; mixed units114/114 on Node22/24, build/check/diff passed. Current clean package Node22/24 passed. Final-source proc_27fc passed: real memory-auth1/1,data6/6,database9/9,constraints6/6,packed data browsers3/3 Chromium/Firefox/WebKit; every source/setup/cleanup check passed and lock clear. Reviewer recheck2601f0f5 resolved both findings with no new issues; no maintainer signoff. Prior9fcb2e9f real auth1/1,data6/6,database9/9,constraints6/6,browsers3/3 and package22/24 passed source/setup/cleanup, now historical. Auth explicitly memory-only, no persistence/defaults/refresh/logout implemented; G1/G7 open; no compatibility/signoff.",
     "restart": [
+      "Read lastSession and g1-private-prototype-assessment.json: exact native source/binary missing,0 current native/HTTP tests; historical23 executions/2HTTP cases are not current proof",
+      "Recover original private artifact bundle and independently verify recorded base/ref/patch/submodules/binary digest/platform before already-authorized narrow isolated revalidation; no reconstruction/replacement build here",
+      "Preserve frozen SDK cd302721 and stopped original fixture/data/lock/backups; keep production adoption on hold, G7 global uncertainty and all strict failures",
+      "No commit/push, source/pin/throttle/identity/network/service changes or release/signoff inferred"
+    ],
+    "previousReadinessRestart": [
       "Read lastSession/ci-readiness-summary.json; first checkpoint55dfaa2 pushed and followup47bddb41 locally verified; inspect current-HEAD CI, preserve live UIe570c562/frozen startup78ad127c and all historical evidence. Three jobs LIVE for Mark, sole executor; do not restart/reset fixture, alter title UNIQUE or launch competing stacks",
       "Mark can open https://aspire.tailb03e.ts.net:18443/ and inbox18444 from already-connected/allowed Mac/iPhone; signup once with fresh disposable address, real confirmation then explicit login. No public exposure/ACL/firewall/443/service/account changes",
       "If stopping is requested, stop owned foreground Serve jobs proc_a651/proc_dc58 first, then send quit to proc_a84f and wait for guarded cleanup. Verify exact project/lock/routes gone; never reuse stale PIDs or reset global Serve",
@@ -270,6 +387,7 @@
       "id": "A04",
       "title": "Fixture database/permission test suites",
       "status": "implemented",
+      "boundedAuthDiagnosticsEvidence": "docs/evidence/auth-safe-diagnostics-summary.json",
       "tests": [
         "L1-27/U27",
         "L1-27/I27/C27"
@@ -472,6 +590,7 @@
         "L1-27/I27/C27"
       ],
       "evidence": [
+        "docs/evidence/auth-safe-diagnostics-summary.json",
         "docs/evidence/phase-a-unit-node22.json",
         "docs/evidence/phase-a-all-node22.json",
         "docs/evidence/phase-a-lifecycle-node22.json",
@@ -970,6 +1089,7 @@
       "id": "L1-14",
       "title": "Signup/confirmation",
       "status": "in-progress",
+      "boundedAuthDiagnosticsEvidence": "docs/evidence/auth-safe-diagnostics-summary.json",
       "evidence": [
         "docs/evidence/todos-remote-browser-node22.json",
         "docs/evidence/todos-remote-summary.json",
@@ -1224,6 +1344,7 @@
       "id": "L1-19",
       "title": "Logout scopes",
       "status": "in-progress",
+      "boundedAuthDiagnosticsEvidence": "docs/evidence/auth-safe-diagnostics-summary.json",
       "evidence": [
         "docs/evidence/todos-remote-browser-node22.json",
         "docs/evidence/todos-remote-summary.json",
@@ -1314,6 +1435,7 @@
       "id": "L1-24",
       "title": "Security envelope",
       "status": "planned",
+      "boundedAuthDiagnosticsEvidence": "docs/evidence/auth-safe-diagnostics-summary.json",
       "evidence": [],
       "missing": [
         "All applicable test-plan families and maintainer signoff"
@@ -1338,7 +1460,9 @@
       "id": "L1-26",
       "title": "Package/docs/release",
       "status": "in-progress",
+      "boundedAuthDiagnosticsEvidence": "docs/evidence/auth-safe-diagnostics-summary.json",
       "evidence": [
+        "docs/evidence/native0358-upgrade-summary.json",
         "docs/evidence/ci-readiness-summary.json",
         "docs/evidence/todos-redesign-summary.json",
         "docs/evidence/todos-redesign-browser-node22.json",
@@ -1406,7 +1530,9 @@
       "id": "L1-27",
       "title": "harness work is partially implemented/tested",
       "status": "in-progress",
+      "boundedAuthDiagnosticsEvidence": "docs/evidence/auth-safe-diagnostics-summary.json",
       "evidence": [
+        "docs/evidence/native0358-upgrade-summary.json",
         "docs/evidence/ci-readiness-summary.json",
         "docs/evidence/todos-redesign-deployment.json",
         "docs/evidence/todos-redesign-focused-unit-node22.json",
@@ -1486,6 +1612,10 @@
       "id": "G1",
       "title": "Signup null-user exception",
       "status": "blocked",
+      "boundedAuthDiagnosticsEvidence": "docs/evidence/auth-safe-diagnostics-summary.json",
+      "boundedAuthDiagnosticsState": "Fresh strict G1_PENDING_CONFIRM/G1_SMTP_CONFIRM/G1_SMTP_MAIL failures retained. Existing private prototype proof historical; no candidate promotion, deployed repair, compatibility exception or signoff",
+      "privatePrototypeAssessmentEvidence": "docs/evidence/g1-private-prototype-assessment.json",
+      "privatePrototypeAssessmentState": "Original .runtime/upstream-g1/source and debug binary absent; preflight128 before fixtures,0 current native/HTTP tests. Exact private source review unavailable. Recover original artifact/provenance and independently hash/platform-check binary before isolated revalidation; keep production adoption on hold",
       "evidence": [
         "docs/evidence/phase-a-update-order-all-node22.json",
         "docs/evidence/phase-a-update-order-candidate-characterization-node22.json",
@@ -1784,6 +1914,8 @@
       "id": "G7",
       "title": "User/session/refresh/logout lifecycle",
       "status": "blocked",
+      "boundedAuthDiagnosticsEvidence": "docs/evidence/auth-safe-diagnostics-summary.json",
+      "boundedAuthDiagnosticsState": "Fresh strict reference event/native late refresh/status failures retained; actual SDK redirect guards verified, not a new SDK defect or authoritative global logout acknowledgement. No gate signoff",
       "followupDirectionApproval": "Completed interview ef996dac-be47-4c9d-8ec6-a2dba294b5a1 explicitly approved test-only constrained native/browser acknowledgement and one best-effort local revocation of an exactly decoded discarded-login refresh credential. Preserve newer/sibling state, surface failures and do not claim cleanup for missing/undecodable replies. No SDK/gate signoff.",
       "followupDirectionEvidence": "docs/evidence/phase-a-g7-acknowledgement-cleanup-directions.json",
       "nativeAcknowledgementPrerequisite": {
@@ -1865,7 +1997,14 @@
     }
   ],
   "nextSteps": [
-    "Commit/push verified47bddb41 CI-readiness followup; verify canonical remote SHA and inspect exact new HEAD CI, not old41324363569/local greens. Read ci-readiness-summary/attempts. Preserve proc_a84f/proc_a651/proc_dc58 and owned lock; no reset/new signup/schema change or competing stacks",
+    "Keep original official0.35.8 demo LIVE on exact existing18443/18444 scope for Mark; guardian965539/native965809/proxies965827,965850 intentionally retained. No automatic stop/cleanup/rollback",
+    "Use docs/evidence/native0358-upgrade-summary.json and current411f ledger; current both-Node232 units/package4/static, SDKdata6/DB9/constraints6, live UI3 and original51-account/6-task preservation verified. Preserve mixed earlier auth8c/refresh+browser551/native-upgrade551 bindings, never rebind historical proof",
+    "All17 isolated projects cleaned,377 raw run/artifact files hash-archived, owned temporary tree removed. Six generated confirmed UI accounts/54 owned audit rows intentionally retained,0 generated tasks/sessions; all preexisting main/session rows unchanged",
+    "Keep strict source551 characterization9/1,stockSMTP0/1,reservationSMTP0/1,lifecycle9/3 and G1/G7 unresolved/unwaived. No private prototype reconstruction, identity/password/timestamp/history repair, API expansion or signup patch deployment",
+    "Future review/CI/security/fault/coverage/release and maintainer signoff require separate work. No commit/push/publication inferred. Any rollback must first preserve newly accepted live data; never ordinary launcher/fixtures:cleanup against original lock"
+  ],
+  "previousRecoveryNextSteps": [
+    "Read ci-research-triage-41327240737.json: exact cc22730 CI supported SDK/Nodes passed, research red preserved. No Mark input needed. Recorded app/proxy PIDs/endpoints unavailable; diagnose ownership separately without restarting/removing original lock. Propose permanent synthetic SDK redirect coverage and safe assertion diagnostics before any implementation",
     "No pending action solely for restored Chrome add. Exact original distinct-title rejection is unproven; if recurrence obtain only displayed HTTP/TASK code plus safe operation/browser/session-age details, never credentials/private titles. App18443/inbox18444 unchanged. Physical iPhone/acceptance and global-ack limitations remain",
     "Only on Mark-requested downtime, stop owned proxies then quit launcher; require passed cleanup and exact owned resource/lock/route absence. Its original source-drift guard will report failed after approved UI edits: preserve diagnostic, do not confuse with cleanup failure or relabel green. Deployment manifest is UI provenance",
     "Full shared/security/fault/accessibility/resource/coverage/actual CI/release, three clean candidates and maintainer signoff remain incomplete; G1/G7/null-user approval unchanged; reviewed commit/push expressly authorized, no public deployment/new credentials/waiver inferred"

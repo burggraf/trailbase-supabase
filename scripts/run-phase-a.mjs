@@ -4,6 +4,7 @@ import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { baseline, exec } from './tools.mjs';
 import { createHarness } from './harness.mjs';
+import { vitestCase, playwrightCase, runnerFailure } from './phase-a-diagnostics.mjs';
 
 export async function sourceHash() {
   const paths = ['package.json','package-lock.json','tsconfig.json','tsconfig.sdk.json','vitest.config.ts','playwright.config.ts','playwright.sdk-data.config.ts','.gitignore','README.md','PLAN.md','AGENTS.md','docs/LEVEL1_PLAN.md','docs/RESEARCH.md','docs/TEST_PLAN.md','docs/AUTH_MIGRATION_INVESTIGATION.md','docs/PROOF_INVESTIGATIONS.md'];
@@ -46,7 +47,7 @@ async function main() {
   process.on('SIGINT', interrupt); process.on('SIGTERM', interrupt);
   async function runTests(name, binary, args, extraEnv = {}) {
     let output = '';
-    testChild = spawn(resolve('node_modules/.bin', binary), args, {
+    testChild = spawn(process.execPath, [resolve('node_modules', binary === 'vitest' ? 'vitest/vitest.mjs' : '@playwright/test/cli.js'), ...args], {
       env: { ...process.env, ...extraEnv, PHASE_A_CONTEXT: resolve(harness.context.directory, 'context.json') }, stdio: ['ignore','pipe','pipe']
     });
     // Never stream assertion dumps/auth replies. Only sanitized case summaries leave the private run directory.
@@ -65,7 +66,7 @@ async function main() {
     const file = resolve(harness.context.directory, `${name}.json`);
     const success = await runTests(name, 'vitest', vitestArguments(testPath, file));
     const results = JSON.parse(await readFile(file, 'utf8'));
-    report.tests.push(...results.testResults.flatMap(result => result.assertionResults.map(test => ({ name: test.fullName, status: test.status }))));
+    report.tests.push(...results.testResults.flatMap(result => result.assertionResults.map(vitestCase)));
     if (!success) throw new Error('Phase A assertions failed; inspect private run diagnostics');
   }
   try {
@@ -119,7 +120,7 @@ async function main() {
       const results = JSON.parse(await readFile(file,'utf8'));
       function collect(suites) {
         for (const suite of suites) {
-          for (const spec of suite.specs ?? []) for (const test of spec.tests) report.tests.push({ name:`${spec.title} [${test.projectName}]`, status:test.results.length === 1 && test.results[0].status === 'passed' ? 'passed' : 'failed' });
+          for (const spec of suite.specs ?? []) for (const test of spec.tests) report.tests.push(playwrightCase(spec, test));
           collect(suite.suites ?? []);
         }
       }
@@ -130,12 +131,13 @@ async function main() {
     if (!report.tests.length || report.tests.some(test => test.status !== 'passed')) throw new Error('Phase A missing/skipped/failed tests');
     report.status = 'passed';
   } catch (error) {
-    if (suite === 'lifecycle' && report.injectedFailure === 'after-start' && error.message === 'Injected fixture setup failure') {
+    if (suite === 'lifecycle' && report.injectedFailure === 'after-start' && runnerFailure(error) === 'injected-setup') {
       console.log('Injected setup failure reached finally-cleanup; passing requires no owned resources remain.');
       report.status='passed';
       report.tests=[{ name:'L1-27/I27 injected setup failure reaches unconditional owned-resource cleanup', status:'passed' }];
     } else {
-      console.error(error.message.startsWith('Local Supabase') || error.message.startsWith('Phase A') ? error.message : 'Phase A setup/run failed; inspect private .runtime diagnostics');
+      report.failure = runnerFailure(error);
+      console.error(`Phase A ${report.failure}; inspect private .runtime diagnostics`);
       report.status='failed';
     }
   } finally {
@@ -149,7 +151,7 @@ async function main() {
     await mkdir('artifacts/phase-a',{recursive:true});
     const path=`artifacts/phase-a/${report.runId ?? Date.now()}.json`;
     await writeFile(path,JSON.stringify(report,null,2)+'\n');
-    for (const test of report.tests) console.log(`${test.status.toUpperCase()} ${test.name}`);
+    for (const test of report.tests) console.log(`${test.status.toUpperCase()} ${test.name}${test.diagnostic ? ` [${test.diagnostic.step}:${test.diagnostic.category}]` : ''}`);
     console.log(`Sanitized evidence: ${path} (${report.status}; cleanup ${report.cleanup})`);
     await rm('.runtime/phase-a.lock',{recursive:true});
     process.exitCode=report.status === 'passed' ? 0 : 1;

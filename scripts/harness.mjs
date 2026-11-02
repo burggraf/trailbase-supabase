@@ -6,6 +6,12 @@ import { resolve, relative, sep } from 'node:path';
 import { once } from 'node:events';
 import { baseline, exec, installTrail } from './tools.mjs';
 
+const legacyNativePin = JSON.parse(await readFile(new URL('../tests/fixtures/trailbase-v0.34.3.json', import.meta.url)));
+export function fixtureNativePin(profile = 'default') {
+  if (profile === 'default') return baseline.trailbase;
+  if (profile === 'legacy-upgrade') return legacyNativePin;
+  throw new Error('Invalid native server profile');
+}
 export const cli = resolve('node_modules/.bin/supabase');
 export function assertLocalUrl(value, allowedOrigins) {
   const url = new URL(value);
@@ -154,7 +160,9 @@ export function nativeSiteConfig(config, publicOrigin = undefined) {
   return config.replace(original, `site_url: "${publicOrigin}"`);
 }
 
-export async function createHarness({ authMitigation = false, nativeAuthProfile = 'default', privateNativePrototype = false, sdkBrowser = false, publicOrigin } = {}) {
+export async function createHarness({ authMitigation = false, nativeAuthProfile = 'default', privateNativePrototype = false, sdkBrowser = false, publicOrigin, nativeServerProfile = 'default' } = {}) {
+  const nativePin = fixtureNativePin(nativeServerProfile);
+  if (nativeServerProfile !== 'default' && (authMitigation || privateNativePrototype)) throw new Error('Legacy upgrade profile requires stock fixture');
   if (publicOrigin !== undefined && !sdkBrowser) throw new Error('Remote origin is only supported for the owned SDK browser fixture');
   const authVariant = fixtureAuthVariant({ authMitigation, privateNativePrototype });
   const nativeConfig = nativeSiteConfig(nativeAuthConfig(await readFile('tests/fixtures/trailbase/config.textproto','utf8'),nativeAuthProfile), publicOrigin);
@@ -217,8 +225,8 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await rm(resolve(directory, 'sdk-package'), { recursive: true, force: true });
     await rm(resolve(directory, 'private-g1-upgrade-fixture.json'), { force: true });
   }
-  async function launchTrail(binary, logName) {
-    log = await open(resolve(directory, logName), 'w', 0o600);
+  async function launchTrail(binary, logName, append = false) {
+    log = await open(resolve(directory, logName), append ? 'a' : 'w', 0o600);
     trail = spawn(binary, ['--depot', resolve(directory, 'traildepot'), 'run', '--address', `127.0.0.1:${ports.TRAIL_PORT}`, '--admin-address', `127.0.0.1:${ports.ADMIN_PORT}`, '--public-dir', resolve(directory, 'public'), '--runtime-threads', '2'], {
       env: childEnv, stdio: ['ignore', log.fd, log.fd]
     });
@@ -242,10 +250,10 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await cp(resolve('tests/fixtures/supabase'), resolve(directory, 'supabase'), { recursive: true });
     const values = { ...ports, PROJECT_ID: project };
     await writeFile(resolve(directory, 'supabase/config.toml'), replaceTokens(await readFile('tests/fixtures/supabase/config.toml', 'utf8'), values));
-    const binary = prototype?.binary ?? await installTrail();
+    const binary = prototype?.binary ?? await installTrail(nativePin);
     if (!prototype) stockBinary = binary;
     const { stdout: trailVersion } = await exec(binary, ['--version']);
-    if (!trailVersion.includes(baseline.trailbase.version)) throw new Error('TrailBase version drift');
+    if (!trailVersion.includes(nativePin.version)) throw new Error('TrailBase version drift');
     console.log('Starting disposable Supabase (first run may download images)...');
     context.setupStage='supabase-start';
     startAttempted = true;
@@ -377,5 +385,21 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
     return { restored: true };
   }
-  return { context, start, restartWithPrivatePrototype, createStockBackup, restoreStockBackupAndRestart, cleanup };
+  async function stopNativeForUpgrade() {
+    if (nativeServerProfile !== 'legacy-upgrade' || context.authVariant !== 'stock') throw new Error('Native upgrade control requires owned legacy profile');
+    await stopChild(trail); await log?.close(); trail = undefined; log = undefined;
+  }
+  async function startNativeForUpgrade(profile = 'default') {
+    if (nativeServerProfile !== 'legacy-upgrade' || context.authVariant !== 'stock' || trail) throw new Error('Native upgrade control requires stopped owned legacy profile');
+    const pin = fixtureNativePin(profile), binary = await installTrail(pin);
+    const version = (await exec(binary, ['--version'])).stdout.trim();
+    if (!version.includes(pin.version)) throw new Error('Native upgrade version drift');
+    await launchTrail(binary, `trail-upgrade-${pin.version}.log`, true);
+    await waitReady(`${context.trailUrl}/api/healthcheck`, 30000, trail);
+    const marker = await fetch(`${context.trailUrl}/phase-a-owner.txt`, { signal: AbortSignal.timeout(5000) });
+    if (!marker.ok || await marker.text() !== id) throw new Error('Native upgrade origin ownership mismatch');
+    await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
+    return { version };
+  }
+  return { context, start, restartWithPrivatePrototype, createStockBackup, restoreStockBackupAndRestart, stopNativeForUpgrade, startNativeForUpgrade, cleanup };
 }

@@ -1,0 +1,260 @@
+{
+  "scope": "Authorized official native server upgrade and bounded supported acceptance/original demo rollout; NOT full SDK/reference/security/release or CI signoff",
+  "status": "passed",
+  "sourceSha256": "411f15feb242d02024cfcf2cbf7d1ed0862737629467dd71e1bcb99c091284da",
+  "baseCommit": "cc22730fa5c4d66d9c01c5fe107455244ba1f446",
+  "verifiedAt": "2026-11-02T00:47:22.661Z",
+  "native": {
+    "version": "0.35.8",
+    "commit": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+    "latestStableOfficialReleaseVerified": true,
+    "publishedAt": "2026-10-30T21:39:41Z",
+    "linuxArchiveSha256": "4b362e6f08da25b5349be317024260848c02fc336b4dea0c7b740e59d881622b",
+    "fourOfficialAssetDigestsPinned": true,
+    "linuxELFAndActualExecutionVerified": true,
+    "legacyBinarySha256": "54a09dad3775cee4e18fbd4de65d0cc89b9028b9079906a583bb9a5ee4bf526a",
+    "legacyNonversionedBinaryPreserved": true,
+    "versionIsolatedCaches": true,
+    "javascriptClientUnchanged": "0.14.3",
+    "noPrivateSignupPatch": true
+  },
+  "supportedChecks": [
+    {
+      "suite": "sdk-auth",
+      "count": 3,
+      "sourceSha256": "8c9c2a94d14450fcb448e777fa7a55d8980d64ab8b6e81d477850d5acc770227",
+      "runId": "1793576432325-113260e7808b",
+      "status": "passed",
+      "cleanup": "passed"
+    },
+    {
+      "suite": "sdk-refresh",
+      "count": 4,
+      "sourceSha256": "551097d5e39bde4390144961da9f30b60a3df86e2ec11d40a4556b8a44af2701",
+      "runId": "1793577920495-6834b45bcf4c",
+      "status": "passed",
+      "cleanup": "passed"
+    },
+    {
+      "suite": "sdk-browser",
+      "count": 15,
+      "sourceSha256": "551097d5e39bde4390144961da9f30b60a3df86e2ec11d40a4556b8a44af2701",
+      "runId": "1793578327936-23218633cb9a",
+      "status": "passed",
+      "cleanup": "passed"
+    },
+    {
+      "suite": "sdk-data",
+      "count": 6,
+      "sourceSha256": "411f15feb242d02024cfcf2cbf7d1ed0862737629467dd71e1bcb99c091284da",
+      "runId": "1793578859822-9d5478962196",
+      "status": "passed",
+      "cleanup": "passed"
+    },
+    {
+      "suite": "database",
+      "count": 9,
+      "sourceSha256": "411f15feb242d02024cfcf2cbf7d1ed0862737629467dd71e1bcb99c091284da",
+      "runId": "1793578932879-59fff1183ef7",
+      "status": "passed",
+      "cleanup": "passed"
+    },
+    {
+      "suite": "constraints",
+      "count": 6,
+      "sourceSha256": "411f15feb242d02024cfcf2cbf7d1ed0862737629467dd71e1bcb99c091284da",
+      "runId": "1793578981651-9d029cf43bb3",
+      "status": "passed",
+      "cleanup": "passed"
+    },
+    {
+      "suite": "unit/package/static",
+      "node": "22.23.2",
+      "unit": 232,
+      "package": 4,
+      "sourceSha256": "411f15feb242d02024cfcf2cbf7d1ed0862737629467dd71e1bcb99c091284da",
+      "status": "passed"
+    },
+    {
+      "suite": "unit/package/static",
+      "node": "24.21.0",
+      "unit": 232,
+      "package": 4,
+      "sourceSha256": "411f15feb242d02024cfcf2cbf7d1ed0862737629467dd71e1bcb99c091284da",
+      "status": "passed"
+    }
+  ],
+  "sourceBindings": {
+    "current": "411f15feb242d02024cfcf2cbf7d1ed0862737629467dd71e1bcb99c091284da",
+    "nativeUpgrade": "551097d5e39bde4390144961da9f30b60a3df86e2ec11d40a4556b8a44af2701",
+    "twoReleaseProbe": "Runtime-only driver executed with551 repository SDK implementation; no SDK implementation changes before411",
+    "liveOriginalUI": {
+      "repoSourceSha256": "411f15feb242d02024cfcf2cbf7d1ed0862737629467dd71e1bcb99c091284da",
+      "existingTaskFlowReused": true,
+      "driverHashes": {
+        ".runtime/upgrade-original-native0358.mjs": "b7397199f7317bd59d86e96557ccedebe25ee4e929b967b16026256e9bad2e38",
+        ".runtime/native-upgrade/ui-acceptance.config.ts": "e3018842808ff77757772016f0b7160bdfaf736d54da85d6962ab7bff2442ea0",
+        ".runtime/native-upgrade/ui-acceptance/original.spec.ts": "65f48eab94acf4dab627b793dd5076908d8871da4bff494f79801e4c29fe59d8"
+      },
+      "projects": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ],
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "earlierScopeReason": "Only upgrade-specific logging/runner CLI and then exact status expectations/research note changed after earlier supported scope source bindings; SDK implementation/auth/browser files unchanged. No unrelated identical suite rerun or evidence rebinding."
+  },
+  "nativeUpgrade": {
+    "status": "passed",
+    "checks": 9,
+    "cleanup": "passed",
+    "identityPasswordTaskAuditSessionRowsPreserved": true,
+    "repeatCurrentStartupPassed": true,
+    "completeLegacyRollbackRestores": 2,
+    "negativeGeneratedObservations": {
+      "agedPendingWithoutDependents": {
+        "accountsDeleted": 1,
+        "tasksDeleted": 0,
+        "notApprovalForUserDataDeletion": true
+      },
+      "agedPendingOwnerWithTask": {
+        "startupRefusedOnFK": true,
+        "allRowsPreserved": true
+      },
+      "duplicatePendingEmail": {
+        "startupRefusedOnUniqueIndex": true,
+        "allRowsPreserved": true
+      }
+    }
+  },
+  "statusCompatibility": {
+    "sameOwnedFixtureTwoOfficialReleases": 16,
+    "completeDataAuditSnapshotsUnchangedAfterEveryOperation": true,
+    "legacyConstraintUpdateStatus": 500,
+    "newConstraintUpdateStatus": 400,
+    "malformedIntegerStatusBothVersions": 400,
+    "sdkPreservesNativeStatus": true,
+    "noFabricatedPostgresCode": true,
+    "change": "Only seven precise native status literals across four cases in three test files plus versioned research note; no SDK implementation, authorization/Supabase/complete-row/audit assertion changes",
+    "initial551Failures": {
+      "sdkData": {
+        "passed": 5,
+        "failed": 1
+      },
+      "database": {
+        "passed": 8,
+        "failed": 1
+      },
+      "constraints": {
+        "passed": 4,
+        "failed": 2
+      }
+    },
+    "corrected411": {
+      "sdkData": 6,
+      "database": 9,
+      "constraints": 6,
+      "allCleanupPassed": true
+    }
+  },
+  "original": {
+    "runId": "1793540668685-32d6c1a05a9c",
+    "nativeVersion": "0.35.8",
+    "status": "live-ready-left-running",
+    "guardianPid": 965539,
+    "nativePid": 965809,
+    "appServePid": 965827,
+    "inboxServePid": 965850,
+    "bootstrapExitedAndGuardianIndependent": true,
+    "appUrl": "https://aspire.tailb03e.ts.net:18443/sdk-data/index.html",
+    "inboxUrl": "https://aspire.tailb03e.ts.net:18444/",
+    "protectedAggregatePreflight": {
+      "accounts": 51,
+      "pending": 0,
+      "selectedForDeletion": 0,
+      "duplicatePendingGroups": 0,
+      "duplicatePendingAccounts": 0,
+      "pendingVerifiedCollisions": 0,
+      "orphanTasks": 0,
+      "tasks": 6
+    },
+    "completeStoppedBackupAndBytePermissionOwnerRestoreVerified": true,
+    "actualCompleteOriginalCopyMigrationAndLegacyRestoreStartupPassed": true,
+    "wholePreexistingMainAndSessionRowsVerifiedBeforeHttpsExposure": true,
+    "onlyExpectedMigrationHistoryAndNativeVersionMetadataChanges": true,
+    "serializedApp18443ReadyBeforeInbox18444": true,
+    "sameSixContainersConfigMigrationsKeysAssetsCertificateAnd443": true,
+    "noFunnelBackgroundServeAclFirewallOrExposureExpansion": true,
+    "postUI": {
+      "status": "passed",
+      "runId": "1793540668685-32d6c1a05a9c",
+      "originalAccountsPreserved": 51,
+      "originalTasksPreserved": 6,
+      "allPreexistingNonSystemMainAndSessionRowsUnchanged": true,
+      "generatedConfirmedOrdinaryAccountsRetained": 6,
+      "generatedTasksRemaining": 0,
+      "generatedSessionsRemaining": 0,
+      "generatedNativeAuditRowsRetained": 54,
+      "scope": "Only own generated task rows deleted through SDK and own sessions revoked through authenticated API; generated accounts/audit history retained, no direct row editing or original account/task/session mutation",
+      "physicalDeviceAcceptance": false,
+      "globalLogoutCompatibilitySignoff": false
+    },
+    "independentGoldieMacReadOnlyReport": "Root reports real Mac curl HEAD app/inbox HTTP200 TLSverify0 after rollout; no auth/mutation/credential reads",
+    "stopProcedure": "Only when authorized: npm exec --offline --yes --package=node@22.23.2 -- node .runtime/upgrade-original-native0358.mjs --stop; verifies guardian identity/start ticks/argv; proxies first then native; no data cleanup",
+    "rollback": "Complete stopped original backup/config/keys/WAL/metadata/public and old executable retained privately; no automatic restore after accepted live writes"
+  },
+  "strictResearch": {
+    "status": "failed-not-waived",
+    "sourceSha256": "551097d5e39bde4390144961da9f30b60a3df86e2ec11d40a4556b8a44af2701",
+    "stockCharacterization": {
+      "passed": 9,
+      "failed": 1
+    },
+    "stockSMTP": {
+      "passed": 0,
+      "failed": 1
+    },
+    "reservationOnlySMTP": {
+      "passed": 0,
+      "failed": 1
+    },
+    "authLifecycle": {
+      "passed": 9,
+      "failed": 3
+    },
+    "allCleanupPassed": true,
+    "g1g7Signoff": false,
+    "privatePrototypeStillAbsent": true
+  },
+  "cleanup": {
+    "ownedIsolatedRuns": 17,
+    "containersVolumesNetworksNativeRunnerDepotsContextsBackupsAndLocksAbsent": true,
+    "ownedTemporaryCheckoutRemoved": true,
+    "privateRawRunAndArtifactFilesHashVerified": 377,
+    "rawReportsControllersAndPriorArtifactsRetained": true,
+    "liveOriginalServicesIntentionallyRetained": true,
+    "noVerificationJobLeftRunning": true
+  },
+  "retainedFailedAttempts": [
+    "Optional file utility absent caused provenance command127 after archive checksum; actual ELF/version execution then verified",
+    "Native upgrade attempt1 failed an assumed aged-owner cascade; actual migration correctly refused FK violation. Attempt2 failed log-tail assertion because restart logs were overwritten; upgrade-only append fixed; final9/9 with exact reasons and full-row invariants",
+    "Two original-copy wrappers failed overbroad unchanged migration/version metadata assertions; separate exact post-validator passed, original untouched",
+    "First legacy-copy rollback proof stopped at a secrets subdirectory enumeration error before native startup; recursive key check and actual legacy startup passed",
+    "First live-UI wrapper lacked required PHASE_A_CONTEXT and collected0; one corrected genuine three-engine execution passed3/3, no UI test retry or extra account set",
+    "JSON reporter path was config-relative; nested original retained/copied, not mistaken for unexecuted tests"
+  ],
+  "limits": [
+    "Current CI not run; no commit/push/publication",
+    "Full SDK/reference/security/fault/coverage/release/maintainer signoff remains incomplete",
+    "G1/G7 strict failures and signup null-user/global-acknowledgement limitations remain unresolved; no exception or backend repair inferred",
+    "No physical iPhone acceptance; mobile-configured WebKit is simulated",
+    "Full native-CHECK-aware original SQLite integrity scan unavailable; structural-only scratch check and actual native migration/FK/data postconditions are distinct proofs",
+    "Only Linux native executable actually run; other three asset digests are official metadata pins"
+  ],
+  "publication": false,
+  "maintainerSignoff": false
+}

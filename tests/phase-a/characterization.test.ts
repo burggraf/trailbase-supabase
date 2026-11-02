@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { FetchError } from 'trailbase';
+import { diagnosticStep } from '../../scripts/phase-a-diagnostics.mjs';
 import { context, confirmedTrailUser, confirmedSupabaseUser, nativeUuid, supabase, trailbase, confirmEmail, type Context } from './helpers.js';
 
 let env: Context;
@@ -68,7 +69,7 @@ describe('L1-27 upstream characterization; G1-G7 still require approval', () => 
     const valid = await visitor.auth.signInWithPassword({ email:account.email,password:account.password });
     expect(valid.error).toBeNull(); expect(valid.data.user?.id).toBe(account.user.id);
   });
-  it('G1/S04 native unconfirmed duplicate keeps the original password and requires real confirmation', async () => {
+  it('G1/S04 native unconfirmed duplicate keeps the original password and requires real confirmation', async (test) => {
     const email = `pending-native-${randomUUID()}@example.test`;
     const password = `Fixture-${randomUUID()}-Aa1!`, replacement = `Fixture-${randomUUID()}-Aa1!`;
     const first = trailbase(env), duplicate = trailbase(env);
@@ -77,9 +78,11 @@ describe('L1-27 upstream characterization; G1-G7 still require approval', () => 
     expect(duplicate.user()).toBeUndefined(); expect(duplicate.tokens()).toBeUndefined();
     await expect(first.login(email,password)).rejects.toMatchObject({status:401});
     await expect(duplicate.login(email,replacement)).rejects.toMatchObject({status:401});
-    await confirmEmail(env,email);
-    await first.login(email,password);
-    expect(first.user()?.email).toBe(email);
+    await diagnosticStep(test.task.meta, 'G1_PENDING_CONFIRM', () => confirmEmail(env,email));
+    await diagnosticStep(test.task.meta, 'G1_PENDING_LOGIN', async () => {
+      await first.login(email,password);
+      expect(first.user()?.email).toBe(email);
+    });
     await expect(duplicate.login(email,replacement)).rejects.toMatchObject({status:401});
     expect(duplicate.tokens()).toBeUndefined();
   });
@@ -164,7 +167,7 @@ describe('L1-27 upstream characterization; G1-G7 still require approval', () => 
     expect((await native.client.records('todos').read(nativeUuid(control))).title).toBe(`control-native-${control}`);
     expect((await reference.client.from('todos').select('*').eq('id',control).single()).data?.title).toBe(`control-reference-${control}`);
   });
-  it('G7 native validated status, retained refresh token and explicit local/global revocation across two sessions', async () => {
+  it('G7 native validated status, retained refresh token and explicit local/global revocation across two sessions', async (test) => {
     const first = await confirmedTrailUser(env,'sessions');
     const second = trailbase(env);
     await second.login(first.email, first.password);
@@ -175,16 +178,20 @@ describe('L1-27 upstream characterization; G1-G7 still require approval', () => 
     expect(first.client.tokens()?.refresh_token === t1.refresh_token).toBe(true);
     const refresh = (token: string) => fetch(`${env.trailUrl}/api/auth/v1/refresh`, { method:'POST', headers: { 'content-type':'application/json' }, body: JSON.stringify({ refresh_token: token }) });
     await first.client.fetch('/api/auth/v1/logout', { method:'POST', body: JSON.stringify({ refresh_token: t1.refresh_token }) });
-    expect((await refresh(t1.refresh_token!)).ok).toBe(false);
-    expect((await refresh(t2.refresh_token!)).ok).toBe(true);
+    await diagnosticStep(test.task.meta, 'G7_LOCAL_REVOCATION', async () => {
+      expect((await refresh(t1.refresh_token!)).ok).toBe(false);
+      expect((await refresh(t2.refresh_token!)).ok).toBe(true);
+    });
     const third = trailbase(env);
     await third.login(first.email,first.password);
     const t3 = third.tokens()!;
     expect((await refresh(t3.refresh_token!)).ok).toBe(true); // Two independently live sessions before global logout.
     const loggedOut = await second.fetch('/api/auth/v1/logout', { redirect:'manual', throwOnError:false });
-    expect([302,303].includes(loggedOut.status)).toBe(true);
-    expect((await refresh(t2.refresh_token!)).ok).toBe(false);
-    expect((await refresh(t3.refresh_token!)).ok).toBe(false);
+    await diagnosticStep(test.task.meta, 'G7_GLOBAL_REVOCATION', async () => {
+      expect([302,303].includes(loggedOut.status)).toBe(true);
+      expect((await refresh(t2.refresh_token!)).ok).toBe(false);
+      expect((await refresh(t3.refresh_token!)).ok).toBe(false);
+    });
     // Deleting refresh sessions does not instantly revoke a valid stateless access JWT.
     const residual = await fetch(`${env.trailUrl}/api/records/v1/todos`, { headers:{ authorization:`Bearer ${t2.auth_token}` } });
     expect(residual.ok).toBe(true);

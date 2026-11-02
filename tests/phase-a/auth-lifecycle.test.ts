@@ -4,6 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { writeFile } from 'node:fs/promises';
 import { initClient } from 'trailbase';
 import { createClient } from '@supabase/supabase-js';
+import { diagnosticStep } from '../../scripts/phase-a-diagnostics.mjs';
 import { context, confirmedTrailUser, confirmedSupabaseUser, deadline, type Context } from './helpers.js';
 
 let env: Context;
@@ -32,7 +33,7 @@ describe('L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff'
     const read=await second.from('todos').select('*');expect(read.error).not.toBeNull();expect(read.data).toBeNull();
   });
   for(const ordering of ['unawaited','awaited'] as const) {
-    it(`reference ${ordering} async hydration must not notify recovered A after genuine newer B login`,async()=>{
+    it(`reference ${ordering} async hydration must not notify recovered A after genuine newer B login`,async(test)=>{
       const a=await confirmedSupabaseUser(env,'hydrate-a'),b=await confirmedSupabaseUser(env,'hydrate-b');
       const aid=randomUUID(),bid=randomUUID(),key=`fixture-${env.id}-hydrate-${ordering}`;
       for(const [account,id] of [[a,aid],[b,bid]] as const)expect((await account.client.from('todos').insert({id,user_id:account.user.id,title:`hydrate-${id}`,note:'unchanged'})).error).toBeNull();
@@ -77,7 +78,9 @@ describe('L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff'
         // Fixed labels/booleans only; never serialize the genuine session/rows/IDs.
         await writeFile(`${env.directory}/reference-hydration-${ordering}.json`,JSON.stringify({ordering,events,passwordRequests,cachedB:true,validatedB:true,onlyBRow:true,controlsUnchanged:true}),{mode:0o600});
         const signedIn=events.filter(event=>event.event==='SIGNED_IN').map(event=>event.owner),newer=signedIn.indexOf('B');
-        expect(newer).toBeGreaterThanOrEqual(0);expect(signedIn.slice(newer+1)).not.toContain('A');
+        await diagnosticStep(test.task.meta, 'G7_REFERENCE_EVENT_ORDER', () => {
+          expect(newer).toBeGreaterThanOrEqual(0);expect(signedIn.slice(newer+1)).not.toContain('A');
+        });
         subscription.unsubscribe();subscription.unsubscribe();const count=events.length;
         expect((await client.auth.signOut({scope:'local'})).error).toBeNull();expect(events.length).toBe(count);
         expect((await client.auth.getSession()).data.session).toBeNull();expect(values.get('owned-unrelated')).toBe('keep');expect(values.has(key)).toBe(false);
@@ -152,7 +155,7 @@ describe('L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff'
     } finally {release.resolve();await Promise.allSettled([first,second]);}
   });
   for(const operation of ['refresh','status'] as const) {
-    it(`native late ${operation} response must not restore a locally logged-out client`,async()=>{
+    it(`native late ${operation} response must not restore a locally logged-out client`,async(test)=>{
       const account=await confirmedTrailUser(env,`logout-${operation}`);
       const ready=Promise.withResolvers<number>(),release=Promise.withResolvers<void>();
       const client=initClient(env.trailUrl,{transport:{fetch:async(path,init)=>{
@@ -173,7 +176,9 @@ describe('L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff'
         expect((await nativeRefresh(before.refresh_token!)).status).toBe(401);
         release.resolve();await deadline<unknown>(pending);
         // Strict local postcondition: revocation does not justify resurrection from an old response.
-        expect(client.tokens()).toBeUndefined();expect(client.user()).toBeUndefined();
+        await diagnosticStep(test.task.meta, operation === 'refresh' ? 'G7_NATIVE_LATE_REFRESH' : 'G7_NATIVE_LATE_STATUS', () => {
+          expect(client.tokens()).toBeUndefined();expect(client.user()).toBeUndefined();
+        });
         await expect(client.records('todos').list()).rejects.toMatchObject({status:403});
       } finally {release.resolve();await Promise.allSettled([pending]);}
     });

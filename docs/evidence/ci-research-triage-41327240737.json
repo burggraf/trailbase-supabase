@@ -1,0 +1,100 @@
+{
+  "scope": "Bounded read-only CI/source investigation plus synthetic isolated transport and existing unit diagnostics; status preserves overall CI failure, not SDK/release signoff",
+  "status": "failed",
+  "triageComplete": true,
+  "sourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+  "commit": "cc22730fa5c4d66d9c01c5fe107455244ba1f446",
+  "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41327240737",
+  "ciEvidence": {
+    "researchJob": 124909777764,
+    "supportedSdkJob": 124909777638,
+    "researchArtifact": 13092805469,
+    "sdkArtifact": 13092435339,
+    "sourceAndCommit": "All seven research reports match exact source and commit; seven SDK Phase A reports match source/commit, todos launcher matches source",
+    "research": { "stock": { "passed": 112, "failed": 6 }, "expiry": { "passed": 2, "failed": 0 }, "candidateCharacterization": { "passed": 10, "failed": 0 }, "candidateSmtp": { "passed": 0, "failed": 1 }, "migration": { "passed": 1, "failed": 0 }, "browser": { "passed": 60, "failed": 6 }, "cleanup": { "passed": 1, "failed": 0 }, "allSetupAndCleanup": "passed" },
+    "supportedSdk": { "auth": 3, "refresh": 4, "data": 6, "database": 9, "constraints": 6, "browsers": 15, "cleanup": 1, "todosLauncher": 2, "failed": 0 },
+    "assertionDumpLimit": "scripts/run-phase-a.mjs:52-69 deliberately uploads name/status only. CI logs contain no raw assertion stacks/received values; runner-private diagnostics are not available from published artifacts. Locations below are exact source safety assertions and historical reproduction matches, NOT a claim that current CI exported that precise failure line/value. Preserve this evidence gap."
+  },
+  "families": [
+    {
+      "id": "reference-async-hydration",
+      "failedExecutions": 4,
+      "locations": ["tests/phase-a/auth-lifecycle.test.ts:35-80", "tests/phase-a-browser/auth-storage.spec.ts:74-135"],
+      "assertions": ["signedIn.slice(newer+1) must not contain A, auth-lifecycle.test.ts:80", "result.noStaleA must be true, auth-storage.spec.ts:135"],
+      "classification": "Official Supabase reference-client notification ordering, not supported SDK session implementation",
+      "sourceCause": "node_modules/@supabase/auth-js/src/GoTrueClient.ts:628-662 queues hydration notifications and flushes them after initializePromise resolves; concurrent direct B password sign-in can notify before recovered A's queue is flushed",
+      "historicalEvidence": "docs/evidence/phase-a-async-hydration-focused-diagnosis.json: SIGNED_IN:B then SIGNED_IN:A then INITIAL_SESSION:B; cached/live identity, storage and protected rows stayed B. Awaited control passed. No protected-data leak/session resurrection established",
+      "sdkImplication": "src/auth.ts:154-204 and :249-261 own hydration/generation/commit ownership; tests/unit/sdk-auth-events.test.ts:32 guards stale A notification. Desired invariant is deliberately stronger than the observed reference behavior; do not infer a public API contract violation or weaken the assertion"
+    },
+    {
+      "id": "native-late-refresh-and-status",
+      "failedExecutions": 2,
+      "locations": ["tests/phase-a/auth-lifecycle.test.ts:152-179"],
+      "assertion": "After releasing a real successful response held across logout, tokens/user must remain undefined at :176",
+      "classification": "Official TrailBase client late-response state resurrection, not supported SDK's owned auth state",
+      "sourceCause": "node_modules/trailbase/dist/index.js:710-731 checkCookies/refreshAuthToken unconditionally set returned token state without generation ownership after logout",
+      "sdkImplication": "src/auth.ts:173-204, :300-322, :345-374, :409-437 guard generation and baseline, clear locally before logout. Current supported auth/refresh CI passed; no new SDK defect established. Backend revocation acknowledgement and already-issued JWT lifetime remain distinct limitations"
+    },
+    {
+      "id": "stock-duplicate-unconfirmed-signup",
+      "failedExecutions": 1,
+      "locations": ["tests/phase-a/characterization.test.ts:71-84", "tests/phase-a/helpers.ts:43-80"],
+      "assertionPath": "Confirm actual recipient mail, then original-password login and replacement-password denial; exact current failing substep is not exported by CI",
+      "classification": "Stock TrailBase pending-identity/confirmation behavior, G1; not new SDK wire/fixture failure",
+      "historicalEvidence": "docs/AUTH_MIGRATION_INVESTIGATION.md:8-42: stock permits duplicate pending identities; reservation-only SQL candidate passes characterization10 but is not deployed or stock",
+      "sdkImplication": "src/auth.ts:247 returns genuine registration response with null user/session, does not repair identity or guarantee delivery. SDK same backend remains exposed to G1 edge case; ordinary supported signup pass does not waive it"
+    },
+    {
+      "id": "smtp-recovery-stock-and-reservation-only-candidate",
+      "failedExecutions": 2,
+      "locations": ["tests/phase-a/smtp.test.ts:10-93", "docs/AUTH_MIGRATION_INVESTIGATION.md:40-68"],
+      "assertionPath": "Recovery requires recipient inbox messages>0 at :80, then real confirmation/login at :83-91. Historical reservation candidate gets opaque resend success at :62 but no mail; stock also has duplicate-pending confirmation failure. Exact current substep/value unavailable from published CI",
+      "classification": "Upstream recovery capability failure under intentional SMTP outage, not incidental unavailable CI infrastructure",
+      "sourceCause": "Pinned resend lookup targets verified email, not pending unverified_email; SQL reservation alone cannot deliver missing Rust mail. Existing private native prototype is separately characterized, not deployed/approved as stock replacement",
+      "sdkImplication": "Do not silently retry signup with changed password, delete/merge users, fabricate delivery/session, preconfirm or deploy/repin. Existing G1 boundary remains unresolved"
+    },
+    {
+      "id": "raw-fetch-follow-header-containment",
+      "failedExecutions": 4,
+      "locations": ["tests/phase-a/network.test.ts:111-136", "tests/phase-a-browser/proofs.spec.ts:290-328"],
+      "assertions": ["sink.stats refresh:false and csrf:false at network.test.ts:136", "same receiver header absence at proofs.spec.ts:327"],
+      "classification": "Unsafe raw Fetch follow behavior / unmet strict security invariant, not supported SDK transport. Expecting credentials:omit to scrub manually supplied arbitrary secret headers is not a valid platform guarantee",
+      "historicalEvidence": "docs/evidence/phase-a-permissive-origin-focused-diagnosis.json and phase-a-permissive-origin-browser-diagnosis.json: Authorization/cookies absent; refresh/CSRF present at foreign receiver; error-mode had zero receiver requests. Genuine logout revoked affected refresh sessions before foreign hop; no live-session compromise/Mark credential leak established",
+      "sdkImplication": "src/auth.ts:211, :385-395, :460-467 uses error/manual redirects and minimal credential placement. Source :216 rejects already-followed responses but cannot undo a malicious/custom fetch that ignored redirect policy. Caller-supplied fetch is trusted and must honor security options. Global logout still returns unconfirmed acknowledgement, not success"
+    }
+  ],
+  "freshDiagnostics": {
+    "syntheticTwoOriginNode22": "1/1 passed; 8 SDK operation cases inside one diagnostic: signup/login/status/refresh/local logout/global logout/data read/data write",
+    "syntheticTwoOriginNode24": "1/1 passed, same cases",
+    "observations": "Real Node Fetch follow forwards synthetic refresh/CSRF without Authorization/cookies. All 8 SDK operations return an error on redirect and make zero foreign receiver requests; status alone sends refresh header to configured source, records bearer only, no CSRF header",
+    "existingFocusedAuthUnitsNode22": "42/42 passed: events, logout, live user, refresh and refresh-review",
+    "noRealCredentials": true,
+    "cleanup": "Both owned 127.0.0.1 ephemeral HTTP listeners closed in asserted finally; diagnostic process exited successfully. No Docker/backend/browser stack, no original lock acquisition/cleanup and no user-data access",
+    "limits": "Synthetic protocol/transport diagnostics, not real auth authorization or new three-browser redirect proof; no full research matrix rerun"
+  },
+  "operationalObservation": {
+    "observedAt": "2026-11-01T09:47:06-08:00",
+    "hostname": "aspire.azabab.com",
+    "bootTime": "2026-10-22 19:15:23",
+    "recordedOwner": "Both lock and run owner still name1793540668685-32d6c1a05a9c/runner365086",
+    "oldPids": "365086,372131,372164,370592 all ESRCH",
+    "loopback42231": "ECONNREFUSED",
+    "loopback38763": "HTTP200",
+    "tailnet18443": "ECONNREFUSED",
+    "tailnet18444": "ECONNREFUSED",
+    "availableProcessRegistry": "Only this investigation's completed proc_3a66; no running entries, original three process IDs absent. A distinct T3 process-registry API was not exposed by tool discovery; not equated to an independent T3 registry audit",
+    "conclusion": "App and both tailnet endpoints genuinely unavailable at observation, not merely stale PID labels. Inbox loopback still responds. Boot predates original live run; no current reboot explanation established. Exit time/cause unknown. No restart/lock removal/fixture cleanup/route changes attempted"
+  },
+  "prioritizedNextSteps": [
+    "Separate operational ownership/status diagnosis of unavailable original app/proxies, without removing lock or restarting resources under this read-only scope; no Mark credentials/input needed for CI triage",
+    "Proposed test-only next patch: promote the synthetic 8-path two-origin SDK redirect regression into permanent unit/security coverage, retaining strict unsafe raw-follow research assertions. Add a concise custom-fetch trust/security-options note. No production auth change currently justified",
+    "Proposed separate small diagnostics patch: whitelist stable assertion IDs and fixed booleans/counts for these research cases so CI reveals exact postcondition failures without token/session/body/row dumps; preserve statuses and original red reports. Present patch scope before implementation",
+    "If deeper G1/G7 remediation is approved later, separately characterize official-client generation fixes and existing private pending-resend prototype; no root dependency upgrade/server deployment/identity repair or global-ack fallback inferred"
+  ],
+  "remainingEvidenceGaps": [
+    "Exact current CI private assertion stack/received values and per-case sanitized snapshots are not published; historical detailed matches are not fresh per-assertion certification",
+    "No fresh real-backend reproduction or real-browser SDK two-origin containment probe in this bounded pass",
+    "No named signoff, upstream contract/severity conclusion or full release/compatibility certification",
+    "Original service exit cause/time unknown; no restoration authorized in current scope"
+  ]
+}

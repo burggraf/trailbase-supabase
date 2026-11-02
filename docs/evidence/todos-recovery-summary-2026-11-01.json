@@ -1,0 +1,124 @@
+{
+  "status": "passed",
+  "scope": "Authorized data-preserving recovery of exact original private service; operational availability verification, not SDK compatibility/release signoff",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "commit": "cc22730fa5c4d66d9c01c5fe107455244ba1f446",
+  "implementationSourceSha256": "47bddb41cb1d4f56b2ee7bada9e12430515777e273516e8b4cb9350849e343fd",
+  "bootstrapProcess": "proc_688e",
+  "bootstrapExit": 0,
+  "verifiedAfterBootstrapExitAt": "2026-11-01T18:51:14.551Z",
+  "endpoints": {
+    "app": "https://aspire.tailb03e.ts.net:18443/sdk-data/index.html",
+    "inbox": "https://aspire.tailb03e.ts.net:18444/",
+    "native": "http://127.0.0.1:42231",
+    "admin": "http://127.0.0.1:42791"
+  },
+  "liveProcesses": {
+    "guardian": 588146,
+    "native": 588372,
+    "appForegroundServe": 588390,
+    "inboxForegroundServe": 588405,
+    "exitedBootstrap": 588134,
+    "guardianAdoptiveParent": 716,
+    "guardianProcessGroup": 588146,
+    "guardianSession": 588146,
+    "verifiedSurvivalAndOwnedChildrenAfterBootstrapExit": true
+  },
+  "preservation": {
+    "sameArchiveVerifiedNativeVersion": "0.34.3-0-geab50393",
+    "sameDepotPublicDirectoryPortsRuntimeThreads2": true,
+    "sameFilteredFixtureEnvironment": true,
+    "exactStoppedOwnerSuccessorChainAndNoDepotDescriptorsVerifiedBeforeStart": true,
+    "completePrivateStoppedSnapshots": [
+      {"suffix": "1793557386025", "files": 15, "mode": "0700"},
+      {"suffix": "1793558217815", "files": 11, "mode": "0700"},
+      {"suffix": "1793558621733", "files": 11, "mode": "0700"},
+      {"suffix": "1793559012529", "files": 11, "mode": "0700"}
+    ],
+    "allFourSnapshotsByteHashesPermissionsOwnershipReverifiedAfterSuccessfulStartup": true,
+    "snapshotScope": "Complete stopped depot including existing DB/WAL/SHM/config/migrations/secrets/uploads and original permissions/owners; original owner/context files and public assets separately archived privately",
+    "latestSnapshotManifestSha256": "977a8ae70c34d43b49e3aba2eddf2aa30f293440685713fda7bc858df5549634",
+    "phaseLockDirectoryNeverRemoved": true,
+    "currentOwnerAndLockRunnerPid": 588146,
+    "currentOwnerTrailPid": 588372,
+    "oldOwnerRecordsAndAllPriorGuardDirectoriesPreserved": true,
+    "normalNativeStartupAndWalWritesAllowed": true,
+    "zeroDatabaseWritesClaimed": false,
+    "harnessSetupCleanupOrAutomaticSnapshotRestore": false,
+    "authenticatedAccountOrTaskOperationsPerformed": false,
+    "secretNamesContentsOrPrivateManifestsPublished": false
+  },
+  "serializedStartup": {
+    "nativeHealthBeforeServe": true,
+    "app18443ForegroundLocalApiSessionExactAndLiveBeforeInboxStart": true,
+    "appValidTlsExistingCertificatePublicMarkerBootstrapAndHealthBeforeInboxStart": true,
+    "appReadyAt": "2026-11-01T18:50:14.017Z",
+    "inboxStartedNoEarlierThan": "2026-11-01T18:50:14.019Z",
+    "overlappingInitialServeConfigWriters": false,
+    "resetForceYesBackgroundOrAutomaticRetryFlags": false
+  },
+  "verification": {
+    "bothHttpsEndpointsValidTlsAndExistingCachedPublicCertificateFingerprint": true,
+    "tailscalePrivateKeyContentsRead": false,
+    "cachedPrivateKeyMetadataUnchanged": true,
+    "rootLandingAndHtmlModuleImportMapBootstrap": true,
+    "publicOwnedMarkerMatchesOriginalRun": true,
+    "sevenFrozenAssetFileAndHttpsHashesUnchanged": true,
+    "stylesheetMatchesFirstAndLatestSnapshotsAndHttps": true,
+    "health200": true,
+    "unauthenticatedRecordsStatus": 403,
+    "unauthenticatedResponseBodyNotRead": true,
+    "inboxLanding200WithoutMessagesApi": true,
+    "configMigrationsAndExistingSecretsHashesUnchangedAfterNativeStartup": true,
+    "sixOriginalContainerIdsImagesPortsMountsStillRunningUnchanged": true,
+    "exactTwoForegroundLocalApiSessionsAndLoopbackTargets": true,
+    "funnel": false,
+    "persistentServeOrAutostartUnit": false,
+    "ownIpv4AndIpv6KernelRowsPerHttpsPort": 2,
+    "kernelRowsMatchLiveSelfIpsAndTailscale0": true,
+    "wildcardForeignOrUnknownInterfaceLocalBind": false,
+    "onlyNamedDaemonEnvironmentVariableInspected": "TS_SERVE_ALLOW_ALL_INTERFACES",
+    "namedVariableEnabled": false,
+    "existingNginx443Unchanged": true,
+    "bootstrapAbsentGuardianOwnProcessGroupSessionAndChildrenStillLive": true,
+    "liveOwnerAndLockMatchGuardian": true
+  },
+  "copyIntegrity": {
+    "fullQuickCheck": "Unavailable because native CHECK functions absent; failed attempts retained privately",
+    "explicitStructuralOnlyQuickCheck": "ok",
+    "nativeCHECKConstraintsEvaluated": false,
+    "permissiveFunctionsRegistered": false,
+    "scope": "Separate disposable backup DB+WAL/SHM copy only; no SQL on original or immutable snapshots. Structural result is not complete native-constraint integrity certification"
+  },
+  "preservedFailedAttempts": [
+    "docs/evidence/todos-recovery-attempt-2026-11-01.json",
+    "docs/evidence/todos-recovery-attempt2-2026-11-01.json",
+    "docs/evidence/todos-recovery-attempt3-2026-11-01.json"
+  ],
+  "runtimeCorrections": "First raw rows missing remains a limit. Second rows prove scoped-IPv6 parser ordering error, corrected and tested offline against4 retained rows and8 rejected unsafe endpoints. Third inbox Serve ETag conflict corrected by establishing app route/readiness before starting inbox. Exclusive bootstrap log collision occurred before guardian spawn and is preserved separately",
+  "privateDiagnostics": ".runtime/recoveries/1793540668685-32d6c1a05a9c-1793559012529",
+  "stopOnlyWhenAuthorized": {
+    "commandFromRepositoryRoot": "npm exec --offline --yes --package=node@24.21.0 -- node .runtime/reattach-1793540668685-32d6c1a05a9c.mjs --stop",
+    "identityGuard": "Checks recorded guardian PID, process start ticks and exact script argv before signaling",
+    "order": "Guardian receives SIGTERM; app588390 SIGINT and exit, inbox588405 SIGINT and exit, then native588372 SIGTERM and exit. No force-kill or fixture cleanup",
+    "dataDeletion": false,
+    "warning": "Do not run historical launcher quit/fixtures:cleanup instructions or remove phase-a.lock. Leave services running for user testing. Snapshot restoration is not automatic and would require assessment of any subsequent writes"
+  },
+  "externalReachability": {
+    "source": "Root reported independent actual unsandboxed curl HEAD probes from Goldie after recovery; not rerun by this executor",
+    "appSdkDataIndexStatus": 200,
+    "appTlsVerifyResult": 0,
+    "inbox18444Status": 200,
+    "inboxTlsVerifyResult": 0,
+    "earlierSandboxDnsFailures": "Sandbox resolution limitation; unsandboxed probes succeeded. Not evidence of an original service death cause",
+    "claim": "Laptop reachability confirmed by root; not physical iPhone or authenticated browser acceptance"
+  },
+  "documentationChecks": {
+    "npmRunCheck": "passed: tsc --noEmit and docs/links/traceability;41 indexed Markdown files,27 feature rows,7 gates,evidence freshness and secret scan",
+    "gitDiffCheck": "passed",
+    "workingTree": "Only intentional uncommitted documentation/evidence changes; preexisting CI triage changes preserved. Runtime guardian/backup files remain ignored/private",
+    "commitOrPush": false,
+    "fullUnitBackendOrBrowserMatrixRunForThisOperationalRecovery": false
+  },
+  "limits": "Original outage cause/time remains unknown. Detached guardian survives the transient bootstrap/Pi process group, not host reboot; no autostart added. No fresh signup/login/user data tests, real-device acceptance, full matrix, dependency/source-feature changes, commit/push, compatibility exceptions or maintainer signoff"
+}

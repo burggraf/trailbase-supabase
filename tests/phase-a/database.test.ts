@@ -111,11 +111,12 @@ describe('L1-27/I27/C27 cold-start fixtures (upstream, not SDK)', () => {
     const nativeBefore = [await records.read(nativeUuid(id)), await records.read(nativeUuid(control))];
     const referenceBefore = await sa.client.from('todos').select('*').in('id',[id,control]).order('id');
     expect(referenceBefore.error).toBeNull(); expect(referenceBefore.data).toHaveLength(2);
+    // Native0.35.8 returns400 rather than0.34.3's Internal/500 for these rejected UPDATEs.
     const cases = [
-      { values:{ title:reserved, note:'must roll back' }, nativeStatus:500, status:409, code:'23505' },
-      { values:{ title:null, note:'must roll back' }, nativeStatus:500, status:400, code:'23502' },
-      { values:{ priority:-1, note:'must roll back' }, nativeStatus:500, status:400, code:'23514' },
-      { values:{ completed:2, note:'must roll back' }, nativeStatus:500, status:400, code:'22P02' },
+      { values:{ title:reserved, note:'must roll back' }, nativeStatus:400, status:409, code:'23505' },
+      { values:{ title:null, note:'must roll back' }, nativeStatus:400, status:400, code:'23502' },
+      { values:{ priority:-1, note:'must roll back' }, nativeStatus:400, status:400, code:'23514' },
+      { values:{ completed:2, note:'must roll back' }, nativeStatus:400, status:400, code:'22P02' },
       { values:{ priority:'not-an-integer', note:'must roll back' }, nativeStatus:400, status:400, code:'22P02' },
     ];
     for (const item of cases) {

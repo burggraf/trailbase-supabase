@@ -1,0 +1,116 @@
+{
+  "status": "blocked",
+  "scope": "Read-only assessment of existing private G1 recovery prototype against fresh failure stages; current prototype execution blocked by absent source/binary. NOT a backend repair, adoption/deployment decision approval, or G1 signoff",
+  "sourceSha256": "cd3027216a726f61ab13432e205fed69bfb6ed828303af358e522e25164db513",
+  "freshFailureEvidence": "docs/evidence/auth-safe-diagnostics-summary.json",
+  "currentEvidence": {
+    "platform": "linux-x64",
+    "sourceReview": "Current harness verifier, SQL-only candidate, existing HTTP tests and historical evidence reviewed; actual three-file private native patch cannot be reviewed or rehashed because its checkout is absent",
+    "availability": "ENOENT for .runtime/upstream-g1, its source checkout/.git, all three expected private source files, and source/target/debug/trail",
+    "boundedSearch": "Repository filename search, excluding dependencies/Git/artifacts and private depots/backups, found no verify_email.rs, migrations.rs or G1 patch file. Only .runtime/tools/linux-x64/trail was found; this is the stock fixture tool, NOT the private prototype. No host-wide or remote-host absence claim",
+    "preflight": {
+      "function": "scripts/harness.mjs:115 verifyPrivateG1Prototype",
+      "status": "failed-before-fixture-creation",
+      "exitCode": 128,
+      "category": "private-source-checkout-missing",
+      "failedOperation": "git -C .runtime/upstream-g1/source rev-parse HEAD"
+    },
+    "prototypeNativeTestsExecuted": 0,
+    "prototypeHttpTestsExecuted": 0,
+    "noNewFixtureOrCheckoutCreated": true,
+    "noBuildDownloadReplacementOrSourceReconstruction": true,
+    "privateAvailabilityRecord": ".runtime/g1-prototype-availability.json"
+  },
+  "recordedProvenanceNotReverifiedBytes": {
+    "upstreamVersion": "TrailBase v0.34.3",
+    "baseCommit": "eab5039392a624736ab0c6a9f07f6793423dc979",
+    "privateBranch": "private/g1-pending-recovery",
+    "patchSha256": "c76f14a0bff3f391435a10073c2fb741d0c27528bdd29dfad464022d1d0f86c9",
+    "supersededPartialPatchNotCandidate": "4a149c73f1e35ebdce072b9338dc5935bd7c07790f8903da9f2dd1c22c2393e9",
+    "sourceRoot": ".runtime/upstream-g1/source",
+    "changedFiles": [
+      "crates/core/migrations/main/U1790991000__reserve_auth_email.sql",
+      "crates/core/src/auth/api/verify_email.rs",
+      "crates/core/src/migrations.rs"
+    ],
+    "patchDigestAlgorithm": "SHA256 of tracked git diff --binary followed by untracked migration git diff --no-index --binary /dev/null bytes; empty index and exact three-file change set",
+    "submodules": {
+      "rmcp-openapi-minimal": "deac51f04b37e2d01b83e403fd22e4fa5acba800",
+      "sqlite-vec": "d0006d774bc8f0f8bee3b3be8353f7299088adbd"
+    },
+    "binaryPath": ".runtime/upstream-g1/source/target/debug/trail",
+    "binarySha256": "8d29850d9b28b23d0bb20af94b3e3765c47d78dd5a67ad583e8d7dd9b009c235",
+    "binarySizeBytes": 302030744,
+    "binaryProfile": "dev/debug, no-default-features; NOT release",
+    "historicalHost": "macOS per HTTP/upgrade evidence; current Linux-compatible private binary not identified, binary architecture not independently inspected",
+    "rustc": "1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "1.98.1 (797e8a9bc 2026-08-05)",
+    "binaryProvenanceGateLimit": "Existing verifier checks base/branch/exact patch/submodules and executable file presence, but does not hash the binary or prove its build-to-source correspondence. Require an independent recorded binary hash/platform check before any future isolated execution; matching version text alone is insufficient"
+  },
+  "failureStageComparison": [
+    {
+      "stage": "G1_PENDING_CONFIRM",
+      "freshOutcome": "Stock duplicate-pending flow fails at real confirmation; remains failed",
+      "intendedPrototypeMechanism": "Reserve pending/verified addresses without replacing the original identity/password; confirm a guarded signed subject UUID AND address rather than updating all matching pending addresses",
+      "historicalSupport": "Native pending_recovery evidence includes duplicate preservation, signed identity/address-reuse guards and ambiguity refusal. Historical HTTP recovery confirms one preserved identity after an opaque duplicate; concurrent HTTP signup retains one pending identity",
+      "currentFixVerdict": "Not established: no current native source review or prototype run; the exact fresh TypeScript ordinary pending-duplicate case has not been rerun on this host"
+    },
+    {
+      "stage": "G1_SMTP_CONFIRM",
+      "freshOutcome": "Stock SMTP outage/retry reaches mail but fails real confirmation; remains failed",
+      "intendedPrototypeMechanism": "Reservation plus identity-bound confirmation avoids duplicate-pending confirmation conflicts; duplicate retry stays opaque and does not replace the password",
+      "historicalSupport": "Existing first HTTP case stopped owned SMTP, required registration424/no session/explicit authorization denial, restored SMTP, retried with different password, resent real mail, confirmed same ID/hash and accepted only original password",
+      "currentFixVerdict": "Historically exercised successfully for this recovery family; not re-established against current fixtures/source because artifacts are missing"
+    },
+    {
+      "stage": "G1_SMTP_MAIL",
+      "freshOutcome": "Reservation-only SQL candidate preserves identity but fails mail redelivery; remains failed",
+      "intendedPrototypeMechanism": "Dedicated pending-email lookup in the verification-trigger handler; DO NOT widen shared verified-email lookup used by login/password reset/OTP",
+      "historicalSupport": "Historical review describes handler-local pending lookup; existing HTTP recovery and existing-depot upgrade evidence show actual public-trigger mail followed by signed confirmation/original-password login",
+      "currentFixVerdict": "Historically exercised successfully for initial registration-SMTP outage; SQL alone is insufficient. No current source/HTTP verification of the native change"
+    }
+  ],
+  "securityBoundaries": {
+    "identityReservation": "Refuse ambiguous legacy identities; never merge/delete/reassign accounts. Current readable SQL-only candidate shows preflight/unique pending index/cross-column guards; its bytes must NOT be substituted for the absent private migration",
+    "signedIdConfirmation": "Historical review reports UUID+address guarded update and native stale-address/address-reuse regressions; exact Rust predicate cannot be independently checked now",
+    "duplicateIdempotence": "Historical HTTP evidence preserves original ID/password hash, opaque duplicate response and no session; same-server case-insensitive two-request race only",
+    "sharedLookup": "Historical review states verified-email login/reset/OTP lookup semantics unchanged;17 historical original-auth controls passed, but neither claim is current direct source/runtime verification",
+    "fourHourResendThrottle": "Unchanged by contract and historical evidence. Failed PUBLIC resend consumes the existing four-hour throttle; successful recovery from initial REGISTRATION SMTP outage does not establish immediate retry after a failed public resend. Do not shorten/backdate/bypass it",
+    "remainingRisks": [
+      "Current exact patch/base/submodule/binary provenance and platform compatibility unavailable",
+      "Public-resend failure, throttle concurrency/restart/expiry and address-change/delete/confirmation races",
+      "Multi-server/independent-connection concurrency, broader anti-enumeration and OAuth/anonymous/email-change paths",
+      "SQLite NOCASE does not establish Unicode normalization or PostgreSQL parity",
+      "Release build, current Linux/browser recovery, off-host disaster recovery and full security/lifecycle/adoption review remain unproved"
+    ]
+  },
+  "historicalEvidenceOnly": {
+    "native": "docs/evidence/phase-a-private-g1-native-tests.json:23 executions/22 distinct tests;3 pending_recovery+17 original auth+3 migration executions, with one regression selected twice; independent parent rerun recorded",
+    "build": "docs/evidence/phase-a-private-g1-build.json:locked no-default-feature debug build; initial offline crate-cache failure and later locked build preserved",
+    "http": "docs/evidence/phase-a-private-g1-http-smtp.json:2 macOS real HTTP cases (SMTP recovery and same-server concurrent signup),6 pinned loopback services,cleanup passed",
+    "review": "docs/evidence/phase-a-private-g1-review.json:bounded advisory review; reviewer did not independently recompute patch/base or inspect migration runner; protected-read assertion finding corrected historically",
+    "laterUpgrade": "docs/evidence/phase-a-private-g1-upgrade.json:one successful stock-to-private migration,one repeat restart and one on-depot stock backup/restore; these supersede earlier report-local missing-upgrade notes only within that bounded historical scope",
+    "laterAmbiguity": "docs/evidence/phase-a-private-g1-ambiguous-refusal.json:one ambiguous legacy depot refused without user-row/application-schema/history changes; optimizer statistics and prior failed attempts recorded separately"
+  },
+  "concreteBackendDecision": {
+    "recommendation": "HOLD production adoption; stock v0.34.3 baseline and SDK behavior unchanged. Do not promote reservation-only SQL. Existing exact three-file c76f14a0 prototype remains a candidate for artifact-backed isolated revalidation, not a currently verified fix",
+    "minimumNextArtifactAction": "Recover the ORIGINAL owned private checkout/patch and build provenance from its original macOS workspace or existing private archive. Verify recorded HEAD/branch/three-file patch/submodules and binary digest/platform; repository JSON summaries are not source/binary escrow. No unverified replacement download or reconstruction",
+    "minimumNextValidation": "On a compatible owned isolated host, inspect the exact three-file diff, then rerun the existing3 pending_recovery native regressions and existing2 HTTP prototype cases using generated loopback fixtures. Bridge the exact G1_PENDING_CONFIRM TypeScript assertion with a targeted run if needed; preserve original errors and ID/hash/session/row postconditions privately. Use separate lock/resources/direct isolated CLI paths and verify exact cleanup",
+    "existingHttpEntryPoint": "node scripts/run-phase-a.mjs private-g1-prototype (ONLY from a separate owned checkout after successful provenance/platform preflight)",
+    "linuxBuildBoundary": "No verified Linux private binary is recorded here. If only macOS artifacts can be recovered, any Linux rebuild must be a separately specified reproducible-build step from verified source/toolchain, not an automatic action in this assessment",
+    "productionDecisionRequired": "Any later production change must explicitly choose upstream adoption/verified artifact and migration/rollback policy with remaining security/browser/throttle/concurrency proof. This assessment grants no fork deployment, repin, identity repair, throttle change or compatibility exception"
+  },
+  "preservationAndCleanup": {
+    "newFixtureRuns": 0,
+    "newServiceOrCheckoutResources": 0,
+    "cleanup": "No new fixture resources to clean; no cleanup command issued against the retained original fixture",
+    "frozenSdkMilestoneUnchanged": true,
+    "priorRawEvidenceAndRecoveryRecordsPreserved": true,
+    "originalRunId": "1793540668685-32d6c1a05a9c",
+    "originalStatus": "stopped/requested-stop",
+    "originalStatusRecordMtime": "2026-11-01T19:26:55.821Z",
+    "originalOwnerLockStatusAndSixContainerMetadataUnchangedSinceRun18": true,
+    "noOriginalAccountTaskCredentialReadsOrServiceNetworkingChanges": true,
+    "noCommitPushPublicationDeployment": true
+  }
+}

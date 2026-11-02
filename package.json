@@ -32,6 +32,7 @@
     "test:phase-a:browser": "node scripts/run-phase-a.mjs browser",
     "fixtures:cleanup": "node scripts/cleanup.mjs",
     "tools:install": "node scripts/tools.mjs",
+    "test:native:upgrade": "node scripts/run-native-upgrade.mjs",
     "test:db": "node scripts/run-phase-a.mjs database",
     "test:integration": "node scripts/run-phase-a.mjs characterization",
     "test:contract": "node scripts/incomplete.mjs contract",

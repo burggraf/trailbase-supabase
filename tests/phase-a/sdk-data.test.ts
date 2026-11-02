@@ -144,7 +144,8 @@ describe('SDK data slice against owned TrailBase and official Supabase reference
       expect((await native.from('todos').update({ user_id: canonicalUuid(b.user.id) }).eq('id', ids[0])).error).not.toBeNull();
       expect((await sa.client.from('todos').update({ user_id: sb.user.id }).eq('id', ids[0])).error).not.toBeNull();
       const badUpdate = await native.from('todos').update({ priority: -1 }).eq('id', ids[0]);
-      expect(badUpdate.data).toBeNull(); expect(badUpdate.error?.status).toBe(500); expect(badUpdate.error?.code).toBeUndefined();
+      // Native0.35.8 propagates constraint errors as400; the SDK preserves that status, not a fabricated SQLSTATE.
+      expect(badUpdate.data).toBeNull(); expect(badUpdate.error?.status).toBe(400); expect(badUpdate.error?.code).toBeUndefined();
       expect(await sa.client.from('todos').update({ priority: -1 }).eq('id', ids[0])).toMatchObject({ data: null, status: 400, error: { code: '23514' } });
       expect((await native.from('todos').insert({ id: ids[0], user_id: canonicalUuid(a.user.id), title: 'duplicate' })).error?.status).toBe(400);
       expect((await sa.client.from('todos').insert({ id: ids[0], user_id: sa.user.id, title: 'duplicate' })).error?.code).toBe('23505');

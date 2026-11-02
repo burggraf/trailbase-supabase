@@ -2,7 +2,7 @@ import { readFile, realpath, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 import { assertRunDirectory, verifyOwner } from '../../scripts/harness.mjs';
-import { baseline, exec, verifyChecksum } from '../../scripts/tools.mjs';
+import { baseline, exec, verifyChecksum, trailToolPaths } from '../../scripts/tools.mjs';
 
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const email = /^sdk-live-(?:changed-)?[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}@example\.test$/;
@@ -81,10 +81,9 @@ export async function mutateOwnedNativeUser(env, main, sessions, owner, operatio
   });
   const before = await snapshot(), invocation = randomUUID();
   await writeNativeDiagnostic(root, invocation, 'before', { operation, before });
-  const asset = baseline.trailbase.assets[`${process.platform}-${process.arch}`], tools = resolve('.runtime/tools');
-  if (!asset) throw new Error('Unsupported owned fixture platform');
-  verifyChecksum(await readFile(resolve(tools, asset.name)), asset.sha256); // Existing harness-verified archive, never download/build.
-  const binary = resolve(tools, `${process.platform}-${process.arch}`, 'trail');
+  const asset = baseline.trailbase.assets[`${process.platform}-${process.arch}`];
+  const { archive, binary } = trailToolPaths();
+  verifyChecksum(await readFile(archive), asset.sha256); // Existing harness-verified archive, never download/build.
   if (await realpath(binary) !== binary) throw new Error('Owned native binary path mismatch');
   const version = await exec(binary, ['--version'], { timeout: 10000 });
   if (!version.stdout.includes(baseline.trailbase.version)) throw new Error('Owned native version mismatch');

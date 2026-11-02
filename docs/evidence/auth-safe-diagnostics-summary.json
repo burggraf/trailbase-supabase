@@ -1,0 +1,578 @@
+{
+  "status": "failed",
+  "scope": "Bounded SDK transport regression and safe Phase A diagnostic milestone completed; strict upstream research and initial browser collection failure retained. NOT complete SDK/release/security/compatibility signoff",
+  "sourceSha256": "cd3027216a726f61ab13432e205fed69bfb6ed828303af358e522e25164db513",
+  "baseCommit": "cc22730fa5c4d66d9c01c5fe107455244ba1f446",
+  "recordedAt": "2026-11-01T22:20:32.070Z",
+  "milestoneValidationStatus": "passed",
+  "realResearchStatus": "failed",
+  "sourceFrozenAfter": "actual logged-in token canary, hostile annotation array guard/revoked proxy handling, method-preserving POST307/GET303 coverage corrections",
+  "sdkImplementationChanged": false,
+  "dependenciesOrServerPinsChanged": false,
+  "commitOrPush": false,
+  "staticChecks": {
+    "nodes": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "command": "npm run check",
+    "status": "passed"
+  },
+  "units": [
+    {
+      "node": "v22.23.2",
+      "status": "passed",
+      "passed": 229,
+      "failed": 0,
+      "reportSha256": "19c12770114fabff052111f393bbdd1c31fc34b17b7b30c7363159297c3a98a3"
+    },
+    {
+      "node": "v24.21.0",
+      "status": "passed",
+      "passed": 229,
+      "failed": 0,
+      "reportSha256": "428c350b38e9fc55a59b55cddf525ca74759e5bacb9459695c687ae5d1cc7b8c"
+    }
+  ],
+  "packages": [
+    {
+      "node": "v22.23.2",
+      "status": "passed",
+      "checks": 4,
+      "cleanup": "passed",
+      "tarballSha256": "31e2c986e2e02f615699083f9d0b203c3e2f054d6e18e5d7438ba24afa14b965",
+      "reportSha256": "899827b16c4e9f176b499d899d51db517deb1ca1f5916446081d783c3cf34af3"
+    },
+    {
+      "node": "v24.21.0",
+      "status": "passed",
+      "checks": 4,
+      "cleanup": "passed",
+      "tarballSha256": "31e2c986e2e02f615699083f9d0b203c3e2f054d6e18e5d7438ba24afa14b965",
+      "reportSha256": "3816a75423dd547e90024249aae2718ad315df4c43f6a9a2ec2082d4002f2487"
+    }
+  ],
+  "redirectBoundary": {
+    "command": "vitest run tests/unit/sdk-redirect-boundary.test.ts",
+    "sdkPaths": 8,
+    "platformControl": 1,
+    "postRedirectStatus": 307,
+    "getRedirectStatus": 303,
+    "zeroForeignSdkRequests": true,
+    "syntheticCredentialsOnly": true,
+    "actualLoginAccessTokenChecked": true,
+    "ownedServersClosedInFinally": true,
+    "semantics": "Registration/login/validation/refresh failures preserve owned committed state; local/global logout clear only owned state and report local request failure/global unconfirmed acknowledgement; data failures have null data",
+    "rawFetchControl": "Separately expects unsafe synthetic custom-header forwarding; NOT an SDK defect, live credential leak or security signoff",
+    "mutation": {
+      "isolatedNode": "22.23.2",
+      "file": "src/auth.ts",
+      "dispatchGuardsChanged": 3,
+      "change": "auth request/data redirect:error and local:error/global:manual changed to follow only in isolated copy",
+      "status": "failed",
+      "failedSdkCases": 8,
+      "passedRawControl": 1,
+      "restored": {
+        "status": "passed",
+        "tests": 9,
+        "sourceSha256": "cd3027216a726f61ab13432e205fed69bfb6ed828303af358e522e25164db513"
+      },
+      "rawMutationReportSha256": "18b1c38f91f143c6d2f8f94153f4783c30f66217ca27fe5113af1adc912ad589"
+    }
+  },
+  "diagnostics": {
+    "registeredStepIds": 13,
+    "contract": "Own data descriptors + static literal registry only; unknown/accessor/inherited/coercion/proxy/revoked-proxy/malformed/non-array values become literal UNCLASSIFIED/unclassified; original thrown error identical; successful steps untagged; no arbitrary payload/message/stack/expected/actual export",
+    "adversarialCanaryClasses": [
+      "password",
+      "JWT",
+      "authorization",
+      "refresh credential",
+      "CSRF credential",
+      "email",
+      "task text",
+      "private-key canary",
+      "URL query",
+      "malicious error objects"
+    ],
+    "runnerSentinels": "Exact fixed registered messages map to literal categories; arbitrary prefixes no longer leave console",
+    "originalPrivateErrorsRetained": true,
+    "strictStatusesAndBrowserAttemptsPreserved": true,
+    "redProofs": [
+      {
+        "scope": "initial missing diagnostic behavior",
+        "passed": 9,
+        "failed": 7
+      },
+      {
+        "scope": "forged non-array annotation input",
+        "passed": 8,
+        "failed": 1
+      }
+    ],
+    "installedReporters": {
+      "vitest": {
+        "purpose": "intentional failing fixture, NOT real auth",
+        "failed": 2,
+        "passed": 1,
+        "projectionVerified": true
+      },
+      "playwright": {
+        "purpose": "intentional reporter fixture in actual Chromium/Firefox/WebKit, NOT auth E2E",
+        "failed": 6,
+        "passed": 3,
+        "projectionVerified": true
+      }
+    }
+  },
+  "realNodeScopes": [
+    {
+      "suite": "characterization",
+      "authVariant": "stock",
+      "runId": "1793570664848-b0a0dbcdba2a",
+      "node": "v22.23.2",
+      "status": "failed",
+      "passed": 9,
+      "failed": 1,
+      "tests": [
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G1 native signup supplies no user/session; both backends require real mail confirmation",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native confirmed duplicate signup is opaque, preserves credentials, and creates no session",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 reference confirmed duplicate signup obscures identity and invalid logins leave no session",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native unconfirmed duplicate keeps the original password and requires real confirmation",
+          "status": "failed",
+          "diagnostic": {
+            "step": "G1_PENDING_CONFIRM",
+            "category": "signup-confirmation"
+          }
+        },
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 reference unconfirmed duplicate preserves credentials with explicit resend rate behavior",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G2 installed native list defaults to 50, native limit(0) omits limit, and aligned cap is 1000",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G2/G4 reference ranges/caps/zero/cardinality and repeated builder awaits are characterized",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G3 native missing writes error; reference missing writes succeed without modifying another row",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G7 native validated status, retained refresh token and explicit local/global revocation across two sessions",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 upstream characterization; G1-G7 still require approval G7 reference default logout is global; explicit local scope preserves the other refresh session",
+          "status": "passed"
+        }
+      ],
+      "setup": "ready",
+      "setupCheck": "passed",
+      "cleanup": "passed",
+      "rawReportSha256": "0b292e516eb50b27aface2f67de72e54c3cf27448dc00a45fa5023cf9433794f"
+    },
+    {
+      "suite": "smtp",
+      "authVariant": "stock",
+      "runId": "1793570718037-193b8c0a8fd6",
+      "node": "v22.23.2",
+      "status": "failed",
+      "passed": 0,
+      "failed": 1,
+      "tests": [
+        {
+          "name": "L1-27 G1/S04 real SMTP outage reports failure, creates no session, and distinguishes native retry from reference recovery",
+          "status": "failed",
+          "diagnostic": {
+            "step": "G1_SMTP_CONFIRM",
+            "category": "smtp-confirmation"
+          }
+        }
+      ],
+      "setup": "ready",
+      "setupCheck": "passed",
+      "cleanup": "passed",
+      "rawReportSha256": "949453208e39cdb470ede4240bb0ae907755e7837f350591c050274615db5d3a"
+    },
+    {
+      "suite": "smtp",
+      "authVariant": "candidate-email-reservation",
+      "runId": "1793570776782-f6df38a2159e",
+      "node": "v22.23.2",
+      "status": "failed",
+      "passed": 0,
+      "failed": 1,
+      "tests": [
+        {
+          "name": "L1-27 G1/S04 real SMTP outage reports failure, creates no session, and distinguishes native retry from reference recovery",
+          "status": "failed",
+          "diagnostic": {
+            "step": "G1_SMTP_MAIL",
+            "category": "smtp-redelivery"
+          }
+        }
+      ],
+      "setup": "ready",
+      "setupCheck": "passed",
+      "cleanup": "passed",
+      "rawReportSha256": "c0f51da41494a2523554dc42e8e0115accea1b75b325c82c6da071570ad6c274"
+    },
+    {
+      "suite": "auth-lifecycle",
+      "authVariant": "stock",
+      "runId": "1793570823342-0a12f45aefc7",
+      "node": "v22.23.2",
+      "status": "failed",
+      "passed": 9,
+      "failed": 3,
+      "tests": [
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference owned persistent storage hydrates real sessions and observes shared-store logout",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference unawaited async hydration must not notify recovered A after genuine newer B login",
+          "status": "failed",
+          "diagnostic": {
+            "step": "G7_REFERENCE_EVENT_ORDER",
+            "category": "reference-event-order"
+          }
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference awaited async hydration must not notify recovered A after genuine newer B login",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference storage write failure is observable, installs no local session and recovers with real login",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native hydration exposes cached claims before real revoked-session validation clears local state",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native concurrent forced refreshes send two real requests rather than single-flight",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late refresh response must not restore a locally logged-out client",
+          "status": "failed",
+          "diagnostic": {
+            "step": "G7_NATIVE_LATE_REFRESH",
+            "category": "native-stale-refresh"
+          }
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late status response must not restore a locally logged-out client",
+          "status": "failed",
+          "diagnostic": {
+            "step": "G7_NATIVE_LATE_STATUS",
+            "category": "native-stale-status"
+          }
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference concurrent refresh is single-flight and preserves a usable actual rotated session",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference late refresh is discarded after logout and emits no post-logout TOKEN_REFRESHED",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native logout transport failure clears local state but reports true while remote refresh remains live",
+          "status": "passed"
+        },
+        {
+          "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference logout transport failure is observable, clears local state and leaves remote refresh usable",
+          "status": "passed"
+        }
+      ],
+      "setup": "ready",
+      "setupCheck": "passed",
+      "cleanup": "passed",
+      "rawReportSha256": "3ecd84b93e1fb3fcccad9eb7641797c06c76a0b27903d2984c5e7809be015da1"
+    }
+  ],
+  "initialGenuineBrowserValidationFailure": {
+    "status": "failed",
+    "outerControllerExit": 1,
+    "runId": "1793570874766-5a4c0d03a837",
+    "sourceSha256": "cd3027216a726f61ab13432e205fed69bfb6ed828303af358e522e25164db513",
+    "tests": 0,
+    "cleanup": "passed",
+    "artifactValidJson": true,
+    "formatRepair": false,
+    "category": "isolated-copied-bin-resolved-parent-playwright-instance",
+    "invocationLocation": "temporary .runtime/real-auth-browser-driver.mjs:1 exec(node_modules/.bin/playwright)",
+    "collectionErrorLocation": "tests/phase-a-browser/auth-storage.spec.ts:19:1",
+    "configLocation": "playwright.config.ts:6 testDir unchanged",
+    "originalControllerSha256": "ee18b5a437fa437fa1e181d3c1784b0e4b897556b1231b6c04d5ccd2eb603ea6",
+    "originalGeneratedBrowserDriverSha256": "24b0e59dd007e86ed5b9c1f81c32e0ebd67a39488f054e11096ecf6cf44cff1f",
+    "escaping": "Two actual backslashes in outer template; one in generated JavaScript string; final JSON ends LF. No newline defect",
+    "rawFilesPreservedUnmodified": true,
+    "limits": "This zero-case attempt is NOT browser verification. Copied bin links resolved to parent library; physical duplicate Playwright module instances prevented collection. The runtime wrapper is private test orchestration, not product source"
+  },
+  "focusedGenuineBrowser": {
+    "scope": "Focused genuine three-engine upstream auth storage research, NOT SDK browser signoff",
+    "runId": "1793571282923-295420a6cd07",
+    "sourceSha256": "cd3027216a726f61ab13432e205fed69bfb6ed828303af358e522e25164db513",
+    "node": "v22.23.2",
+    "status": "failed",
+    "passed": 6,
+    "failed": 3,
+    "tests": [
+      {
+        "name": "L1-27/G7 reference browser persistence: reload hydration, cross-tab logout and real refresh revocation [chromium]",
+        "status": "passed",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "name": "L1-27/G7/S08 reference unawaited async hydration must not notify recovered A after newer B login [chromium]",
+        "status": "failed",
+        "attempts": [
+          "failed"
+        ],
+        "diagnostic": {
+          "step": "G7_REFERENCE_EVENT_ORDER",
+          "category": "reference-event-order"
+        }
+      },
+      {
+        "name": "L1-27/G7/S08 reference awaited async hydration must not notify recovered A after newer B login [chromium]",
+        "status": "passed",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "name": "L1-27/G7 reference browser persistence: reload hydration, cross-tab logout and real refresh revocation [firefox]",
+        "status": "passed",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "name": "L1-27/G7/S08 reference unawaited async hydration must not notify recovered A after newer B login [firefox]",
+        "status": "failed",
+        "attempts": [
+          "failed"
+        ],
+        "diagnostic": {
+          "step": "G7_REFERENCE_EVENT_ORDER",
+          "category": "reference-event-order"
+        }
+      },
+      {
+        "name": "L1-27/G7/S08 reference awaited async hydration must not notify recovered A after newer B login [firefox]",
+        "status": "passed",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "name": "L1-27/G7 reference browser persistence: reload hydration, cross-tab logout and real refresh revocation [webkit]",
+        "status": "passed",
+        "attempts": [
+          "passed"
+        ]
+      },
+      {
+        "name": "L1-27/G7/S08 reference unawaited async hydration must not notify recovered A after newer B login [webkit]",
+        "status": "failed",
+        "attempts": [
+          "failed"
+        ],
+        "diagnostic": {
+          "step": "G7_REFERENCE_EVENT_ORDER",
+          "category": "reference-event-order"
+        }
+      },
+      {
+        "name": "L1-27/G7/S08 reference awaited async hydration must not notify recovered A after newer B login [webkit]",
+        "status": "passed",
+        "attempts": [
+          "passed"
+        ]
+      }
+    ],
+    "setup": "ready",
+    "setupCheck": "passed",
+    "cleanup": "passed",
+    "correction": "Only separate temporary driver invokes isolated direct node_modules/@playwright/test/cli.js; original four Node scopes NOT rerun",
+    "correctedDriverSha256": "2377d89f378e715c6226f9154daf8876cce60afccb3eec830e015f301b523122",
+    "attemptPolicy": "One focused scope repetition after collection invocation repair, no retry of individual research failures"
+  },
+  "cleanup": {
+    "status": "passed",
+    "beforeBrowserCorrectionOwnedRunsChecked": 5,
+    "finalOwnedRunsChecked": 6,
+    "runs": [
+      {
+        "runId": "1793570664848-b0a0dbcdba2a",
+        "project": "trailbase-supabase-test-b0a0dbcdba2a",
+        "containersAbsent": true,
+        "volumesAbsent": true,
+        "networkAbsent": true,
+        "nativePidAbsent": true,
+        "runnerPidAbsent": true,
+        "depotAbsent": true,
+        "contextAbsent": true
+      },
+      {
+        "runId": "1793570718037-193b8c0a8fd6",
+        "project": "trailbase-supabase-test-193b8c0a8fd6",
+        "containersAbsent": true,
+        "volumesAbsent": true,
+        "networkAbsent": true,
+        "nativePidAbsent": true,
+        "runnerPidAbsent": true,
+        "depotAbsent": true,
+        "contextAbsent": true
+      },
+      {
+        "runId": "1793570776782-f6df38a2159e",
+        "project": "trailbase-supabase-test-f6df38a2159e",
+        "containersAbsent": true,
+        "volumesAbsent": true,
+        "networkAbsent": true,
+        "nativePidAbsent": true,
+        "runnerPidAbsent": true,
+        "depotAbsent": true,
+        "contextAbsent": true
+      },
+      {
+        "runId": "1793570823342-0a12f45aefc7",
+        "project": "trailbase-supabase-test-0a12f45aefc7",
+        "containersAbsent": true,
+        "volumesAbsent": true,
+        "networkAbsent": true,
+        "nativePidAbsent": true,
+        "runnerPidAbsent": true,
+        "depotAbsent": true,
+        "contextAbsent": true
+      },
+      {
+        "runId": "1793570874766-5a4c0d03a837",
+        "project": "trailbase-supabase-test-5a4c0d03a837",
+        "containersAbsent": true,
+        "volumesAbsent": true,
+        "networkAbsent": true,
+        "nativePidAbsent": true,
+        "runnerPidAbsent": true,
+        "depotAbsent": true,
+        "contextAbsent": true
+      },
+      {
+        "runId": "1793571282923-295420a6cd07",
+        "project": "trailbase-supabase-test-295420a6cd07",
+        "containersAbsent": true,
+        "volumesAbsent": true,
+        "networkAbsent": true,
+        "nativePidAbsent": true,
+        "runnerPidAbsent": true,
+        "depotAbsent": true,
+        "contextAbsent": true
+      }
+    ],
+    "isolatedLockAbsent": true,
+    "checkoutCwdProcessesRemaining": 0,
+    "ownedTemporaryCheckoutRemoved": true,
+    "rawPrivateEvidenceRetained": ".runtime/auth-safe-diagnostics-private",
+    "sharedOriginalLockRetained": true
+  },
+  "preservedOriginal": {
+    "runId": "1793540668685-32d6c1a05a9c",
+    "status": "stopped",
+    "reason": "requested-stop",
+    "statusRecordMtime": "2026-11-01T19:26:55.821Z",
+    "signalArrivalTimestamp": "not recorded",
+    "actor": "not established; requested-stop is a guardian stop-signal-handling classification, not proof of a human request",
+    "recordedRunOwner": {
+      "runnerPid": 588146,
+      "trailPid": 588372
+    },
+    "recordedLockOwner": {
+      "runnerPid": 588146,
+      "trailPidField": "absent"
+    },
+    "recordedProcesses": [
+      {
+        "pid": 588146,
+        "present": false
+      },
+      {
+        "pid": 588372,
+        "present": false
+      },
+      {
+        "pid": 588390,
+        "present": false
+      },
+      {
+        "pid": 588405,
+        "present": false
+      }
+    ],
+    "ownerAndLockBytesUnchanged": true,
+    "statusBytesAndMtimeUnchanged": true,
+    "sameSixOriginalContainerIdsImagesPortsRestartCounts": true,
+    "noOriginalAccountOrTaskReads": true,
+    "noRestartCleanupCredentialRouteOrAssetChanges": true,
+    "limits": "Operational metadata/resource preservation only; not a database-integrity or zero-background-writes certification"
+  },
+  "nextAuthIssues": [
+    {
+      "rank": 1,
+      "issue": "G1 pending signup/SMTP recovery",
+      "evidence": [
+        "G1_PENDING_CONFIRM stock duplicate",
+        "G1_SMTP_CONFIRM stock SMTP",
+        "G1_SMTP_MAIL reservation-only SMTP"
+      ],
+      "direction": "First compare the existing isolated exact-base private prototype and its pending-email/resend/idempotent recovery logic against these fresh failing stages. Backend must preserve original identity/password and actually deliver/confirm after SMTP returns. No SDK-only identity merge, admin confirmation, retry-password replacement, SQL-candidate promotion or deployment is authorized",
+      "limits": "Prior prototype results remain historical; current stock/candidate failures do not prove a new repair or permit server adoption"
+    },
+    {
+      "rank": 2,
+      "issue": "G7 authenticated global logout acknowledgement",
+      "evidence": [
+        "Native characterization global revocation case passed; redirect acknowledgement remains unresolved",
+        "SDK global redirect boundary fails closed, local state cleared, no foreign receiver request"
+      ],
+      "direction": "Retain AuthGlobalSignOutUnconfirmedError. A safe authenticated terminal backend acknowledgement needs a separately scoped verified contract; do not follow redirects/custom credential headers or claim revocation proof from a landing page",
+      "limits": "No newly established SDK implementation defect or G7 fix"
+    },
+    {
+      "rank": 3,
+      "issue": "Upstream reference event ordering/native late responses",
+      "evidence": [
+        "G7_REFERENCE_EVENT_ORDER",
+        "G7_NATIVE_LATE_REFRESH",
+        "G7_NATIVE_LATE_STATUS"
+      ],
+      "direction": "Preserve strict upstream/client regressions separately from SDK generation guards; no session/data resurrection claim for reference notifications alone"
+    }
+  ],
+  "missing": [
+    "No current CI run or commit/push",
+    "No broad SDK/reference/security/fault/coverage/release matrix or maintainer signoff",
+    "No production backend repair, server repin/fork deployment or identity repair",
+    "No physical-device/authenticated demo acceptance; original service remains stopped"
+  ]
+}

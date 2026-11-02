@@ -1,0 +1,88 @@
+{
+  "status": "failed",
+  "scope": "Second authorized same-original-service startup; conservative shutdown after instrumented checker rejected a valid scoped IPv6 address",
+  "runId": "1793540668685-32d6c1a05a9c",
+  "bootstrapProcess": "proc_1a14",
+  "preServiceBootstrapFailure": {
+    "process": "proc_e43d",
+    "stage": "Before guardian spawn",
+    "reason": "Exclusive bootstrap log path already existed",
+    "effect": "No guardian, service start, ownership handoff or depot mutation; existing log preserved; corrected to unique private log filename"
+  },
+  "guardianPid": 578625,
+  "nativePid": 578896,
+  "appServePid": 578914,
+  "inboxServePid": 578919,
+  "failureStage": "verified-ready",
+  "failureLabel": "Actual foreign/wildcard/unrecognized-interface HTTPS kernel binding",
+  "diagnosis": "The label was an overclassification caused by the runtime checker. Retained actual local endpoints all use the node's own IPs with tailscale0 binding; no foreign or wildcard local bind appears in these rows",
+  "capturedLocalEndpoints": [
+    "100.75.212.39%tailscale0:18443",
+    "[fd7a:115c:a1e0::882e:d428]%tailscale0:18443",
+    "100.75.212.39%tailscale0:18444",
+    "[fd7a:115c:a1e0::882e:d428]%tailscale0:18444"
+  ],
+  "exactParserFailure": {
+    "order": "Removed opening/terminal closing brackets before splitting percent-interface suffix",
+    "incorrectIPv6Address": "fd7a:115c:a1e0::882e:d428]",
+    "incorrectOwnAddressMatch": false,
+    "deviceAnnotation": "tailscale0",
+    "currentOwnDeviceIndex": 3,
+    "actualOwnAddress": "fd7a:115c:a1e0::882e:d428",
+    "peerColumns": "0.0.0.0:* and [::]:* are remote-peer wildcards, not local listeners",
+    "proposedCorrection": "Split endpoint port and percent-interface annotation before removing surrounding address brackets"
+  },
+  "additionalBoundaryEvidence": {
+    "source": "https://raw.githubusercontent.com/tailscale/tailscale/v1.104.2/ipn/ipnlocal/serve.go",
+    "semantics": "Most Serve peer traffic is intercepted by netstack; localListener is not used in userspace networking. No kernel row alone is neither bind failure nor proof of tailnet isolation",
+    "daemonPid": 685,
+    "onlyNamedEnvironmentVariableInspected": "TS_SERVE_ALLOW_ALL_INTERFACES",
+    "variablePresent": false,
+    "twoExactForegroundLocalApiRoutes": true,
+    "funnel": false,
+    "existingNginx443Unchanged": true,
+    "validTlsWithExistingCachedCertificate": true,
+    "tailscalePrivateKeyContentsRead": false,
+    "firstAttemptRawRows": "Not retained; second-attempt rows do not retroactively establish the first-attempt row contents or exact failure cause"
+  },
+  "privateEvidence": ".runtime/recoveries/1793540668685-32d6c1a05a9c-1793558217815",
+  "privateStoppedSnapshot": ".runtime/recovery-backups/1793540668685-32d6c1a05a9c-1793558217815",
+  "snapshot": {
+    "completeStoppedDepotFiles": 11,
+    "rootMode": "0700",
+    "allPresentDatabaseWalShmConfigMigrationsSecretsAndOriginalPermissionsPreserved": true,
+    "locallyReverifiedAfterShutdown": true,
+    "first15FileSnapshotAlsoUnchanged": true,
+    "secretNamesContentsAndRawPrivateManifestsPublished": false,
+    "differentStoppedFileCount": "Complete filesystem manifests captured independently at each stopped state; do not equate ordinary runtime companion-file lifetime with user-data deletion"
+  },
+  "copyIntegrity": {
+    "fullNativeConstraintQuickCheck": "Unavailable without native SQLite functions; failed attempt preserved privately",
+    "explicitStructuralOnlyQuickCheck": "ok",
+    "nativeCHECKConstraintsEvaluated": false,
+    "permissiveFunctionStubs": false,
+    "originalOrImmutableSnapshotQueriedWithSql": false
+  },
+  "confirmedAfterShutdown": {
+    "guardianAndThreeChildrenAbsent": true,
+    "fourRecoveryPortsClosed": true,
+    "serveConfigurationEmpty": true,
+    "sameSixOriginalContainerIdsImagesPortsMountsRunning": true,
+    "inboxLoopback38763Http200": true,
+    "bothCompletePrivateSnapshotsByteAndPermissionHashesReverified": true,
+    "depotAndDataRetained": true,
+    "noDepotOpenDescriptorsOrInaccessibleChecks": true,
+    "phaseLockAndRecoveryGuardsRetained": true,
+    "ownerAndLockRunnerPid": 578625,
+    "ownerTrailPid": 578896,
+    "harnessCleanupOrAutomaticSnapshotRestore": false,
+    "guardianSurvivalAfterSuccessfulBootstrapExit": "Not verified; stopped before ready"
+  },
+  "laterNarrowCorrectionValidation": {
+    "offlineRetainedOwnTailnetRowsAccepted": 4,
+    "wildcardForeignUnknownScopeAndWrongPortCasesRejected": 8,
+    "readOnlyPreflight": "passed before separately authorized corrective startup",
+    "serviceStartedByOfflineTests": false
+  },
+  "limits": "Failed operational attempt, not successful restoration or compatibility signoff. Original outage cause/time unknown; no new accounts, authenticated data probes, feature edits, dependencies, persistent Serve, ACL/firewall changes, commit or push"
+}

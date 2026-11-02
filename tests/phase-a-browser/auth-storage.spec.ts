@@ -2,6 +2,7 @@ import { test,expect,type Page } from '@playwright/test';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { randomUUID } from 'node:crypto';
 import { writeFile } from 'node:fs/promises';
+import { diagnosticStep } from '../../scripts/phase-a-diagnostics.mjs';
 import { context,confirmedSupabaseUser } from '../phase-a/helpers.js';
 
 declare global {
@@ -72,7 +73,7 @@ test('L1-27/G7 reference browser persistence: reload hydration, cross-tab logout
 });
 
 for(const ordering of ['unawaited','awaited'] as const){
-  test(`L1-27/G7/S08 reference ${ordering} async hydration must not notify recovered A after newer B login`,async({page,browserName})=>{
+  test(`L1-27/G7/S08 reference ${ordering} async hydration must not notify recovered A after newer B login`,async({page,browserName},testInfo)=>{
     test.setTimeout(60000);
     const env=await context(),a=await confirmedSupabaseUser(env,'browser-hydrate-a'),b=await confirmedSupabaseUser(env,'browser-hydrate-b');
     const aid=randomUUID(),bid=randomUUID(),key=`owned-hydration-${env.id}-${randomUUID()}`;
@@ -132,7 +133,7 @@ for(const ordering of ['unawaited','awaited'] as const){
       await writeFile(`${env.directory}/reference-hydration-${ordering}-${browserName}.json`,JSON.stringify({ordering,browserName,...result,controlsUnchanged:true}),{mode:0o600});
       expect(result.passwordRequests).toBe(1);if(ordering==='awaited')expect(result.passwordRequestsBeforeRelease).toBe(0);
       for(const field of ['cachedB','validatedB','onlyBRow','storedB','listenerSilent','ownedCleared','unrelatedPreserved','anonymousDenied'] as const)expect(result[field],field).toBe(true);
-      expect(result.noStaleA).toBe(true);
+      await diagnosticStep(testInfo.annotations, 'G7_REFERENCE_EVENT_ORDER', () => expect(result.noStaleA).toBe(true));
     }finally{
       for(const [account,id] of [[a,aid],[b,bid]] as const){expect((await account.client.from('todos').delete().eq('id',id)).error).toBeNull();expect((await account.client.auth.signOut({scope:'local'})).error).toBeNull();}
     }

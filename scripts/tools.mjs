@@ -10,12 +10,19 @@ export const baseline = JSON.parse(await readFile(new URL('../tests/fixtures/bas
 export function verifyChecksum(bytes, expected) {
   if (createHash('sha256').update(bytes).digest('hex') !== expected) throw new Error('Tool archive checksum mismatch');
 }
-export async function installTrail() {
-  const asset = baseline.trailbase.assets[`${process.platform}-${process.arch}`];
-  if (!asset) throw new Error('Unsupported fixture host; use Linux/macOS arm64/x64');
-  const cache = resolve('.runtime/tools');
-  await mkdir(cache, { recursive: true, mode: 0o700 });
-  const archive = resolve(cache, asset.name);
+export function trailToolPaths(pin = baseline.trailbase, host = `${process.platform}-${process.arch}`) {
+  const platforms = { 'darwin-arm64': 'aarch64_apple_darwin', 'darwin-x64': 'x86_64_apple_darwin', 'linux-arm64': 'aarch64_linux', 'linux-x64': 'x86_64_linux' };
+  if (!pin || !/^\d+\.\d+\.\d+$/.test(pin.version) || !/^[a-f0-9]{40}$/.test(pin.commit)) throw new Error('Invalid native server pin');
+  const asset = pin.assets?.[host];
+  if (!Object.hasOwn(platforms, host) || !asset) throw new Error('Unsupported fixture host; use Linux/macOS arm64/x64');
+  if (asset.name !== `trailbase_v${pin.version}_${platforms[host]}.zip` || !/^[a-f0-9]{64}$/.test(asset.sha256)) throw new Error('Invalid native asset pin');
+  const directory = resolve('.runtime/tools/trailbase', pin.version, host);
+  return { archive: resolve('.runtime/tools', asset.name), directory, binary: resolve(directory, 'trail') };
+}
+export async function installTrail(pin = baseline.trailbase) {
+  const asset = pin.assets[`${process.platform}-${process.arch}`];
+  const { archive, directory, binary } = trailToolPaths(pin);
+  await mkdir(resolve('.runtime/tools'), { recursive: true, mode: 0o700 });
   let bytes;
   try { bytes = await readFile(archive); }
   catch (error) {
@@ -23,18 +30,16 @@ export async function installTrail() {
     const temporary = `${archive}.part`;
     try {
       await exec('curl', ['--fail', '--location', '--silent', '--show-error', '--max-time', '120', '--output', temporary,
-        `https://github.com/trailbaseio/trailbase/releases/download/v${baseline.trailbase.version}/${asset.name}`], { timeout: 125000 });
+        `https://github.com/trailbaseio/trailbase/releases/download/v${pin.version}/${asset.name}`], { timeout: 125000 });
       bytes = await readFile(temporary);
     } finally { await rm(temporary, { force: true }); }
     verifyChecksum(bytes, asset.sha256);
     await writeFile(archive, bytes, { mode: 0o600 });
   }
   verifyChecksum(bytes, asset.sha256); // Always validate cache, never trust an existing executable.
-  const directory = resolve(cache, `${process.platform}-${process.arch}`);
   await rm(directory, { recursive: true, force: true });
   await mkdir(directory, { recursive: true, mode: 0o700 });
   await exec('unzip', ['-q', archive, '-d', directory]);
-  const binary = resolve(directory, 'trail');
   await chmod(binary, 0o700);
   return binary;
 }

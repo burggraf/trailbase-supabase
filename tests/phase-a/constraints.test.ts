@@ -47,7 +47,8 @@ describe('L1-27/G3/I27/C27/S03/S05 scalar FK/delete/trigger characterization, NO
     const insert=await sa.client.from('todo_links').insert({id:randomUUID(),user_id:sa.user.id,restricted_todo_id:missing,note:'must not insert'});
     expect(insert.status).toBe(409);expect(insert.error?.code).toBe('23503');expect(insert.data).toBeNull();
     expect(await snapshot()).toEqual(before);
-    await expect(a.client.records('todo_links').update(nativeUuid(child),{restricted_todo_id:nativeUuid(missing),note:'must roll back'})).rejects.toMatchObject({status:500});
+    // Native0.35.8 propagates the FK rejection as400; all complete-row/audit rollback assertions remain exact.
+    await expect(a.client.records('todo_links').update(nativeUuid(child),{restricted_todo_id:nativeUuid(missing),note:'must roll back'})).rejects.toMatchObject({status:400});
     const update=await sa.client.from('todo_links').update({restricted_todo_id:missing,note:'must roll back'}).eq('id',child);
     expect(update.status).toBe(409);expect(update.error?.code).toBe('23503');expect(update.data).toBeNull();
     expect(await snapshot()).toEqual(before);
@@ -96,7 +97,8 @@ describe('L1-27/G3/I27/C27/S03/S05 scalar FK/delete/trigger characterization, NO
     await expect(a.client.records('todos').create({id:nativeUuid(failed),user_id:a.user.id,title:`constraints-${failed}`,note:'phase-a-trigger-reject'})).rejects.toMatchObject({status:400});
     const insert=await sa.client.from('todos').insert({id:failed,user_id:sa.user.id,title:`constraints-${failed}`,note:'phase-a-trigger-reject'});
     expect(insert.status).toBe(400);expect(insert.error?.code).toBe('P0001');expect(insert.data).toBeNull();expect(await snapshot()).toEqual(before);
-    await expect(a.client.records('todos').update(nativeUuid(target),{note:'phase-a-trigger-reject',priority:7})).rejects.toMatchObject({status:500});
+    // Native0.35.8 propagates the trigger rejection as400 rather than wrapping it as Internal/500.
+    await expect(a.client.records('todos').update(nativeUuid(target),{note:'phase-a-trigger-reject',priority:7})).rejects.toMatchObject({status:400});
     const update=await sa.client.from('todos').update({note:'phase-a-trigger-reject',priority:7}).eq('id',target);
     expect(update.status).toBe(400);expect(update.error?.code).toBe('P0001');expect(update.data).toBeNull();expect(await snapshot()).toEqual(before);
     await expect(a.client.records('todos').delete(nativeUuid(deleteBlocked))).rejects.toMatchObject({status:400});
