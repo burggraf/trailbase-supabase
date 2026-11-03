@@ -1,0 +1,35 @@
+# Official CRUD/password-auth release qualification
+
+This is an executable qualification plan, **not release approval**. The active scope is [MVP_PLAN.md](MVP_PLAN.md): L1-01–20, L1-24, L1-26–27. Realtime L1-21–23/S09/E09 and migration L1-25/E12 are deferred, not passed. Official TrailBase0.35.8/JS0.14.3 remains selected; private prototypes are not dependencies. [OFFICIAL_AUTH_CONTRACT.md](OFFICIAL_AUTH_CONTRACT.md) defines the null signup,409/424/no-resend and unconfirmed-global-logout limits. Issue [310](https://github.com/trailbaseio/trailbase/issues/310) was filed and verified; filing is not a fix.
+
+## Qualification contract (defined before implementation)
+
+- **RQ01 / L1-24/26:** measure all runtime `src/**/*.ts`, including unimported files, with pinned Vitest/V8. No coverage exclusions or threshold reductions. Enforce95% statements/lines/functions and90% branches globally **and per module**; retain exact uncovered locations. Unit tests/fixtures/declarations do not inflate runtime totals. Percentages do not certify all critical security branches.
+- **RQ02 / L1-27/S10:** a candidate runner executes real existing supported commands, independently records failures and continues applicable cleanup. Bind evidence to source, exact runtime and command outcomes. Reject live locks; never borrow the retained demo. Historical reports cannot pass a new candidate. Research is separate and strict; no expected-red conversion in the official gate.
+- **RQ03 / L1-26:** full release qualification fails explicitly when required coverage, automation or acceptance is missing. Automated success and release approval are different results. No alias may turn an upstream-only probe into SDK conformance. Keep incomplete standalone contract/security/E2E/package commands explicit until their entire active requirements are implemented.
+- **RQ04 / L1-24/26/27:** negative tests prove failure on absent/malformed evidence, source drift, failed commands and unresolved acceptance. Preserve primary/setup/cleanup failures; sanitized reports contain fixed command IDs/counts/statuses/hashes, not raw credentials/logs.
+
+## Existing executable evidence map
+
+This maps authored assertions and historical evidence, **not new qualification passes**. Prior exact CI [41563708961](https://github.com/burggraf/trailbase-supabase/actions/runs/41563708961) at3a66fd3 has23 independently audited reports: both Nodes268 units/package4/installed8, supported real scopes/setup/cleanup pass. See [the exact audit](evidence/ci-3a66fd3-packed-node-checkpoint.json). All14 research failures actually execute there. Older CI41548029405 startup0/121missing cases remains unexplained and failed; a later pass does not repair it.
+
+| Active requirements | Existing assertion locations / commands | Exact remaining acceptance beyond those checks |
+| --- | --- | --- |
+| L1-01–04 / S01/S02 | `tests/unit/sdk-client`, `sdk-validation`, `sdk-review-regressions`, `sdk-redirect-boundary`; type consumers; `test:sdk:data`, `test:sdk:package`, `test:sdk:node` | Current coverage and critical branch review; type/common-app portability review; independent security assessment |
+| L1-05–13 / S02/S03/S05/S06 | `tests/phase-a/sdk-data.test.ts`:6 shared real cases, complete rows/audits, six operators, defaults, views, integer key0, lost reply,61/1001 rows; packed `data.spec.ts`/`task-flow.ts`; unit query/mutation/cardinality/codec cases | Verify every matrix assertion against exact candidate; no inference from raw-client research. Browser1000-row and complete operator/call-order matrix still needs explicit traceability |
+| L1-14–20 / S04/S07/S08 | `test:sdk:auth`6 including OA01–03; `test:sdk:refresh`4 actual expiry/background cases; auth unit storage/race/event/fault suites; packed Node PN01–08; packed auth-app/standalone/storage browsers | Disabled-registration/unsupported-MFA real negative controls; browser genuine short-TTL/concurrent/delayed-refresh logout/new-owner schedules and corruption/unavailable-storage matrix are not established by manual refresh/reload flows |
+| L1-24 / S01–S08/S10 | Above checks plus real database/constraints, ordinary direct-backend controls, redirect guards and package graph/ownership/sanitization units | Full active security catalog assessment, critical reachable-branch evidence, trusted local TLS/proxy auth smoke; no TLS/WAN/custom-fetch guarantee from loopback redirect tests |
+| L1-26 / E01–08/E10/E11/E13/E15 | `test:sdk:package`4 injected-transport checks; actual `test:sdk:node`8 per Node; `test:sdk:browser`15 across Chromium/Firefox/WebKit; `test:example:todos`2; emitted declarations | Exact-source candidate runs, full missing browser/security assertions, packaging/platform acceptance; no public package name/publication authority |
+| L1-26 / E14 | Labelled44px native controls, keyboard assertions in standalone flow; unit UI teardown | Complete keyboard/focus/associated-error/status accessibility acceptance and100 mount/auth timer/listener lifecycle accounting; physical Safari/iPhone and other advertised-device acceptance distinct from Linux mobile WebKit |
+| L1-27 / S10 | `test:db`, constraints, lifecycle, fixture target/version/ownership/failed-setup/diagnostic units; independent strict research CI job | Clean-checkout repeated candidate reproducibility, exact CI provenance/log audit, remaining infrastructure security review |
+
+## Finite remaining release checklist
+
+1. Measure/enforce current runtime coverage on both pinned Nodes; list actual uncovered paths and review every critical validation/mutation/generation/secret branch. Add meaningful tests only for existing behavior or demonstrated defects; no arbitrary ignores.
+2. Close the specific real/browser/security gaps in the table with ordinary owned fixtures and genuine operations. Do not rename the current15 browser cases a complete E01–15 implementation.
+3. Run the candidate automation on owned isolated resources, both pinned Nodes and all three engines; audit source/runtime/artifact/command/setup/cleanup provenance. Research runs independently, keeping14 historical reds and any new failure visible.
+4. Obtain complete accessibility and100-cycle auth/app resource evidence. Obtain separately recorded physical-device/platform acceptance; Linux WebKit emulation does not count as physical iPhone.
+5. After all required automation exists and passes, execute **three consecutive clean runs of the same candidate commit/version manifest**, no skips/retries or historical-pass substitution. A development checkpoint is not a clean release run.
+6. Named maintainer reviews feature matrix, limitations, security findings and exact evidence, chooses release package/platform claims and signs off. Agents leave reviewer/date fields untouched. No npm publication/deployment follows automatically.
+
+No user action is needed to continue independent safe automation. Device testing and named approval are requested only after the applicable automated gates are ready; neither is fabricated from existing scope approval.

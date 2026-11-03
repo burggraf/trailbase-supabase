@@ -7,9 +7,21 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   },
-  "files": ["dist/index.js", "dist/index.d.ts", "dist/auth.js", "dist/auth.d.ts", "dist/common.js", "dist/common.d.ts", "README.md", "LICENSE"],
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/auth.js",
+    "dist/auth.d.ts",
+    "dist/common.js",
+    "dist/common.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
   "engines": {
     "node": ">=22"
   },
@@ -20,6 +32,9 @@
     "test:sdk:package": "node scripts/run-sdk-package.mjs",
     "test:sdk:node": "node scripts/run-sdk-node.mjs",
     "test:sdk:unit": "vitest run tests/unit/sdk-*.test.ts",
+    "test:sdk:coverage": "node scripts/run-sdk-coverage.mjs",
+    "test:release:candidate": "node scripts/run-release-candidate.mjs",
+    "test:release:automated": "node scripts/run-release-candidate.mjs --automation",
     "test:sdk:browser": "node scripts/run-phase-a.mjs sdk-browser",
     "test:sdk:refresh": "node scripts/run-phase-a.mjs sdk-refresh",
     "test:sdk:auth": "node scripts/run-phase-a.mjs sdk-auth",
@@ -47,6 +62,7 @@
     "@playwright/test": "1.63.0",
     "@supabase/supabase-js": "2.117.2",
     "@types/node": "22.19.15",
+    "@vitest/coverage-v8": "5.0.3",
     "supabase": "2.119.0",
     "typescript": "7.0.2",
     "vitest": "5.0.3"

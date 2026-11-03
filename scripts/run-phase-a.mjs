@@ -7,7 +7,7 @@ import { createHarness, fixtureNativePin } from './harness.mjs';
 import { vitestCase, playwrightCase, runnerFailure } from './phase-a-diagnostics.mjs';
 
 export async function sourceHash() {
-  const paths = ['package.json','package-lock.json','tsconfig.json','tsconfig.sdk.json','vitest.config.ts','playwright.config.ts','playwright.sdk-data.config.ts','.gitignore','README.md','PLAN.md','AGENTS.md','docs/LEVEL1_PLAN.md','docs/RESEARCH.md','docs/TEST_PLAN.md','docs/AUTH_MIGRATION_INVESTIGATION.md','docs/PROOF_INVESTIGATIONS.md'];
+  const paths = ['package.json','package-lock.json','tsconfig.json','tsconfig.sdk.json','vitest.config.ts','playwright.config.ts','playwright.sdk-data.config.ts','.gitignore','README.md','PLAN.md','AGENTS.md','docs/LEVEL1_PLAN.md','docs/RESEARCH.md','docs/TEST_PLAN.md','docs/RELEASE_QUALIFICATION.md','docs/AUTH_MIGRATION_INVESTIGATION.md','docs/PROOF_INVESTIGATIONS.md'];
   const listed = (await exec('git',['ls-files','--cached','--others','--exclude-standard','-z'])).stdout.split('\0');
   const inputs = [...new Set(listed.filter(path => paths.includes(path) || /^(scripts|tests|\.github|src|examples)\//.test(path)))].sort();
   const hash = createHash('sha256');

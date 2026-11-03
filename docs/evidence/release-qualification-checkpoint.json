@@ -1,0 +1,1924 @@
+{
+  "explicitFullPlaceholders": [
+    {
+      "gate": "contract",
+      "exitCode": 1,
+      "explicitlyUnimplemented": true
+    },
+    {
+      "gate": "security",
+      "exitCode": 1,
+      "explicitlyUnimplemented": true
+    },
+    {
+      "gate": "e2e",
+      "exitCode": 1,
+      "explicitlyUnimplemented": true
+    },
+    {
+      "gate": "package",
+      "exitCode": 1,
+      "explicitlyUnimplemented": true
+    },
+    {
+      "gate": "all",
+      "exitCode": 1,
+      "explicitlyUnimplemented": true
+    }
+  ],
+  "scope": "Existing official-only CRUD/password-auth executable release qualification checkpoint, NOT full security/device/release approval",
+  "sourceSha256": "a24119d17aa1edfdf0f1cce4666b34e61847fc4ffb40ce5adab8a741f6cde209",
+  "baseCommit": "3a66fd3716a1a938e6806e3c3e31e3464b383d0c",
+  "testPlan": "RQ01–RQ04 / docs/RELEASE_QUALIFICATION.md",
+  "productRuntimeNativeOrRuntimeDependencyChanges": false,
+  "developmentDependency": "Exact @vitest/coverage-v8@5.0.3 matching Vitest;12 new development-only lock entries, existing source-map-js peer marker removed; no existing version/integrity/runtime graph change",
+  "coverageInitial": {
+    "total": {
+      "lines": {
+        "total": 555,
+        "covered": 547,
+        "skipped": 0,
+        "pct": 98.55
+      },
+      "statements": {
+        "total": 838,
+        "covered": 799,
+        "skipped": 0,
+        "pct": 95.34
+      },
+      "functions": {
+        "total": 136,
+        "covered": 134,
+        "skipped": 0,
+        "pct": 98.52
+      },
+      "branches": {
+        "total": 655,
+        "covered": 609,
+        "skipped": 0,
+        "pct": 92.97
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": "Unknown"
+      }
+    },
+    "perModuleStatementThresholdFailures": {
+      "src/common.ts": 94.73,
+      "src/index.ts": 92.09
+    },
+    "globalPassWasNotPerModulePass": true
+  },
+  "coverage": [
+    {
+      "scope": "Runtime SDK unit coverage only; not critical-branch/security/release approval",
+      "status": "passed",
+      "sourceSha256": "a24119d17aa1edfdf0f1cce4666b34e61847fc4ffb40ce5adab8a741f6cde209",
+      "baseCommit": "3a66fd3716a1a938e6806e3c3e31e3464b383d0c",
+      "node": "v22.23.2",
+      "sourceUnchanged": true,
+      "evidence": {
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "total": {
+          "statements": {
+            "total": 838,
+            "covered": 814,
+            "skipped": 0,
+            "pct": 97.13
+          },
+          "lines": {
+            "total": 555,
+            "covered": 552,
+            "skipped": 0,
+            "pct": 99.45
+          },
+          "functions": {
+            "total": 136,
+            "covered": 135,
+            "skipped": 0,
+            "pct": 99.26
+          },
+          "branches": {
+            "total": 655,
+            "covered": 622,
+            "skipped": 0,
+            "pct": 94.96
+          }
+        },
+        "files": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 509,
+                "covered": 495,
+                "skipped": 0,
+                "pct": 97.24
+              },
+              "lines": {
+                "total": 311,
+                "covered": 311,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 80,
+                "covered": 79,
+                "skipped": 0,
+                "pct": 98.75
+              },
+              "branches": {
+                "total": 376,
+                "covered": 356,
+                "skipped": 0,
+                "pct": 94.68
+              }
+            },
+            "uncovered": {
+              "statements": [
+                {
+                  "start": {
+                    "line": 15,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 23,
+                    "column": 39
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 77,
+                    "column": 74
+                  },
+                  "end": {
+                    "line": 77,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 93,
+                    "column": 34
+                  },
+                  "end": {
+                    "line": 93,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 101,
+                    "column": 38
+                  },
+                  "end": {
+                    "line": 101,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 46
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 177
+                  }
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 102
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 131
+                  }
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 131
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 175
+                  }
+                },
+                {
+                  "start": {
+                    "line": 124,
+                    "column": 83
+                  },
+                  "end": {
+                    "line": 124,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 125,
+                    "column": 72
+                  },
+                  "end": {
+                    "line": 125,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 138,
+                    "column": 52
+                  },
+                  "end": {
+                    "line": 138,
+                    "column": 70
+                  }
+                },
+                {
+                  "start": {
+                    "line": 138,
+                    "column": 70
+                  },
+                  "end": {
+                    "line": 138,
+                    "column": 78
+                  }
+                },
+                {
+                  "start": {
+                    "line": 370,
+                    "column": 61
+                  },
+                  "end": {
+                    "line": 370,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 431,
+                    "column": 25
+                  },
+                  "end": {
+                    "line": 431,
+                    "column": null
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 44
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 178
+                  }
+                }
+              ],
+              "branches": [
+                {
+                  "start": {
+                    "line": 15,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 23,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 40,
+                    "column": 468
+                  },
+                  "end": {
+                    "line": 40,
+                    "column": 502
+                  }
+                },
+                {
+                  "start": {
+                    "line": 77,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 77,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 77,
+                    "column": 44
+                  },
+                  "end": {
+                    "line": 77,
+                    "column": 74
+                  }
+                },
+                {
+                  "start": {
+                    "line": 93,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 93,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 101,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 101,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 111,
+                    "column": 89
+                  },
+                  "end": {
+                    "line": 111,
+                    "column": 96
+                  }
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 46
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 177
+                  }
+                },
+                {
+                  "start": {},
+                  "end": {}
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 50
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 77
+                  }
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 77
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 100
+                  }
+                },
+                {
+                  "start": {
+                    "line": 124,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 124,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 125,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 125,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 138,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 138,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 206,
+                    "column": 149
+                  },
+                  "end": {
+                    "line": 206,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {},
+                  "end": {}
+                },
+                {
+                  "start": {
+                    "line": 370,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 370,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 431,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 431,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {},
+                  "end": {}
+                }
+              ]
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            },
+            "uncovered": {
+              "statements": [],
+              "functions": [],
+              "branches": [
+                {
+                  "start": {
+                    "line": 55,
+                    "column": 38
+                  },
+                  "end": {
+                    "line": 55,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 57,
+                    "column": 38
+                  },
+                  "end": {
+                    "line": 57,
+                    "column": null
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 291,
+                "covered": 281,
+                "skipped": 0,
+                "pct": 96.56
+              },
+              "lines": {
+                "total": 215,
+                "covered": 212,
+                "skipped": 0,
+                "pct": 98.6
+              },
+              "functions": {
+                "total": 48,
+                "covered": 48,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 248,
+                "covered": 237,
+                "skipped": 0,
+                "pct": 95.56
+              }
+            },
+            "uncovered": {
+              "statements": [
+                {
+                  "start": {
+                    "line": 76,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 76,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 96,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 96,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 114,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 114,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 158,
+                    "column": 30
+                  },
+                  "end": {
+                    "line": 158,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 198,
+                    "column": 26
+                  },
+                  "end": {
+                    "line": 198,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 227,
+                    "column": 53
+                  },
+                  "end": {
+                    "line": 227,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 254,
+                    "column": 37
+                  },
+                  "end": {
+                    "line": 254,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 258,
+                    "column": 68
+                  },
+                  "end": {
+                    "line": 258,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 358,
+                    "column": 106
+                  },
+                  "end": {
+                    "line": 358,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 387,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 387,
+                    "column": null
+                  }
+                }
+              ],
+              "functions": [],
+              "branches": [
+                {
+                  "start": {
+                    "line": 76,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 76,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 96,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 96,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {},
+                  "end": {}
+                },
+                {
+                  "start": {
+                    "line": 158,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 158,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 198,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 198,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 227,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 227,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 254,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 254,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 258,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 258,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 358,
+                    "column": 45
+                  },
+                  "end": {
+                    "line": 358,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 386,
+                    "column": 67
+                  },
+                  "end": {
+                    "line": 386,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 387,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 387,
+                    "column": null
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "thresholdsPassed": true
+      },
+      "signoff": false
+    },
+    {
+      "scope": "Runtime SDK unit coverage only; not critical-branch/security/release approval",
+      "status": "passed",
+      "sourceSha256": "a24119d17aa1edfdf0f1cce4666b34e61847fc4ffb40ce5adab8a741f6cde209",
+      "baseCommit": "3a66fd3716a1a938e6806e3c3e31e3464b383d0c",
+      "node": "v24.21.0",
+      "sourceUnchanged": true,
+      "evidence": {
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "total": {
+          "statements": {
+            "total": 838,
+            "covered": 814,
+            "skipped": 0,
+            "pct": 97.13
+          },
+          "lines": {
+            "total": 555,
+            "covered": 552,
+            "skipped": 0,
+            "pct": 99.45
+          },
+          "functions": {
+            "total": 136,
+            "covered": 135,
+            "skipped": 0,
+            "pct": 99.26
+          },
+          "branches": {
+            "total": 655,
+            "covered": 622,
+            "skipped": 0,
+            "pct": 94.96
+          }
+        },
+        "files": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 509,
+                "covered": 495,
+                "skipped": 0,
+                "pct": 97.24
+              },
+              "lines": {
+                "total": 311,
+                "covered": 311,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 80,
+                "covered": 79,
+                "skipped": 0,
+                "pct": 98.75
+              },
+              "branches": {
+                "total": 376,
+                "covered": 356,
+                "skipped": 0,
+                "pct": 94.68
+              }
+            },
+            "uncovered": {
+              "statements": [
+                {
+                  "start": {
+                    "line": 15,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 23,
+                    "column": 39
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 77,
+                    "column": 74
+                  },
+                  "end": {
+                    "line": 77,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 93,
+                    "column": 34
+                  },
+                  "end": {
+                    "line": 93,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 101,
+                    "column": 38
+                  },
+                  "end": {
+                    "line": 101,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 46
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 177
+                  }
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 102
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 131
+                  }
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 131
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 175
+                  }
+                },
+                {
+                  "start": {
+                    "line": 124,
+                    "column": 83
+                  },
+                  "end": {
+                    "line": 124,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 125,
+                    "column": 72
+                  },
+                  "end": {
+                    "line": 125,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 138,
+                    "column": 52
+                  },
+                  "end": {
+                    "line": 138,
+                    "column": 70
+                  }
+                },
+                {
+                  "start": {
+                    "line": 138,
+                    "column": 70
+                  },
+                  "end": {
+                    "line": 138,
+                    "column": 78
+                  }
+                },
+                {
+                  "start": {
+                    "line": 370,
+                    "column": 61
+                  },
+                  "end": {
+                    "line": 370,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 431,
+                    "column": 25
+                  },
+                  "end": {
+                    "line": 431,
+                    "column": null
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 44
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 178
+                  }
+                }
+              ],
+              "branches": [
+                {
+                  "start": {
+                    "line": 15,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 23,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 40,
+                    "column": 468
+                  },
+                  "end": {
+                    "line": 40,
+                    "column": 502
+                  }
+                },
+                {
+                  "start": {
+                    "line": 77,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 77,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 77,
+                    "column": 44
+                  },
+                  "end": {
+                    "line": 77,
+                    "column": 74
+                  }
+                },
+                {
+                  "start": {
+                    "line": 93,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 93,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 101,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 101,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 111,
+                    "column": 89
+                  },
+                  "end": {
+                    "line": 111,
+                    "column": 96
+                  }
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 46
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 177
+                  }
+                },
+                {
+                  "start": {},
+                  "end": {}
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 50
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 77
+                  }
+                },
+                {
+                  "start": {
+                    "line": 113,
+                    "column": 77
+                  },
+                  "end": {
+                    "line": 113,
+                    "column": 100
+                  }
+                },
+                {
+                  "start": {
+                    "line": 124,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 124,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 125,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 125,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 138,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 138,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 206,
+                    "column": 149
+                  },
+                  "end": {
+                    "line": 206,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {},
+                  "end": {}
+                },
+                {
+                  "start": {
+                    "line": 370,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 370,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 431,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 431,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {},
+                  "end": {}
+                }
+              ]
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            },
+            "uncovered": {
+              "statements": [],
+              "functions": [],
+              "branches": [
+                {
+                  "start": {
+                    "line": 55,
+                    "column": 38
+                  },
+                  "end": {
+                    "line": 55,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 57,
+                    "column": 38
+                  },
+                  "end": {
+                    "line": 57,
+                    "column": null
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 291,
+                "covered": 281,
+                "skipped": 0,
+                "pct": 96.56
+              },
+              "lines": {
+                "total": 215,
+                "covered": 212,
+                "skipped": 0,
+                "pct": 98.6
+              },
+              "functions": {
+                "total": 48,
+                "covered": 48,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 248,
+                "covered": 237,
+                "skipped": 0,
+                "pct": 95.56
+              }
+            },
+            "uncovered": {
+              "statements": [
+                {
+                  "start": {
+                    "line": 76,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 76,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 96,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 96,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 114,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 114,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 158,
+                    "column": 30
+                  },
+                  "end": {
+                    "line": 158,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 198,
+                    "column": 26
+                  },
+                  "end": {
+                    "line": 198,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 227,
+                    "column": 53
+                  },
+                  "end": {
+                    "line": 227,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 254,
+                    "column": 37
+                  },
+                  "end": {
+                    "line": 254,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 258,
+                    "column": 68
+                  },
+                  "end": {
+                    "line": 258,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 358,
+                    "column": 106
+                  },
+                  "end": {
+                    "line": 358,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 387,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 387,
+                    "column": null
+                  }
+                }
+              ],
+              "functions": [],
+              "branches": [
+                {
+                  "start": {
+                    "line": 76,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 76,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 96,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 96,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {},
+                  "end": {}
+                },
+                {
+                  "start": {
+                    "line": 158,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 158,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 198,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 198,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 227,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 227,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 254,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 254,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 258,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 258,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 358,
+                    "column": 45
+                  },
+                  "end": {
+                    "line": 358,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 386,
+                    "column": 67
+                  },
+                  "end": {
+                    "line": 386,
+                    "column": null
+                  }
+                },
+                {
+                  "start": {
+                    "line": 387,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 387,
+                    "column": null
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "thresholdsPassed": true
+      },
+      "signoff": false
+    }
+  ],
+  "unitsEachNode": 275,
+  "packageEachNode": 4,
+  "actualInstalledNodeCasesEach": 8,
+  "fullLocalAudit": {
+    "commands": 40,
+    "controllerCommands": 14,
+    "reports": [
+      {
+        "suite": "sdk-auth",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-refresh",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-data",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "database",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "constraints",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 15,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "lifecycle",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-reference",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 16,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "expiry",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-migration",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "all",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 115,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "characterization",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "smtp",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "browser",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 60,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "native-upgrade",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "owned-ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "todos-launcher",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "589210a750528e6da3076e39a9d39359d2502dbe274a335096a8ffe785789543",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v24.21.0",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "589210a750528e6da3076e39a9d39359d2502dbe274a335096a8ffe785789543",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      }
+    ],
+    "guards": [
+      {
+        "node": "22.23.2",
+        "sourceSha256": "a24119d17aa1edfdf0f1cce4666b34e61847fc4ffb40ce5adab8a741f6cde209",
+        "units": 275,
+        "packageChecks": 4
+      },
+      {
+        "node": "24.21.0",
+        "sourceSha256": "a24119d17aa1edfdf0f1cce4666b34e61847fc4ffb40ce5adab8a741f6cde209",
+        "units": 275,
+        "packageChecks": 4
+      }
+    ],
+    "strictResearchFailures": 14,
+    "exactHistoricalResearchNamesStatusesUnchanged": true,
+    "allFixtureSetupAndCleanupPassed": true,
+    "initialStaticChecks": "FAILED: owned clone copied intent-to-add documents without indexing them. Initial candidate/Node24 check stay failed; corrected same-source candidate and Node24 static checks independently passed.",
+    "correctedCandidateReports": [
+      {
+        "suite": "sdk-auth",
+        "node": "v22.23.2",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-refresh",
+        "node": "v22.23.2",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-data",
+        "node": "v22.23.2",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "database",
+        "node": "v22.23.2",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "constraints",
+        "node": "v22.23.2",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser",
+        "node": "v22.23.2",
+        "passed": 15,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "lifecycle",
+        "node": "v22.23.2",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v22.23.2",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "todos-launcher",
+        "node": "v22.23.2",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      }
+    ],
+    "repeatedCleanReleaseRunsCompleted": 0
+  },
+  "candidate": {
+    "schemaVersion": 1,
+    "id": "8b851335-c6f2-4021-b49b-5b8a8e253025",
+    "scope": "Official-supported existing automation; NOT full matrix/security/device/release approval",
+    "node": "v22.23.2",
+    "sourceSha256": "a24119d17aa1edfdf0f1cce4666b34e61847fc4ffb40ce5adab8a741f6cde209",
+    "baseCommit": "3a66fd3716a1a938e6806e3c3e31e3464b383d0c",
+    "startedAt": "2026-11-03T03:37:29.978Z",
+    "commands": [
+      {
+        "id": "check",
+        "status": "passed"
+      },
+      {
+        "id": "units",
+        "status": "passed"
+      },
+      {
+        "id": "coverage",
+        "status": "passed"
+      },
+      {
+        "id": "package",
+        "status": "passed"
+      },
+      {
+        "id": "node",
+        "status": "passed"
+      },
+      {
+        "id": "auth",
+        "status": "passed"
+      },
+      {
+        "id": "refresh",
+        "status": "passed"
+      },
+      {
+        "id": "data",
+        "status": "passed"
+      },
+      {
+        "id": "database",
+        "status": "passed"
+      },
+      {
+        "id": "constraints",
+        "status": "passed"
+      },
+      {
+        "id": "browser",
+        "status": "passed"
+      },
+      {
+        "id": "example",
+        "status": "passed"
+      },
+      {
+        "id": "cleanup",
+        "status": "passed"
+      }
+    ],
+    "sourceUnchanged": true,
+    "automation": "passed",
+    "qualification": "blocked",
+    "remainingAcceptance": [
+      "complete-active-matrix-and-critical-security-branch-review",
+      "real-disabled-registration-and-mfa-negative-controls",
+      "browser-cap-operator-expiry-race-and-storage-failure-matrix",
+      "trusted-local-tls-auth-smoke-and-security-assessment",
+      "complete-accessibility-and-100-cycle-auth-app-resource-proof",
+      "physical-device-and-advertised-platform-acceptance",
+      "three-consecutive-clean-same-candidate-runs",
+      "named-maintainer-feature-limitations-and-release-signoff"
+    ],
+    "signoff": false,
+    "finishedAt": "2026-11-03T03:50:49.749Z",
+    "defaultCommandExitCode": 1,
+    "exitReason": "Corrected owned checkout: all13existing automation commands passed; qualification remains BLOCKED for8explicit acceptance requirements. Initial checkout candidate failed its static check and remains separately failed. Neither run is a clean full release run"
+  },
+  "dependencyAudit": {
+    "command": "npm audit --json",
+    "exitCode": 1,
+    "highDependencyEntries": 1,
+    "package": "vite",
+    "version": "8.3.2",
+    "developmentOnly": true,
+    "preExistingPinUnchanged": true,
+    "advisories": [
+      {
+        "url": "https://github.com/advisories/GHSA-698v-4r3x-3vcv",
+        "severity": "moderate",
+        "title": "launch-editor: escapeCmdArgs() omits % escaping on Windows"
+      },
+      {
+        "url": "https://github.com/advisories/GHSA-r825-w8mm-5pxw",
+        "severity": "moderate",
+        "title": "launch-editor: Editor CLI flag misinterpretation causing arbitrary command execution for some editors"
+      },
+      {
+        "url": "https://github.com/advisories/GHSA-587h-7wmj-h5pm",
+        "severity": "high",
+        "title": "launch-editor: `fs.existsSync()` existence check can be bypassed on Windows"
+      },
+      {
+        "url": "https://github.com/advisories/GHSA-9jrq-w75r-8gcw",
+        "severity": "low",
+        "title": "Vite: Cross origin script execution through Vite custom middleware"
+      },
+      {
+        "url": "https://github.com/advisories/GHSA-rq7h-c2jc-7f22",
+        "severity": "moderate",
+        "title": "Vite: Files outside `server.fs.allow` could be served when project paths match system paths on non-Windows machine"
+      },
+      {
+        "url": "https://github.com/advisories/GHSA-vfpm-58rq-9qcg",
+        "severity": "moderate",
+        "title": "Vite: First 4 bytes of files outside of `server.fs` setting is exposed by `?vite-wasm-instance`"
+      }
+    ],
+    "fixApplied": false,
+    "runtimeOnlyAudit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "releaseSecurityDisposition": "Unresolved; complete security assessment/remediation remains required, not waived by passing coverage or supported tests"
+  },
+  "preservedFailures": {
+    "registration": "Missing coverage/runner/report functions produce meaningful assertion reds before implementation, separate from product behavior",
+    "initialCoverage": "269units passed; global95.34statements/98.55lines/98.52functions/92.97branches, but common94.73/index92.09statement threshold failures; raw maps/logs preserved",
+    "intermediateCoverage": "273units passed; index94.84statements still failed. Final boundary tests close real existing paths without SDK edits",
+    "controllerAndCompiler": "First runner test missing-module collection error was corrected to explicit missing-function assertion red; one TS missing config extension and two new-doc Git-index failures are setup, not runtime/product/TDD proof",
+    "initialFullStaticSetup": "Initial26-command full batch: all runtime/coverage/package/fixture scopes completed as expected, but candidate and Node24 check FAILED because a private helper omitted newly intent-to-add docs from clone index. No validator weakening/source change; initial18owned projects/raw source archived and parent absent; corrected candidate9newowned projects run separately.",
+    "bookkeeping": "One post-runtime ledger edit omitted a comma, so the local metadata updater failed JSON parsing before modifying the ledger. Corrected the comma; later updater passed. Fresh validation is required before publication. Not a product/TDD/runtime red; no source-bound runtime report was rewritten.",
+    "priorCI": "41548029405 stock startup0 remains121unexecuted cases/6historical failure assertions and unknown cause; current fully executed14research failures do not explain or repair it"
+  },
+  "remainingChecklist": "docs/RELEASE_QUALIFICATION.md; specific security/browser/TLS/a11y/resources/device/platform/repeated-clean-runs/named-maintainer acceptance, plus existing Vite high advisory disposition",
+  "preservation": {
+    "scope": "Read-only historical/original preservation, not new private runtime work or MVP dependency",
+    "privateArtifactsUnchanged": 7,
+    "retainedPriorFilesHashVerified": 575,
+    "priorCompleteArchivesVerified": 12,
+    "priorArchivedFilesHashVerified": 16320,
+    "privateSdkSourceAndFrozenShippedFilesUnchanged": true,
+    "originalApprovedReadOnlyGuardPassed": true,
+    "originalDemoDataAssetsConfigurationKeysLocksContainersSupervisorTailnetUnchanged": true,
+    "privateAdoptionOrDeployment": false,
+    "signoff": false
+  },
+  "publication": "Normal reviewed substantive commit/push and one exactCI audit authorized; pending at this evidence snapshot",
+  "signoff": false
+}

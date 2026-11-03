@@ -26,6 +26,9 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run test:unit
+      - name: Runtime SDK coverage (global and per behavioral module)
+        if: always()
+        run: npm run test:sdk:coverage
       - name: Cache pinned runtime metadata for offline consumers
         run: |
           npm cache add trailbase@0.14.3
@@ -43,6 +46,7 @@ jobs:
           path: |
             artifacts/unit/*.json
             artifacts/sdk-package/*.json
+            artifacts/sdk-coverage/*.json
           if-no-files-found: error
           retention-days: 14
 
