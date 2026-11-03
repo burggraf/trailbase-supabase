@@ -193,12 +193,15 @@ test('L1-27/G7/S04/S09 browser proof: local revocation and opaque global redirec
   const result=await page.evaluate(async({base,email,password})=>{
     const {authCoordinationProof}:typeof import('../proofs/auth-coordination.js')=await import(`${base}/proofs/auth-coordination.js`);
     const forward=(path:string,init?:RequestInit)=>fetch(`${base}${path}`,{...init,credentials:'omit',signal:AbortSignal.timeout(10000)});
-    let calls=0,opaque=false;
+    let calls=0,opaque=false,receipt=false;
     const first=authCoordinationProof(async(path,init)=>{
       const response=await forward(path,init);
       if(path==='/api/auth/v1/logout'){
         calls++;
-        if(init?.method==='GET')opaque=response.type==='opaqueredirect'&&response.status===0&&response.headers.get('location')===null;
+        if(init?.method==='GET'){
+          opaque=response.type==='opaqueredirect'&&response.status===0&&response.headers.get('location')===null;
+          receipt=response.status===200&&!response.redirected&&response.url===`${base}/api/auth/v1/logout`&&response.headers.get('content-type')==='text/plain; charset=utf-8'&&await response.clone().text()==='logged out';
+        }
       }
       return response;
     }),sibling=authCoordinationProof(forward);
@@ -213,16 +216,17 @@ test('L1-27/G7/S04/S09 browser proof: local revocation and opaque global redirec
     await first.login(email,password);const global=first.tokens()!.refresh_token!;
     let visibleError=false;
     try{await first.logout('global');}
-    catch(error){visibleError=(error as {name:string;status:number}).name==='AuthProofHttpError'&&(error as {status:number}).status===0;}
+    catch{visibleError=true;}
     const bothRevoked=await refresh(global)===401&&await refresh(other)===401;
     await first.logout('global');const noReplay=calls===2;
     const denied=await forward('/api/records/v1/todos',{headers:first.headers()});
     const protectedDenied=denied.status===403;await denied.body?.cancel();
-    // Root-enabled fixture redirects are opaque in browser manual mode; do not
-    // pretend status 0 is a proven successful logout or follow arbitrary origins.
-    return {localRevoked,siblingAlive,localCalls,opaque,visibleError,bothRevoked,noReplay,protectedDenied,signedOut:first.tokens()===undefined};
+    // Keep the historical title as an immutable comparison anchor, not a0359
+    // opaque-response claim. JSON-selected0359 is readable;0358's opaque/error
+    // observations remain separately preserved. This is still a test-only proof.
+    return {localRevoked,siblingAlive,localCalls,opaque,receipt,visibleError,bothRevoked,noReplay,protectedDenied,signedOut:first.tokens()===undefined};
   },{base:env.trailUrl,email:account.email,password:account.password});
-  expect(result).toEqual({localRevoked:true,siblingAlive:true,localCalls:true,opaque:true,visibleError:true,bothRevoked:true,noReplay:true,protectedDenied:true,signedOut:true});
+  expect(result).toEqual({localRevoked:true,siblingAlive:true,localCalls:true,opaque:false,receipt:true,visibleError:false,bothRevoked:true,noReplay:true,protectedDenied:true,signedOut:true});
 });
 
 test('L1-27/G7/S01/S04 browser candidate: fixed acknowledgement, anonymous false-success boundary and foreign redirect credential isolation',async({page,browserName})=>{
@@ -249,8 +253,11 @@ test('L1-27/G7/S01/S04 browser candidate: fixed acknowledgement, anonymous false
         const one=first.tokens()!,two=sibling.tokens()!.refresh_token!;
         const headers:Record<string,string>=credential==='anonymous'?{}:{Authorization:`Bearer ${credential==='genuine'?one.auth_token:'fixture-invalid-jwt'}`};
         phase=`fixed-ack-${credential}`;
-        const response=await forward('/api/auth/v1/logout?redirect_uri=%2Fapi%2Fhealthcheck',{method:'GET',headers,redirect:'follow'});
-        if(response.status!==200||!response.redirected||response.url!==`${base}/api/healthcheck`)throw new Error('Browser fixed acknowledgement path mismatch');
+        const path='/api/auth/v1/logout?redirect_uri=%2Fapi%2Fhealthcheck';
+        const response=await forward(path,{method:'GET',headers,redirect:'follow'});
+        //0359 mandatory User rejects anonymous/invalid callers before redirect.
+        // Genuine explicit redirects still reach health200, not an SDK receipt.
+        if(response.status!==(credential==='genuine'?200:401)||response.redirected!==(credential==='genuine')||response.url!==(credential==='genuine'?`${base}/api/healthcheck`:`${base}${path}`)||response.headers.get('location')!==null)throw new Error('Browser official0359 fixed acknowledgement path mismatch');
         await response.body?.cancel();
         const expected=credential==='genuine'?401:200;phase=`revocation-probe-${credential}`;
         if(await refresh(one.refresh_token!)!==expected||await refresh(two)!==expected)throw new Error('Browser acknowledgement mistaken for authenticated revocation');

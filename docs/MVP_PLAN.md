@@ -6,11 +6,17 @@ Maintainer approved narrowing delivery to database CRUD and auth, then selected 
 
 CRUD/password-auth implementation, packed Node consumers on both pinned runtimes and three-engine packed browser flows exist with bounded source-bound evidence; no feature has complete release verification or signoff. [Release qualification](RELEASE_QUALIFICATION.md) maps current checks to the precise remaining requirements. Target remains a Supabase-shaped TypeScript client for TrailBase, not PocketBase compatibility. No automatic migration or import-only migration claim.
 
-### Official-only decision — active implementation path
+### Official-only decision — historical0358 boundary
 
 Mark's 2026-11-02 22:08 UTC decision is to stay on official **TrailBase0.35.8 / commit05238c02b54aabb483e9f6224b5e014d40e88a5d**, with **JS0.14.3**, document auth limitations and move on. No private native fork or private SDK capability adoption/deployment/publication; prototypes are historical private evidence, not MVP dependencies. No further fork parity work by default. A focused global-logout acknowledgement request was published and fetched/verified as [issue310](https://github.com/trailbaseio/trailbase/issues/310) by the executor under Mark's later explicit one-issue existing-gh authorization. No further publication is authorized. Existing signup#298 is related context, not a duplicate report or current recovery proof.
 
 The accepted MVP boundary is narrower than full Supabase auth compatibility: signup returns null user/session, native registration409 remains an error, no supported SDK signup-resend/identity-repair flow is offered, and default-global logout reports uncertainty rather than authenticated success. Normal confirmed-password login, persistence/live validation/refresh, explicit local logout and owner-isolated CRUD remain the implementation path. Preserve strict incompatibility results and backend errors. This is approval to proceed with documented limitations, not a technical fix, security waiver, package-publication approval or feature/release signoff.
+
+### Current supported minimum — official0359+
+
+The later explicit decision assumes **official TrailBase0.35.9or newer**, pins the reproducible fixture to0.35.9/commita106ce6338f9831140c92ac16e051901ed92d576 and authorizes the narrow genuine global receipt path without version autodetection/setting, private capability or auth-scope expansion. This supersedes only the older minimum/pending binding/always-unconfirmed-global boundary above. All actual handlers/replicas and rollbacks must preserve the supported contract and auth realm/session store; older/mixed/rolled-back deployments are unsupported and may return misleading matching200/no DELETE. The SDK does not verify versions. Later releases need qualification, not assumed proof.
+
+Default/global remains global: captured JWT, exact JSON request Content-Type, omitted cookies/manual redirects, complete nonredirect plaintext200 receipt; failed/lost/malformed replies/native errors/storage failures remain errors with no replay/local fallback. An empty-client no-op is not a receipt. Captured expired JWTs are not automatically renewed for logout; native401/no DELETE stays observable. Refresh-session deletion does not immediately invalidate issued JWTs, prevent later login or prove outstanding server work stopped. Signup null-user/409/424/no-resend and broader G7/security/release gates remain. See [the precise contract](OFFICIAL_AUTH_CONTRACT.md) and OGL01–OGL06. AN registration/MFA draft was safely checkpointed with zero real execution, not passed. Original0358demo/data/assets/six containers remain unchanged; no deployment/network/security/fork/outreach change or release signoff.
 
 ### Included
 

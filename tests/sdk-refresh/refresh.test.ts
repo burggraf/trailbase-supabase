@@ -1,7 +1,9 @@
 import { it, expect } from 'vitest';
 import { randomUUID } from 'node:crypto';
+import { DatabaseSync } from 'node:sqlite';
+import { resolve } from 'node:path';
 import { createClient, type AuthStorage } from '../../src/index.js';
-import { context, confirmEmail, nativeUuid, deadline, type Context } from '../phase-a/helpers.js';
+import { context, confirmEmail, nativeUuid, nativeAuthSnapshot, deadline, type Context } from '../phase-a/helpers.js';
 import { withCleanup, cleanupOwnedRows } from '../sdk-browser/cleanup.js';
 
 const mapping = { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' as const }, user_id: { type: 'uuid' as const }, title: { type: 'text' as const }, completed: { type: 'boolean' as const }, priority: { type: 'integer' as const }, note: { type: 'text' as const, nullable: true }, created_at: { type: 'integer' as const } } } } };
@@ -48,7 +50,7 @@ async function waitActualDenial(env: Context, token: string, exp: number) {
   }
   throw new Error('Actual native access expiry denial deadline exceeded');
 }
-it('L1-18/I18 genuine expired data/getSession initiate shared renewal, independent manual join, persistent owner reload and rejected refresh', async () => {
+it('L1-18/I18/OGL04 genuine expiry rejects unrenewed global logout without DELETE, then shared renewal/reload and rejected refresh', async () => {
   const env = await context(), run = fixture(env);
   await withCleanup(async () => {
     const original = await run.acquire();
@@ -57,6 +59,18 @@ it('L1-18/I18 genuine expired data/getSession initiate shared renewal, independe
     await waitActualDenial(env, original.access_token, original.expires_at);
     const expiredStatus = await fetch(`${env.trailUrl}/api/auth/v1/status`, { headers: { authorization: `Bearer ${original.access_token}`, 'Refresh-Token': original.refresh_token }, credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(10000) });
     expect(expiredStatus.status).toBe(200); expect(await expiredStatus.json()).toEqual({auth_token:null,refresh_token:null,csrf_token:null});
+    const main = new DatabaseSync(resolve(env.directory, 'traildepot/data/main.db'), { readOnly: true }), sessions = new DatabaseSync(resolve(env.directory, 'traildepot/data/session.db'), { readOnly: true });
+    try {
+      const complete = nativeAuthSnapshot(main, sessions), key = `expired-global-${randomUUID()}`, stored = new Map([['unrelated', 'keep'], [key, run.data.get(run.key)!]]);
+      let exchanges = 0;
+      // Secondary rejection control reloads verbatim genuinely persisted credentials; no synthetic JWT/clock/row edits.
+      const expired = createClient(env.trailUrl, undefined, { trailbase: mapping, auth: { persistSession: true, autoRefreshToken: false, storageKey: key, storage: { getItem: k => stored.get(k) ?? null, setItem: (k, v) => { stored.set(k, v); }, removeItem: k => { stored.delete(k); } } }, global: { fetch: (input, init) => {
+        exchanges++; expect(String(input)).toBe(`${env.trailUrl}/api/auth/v1/logout`); expect(init?.method).toBe('GET'); expect(new Headers(init?.headers).get('authorization')).toBe(`Bearer ${original.access_token}`);
+        return fetch(input, { ...init, signal: AbortSignal.any([...(init?.signal ? [init.signal] : []), AbortSignal.timeout(10000)]) });
+      } } });
+      expect((await expired.auth.signOut()).error?.status).toBe(401); expect(exchanges).toBe(1); expect(stored.has(key)).toBe(false); expect(stored.get('unrelated')).toBe('keep');
+      expect((await expired.auth.getSession()).data.session).toBeNull(); expect(nativeAuthSnapshot(main, sessions)).toEqual(complete);
+    } finally { sessions.close(); main.close(); }
     const before = run.counts(), diskBefore = run.data.get(run.key);
     // No manual call: this fails if the actual-expiry trigger is removed.
     const row = Promise.resolve(run.client.from('todos').select().eq('id', run.rowId).single()), cached = run.client.auth.getSession();

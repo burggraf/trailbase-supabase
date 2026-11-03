@@ -78,8 +78,7 @@ for (const backend of ['trailbase', 'supabase'] as const) test(`L1-14â€“20/E02â€
     await page.getByRole('button', { name: 'Sign in', exact: true }).click(); await expect(page.getByRole('status', { name: 'Auth status', exact: true })).toHaveText(`Signed in: ${email}`);
     await page.getByRole('button', { name: 'Sign out everywhere', exact: true }).click(); await expect(page.getByRole('button', { name: 'Sign out everywhere', exact: true })).toBeEnabled();
     await expect(page.getByRole('status', { name: 'Auth status', exact: true })).toHaveText('Signed out');
-    if (backend === 'trailbase') await expect(page.getByRole('alert', { name: 'Auth error' })).toContainText('could not be authenticated');
-    else await expect(page.getByRole('alert', { name: 'Auth error' })).toBeEmpty();
+    await expect(page.getByRole('alert', { name: 'Auth error' })).toBeEmpty();
   }, [
     async () => { if (!page.isClosed()) await page.evaluate(async () => { if (window.sdkAuthApp) { window.sdkAuthApp.ui.dispose(); await window.sdkAuthApp.client.auth.signOut({ scope: 'local' }); delete window.sdkAuthApp; } }); },
     async () => { if (!page.isClosed()) await page.evaluate(({ ownedKey, unrelatedKey }) => { localStorage.removeItem(ownedKey); localStorage.removeItem(unrelatedKey); }, { ownedKey, unrelatedKey }); },

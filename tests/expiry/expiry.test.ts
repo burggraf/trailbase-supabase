@@ -1,6 +1,8 @@
 import { beforeAll,describe,it,expect } from 'vitest';
 import { randomUUID } from 'node:crypto';
-import { context,confirmedTrailUser,nativeUuid,deadline,trailbase,type Context } from '../phase-a/helpers.js';
+import { DatabaseSync } from 'node:sqlite';
+import { resolve } from 'node:path';
+import { context,confirmedTrailUser,nativeUuid,nativeAuthSnapshot,deadline,trailbase,type Context } from '../phase-a/helpers.js';
 import { nativeSseProof } from '../proofs/native-sse.js';
 
 let env:Context;
@@ -18,7 +20,7 @@ async function waitActualDenial(protectedRead:()=>Promise<Response>) {
   throw new Error('Actual native access expiry deadline exceeded');
 }
 describe('L1-27 G6/S07 actual native token expiry, NOT default fixture or reference/browser parity',()=>{
-  it('established streams retain connection-scoped access; expired tokens deny new streams but can yield misleading global-logout acknowledgements',async()=>{
+  it('established streams retain connection-scoped access; official0359 expired tokens deny new streams and global logout before redirect without DELETE',async()=>{
     const account=await confirmedTrailUser(env,'actual-expiry'),sibling=trailbase(env);
     await sibling.login(account.email,account.password);
     const response=await account.client.fetch('/api/records/v1/todos/subscribe/*');
@@ -40,12 +42,17 @@ describe('L1-27 G6/S07 actual native token expiry, NOT default fixture or refere
         headers:{Authorization:`Bearer ${original.auth_token}`},signal:AbortSignal.timeout(5000)
       });
       expect([401,403]).toContain(expiredConnection.status);await expiredConnection.body?.cancel();
-      // Genuine expired JWT, not an edited/forged token or a fake acknowledgement.
-      const acknowledged=await fetch(`${env.trailUrl}/api/auth/v1/logout?redirect_uri=%2Fapi%2Fhealthcheck`,{
-        method:'GET',headers:{Authorization:`Bearer ${original.auth_token}`},credentials:'omit',redirect:'follow',signal:AbortSignal.timeout(5000)
-      });
-      expect(acknowledged.status).toBe(200);expect(acknowledged.redirected).toBe(true);
-      expect(acknowledged.url).toBe(`${env.trailUrl}/api/healthcheck`);await acknowledged.body?.cancel();
+      // Historical0358 followed a misleading redirect here; preserve that source/results separately.
+      // Official0359's mandatory User rejects this genuine expired JWT before redirect/DELETE.
+      const main=new DatabaseSync(resolve(env.directory,'traildepot/data/main.db'),{readOnly:true}),sessions=new DatabaseSync(resolve(env.directory,'traildepot/data/session.db'),{readOnly:true});
+      try {
+        const before=nativeAuthSnapshot(main,sessions),url=`${env.trailUrl}/api/auth/v1/logout?redirect_uri=%2Fapi%2Fhealthcheck`;
+        const rejected=await fetch(url,{
+          method:'GET',headers:{Authorization:`Bearer ${original.auth_token}`},credentials:'omit',redirect:'follow',signal:AbortSignal.timeout(5000)
+        });
+        expect(rejected.status).toBe(401);expect(rejected.redirected).toBe(false);expect(rejected.headers.get('location')).toBeNull();
+        expect(rejected.url).toBe(url);await rejected.body?.cancel();expect(nativeAuthSnapshot(main,sessions)).toEqual(before);
+      } finally {sessions.close();main.close();}
       for(const refresh_token of [original.refresh_token,sibling.tokens()!.refresh_token]){
         const stillLive=await fetch(`${env.trailUrl}/api/auth/v1/refresh`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({refresh_token}),signal:AbortSignal.timeout(5000)});
         expect(stillLive.status).toBe(200);await stillLive.body?.cancel();

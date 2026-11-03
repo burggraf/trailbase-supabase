@@ -2,13 +2,13 @@ import { test, expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { DatabaseSync } from 'node:sqlite';
 import { resolve } from 'node:path';
-import { context, confirmedTrailUser, canonicalUuid, nativeUuid } from '../phase-a/helpers.js';
+import { context, confirmedTrailUser, canonicalUuid, nativeUuid, nativeAuthSnapshot } from '../phase-a/helpers.js';
 import { withCleanup, cleanupOwnedRows } from '../sdk-browser/cleanup.js';
 
 type Schedule = 'expiry' | 'logout' | 'replace' | 'logout-replace';
 declare global {
   interface Window {
-    packedRace?: { run(schedule: Schedule): Promise<{ sharedRefreshes: number; staleMutationRequests: number; finalOwner: 'A' | 'B' | null; eventsChecked: boolean; persisted: boolean }>; dispose(): Promise<void> };
+    packedRace?: { run(schedule: Schedule): Promise<{ sharedRefreshes: number; staleMutationRequests: number; finalOwner: 'A' | 'B' | null; eventsChecked: boolean; persisted: boolean }>; rejectExpiredGlobal(): Promise<boolean>; dispose(): Promise<void> };
   }
 }
 const cases: [string, Schedule][] = [
@@ -82,7 +82,21 @@ for (const [name, schedule] of cases) test(`L1-16–20/L1-24/E08/E10/E11/E13/S07
           if (event === 'INITIAL_SESSION') initialized();
         } catch { callbackErrors.push('callback-state-check'); }
       }).data.subscription;
-      window.packedRace = { run: async () => { throw new Error('PB setup incomplete'); }, dispose: async () => {
+      window.packedRace = { run: async () => { throw new Error('PB setup incomplete'); }, rejectExpiredGlobal: async () => {
+        const expiredKey = `${key}-expired-global`, currentDisk = localStorage.getItem(key); let exchanges = 0;
+        // Secondary negative reload uses the verbatim genuine SDK-persisted frame, never a synthetic JWT or primary-flow session stub.
+        localStorage.setItem(expiredKey, oldFrame);
+        try {
+          const expired = sdk.createClient(base, undefined, { trailbase: mapping, auth: { persistSession: true, autoRefreshToken: false, storageKey: expiredKey }, global: { fetch: (input, init) => {
+            exchanges++; check(String(input) === `${base}/api/auth/v1/logout` && init?.method === 'GET' && new Headers(init.headers).get('authorization') === `Bearer ${old.access_token}`, 'expired global captured JWT only, no renewal/probe');
+            return fetchReal(input, init);
+          } } });
+          const result = await bounded(expired.auth.signOut(), 'expired global native rejection');
+          check(result.error?.status === 401 && exchanges === 1, 'expired global401 not suppressed or replayed');
+          check((await expired.auth.getSession()).data.session === null && localStorage.getItem(expiredKey) === null, 'expired global owned state cleared');
+          check(localStorage.getItem(key) === currentDisk && localStorage.getItem(unrelated) === 'keep', 'independent original storage unchanged'); return true;
+        } finally { localStorage.removeItem(expiredKey); }
+      }, dispose: async () => {
         disposed = true; for (const controller of controllers) controller.abort(); cancelHeld?.(); release?.();
         await bounded(Promise.allSettled(pending), 'drain owned operations');
         subscription.unsubscribe(); localStorage.removeItem(key); localStorage.removeItem(unrelated);
@@ -101,7 +115,7 @@ for (const [name, schedule] of cases) test(`L1-16–20/L1-24/E08/E10/E11/E13/S07
       const canonical = (value: unknown) => JSON.stringify(Object.entries(value as Record<string, unknown>).sort(([a], [b]) => a.localeCompare(b)));
       check(Object.keys(a.data!).sort().join(',') === 'completed,created_at,id,note,priority,title,user_id', 'seven scalar A row');
       const goldenA = canonical(a.data), goldenB = { ...b.data, title: `B-final-${ids[1]}` };
-      const old = (await client.auth.getSession()).data.session!;
+      const old = (await client.auth.getSession()).data.session!, oldFrame = localStorage.getItem(key)!;
       window.packedRace.run = async schedule => {
         const phaseEvents = events.map(e => `${e.event}:${e.owner}`), phaseEventCount = events.length;
         check(phaseEvents[0] === 'INITIAL_SESSION:null' && phaseEvents[1] === 'SIGNED_IN:A' && phaseEvents.slice(2).every(e => e === 'TOKEN_REFRESHED:A'), 'initial and setup event sequence');
@@ -188,6 +202,9 @@ for (const [name, schedule] of cases) test(`L1-16–20/L1-24/E08/E10/E11/E13/S07
     expect(after.find(row => row.id instanceof Uint8Array && Buffer.from(row.id).equals(Buffer.from(ids[1].replaceAll('-', ''), 'hex')))).toEqual({ ...seeded.find(row => row.id instanceof Uint8Array && Buffer.from(row.id).equals(Buffer.from(ids[1].replaceAll('-', ''), 'hex'))), title: `B-final-${ids[1]}` });
     expect(rows(main, 'todo_audit').filter(row => belongs(row.user_id)).map(row => row.operation)).toEqual(['INSERT', 'INSERT', 'UPDATE']);
     if (schedule === 'expiry') {
+      const expiredBefore = nativeAuthSnapshot(main, sessions);
+      expect(await page.evaluate(() => window.packedRace!.rejectExpiredGlobal())).toBe(true);
+      expect(nativeAuthSnapshot(main, sessions)).toEqual(expiredBefore);
       // A genuine page reload hydrates the persisted short-TTL credentials, never a token injected by the driver.
       await page.reload();
       expect(await page.evaluate(async ({ base, owner, id, key, unrelated }) => {

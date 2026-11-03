@@ -8,16 +8,16 @@ import legacy from '../fixtures/trailbase-v0.34.3.json' with { type: 'json' };
 it('L1-26/L1-27 native version cache keeps both server versions separate and never replaces legacy live binary paths', () => {
   const paths = (tools as unknown as { trailToolPaths: (pin?: unknown, host?: string) => { archive: string; directory: string; binary: string } }).trailToolPaths;
   const current = paths(undefined, 'linux-x64'), prior = paths(legacy, 'linux-x64');
-  expect(current.binary).toBe(resolve('.runtime/tools/trailbase/0.35.8/linux-x64/trail'));
+  expect(current.binary).toBe(resolve('.runtime/tools/trailbase/0.35.9/linux-x64/trail'));
   expect(prior.binary).toBe(resolve('.runtime/tools/trailbase/0.34.3/linux-x64/trail'));
-  expect(current.archive).toBe(resolve('.runtime/tools/trailbase_v0.35.8_x86_64_linux.zip'));
+  expect(current.archive).toBe(resolve('.runtime/tools/trailbase_v0.35.9_x86_64_linux.zip'));
   expect(current.directory).not.toBe(prior.directory);
   for (const p of [current, prior]) expect(p.directory).not.toBe(resolve('.runtime/tools/linux-x64'));
 });
 
 it('L1-27 confines legacy server selection to the explicit owned upgrade profile', () => {
   const pin = (harness as unknown as { fixtureNativePin: (profile?: string) => { version: string } }).fixtureNativePin;
-  expect(pin().version).toBe('0.35.8'); expect(pin('legacy-upgrade')).toEqual(legacy);
+  expect(pin().version).toBe('0.35.9'); expect(pin('legacy-upgrade')).toEqual(legacy);
   for (const bad of ['unknown', '../original', '']) expect(() => pin(bad)).toThrow();
 });
 

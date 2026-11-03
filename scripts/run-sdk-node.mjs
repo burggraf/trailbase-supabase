@@ -16,7 +16,7 @@ const names = [
   'L1-03-L1-13/L1-24/PN04 owner CRUD filters bounds cardinality and forbidden writes',
   'L1-18/PN05 actual expiry and single-flight persisted renewal',
   'L1-18/L1-20/PN06 genuine background renewal and disabled storage',
-  'L1-19/PN07 explicit local global uncertainty and aborted logout errors',
+  'L1-19/PN07 explicit local genuine0359 global acknowledgement and aborted logout errors',
   'L1-24/L1-26/L1-27/PN08 independent cleanup and complete native postconditions',
 ];
 export function parseNodeConsumerProof(text) {
@@ -41,7 +41,7 @@ async function main() {
   // Never touch a live fixture's lock (including the retained original demo).
   await mkdir('.runtime/phase-a.lock');
   await writeFile('.runtime/phase-a.lock/owner.json', JSON.stringify({ runnerPid: process.pid, runId: null }), { mode: 0o600 });
-  const report = { scope: 'Real installed tarball Node CRUD/password-auth integration on owned official0358; documented null signup/global uncertainty, NOT full package/security/coverage/release/signoff', node: process.version, baseline, suite: 'sdk-node', authVariant: 'stock', nativeAuthProfile: 'short-native-auth', nativeServerProfile: 'default', nativeServerPin: { version: baseline.trailbase.version, commit: baseline.trailbase.commit }, status: 'failed', tests: [], cleanup: 'not-started' };
+  const report = { scope: 'Real installed tarball Node CRUD/password-auth integration on owned official0359; documented null signup, genuine global receipt under minimum-version invariant without detection, NOT full package/security/coverage/release/signoff', node: process.version, baseline, suite: 'sdk-node', authVariant: 'stock', nativeAuthProfile: 'short-native-auth', nativeServerProfile: 'default', nativeServerPin: { version: baseline.trailbase.version, commit: baseline.trailbase.commit }, status: 'failed', tests: [], cleanup: 'not-started' };
   let harness, mainDb, sessionDb, stage = 'initialize';
   const controller = new AbortController(), interrupt = () => controller.abort();
   process.on('SIGINT', interrupt); process.on('SIGTERM', interrupt);

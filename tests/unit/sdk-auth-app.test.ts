@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest';
+import { readFile } from 'node:fs/promises';
 import * as app from '../../examples/todos/app.js';
 
 it('L1-14–20/E02–08 auth example mounts through the same module as the existing data application', () => {
@@ -22,7 +23,16 @@ it('L1-14/OA04 signup409 is a rejection, not proof of an account or delivered ma
 });
 
 it('L1-14/OA04 signup424 explains official pending-registration uncertainty without suggesting blind retry', () => {
-  expect(Reflect.get(app, 'authErrorMessage')({ status: 424, message: 'private-canary' }, 'signup')).toBe('Confirmation delivery failed (HTTP 424). A pending registration may remain on official TrailBase 0.35.8; retrying can return HTTP 409. Do not repeatedly sign up. This app cannot resend confirmation or repair the account.');
+  expect(Reflect.get(app, 'authErrorMessage')({ status: 424, message: 'private-canary' }, 'signup')).toBe('Confirmation delivery failed (HTTP 424). A pending registration may remain on official TrailBase 0.35.9; retrying can return HTTP 409. Do not repeatedly sign up. This app cannot resend confirmation or repair the account.');
+});
+
+it('L1-19/OGL02 example declares minimum/no detection and keeps lost-reply/access-JWT caveats without claiming global is always unconfirmed', async () => {
+  const source = await readFile('examples/todos/app.js', 'utf8'), html = await readFile('examples/todos/index.html', 'utf8');
+  for (const text of [source, html]) {
+    expect(text).toContain('official TrailBase 0.35.9 or newer'); expect(text).toContain('does not detect versions');
+    expect(text).not.toContain('cannot authenticate server-wide sign-out'); expect(text).not.toContain('global sign-out remains unconfirmed on official');
+    expect(text).toContain('lost replies'); expect(text).toContain('access tokens may remain valid until expiry');
+  }
 });
 
 it('L1-19/E08 explicit global logout uncertainty is retained, never changed into success', () => {

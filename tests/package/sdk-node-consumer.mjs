@@ -36,9 +36,9 @@ const transport = async (input, init) => {
   if (path.startsWith('/api/records/')) { counts.records++; assert.equal(init.redirect, 'error'); assert(!new Headers(init.headers).has('refresh-token')); }
   if (path.endsWith('/logout')) {
     if (init.method === 'POST') { counts.local++; if (abortLocal) return fetch(input, { ...init, signal: AbortSignal.abort() }); }
-    else { counts.global++; assert.equal(init.redirect, 'manual'); assert(!new Headers(init.headers).has('refresh-token')); }
+    else { counts.global++; assert.equal(init.method, 'GET'); assert.equal(init.redirect, 'manual'); assert.equal(new Headers(init.headers).get('content-type'), 'application/json'); assert.deepEqual([...new Headers(init.headers).keys()], ['authorization', 'content-type']); assert.equal(init.body, undefined); }
   }
-  return fetch(input, { ...init, signal: AbortSignal.timeout(10000) });
+  return fetch(input, { ...init, signal: AbortSignal.any([...(init.signal ? [init.signal] : []), AbortSignal.timeout(10000)]) });
 };
 const clients = [];
 const make = (auth = {}) => {
@@ -170,7 +170,7 @@ if (process.argv[2] === '--reload') {
     finally { abortLocal = false; }
     assert.equal(ok(await failedLocal.auth.getSession()).session, null); assert.equal(await rawRefresh(lost.refresh_token), 200); await rawLocal(lost); assert.equal(await rawRefresh(lost.refresh_token), 401);
     const globalSession = await login(a, 0), globalBefore = counts.global, localBefore = counts.local;
-    const global = await a.auth.signOut(); assert.equal(global.error?.name, 'AuthGlobalSignOutUnconfirmedError'); assert.equal(counts.global - globalBefore, 1); assert.equal(counts.local, localBefore); assert.equal(ok(await a.auth.getSession()).session, null); assert(!Object.hasOwn(stored(), key));
+    const global = await a.auth.signOut(); assert.equal(global.error, null); assert.equal(counts.global - globalBefore, 1); assert.equal(counts.local, localBefore); assert.equal(ok(await a.auth.getSession()).session, null); assert(!Object.hasOwn(stored(), key));
     assert.equal(await rawRefresh(globalSession.refresh_token), 401); assert.equal(await rawRefresh(second.refresh_token), 401); assert.equal(await rawRefresh(session(await b.auth.getSession()).refresh_token), 200);
     assert.deepEqual(ok(await b.from('todos').select().order('id')), [goldenRows.get(otherId)]);
     const residual = await wire(`${config.trailUrl}/api/records/v1/todos?skip_cursor=true`, { headers: { authorization: `Bearer ${globalSession.access_token}` } }); assert.equal(residual.status, 200); await residual.body?.cancel();

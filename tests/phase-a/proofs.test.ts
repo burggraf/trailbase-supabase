@@ -1,7 +1,9 @@
 /// <reference lib="es2024.promise" />
 import { randomUUID } from 'node:crypto';
+import { DatabaseSync } from 'node:sqlite';
+import { resolve } from 'node:path';
 import { beforeAll,describe,expect,it } from 'vitest';
-import { context,confirmedTrailUser,nativeUuid,deadline,type Context } from './helpers.js';
+import { context,confirmedTrailUser,nativeUuid,nativeAuthSnapshot,deadline,type Context } from './helpers.js';
 import { nativeSseProof } from '../proofs/native-sse.js';
 import { authCoordinationProof } from '../proofs/auth-coordination.js';
 import { httpStreamFixture } from '../proofs/http-stream-fixture.js';
@@ -92,14 +94,22 @@ describe('L1-27 G5/G7 authorized test-only proofs, NOT replacement SDK/signoff',
     await second.login(account.email,account.password);
     const one=account.client.tokens()!,two=second.tokens()!.refresh_token!;
     const headers:Record<string,string>=credential==='anonymous'?{}:{Authorization:`Bearer ${credential==='genuine'?one.auth_token:'fixture-invalid-jwt'}`};
-    const response=await forward('/api/auth/v1/logout?redirect_uri=%2Fapi%2Fhealthcheck',{method:'GET',headers,credentials:'omit',redirect:'follow'});
-    expect(response.status).toBe(200);expect(response.redirected).toBe(true);
-    expect(response.url).toBe(`${env.trailUrl}/api/healthcheck`);await response.body?.cancel();
+    const main=new DatabaseSync(resolve(env.directory,'traildepot/data/main.db'),{readOnly:true}),sessions=new DatabaseSync(resolve(env.directory,'traildepot/data/session.db'),{readOnly:true});
+    try {
+      const before=nativeAuthSnapshot(main,sessions),path='/api/auth/v1/logout?redirect_uri=%2Fapi%2Fhealthcheck';
+      const response=await forward(path,{method:'GET',headers,credentials:'omit',redirect:'follow'});
+      // Keep the historical research name/source as a comparison anchor.0358 also
+      // redirected anonymous/invalid callers;0359 rejects them before redirect/DELETE.
+      expect(response.status).toBe(credential==='genuine'?200:401);expect(response.redirected).toBe(credential==='genuine');
+      expect(response.url).toBe(credential==='genuine'?`${env.trailUrl}/api/healthcheck`:`${env.trailUrl}${path}`);
+      expect(response.headers.get('location')).toBeNull();await response.body?.cancel();
+      if(credential!=='genuine')expect(nativeAuthSnapshot(main,sessions)).toEqual(before);
+    } finally {sessions.close();main.close();}
     const expected=credential==='genuine'?401:200;
     expect((await remoteRefresh(one.refresh_token!)).status).toBe(expected);
     expect((await remoteRefresh(two)).status).toBe(expected);
-    // A readable same-origin health response also follows anonymous/invalid logout;
-    // it is not an authenticated revocation receipt or production strategy signoff.
+    // Even a genuine followed health200 is not the fixed-origin native receipt
+    // required by the production SDK; this research does not sign off that strategy.
     await second.logout();await account.client.logout();
   });
   it('real native foreign redirect strips standard Bearer authorization and contains no other credentials, but is not accepted as native acknowledgement',async()=>{

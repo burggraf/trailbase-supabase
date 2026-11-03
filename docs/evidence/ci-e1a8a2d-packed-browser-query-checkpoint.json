@@ -1,0 +1,692 @@
+{
+  "scope": "Observational provenance/failure audit of exact normal CI; NOT a passed required baseline or supported-signoff substitute",
+  "commit": "e1a8a2de50617819ed84676207ee34b9b54ee964",
+  "sourceSha256": "9b610046a0ddd7559e56bec0bf4f5e29474d61db4505ed5b252e2d004a38c223",
+  "run": 41647830122,
+  "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41647830122",
+  "attempt": 1,
+  "status": "completed",
+  "conclusion": "failure",
+  "requiredBaselineAuditPassed": false,
+  "requiredBaselineAuditorAndOriginalFailureLogUnchanged": true,
+  "observationalChecksPassed": true,
+  "sourceBoundReportsChecked": 26,
+  "reports": [
+    {
+      "suite": "native-upgrade",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/native-upgrade/latest.json",
+      "artifactSha256": "4e84f2c7c2389b9b24a2027c9a42f446d4278246c35af6701821982fa79979c9"
+    },
+    {
+      "suite": "all",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 115,
+      "failed": 6,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793713942309-9a30efe7d02f.json",
+      "artifactSha256": "e07876cc437e28d767d27ff463c9f80d2d55e762c25fc42e98789a9b21a17b36"
+    },
+    {
+      "suite": "expiry",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793714163899-5394018ed438.json",
+      "artifactSha256": "4ed8cd09ce84c02ec13f2c8fc8b10deafd2687baa07c228fac2d166a6882b49e"
+    },
+    {
+      "suite": "characterization",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 9,
+      "failed": 1,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793714327637-4dff5bdc88ba.json",
+      "artifactSha256": "c35b652307549dc16a4aeea59b618adc5c3adf194e2787dbb4be9ad5c5a720df"
+    },
+    {
+      "suite": "smtp",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 0,
+      "failed": 1,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793714369028-848afe73b4cc.json",
+      "artifactSha256": "1c63e05b4e2ba75ba967e9de428840c62de50633d1dbac9df707cb56ba676f4b"
+    },
+    {
+      "suite": "auth-reference",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 16,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793714407428-a14b264d7f2e.json",
+      "artifactSha256": "9fa6fb23ecfcb07ded0390dcf8d4d24a6a1b4726335b5e013b68b226e9a68cc5"
+    },
+    {
+      "suite": "auth-migration",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793714475603-075ac465e2e2.json",
+      "artifactSha256": "48631a23e153c1352de7962c32618b8e31c3966cab2286ba000ab910c8921284"
+    },
+    {
+      "suite": "browser",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 60,
+      "failed": 6,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793714562284-da6a4a581abb.json",
+      "artifactSha256": "2ba85fabf22face5df066d387a3173405e998837025fdc5f3228b2f829caab56"
+    },
+    {
+      "suite": "lifecycle",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793714980204-ddabc531c22b.json",
+      "artifactSha256": "c7bad76ac0dda640c1ce85e2336def9a75f65f1be3ed490405c4407ed27aef89"
+    },
+    {
+      "suite": "coverage",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 0,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-22.23.2/sdk-coverage/node-22.23.2.json",
+      "artifactSha256": "3745b1d27560d5547a7beaa7ff3c0178b10a0420b4f2b38fec5499f77363427f"
+    },
+    {
+      "suite": "package",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-unit-node-22.23.2/sdk-package/latest.json",
+      "artifactSha256": "c854d6b5f1fbf786497a4cfc5d750b903c7daf9a649d47e0c12ad10ba595a058"
+    },
+    {
+      "suite": "unit",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 281,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-22.23.2/unit/latest.json",
+      "artifactSha256": "99d48872becad4cdab1c101bfa852e9ec55f5f9f8f66232a7dbbf19ab5b8c1ea"
+    },
+    {
+      "suite": "coverage",
+      "node": "v24.21.0",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 0,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-24.21.0/sdk-coverage/node-24.21.0.json",
+      "artifactSha256": "1aacff2b37daea36d524da54b83e4f2a6ee39e633ed444372649ac99f046e648"
+    },
+    {
+      "suite": "package",
+      "node": "v24.21.0",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-unit-node-24.21.0/sdk-package/latest.json",
+      "artifactSha256": "27c7df5cf5501c33e423471b7a01da4e7d1a8e694b64494034c79e3240bffa71"
+    },
+    {
+      "suite": "unit",
+      "node": "v24.21.0",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 281,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-24.21.0/unit/latest.json",
+      "artifactSha256": "4e9c32a338573f33421c8ad9c799aa428224bb0d7e09592743598cad85482aca"
+    },
+    {
+      "suite": "sdk-auth",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "supabase-start",
+      "passed": 0,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793713895253-ce292b52fdde.json",
+      "artifactSha256": "bf79a7108529f6ff3d4079494d6a9a2af358e2b9139b6fd12e56f1c7e4512386"
+    },
+    {
+      "suite": "sdk-refresh",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793713922137-855c72d87db7.json",
+      "artifactSha256": "ee3a82fa91a74f20014cca6ed75a8cbe9113d601c4b74f93b4ca91b6b2114470"
+    },
+    {
+      "suite": "sdk-data",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793714153965-460d76c97e2a.json",
+      "artifactSha256": "76c0e97dac92bc77adf9d4ff4563eab01fa46d5dcd1925df08521a6ee5817b4a"
+    },
+    {
+      "suite": "database",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793714204232-5e23f703a226.json",
+      "artifactSha256": "35650806e3d21adc2155984af3af4e6153c085863e2b7fbb4ecba4e3a16af8e6"
+    },
+    {
+      "suite": "constraints",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793714244562-76ec30e6e550.json",
+      "artifactSha256": "175298a5fbb6d298480314d0e88f5f143861784db9ba033741ddcc386dd841c3"
+    },
+    {
+      "suite": "sdk-browser",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 51,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793714283662-95cc561d6fd1.json",
+      "artifactSha256": "e4fc83ccdc4050c456fc81afe3b4623cb7673ce50ae01e1bd1c87bcaf83a0131"
+    },
+    {
+      "suite": "sdk-browser-refresh",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 36,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793714479943-db34a326a55c.json",
+      "artifactSha256": "7007cb31d1f731de6dad033974a8ca3635519c84392e29175508b076bab2a23c"
+    },
+    {
+      "suite": "lifecycle",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793714914092-5f745fe44ab6.json",
+      "artifactSha256": "09410828736387b5b8e9fee2120e2aa3d6e3f7b65e2e6d91ef141e46f2cb19dd"
+    },
+    {
+      "suite": "todos-launcher",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/todos/1793714877119-0b20d02aab9f.json",
+      "artifactSha256": "58108350a1fed29e35e6aa0234ef7899852913271277558f1d549e9b585d97de"
+    },
+    {
+      "suite": "sdk-node",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "supabase-start",
+      "passed": 0,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-node-22.23.2/1793713851787-c54d425e7f16.json",
+      "artifactSha256": "b92526c00bb3ac6cd152093a9ecf89b3c1e361b2096603ce02e6aaa0446a2135"
+    },
+    {
+      "suite": "sdk-node",
+      "node": "v24.21.0",
+      "status": "failed",
+      "setupStage": "supabase-start",
+      "passed": 0,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-node-24.21.0/1793713849601-403466b57a51.json",
+      "artifactSha256": "9679c69fa6a4a4013bd65f389cac6b476734299c3f753f4aa87398f6e732ad5e"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 125957750407,
+      "name": "Static, units and packed consumer / Node 24.21.0",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 125957750971,
+      "name": "Static, units and packed consumer / Node 22.23.2",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 125958233056,
+      "name": "Real backends / browser infrastructure / cleanup",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Run npm run test:phase-a",
+        "Investigational candidate signup / strict characterization",
+        "Investigational candidate / strict SMTP recovery",
+        "Three-browser isolated proof / infrastructure controls"
+      ]
+    },
+    {
+      "id": 125958233172,
+      "name": "Focused SDK CRUD-auth / real fixtures / packed browsers",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Run npm run test:sdk:auth"
+      ]
+    },
+    {
+      "id": 125958233349,
+      "name": "Packed Node CRUD-auth / Node 24.21.0",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Run npm run test:sdk:node"
+      ]
+    },
+    {
+      "id": 125958233641,
+      "name": "Packed Node CRUD-auth / Node 22.23.2",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Run npm run test:sdk:node"
+      ]
+    }
+  ],
+  "setupFailures": [
+    {
+      "suite": "sdk-auth",
+      "node": "v22.23.2",
+      "runId": "1793713895253-ce292b52fdde",
+      "setupStage": "supabase-start",
+      "plannedCases": 6,
+      "executedCases": 0,
+      "cleanup": "passed",
+      "supabaseStartup": {
+        "stage": "supabase-start",
+        "cause": "not-established",
+        "exitCode": 1,
+        "signal": null,
+        "killed": false,
+        "command": {
+          "kind": "nonzero-exit",
+          "stdout": "bounded",
+          "stderr": "bounded",
+          "progress": [],
+          "signatures": [
+            "image-pull"
+          ],
+          "pull": {
+            "reportedFailedServices": [
+              "supabase_auth"
+            ],
+            "httpStatuses": [],
+            "signals": [
+              "rate-limit"
+            ],
+            "upstreamRetryBanner": true
+          }
+        },
+        "services": [
+          {
+            "service": "supabase_auth",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_db",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_inbucket",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_kong",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_realtime",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_rest",
+            "inspection": "not-available"
+          }
+        ]
+      },
+      "supabaseStartContext": {
+        "operation": "cli-start",
+        "cliVersion": "2.119.0",
+        "configSha256": "7e396e960c2c005eb8dcf4f29ec7f8eeb1ba26f0b0ed9be18511cb390f1d7794",
+        "timeoutMs": 300000,
+        "maxBufferBytes": 20000000,
+        "environment": {
+          "policy": "fixture-prefix-stripping",
+          "registry": "pinned-ecr",
+          "dockerTransport": "verified-local-unix",
+          "dockerHostOverridePresent": false,
+          "dockerContextOverridePresent": false,
+          "proxyVariablesPresent": false,
+          "nodeOptionsPresent": false
+        },
+        "imageCacheBeforeStart": [
+          {
+            "service": "supabase_auth",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_db",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_inbucket",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_kong",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_realtime",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_rest",
+            "cache": "not-present"
+          }
+        ]
+      }
+    },
+    {
+      "suite": "sdk-node",
+      "node": "v22.23.2",
+      "runId": "1793713851787-c54d425e7f16",
+      "setupStage": "supabase-start",
+      "plannedCases": 8,
+      "executedCases": 0,
+      "cleanup": "passed",
+      "supabaseStartup": {
+        "stage": "supabase-start",
+        "cause": "not-established",
+        "exitCode": 1,
+        "signal": null,
+        "killed": false,
+        "command": {
+          "kind": "nonzero-exit",
+          "stdout": "bounded",
+          "stderr": "bounded",
+          "progress": [],
+          "signatures": [
+            "image-pull"
+          ],
+          "pull": {
+            "reportedFailedServices": [
+              "supabase_realtime"
+            ],
+            "httpStatuses": [],
+            "signals": [
+              "rate-limit"
+            ],
+            "upstreamRetryBanner": true
+          }
+        },
+        "services": [
+          {
+            "service": "supabase_auth",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_db",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_inbucket",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_kong",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_realtime",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_rest",
+            "inspection": "not-available"
+          }
+        ]
+      },
+      "supabaseStartContext": {
+        "operation": "cli-start",
+        "cliVersion": "2.119.0",
+        "configSha256": "0f4b20f72acd8f0ff98d7ecab4dacca32b802e21682a362e6624576781f63ccd",
+        "timeoutMs": 300000,
+        "maxBufferBytes": 20000000,
+        "environment": {
+          "policy": "fixture-prefix-stripping",
+          "registry": "pinned-ecr",
+          "dockerTransport": "verified-local-unix",
+          "dockerHostOverridePresent": false,
+          "dockerContextOverridePresent": false,
+          "proxyVariablesPresent": false,
+          "nodeOptionsPresent": false
+        },
+        "imageCacheBeforeStart": [
+          {
+            "service": "supabase_auth",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_db",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_inbucket",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_kong",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_realtime",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_rest",
+            "cache": "not-present"
+          }
+        ]
+      }
+    },
+    {
+      "suite": "sdk-node",
+      "node": "v24.21.0",
+      "runId": "1793713849601-403466b57a51",
+      "setupStage": "supabase-start",
+      "plannedCases": 8,
+      "executedCases": 0,
+      "cleanup": "passed",
+      "supabaseStartup": {
+        "stage": "supabase-start",
+        "cause": "not-established",
+        "exitCode": 1,
+        "signal": null,
+        "killed": false,
+        "command": {
+          "kind": "nonzero-exit",
+          "stdout": "bounded",
+          "stderr": "bounded",
+          "progress": [],
+          "signatures": [
+            "image-pull"
+          ],
+          "pull": {
+            "reportedFailedServices": [
+              "supabase_rest"
+            ],
+            "httpStatuses": [],
+            "signals": [
+              "rate-limit"
+            ],
+            "upstreamRetryBanner": true
+          }
+        },
+        "services": [
+          {
+            "service": "supabase_auth",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_db",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_inbucket",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_kong",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_realtime",
+            "inspection": "not-available"
+          },
+          {
+            "service": "supabase_rest",
+            "inspection": "not-available"
+          }
+        ]
+      },
+      "supabaseStartContext": {
+        "operation": "cli-start",
+        "cliVersion": "2.119.0",
+        "configSha256": "c7b9d0c3c4a0b02b58b6d830b9b9d7e8c5ca9bf7088f7472dae5a786e5fab1f3",
+        "timeoutMs": 300000,
+        "maxBufferBytes": 20000000,
+        "environment": {
+          "policy": "fixture-prefix-stripping",
+          "registry": "pinned-ecr",
+          "dockerTransport": "verified-local-unix",
+          "dockerHostOverridePresent": false,
+          "dockerContextOverridePresent": false,
+          "proxyVariablesPresent": false,
+          "nodeOptionsPresent": false
+        },
+        "imageCacheBeforeStart": [
+          {
+            "service": "supabase_auth",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_db",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_inbucket",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_kong",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_realtime",
+            "cache": "not-present"
+          },
+          {
+            "service": "supabase_rest",
+            "cache": "not-present"
+          }
+        ]
+      }
+    }
+  ],
+  "unexecutedSupportedCases": 22,
+  "supportedAuthCiCasesExecuted": 0,
+  "realPackedNodeCiCasesExecutedEach": 0,
+  "bothPinnedUnitCoveragePackagePassed": true,
+  "defaultBrowserCasesPassed": 51,
+  "queryCasesPassed": 12,
+  "shortAuthBrowserCasesPassed": 36,
+  "referenceCasesPassed": 16,
+  "otherExecutedSupportedScopesPassed": true,
+  "allReportedCleanupPassed": true,
+  "allSetupPassed": false,
+  "strictResearchFailures": 14,
+  "exactHistoricalResearchNamesStatusesUnchanged": true,
+  "reportedStartupSignals": "Sanitized producers report image-pull/rate-limit signals and upstream retry banners; no HTTP status captured; cause remains not-established. Direct job logs are retained but do not expose that literal raw registry error. No root-cause/quota/reset/cache/security workaround asserted.",
+  "configuredPinsAndActualSuccessfulSetupSixServiceDigestsVerified": true,
+  "failedSetupsNotClaimedRunningOrPassed": true,
+  "browserRuntimeIndexAuthCommonNativeGraphMatchLocallyVerifiedCorrection": true,
+  "directJobLogSha256": {
+    "supported": "06cc8d46a844ec3571213c52dd5638041f18300ce4fa8c5af7a6288a863163f2",
+    "research": "c7270c3689058e52de238dac029940cf5fd4085605036ec54fb04ae79740032b",
+    "node22": "26a58f32ad91b2d153397ddde54a82f6faf925efc9ff91fa8790f7760433e273",
+    "node24": "7614929988d9aad40c52d0c348d5dd01682f8403e28473ba3d7a30990457022b",
+    "static22": "8926fed62eaa736f1e9c624d952254160512954a76f874b54b177538448fa4d2",
+    "static24": "274dcf5f71109f7c838a6be1c35e8a2a11174a30ee43026702a05ef8c967176d"
+  },
+  "noRerun": true,
+  "noAuditWeakening": true,
+  "olderUnknownStartupCausesUnchanged": true,
+  "terminalOperationalVerification": "pending",
+  "signoff": false
+}

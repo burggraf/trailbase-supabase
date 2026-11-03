@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { randomUUID } from 'node:crypto';
+import type { DatabaseSync } from 'node:sqlite';
 import { initClient as createTrailClient } from 'trailbase';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { assertRunDirectory, assertLocalUrl } from '../../scripts/harness.mjs';
@@ -34,6 +35,14 @@ export const canonicalUuid = (value: string) => {
   if (hex.length !== 32) throw new Error('Unexpected native UUID length');
   return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
 };
+// Complete private proof state, including genuine values outside JavaScript's safe-integer range.
+export function nativeAuthSnapshot(main: DatabaseSync, sessions: DatabaseSync) {
+  const rows = (database: DatabaseSync, table: string, order: string) => {
+    const statement = database.prepare(`SELECT * FROM ${table} ORDER BY ${order}`);
+    statement.setReadBigInts(true); return statement.all();
+  };
+  return { users: rows(main, '_user', 'id'), sessions: rows(sessions, '_session', 'user,refresh_token'), todos: rows(main, 'todos', 'id'), audit: rows(main, 'todo_audit', 'audit_key') };
+}
 export const supabase = (env: Context) => createSupabaseClient(env.supabaseUrl, env.anonKey, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
 export const trailbase = (env: Context) => createTrailClient(env.trailUrl);
 export async function verificationLink(env: Context, email: string): Promise<string> {

@@ -377,26 +377,45 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
     }
   }
   async function revoke(tokens: NativeCredentials, scope: 'local' | 'global'): Promise<void> {
-    const controller = new AbortController();
-    let response: Response;
+    const controller = new AbortController(), url = new URL('/api/auth/v1/logout', base);
+    const unconfirmed = () => namedError('AuthGlobalSignOutUnconfirmedError', 'Local session cleared; native global revocation could not be authenticated');
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const deadline = scope === 'global' ? new Promise<never>((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(unconfirmed()); }, 10000); }) : undefined;
+    let response: Response, reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
     try {
-      response = await fetcher(new URL('/api/auth/v1/logout', base), {
+      const pending = fetcher(url, {
         method: scope === 'local' ? 'POST' : 'GET',
-        headers: scope === 'local' ? { 'content-type': 'application/json' } : { authorization: `Bearer ${tokens.auth_token}` },
+        headers: scope === 'local' ? { 'content-type': 'application/json' } : { authorization: `Bearer ${tokens.auth_token}`, 'content-type': 'application/json' },
         ...(scope === 'local' ? { body: JSON.stringify({ refresh_token: tokens.refresh_token }) } : {}),
         credentials: 'omit', redirect: scope === 'local' ? 'error' : 'manual', signal: controller.signal,
       });
-    } catch { controller.abort(); throw namedError('AuthSignOutRequestError', 'Remote session revocation request failed; remote sessions may remain active'); }
+      response = await (deadline ? Promise.race([pending, deadline]) : pending);
+    } catch { clearTimeout(timer); controller.abort(); throw namedError('AuthSignOutRequestError', 'Remote session revocation request failed; remote sessions may remain active'); }
     try {
       if (scope === 'global') {
-        // Stock redirects cannot authenticate revocation, even when the server deleted sessions.
-        throw namedError('AuthGlobalSignOutUnconfirmedError', 'Local session cleared; native global revocation could not be authenticated');
+        // Requires official0359+ on every supported route/replica; this is not version detection.
+        if (response.redirected || response.type === 'opaqueredirect' || response.status >= 300 && response.status < 400) throw unconfirmed();
+        if (response.status !== 200) throw new FetchError(response.status, 'Native global session revocation was not acknowledged', url.href);
+        if (response.url && response.url !== url.href || !/^text\/plain\s*;\s*charset\s*=\s*utf-8$/i.test(response.headers.get('content-type')?.trim() ?? '') || !response.body) throw unconfirmed();
+        try {
+          reader = response.body.getReader();
+          await Promise.race([(async () => {
+            const expected = 'logged out'; let received = 0;
+            for (;;) {
+              const { done, value } = await reader!.read();
+              if (done) { if (received !== expected.length) throw unconfirmed(); return; }
+              for (const byte of value) if (byte !== expected.charCodeAt(received++)) throw unconfirmed();
+            }
+          })(), deadline!]);
+        } catch { throw unconfirmed(); }
+        return;
       }
       if (response.redirected || response.type === 'opaqueredirect' || response.status >= 300 && response.status < 400) throw namedError('AuthRedirectError', 'Logout redirects are not accepted');
-      if (response.status !== 200) throw new FetchError(response.status, 'Native local session revocation was not acknowledged', new URL('/api/auth/v1/logout', base).href);
+      if (response.status !== 200) throw new FetchError(response.status, 'Native local session revocation was not acknowledged', url.href);
     } finally {
-      controller.abort();
-      try { void response.body?.cancel().catch(() => {}); } catch { /* Cancellation cannot replace the revocation result. */ }
+      clearTimeout(timer); controller.abort();
+      try { void (reader ? reader.cancel() : response.body?.cancel())?.catch(() => {}); } catch { /* Cancellation cannot replace the revocation result. */ }
+      try { reader?.releaseLock(); } catch { /* A custom transport may not release synchronously. */ }
     }
   }
   let logoutFlight: { epoch: number; scope: 'local' | 'global'; promise: Promise<{ error: AuthError | null }> } | null = null;

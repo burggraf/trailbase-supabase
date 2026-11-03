@@ -1,12 +1,12 @@
 {
   "trailbase": {
-    "version": "0.35.8",
-    "commit": "05238c02b54aabb483e9f6224b5e014d40e88a5d",
+    "version": "0.35.9",
+    "commit": "a106ce6338f9831140c92ac16e051901ed92d576",
     "assets": {
-      "darwin-arm64": { "name": "trailbase_v0.35.8_aarch64_apple_darwin.zip", "sha256": "7c2d9da1affa6f7a849b018892acd5eb539d366395fd2f7e7c4da8586ce7dc3c" },
-      "darwin-x64": { "name": "trailbase_v0.35.8_x86_64_apple_darwin.zip", "sha256": "131d29d16ff87fe86534445edf76ebaa686429ca16010d4dbf1fe8171f1c1398" },
-      "linux-arm64": { "name": "trailbase_v0.35.8_aarch64_linux.zip", "sha256": "79e25c46a61321dcbe6d0d64bcaf21eb2c32e07c7883ff706d76a34d7080e5f9" },
-      "linux-x64": { "name": "trailbase_v0.35.8_x86_64_linux.zip", "sha256": "4b362e6f08da25b5349be317024260848c02fc336b4dea0c7b740e59d881622b" }
+      "darwin-arm64": { "name": "trailbase_v0.35.9_aarch64_apple_darwin.zip", "sha256": "36dc6c68eb6260c5ca9c1c4a931b36330c5a4554da5093ee0e3e144177da4b31" },
+      "darwin-x64": { "name": "trailbase_v0.35.9_x86_64_apple_darwin.zip", "sha256": "a27f9f6565433bee1e9bf29187760f9089af597c8d9743465ae7e94a9f0c6c2a" },
+      "linux-arm64": { "name": "trailbase_v0.35.9_aarch64_linux.zip", "sha256": "1af674637bda4773d05b18ffa772af686b41e49969d2e82ff1fe9e574c6eb80a" },
+      "linux-x64": { "name": "trailbase_v0.35.9_x86_64_linux.zip", "sha256": "e24c05b2b04bb975c2ee880e285055e91c7548568dca1196371b44a5621c0541" }
     }
   },
   "trailbaseClient": "0.14.3",

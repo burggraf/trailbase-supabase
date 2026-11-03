@@ -4,9 +4,10 @@ import { setImmediate as nextTurn } from 'node:timers/promises';
 
 // Disposable loopback fault fixture, not a gateway/product. Forwards only genuine
 // owned native response bytes; never copies auth/cookie headers to downstream clients.
-export async function httpStreamFixture(upstream:(signal:AbortSignal)=>Promise<Response>, mode:'fragment'|'disconnect'|'drop', postRoute?:'/api/auth/v1/logout/global'|'/auth/v1/logout?scope=global') {
-  if(postRoute!==undefined&&postRoute!=='/api/auth/v1/logout/global'&&postRoute!=='/auth/v1/logout?scope=global')throw new TypeError('Unsupported owned logout wire route');
-  const route=postRoute??`/${randomUUID()}`,method=postRoute?'POST':'GET',controllers=new Set<AbortController>(),tasks=new Set<Promise<void>>();
+export async function httpStreamFixture(upstream:(signal:AbortSignal)=>Promise<Response>, mode:'fragment'|'disconnect'|'drop'|'truncate', logoutRoute?:'/api/auth/v1/logout'|'/api/auth/v1/logout/global'|'/auth/v1/logout?scope=global') {
+  if(logoutRoute!==undefined&&logoutRoute!=='/api/auth/v1/logout'&&logoutRoute!=='/api/auth/v1/logout/global'&&logoutRoute!=='/auth/v1/logout?scope=global')throw new TypeError('Unsupported owned logout wire route');
+  if(mode==='truncate'&&logoutRoute!=='/api/auth/v1/logout')throw new TypeError('Truncated logout bytes require owned native route');
+  const route=logoutRoute??`/${randomUUID()}`,method=logoutRoute&&logoutRoute!=='/api/auth/v1/logout'?'POST':'GET',controllers=new Set<AbortController>(),tasks=new Set<Promise<void>>();
   let cancelled=0,bytesWritten=0;
   const server=createServer((request,response)=>{
     if(request.method!==method||request.url!==route){response.writeHead(404);response.end();return;}
@@ -34,7 +35,8 @@ export async function httpStreamFixture(upstream:(signal:AbortSignal)=>Promise<R
             // its own chunk boundaries. Do not claim one TCP packet per byte.
             await new Promise<void>((yes,no)=>response.write(new Uint8Array([byte]),error=>error?no(error):yes()));
             bytesWritten++;await nextTurn();
-            if(mode==='disconnect'&&bytesWritten===32){response.destroy();return;}
+            if(mode==='truncate'&&bytesWritten===5){response.end();return;}
+            if(mode==='disconnect'&&bytesWritten===(logoutRoute==='/api/auth/v1/logout'?5:32)){response.destroy();return;}
           }
         }
       } catch {response.destroy();} // Client sees real transport failure; no fake success/error event.

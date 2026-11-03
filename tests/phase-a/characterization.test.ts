@@ -188,7 +188,12 @@ describe('L1-27 upstream characterization; G1-G7 still require approval', () => 
     expect((await refresh(t3.refresh_token!)).ok).toBe(true); // Two independently live sessions before global logout.
     const loggedOut = await second.fetch('/api/auth/v1/logout', { redirect:'manual', throwOnError:false });
     await diagnosticStep(test.task.meta, 'G7_GLOBAL_REVOCATION', async () => {
-      expect([302,303].includes(loggedOut.status)).toBe(true);
+      // Historical0358 redirected despite the installed client's JSON selection.
+      // Official0359 acknowledges the completed DELETE directly; keep old source/results.
+      expect(loggedOut.status).toBe(200);expect(loggedOut.redirected).toBe(false);
+      expect(loggedOut.url).toBe(`${env.trailUrl}/api/auth/v1/logout`);
+      expect(loggedOut.headers.get('content-type')).toBe('text/plain; charset=utf-8');
+      expect(await loggedOut.text()).toBe('logged out');
       expect((await refresh(t2.refresh_token!)).ok).toBe(false);
       expect((await refresh(t3.refresh_token!)).ok).toBe(false);
     });

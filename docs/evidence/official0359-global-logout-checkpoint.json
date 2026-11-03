@@ -1,0 +1,191 @@
+{
+  "scope": "Finite private-package official0359-minimum global acknowledgement implementation and local verification checkpoint; not release or maintainer signoff",
+  "sourceSha256": "cf3eea93109365e8fb3959f5eb9c303d650ea89855a673aae55d9ce19f125a33",
+  "parentCommit": "e1a8a2de50617819ed84676207ee34b9b54ee964",
+  "nativeMinimum": "0.35.9",
+  "nativeCommit": "a106ce6338f9831140c92ac16e051901ed92d576",
+  "operatorInvariant": "Every actual supported handler/replica/auth realm/session store uses qualified official0359+ semantics. Older/mixed/rolled-back handlers are unsupported and can return indistinguishable false200; receipts do not detect the deployment version. Later releases/platforms still require qualification.",
+  "versionDetectionOrSetting": false,
+  "privateForkOrCapabilityAdopted": false,
+  "contract": {
+    "request": "Fixed-origin GET /api/auth/v1/logout, captured Bearer, exact application/json request Content-Type, no body/refresh/CSRF/cookies, manual redirects, no renewal/replay/retry/fallback",
+    "receipt": "Nonredirect200, exact URL if supplied, UTF8 plaintext, exact ten bytes logged out through EOF; owned10000ms request+body deadline and cleanup",
+    "failure": "Failed/lost/truncated receipt, genuine expiredJWT401 and native DELETE400 remain errors after owned local clearing; empty-client no-op is not server acknowledgement",
+    "state": "Local POST/hydration/storage generations/single-flight/conflicting scope/fail-closed compensation/four events unchanged; held old-A response cannot clear newer B",
+    "limits": "Abort/error is not rollback/quiescence; refresh deletion does not instantly invalidate issued JWTs, notify other devices, prevent later login or protect racing sessions"
+  },
+  "sourceGroups": [
+    {
+      "sourceSha256": "758a2e0e02eb66388bd1ab2fd4dafa61a41b648a86d476dd035d790ef452ebad",
+      "verificationCommands": 15,
+      "reports": 7,
+      "role": "Earlier packed/expiry/reference/installed verification; auth cleanup limitations later identified"
+    },
+    {
+      "sourceSha256": "1d409dab9458cb3d18f7b9b02d70e16877f338e70e86d1d96d561f2311b3327e",
+      "verificationCommands": 17,
+      "reports": 15,
+      "role": "Review fix/current auth8/data/database/constraints/example/lifecycle/upgrade/legacy verified, then1of2expiry FAILED on old0358 expectation; preserved failed terminal, not accepted as full group"
+    },
+    {
+      "sourceSha256": "caf091a20e722a871555c337c2697b952dd07bdfeda4af079dd4c82e2f189bed",
+      "verificationCommands": 11,
+      "reports": 9,
+      "role": "Fresh checks/units, corrected expiry2, counterfactual1failed/restored8 passed; strict24failures collected, NOT baseline acceptance"
+    },
+    {
+      "sourceSha256": "cf3eea93109365e8fb3959f5eb9c303d650ea89855a673aae55d9ce19f125a33",
+      "verificationCommands": 7,
+      "reports": 5,
+      "role": "Fresh bothNode checks/295units and3changed research scopes requiring exact frozen failure names; newest stock includes8unchanged guarded SDKauth cases; SMTP remains separately bound to earlier source"
+    }
+  ],
+  "noCrossSourceAcceptanceMerge": true,
+  "verification": {
+    "bothPinnedNodes": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "latestUnitsPerNode": 295,
+    "latestStockIncludesGuardedSdkAuth8": true,
+    "earlierBothPinnedCoverage": {
+      "sourceSha256": "1d409dab9458cb3d18f7b9b02d70e16877f338e70e86d1d96d561f2311b3327e",
+      "statements": 97.25,
+      "lines": 99.47,
+      "functions": 99.29,
+      "branches": 95.19,
+      "globalAndEachOfThreeModulesMeet95_90": true
+    },
+    "earlierBothPinnedPackageCases": 4,
+    "earlierPackedDefault": 54,
+    "earlierPackedShort": 36,
+    "earlierInstalledPerNode": 8,
+    "earlierPinnedReference": 16,
+    "earlierGenuineSdkExpiry": 4,
+    "correctedIndependentExpiry": 2,
+    "otherSourceBoundCases": {
+      "data": 6,
+      "database": 9,
+      "constraints": 6,
+      "todosReadiness": 2,
+      "lifecycleCleanup": 1,
+      "nativeUpgrade": 9,
+      "legacyMigration": 1
+    },
+    "strict": [
+      {
+        "suite": "all",
+        "passed": 117,
+        "failed": 6,
+        "exactHistoricalFailureNamesAndStatusesUnchanged": true
+      },
+      {
+        "suite": "characterization",
+        "passed": 9,
+        "failed": 1,
+        "exactHistoricalFailureNamesAndStatusesUnchanged": true
+      },
+      {
+        "suite": "smtp",
+        "passed": 0,
+        "failed": 1,
+        "exactHistoricalFailureNamesAndStatusesUnchanged": true
+      },
+      {
+        "suite": "browser",
+        "passed": 60,
+        "failed": 6,
+        "exactHistoricalFailureNamesAndStatusesUnchanged": true
+      }
+    ],
+    "counterfactual": {
+      "status": "expected-failure",
+      "sourceSha256": "8cc4108a93e406cabac065545cbe1d98c17ef9847f3540ada9fa81239d3c35dd",
+      "failed": 1,
+      "targetedCompleteReceiptEofAssertion": true,
+      "restoredCurrentSourceAuth8Passed": true
+    },
+    "fullContractSecurityE2ePackageAll": "All5required full-suite placeholders remain NOT IMPLEMENTED/exit1, not passing"
+  },
+  "review": {
+    "initialRequested": "openai/gpt-5.5 high",
+    "initialStart": "Failed before review: model_not_found; raw failure retained",
+    "replacement": "User-authorized openai/gpt-6.1-sol high",
+    "finding": "One P2 test-cleanup pattern verified against installedJS0.14.3; no additional supported-contract production defect reported",
+    "regression": "Complete session guards produced real5pass/3fail, then test-only ordinary-credential owner-wide cleanup/full postconditions/primary-failure exit passed8/8; production unchanged",
+    "notMaintainerOrSecuritySignoff": true
+  },
+  "retainedFailures": {
+    "firstNative": "0f8e9a1e source7pass/1fail, fixture cleanup passed; exact failed source/raw/report retained",
+    "cleanupGuardRed": "7f7cab0b source5pass/3fail, fixture cleanup passed",
+    "expiryVersion": "1d409dab source1pass/1fail: old0358 expected false200, genuine0359 returned401; source/raw retained; new401/no redirect/full no-DELETE assertion passed2/2",
+    "researchVersion": "caf091a source24strict failures collected, NOT baseline acceptance. Old expectations/source/raw retained; JSON-selected readable200 and mandatoryUser401 now asserted without renaming historical research or weakening security checks; exact14historical failure names/statuses restored atcf3eea source",
+    "mutant": "Deliberately weakened complete-EOF guard failed1targeted real wire case; byte-identical production restoration passed8/8",
+    "historicalCiAndInterruptedRuns": "Preserved; later success does not establish original startup/interruption causes"
+  },
+  "archives": [
+    {
+      "label": "first",
+      "files": 1455,
+      "ownedProjectsAbsent": 1,
+      "manifestSha256": "2b2725cb7cb0427e8de141381a9908576d70be4a48cc69b8c956007264a112ec",
+      "initialSourceSha256": "0f8e9a1e5a0cbd75ccb3b0c7a65eb9597c708e86028bedadc1a20d86fa7750db",
+      "finalRetainedSourceSha256": "0f8e9a1e5a0cbd75ccb3b0c7a65eb9597c708e86028bedadc1a20d86fa7750db",
+      "allCopiedBytesRehashed": true,
+      "exactOwnedParentRemoved": true
+    },
+    {
+      "label": "corrected",
+      "files": 1455,
+      "ownedProjectsAbsent": 1,
+      "manifestSha256": "311215e3e1754ec5618737d8b1ab72d1d87afed24b85881fde2345076b25f88e",
+      "initialSourceSha256": "86f2243567a860b44f67691582754778c738330ae0defce972605c6470be00a0",
+      "finalRetainedSourceSha256": "86f2243567a860b44f67691582754778c738330ae0defce972605c6470be00a0",
+      "allCopiedBytesRehashed": true,
+      "exactOwnedParentRemoved": true
+    },
+    {
+      "label": "runtime",
+      "files": 2146,
+      "ownedProjectsAbsent": 27,
+      "manifestSha256": "2017d58b618b87c4c5965d9a6f43d549070915e4811cdf3258f96f046b101d7e",
+      "initialSourceSha256": "758a2e0e02eb66388bd1ab2fd4dafa61a41b648a86d476dd035d790ef452ebad",
+      "finalRetainedSourceSha256": "cf3eea93109365e8fb3959f5eb9c303d650ea89855a673aae55d9ce19f125a33",
+      "allCopiedBytesRehashed": true,
+      "exactOwnedParentRemoved": true
+    }
+  ],
+  "preservation": {
+    "status": "passed",
+    "historicalArchives": 36,
+    "historicalFiles": 51324,
+    "newOwnedArchives": 3,
+    "newOwnedFiles": 5056,
+    "totalArchives": 39,
+    "totalFiles": 56380,
+    "privateArtifactsUnchanged": 7,
+    "retainedPrivateFilesUnchanged": 575,
+    "protectedFailureEvidenceUnchanged": true,
+    "originalGuardPassed": true,
+    "noPrivateAdoptionOrLiveChange": true,
+    "signoff": false
+  },
+  "unchangedLimitations": [
+    "Signup null-user/session",
+    "Native409 conflicts",
+    "424/SMTP recovery and no supported signup resend",
+    "AN registration/MFA controls checkpointed, zero real execution",
+    "Broader TLS/security/full matrix/physical focus/device/accessibility/resource/three-clean-candidate/named-maintainer gates"
+  ],
+  "ci": {
+    "status": "Exact normal new-commit workflow pending; no automatic rerun or historical-attempt substitution",
+    "priorExactAttemptEvidence": "ci-e1a8a2d-packed-browser-query-checkpoint.json"
+  },
+  "liveDemo": {
+    "native": "0.35.8",
+    "unchanged": true,
+    "notRepinnedOrDeployed": true
+  },
+  "outreach": false,
+  "featureSecurityReleaseMaintainerSignoff": false
+}

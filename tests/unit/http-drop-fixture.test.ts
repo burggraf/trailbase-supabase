@@ -2,6 +2,20 @@ import { createServer } from 'node:http';
 import { it, expect } from 'vitest';
 import { httpStreamFixture } from '../proofs/http-stream-fixture.js';
 
+it('L1-19/OGL05 owned native GET wire fixture forwards real bytes or loses/truncates them without accepting a POST or replaying', async () => {
+  for (const mode of ['fragment', 'truncate', 'disconnect', 'drop'] as const) {
+    let calls = 0;
+    const fixture = await httpStreamFixture(async () => { calls++; return new Response('logged out', { headers: { 'content-type': 'text/plain; charset=utf-8' } }); }, mode, '/api/auth/v1/logout');
+    try {
+      const refused = await fetch(fixture.url, { method: 'POST', signal: AbortSignal.timeout(5000) }); expect(refused.status).toBe(404); await refused.body?.cancel(); expect(calls).toBe(0);
+      const delivery = fetch(fixture.url, { signal: AbortSignal.timeout(5000) }).then(response => { expect(response.status).toBe(200); expect(response.headers.get('content-type')).toBe('text/plain; charset=utf-8'); return response.text(); });
+      if (mode === 'fragment' || mode === 'truncate') expect(await delivery).toBe(mode === 'fragment' ? 'logged out' : 'logge');
+      else await expect(delivery).rejects.toBeInstanceOf(TypeError);
+      await fixture.idle(); expect(calls).toBe(1); expect(fixture.stats()).toMatchObject({ active: 0, bytesWritten: mode === 'drop' ? 0 : mode === 'fragment' ? 10 : 5 });
+    } finally { await fixture.close(); expect(fixture.stats()).toMatchObject({ active: 0, listening: false }); }
+  }
+});
+
 it('L1-27/U27/S05 owned HTTP drop completes one upstream POST but delivers no response and closes resources',async()=>{
   let calls=0,status=0;
   const server=createServer((request,response)=>{

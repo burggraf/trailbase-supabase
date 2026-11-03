@@ -6,8 +6,9 @@ import { DatabaseSync } from 'node:sqlite';
 import { verifyOwner, waitReady } from '../../scripts/harness.mjs';
 import { exec } from '../../scripts/tools.mjs';
 import { createClient, type AuthStorage } from '../../src/index.js';
-import { context, confirmEmail, supabase, nativeUuid, canonicalUuid, confirmedTrailUser, confirmedSupabaseUser } from './helpers.js';
+import { context, confirmEmail, supabase, nativeUuid, canonicalUuid, confirmedTrailUser, confirmedSupabaseUser, nativeAuthSnapshot } from './helpers.js';
 import { cleanupOwnedRows, withCleanup } from '../sdk-browser/cleanup.js';
+import { httpStreamFixture } from '../proofs/http-stream-fixture.js';
 
 it('L1-14/I14 L1-15/I15 L1-16/I16 fresh SDK signup/real mail/login, reference failed replacement and bearer owner isolation', async () => {
   const env = await context();
@@ -107,7 +108,7 @@ it('L1-17/I17/S04 live native status maps actual owned DB user, rejects forged/r
   ]);
 },120000);
 
-it('L1-19/I19/C19/S08 real local/global refresh revocation, observable native global uncertainty and unchanged owner rows', async () => {
+it('L1-19/I19/C19/OGL03 real local and0359 default/explicit global acknowledgement revoke only owner refresh sessions and preserve complete state', async () => {
   const env = await context();
   const owner = await confirmedTrailUser(env, 'sdk-logout'), control = await confirmedTrailUser(env, 'sdk-logout-control');
   const reference = await confirmedSupabaseUser(env, 'sdk-logout-reference');
@@ -119,6 +120,9 @@ it('L1-19/I19/C19/S08 real local/global refresh revocation, observable native gl
   const credentials = { email: owner.email, password: owner.password };
   const listener = a.auth.onAuthStateChange(event => { events.push(event); }).data.subscription;
   const id = randomUUID(), controlId = randomUUID();
+  const main = new DatabaseSync(resolve(env.directory, 'traildepot/data/main.db'), { readOnly: true }), sessions = new DatabaseSync(resolve(env.directory, 'traildepot/data/session.db'), { readOnly: true });
+  const ownerId = Buffer.from(owner.user.id, 'base64url');
+  const unrelatedSessions = nativeAuthSnapshot(main, sessions).sessions.filter(row => ![owner, control].some(user => row.user instanceof Uint8Array && Buffer.from(user.user.id, 'base64url').equals(row.user)));
   const refresh = async (token: string) => {
     const response = await fetch(`${env.trailUrl}/api/auth/v1/refresh`, { method: 'POST', body: JSON.stringify({ refresh_token: token }), headers: { 'content-type': 'application/json' }, credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(10000) });
     await response.body?.cancel(); return response.status;
@@ -133,11 +137,20 @@ it('L1-19/I19/C19/S08 real local/global refresh revocation, observable native gl
     expect((await a.auth.signOut({ scope: 'local' })).error).toBeNull();
     expect(await refresh(first.data.session!.refresh_token)).toBe(401); expect(await refresh(second.data.session!.refresh_token)).toBe(200);
     expect((await a.auth.getSession()).data.session).toBeNull(); expect(data.get('unrelated')).toBe('keep'); expect(events).toEqual(['INITIAL_SESSION', 'SIGNED_IN', 'SIGNED_OUT']);
-    const globalSession = await a.auth.signInWithPassword(credentials); expect(globalSession.error).toBeNull();
-    expect((await a.auth.signOut()).error?.name).toBe('AuthGlobalSignOutUnconfirmedError');
-    for (const token of [globalSession.data.session!.refresh_token, second.data.session!.refresh_token, owner.client.tokens()!.refresh_token!]) expect(await refresh(token)).toBe(401);
-    expect(await refresh(control.client.tokens()!.refresh_token!)).toBe(200); expect(await snapshot()).toEqual(before);
-    expect((await a.auth.getSession()).data.session).toBeNull();
+    for (const explicit of [false, true]) {
+      if (explicit) expect((await sibling.auth.signInWithPassword(credentials)).error).toBeNull();
+      const globalSession = await a.auth.signInWithPassword(credentials); expect(globalSession.error).toBeNull();
+      const complete = nativeAuthSnapshot(main, sessions), belongs = (row: Record<string, unknown>) => row.user instanceof Uint8Array && ownerId.equals(row.user);
+      expect(complete.sessions.filter(belongs)).toHaveLength(explicit ? 2 : 3);
+      expect(await (explicit ? a.auth.signOut({ scope: 'global' }) : a.auth.signOut())).toEqual({ error: null });
+      expect(nativeAuthSnapshot(main, sessions)).toEqual({ ...complete, sessions: complete.sessions.filter(row => !belongs(row)) });
+      for (const token of [globalSession.data.session!.refresh_token, second.data.session!.refresh_token, owner.client.tokens()!.refresh_token!]) expect(await refresh(token)).toBe(401);
+      expect(await refresh(control.client.tokens()!.refresh_token!)).toBe(200); expect(await snapshot()).toEqual(before);
+      expect((await a.auth.getSession()).data.session).toBeNull();
+      const residual = await fetch(new URL('/api/records/v1/todos?skip_cursor=true', env.trailUrl), { headers: { authorization: `Bearer ${globalSession.data.session!.access_token}` }, credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(10000) });
+      expect(residual.status).toBe(200); await residual.body?.cancel();
+    }
+    expect(events).toEqual(['INITIAL_SESSION', 'SIGNED_IN', 'SIGNED_OUT', 'SIGNED_IN', 'SIGNED_OUT', 'SIGNED_IN', 'SIGNED_OUT']);
     // The real reference has an authenticated acknowledgement; keep its scope semantics separate.
     const r1 = supabase(env), r2 = supabase(env);
     try {
@@ -151,16 +164,27 @@ it('L1-19/I19/C19/S08 real local/global refresh revocation, observable native gl
     } finally { await r1.auth.signOut({ scope: 'local' }); await r2.auth.signOut({ scope: 'local' }); }
   }, [
     async () => { listener.unsubscribe(); },
-    async () => { await cleanupOwnedRows(owner.client.records('todos'), owner.user.id, [nativeUuid(id)]); },
-    async () => { await cleanupOwnedRows(control.client.records('todos'), control.user.id, [nativeUuid(controlId)]); },
-    async () => { await a.auth.signOut({ scope: 'local' }); await sibling.auth.signOut({ scope: 'local' }); },
-    async () => { await owner.client.logout(); await control.client.logout(); await reference.client.auth.signOut({ scope: 'local' }); },
+    async () => { await cleanupOfficialAuthOwner(env, owner, nativeUuid(id)); },
+    async () => { await cleanupOfficialAuthOwner(env, control, nativeUuid(controlId)); },
+    async () => { expect((await a.auth.signOut({ scope: 'local' })).error).toBeNull(); expect((await sibling.auth.signOut({ scope: 'local' })).error).toBeNull(); expect((await reference.client.auth.signOut({ scope: 'local' })).error).toBeNull(); },
+    async () => { expect(nativeAuthSnapshot(main, sessions).sessions).toEqual(unrelatedSessions); },
+    async () => { sessions.close(); main.close(); },
   ]);
 }, 120000);
 
+// Fresh ordinary credentials clean exact owned rows; acknowledged owner-wide cleanup also
+// removes retained original/other credentials, including when primary or row cleanup fails.
+async function cleanupOfficialAuthOwner(env: Awaited<ReturnType<typeof context>>, user: Awaited<ReturnType<typeof confirmedTrailUser>>, id: string) {
+  await user.client.login(user.email, user.password); expect(user.client.user()?.id).toBe(user.user.id);
+  await withCleanup(async () => { await cleanupOwnedRows(user.client.records('todos'), user.user.id, [id]); }, [async () => {
+    const response = await fetch(`${env.trailUrl}/api/auth/v1/logout`, { method: 'GET', headers: { authorization: `Bearer ${user.client.tokens()!.auth_token}`, 'content-type': 'application/json' }, credentials: 'omit', redirect: 'manual', signal: AbortSignal.timeout(10000) });
+    await withCleanup(async () => { expect(response.status).toBe(200); expect(await response.text()).toBe('logged out'); }, [async () => { if (!response.bodyUsed) await response.body?.cancel(); }]);
+  }]);
+}
+
 const officialAuthMapping = { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' as const } } } } };
 
-it('L1-14/OA01 official0358 duplicate409 preserves pending identity/password; no fabricated user and original confirmation still works', async () => {
+it('L1-14/OA01 official0359 duplicate409 preserves pending identity/password; no fabricated user and original confirmation still works', async () => {
   const env = await context(); expect(env.authVariant).toBe('stock');
   const main = new DatabaseSync(resolve(env.directory, 'traildepot/data/main.db'), { readOnly: true });
   const input = { email: `official-pending-${randomUUID()}@example.test`, password: `Fixture-${randomUUID()}-Aa1!` }, replacement = `Fixture-${randomUUID()}-Aa1!`;
@@ -182,7 +206,7 @@ it('L1-14/OA01 official0358 duplicate409 preserves pending identity/password; no
   }, [async () => { expect((await sdk.auth.signOut({ scope: 'local' })).error).toBeNull(); }, async () => { main.close(); }]);
 }, 60000);
 
-it('L1-14/OA02 official0358 SMTP424 retains pending state; retry409 and resend200 are not successful recovery', async () => {
+it('L1-14/OA02 official0359 SMTP424 retains pending state; retry409 and resend200 are not successful recovery', async () => {
   const env = await context(); expect(env.authVariant).toBe('stock');
   const owner = JSON.parse(await readFile(resolve(env.directory, 'owner.json'), 'utf8'));
   const project = verifyOwner(env.id, owner, await readFile(resolve(env.directory, 'supabase/config.toml'), 'utf8'));
@@ -215,7 +239,7 @@ it('L1-14/OA02 official0358 SMTP424 retains pending state; retry409 and resend20
   // The unrecovered pending identity is intentionally not repaired; unconditional owned-fixture teardown removes it.
 }, 60000);
 
-it('L1-19/OA03 official0358 identical303 logout target cannot authenticate DELETE; invalid callers preserve complete state', async () => {
+it('L1-19/OA03/OGL04 official0359 invalid401 and authenticated explicit303 redirect are not SDK acknowledgements; complete control state preserved', async () => {
   const env = await context(); expect(env.authVariant).toBe('stock');
   const owner = await confirmedTrailUser(env, 'official-ack-owner'), sibling = await confirmedTrailUser(env, 'official-ack-control');
   const second = createClient(env.trailUrl, undefined, { trailbase: officialAuthMapping, auth: { persistSession: false, autoRefreshToken: false } });
@@ -228,18 +252,19 @@ it('L1-19/OA03 official0358 identical303 logout target cannot authenticate DELET
   for (const statement of Object.values(statements)) statement.setReadBigInts(true);
   const snapshot = () => ({ users: statements.users.all(), rows: statements.rows.all(), audit: statements.audit.all() });
   const target = new URL('/api/health', env.trailUrl).href, url = new URL(`/api/auth/v1/logout?redirect_uri=${encodeURIComponent(target)}`, env.trailUrl);
-  const logout = (token?: string) => fetch(url, { credentials: 'omit', redirect: 'manual', headers: token ? { authorization: `Bearer ${token}` } : {}, signal: AbortSignal.timeout(10000) });
+  const logout = (token?: string) => fetch(url, { credentials: 'omit', redirect: 'manual', headers: { 'content-type': 'application/json', ...(token ? { authorization: `Bearer ${token}` } : {}) }, signal: AbortSignal.timeout(10000) });
   const ids = [nativeUuid(randomUUID()), nativeUuid(randomUUID())];
   await withCleanup(async () => {
     const login = await second.auth.signInWithPassword({ email: owner.email, password: owner.password }); expect(login.error).toBeNull();
     for (const [index, user] of [owner, sibling].entries()) await user.client.records('todos').create({ id: ids[index], user_id: user.user.id, title: `official-ack-${randomUUID()}` });
-    const before = snapshot(), ownBefore = ownerSessions(), controlBefore = siblingSessions(); expect(ownBefore).toHaveLength(2); expect(controlBefore).toHaveLength(1);
+    const before = snapshot(), completeBefore = nativeAuthSnapshot(main, sessions), ownBefore = ownerSessions(), controlBefore = siblingSessions(); expect(ownBefore).toHaveLength(2); expect(controlBefore).toHaveLength(1);
     for (const token of [undefined, 'invalid-not-a-jwt']) {
-      const response = await logout(token); expect(response.status).toBe(303); expect(response.headers.get('location')).toBe(target); await response.body?.cancel();
-      expect(ownerSessions()).toEqual(ownBefore); expect(siblingSessions()).toEqual(controlBefore); expect(snapshot()).toEqual(before);
+      const response = await logout(token); expect(response.status).toBe(401); expect(response.headers.get('location')).toBeNull(); await response.body?.cancel();
+      expect(ownerSessions()).toEqual(ownBefore); expect(siblingSessions()).toEqual(controlBefore); expect(snapshot()).toEqual(before); expect(nativeAuthSnapshot(main, sessions)).toEqual(completeBefore);
     }
     const response = await logout(login.data.session!.access_token); expect(response.status).toBe(303); expect(response.headers.get('location')).toBe(target); await response.body?.cancel();
     expect(ownerSessions()).toEqual([]); expect(siblingSessions()).toEqual(controlBefore); expect(snapshot()).toEqual(before);
+    expect(nativeAuthSnapshot(main, sessions)).toEqual({ ...completeBefore, sessions: completeBefore.sessions.filter(row => !(row.user instanceof Uint8Array && ownerId.equals(row.user))) });
     for (const token of [owner.client.tokens()!.refresh_token!, login.data.session!.refresh_token]) {
       const refresh = await fetch(new URL('/api/auth/v1/refresh', env.trailUrl), { method: 'POST', credentials: 'omit', redirect: 'error', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ refresh_token: token }), signal: AbortSignal.timeout(10000) });
       expect(refresh.status).toBe(401); await refresh.body?.cancel();
@@ -247,9 +272,103 @@ it('L1-19/OA03 official0358 identical303 logout target cannot authenticate DELET
     const residual = await fetch(new URL('/api/records/v1/todos?limit=1&skip_cursor=true', env.trailUrl), { headers: { authorization: `Bearer ${login.data.session!.access_token}` }, credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(10000) });
     expect(residual.status).toBe(200); await residual.body?.cancel(); expect(snapshot()).toEqual(before);
   }, [
-    async () => { await cleanupOwnedRows(owner.client.records('todos'), owner.user.id, [ids[0]]); },
-    async () => { await cleanupOwnedRows(sibling.client.records('todos'), sibling.user.id, [ids[1]]); },
-    async () => { await owner.client.logout(); await sibling.client.logout(); expect((await second.auth.signOut({ scope: 'local' })).error).toBeNull(); expect(ownerSessions()).toEqual([]); expect(siblingSessions()).toEqual([]); },
+    async () => { await cleanupOfficialAuthOwner(env, owner, ids[0]); },
+    async () => { await cleanupOfficialAuthOwner(env, sibling, ids[1]); },
+    async () => { expect((await second.auth.signOut({ scope: 'local' })).error).toBeNull(); expect(ownerSessions()).toEqual([]); expect(siblingSessions()).toEqual([]); },
     async () => { main.close(); sessions.close(); },
   ]);
 }, 60000);
+
+it('L1-19/OGL04–05 genuine native DELETE abort fully rolls back; zero-dispatch failure and fresh recovery cannot fabricate acknowledgement', async () => {
+  const env = await context(); expect(env.authVariant).toBe('stock'); expect(env.nativeAuthProfile).toBe('default');
+  const owner = await confirmedTrailUser(env, 'ogl-fault-owner'), control = await confirmedTrailUser(env, 'ogl-fault-control');
+  const main = new DatabaseSync(resolve(env.directory, 'traildepot/data/main.db'), { readOnly: true }), sessions = new DatabaseSync(resolve(env.directory, 'traildepot/data/session.db'));
+  const ownerId = Buffer.from(owner.user.id, 'base64url'), ids = [nativeUuid(randomUUID()), nativeUuid(randomUUID())];
+  const unrelatedSessions = nativeAuthSnapshot(main, sessions).sessions.filter(row => ![owner, control].some(user => row.user instanceof Uint8Array && Buffer.from(user.user.id, 'base64url').equals(row.user)));
+  const trigger = `ogl_delete_${randomUUID().replaceAll('-', '')}`, key = `ogl-${randomUUID()}`, stored = new Map([['unrelated', 'keep']]);
+  const storage: AuthStorage = { getItem: k => stored.get(k) ?? null, setItem: (k, v) => { stored.set(k, v); }, removeItem: k => { stored.delete(k); } };
+  const a = createClient(env.trailUrl, undefined, { trailbase: officialAuthMapping, auth: { persistSession: true, autoRefreshToken: false, storage, storageKey: key } });
+  let created = false;
+  const primaryFailure = new Error('Owned primary failure after completed native assertions');
+  await expect(withCleanup(async () => {
+    for (const [index, user] of [owner, control].entries()) await user.client.records('todos').create({ id: ids[index], user_id: user.user.id, title: `OGL-${randomUUID()}` });
+    expect((await a.auth.signInWithPassword({ email: owner.email, password: owner.password })).error).toBeNull();
+    const before = nativeAuthSnapshot(main, sessions), schema = sessions.prepare('SELECT name,sql FROM sqlite_master ORDER BY name').all();
+    expect(before.sessions.filter(row => row.user instanceof Uint8Array && ownerId.equals(row.user))).toHaveLength(2);
+    sessions.exec(`CREATE TRIGGER ${trigger} BEFORE DELETE ON _session WHEN OLD.user=X'${ownerId.toString('hex')}' BEGIN SELECT RAISE(ABORT,'owned-global-delete-fault'); END`); created = true;
+    const failed = await a.auth.signOut(); expect(failed.error?.status).toBe(400); expect(nativeAuthSnapshot(main, sessions)).toEqual(before);
+    expect((await a.auth.getSession()).data.session).toBeNull(); expect(stored.has(key)).toBe(false); expect(stored.get('unrelated')).toBe('keep');
+    sessions.exec(`DROP TRIGGER ${trigger}`); created = false; expect(sessions.prepare('SELECT name,sql FROM sqlite_master ORDER BY name').all()).toEqual(schema);
+    let attempts = 0;
+    stored.set(key, JSON.stringify({ version: 1, tokens: owner.client.tokens() }));
+    const beforeDispatch = createClient(env.trailUrl, undefined, { trailbase: officialAuthMapping, auth: { persistSession: true, autoRefreshToken: false, storage, storageKey: key }, global: { fetch: async () => { attempts++; throw Error('private-before-dispatch'); } } });
+    expect((await beforeDispatch.auth.signOut()).error?.name).toBe('AuthSignOutRequestError'); expect(attempts).toBe(1); expect(nativeAuthSnapshot(main, sessions)).toEqual(before); expect(stored.has(key)).toBe(false);
+    expect((await a.auth.signInWithPassword({ email: owner.email, password: owner.password })).error).toBeNull(); const recoveryBefore = nativeAuthSnapshot(main, sessions);
+    expect(await a.auth.signOut({ scope: 'global' })).toEqual({ error: null });
+    expect(nativeAuthSnapshot(main, sessions)).toEqual({ ...recoveryBefore, sessions: recoveryBefore.sessions.filter(row => !(row.user instanceof Uint8Array && ownerId.equals(row.user))) });
+    throw primaryFailure; // Explicitly exercise complete cleanup while retaining the original failure.
+  }, [
+    async () => { if (created) { sessions.exec(`DROP TRIGGER ${trigger}`); created = false; } },
+    ...[owner, control].map((user, index) => async () => { await cleanupOfficialAuthOwner(env, user, ids[index]); }),
+    async () => { expect((await a.auth.signOut({ scope: 'local' })).error).toBeNull(); expect(stored.get('unrelated')).toBe('keep'); },
+    async () => { expect(nativeAuthSnapshot(main, sessions).sessions).toEqual(unrelatedSessions); },
+    async () => { sessions.close(); main.close(); },
+  ])).rejects.toBe(primaryFailure);
+}, 120000);
+
+it('L1-19/OGL03/OGL05 real0359 receipt bytes fragment, drop, truncate or disconnect after DELETE; no replay and complete unrelated-owner preservation', async () => {
+  const env = await context(); expect(env.authVariant).toBe('stock'); expect(env.nativeAuthProfile).toBe('default');
+  const owner = await confirmedTrailUser(env, 'ogl-wire-owner'), control = await confirmedTrailUser(env, 'ogl-wire-control');
+  const main = new DatabaseSync(resolve(env.directory, 'traildepot/data/main.db'), { readOnly: true }), sessions = new DatabaseSync(resolve(env.directory, 'traildepot/data/session.db'), { readOnly: true });
+  const ownerId = Buffer.from(owner.user.id, 'base64url'), ids = [nativeUuid(randomUUID()), nativeUuid(randomUUID())];
+  const unrelatedSessions = nativeAuthSnapshot(main, sessions).sessions.filter(row => ![owner, control].some(user => row.user instanceof Uint8Array && Buffer.from(user.user.id, 'base64url').equals(row.user)));
+  const second = createClient(env.trailUrl, undefined, { trailbase: officialAuthMapping, auth: { persistSession: false, autoRefreshToken: false } });
+  await withCleanup(async () => {
+    for (const [index, user] of [owner, control].entries()) await user.client.records('todos').create({ id: ids[index], user_id: user.user.id, title: `OGL-wire-${randomUUID()}` });
+    for (const mode of ['fragment', 'drop', 'truncate', 'disconnect'] as const) {
+      await owner.client.login(owner.email, owner.password); expect((await second.auth.signInWithPassword({ email: owner.email, password: owner.password })).error).toBeNull();
+      const before = nativeAuthSnapshot(main, sessions), secondBefore = await second.auth.getSession(), tokens = owner.client.tokens()!;
+      const expected = { ...before, sessions: before.sessions.filter(row => !(row.user instanceof Uint8Array && ownerId.equals(row.user))) };
+      expect(before.sessions.filter(row => row.user instanceof Uint8Array && ownerId.equals(row.user))).toHaveLength(mode === 'fragment' ? 3 : 2);
+      let upstream = 0, downstream = 0, completed = false, upstreamFailure: unknown; const events: string[] = [];
+      const fixture = await httpStreamFixture(async signal => {
+        upstream++;
+        try {
+          const actual = await fetch(new URL('/api/auth/v1/logout', env.trailUrl), { method: 'GET', credentials: 'omit', redirect: 'manual', headers: { authorization: `Bearer ${tokens.auth_token}`, 'content-type': 'application/json' }, signal: AbortSignal.any([signal, AbortSignal.timeout(10000)]) });
+          expect(actual.status).toBe(200); expect(actual.headers.get('location')).toBeNull(); expect(await actual.clone().text()).toBe('logged out');
+          expect(nativeAuthSnapshot(main, sessions)).toEqual(expected); completed = true; return actual;
+        } catch (error) { upstreamFailure = error; throw error; }
+      }, mode, '/api/auth/v1/logout');
+      const origin = new URL(fixture.url).origin, key = `ogl-wire-${randomUUID()}`, stored = new Map([['unrelated', 'keep'], [key, JSON.stringify({ version: 1, tokens })]]);
+      const storage: AuthStorage = { getItem: k => stored.get(k) ?? null, setItem: (k, v) => { stored.set(k, v); }, removeItem: k => { stored.delete(k); } };
+      // Owned loopback fault proxy is the configured origin, not a foreign redirect or product gateway.
+      // It forwards actual verified native bytes/status/MIME and never exposes upstream auth/cookies.
+      const a = createClient(origin, undefined, { trailbase: officialAuthMapping, auth: { persistSession: true, autoRefreshToken: false, storage, storageKey: key }, global: { fetch: async (input, init) => {
+        downstream++; expect(String(input)).toBe(fixture.url); expect(init?.method).toBe('GET'); expect(init?.credentials).toBe('omit'); expect(init?.redirect).toBe('manual');
+        expect([...new Headers(init?.headers)]).toEqual([['authorization', `Bearer ${tokens.auth_token}`], ['content-type', 'application/json']]); return fetch(input, init);
+      } } });
+      const subscription = a.auth.onAuthStateChange(event => events.push(event)).data.subscription;
+      try {
+        expect((await a.auth.getSession()).data.session?.user.id).toBe(canonicalUuid(owner.user.id));
+        const result = await a.auth.signOut(); await fixture.idle();
+        if (upstreamFailure) throw upstreamFailure;
+        expect(completed).toBe(true);
+        if (mode === 'fragment') expect(result).toEqual({ error: null });
+        else expect(result.error, `OGL ${mode} must not acknowledge`).not.toBeNull();
+        expect(downstream).toBe(1); expect(upstream).toBe(1); expect(stored.has(key)).toBe(false); expect(stored.get('unrelated')).toBe('keep'); expect(events).toEqual(['INITIAL_SESSION', 'SIGNED_OUT']);
+        expect((await a.auth.getSession()).data.session).toBeNull(); expect(nativeAuthSnapshot(main, sessions)).toEqual(expected); expect(await second.auth.getSession()).toEqual(secondBefore);
+        const refresh = await fetch(new URL('/api/auth/v1/refresh', env.trailUrl), { method: 'POST', credentials: 'omit', redirect: 'error', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ refresh_token: tokens.refresh_token }), signal: AbortSignal.timeout(10000) });
+        expect(refresh.status).toBe(401); await refresh.body?.cancel();
+        const residual = await fetch(new URL('/api/records/v1/todos?skip_cursor=true', env.trailUrl), { credentials: 'omit', redirect: 'error', headers: { authorization: `Bearer ${tokens.auth_token}` }, signal: AbortSignal.timeout(10000) }); expect(residual.status).toBe(200); await residual.body?.cancel();
+        await fixture.idle(); expect(fixture.stats()).toMatchObject({ active: 0, bytesWritten: mode === 'fragment' ? 10 : mode === 'drop' ? 0 : 5 });
+      } finally {
+        subscription.unsubscribe(); await fixture.close(); expect(fixture.stats()).toMatchObject({ active: 0, listening: false });
+      }
+    }
+  }, [
+    ...[owner, control].map((user, index) => async () => { await cleanupOfficialAuthOwner(env, user, ids[index]); }),
+    async () => { expect((await second.auth.signOut({ scope: 'local' })).error).toBeNull(); },
+    async () => { expect(nativeAuthSnapshot(main, sessions).sessions).toEqual(unrelatedSessions); },
+    async () => { sessions.close(); main.close(); },
+  ]);
+}, 120000);
