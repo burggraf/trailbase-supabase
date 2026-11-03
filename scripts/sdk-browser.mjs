@@ -26,9 +26,10 @@ export function validateBrowserModules(sdk, native, modules = {}) {
   visit('sdk', sdk);
   if (/\b(?:from\s*|import\s*)['"]|\bimport\s*\(/.test(native)) throw new Error('Native distribution requires additional import-map entries');
 }
-export async function preparePackedBrowser(directory) {
+// Shared by real Node and browser consumers; this does not start a backend or runner.
+export async function preparePackedConsumer(directory) {
   const tail = relative(resolve('.runtime/runs'), resolve(directory));
-  if (!/^\d{13}-[a-f0-9]{12}$/.test(tail) || JSON.parse(await readFile(resolve(directory, 'owner.json'))).id !== tail) throw new Error('Phase A packed browser ownership mismatch');
+  if (!/^\d{13}-[a-f0-9]{12}$/.test(tail) || JSON.parse(await readFile(resolve(directory, 'owner.json'))).id !== tail) throw new Error('Phase A packed consumer ownership mismatch');
   const root = resolve('.'), work = resolve(directory, 'sdk-package');
   await mkdir(work, { mode: 0o700 });
   let diagnostics = '';
@@ -55,6 +56,19 @@ export async function preparePackedBrowser(directory) {
   for (const [name, expected] of Object.entries(runtimeDependencies)) {
     if (JSON.parse(await readFile(resolve(consumer, 'node_modules', name, 'package.json'), 'utf8')).version !== expected.version) throw new Error('Installed runtime dependency lock drift');
   }
+  const installed = resolve(consumer, 'node_modules/trailbase-supabase');
+  if (await realpath(installed) !== installed || (await lstat(installed)).isSymbolicLink()) throw new Error('Installed SDK is a workspace/source link');
+  validatePackage(JSON.parse(await readFile(resolve(installed, 'package.json'), 'utf8')), files);
+  for (const file of files) {
+    const path = resolve(installed, file);
+    if (!(await lstat(path)).isFile() || await realpath(path) !== path) throw new Error('Installed SDK file is not regular');
+    if (await readFile(path, 'utf8') !== await run('tar', ['-xOzf', tarball, `package/${file}`])) throw new Error('Installed SDK differs from tarball');
+  }
+  return { consumer, tarball, files, runtimeDependencies };
+}
+
+export async function preparePackedBrowser(directory) {
+  const { consumer, tarball, runtimeDependencies } = await preparePackedConsumer(directory);
   const sdkPath = resolve(consumer, 'node_modules/trailbase-supabase/dist/index.js');
   const nativePath = resolve(consumer, 'node_modules/trailbase/dist/index.js');
   for (const file of [sdkPath, nativePath]) if (!(await lstat(file)).isFile() || await realpath(file) !== file) throw new Error('Phase A packed browser installed module is a link');

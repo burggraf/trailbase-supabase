@@ -1,0 +1,389 @@
+{
+  "scope": "Exact terminal CI observation, NOT a passing full baseline/stock audit. The original expected115/6 stock audit FAILED; it is retained unchanged, and this observation does not relax that requirement.",
+  "commit": "8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf",
+  "sourceSha256": "6a3ee09a602e7087ba9e62e574a59f792de1821c922cd1e6d587f370990ab4c3",
+  "run": 41548029405,
+  "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41548029405",
+  "attempt": 1,
+  "status": "completed",
+  "conclusion": "failure",
+  "jobs": [
+    {
+      "id": 125628299409,
+      "name": "Static, units and packed consumer / Node 24.21.0",
+      "conclusion": "success"
+    },
+    {
+      "id": 125628299739,
+      "name": "Static, units and packed consumer / Node 22.23.2",
+      "conclusion": "success"
+    },
+    {
+      "id": 125628606972,
+      "name": "Focused SDK CRUD-auth / real fixtures / packed browsers",
+      "conclusion": "success"
+    },
+    {
+      "id": 125628607036,
+      "name": "Real backends / browser infrastructure / cleanup",
+      "conclusion": "failure"
+    }
+  ],
+  "reports": [
+    {
+      "suite": "native-upgrade",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/native-upgrade/latest.json",
+      "artifactSha256": "85fb1fe86d82f1e0ea6eff08cbd91572a84b080d0ff6b791ee29f8d29422762e"
+    },
+    {
+      "suite": "all",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "supabase-start",
+      "passed": 0,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793663394559-0468da8caa80.json",
+      "artifactSha256": "ef4c5ca4b07334605dba72a5dd539af20da8aad5f679e2a6b94b41ef1eb6e822"
+    },
+    {
+      "suite": "expiry",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793663425227-8a34d882fffb.json",
+      "artifactSha256": "a2def7bcb4841303e863e739d9279cbf1e5b30ee00f28d3aefdd1dd644a89b9d"
+    },
+    {
+      "suite": "characterization",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 9,
+      "failed": 1,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793663592994-ad8977ffe30c.json",
+      "artifactSha256": "e825402ef64b855848174275a6f7edcd9179f974721bd40559e2745899b5f559"
+    },
+    {
+      "suite": "smtp",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 0,
+      "failed": 1,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793663634451-15dd29a3af19.json",
+      "artifactSha256": "bc2c613610fd0d494534d8ecde5b8e02a6cd58054706dfa0b6634b96531d18e4"
+    },
+    {
+      "suite": "auth-reference",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 16,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793663672975-4166c1e57734.json",
+      "artifactSha256": "34a965521b72fb9490edc1f393a4a891f9fd1f593d76d819a0c5a735a3b4a157"
+    },
+    {
+      "suite": "auth-migration",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793663743382-4ef5e762b375.json",
+      "artifactSha256": "0d0772375bd62fd2d6b2cea7058d00539b7c8f983dc5f3fbc121485da9073cfe"
+    },
+    {
+      "suite": "browser",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 60,
+      "failed": 6,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793663829290-7873383cf78d.json",
+      "artifactSha256": "3df077c2a6547a637042f310d29900f148ad6b041b4c05bfd9e0c5ef41a48934"
+    },
+    {
+      "suite": "lifecycle",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793664254585-ee0ff54962bd.json",
+      "artifactSha256": "3baecdfb68e6c95c06b4a682f5cf0a4052ee5aa0c53eb35792fc14e61ff13298"
+    },
+    {
+      "suite": "package",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-unit-node-22.23.2/sdk-package/latest.json",
+      "artifactSha256": "bca44fbee9c063cdcaa2f57c948bbd1c3e697075ba8d72f0ba5986259c91c8e1"
+    },
+    {
+      "suite": "unit",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 264,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-22.23.2/unit/latest.json",
+      "artifactSha256": "42629a029dbc39950cf160ad905f29f6473efbf9de10408027e11078c23d1f53"
+    },
+    {
+      "suite": "package",
+      "node": "v24.21.0",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-unit-node-24.21.0/sdk-package/latest.json",
+      "artifactSha256": "2727d19f690e980cc38931c389d8872abc8f33133a548bea4de4a7666eaf2936"
+    },
+    {
+      "suite": "unit",
+      "node": "v24.21.0",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 264,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-24.21.0/unit/latest.json",
+      "artifactSha256": "4f8ce2ff949f22a7c5b345a1a5496993fb40af90e05d9ec26a396fc8d2878f1b"
+    },
+    {
+      "suite": "sdk-auth",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793663322388-d5ab8826b111.json",
+      "artifactSha256": "6a38054712e8841238fff9bfe24d26688455043cd682a575c5f3e0f6f2a92fd5"
+    },
+    {
+      "suite": "sdk-refresh",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793663380838-319cf5263e48.json",
+      "artifactSha256": "8138e67ac07af6d64256516b1eaf8eb9938e40a283ff0b0790feb7baa9d8de9d"
+    },
+    {
+      "suite": "sdk-data",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793663608405-2744f194a7ef.json",
+      "artifactSha256": "b68944954923f3af4f5f2ee810ece35f08419fe6f9fb52a3087b4d592fda3b91"
+    },
+    {
+      "suite": "database",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793663655809-0830af1974f8.json",
+      "artifactSha256": "b076d8447dd3d3cf673a908061e78bad385b1b129cf9019f125e1e0638c5ef5f"
+    },
+    {
+      "suite": "constraints",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793663695289-74b50f20e87b.json",
+      "artifactSha256": "4e49d0497a9d310f7ba84c85c0795f863f08e84f0765002098d83f3e1a149127"
+    },
+    {
+      "suite": "sdk-browser",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 15,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793663733308-08a518ec3c47.json",
+      "artifactSha256": "adeca0982536f9fe0ce4b16b721832317d65041981a6edd45190fa34ac383c69"
+    },
+    {
+      "suite": "lifecycle",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793663858143-4f6c40752375.json",
+      "artifactSha256": "079b44fce04b0d7cce031ae5b6298aab65e422258abac351fa8137e63c82a482"
+    },
+    {
+      "suite": "todos-launcher",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/todos/1793663822729-1f420d76f0fa.json",
+      "artifactSha256": "e7896c45f8496c856bd7326ff840ea7797fd11f964e47ec51d83b8ec2b861dcf"
+    }
+  ],
+  "sourceBoundReportsChecked": 21,
+  "commitBinding": "All21 artifact reports belong to this exact run/head commit and match source hash/artifact bytes. Phase-A reports also require in-report baseCommit and ci.commit; other producer schemas bind via exact-run artifact provenance/source hash, not invented in-report fields.",
+  "supportedAndBothNodesPassed": true,
+  "officialBoundaryCasesPassed": 3,
+  "referenceTests": 16,
+  "requiredFullBaselineAuditPassed": false,
+  "allSetupPassed": false,
+  "allCleanupPassed": true,
+  "executedStrictResearchFailures": 8,
+  "executedResearchNamesStatusesMatchPrior": true,
+  "historicalExpectedStrictResearchFailures": 14,
+  "stockResearchCasesCollected": 0,
+  "stockResearchCasesNotExecuted": 121,
+  "stockHistoricalFailureAssertionsNotExecuted": 6,
+  "stockStartup": {
+    "stage": "supabase-start",
+    "cause": "not-established",
+    "exitCode": 1,
+    "signal": null,
+    "killed": false,
+    "command": {
+      "kind": "nonzero-exit",
+      "stdout": "bounded",
+      "stderr": "bounded",
+      "progress": [],
+      "signatures": [
+        "image-pull"
+      ],
+      "pull": {
+        "reportedFailedServices": [
+          "supabase_auth"
+        ],
+        "httpStatuses": [],
+        "signals": [
+          "rate-limit"
+        ],
+        "upstreamRetryBanner": true
+      }
+    },
+    "services": [
+      {
+        "service": "supabase_auth",
+        "inspection": "not-available"
+      },
+      {
+        "service": "supabase_db",
+        "inspection": "not-available"
+      },
+      {
+        "service": "supabase_inbucket",
+        "inspection": "not-available"
+      },
+      {
+        "service": "supabase_kong",
+        "inspection": "not-available"
+      },
+      {
+        "service": "supabase_realtime",
+        "inspection": "not-available"
+      },
+      {
+        "service": "supabase_rest",
+        "inspection": "not-available"
+      }
+    ]
+  },
+  "stockStartContext": {
+    "operation": "cli-start",
+    "cliVersion": "2.119.0",
+    "configSha256": "e9801e3672f47bbebd3d3d2022d68489abec85269e122da05b97e4a544a392d5",
+    "timeoutMs": 300000,
+    "maxBufferBytes": 20000000,
+    "environment": {
+      "policy": "fixture-prefix-stripping",
+      "registry": "pinned-ecr",
+      "dockerTransport": "verified-local-unix",
+      "dockerHostOverridePresent": false,
+      "dockerContextOverridePresent": false,
+      "proxyVariablesPresent": false,
+      "nodeOptionsPresent": false
+    },
+    "imageCacheBeforeStart": [
+      {
+        "service": "supabase_auth",
+        "cache": "not-present"
+      },
+      {
+        "service": "supabase_db",
+        "cache": "not-present"
+      },
+      {
+        "service": "supabase_inbucket",
+        "cache": "not-present"
+      },
+      {
+        "service": "supabase_kong",
+        "cache": "not-present"
+      },
+      {
+        "service": "supabase_realtime",
+        "cache": "not-present"
+      },
+      {
+        "service": "supabase_rest",
+        "cache": "not-present"
+      }
+    ]
+  },
+  "causeBoundary": "CLI image-pull text signature, aggregate-reported supabase_auth attempt and rate-limit text signature; no HTTP status captured. Exact failed image/digest, network/registry/quota reason and relationship to historical failures remain not established. Later successful scopes do not repair or explain it.",
+  "requiredStepAndExactRuntimeObservationsVerified": true,
+  "directJobLogSha256": {
+    "supported": "d6ed598440eda344dda2d7c851cc4af33953e8bcc2b89aab5a927be24055f6c5",
+    "research": "e67210bd37910ef69aa9823627eeb8c8330d16617ac58ddaf9f3bfef9d101df0"
+  },
+  "noRerun": true,
+  "noRetryRegistryPinBudgetOrPermissionChanges": true,
+  "privateImplementationBuiltOrCertified": false,
+  "missing": [
+    "Current-CI stock121 assertions, including6historical failure names, were not executed",
+    "Underlying image-pull/rate-limit-text setup cause and remedy are not established",
+    "Full coverage/security/release/physical-device/maintainer signoff"
+  ],
+  "signoff": false,
+  "readinessClaim": false
+}

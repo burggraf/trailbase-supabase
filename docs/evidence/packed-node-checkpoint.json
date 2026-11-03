@@ -1,0 +1,318 @@
+{
+  "scope": "Official-only installed npm-packed Node CRUD/password-auth checkpoint; new coverage, NOT full compatibility/security/coverage/release/device/maintainer signoff",
+  "sourceSha256": "c1540915c6314e20aacc76c8b8a6092a23efc6f3a1f8128176aaa7ec89250856",
+  "baseCommit": "8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf",
+  "sdkNativeDependenciesPinsChanged": false,
+  "supportedContractChanged": false,
+  "testPlan": "PN01–PN08 in docs/TEST_PLAN.md; existing applicable layers retained",
+  "artifact": {
+    "tarballSha256": "dbd1a257314d7b46d80a6016bb7c2ae8b35c220f35e414942db60dc8399597d2",
+    "bothPinnedRuntimesSameTarball": true,
+    "bareInstalledPackageAndRegularFilesVerified": true,
+    "shippedDataAuthDeclarationsCompiled": true,
+    "offlineLockedRuntimeGraphIntegrityVerified": true
+  },
+  "tdd": {
+    "registration": "2meaningful missing shared installer/strict CI registration unit reds; not SDK product reds",
+    "initialConsumer": {
+      "sourceSha256": "92564c9059a75a12439656a108574f49215fcb5a358408203f77c4d0c74df4c5",
+      "node": "22.23.2",
+      "passed": 6,
+      "failed": 1,
+      "notExecuted": 1,
+      "node24": "not-executed",
+      "fixtureCleanup": "passed",
+      "cause": "New consumer wrongly expected disk key removed inside immediate public SIGNED_OUT; this was an invalid test assumption, not SDK defect",
+      "correction": "Require null immediate notification and absent owned key after awaited logout; keep credential-persistence event checks/unrelated-key invariants; add deterministic policy unit/documentation, no SDK change or private settlement adoption"
+    },
+    "orchestration": "Two separate private MODULE_NOT_FOUND helper-start races preserved as setup/zero backend execution; second occurred after both post-publication checks/progress/diff passed. Independent subsequent bookkeeping exit0. Neither is runtime/TDD evidence"
+  },
+  "verification": {
+    "scope": "Official-only installed packed Node CRUD/password-auth checkpoint; no SDK/native/dependency/pin change, full parity or release/security/coverage/maintainer signoff",
+    "sourceSha256": "c1540915c6314e20aacc76c8b8a6092a23efc6f3a1f8128176aaa7ec89250856",
+    "commands": 24,
+    "reports": [
+      {
+        "suite": "sdk-auth",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-reference",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 16,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-refresh",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-data",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "database",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "constraints",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 15,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "expiry",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-migration",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "all",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 115,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "characterization",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "smtp",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "browser",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 60,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "lifecycle",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "native-upgrade",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "owned-ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "todos-launcher",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "dbd1a257314d7b46d80a6016bb7c2ae8b35c220f35e414942db60dc8399597d2",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v24.21.0",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "dbd1a257314d7b46d80a6016bb7c2ae8b35c220f35e414942db60dc8399597d2",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      }
+    ],
+    "guards": [
+      {
+        "node": "22.23.2",
+        "sourceSha256": "c1540915c6314e20aacc76c8b8a6092a23efc6f3a1f8128176aaa7ec89250856",
+        "units": 268,
+        "packageChecks": 4
+      },
+      {
+        "node": "24.21.0",
+        "sourceSha256": "c1540915c6314e20aacc76c8b8a6092a23efc6f3a1f8128176aaa7ec89250856",
+        "units": 268,
+        "packageChecks": 4
+      }
+    ],
+    "strictResearchFailures": 14,
+    "exactHistoricalResearchNamesStatusesUnchanged": true,
+    "allSetupAndCleanupPassed": true,
+    "sdkAndNativeChanges": false,
+    "signoff": false
+  },
+  "installedNode": [
+    {
+      "node": "v22.23.2",
+      "passed": 8,
+      "cleanup": "passed",
+      "tarballSha256": "dbd1a257314d7b46d80a6016bb7c2ae8b35c220f35e414942db60dc8399597d2",
+      "postconditions": {
+        "addedConfirmedOwners": 2,
+        "ownedPendingIdentities": 0,
+        "ownedRefreshSessions": 0,
+        "ownedRows": 0,
+        "expectedAuditOperations": 7,
+        "existingAccountsSessionsRowsAuditUnchanged": true
+      }
+    },
+    {
+      "node": "v24.21.0",
+      "passed": 8,
+      "cleanup": "passed",
+      "tarballSha256": "dbd1a257314d7b46d80a6016bb7c2ae8b35c220f35e414942db60dc8399597d2",
+      "postconditions": {
+        "addedConfirmedOwners": 2,
+        "ownedPendingIdentities": 0,
+        "ownedRefreshSessions": 0,
+        "ownedRows": 0,
+        "expectedAuditOperations": 7,
+        "existingAccountsSessionsRowsAuditUnchanged": true
+      }
+    }
+  ],
+  "archive": {
+    "firstFiles": 1289,
+    "currentFiles": 1717,
+    "ownedProjectsAbsent": 19,
+    "exactOwnedParentsAbsent": 2,
+    "allSourceRawControllerBytesIndependentlyRehashed": true
+  },
+  "preservation": {
+    "scope": "Read-only historical/original preservation, not new private runtime work or MVP dependency",
+    "privateArtifactsUnchanged": 7,
+    "retainedPriorFilesHashVerified": 575,
+    "priorCompleteArchivesVerified": 10,
+    "priorArchivedFilesHashVerified": 13314,
+    "privateSdkSourceAndFrozenShippedFilesUnchanged": true,
+    "originalApprovedReadOnlyGuardPassed": true,
+    "originalDemoDataAssetsConfigurationKeysLocksContainersSupervisorTailnetUnchanged": true,
+    "privateAdoptionOrDeployment": false,
+    "signoff": false
+  },
+  "upstreamPublication": {
+    "outcome": "posted-and-independently-fetched-verified",
+    "url": "https://github.com/trailbaseio/trailbase/issues/310",
+    "number": 310,
+    "repository": "trailbaseio/trailbase",
+    "author": "burggraf",
+    "title": "v0.35.8: provide authenticated nonredirect acknowledgement for global logout",
+    "bodySha256": "49b2f33b90e1edc383419655573b6a0988c8bb3e625b026bf0a48765b5d03b37",
+    "exactFetchedTitleBodyAuthorVerified": true,
+    "immutableEvidenceCommit": "8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf",
+    "createAttempts": 1,
+    "automaticRetry": false,
+    "newLoginTokenScopesOrAccessChanges": false,
+    "privatePrototypeDataPosted": false,
+    "verificationInterrupted": false
+  },
+  "priorCi": {
+    "commit": "8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf",
+    "run": 41548029405,
+    "requiredFullBaselineAuditPassed": false,
+    "stockCollected": 0,
+    "stockCasesNotExecuted": 121,
+    "stockHistoricalFailureAssertionsNotExecuted": 6,
+    "otherExecutedStrictResearchFailures": 8,
+    "cause": "Not established beyond bounded image-pull/rate-limit text observations; current local passes do not explain or repair it"
+  },
+  "remaining": [
+    "One exact normal substantive pushed CI audit on this source/commit, including expanded both-Node real consumers",
+    "Full coverage/security/release/physical-device/OSL/maintainer signoff",
+    "Official G1/G7 documented capability limits; issue310is a request, not a fix"
+  ],
+  "privateRuntimeAdoption": false,
+  "signoff": false
+}

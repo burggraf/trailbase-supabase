@@ -44,7 +44,7 @@ it('L1-14/R01-R06 independent pinned reference auth contracts execute strictly d
 
 it('L1-26/P26 CI cache warmup uses only exact currently locked runtime packages, not dependency upgrades', () => {
   const workflow = readFileSync('.github/workflows/phase-a.yml', 'utf8'), lock = JSON.parse(readFileSync('package-lock.json', 'utf8'));
-  const references = [...workflow.matchAll(/npm cache add (\S+)/g)].map(match => match[1]); expect(references).toHaveLength(12);
+  const references = [...workflow.matchAll(/npm cache add (\S+)/g)].map(match => match[1]); expect(references).toHaveLength(18);
   for (const reference of references) {
     const separator = reference.lastIndexOf('@'), name = reference.slice(0, separator), version = reference.slice(separator + 1);
     expect(lock.packages[`node_modules/${name}`].version).toBe(version);

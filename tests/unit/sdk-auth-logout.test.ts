@@ -140,6 +140,21 @@ it('L1-19/S08 held logout removal cannot delete a newer queued successful login'
   expect((await logout).error).toBeNull(); expect((await replacement).error).toBeNull(); expect(JSON.parse(data.get('owned')!).tokens.refresh_token).toBe('refresh-B');
 });
 
+it('L1-19/PN03 public SIGNED_OUT is immediate null state; owned disk removal completes before awaited logout', async () => {
+  const entered = deferred<void>(), held = deferred<void>(), data = new Map([['owned', envelope('A')], ['unrelated', 'keep']]);
+  const storage = { ...memory(data), removeItem: async (key: string) => { entered.resolve(); await held.promise; data.delete(key); } };
+  const client = factory(async () => new Response(), data, storage);
+  await client.auth.getSession();
+  const observations: { nullSession: boolean; keyPresent: boolean }[] = [];
+  const listener = client.auth.onAuthStateChange((event, session) => { if (event === 'SIGNED_OUT') observations.push({ nullSession: session === null, keyPresent: data.has('owned') }); }).data.subscription;
+  try {
+    const logout = client.auth.signOut({ scope: 'local' }); await entered.promise;
+    expect(observations).toEqual([{ nullSession: true, keyPresent: true }]);
+    held.resolve(); expect((await logout).error).toBeNull();
+    expect(data.has('owned')).toBe(false); expect(data.get('unrelated')).toBe('keep'); expect((await client.auth.getSession()).data.session).toBeNull();
+  } finally { held.resolve(); listener.unsubscribe(); }
+});
+
 it('L1-19/S08 stale login cleanup failure is observable without overwriting a newer session', async () => {
   const held = deferred<Response>(), entered = deferred<void>(); let logins = 0;
   const client = factory(async input => {
