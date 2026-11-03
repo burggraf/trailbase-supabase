@@ -11,7 +11,7 @@ export const candidateCommands = [
   ['package', 'test:sdk:package'], ['node', 'test:sdk:node'],
   ['auth', 'test:sdk:auth'], ['refresh', 'test:sdk:refresh'], ['data', 'test:sdk:data'],
   ['database', 'test:db'], ['constraints', 'test:phase-a', 'constraints'],
-  ['browser', 'test:sdk:browser'], ['example', 'test:example:todos'], ['cleanup', 'test:cleanup'],
+  ['browser', 'test:sdk:browser'], ['browser-refresh', 'test:sdk:browser:refresh'], ['example', 'test:example:todos'], ['cleanup', 'test:cleanup'],
 ].map(([id, script, ...args]) => Object.freeze({ id, script, args: Object.freeze(args) }));
 Object.freeze(candidateCommands);
 export const remainingAcceptance = Object.freeze([

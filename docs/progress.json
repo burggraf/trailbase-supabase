@@ -1,5 +1,168 @@
 {
   "schemaVersion": 1,
+  "packedBrowserAuthRaces": {
+    "plan": "docs/TEST_PLAN.md",
+    "cases": [
+      "PB01",
+      "PB02",
+      "PB03",
+      "PB04"
+    ],
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "status": "bounded-local-current-source-verified-review-push-ci-pending",
+    "productionChanges": false,
+    "privateAdoption": false,
+    "signoff": false,
+    "priorCiFullBaselinePassed": false,
+    "preservationBefore": "passed-original-private7artifacts575files15archives21332files",
+    "registration": "two meaningful missing-profile/command failures before wiring; stock-override canary true entry EEXIST before explicit refusal guard; initial TS nullable-session/setup guard-not-entered failure preserved separately",
+    "missingProof": [
+      "final connected scope review and staged fresh bothNode checks",
+      "normal substantive push and one exact new-source CI audit",
+      "terminal remote/source/resource/history/original-private preservation"
+    ],
+    "targeted": {
+      "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+      "command": "npm run test:sdk:browser:refresh",
+      "node": "v22.23.2",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "retries": 0,
+      "setup": "ready",
+      "cleanup": "passed",
+      "nativeServerPin": {
+        "version": "0.35.8",
+        "commit": "05238c02b54aabb483e9f6224b5e014d40e88a5d"
+      },
+      "nativeAuthProfile": "short-native-auth",
+      "realPacked": true,
+      "productionChanges": false,
+      "fullE08Signoff": false
+    },
+    "negativeControl": {
+      "scope": "Separate test-only guard-removal counterfactual, never current SDK/research status normalization, product defect/fix or release signoff",
+      "baselineSourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+      "mutantSourceSha256": "f00db8e9adc234522b61f97f8c0e8830b9197169d3b375ae09a22af5ea227d4d",
+      "actualTestExitCode": 1,
+      "actualReportStatus": "failed",
+      "selected": "PB03 Chromium only",
+      "failedAssertion": "old auth and queued mutation stale",
+      "setup": "ready",
+      "cleanup": "passed",
+      "expectedFailureObserved": true,
+      "productionSourceUnchanged": true,
+      "signoff": false
+    },
+    "initialOwnedArchives": {
+      "targeted": {
+        "generation": "first",
+        "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+        "ownedProjectsAbsent": 1,
+        "files": 1271,
+        "allCopiedBytesReverified": true,
+        "ownedParentRemoved": true
+      },
+      "counterfactual": {
+        "generation": "mutant",
+        "sourceSha256": "f00db8e9adc234522b61f97f8c0e8830b9197169d3b375ae09a22af5ea227d4d",
+        "ownedProjectsAbsent": 1,
+        "files": 1288,
+        "allCopiedBytesReverified": true,
+        "ownedParentRemoved": true
+      }
+    },
+    "fullQualification": {
+      "status": "independently-audited",
+      "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+      "commands": 27,
+      "reports": 19,
+      "unitsEachNode": 279,
+      "candidateAutomation": "passed",
+      "candidateDefaultExitCode": 1,
+      "qualification": "blocked",
+      "strictResearchFailures": 14,
+      "exactHistoricalNamesStatusesUnchanged": true,
+      "allSetupAndCleanupPassed": true
+    },
+    "evidence": "docs/evidence/packed-browser-auth-races-checkpoint.json",
+    "preservation": {
+      "scope": "Read-only historical/original preservation, not new private runtime work or MVP dependency",
+      "privateArtifactsUnchanged": 7,
+      "retainedPriorFilesHashVerified": 575,
+      "priorCompleteArchivesVerified": 15,
+      "priorArchivedFilesHashVerified": 21332,
+      "privateSdkSourceAndFrozenShippedFilesUnchanged": true,
+      "originalApprovedReadOnlyGuardPassed": true,
+      "originalDemoDataAssetsConfigurationKeysLocksContainersSupervisorTailnetUnchanged": true,
+      "privateAdoptionOrDeployment": false,
+      "signoff": false,
+      "currentArchives": [
+        {
+          "label": "first",
+          "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+          "ownedProjectsAbsent": 1,
+          "archivedFiles": 1271,
+          "allCopiedBytesIndependentlyRehashed": true,
+          "ownedParentAbsent": true
+        },
+        {
+          "label": "mutant",
+          "sourceSha256": "f00db8e9adc234522b61f97f8c0e8830b9197169d3b375ae09a22af5ea227d4d",
+          "ownedProjectsAbsent": 1,
+          "archivedFiles": 1288,
+          "allCopiedBytesIndependentlyRehashed": true,
+          "ownedParentAbsent": true
+        },
+        {
+          "label": "final",
+          "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+          "ownedProjectsAbsent": 19,
+          "archivedFiles": 1780,
+          "allCopiedBytesIndependentlyRehashed": true,
+          "ownedParentAbsent": true
+        }
+      ],
+      "currentOwnedProjectsAbsent": 21,
+      "currentOwnedParentsAbsent": 3,
+      "currentArchivedFiles": 4339
+    }
+  },
+  "nextStepsBeforePackedBrowserAuthRaces": [
+    "Retain3terminal operational files uncommitted for next substantive change; no extra docs-only push/CI rerun. Known6Vite advisories remediated, full CI baseline still FAILED stocksetup0/121unexecuted, six historical failure assertions not executed.",
+    "Maintainer may authorize separate bounded investigation of exact Supabase-start0. Current image-pull/inbucket/rate-limit text/noHTTPstatus/absentimages telemetry does not establish cause; no registry/budget/cache/permission workaround, pin change or blind rerun.",
+    "Full active security/critical branches/browser/TLS/accessibility/100cycle resources/physical devices/platforms/three clean same-candidate runs/named review, G1/G7 and14unwaived historical research requirements remain blocked; no inferred signoff/private adoption/upstream message/package/deployment/release."
+  ],
+  "pendingWorkBeforePackedBrowserAuthRaces": {
+    "scope": "Remaining full active release acceptance and unresolved exactCI stock Supabase-start0, distinct from completed six-specific-development-Vite-advisory remediation. No additional implementation or startup workaround authorized by this bounded patch.",
+    "status": "Bounded six-known-Vite-advisory patch and normal push/exactCI observation/terminal preservation complete. Full CI baseline FAILED stockSupabase-start0/121unexecuted including6historical assertions;8historical failures executed elsewhere. Full acceptance blocked, no release approval.",
+    "remainingAcceptance": [
+      "complete-active-matrix-and-critical-security-branch-review",
+      "real-disabled-registration-and-mfa-negative-controls",
+      "browser-cap-operator-expiry-race-and-storage-failure-matrix",
+      "trusted-local-tls-auth-smoke-and-security-assessment",
+      "complete-accessibility-and-100-cycle-auth-app-resource-proof",
+      "physical-device-and-advertised-platform-acceptance",
+      "three-consecutive-clean-same-candidate-runs",
+      "named-maintainer-feature-limitations-and-release-signoff"
+    ],
+    "fullReleaseAcceptance": "blocked",
+    "signoff": false
+  },
+  "phaseBeforePackedBrowserAuthRaces": "Vite8.3.3 six-known-development-advisory patch normally pushed as a54a382/source14a9 after reviewed7-file scope and staged bothNode checks; all other lock entries/root manifest/Vitest5.0.3/coverage5.0.3/runtime graph/9SDK files/native/browser/service pins unchanged. Official6ranges/actual npm tarball SHA512-SHA1 before patch, pin red8.3.2→green8.3.3/clean npmci/full audit0/runtime-only audit0 verified; no general security signoff. Local26commands18reports/bothNodes276coveragepackage4installed8/candidate13allpass/default1blocked/strict14exact historical failures retained;18owned projects1parent absent/1748files archived/original-private preservation passed. One exactCI41584110829 attempt1 collected25source/head/artifact-bound reports/directlogs: bothNodes276coveragepackage4installed8/supported CRUDauth/reference16/packed3engine15/expiry/legacy/upgrade/lifecycle/cleanup pass. WorkflowFAILURE: stockSupabase-start0;121stockcases including6historical failure assertions UNEXECUTED. Original required-baseline auditorFAILED actual[0,0] vs required[115,6], unchanged; separate observation-only audit verifies actual8executed historical failures elsewhere/25reports, not passing full baseline. Bounded startup telemetry image-pull/reportedSupabaseInbucket/rate-limit text/noHTTPstatus/six images absent/exit1 no signal notkilled; cause NOT ESTABLISHED, no rerun/workaround/repin. Historical41548029405 startup0 remains separate unresolved. Terminal original/private/resources/history/remote/source/fresh full-runtime audits0/bothNode check/progress/diff verification PASSED; this is not a passing full-CI-baseline audit; retain new3terminal files unstaged/uncommitted for next substantive work, no docs-only push. Full security/device/platform/three-clean-run/named maintainer acceptance BLOCKED; no package/deployment/upstream messages/private adoption/release/signoff.",
+  "gitCheckpointBeforeVitePatch": {
+    "commit": "12ab77e10c50560e40f66934b0e5c28e34804aea",
+    "sourceSha256": "a24119d17aa1edfdf0f1cce4666b34e61847fc4ffb40ce5adab8a741f6cde209",
+    "scope": "Reviewed22-file substantive SDK coverage/candidate qualification checkpoint; normal push/exact staged-committed bytes/remote/staged bothNode check verified; prior3a66fd3 terminal audit folded",
+    "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41575291106",
+    "ciStatus": "ExactCI41575291106 attempt1 completed/failure; independent25report/source-head-artifact/baseline/native-commit/service-digest/required-step/direct-log audit0. BothNodes275/package4/installed8/coverage and supported/reference16/browser15/all setup-cleanup pass; solely14unchanged historical research failures. Collectorproc2cc8 exit0; no rerun/signoff. Terminal3operational notes uncommitted for next substantive checkpoint."
+  },
+  "phaseBeforeViteCiObservation": "Bounded official development-only Vite8.3.2→8.3.3 remediation locally verified at source14a9bb9b5e70c76271365d0dbb3e8f740e749a3078ab0d255fe94ef0a497e29b after reviewed12ab77e/CI41575291106. All6maintainer affected/patched ranges and actual npm tarball SHA512/SHA1 verified before3-field lock-only patch; no direct dependency/override/audit fix/unrelated upgrade. All other locked entries/runtime graph/root manifest/Vitest5.0.3/coverage5.0.3/native/browser/service pins and9shippedSDK files unchanged, byte-verified against12ab artifacts on bothNodes. Pin regression red8.3.2→green8.3.3; clean npmci/full audit0/runtime-only audit0, six specific advisories cleared, not general security signoff. Full26commands18real reports independently audited: bothNodes276units/package4/installed8/coverage95/90allmodules, candidate13automation PASS/default1/releaseBLOCKED8requirements, all supported/reference16/browser15/setup-cleanup pass;14exact historical strict research failures preserved.18owned projects/resources1exact parent absent;1748source/raw/controller files archived/rehashed. Original guard/private7artifacts575files14prior archives19584files/source/shipped preserved. Actual read-only demo app/health/mail200/anonymousrecords403 fromVPS only; no public-Internet/Vite exploitability inference or live/listener/security/network/deployment change. Final7-file review, staged bothNode checks and normal substantive commit/push folding12ab terminal notes/one exactCI audit pending. No package publication/private adoption/upstream messages/release/signoff; zero clean full release runs; historical startup0 cause unknown.",
   "releaseQualificationBeforeVitePatch": {
     "plan": "docs/RELEASE_QUALIFICATION.md",
     "status": "bounded-local-and-exactCI-automation-coverage-verified-release-blocked",
@@ -83,7 +246,7 @@
     }
   },
   "viteSecurityPatch": {
-    "status": "local-supported-regressions-coverage-audits-verified-ci-pending",
+    "status": "six-known-advisories-cleared-local-and-exact-ci-supported-verified-full-ci-baseline-failed",
     "parentCommit": "12ab77e10c50560e40f66934b0e5c28e34804aea",
     "featureIds": [
       "L1-24",
@@ -120,7 +283,47 @@
     "ownedProjectsAbsent": 18,
     "ownedParentsAbsent": 1,
     "currentArchivedFiles": 1748,
-    "originalPrivatePreservationPassed": true
+    "originalPrivatePreservationPassed": true,
+    "commit": "a54a3820ff61e8c92d00ce642957b9eda7b0db48",
+    "ciRun": 41584110829,
+    "ciEvidence": "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json",
+    "ciConclusion": "failure",
+    "requiredFullBaselineAuditPassed": false,
+    "stockCi": {
+      "setupStage": "supabase-start",
+      "executed": 0,
+      "unexecutedCases": 121,
+      "historicalFailureAssertionsUnexecuted": 6,
+      "cause": "not-established"
+    },
+    "strictResearchFailuresScope": "14executed historical failures in full local current-source batch; only8executed elsewhere in thisCI",
+    "ciHistoricalFailuresExecuted": 8,
+    "observationOnlyAuditPassed": true,
+    "terminalOperationalVerification": "passed",
+    "terminalRegistryAudits": {
+      "full": {
+        "exitCode": 0,
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0,
+          "total": 0
+        }
+      },
+      "runtime": {
+        "exitCode": 0,
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0,
+          "total": 0
+        }
+      }
+    }
   },
   "pendingWorkBeforeVitePatch": {
     "scope": "Existing official-only CRUD/password-auth release qualification; no new features/private parity",
@@ -162,7 +365,7 @@
   "phaseBeforeReleaseQualificationCi": "Official-only release qualification tooling locally verified at sourcea24119d17aa1edfdf0f1cce4666b34e61847fc4ffb40ce5adab8a741f6cde209: both pinnedNodes275units/package4/real installed8/coverage pass; global97.13statements99.45lines99.26functions94.96branches and every behavioral module95/90. No SDK/native/runtime pin change; exact development-only V8 provider5.0.3 added. First26-command/18-runtime-report batch retains14exact historical research failures/all fixture setup-cleanup pass but initial candidate and Node24 static checks FAILED due private clone omitted intent-to-add docs from index. Preserve failures, not product reds. Corrected same-source checkout actual13-command default candidate has all automation PASSED and release BLOCKED/exit1 for8explicit acceptance requirements; separate Node24 check0 and9fresh real reports audited. No validator relaxation/hidden retry/source relabel. Initial1739/current1525source-raw-controller files independently archived/rehashed;27owned projects/resources and2exact temporary parents absent. Original approved read-only guard/private7artifacts575files12archives16320files/source/shipped preservation passed. Existing development Vite8.3.2 has one high audit entry unresolved; runtime-only registry audit0 is not security signoff; no audit fix/pin change. Full placeholders5 explicitly fail. Final scoped review/staged bothNode checks/normal substantive commit-push and one exactCI audit remain pending. No full security/device/accessibility/repeated-clean-run/maintainer signoff or publication/deployment.",
   "releaseQualification": {
     "plan": "docs/RELEASE_QUALIFICATION.md",
-    "status": "vite-patch-bounded-local-automation-coverage-verified-exactCI-pending-release-blocked",
+    "status": "vite-supported-local-and-ci-coverage-verified-full-ci-baseline-failed-release-blocked",
     "governingThresholds": {
       "statements": 95,
       "lines": 95,
@@ -226,6 +429,21 @@
       "fullSecuritySignoff": false
     },
     "publication": {
+      "commit": "a54a3820ff61e8c92d00ce642957b9eda7b0db48",
+      "ciRun": 41584110829,
+      "ciAttempt": 1,
+      "conclusion": "failure",
+      "sourceBoundReports": 25,
+      "requiredFullBaselineAuditPassed": false,
+      "stockExecuted": 0,
+      "stockUnexecuted": 121,
+      "historicalAssertionsUnexecuted": 6,
+      "otherHistoricalFailuresExecuted": 8,
+      "observationOnlyAuditPassed": true,
+      "noRerun": true,
+      "signoff": false
+    },
+    "publicationBeforeViteCiObservation": {
       "status": "7-file-review-normal-substantive-push-one-exactCI-pending",
       "signoff": false
     }
@@ -236,7 +454,7 @@
     "Upstream issue310postedasburggraf under new explicit Mark existing-gh/sole-executor override; exact fetched URL-title-body-author verified and no further create/auth/access changes. Prior integration403/noissue preserved historically; publication request is no longer blocked. Keep prior stockCI121unexecuted/6historical assertions distinct from8other executed failures. Official0358/JS0143 and documented409/null-signup/no-resend/global-uncertainty limitations unchanged; no fork/deferred-feature/adoption/security-release-coverage-physical-device-maintainer signoff."
   ],
   "phaseBeforeReleaseQualification": "New explicit Mark existing-gh/sole-executor publisher authorization completed: https://github.com/trailbaseio/trailbase/issues/310 posted asburggraf in1attempt, exact fetched URL/title/body/author verified, immutable8c15evidence links/no private data/no auth changes. Earlier403/no-alternate restriction preserved as historical and superseded only for this issue; no further create. Packed verification uninterrupted. Run46 actual installed-tarball consumer passes8/8 on EACH pinned Node22.23.2/24.21.0/sourcec1540915, same tarballdbd1a257,268units each, complete native postconditions/fixture cleanup passed. No SDK/native/dependency/pin change. First source92564c90 Node22 passed6 then failed a new invalid SIGNED_OUT callback-storage-timing assertion; PN08 and Node24 unexecuted. Corrected consumer to existing immediate public event/awaited key removal, added unit and documented boundary; private settled semantics not adopted. Earlier missing-controller setup0 preserved separately. Fresh24command/18report proc_904a terminal1 after2091s solely14exact historical strict research failures; independent audit passed supported/reference16/refresh4/data6/DB9/constraints6/browser15/expiry2/legacy1/upgrade9/launcher2/lifecycle1 and bothNode268/package4/installed8each, every setup-cleanup passed. First1289/current1717source-raw-controller files archived/rehashed,19owned projects/2parents absent; post-full7artifacts/575files/10archives13314files/private source/shipped and original official read-only guard passed. Final16file connected-flow/scope/history/basic-privacy and exact staged hashes/bothNode staged checks/progress/diff passed; normal commit-push3a66fd3716a1a938e6806e3c3e31e3464b383d0c/1230insertions24deletions and remote/exact bytes verified. ExactCI41563708961 attempt1 COMPLETED/failure, independent strict23report audit PASSED on commit3a66fd3/sourcec154: bothNode268/package4/installed8each/static-types-docs-build and supported SDK job/auth6/reference16/browser15/all applicable scopes/all setup-cleanup pass. Stock115/6,candidate9/1,SMTP0/1,browser60/6 preserve all14exact historical executed research names/statuses; required steps/pins/producer-specific commit-source-artifact binding/nonempty direct command-correlated four-job log hashes verified. Collectorproc_0840 terminal0 after1119s/watch exit1 is workflow failure, auditor0. No rerun; current stock completeness does NOT explain prior415480startup0 or waive old gaps. Terminal3operational files retained uncommitted for next substantive checkpoint, no extra push/full security-coverage-release-device-maintainer signoff. At authorization: reconciled main/origin8c15a0e, retained exact priorCI41548029405 terminal audit and3dirty operational files byte-for-byte privately. No newer tracked instructions or active managed jobs. Build/install actual tarball in owned disposable consumers on Node22.23.2/24.21.0 against official0358; PN01-PN08 defined before implementation. Cover real signup/confirmation/login, persistence/process reload/live validation/actual expiry/manual-background refresh, owner CRUD/negative/security and explicit local/global/error contract plus complete DB/session/audit/resource postconditions. No SDK changes absent demonstrated red-green supported defect. Parent reports create_issue403 Resource not accessible by integration/no issue; Mark informed/public draft-newissue links supplied. Publication BLOCKED, no alternate credentials/browser/gh attempt; separate from implementation. Fold prior audit into normal reviewed substantive commit/push and one exactCI audit; no blind rerun/cache-network-security workaround. Preserve original official demo/data/sixcontainers/keys/config/tailnet and immutable private historical artifacts; no fork/deferred features or signoff. Prior stockCI0 remains121unexecuted cases including6historical assertions, other8executed research failures exact; cause beyond image-pull/rate-limit text unestablished.",
-  "currentPhase": "Bounded official development-only Vite8.3.2→8.3.3 remediation locally verified at source14a9bb9b5e70c76271365d0dbb3e8f740e749a3078ab0d255fe94ef0a497e29b after reviewed12ab77e/CI41575291106. All6maintainer affected/patched ranges and actual npm tarball SHA512/SHA1 verified before3-field lock-only patch; no direct dependency/override/audit fix/unrelated upgrade. All other locked entries/runtime graph/root manifest/Vitest5.0.3/coverage5.0.3/native/browser/service pins and9shippedSDK files unchanged, byte-verified against12ab artifacts on bothNodes. Pin regression red8.3.2→green8.3.3; clean npmci/full audit0/runtime-only audit0, six specific advisories cleared, not general security signoff. Full26commands18real reports independently audited: bothNodes276units/package4/installed8/coverage95/90allmodules, candidate13automation PASS/default1/releaseBLOCKED8requirements, all supported/reference16/browser15/setup-cleanup pass;14exact historical strict research failures preserved.18owned projects/resources1exact parent absent;1748source/raw/controller files archived/rehashed. Original guard/private7artifacts575files14prior archives19584files/source/shipped preserved. Actual read-only demo app/health/mail200/anonymousrecords403 fromVPS only; no public-Internet/Vite exploitability inference or live/listener/security/network/deployment change. Final7-file review, staged bothNode checks and normal substantive commit/push folding12ab terminal notes/one exactCI audit pending. No package publication/private adoption/upstream messages/release/signoff; zero clean full release runs; historical startup0 cause unknown.",
+  "currentPhase": "Finite PB01–PB04 genuine packed-browser gap locally verified at source56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd:4schedules/3engines12pass/no retry-skip-flake, real actual expiry/shared renewal, delayed response versus local logout/direct B/logout-then-B login, exact state/storage/events and zero stale dispatch/audit writes. Separate owned guard-removal PB03 Chromium negative failed at intended stale-result assertion; not current SDK defect/fix. Full27commands19reports audited: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/8releaseblocks, all supported/reference16/defaultbrowser15/new12/setup-cleanup pass;14exact strict historical failures unchanged. Production src/lock/dependency/native/browser/service pins and7runtime-license shipped bytes unchanged; README/package scripts metadata alone differ.21owned projects/resources3parents absent;4339complete source/raw/controller files archived/rehashed. Original/private7artifacts575files/15prior archives21332files/source/shipped preserved. Prior Vite stockstartup0/full-baseline FAILED and earlier41548029405 remain unknown/unrepaired. Final connected review/staged bothNode checks/normal substantive push folding prior3terminal notes/one exactCI audit pending; no publication/private adoption/live change or signoff.",
   "packedNodeCheckpoint": {"status":"3a66fd3-exact-ci41563708961-attempt1-23reports-audited-supported-and-both-nodes-pass14unchanged-strict-research-failures","statusBeforeTerminalAudit":"reviewed16file3a66fd3-pushed-exact-ci41563708961-sole-watch-collector-proc0840-audit-pending","statusBeforePush":"full-local-audit-archive-original-private-preservation-complete-final-review-scoped-publication-ci-pending","gitPublicationBeforeTerminalAudit":{"commit":"3a66fd3716a1a938e6806e3c3e31e3464b383d0c","sourceSha256":"c1540915c6314e20aacc76c8b8a6092a23efc6f3a1f8128176aaa7ec89250856","files":16,"insertions":1230,"deletions":24,"normalPush":true,"remoteExactReviewedBytesVerified":true,"ci":41563708961,"url":"https://github.com/burggraf/trailbase-supabase/actions/runs/41563708961","status":"in_progress","watcherCollector":"proc_0840","terminalAudit":"pending","rerun":false,"signoff":false},"gitPublication":{"commit":"3a66fd3716a1a938e6806e3c3e31e3464b383d0c","sourceSha256":"c1540915c6314e20aacc76c8b8a6092a23efc6f3a1f8128176aaa7ec89250856","files":16,"insertions":1230,"deletions":24,"normalPush":true,"remoteExactReviewedBytesVerified":true,"ci":41563708961,"url":"https://github.com/burggraf/trailbase-supabase/actions/runs/41563708961","attempt":1,"status":"completed","conclusion":"failure","watcherCollector":"proc_0840 terminal0","terminalAudit":"passed23exact-source-commit-artifact-reports/bothNode268package4installed8each/support/reference16/all setup-cleanup/requiredsteps-runtime-directlogs/14exact historical executed research names-statuses","evidence":"docs/evidence/ci-3a66fd3-packed-node-checkpoint.json","rerun":false,"terminalNotes":"Uncommitted3operational files for next substantive checkpoint; no docs-only push/CI churn","signoff":false},"ciObservation":{"reports":23,"unitsEachNode":268,"packageEachNode":4,"realPackedNodeEach":8,"supportedJobAndBothNodeJobsPassed":true,"auth":6,"reference":16,"packedBrowser":15,"stockPassed":115,"stockFailed":6,"executedStrictResearchFailures":14,"exactHistoricalNamesStatusesUnchanged":true,"allSetupAndCleanupPassed":true,"requiredStepsRuntimeSourceCommitArtifactAndDirectLogsVerified":true,"priorStockStartupCause":"Not established; current pass does not explain prior0collection/121missing cases/6historical assertions","activeJobs":[],"rerun":false,"readinessOrSignoff":false},"baseCommit":"8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf","testPlan":"PN01-PN08 in docs/TEST_PLAN.md","sdkChanges":"none; no supported SDK defect demonstrated","currentVerification":{"sourceSha256":"c1540915c6314e20aacc76c8b8a6092a23efc6f3a1f8128176aaa7ec89250856","tarballSha256":"dbd1a257314d7b46d80a6016bb7c2ae8b35c220f35e414942db60dc8399597d2","node22Cases":8,"node24Cases":8,"unitsEachNode":268,"completeNativePostconditionsAndFixtureCleanupPassed":true,"fullBatch":"proc_904a terminal1 solely14exact historical strict research failures; independent24command/18report audit0: all supported/reference/browser/expiry/legacy/upgrade/launcher/lifecycle and every setup-cleanup pass","packageEachNode":4,"strictResearchFailures":14,"exactHistoricalResearchNamesStatusesUnchanged":true,"afterBatchOriginalPrivatePreservation":"passed7artifacts/575files/10archives13314files/private source/shipped/original official approved read-only guard","archive":"First1289/current1717source-raw-controller files independently rehashed;19owned projects/resources and2exact parents absent","evidence":"docs/evidence/packed-node-checkpoint.json"},"firstConsumerFailure":{"sourceSha256":"92564c9059a75a12439656a108574f49215fcb5a358408203f77c4d0c74df4c5","node":"22.23.2","passed":6,"failed":1,"notExecuted":1,"node24":"not-executed","cleanup":"passed","cause":"New consumer incorrectly required owned key absent inside immediate public SIGNED_OUT notification; not SDK defect/red. Existing policy clears async disk key before awaited logout settles. Corrected new assertion, retained null notification and awaited key absence checks; added policy unit/documentation, no private settlement adoption"},"initialOrchestrationFailure":"Two private MODULE_NOT_FOUND helper-start races preserved separately as setup0/no backend execution; second after successful bothNode post-publication check/progress/diff, independent later bookkeeping0. Neither is runtime or TDD evidence", "publicationBeforeExistingGhAuthorization":{"status":"blocked","source":"maintainer relays parent attempt","operation":"GitHub create_issue in trailbaseio/trailbase","httpStatus":403,"message":"Resource not accessible by integration","issueCreated":false,"markInformed":true,"draftAndNewIssueLinksSupplied":true,"alternateAttemptsAuthorized":false},"publication":{"status":"posted-and-independently-fetched-verified","authorization":"Mark explicitly approved existing VPS gh after integration403; sole executor publisher for this one issue, parent will not create","url":"https://github.com/trailbaseio/trailbase/issues/310","author":"burggraf","title":"v0.35.8: provide authenticated nonredirect acknowledgement for global logout","bodySha256":"49b2f33b90e1edc383419655573b6a0988c8bb3e625b026bf0a48765b5d03b37","exactFetchedTitleBodyAuthorVerified":true,"immutableEvidenceCommit":"8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf","createAttempts":1,"automaticRetry":false,"newLoginTokenScopesOrAccessChanges":false,"privatePrototypeDataPosted":false,"verificationInterrupted":false,"backendFixOrSignoff":false},"signoff":false},
   "previousPhaseBeforePackedNodeCheckpoint": "Official-only8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf/source6a3ee09a published normally; exactCI41548029405 attempt1 terminal FAILURE. Both pinnedNode264/package4/static-types-docs-build and supported SDK job/auth6/browser15 pass, reference16/other applicable scopes and every cleanup pass. Required full expected-baseline CI audit FAILED: stock research stopped at Supabase-start with0collected/0assertions (121cases including6historical failure assertions NOT executed). CLI image-pull/rate-limit text signatures with aggregate-reported supabase_auth attempt, six images initially absent, no HTTPstatus; actual image/network/registry/quota cause remains not established. Other3research scopes execute8exact prior failures (candidate1/SMTP1/browser6), not14current-CI executions. Independent observation audit verifies21exact-run/source/artifact reports/requiredstep-version observations/nonempty direct command-correlated logs; this does NOT waive stock setup failure or replace missing CI proof with local115/6. Collector proc_9d09 terminal0, original expected auditor1 retained, new observation auditor0; no rerun or retry-registry-pin-budget-permission change. Local full16report/264package4/14historical failure proof, initial3ccsnapshot failure,32project2parent teardown, original official and private artifacts/sources remain preserved. Terminal operational3files are uncommitted for next substantive checkpoint, no docs-only CI churn. Global-logout draft/evidence/verified upstream URL ready for baba sole publisher; executor posted nothing. Next official MVP task real packed Node consumer integration; stock CI completeness/cause and full coverage/security/release/physical-device/maintainer signoff remain incomplete.",
   "previousPhaseBeforeOfficialOnlyTerminalCiAudit": "Official-only contract/app checkpoint8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf published normally:22reviewed files/1090insertions26deletions, exact staged-committed hashes/source6a3ee09a and origin/main verified. Single exactCI41548029405 attempt1 is in_progress under proc_9d09; no rerun or terminal current-CI claim. Local fresh bothNode264/package4/static-types-docs and16real-report supported/auth6/reference16/browser15/setup-cleanup audit passed with14exact historical local research failures unchanged; initial source3cc snapshot RangeError retained separately.32owned projects/2parents absent; original official and private7artifacts/575files/8archives10057files/source/shippedfiles unchanged. Official0.35.8/JS0.14.3 remains selected; public SDK/native/deps/pins unchanged, no fork adoption. Focused global-logout draft/evidence/verified upstream URL ready for baba sole publisher; no executor issue/comment. Await exact CI report-case-source-required-step-direct-log-setup-cleanup audit; then retain terminal operational notes for next substantive checkpoint, not docs-only churn. Next official MVP task is real packed Node consumer integration; no full security/coverage/release/physical-device/maintainer signoff.",
@@ -259,7 +477,7 @@
   "previousPhaseBeforePullDetail": "Priority: make repeated supported CI sdk-auth startup0 failures actionable, not a readiness claim. D03/D04 source34bad9e4 adds bounded fixed CLI signatures/progress and pre-start owned operation/config/environment/cache facts; aligns version probe with actual sanitized launch environment. Meaningful10-red and separate real-bind/pinned-health phrase reds preserved; final both pinned Nodes static/types/docs,252units/package4 each pass. Exact-source owned fault plus16 independent real reports terminally audited: supported auth3/refresh4/data6/DB9/constraints6/browser15/launcher2, reference10/expiry2/legacy1/upgrade9/lifecycle1 pass; research112/6,9/1,0/1,60/6 remains14 exact baseline-matching assertions red.20owned projects absent/1597private source+raw files archived/temp parent removed; original read-only post-batch guard passes. This code/tests/evidence checkpoint carries the implementation and exact local proof; independent CI for its commit remains to be terminally audited. Exact0ead CI independently audited: supported startup0 cause UNKNOWN. Private120s actual-expiry reference11/11 and C06 official/frozen-private4checks/3gaps each verified separately; no authenticated JSON capability implemented or custom deployment/signoff.",
   "previousPhaseBeforeStartupActionable": "Exact4273541/CI41438278896 terminal21-report audit at d5fa: supported sdk-auth failed Supabase-start/0tests/cleanup passed, exit1/no signal/not killed/six inspections unavailable; cause UNKNOWN, not an assertion or inferred common historical cause. Both Nodes242/package4 and later supported scopes pass;14 exact research assertion failures retained. Independent default/global logout reference10/10 at9832850b (new3 plus existing7), both Nodes242/package4, six owned projects absent/1291 private files archived/temp removed. Actual expiry/faults/official-private capability implementation remain open; no runtime/public API/adoption/signoff change. Historical C04/C05 immutable proofs preserved; no duplicate C05.",
   "lastSession": {
-    "state": "vite833-source14a9-local26commands18reports-bothNodes276coveragepackage4installed8-pass14historical-research-failures-18projects1parent-absent-final-push-ci-pending",
+    "state": "vite833-pushed-a54a382-exactCI41584110829-supported-pass-stock-startup0-121unexecuted6historical-8executed-25observed-original-full-baseline-auditor-failed-terminal-original-private-resources-remote-source-bothNode-check-progress-diff-pass-full-CI-baseline-still-failed",
     "stateBeforeReleaseQualification": "packed-node3a66fd3-exact-ci41563708961-attempt1-audited23reports-supported-bothNode8each-pass14unchanged-research-failures",
     "stateBeforePackedNodeTerminalCiAudit": "packed-node-reviewed16file3a66fd3-pushed-exact-ci41563708961-proc0840-running-terminal-audit-pending",
     "stateBeforePackedNodePush": "packed-node-c154-full24commands18reports-audited-original-private-preserved-archive19projects2parents-absent-ready-final-review-publication-ci",
@@ -989,7 +1207,8 @@
       ]
     },
     "allJobsTerminal": true,
-    "stateBeforeVitePatch": "official-release-qualification12ab77e-sourcea241-exactCI41575291106-attempt1-audited25reports-bothNodes275coveragepackage4installed8-supported-pass14unchanged-research-failures-release-blocked"
+    "stateBeforeVitePatch": "official-release-qualification12ab77e-sourcea241-exactCI41575291106-attempt1-audited25reports-bothNodes275coveragepackage4installed8-supported-pass14unchanged-research-failures-release-blocked",
+    "stateBeforeViteCiObservation": "vite833-source14a9-local26commands18reports-bothNodes276coveragepackage4installed8-pass14historical-research-failures-18projects1parent-absent-final-push-ci-pending"
   },
   "previousSupabaseReferenceSession": {
     "scope": "L1-14/R01-R07 independent pinned Supabase reference contracts, NOT native/SDK auth parity or signoff",
@@ -1353,11 +1572,20 @@
     "missing": "Push verified followup and inspect actual current-HEAD CI; broad runtime/reference/security/coverage/release/G1/G7/null-user decisions and maintainer signoff remain incomplete"
   },
   "gitCheckpoint": {
-    "commit": "12ab77e10c50560e40f66934b0e5c28e34804aea",
-    "sourceSha256": "a24119d17aa1edfdf0f1cce4666b34e61847fc4ffb40ce5adab8a741f6cde209",
-    "scope": "Reviewed22-file substantive SDK coverage/candidate qualification checkpoint; normal push/exact staged-committed bytes/remote/staged bothNode check verified; prior3a66fd3 terminal audit folded",
-    "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41575291106",
-    "ciStatus": "ExactCI41575291106 attempt1 completed/failure; independent25report/source-head-artifact/baseline/native-commit/service-digest/required-step/direct-log audit0. BothNodes275/package4/installed8/coverage and supported/reference16/browser15/all setup-cleanup pass; solely14unchanged historical research failures. Collectorproc2cc8 exit0; no rerun/signoff. Terminal3operational notes uncommitted for next substantive checkpoint."
+    "commit": "a54a3820ff61e8c92d00ce642957b9eda7b0db48",
+    "sourceSha256": "14a9bb9b5e70c76271365d0dbb3e8f740e749a3078ab0d255fe94ef0a497e29b",
+    "message": "fix(deps): patch development Vite security advisories",
+    "files": 7,
+    "normalCommitPush": true,
+    "remoteVerified": true,
+    "ciRun": 41584110829,
+    "ciUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41584110829",
+    "ciAttempt": 1,
+    "ciConclusion": "failure",
+    "requiredFullBaselineAuditPassed": false,
+    "observationOnlyAudit": "verified25source-head-artifact-bound reports, supported and bothNodes pass; stock0unexecuted121including6historical assertions, other8historical failures unchanged",
+    "reviewedChangedBytesMatchCommit": true,
+    "signoff": false
   },
   "gitCheckpointBeforePackedNodeCheckpoint": {
     "commit": "8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf",
@@ -1438,7 +1666,7 @@
       "G7 logout acknowledgement and late-response/session races"
     ],
     "status": "in-progress",
-    "checks": "Source14a9 Vite8.3.3 only3lock fields, all6official ranges/registry integrity verified before patch/full and runtime-only audit0. Full26commands18reports, bothNode276/coverage/package4/installed8/support-reference and strict14exact failures audited; shipped9SDK files unchanged.18owned projects1parent absent/1748source-raw files archived/original-private preserved. Final scoped push/exactCI pending, no security/device/release signoff.",
+    "checks": "Vite8.3.3only3lockfields/official6ranges/registryintegrity/pinredgreen/fullruntimeaudits0/local26commands18reports/bothNode276coveragepackage4installed8/support strict14 exact historical failures verified. ExactCI41584110829 supported and bothNodes pass/25reports observed, but stocksetup0 leaves121cases/6historical assertions unexecuted, original baselineauditFAILED,8historical failures elsewhere. No rerun or cause claim. Full acceptance blocked.",
     "checksBeforeReleaseQualification": "Currentc154 full local24commands/18reports independent audit passed; eachNode268units/package4/installed8 and all supported/reference16/browser15/setup-cleanup passed,14exact historical research failures unchanged. First1289/current1717archives independently rehashed;19owned projects2parents absent; original/private7artifacts575files10archives13314files/source/shipped preserved. Upstream310posted/fetched verified under explicit one-issue override. Reviewed16file3a66fd3 normal push/exact staged-committed bytes/remote/bothNode staged-checks passed; exactCI41563708961 attempt1 audited23source-commit-artifact-bound reports: bothNodes268/package4/installed8each/supported/reference16/browser15/all setup-cleanup and requiredsteps/directlogs pass; only14unchanged executed research failures, no rerun or release/signoff.",
     "checksBeforePackedNodeCheckpoint": "Official-only8c15a0e/source6a3ee09a published; terminalCI41548029405 bothNodes264/package4 and supported/auth6/browser15/reference16/cleanup pass. Stock research supabase-start0tests leaves121cases/6historical assertions unexecuted; other3research scopes8prior failures.21source/artifact/run/step/log observations audited but required full-baseline audit FAILED. Local full115/6 and14historical reds remain separate evidence; no rerun/stock waiver/signoff.",
     "checksBeforeOfficialOnlyTerminalCiAudit": "Official-only8c15a0e/source6a3ee09a published normally after22file scope/history/basic-privacy and fresh staged bothNode docs/progress checks. Local eachNode264/package4 and full16report supported/auth6/reference16/browser15/setup-cleanup pass,14historical research failures unchanged; initial RangeError source3cc preserved. ExactCI41548029405 under proc_9d09, terminal artifact/case/source/setup-cleanup/direct-log audit pending; no full release/signoff.",
@@ -1449,8 +1677,8 @@
     "historicalStorageParentChecks": "Historical source93345a16: mixed units125/125 on Node22/24, clean package checks Node22/24, check/diff pass. Real persistent auth1/1 and packed browser6/6 (data UI plus genuine password/localStorage reload on Chromium/Firefox/WebKit) passed with exact-source/setup/cleanup checks. Data/database/constraints refresh proc_ee08 and independent storage reviewer370c214b running. Refresh/live getUser/logout/events/default refresh still unsupported; G1/G7 open; no compatibility/signoff.",
     "parentPreviousDataChecks": "Historical source5c55be11: targeted auth parser privacy/import-graph regressions GREEN7/7 after preserved4pass/2fail and6pass/1fail REDs; mixed units114/114 on Node22/24, build/check/diff passed. Current clean package Node22/24 passed. Final-source proc_27fc passed: real memory-auth1/1,data6/6,database9/9,constraints6/6,packed data browsers3/3 Chromium/Firefox/WebKit; every source/setup/cleanup check passed and lock clear. Reviewer recheck2601f0f5 resolved both findings with no new issues; no maintainer signoff. Prior9fcb2e9f real auth1/1,data6/6,database9/9,constraints6/6,browsers3/3 and package22/24 passed source/setup/cleanup, now historical. Auth explicitly memory-only, no persistence/defaults/refresh/logout implemented; G1/G7 open; no compatibility/signoff.",
     "restart": [
-      "Read viteSecurityPatch/currentPhase/current nextSteps and DP01–DP04 TEST_PLAN; local source14a9 full supported/coverage/bothNode276package4installed8 audited, six Vite advisories cleared; release still blocked",
-      "Finish7-file minimal delta/history/basic privacy and staged bothNode checks, normal substantive push/exactCI; no unrelated upgrades/auditfix/live changes/upstream messages/package/release"
+      "Vite8.3.3 known6advisories cleared/pusheda54a382, exactCI supported/bothNodes pass but required full baselineFAILED stockSupabase-start0/121unexecuted including6historical assertions;8historical failures executed elsewhere, cause unknown. Read CI evidence/PROGRESS for scoped observations.",
+      "Terminal original/private/source/resources/remote/fresh full-runtime audits0/bothNode check/progress/diff passed. Retain3newterminal files unstaged/uncommitted for next substantive work; no docs-only push/retry/workaround. Further startup diagnosis or wider release work needs bounded maintainer approval."
     ],
     "restartBeforeReleaseQualificationTerminalCi": [
       "Read releaseQualification/currentPhase/current nextSteps and docs/RELEASE_QUALIFICATION.md; existing official-only CRUD/auth code is implemented with bounded proof, not signed off",
@@ -1487,7 +1715,8 @@
       "Read releaseQualification/currentPhase/current nextSteps and docs/RELEASE_QUALIFICATION.md; sourcea241/normal pushed12ab77e/exactCI41575291106 attempt1 audited25reports, bounded official-only automation/coverage complete but full release BLOCKED",
       "Keep terminal3notes uncommitted until next substantive approved change; follow finite security/browser/TLS/a11y/resources/device/platform/three-clean-runs/named-review checklist and unresolved existing Vite high advisory. No blind rerun/npm publication/deployment/private parity/signoff"
     ],
-    "checksBeforeVitePatch": "Official qualification sourcea241/normal pushed22file12ab77e: bothNode275units/coverage/package4/installed8each and local18+9real reports verified. Initial static owned-index failures preserved; corrected candidate13automation PASS/release BLOCKED/exit1. ExactCI41575291106 attempt1 completed/failure solely14unchanged executed research failures;25source-head-artifact/pin/service-digest/required-step/direct-log reports audit0, bothNodes275/coverage/package4/installed8/supported/reference16/browser15/all setup-cleanup pass; no rerun.27owned projects2parents absent/1739+1525raw-source files rehashed/original-private preserved. Existing development Vite8.3.2 high advisory unresolved; runtime-only audit0 not security approval. Terminal3notes intentionally uncommitted for next substantive checkpoint; zero clean full release runs or maintainer signoff."
+    "checksBeforeVitePatch": "Official qualification sourcea241/normal pushed22file12ab77e: bothNode275units/coverage/package4/installed8each and local18+9real reports verified. Initial static owned-index failures preserved; corrected candidate13automation PASS/release BLOCKED/exit1. ExactCI41575291106 attempt1 completed/failure solely14unchanged executed research failures;25source-head-artifact/pin/service-digest/required-step/direct-log reports audit0, bothNodes275/coverage/package4/installed8/supported/reference16/browser15/all setup-cleanup pass; no rerun.27owned projects2parents absent/1739+1525raw-source files rehashed/original-private preserved. Existing development Vite8.3.2 high advisory unresolved; runtime-only audit0 not security approval. Terminal3notes intentionally uncommitted for next substantive checkpoint; zero clean full release runs or maintainer signoff.",
+    "checksBeforeViteCiObservation": "Source14a9 Vite8.3.3 only3lock fields, all6official ranges/registry integrity verified before patch/full and runtime-only audit0. Full26commands18reports, bothNode276/coverage/package4/installed8/support-reference and strict14exact failures audited; shipped9SDK files unchanged.18owned projects1parent absent/1748source-raw files archived/original-private preserved. Final scoped push/exactCI pending, no security/device/release signoff."
   },
   "maintainer": "burggraf",
   "licenseDecision": {
@@ -1544,7 +1773,8 @@
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569",
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
         "Current release qualification checklist in docs/RELEASE_QUALIFICATION.md and named maintainer review; preserve strict research history and unknown startup causes; broader research/streaming decisions are not missing official CRUD/auth code"
@@ -1575,7 +1805,8 @@
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37081797569",
         "https://github.com/burggraf/trailbase-supabase/actions/runs/37083854601",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
         "Final release package/platform claims and named maintainer review; existing exact runtime/license/backend pins remain unchanged"
@@ -1674,7 +1905,8 @@
         "docs/evidence/phase-a-ci-linux-client-deadline-browser.json",
         "docs/evidence/phase-a-ci-linux-client-deadline-lifecycle.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
         "Current release qualification checklist in docs/RELEASE_QUALIFICATION.md and named maintainer review; preserve strict research history and unknown startup causes; broader research/streaming decisions are not missing official CRUD/auth code"
@@ -1772,7 +2004,8 @@
         "docs/evidence/phase-a-ci-linux-client-deadline-browser.json",
         "docs/evidence/phase-a-ci-linux-client-deadline-lifecycle.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
         "Current release qualification checklist in docs/RELEASE_QUALIFICATION.md and named maintainer review; preserve strict research history and unknown startup causes; broader research/streaming decisions are not missing official CRUD/auth code"
@@ -1877,7 +2110,8 @@
         "docs/evidence/phase-a-ci-linux-client-deadline-browser.json",
         "docs/evidence/phase-a-ci-linux-client-deadline-lifecycle.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
         "Current release qualification checklist in docs/RELEASE_QUALIFICATION.md and named maintainer review; preserve strict research history and unknown startup causes; broader research/streaming decisions are not missing official CRUD/auth code"
@@ -1981,7 +2215,8 @@
         "docs/evidence/phase-a-ci-linux-client-deadline-browser.json",
         "docs/evidence/phase-a-ci-linux-client-deadline-lifecycle.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
         "Current release qualification checklist in docs/RELEASE_QUALIFICATION.md and named maintainer review; preserve strict research history and unknown startup causes; broader research/streaming decisions are not missing official CRUD/auth code"
@@ -2019,12 +2254,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2040,6 +2277,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2072,12 +2319,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2093,6 +2342,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2120,12 +2379,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2141,6 +2402,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2168,12 +2439,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2189,6 +2462,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2216,12 +2499,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2237,6 +2522,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2264,12 +2559,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2285,6 +2582,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2312,12 +2619,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2333,6 +2642,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2360,12 +2679,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2381,6 +2702,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2417,12 +2748,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2438,6 +2771,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2473,12 +2816,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2494,6 +2839,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2529,12 +2884,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2550,6 +2907,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2577,12 +2944,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2598,6 +2967,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2625,12 +3004,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2646,6 +3027,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -2701,13 +3092,15 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
-        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
+        "PB01–PB04 request expiry/shared renewal and delayed-response logout/direct B/logout-then-B schedules now proved on3engines. Full browser background/focus/terminal/transient/corrupt-unavailable storage, real disabled-registration/MFA and100-cycle resources remain; no cross-tab synchronization or full E08 signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2725,6 +3118,18 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
@@ -2780,13 +3185,15 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
-        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
+        "PB01–PB04 request expiry/shared renewal and delayed-response logout/direct B/logout-then-B schedules now proved on3engines. Full browser background/focus/terminal/transient/corrupt-unavailable storage, real disabled-registration/MFA and100-cycle resources remain; no cross-tab synchronization or full E08 signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2804,6 +3211,18 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
@@ -2859,13 +3278,15 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
-        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
+        "PB01–PB04 request expiry/shared renewal and delayed-response logout/direct B/logout-then-B schedules now proved on3engines. Full browser background/focus/terminal/transient/corrupt-unavailable storage, real disabled-registration/MFA and100-cycle resources remain; no cross-tab synchronization or full E08 signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2883,6 +3304,18 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
@@ -2914,13 +3347,15 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
-        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
+        "PB01–PB04 request expiry/shared renewal and delayed-response logout/direct B/logout-then-B schedules now proved on3engines. Full browser background/focus/terminal/transient/corrupt-unavailable storage, real disabled-registration/MFA and100-cycle resources remain; no cross-tab synchronization or full E08 signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -2938,6 +3373,18 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
@@ -2986,13 +3433,15 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
-        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
+        "PB01–PB04 request expiry/shared renewal and delayed-response logout/direct B/logout-then-B schedules now proved on3engines. Full browser background/focus/terminal/transient/corrupt-unavailable storage, real disabled-registration/MFA and100-cycle resources remain; no cross-tab synchronization or full E08 signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -3010,6 +3459,18 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
@@ -3037,13 +3498,15 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
-        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
+        "PB01–PB04 request expiry/shared renewal and delayed-response logout/direct B/logout-then-B schedules now proved on3engines. Full browser background/focus/terminal/transient/corrupt-unavailable storage, real disabled-registration/MFA and100-cycle resources remain; no cross-tab synchronization or full E08 signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -3061,6 +3524,18 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
@@ -3086,13 +3561,15 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
-        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
+        "PB01–PB04 request expiry/shared renewal and delayed-response logout/direct B/logout-then-B schedules now proved on3engines. Full browser background/focus/terminal/transient/corrupt-unavailable storage, real disabled-registration/MFA and100-cycle resources remain; no cross-tab synchronization or full E08 signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -3109,6 +3586,18 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Specific real/browser auth negative/expiry/race/storage-fault gaps and100-cycle resource accounting in docs/RELEASE_QUALIFICATION.md; no cross-tab synchronization claimed",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
@@ -3159,13 +3648,15 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete S01–S08/S10 and critical reachable-branch security assessment; trusted local TLS/auth smoke; no universal no-leak or custom-fetch guarantee",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -3181,6 +3672,18 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete S01–S08/S10 and critical reachable-branch security assessment; trusted local TLS/auth smoke; no universal no-leak or custom-fetch guarantee",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete S01–S08/S10 and critical reachable-branch security assessment; trusted local TLS/auth smoke; no universal no-leak or custom-fetch guarantee",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete S01–S08/S10 and critical reachable-branch security assessment; trusted local TLS/auth smoke; no universal no-leak or custom-fetch guarantee",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
@@ -3261,12 +3764,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -3283,6 +3788,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -3360,12 +3875,14 @@
         "docs/evidence/ci-3a66fd3-packed-node-checkpoint.json",
         "docs/evidence/release-qualification-checkpoint.json",
         "docs/evidence/ci-12ab77e-release-qualification-checkpoint.json",
-        "docs/evidence/vite-security-patch-checkpoint.json"
+        "docs/evidence/vite-security-patch-checkpoint.json",
+        "docs/evidence/ci-a54a382-vite-security-patch-checkpoint.json"
       ],
       "missing": [
-        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "PB01–PB04 finite current-source local proof verified: bothNodes279units/coverage/package4/installed8, candidate14 automation PASS/default1/releaseBLOCKED;19real reports/new3engine12/default15/reference16/setup-cleanup pass;14strict research failures exact. Final review/normal substantive push and one exactCI audit pending. No full feature/security/release signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
-        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval",
+        "Historical exactCI41584110829 and41548029405 stock startup0/121unexecuted including6historical assertions remain separately unexplained; later local stock115/6 does not repair either failed baseline."
       ],
       "reviewer": null,
       "reviewedAt": null,
@@ -3382,6 +3899,16 @@
       ],
       "missingBeforeVitePatch": [
         "Complete active release acceptance and named review remain required; sourcea241/pushed12ab77e local automation and exactCI25-report audit verify275units/coverage/package4/installed8each/supported-reference scopes, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforeViteCiObservation": [
+        "Exact pushed Vite8.3.3 candidate CI audit and full active release acceptance remain required; current source14a9 local276units/coverage/package4/installed8each/support-reference verified, not full security/device/feature signoff",
+        "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
+        "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
+      ],
+      "missingBeforePackedBrowserAuthRaces": [
+        "Exact Vite patch CI41584110829 observation25reports: supported/bothNodes276coveragepackage4installed8 pass, stock Supabase-start0 leaves121cases/6historical assertions unexecuted; original full-baseline auditorFAILED. Other8historical failures executed unchanged; no full security/device/release/maintainer signoff",
         "Complete active requirement matrix, accessibility/device/platform acceptance, three clean same-candidate runs and named maintainer signoff per docs/RELEASE_QUALIFICATION.md; no private parity/realtime/migration dependency",
         "Official G1/G7 limitations remain technically unresolved and documented; issue310 filed/verified, not an implemented acknowledgement or full compatibility approval"
       ]
@@ -3777,9 +4304,9 @@
     }
   ],
   "nextSteps": [
-    "Complete7-file lock/test/docs/evidence scope/history/basic-privacy review and staged fresh bothNode check/progress/diff; normal substantive commit/push folding12ab terminal CI audit; no unrelated upgrades/auditfix/publication/deployment/upstream message.",
-    "Watch/collect/audit one exact normal pushedCI:25reports, bothNodes276coveragepackage4installed8/supported/reference16/browser15/setup-cleanup/exact14historical strict names, native/service/client/CLI/Node/browser pins and nonempty direct-step logs. No blind rerun.",
-    "Keep full critical-security/browser/TLS/a11y/resources/physical advertised devices/platforms/three clean same-candidate runs/named maintainer acceptance blocked; patching six known development advisories does not certify overall security or resolve G1/G7/historical startup0."
+    "Review exact15-file substantive test/fixture/runner/docs/evidence scope, statuses/privacy and byte-preserved inherited Vite terminal evidence. Fresh exact bothNode checks/progress/diff; normal commit/push, no force or unrelated staging.",
+    "Collect and audit one exact new-source CI at normal pushed head; retain any missing/setup/strict or supported failure truthfully, no green-seeking rerun/startup workaround, no extra upstream messages.",
+    "Terminal remote/source/owned3parents21projects/current3archives4339files/prior15archives21332files/original/private preservation; retain terminal notes for next substantive work, no docs-only push or feature/security/release signoff."
   ],
   "nextStepsBeforePackedNodeCheckpoint": [
     "Current exactCI41548029405 observation is audited, NOT full required-baseline green: stock supabase-start0tests with image-pull/rate-limit text signatures/unknown actual cause;121cases and6historical stock assertions unexecuted. Keep original strict auditor failure/raw/artifacts and separate local full115/6 proof; no retry/warm-up/registry/pin/budget/permission change or blind rerun.",
@@ -4766,20 +5293,20 @@
     }
   },
   "pendingWork": {
-    "scope": "Existing official-only CRUD/password-auth release qualification; no new features/private parity",
-    "scopeBeforePackedNodeCheckpoint": "Official-only CRUD/password-auth MVP; bounded contract/app checkpoint then real packed Node consumer integration",
-    "status": "Vite8.3.3 six-advisory patch/full and runtime-only registry audits0, local current-source full supported/strict/bothNode276coveragepackage4installed8 and preservation complete. Final7-file review/normal push/one exactCI pending; full acceptance remains blocked.",
-    "statusBeforePackedNodeCheckpoint": "Official-only8c15a0e published; CI41548029405 supported/bothNodes pass BUT stock Supabase-start0tests leaves121cases/6historical assertions unexecuted and full baseline audit FAILED. Cause beyond image-pull/rate-limit text not established; no rerun/waiver or diagnostics-only CI loop. See current nextSteps/terminal observation. Next official-supported task remains real packed Node consumer integration. Former private G1 work is preserved history, not an active dependency; no fork parity/adoption.",
-    "statusBeforeOfficialOnlyTerminalCiAudit": "See current officialOnlyDecision/lastSession/nextSteps. Former private G1 recovery/migration work below is preserved history, not an active dependency or restart instruction; no more fork parity by default.",
-    "scopeBeforeOfficialOnlyDecision": "G1 recovery capability and migration restart/upgrade investigation",
-    "statusBeforeOfficialOnlyDecision": "Owned-depot stock preflight rollback passed on macOS/Linux. The reservation-only SQL candidate preserves identity but still strictly fails real SMTP recovery. The separate exact-base private prototype passes 23 native test executions/22 distinct tests under upstream-pinned 1.98.1 plus independent rerun, built its no-default-feature dev CLI, passed SMTP recovery and same-server concurrent signup HTTP cases, successfully migrated a stock-created existing depot with one pending identity, preserved the confirmed identity through a second private-binary restart, and failed closed on a stock-created ambiguous legacy depot. The successful upgrade preserved ID/hash through public resend, real confirmation and original-password login; ambiguous refusal preserved rows, application schema and migration history (SQLite optimizer-stat tables are separately recorded). Off-host disaster recovery, further restart cycles, multi-server stress and broader lifecycle remain pending. Four-hour resend throttle unchanged; no deployment, maintained fork, identity repair, repin or public submission; #299 remains closed.",
-    "g6DecisionInterview": "186fd6d9-0e51-4c33-a864-8e099ba8cd26: explicit approval to document native owner-only versus Supabase non-confidential DELETE keys; protected row values remain private",
-    "g7Proof": "Four genuine response/JSON-stage terminal-revocation regressions reproduced stale-success restoration in the test-only coordinator. Cache clearing now centrally invalidates its epoch/flight; 18 real proofs, 24 browser cases, 2 expiry cases, 2 network controls and fault cleanup passed. Stock remains 58/4; Linux 5ba3e25 reproduced those results and all 24 browser cases. This does not patch the installed client or sign off a production strategy.",
-    "decisionInterview": "6f74221d-1b37-456b-af5d-261ea4372430 timed out; follow-up user instruction authorized proceeding with the recommended bounded G1 private prototype and G4 adapter-generated range-error direction. This is not named gate signoff.",
-    "queryBoundaries": "Raw probes found permissive reference invalid-limit behavior and 416/PGRST103 for positive-offset zero-width queries; ordinary no-count out-of-range pages succeed empty. Initial assumption failures are preserved. Linux f26efb7 reproduced stock 61/4, 24 browsers and all setup/cleanup controls; candidate SMTP stays failed. The future adapter must expose an adapter-origin range error for effective positive offset plus zero limit, not fabricated native HTTP 416; input guards/implementation remain required.",
-    "signoff": "none; both installed-client reports remain drafts; no further public reply authorized",
-    "scopeBeforeReleaseQualification": "Official-only CRUD/password-auth MVP; packed Node integration locally verified, final reviewed substantive publication/exact CI pending",
-    "statusBeforeReleaseQualification": "Currentc154 local24commands18reports audited: bothNode268/package4/installed8each/all supported/setup-cleanup passed;14strict historical failures unchanged.19projects2parents absent/original-private preserved. Reviewed16file3a66fd3/sourcec154 pushed normally with exact staged-committed hashes/remote and bothNode staged checks/progress/diff verified; exactCI41563708961 attempt1 terminal audited23reports with bothNode268package4installed8each/supported/all setup-cleanup pass and14unchanged executed research failures, no rerun. Terminal3notes retained for next substantive checkpoint. Upstream310posted under explicit one-issue override; no runtime capability fix/signoff."
+    "scope": "Authorized PB01–PB04 finite genuine packed-browser expiry/shared-refresh and delayed renewal versus local logout/direct owner replacement/logout-then-replacement. Test/fixture/runner changes only unless a demonstrated in-scope SDK defect requires a failing regression and minimal fix.",
+    "status": "PB01–PB04 local finite proof/full current-source qualification/owned archive and preservation verified; review normal substantive push and one exactCI audit pending. Full release acceptance blocked.",
+    "remainingAcceptance": [
+      "complete-active-matrix-and-critical-security-branch-review",
+      "real-disabled-registration-and-mfa-negative-controls",
+      "browser-cap-operator-expiry-race-and-storage-failure-matrix",
+      "trusted-local-tls-auth-smoke-and-security-assessment",
+      "complete-accessibility-and-100-cycle-auth-app-resource-proof",
+      "physical-device-and-advertised-platform-acceptance",
+      "three-consecutive-clean-same-candidate-runs",
+      "named-maintainer-feature-limitations-and-release-signoff"
+    ],
+    "fullReleaseAcceptance": "blocked",
+    "signoff": false
   },
   "historicalCi": {
     "runUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/37089983540",

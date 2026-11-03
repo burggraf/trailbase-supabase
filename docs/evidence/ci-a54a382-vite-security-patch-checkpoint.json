@@ -1,0 +1,1869 @@
+{
+  "developmentVite": {
+    "lockedVersion": "8.3.3",
+    "lockedIntegrity": "sha512-cTAldKPImjg6c+gk48U19POPn3GCBzZwpdsN8ZMEEcbpes+6/wvfqUd0C2y3qYY4wsj8PwgFwrZ/1jBPVttMSg==",
+    "pinRegressionPassedBothNodeJobs": true,
+    "nineShippedSdkFileHashesAndRuntimeGraphMatchReviewed12ab77e": true,
+    "localSixAdvisoryAndRegistryAuditProof": "docs/evidence/vite-security-patch-checkpoint.json",
+    "noSeparateCiAuditReportInvented": true
+  },
+  "coverage": [
+    {
+      "node": "v22.23.2",
+      "sourceSha256": "14a9bb9b5e70c76271365d0dbb3e8f740e749a3078ab0d255fe94ef0a497e29b",
+      "thresholds": {
+        "statements": 95,
+        "lines": 95,
+        "functions": 95,
+        "branches": 90
+      },
+      "total": {
+        "statements": {
+          "total": 838,
+          "covered": 814,
+          "skipped": 0,
+          "pct": 97.13
+        },
+        "lines": {
+          "total": 555,
+          "covered": 552,
+          "skipped": 0,
+          "pct": 99.45
+        },
+        "functions": {
+          "total": 136,
+          "covered": 135,
+          "skipped": 0,
+          "pct": 99.26
+        },
+        "branches": {
+          "total": 655,
+          "covered": 622,
+          "skipped": 0,
+          "pct": 94.96
+        }
+      },
+      "files": [
+        {
+          "path": "src/auth.ts",
+          "metrics": {
+            "statements": {
+              "total": 509,
+              "covered": 495,
+              "skipped": 0,
+              "pct": 97.24
+            },
+            "lines": {
+              "total": 311,
+              "covered": 311,
+              "skipped": 0,
+              "pct": 100
+            },
+            "functions": {
+              "total": 80,
+              "covered": 79,
+              "skipped": 0,
+              "pct": 98.75
+            },
+            "branches": {
+              "total": 376,
+              "covered": 356,
+              "skipped": 0,
+              "pct": 94.68
+            }
+          },
+          "uncovered": {
+            "statements": [
+              {
+                "start": {
+                  "line": 15,
+                  "column": 19
+                },
+                "end": {
+                  "line": 15,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 23,
+                  "column": 39
+                },
+                "end": {
+                  "line": 23,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 77,
+                  "column": 74
+                },
+                "end": {
+                  "line": 77,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 93,
+                  "column": 34
+                },
+                "end": {
+                  "line": 93,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 101,
+                  "column": 38
+                },
+                "end": {
+                  "line": 101,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 46
+                },
+                "end": {
+                  "line": 113,
+                  "column": 177
+                }
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 102
+                },
+                "end": {
+                  "line": 113,
+                  "column": 131
+                }
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 131
+                },
+                "end": {
+                  "line": 113,
+                  "column": 175
+                }
+              },
+              {
+                "start": {
+                  "line": 124,
+                  "column": 83
+                },
+                "end": {
+                  "line": 124,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 125,
+                  "column": 72
+                },
+                "end": {
+                  "line": 125,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 138,
+                  "column": 52
+                },
+                "end": {
+                  "line": 138,
+                  "column": 70
+                }
+              },
+              {
+                "start": {
+                  "line": 138,
+                  "column": 70
+                },
+                "end": {
+                  "line": 138,
+                  "column": 78
+                }
+              },
+              {
+                "start": {
+                  "line": 370,
+                  "column": 61
+                },
+                "end": {
+                  "line": 370,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 431,
+                  "column": 25
+                },
+                "end": {
+                  "line": 431,
+                  "column": null
+                }
+              }
+            ],
+            "functions": [
+              {
+                "start": {
+                  "line": 113,
+                  "column": 44
+                },
+                "end": {
+                  "line": 113,
+                  "column": 178
+                }
+              }
+            ],
+            "branches": [
+              {
+                "start": {
+                  "line": 15,
+                  "column": 2
+                },
+                "end": {
+                  "line": 15,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 23,
+                  "column": 2
+                },
+                "end": {
+                  "line": 23,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 40,
+                  "column": 468
+                },
+                "end": {
+                  "line": 40,
+                  "column": 502
+                }
+              },
+              {
+                "start": {
+                  "line": 77,
+                  "column": 4
+                },
+                "end": {
+                  "line": 77,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 77,
+                  "column": 44
+                },
+                "end": {
+                  "line": 77,
+                  "column": 74
+                }
+              },
+              {
+                "start": {
+                  "line": 93,
+                  "column": 4
+                },
+                "end": {
+                  "line": 93,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 101,
+                  "column": 8
+                },
+                "end": {
+                  "line": 101,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 111,
+                  "column": 89
+                },
+                "end": {
+                  "line": 111,
+                  "column": 96
+                }
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 46
+                },
+                "end": {
+                  "line": 113,
+                  "column": 177
+                }
+              },
+              {
+                "start": {},
+                "end": {}
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 50
+                },
+                "end": {
+                  "line": 113,
+                  "column": 77
+                }
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 77
+                },
+                "end": {
+                  "line": 113,
+                  "column": 100
+                }
+              },
+              {
+                "start": {
+                  "line": 124,
+                  "column": 4
+                },
+                "end": {
+                  "line": 124,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 125,
+                  "column": 4
+                },
+                "end": {
+                  "line": 125,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 138,
+                  "column": 4
+                },
+                "end": {
+                  "line": 138,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 206,
+                  "column": 149
+                },
+                "end": {
+                  "line": 206,
+                  "column": null
+                }
+              },
+              {
+                "start": {},
+                "end": {}
+              },
+              {
+                "start": {
+                  "line": 370,
+                  "column": 6
+                },
+                "end": {
+                  "line": 370,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 431,
+                  "column": 8
+                },
+                "end": {
+                  "line": 431,
+                  "column": null
+                }
+              },
+              {
+                "start": {},
+                "end": {}
+              }
+            ]
+          }
+        },
+        {
+          "path": "src/common.ts",
+          "metrics": {
+            "statements": {
+              "total": 38,
+              "covered": 38,
+              "skipped": 0,
+              "pct": 100
+            },
+            "lines": {
+              "total": 29,
+              "covered": 29,
+              "skipped": 0,
+              "pct": 100
+            },
+            "functions": {
+              "total": 8,
+              "covered": 8,
+              "skipped": 0,
+              "pct": 100
+            },
+            "branches": {
+              "total": 31,
+              "covered": 29,
+              "skipped": 0,
+              "pct": 93.54
+            }
+          },
+          "uncovered": {
+            "statements": [],
+            "functions": [],
+            "branches": [
+              {
+                "start": {
+                  "line": 55,
+                  "column": 38
+                },
+                "end": {
+                  "line": 55,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 57,
+                  "column": 38
+                },
+                "end": {
+                  "line": 57,
+                  "column": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "path": "src/index.ts",
+          "metrics": {
+            "statements": {
+              "total": 291,
+              "covered": 281,
+              "skipped": 0,
+              "pct": 96.56
+            },
+            "lines": {
+              "total": 215,
+              "covered": 212,
+              "skipped": 0,
+              "pct": 98.6
+            },
+            "functions": {
+              "total": 48,
+              "covered": 48,
+              "skipped": 0,
+              "pct": 100
+            },
+            "branches": {
+              "total": 248,
+              "covered": 237,
+              "skipped": 0,
+              "pct": 95.56
+            }
+          },
+          "uncovered": {
+            "statements": [
+              {
+                "start": {
+                  "line": 76,
+                  "column": 13
+                },
+                "end": {
+                  "line": 76,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 96,
+                  "column": 13
+                },
+                "end": {
+                  "line": 96,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 114,
+                  "column": 2
+                },
+                "end": {
+                  "line": 114,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 158,
+                  "column": 30
+                },
+                "end": {
+                  "line": 158,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 198,
+                  "column": 26
+                },
+                "end": {
+                  "line": 198,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 227,
+                  "column": 53
+                },
+                "end": {
+                  "line": 227,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 254,
+                  "column": 37
+                },
+                "end": {
+                  "line": 254,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 258,
+                  "column": 68
+                },
+                "end": {
+                  "line": 258,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 358,
+                  "column": 106
+                },
+                "end": {
+                  "line": 358,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 387,
+                  "column": 20
+                },
+                "end": {
+                  "line": 387,
+                  "column": null
+                }
+              }
+            ],
+            "functions": [],
+            "branches": [
+              {
+                "start": {
+                  "line": 76,
+                  "column": 4
+                },
+                "end": {
+                  "line": 76,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 96,
+                  "column": 4
+                },
+                "end": {
+                  "line": 96,
+                  "column": null
+                }
+              },
+              {
+                "start": {},
+                "end": {}
+              },
+              {
+                "start": {
+                  "line": 158,
+                  "column": 4
+                },
+                "end": {
+                  "line": 158,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 198,
+                  "column": 4
+                },
+                "end": {
+                  "line": 198,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 227,
+                  "column": 6
+                },
+                "end": {
+                  "line": 227,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 254,
+                  "column": 4
+                },
+                "end": {
+                  "line": 254,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 258,
+                  "column": 4
+                },
+                "end": {
+                  "line": 258,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 358,
+                  "column": 45
+                },
+                "end": {
+                  "line": 358,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 386,
+                  "column": 67
+                },
+                "end": {
+                  "line": 386,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 387,
+                  "column": 6
+                },
+                "end": {
+                  "line": 387,
+                  "column": null
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "node": "v24.21.0",
+      "sourceSha256": "14a9bb9b5e70c76271365d0dbb3e8f740e749a3078ab0d255fe94ef0a497e29b",
+      "thresholds": {
+        "statements": 95,
+        "lines": 95,
+        "functions": 95,
+        "branches": 90
+      },
+      "total": {
+        "statements": {
+          "total": 838,
+          "covered": 814,
+          "skipped": 0,
+          "pct": 97.13
+        },
+        "lines": {
+          "total": 555,
+          "covered": 552,
+          "skipped": 0,
+          "pct": 99.45
+        },
+        "functions": {
+          "total": 136,
+          "covered": 135,
+          "skipped": 0,
+          "pct": 99.26
+        },
+        "branches": {
+          "total": 655,
+          "covered": 622,
+          "skipped": 0,
+          "pct": 94.96
+        }
+      },
+      "files": [
+        {
+          "path": "src/auth.ts",
+          "metrics": {
+            "statements": {
+              "total": 509,
+              "covered": 495,
+              "skipped": 0,
+              "pct": 97.24
+            },
+            "lines": {
+              "total": 311,
+              "covered": 311,
+              "skipped": 0,
+              "pct": 100
+            },
+            "functions": {
+              "total": 80,
+              "covered": 79,
+              "skipped": 0,
+              "pct": 98.75
+            },
+            "branches": {
+              "total": 376,
+              "covered": 356,
+              "skipped": 0,
+              "pct": 94.68
+            }
+          },
+          "uncovered": {
+            "statements": [
+              {
+                "start": {
+                  "line": 15,
+                  "column": 19
+                },
+                "end": {
+                  "line": 15,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 23,
+                  "column": 39
+                },
+                "end": {
+                  "line": 23,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 77,
+                  "column": 74
+                },
+                "end": {
+                  "line": 77,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 93,
+                  "column": 34
+                },
+                "end": {
+                  "line": 93,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 101,
+                  "column": 38
+                },
+                "end": {
+                  "line": 101,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 46
+                },
+                "end": {
+                  "line": 113,
+                  "column": 177
+                }
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 102
+                },
+                "end": {
+                  "line": 113,
+                  "column": 131
+                }
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 131
+                },
+                "end": {
+                  "line": 113,
+                  "column": 175
+                }
+              },
+              {
+                "start": {
+                  "line": 124,
+                  "column": 83
+                },
+                "end": {
+                  "line": 124,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 125,
+                  "column": 72
+                },
+                "end": {
+                  "line": 125,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 138,
+                  "column": 52
+                },
+                "end": {
+                  "line": 138,
+                  "column": 70
+                }
+              },
+              {
+                "start": {
+                  "line": 138,
+                  "column": 70
+                },
+                "end": {
+                  "line": 138,
+                  "column": 78
+                }
+              },
+              {
+                "start": {
+                  "line": 370,
+                  "column": 61
+                },
+                "end": {
+                  "line": 370,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 431,
+                  "column": 25
+                },
+                "end": {
+                  "line": 431,
+                  "column": null
+                }
+              }
+            ],
+            "functions": [
+              {
+                "start": {
+                  "line": 113,
+                  "column": 44
+                },
+                "end": {
+                  "line": 113,
+                  "column": 178
+                }
+              }
+            ],
+            "branches": [
+              {
+                "start": {
+                  "line": 15,
+                  "column": 2
+                },
+                "end": {
+                  "line": 15,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 23,
+                  "column": 2
+                },
+                "end": {
+                  "line": 23,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 40,
+                  "column": 468
+                },
+                "end": {
+                  "line": 40,
+                  "column": 502
+                }
+              },
+              {
+                "start": {
+                  "line": 77,
+                  "column": 4
+                },
+                "end": {
+                  "line": 77,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 77,
+                  "column": 44
+                },
+                "end": {
+                  "line": 77,
+                  "column": 74
+                }
+              },
+              {
+                "start": {
+                  "line": 93,
+                  "column": 4
+                },
+                "end": {
+                  "line": 93,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 101,
+                  "column": 8
+                },
+                "end": {
+                  "line": 101,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 111,
+                  "column": 89
+                },
+                "end": {
+                  "line": 111,
+                  "column": 96
+                }
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 46
+                },
+                "end": {
+                  "line": 113,
+                  "column": 177
+                }
+              },
+              {
+                "start": {},
+                "end": {}
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 50
+                },
+                "end": {
+                  "line": 113,
+                  "column": 77
+                }
+              },
+              {
+                "start": {
+                  "line": 113,
+                  "column": 77
+                },
+                "end": {
+                  "line": 113,
+                  "column": 100
+                }
+              },
+              {
+                "start": {
+                  "line": 124,
+                  "column": 4
+                },
+                "end": {
+                  "line": 124,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 125,
+                  "column": 4
+                },
+                "end": {
+                  "line": 125,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 138,
+                  "column": 4
+                },
+                "end": {
+                  "line": 138,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 206,
+                  "column": 149
+                },
+                "end": {
+                  "line": 206,
+                  "column": null
+                }
+              },
+              {
+                "start": {},
+                "end": {}
+              },
+              {
+                "start": {
+                  "line": 370,
+                  "column": 6
+                },
+                "end": {
+                  "line": 370,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 431,
+                  "column": 8
+                },
+                "end": {
+                  "line": 431,
+                  "column": null
+                }
+              },
+              {
+                "start": {},
+                "end": {}
+              }
+            ]
+          }
+        },
+        {
+          "path": "src/common.ts",
+          "metrics": {
+            "statements": {
+              "total": 38,
+              "covered": 38,
+              "skipped": 0,
+              "pct": 100
+            },
+            "lines": {
+              "total": 29,
+              "covered": 29,
+              "skipped": 0,
+              "pct": 100
+            },
+            "functions": {
+              "total": 8,
+              "covered": 8,
+              "skipped": 0,
+              "pct": 100
+            },
+            "branches": {
+              "total": 31,
+              "covered": 29,
+              "skipped": 0,
+              "pct": 93.54
+            }
+          },
+          "uncovered": {
+            "statements": [],
+            "functions": [],
+            "branches": [
+              {
+                "start": {
+                  "line": 55,
+                  "column": 38
+                },
+                "end": {
+                  "line": 55,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 57,
+                  "column": 38
+                },
+                "end": {
+                  "line": 57,
+                  "column": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "path": "src/index.ts",
+          "metrics": {
+            "statements": {
+              "total": 291,
+              "covered": 281,
+              "skipped": 0,
+              "pct": 96.56
+            },
+            "lines": {
+              "total": 215,
+              "covered": 212,
+              "skipped": 0,
+              "pct": 98.6
+            },
+            "functions": {
+              "total": 48,
+              "covered": 48,
+              "skipped": 0,
+              "pct": 100
+            },
+            "branches": {
+              "total": 248,
+              "covered": 237,
+              "skipped": 0,
+              "pct": 95.56
+            }
+          },
+          "uncovered": {
+            "statements": [
+              {
+                "start": {
+                  "line": 76,
+                  "column": 13
+                },
+                "end": {
+                  "line": 76,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 96,
+                  "column": 13
+                },
+                "end": {
+                  "line": 96,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 114,
+                  "column": 2
+                },
+                "end": {
+                  "line": 114,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 158,
+                  "column": 30
+                },
+                "end": {
+                  "line": 158,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 198,
+                  "column": 26
+                },
+                "end": {
+                  "line": 198,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 227,
+                  "column": 53
+                },
+                "end": {
+                  "line": 227,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 254,
+                  "column": 37
+                },
+                "end": {
+                  "line": 254,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 258,
+                  "column": 68
+                },
+                "end": {
+                  "line": 258,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 358,
+                  "column": 106
+                },
+                "end": {
+                  "line": 358,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 387,
+                  "column": 20
+                },
+                "end": {
+                  "line": 387,
+                  "column": null
+                }
+              }
+            ],
+            "functions": [],
+            "branches": [
+              {
+                "start": {
+                  "line": 76,
+                  "column": 4
+                },
+                "end": {
+                  "line": 76,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 96,
+                  "column": 4
+                },
+                "end": {
+                  "line": 96,
+                  "column": null
+                }
+              },
+              {
+                "start": {},
+                "end": {}
+              },
+              {
+                "start": {
+                  "line": 158,
+                  "column": 4
+                },
+                "end": {
+                  "line": 158,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 198,
+                  "column": 4
+                },
+                "end": {
+                  "line": 198,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 227,
+                  "column": 6
+                },
+                "end": {
+                  "line": 227,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 254,
+                  "column": 4
+                },
+                "end": {
+                  "line": 254,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 258,
+                  "column": 4
+                },
+                "end": {
+                  "line": 258,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 358,
+                  "column": 45
+                },
+                "end": {
+                  "line": 358,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 386,
+                  "column": 67
+                },
+                "end": {
+                  "line": 386,
+                  "column": null
+                }
+              },
+              {
+                "start": {
+                  "line": 387,
+                  "column": 6
+                },
+                "end": {
+                  "line": 387,
+                  "column": null
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "scope": "Observation-only audit of exact Vite patch CI with failed stock Supabase-start0; original required-baseline auditor remains FAILED. Not a passing full baseline, security/device/release/maintainer approval or private adoption",
+  "commit": "a54a3820ff61e8c92d00ce642957b9eda7b0db48",
+  "sourceSha256": "14a9bb9b5e70c76271365d0dbb3e8f740e749a3078ab0d255fe94ef0a497e29b",
+  "run": 41584110829,
+  "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41584110829",
+  "attempt": 1,
+  "status": "completed",
+  "conclusion": "failure",
+  "jobs": [
+    {
+      "id": 125745480132,
+      "name": "Static, units and packed consumer / Node 24.21.0",
+      "conclusion": "success"
+    },
+    {
+      "id": 125745480295,
+      "name": "Static, units and packed consumer / Node 22.23.2",
+      "conclusion": "success"
+    },
+    {
+      "id": 125745712701,
+      "name": "Real backends / browser infrastructure / cleanup",
+      "conclusion": "failure"
+    },
+    {
+      "id": 125745712767,
+      "name": "Focused SDK CRUD-auth / real fixtures / packed browsers",
+      "conclusion": "success"
+    },
+    {
+      "id": 125745712806,
+      "name": "Packed Node CRUD-auth / Node 22.23.2",
+      "conclusion": "success"
+    },
+    {
+      "id": 125745712842,
+      "name": "Packed Node CRUD-auth / Node 24.21.0",
+      "conclusion": "success"
+    }
+  ],
+  "reports": [
+    {
+      "suite": "native-upgrade",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/native-upgrade/latest.json",
+      "artifactSha256": "cfe1b834c6a278f993ca9f3f01c08ab3673e532ea8ecbdf8ad96db72bcebce24"
+    },
+    {
+      "suite": "all",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "supabase-start",
+      "passed": 0,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793683805582-4402116f07e7.json",
+      "artifactSha256": "5752ad4d02c96c44aca9b779631a9139a78c3a897bdf5ca8575d5fab744c77d2"
+    },
+    {
+      "suite": "expiry",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793683833754-6c8b1654a46a.json",
+      "artifactSha256": "74d674c528358738872cf79cd85a17f0a2c10537d4ee9b6357b2eb5e3b600876"
+    },
+    {
+      "suite": "characterization",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 9,
+      "failed": 1,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793683999839-61ac4ceef395.json",
+      "artifactSha256": "2e28dae6a6106ca326d1b2ac71216c79ba6c5fdad3af926631b79dd5dc3e13d9"
+    },
+    {
+      "suite": "smtp",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 0,
+      "failed": 1,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793684041245-7ffc4963ad6b.json",
+      "artifactSha256": "c4c218bda8b0590e6fafa3d8edae4c58c7a4c122cf6e9b68021bc8def2710d91"
+    },
+    {
+      "suite": "auth-reference",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 16,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793684079395-970319e6d831.json",
+      "artifactSha256": "86abdeb6ca12840203c0c4b38ddeffcc2d62f10f9e675e537129d98e455c03a2"
+    },
+    {
+      "suite": "auth-migration",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793684149229-d1e11bb050d2.json",
+      "artifactSha256": "b177f1ac7df06e53fe6fea655c0695385bad5284a530e2583c6d9f6019485249"
+    },
+    {
+      "suite": "browser",
+      "node": "v22.23.2",
+      "status": "failed",
+      "setupStage": "ready",
+      "passed": 60,
+      "failed": 6,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793684233126-0875a87f0d72.json",
+      "artifactSha256": "1ac2d877219a84365ace63580408ff6359b362ffe05a7066b3601fdfbb385690"
+    },
+    {
+      "suite": "lifecycle",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-real-backends-sanitized/phase-a/1793684652855-d2752b4c0b07.json",
+      "artifactSha256": "a991721214310d6bd3c1c5b09c46c0c7a11509d611009a4ccdde32fe56bfe91a"
+    },
+    {
+      "suite": "coverage",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 0,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-22.23.2/sdk-coverage/node-22.23.2.json",
+      "artifactSha256": "6b21eda3c045886fd919c9680444e34979269b776ac45503b4b5d0d7ba8c9f9b"
+    },
+    {
+      "suite": "package",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-unit-node-22.23.2/sdk-package/latest.json",
+      "artifactSha256": "03cee6d55a08538abab0bc2293b16b8924f36dfe06582101244641df140592a8"
+    },
+    {
+      "suite": "unit",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 276,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-22.23.2/unit/latest.json",
+      "artifactSha256": "f547bf8f2b65730313bff1dbe25e8b152f68992d698ac05973449c1ac7460888"
+    },
+    {
+      "suite": "coverage",
+      "node": "v24.21.0",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 0,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-24.21.0/sdk-coverage/node-24.21.0.json",
+      "artifactSha256": "5caf8bdd7cf658d899d7c4182335318bd3efbaf25945ca231efdfaa28f32ed6f"
+    },
+    {
+      "suite": "package",
+      "node": "v24.21.0",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "phase-a-unit-node-24.21.0/sdk-package/latest.json",
+      "artifactSha256": "d8cb9495cbc950bd2a767849ceb7e091eceb96828ebd0bdbeeac88338ebf167c"
+    },
+    {
+      "suite": "unit",
+      "node": "v24.21.0",
+      "status": "passed",
+      "setupStage": "owned-ready",
+      "passed": 276,
+      "failed": 0,
+      "cleanup": "no-owned-runtime",
+      "artifact": "phase-a-unit-node-24.21.0/unit/latest.json",
+      "artifactSha256": "eb3dfb823a4d0f992da08a1a322b2a6fbde28f8ffe2ba72ea495dcf2fba36554"
+    },
+    {
+      "suite": "sdk-auth",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793683823712-a012b2324269.json",
+      "artifactSha256": "12b6eb3f20e91c3fe392941fff7a49bcc7a67141aeddfe65ecddf87618566fec"
+    },
+    {
+      "suite": "sdk-refresh",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 4,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793683896730-4dc47cead56d.json",
+      "artifactSha256": "9be844d755502a3d519bd1240890249792f3a89c3594267dd3603fd7257cb562"
+    },
+    {
+      "suite": "sdk-data",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793684125693-cf84cde789d8.json",
+      "artifactSha256": "c63675a82b4b05f91ed91672b815c5dd6b2c9a0264fb19f2c95f7db6a940d395"
+    },
+    {
+      "suite": "database",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793684174162-252a419cdb4a.json",
+      "artifactSha256": "ec7b71349bfef4abef4ff6da0254f6b04ba3dd9eec13b35948784d98747b686c"
+    },
+    {
+      "suite": "constraints",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793684214027-daaa2402feb2.json",
+      "artifactSha256": "178e18e903ff061f129170882def48bb72681f83e945f6997075c2366f6c763a"
+    },
+    {
+      "suite": "sdk-browser",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 15,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793684252382-147d7b7293f7.json",
+      "artifactSha256": "7d15302071fb3f1d34b635e4ceecf5eceac0f4ab71f8a225268875c4e3afb15e"
+    },
+    {
+      "suite": "lifecycle",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 1,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/phase-a/1793684381896-9237ef536756.json",
+      "artifactSha256": "a58d4d05f7e1624081bd3d5254d5907101da442d11fdf7fd44d378c491c9c732"
+    },
+    {
+      "suite": "todos-launcher",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 2,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-crud-auth-sanitized/todos/1793684345870-fb62930e1104.json",
+      "artifactSha256": "55622712e6df9fcd66585d3a8143e88ff85fcaed86aa395d9243c935b2fcae3b"
+    },
+    {
+      "suite": "sdk-node",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 8,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-node-22.23.2/1793683771304-b4d27a095f6e.json",
+      "artifactSha256": "fb656809a4fd923a451f36f4f5d3a99bb3b15ffa8c0694a71dfde3329faeb3bd"
+    },
+    {
+      "suite": "sdk-node",
+      "node": "v24.21.0",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 8,
+      "failed": 0,
+      "cleanup": "passed",
+      "artifact": "sdk-node-24.21.0/1793683774284-049d493d9843.json",
+      "artifactSha256": "f7a7042aa57456f0e37c0d6e0ecf5dc3deaf601662d4539d8e98df691f916e2d"
+    }
+  ],
+  "sourceBoundReportsChecked": 25,
+  "commitBinding": "Exact-run/head/artifact source hash and bytes for all producers; every Phase-A/packed-Node report also requires in-report baseCommit and ci.commit, not invented fields for other producer schemas",
+  "supportedAndBothNodesPassed": true,
+  "referenceTests": 16,
+  "private120sAndLiveUserProfilesExecutedByThisCi": false,
+  "strictResearchFailuresExecuted": 8,
+  "executedHistoricalResearchNamesAndStatusesUnchanged": true,
+  "stock": {
+    "setupStage": "supabase-start",
+    "cause": "not-established",
+    "supabaseStartup": {
+      "stage": "supabase-start",
+      "cause": "not-established",
+      "exitCode": 1,
+      "signal": null,
+      "killed": false,
+      "command": {
+        "kind": "nonzero-exit",
+        "stdout": "bounded",
+        "stderr": "bounded",
+        "progress": [],
+        "signatures": [
+          "image-pull"
+        ],
+        "pull": {
+          "reportedFailedServices": [
+            "supabase_inbucket"
+          ],
+          "httpStatuses": [],
+          "signals": [
+            "rate-limit"
+          ],
+          "upstreamRetryBanner": true
+        }
+      },
+      "services": [
+        {
+          "service": "supabase_auth",
+          "inspection": "not-available"
+        },
+        {
+          "service": "supabase_db",
+          "inspection": "not-available"
+        },
+        {
+          "service": "supabase_inbucket",
+          "inspection": "not-available"
+        },
+        {
+          "service": "supabase_kong",
+          "inspection": "not-available"
+        },
+        {
+          "service": "supabase_realtime",
+          "inspection": "not-available"
+        },
+        {
+          "service": "supabase_rest",
+          "inspection": "not-available"
+        }
+      ]
+    },
+    "supabaseStartContext": {
+      "operation": "cli-start",
+      "cliVersion": "2.119.0",
+      "configSha256": "487cded251ac95dbc7632ffebe8a397862fda00ac141f92d6e01af885725a94c",
+      "timeoutMs": 300000,
+      "maxBufferBytes": 20000000,
+      "environment": {
+        "policy": "fixture-prefix-stripping",
+        "registry": "pinned-ecr",
+        "dockerTransport": "verified-local-unix",
+        "dockerHostOverridePresent": false,
+        "dockerContextOverridePresent": false,
+        "proxyVariablesPresent": false,
+        "nodeOptionsPresent": false
+      },
+      "imageCacheBeforeStart": [
+        {
+          "service": "supabase_auth",
+          "cache": "not-present"
+        },
+        {
+          "service": "supabase_db",
+          "cache": "not-present"
+        },
+        {
+          "service": "supabase_inbucket",
+          "cache": "not-present"
+        },
+        {
+          "service": "supabase_kong",
+          "cache": "not-present"
+        },
+        {
+          "service": "supabase_realtime",
+          "cache": "not-present"
+        },
+        {
+          "service": "supabase_rest",
+          "cache": "not-present"
+        }
+      ]
+    },
+    "unexecutedCases": 121,
+    "historicalFailureAssertionsUnexecuted": 6,
+    "missingHistoricalFailureNames": [
+      "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference unawaited async hydration must not notify recovered A after genuine newer B login",
+      "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late refresh response must not restore a locally logged-out client",
+      "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late status response must not restore a locally logged-out client",
+      "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native unconfirmed duplicate keeps the original password and requires real confirmation",
+      "L1-27/S01/S07 native header set at permissive foreign origin, NOT a logout acknowledgement strategy raw Fetch redirect follow must not export native credentials to permissive receiver",
+      "L1-27 G1/S04 real SMTP outage reports failure, creates no session, and distinguishes native retry from reference recovery"
+    ],
+    "selectedPinIsNotAReadyStockRuntimeClaim": true
+  },
+  "requiredFullBaselineAuditPassed": false,
+  "requiredFullBaselineAuditFailure": "Original auditor exit1: actual[0,0] vs required[115,6], unchanged assertion preserved",
+  "allSetupAndCleanupPassed": false,
+  "allCleanupPassed": true,
+  "supportedSetupPassed": true,
+  "requiredStepsAndBothExactRuntimeVersionsVerified": true,
+  "recordedBaselineNativeCommitsAndReadyReportServiceDigestsVerified": true,
+  "directJobLogSha256": {
+    "supported": "c028d9e866a552b25b1f5a5cc46684d94ad239d9b9a756d70b4edaedd6c02dbc",
+    "research": "e6865a174b6f5bf762b9528f899bc4a2a36a972bb3d5a894e4a2e52f43d9f6e0",
+    "node22": "4e7440e46ca9c0381b98dcea75b4c26409505f003c370f81eb30e599a573ddc3",
+    "node24": "558ca45439066cee1129880b804d1af98624a1ad663477038d4a07f33c6b8148",
+    "static22": "e5de4b6089a0762a5745b79e7a0298be7fa2d755df965b5531a5dbe76069a5ed",
+    "static24": "7cf2768767c75a2a96ee3c15e9bbe05e7fcff0cbe57e417fdbfb7cbd5d84bd24"
+  },
+  "noRerun": true,
+  "priorStartupCause": "Not established; later passes do not explain historical startup failures",
+  "privateImplementationBuiltOrCertified": false,
+  "signoff": false,
+  "readinessClaim": false
+}

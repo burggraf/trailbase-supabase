@@ -36,6 +36,7 @@
     "test:release:candidate": "node scripts/run-release-candidate.mjs",
     "test:release:automated": "node scripts/run-release-candidate.mjs --automation",
     "test:sdk:browser": "node scripts/run-phase-a.mjs sdk-browser",
+    "test:sdk:browser:refresh": "node scripts/run-phase-a.mjs sdk-browser-refresh",
     "test:sdk:refresh": "node scripts/run-phase-a.mjs sdk-refresh",
     "test:sdk:auth": "node scripts/run-phase-a.mjs sdk-auth",
     "test:sdk:data": "node scripts/run-phase-a.mjs sdk-data",

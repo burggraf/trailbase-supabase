@@ -82,6 +82,8 @@ jobs:
         if: always()
       - run: npm run test:sdk:browser
         if: always()
+      - run: npm run test:sdk:browser:refresh
+        if: always()
       - run: npm run test:example:todos
         if: always()
       - run: npm run test:cleanup

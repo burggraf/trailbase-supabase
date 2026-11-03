@@ -1,0 +1,735 @@
+{
+  "scope": "PB01–PB04 finite genuine packed-browser actual request expiry/shared renewal and delayed response versus local logout/direct B login/logout-then-B-login. NOT complete E08/security/release acceptance, SDK defect/fix or private capability adoption",
+  "parentCommit": "a54a3820ff61e8c92d00ce642957b9eda7b0db48",
+  "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+  "change": {
+    "publicApiAndProductionSrcUnchanged": true,
+    "lockAndDependencyRuntimeNativeBrowserNodeServicePinsUnchanged": true,
+    "separateScope": "npm run test:sdk:browser:refresh",
+    "candidateCommands": 14,
+    "strictIndependentCiStep": true,
+    "realResponseHeldUnchanged": true,
+    "noFakeJwtClockSuccessfulResponseOrIdentityRepair": true,
+    "autoRefreshToken": false,
+    "noBackgroundFocusOrTimerParityClaim": true
+  },
+  "acceptance": {
+    "cases": [
+      "PB01 genuine native denial then expired data/getSession/manual single-flight; actual fresh access/original refresh retained; real stored-page reload",
+      "PB02 held actual old-A renewal, queued PK mutation, awaited local logout, stale results and final null",
+      "PB03 held actual old-A renewal, queued PK mutation, genuine B replacement without logout, stale results and final B; raw A refresh200 control",
+      "PB04 held actual old-A renewal, queued PK mutation, awaited local logout then genuine B replacement, stale results and final B"
+    ],
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "caseCount": 12,
+    "retries": 0,
+    "skips": 0,
+    "flakes": 0,
+    "exactEventsAndCommittedNonNullSnapshots": true,
+    "signedOutNullImmediatelyButStorageRemovalOnlyRequiredAfterAwait": true,
+    "zeroStaleMutationDispatchAndAuditWrites": true,
+    "completeGoldenOwnerControlRowsAndUnrelatedStoragePreserved": true,
+    "ordinaryCleanupAndUnrelatedUserSessionDataAuditPostconditions": true,
+    "targeted": {
+      "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+      "command": "npm run test:sdk:browser:refresh",
+      "node": "v22.23.2",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "retries": 0,
+      "setup": "ready",
+      "cleanup": "passed",
+      "nativeServerPin": {
+        "version": "0.35.8",
+        "commit": "05238c02b54aabb483e9f6224b5e014d40e88a5d"
+      },
+      "nativeAuthProfile": "short-native-auth",
+      "realPacked": true,
+      "productionChanges": false,
+      "fullE08Signoff": false
+    },
+    "fullCurrentSourceBrowserReport": {
+      "suite": "sdk-browser-refresh",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 12,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    "negativeControl": {
+      "scope": "Separate test-only guard-removal counterfactual, never current SDK/research status normalization, product defect/fix or release signoff",
+      "baselineSourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+      "mutantSourceSha256": "f00db8e9adc234522b61f97f8c0e8830b9197169d3b375ae09a22af5ea227d4d",
+      "actualTestExitCode": 1,
+      "actualReportStatus": "failed",
+      "selected": "PB03 Chromium only",
+      "failedAssertion": "old auth and queued mutation stale",
+      "setup": "ready",
+      "cleanup": "passed",
+      "expectedFailureObserved": true,
+      "productionSourceUnchanged": true,
+      "signoff": false
+    }
+  },
+  "regression": {
+    "commands": 27,
+    "controllerCommands": 14,
+    "unitsEachNode": 279,
+    "packageEachNode": 4,
+    "realInstalledNodeEach": 8,
+    "reports": [
+      {
+        "suite": "sdk-auth",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-refresh",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-data",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "database",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "constraints",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 15,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser-refresh",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 12,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "lifecycle",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-reference",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 16,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "expiry",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-migration",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "all",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 115,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "characterization",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "smtp",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "browser",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 60,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "native-upgrade",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "owned-ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "todos-launcher",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "f4d9e9083240b52576d869ecd13d581a66557ea1d80d1d7d129e7635ed4b2faf",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v24.21.0",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "f4d9e9083240b52576d869ecd13d581a66557ea1d80d1d7d129e7635ed4b2faf",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      }
+    ],
+    "guards": [
+      {
+        "node": "22.23.2",
+        "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+        "units": 279,
+        "packageChecks": 4
+      },
+      {
+        "node": "24.21.0",
+        "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+        "units": 279,
+        "packageChecks": 4
+      }
+    ],
+    "candidate": {
+      "commands": [
+        {
+          "id": "check",
+          "status": "passed"
+        },
+        {
+          "id": "units",
+          "status": "passed"
+        },
+        {
+          "id": "coverage",
+          "status": "passed"
+        },
+        {
+          "id": "package",
+          "status": "passed"
+        },
+        {
+          "id": "node",
+          "status": "passed"
+        },
+        {
+          "id": "auth",
+          "status": "passed"
+        },
+        {
+          "id": "refresh",
+          "status": "passed"
+        },
+        {
+          "id": "data",
+          "status": "passed"
+        },
+        {
+          "id": "database",
+          "status": "passed"
+        },
+        {
+          "id": "constraints",
+          "status": "passed"
+        },
+        {
+          "id": "browser",
+          "status": "passed"
+        },
+        {
+          "id": "browser-refresh",
+          "status": "passed"
+        },
+        {
+          "id": "example",
+          "status": "passed"
+        },
+        {
+          "id": "cleanup",
+          "status": "passed"
+        }
+      ],
+      "automation": "passed",
+      "qualification": "blocked",
+      "defaultExitCode": 1,
+      "remainingAcceptance": [
+        "complete-active-matrix-and-critical-security-branch-review",
+        "real-disabled-registration-and-mfa-negative-controls",
+        "browser-cap-operator-expiry-race-and-storage-failure-matrix",
+        "trusted-local-tls-auth-smoke-and-security-assessment",
+        "complete-accessibility-and-100-cycle-auth-app-resource-proof",
+        "physical-device-and-advertised-platform-acceptance",
+        "three-consecutive-clean-same-candidate-runs",
+        "named-maintainer-feature-limitations-and-release-signoff"
+      ],
+      "signoff": false
+    },
+    "coverage": [
+      {
+        "node": "v22.23.2",
+        "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+        "status": "passed",
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "thresholdsPassed": true,
+        "total": {
+          "statements": {
+            "total": 838,
+            "covered": 814,
+            "skipped": 0,
+            "pct": 97.13
+          },
+          "lines": {
+            "total": 555,
+            "covered": 552,
+            "skipped": 0,
+            "pct": 99.45
+          },
+          "functions": {
+            "total": 136,
+            "covered": 135,
+            "skipped": 0,
+            "pct": 99.26
+          },
+          "branches": {
+            "total": 655,
+            "covered": 622,
+            "skipped": 0,
+            "pct": 94.96
+          }
+        },
+        "files": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 509,
+                "covered": 495,
+                "skipped": 0,
+                "pct": 97.24
+              },
+              "lines": {
+                "total": 311,
+                "covered": 311,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 80,
+                "covered": 79,
+                "skipped": 0,
+                "pct": 98.75
+              },
+              "branches": {
+                "total": 376,
+                "covered": 356,
+                "skipped": 0,
+                "pct": 94.68
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 14,
+              "functions": 1,
+              "branches": 20
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 0,
+              "functions": 0,
+              "branches": 2
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 291,
+                "covered": 281,
+                "skipped": 0,
+                "pct": 96.56
+              },
+              "lines": {
+                "total": 215,
+                "covered": 212,
+                "skipped": 0,
+                "pct": 98.6
+              },
+              "functions": {
+                "total": 48,
+                "covered": 48,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 248,
+                "covered": 237,
+                "skipped": 0,
+                "pct": 95.56
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 10,
+              "functions": 0,
+              "branches": 11
+            }
+          }
+        ],
+        "completeSanitizedReportSha256": "43191f587d7fb9fe415e70700bba55e56e43c2fe4410deea32f2c0908929c911"
+      },
+      {
+        "node": "v24.21.0",
+        "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+        "status": "passed",
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "thresholdsPassed": true,
+        "total": {
+          "statements": {
+            "total": 838,
+            "covered": 814,
+            "skipped": 0,
+            "pct": 97.13
+          },
+          "lines": {
+            "total": 555,
+            "covered": 552,
+            "skipped": 0,
+            "pct": 99.45
+          },
+          "functions": {
+            "total": 136,
+            "covered": 135,
+            "skipped": 0,
+            "pct": 99.26
+          },
+          "branches": {
+            "total": 655,
+            "covered": 622,
+            "skipped": 0,
+            "pct": 94.96
+          }
+        },
+        "files": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 509,
+                "covered": 495,
+                "skipped": 0,
+                "pct": 97.24
+              },
+              "lines": {
+                "total": 311,
+                "covered": 311,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 80,
+                "covered": 79,
+                "skipped": 0,
+                "pct": 98.75
+              },
+              "branches": {
+                "total": 376,
+                "covered": 356,
+                "skipped": 0,
+                "pct": 94.68
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 14,
+              "functions": 1,
+              "branches": 20
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 0,
+              "functions": 0,
+              "branches": 2
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 291,
+                "covered": 281,
+                "skipped": 0,
+                "pct": 96.56
+              },
+              "lines": {
+                "total": 215,
+                "covered": 212,
+                "skipped": 0,
+                "pct": 98.6
+              },
+              "functions": {
+                "total": 48,
+                "covered": 48,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 248,
+                "covered": 237,
+                "skipped": 0,
+                "pct": 95.56
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 10,
+              "functions": 0,
+              "branches": 11
+            }
+          }
+        ],
+        "completeSanitizedReportSha256": "b47e4fa443aef767c7fc1af04d51d9a5da2477259807f49729883c67af3a7cd8"
+      }
+    ],
+    "strictResearchFailures": 14,
+    "exactHistoricalResearchNamesStatusesUnchanged": true,
+    "allSetupAndCleanupPassed": true,
+    "runtimeSdkDistributionBytesAndGraphMatchReviewed12ab77eOnBothNodes": true,
+    "unchangedShippedFiles": [
+      "LICENSE",
+      "dist/index.js",
+      "dist/auth.js",
+      "dist/common.js",
+      "dist/index.d.ts",
+      "dist/auth.d.ts",
+      "dist/common.d.ts"
+    ],
+    "changedShippedMetadata": [
+      "README.md",
+      "package.json"
+    ],
+    "completeSourceRawReportsAndCoverageMapsPreserved": true
+  },
+  "preservation": {
+    "scope": "Read-only historical/original preservation, not new private runtime work or MVP dependency",
+    "privateArtifactsUnchanged": 7,
+    "retainedPriorFilesHashVerified": 575,
+    "priorCompleteArchivesVerified": 15,
+    "priorArchivedFilesHashVerified": 21332,
+    "privateSdkSourceAndFrozenShippedFilesUnchanged": true,
+    "originalApprovedReadOnlyGuardPassed": true,
+    "originalDemoDataAssetsConfigurationKeysLocksContainersSupervisorTailnetUnchanged": true,
+    "privateAdoptionOrDeployment": false,
+    "signoff": false,
+    "currentArchives": [
+      {
+        "label": "first",
+        "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+        "ownedProjectsAbsent": 1,
+        "archivedFiles": 1271,
+        "allCopiedBytesIndependentlyRehashed": true,
+        "ownedParentAbsent": true
+      },
+      {
+        "label": "mutant",
+        "sourceSha256": "f00db8e9adc234522b61f97f8c0e8830b9197169d3b375ae09a22af5ea227d4d",
+        "ownedProjectsAbsent": 1,
+        "archivedFiles": 1288,
+        "allCopiedBytesIndependentlyRehashed": true,
+        "ownedParentAbsent": true
+      },
+      {
+        "label": "final",
+        "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+        "ownedProjectsAbsent": 19,
+        "archivedFiles": 1780,
+        "allCopiedBytesIndependentlyRehashed": true,
+        "ownedParentAbsent": true
+      }
+    ],
+    "currentOwnedProjectsAbsent": 21,
+    "currentOwnedParentsAbsent": 3,
+    "currentArchivedFiles": 4339
+  },
+  "setupHistory": {
+    "registration": "Two meaningful profile/command registration assertion failures before wiring, then green; real official-variant refusal canary reached EEXIST before stock guard, then green. These are harness additions, not SDK defects.",
+    "compiler": "Initial nullable final session TS18047 retained; corrected optional access, fresh npm run check passed before real proof.",
+    "negativeCanary": "First private CLI-canary spawn used a different cwd and did not enter existing main guard (exit0); setup mistake retained. Owned symlink entry then genuinely reached EEXIST before the explicit stock-only guard; canary unchanged. No real backend launched for either unit control."
+  },
+  "historicalCi": {
+    "viteRun": 41584110829,
+    "fullBaselineAuditPassed": false,
+    "stockSetup": "supabase-start",
+    "stockExecuted": 0,
+    "unexecutedCases": 121,
+    "unexecutedHistoricalAssertions": 6,
+    "historicalFailuresExecutedElsewhere": 8,
+    "cause": "not-established",
+    "earlierStockStartup0Run": 41548029405,
+    "laterLocalPassDoesNotExplainHistoricalFailures": true,
+    "noSameSourceGreenSeekingRerun": true
+  },
+  "remainingAcceptance": "BLOCKED: full browser background/focus/terminal-transient/storage/cap/operator matrix, disabled-registration/MFA negatives, critical security/TLS/accessibility/100cycle resources/physical-device/platform/three clean full runs/named maintainer acceptance. G1/G7/null signup/409/global uncertainty remain unwaived; zero clean full release runs.",
+  "normalSubstantivePushAndOneExactCiAudit": "Pending at local snapshot; prior3terminal notes folded byte-preserving historical evidence. No publication/upstream messages/deployment/live/security/pin changes.",
+  "signoff": false
+}
