@@ -1,0 +1,741 @@
+{
+  "scope": "DP01–DP04: smallest official development-only Vite security patch; not an SDK vulnerability fix/exploit reproduction, deployment, full security assessment or release approval",
+  "parentCommit": "12ab77e10c50560e40f66934b0e5c28e34804aea",
+  "sourceSha256": "14a9bb9b5e70c76271365d0dbb3e8f740e749a3078ab0d255fe94ef0a497e29b",
+  "change": {
+    "package": "vite",
+    "from": "8.3.2",
+    "to": "8.3.3",
+    "changedLockEntries": [
+      "node_modules/vite"
+    ],
+    "changedLockFields": [
+      "version",
+      "resolved",
+      "integrity"
+    ],
+    "allOtherLockedPackagesRuntimeGraphRootManifestVitestAndCoverageNativeBrowserServicePinsUnchanged": true,
+    "noDirectDependencyOverrideOrAuditFix": true
+  },
+  "advisories": [
+    {
+      "id": "GHSA-698v-4r3x-3vcv",
+      "maintainerUrl": "https://github.com/vitejs/launch-editor/security/advisories/GHSA-698v-4r3x-3vcv",
+      "affected": ">=8.3.0,<=8.3.2",
+      "patched": "8.3.3",
+      "severity": "medium",
+      "registryAuditFindingAfterPatch": false
+    },
+    {
+      "id": "GHSA-r825-w8mm-5pxw",
+      "maintainerUrl": "https://github.com/vitejs/launch-editor/security/advisories/GHSA-r825-w8mm-5pxw",
+      "affected": ">=8.3.0,<=8.3.2",
+      "patched": "8.3.3",
+      "severity": "medium",
+      "registryAuditFindingAfterPatch": false
+    },
+    {
+      "id": "GHSA-587h-7wmj-h5pm",
+      "maintainerUrl": "https://github.com/vitejs/launch-editor/security/advisories/GHSA-587h-7wmj-h5pm",
+      "affected": ">=8.3.0,<=8.3.2",
+      "patched": "8.3.3",
+      "severity": "high",
+      "registryAuditFindingAfterPatch": false
+    },
+    {
+      "id": "GHSA-9jrq-w75r-8gcw",
+      "maintainerUrl": "https://github.com/vitejs/vite/security/advisories/GHSA-9jrq-w75r-8gcw",
+      "affected": ">=8.3.0,<=8.3.2",
+      "patched": "8.3.3",
+      "severity": "low",
+      "registryAuditFindingAfterPatch": false
+    },
+    {
+      "id": "GHSA-rq7h-c2jc-7f22",
+      "maintainerUrl": "https://github.com/vitejs/vite/security/advisories/GHSA-rq7h-c2jc-7f22",
+      "affected": ">=8.3.0,<=8.3.2",
+      "patched": "8.3.3",
+      "severity": "medium",
+      "registryAuditFindingAfterPatch": false
+    },
+    {
+      "id": "GHSA-vfpm-58rq-9qcg",
+      "maintainerUrl": "https://github.com/vitejs/vite/security/advisories/GHSA-vfpm-58rq-9qcg",
+      "affected": ">=8.3.0,<=8.3.2",
+      "patched": "8.3.3",
+      "severity": "medium",
+      "registryAuditFindingAfterPatch": false
+    }
+  ],
+  "integrity": {
+    "registryUrl": "https://registry.npmjs.org/vite/8.3.3",
+    "tarball": "https://registry.npmjs.org/vite/-/vite-8.3.3.tgz",
+    "sha512": "sha512-cTAldKPImjg6c+gk48U19POPn3GCBzZwpdsN8ZMEEcbpes+6/wvfqUd0C2y3qYY4wsj8PwgFwrZ/1jBPVttMSg==",
+    "sha1": "12651726ab1cca0a9e1e649e3cb4dca5b6b006a9",
+    "actualDownloadedTarballMatchesBoth": true,
+    "officialTag": "https://github.com/vitejs/vite/tree/v8.3.3",
+    "officialChangelog": "https://github.com/vitejs/vite/blob/v8.3.3/packages/vite/CHANGELOG.md",
+    "officialTagPackageVersion": "8.3.3",
+    "unchangedDependenciesEnginesAndPeersVerified": true,
+    "publisherSignatureOrReproducibleBuildAttestationClaimed": false
+  },
+  "audits": {
+    "full": {
+      "command": "npm audit --json",
+      "exitCode": 0,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      }
+    },
+    "runtimeOnly": {
+      "command": "npm audit --omit=dev --json",
+      "exitCode": 0,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "beforePatchWasAlsoZero": true
+    },
+    "sixSpecificAdvisoriesClearedByOfficialRangesAndCurrentRegistryAudit": true,
+    "remainingRegistryFindings": 0,
+    "notUniversalSecurityProof": true
+  },
+  "regression": {
+    "pinTest": "One permanent DP01 lock version/registry integrity/development-only/Vitest-coverage compatibility test: expected8.3.3 vs actual8.3.2 assertion failure before patch, passed after clean npmci. No exploit payload was run against the live demo.",
+    "unitsEachNode": 276,
+    "packageEachNode": 4,
+    "realInstalledNodeEach": 8,
+    "flattenedCommands": 26,
+    "controllerCommands": 14,
+    "reports": [
+      {
+        "suite": "sdk-auth",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-refresh",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-data",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "database",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "constraints",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 15,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "lifecycle",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-reference",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 16,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "expiry",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-migration",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "all",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 115,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "characterization",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "smtp",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "browser",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 60,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "native-upgrade",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "owned-ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "todos-launcher",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "589210a750528e6da3076e39a9d39359d2502dbe274a335096a8ffe785789543",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v24.21.0",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "589210a750528e6da3076e39a9d39359d2502dbe274a335096a8ffe785789543",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      }
+    ],
+    "guards": [
+      {
+        "node": "22.23.2",
+        "sourceSha256": "14a9bb9b5e70c76271365d0dbb3e8f740e749a3078ab0d255fe94ef0a497e29b",
+        "units": 276,
+        "packageChecks": 4
+      },
+      {
+        "node": "24.21.0",
+        "sourceSha256": "14a9bb9b5e70c76271365d0dbb3e8f740e749a3078ab0d255fe94ef0a497e29b",
+        "units": 276,
+        "packageChecks": 4
+      }
+    ],
+    "candidate": {
+      "commands": [
+        {
+          "id": "check",
+          "status": "passed"
+        },
+        {
+          "id": "units",
+          "status": "passed"
+        },
+        {
+          "id": "coverage",
+          "status": "passed"
+        },
+        {
+          "id": "package",
+          "status": "passed"
+        },
+        {
+          "id": "node",
+          "status": "passed"
+        },
+        {
+          "id": "auth",
+          "status": "passed"
+        },
+        {
+          "id": "refresh",
+          "status": "passed"
+        },
+        {
+          "id": "data",
+          "status": "passed"
+        },
+        {
+          "id": "database",
+          "status": "passed"
+        },
+        {
+          "id": "constraints",
+          "status": "passed"
+        },
+        {
+          "id": "browser",
+          "status": "passed"
+        },
+        {
+          "id": "example",
+          "status": "passed"
+        },
+        {
+          "id": "cleanup",
+          "status": "passed"
+        }
+      ],
+      "automation": "passed",
+      "qualification": "blocked",
+      "defaultExitCode": 1,
+      "remainingAcceptance": [
+        "complete-active-matrix-and-critical-security-branch-review",
+        "real-disabled-registration-and-mfa-negative-controls",
+        "browser-cap-operator-expiry-race-and-storage-failure-matrix",
+        "trusted-local-tls-auth-smoke-and-security-assessment",
+        "complete-accessibility-and-100-cycle-auth-app-resource-proof",
+        "physical-device-and-advertised-platform-acceptance",
+        "three-consecutive-clean-same-candidate-runs",
+        "named-maintainer-feature-limitations-and-release-signoff"
+      ],
+      "signoff": false
+    },
+    "strictResearchFailures": 14,
+    "exactHistoricalNamesStatusesUnchanged": true,
+    "allSetupAndCleanupPassed": true,
+    "regeneratedNineShippedSdkFileHashesAndRuntimeGraphMatchReviewed12ab77eOnBothNodes": true,
+    "coverage": [
+      {
+        "node": "v22.23.2",
+        "sourceSha256": "14a9bb9b5e70c76271365d0dbb3e8f740e749a3078ab0d255fe94ef0a497e29b",
+        "status": "passed",
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "thresholdsPassed": true,
+        "total": {
+          "statements": {
+            "total": 838,
+            "covered": 814,
+            "skipped": 0,
+            "pct": 97.13
+          },
+          "lines": {
+            "total": 555,
+            "covered": 552,
+            "skipped": 0,
+            "pct": 99.45
+          },
+          "functions": {
+            "total": 136,
+            "covered": 135,
+            "skipped": 0,
+            "pct": 99.26
+          },
+          "branches": {
+            "total": 655,
+            "covered": 622,
+            "skipped": 0,
+            "pct": 94.96
+          }
+        },
+        "files": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 509,
+                "covered": 495,
+                "skipped": 0,
+                "pct": 97.24
+              },
+              "lines": {
+                "total": 311,
+                "covered": 311,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 80,
+                "covered": 79,
+                "skipped": 0,
+                "pct": 98.75
+              },
+              "branches": {
+                "total": 376,
+                "covered": 356,
+                "skipped": 0,
+                "pct": 94.68
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 14,
+              "functions": 1,
+              "branches": 20
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 0,
+              "functions": 0,
+              "branches": 2
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 291,
+                "covered": 281,
+                "skipped": 0,
+                "pct": 96.56
+              },
+              "lines": {
+                "total": 215,
+                "covered": 212,
+                "skipped": 0,
+                "pct": 98.6
+              },
+              "functions": {
+                "total": 48,
+                "covered": 48,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 248,
+                "covered": 237,
+                "skipped": 0,
+                "pct": 95.56
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 10,
+              "functions": 0,
+              "branches": 11
+            }
+          }
+        ],
+        "completeSanitizedReportSha256": "a7fb56e3a718c61d9ad6b06b86bc13fc287395b7d45f5a01520f6819e10f5447"
+      },
+      {
+        "node": "v24.21.0",
+        "sourceSha256": "14a9bb9b5e70c76271365d0dbb3e8f740e749a3078ab0d255fe94ef0a497e29b",
+        "status": "passed",
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "thresholdsPassed": true,
+        "total": {
+          "statements": {
+            "total": 838,
+            "covered": 814,
+            "skipped": 0,
+            "pct": 97.13
+          },
+          "lines": {
+            "total": 555,
+            "covered": 552,
+            "skipped": 0,
+            "pct": 99.45
+          },
+          "functions": {
+            "total": 136,
+            "covered": 135,
+            "skipped": 0,
+            "pct": 99.26
+          },
+          "branches": {
+            "total": 655,
+            "covered": 622,
+            "skipped": 0,
+            "pct": 94.96
+          }
+        },
+        "files": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 509,
+                "covered": 495,
+                "skipped": 0,
+                "pct": 97.24
+              },
+              "lines": {
+                "total": 311,
+                "covered": 311,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 80,
+                "covered": 79,
+                "skipped": 0,
+                "pct": 98.75
+              },
+              "branches": {
+                "total": 376,
+                "covered": 356,
+                "skipped": 0,
+                "pct": 94.68
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 14,
+              "functions": 1,
+              "branches": 20
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 0,
+              "functions": 0,
+              "branches": 2
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 291,
+                "covered": 281,
+                "skipped": 0,
+                "pct": 96.56
+              },
+              "lines": {
+                "total": 215,
+                "covered": 212,
+                "skipped": 0,
+                "pct": 98.6
+              },
+              "functions": {
+                "total": 48,
+                "covered": 48,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 248,
+                "covered": 237,
+                "skipped": 0,
+                "pct": 95.56
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 10,
+              "functions": 0,
+              "branches": 11
+            }
+          }
+        ],
+        "completeSanitizedReportSha256": "eb65c622406592a377b2744d730cdabcac0f6b0249b02a73c3b6443c6343f033"
+      }
+    ],
+    "completeUnfilteredSourceBoundRawReportsAndCoverageMapsPreserved": true
+  },
+  "reachability": {
+    "checkedAt": "2026-11-03T04:32:00.257Z",
+    "scope": "Read-only anonymous GET/status/content-hash checks from this VPS via existing DNS and loopback, not another-device or public-Internet reachability proof; no exploitability inference",
+    "requests": [
+      {
+        "label": "existing-https-root",
+        "status": 200
+      },
+      {
+        "label": "existing-https-app",
+        "status": 200
+      },
+      {
+        "label": "existing-https-health",
+        "status": 200
+      },
+      {
+        "label": "existing-https-anonymous-records",
+        "status": 403
+      },
+      {
+        "label": "existing-https-mail",
+        "status": 200
+      },
+      {
+        "label": "existing-loopback-app",
+        "status": 200
+      },
+      {
+        "label": "existing-loopback-mail",
+        "status": 200
+      }
+    ],
+    "readOnly": true,
+    "noExposureOrExploitabilityInference": true,
+    "noListenersSecurityNetworkProcessesDeploymentOrDataChanged": true
+  },
+  "preservation": {
+    "scope": "Read-only historical/original preservation, not new private runtime work or MVP dependency",
+    "privateArtifactsUnchanged": 7,
+    "retainedPriorFilesHashVerified": 575,
+    "priorCompleteArchivesVerified": 14,
+    "priorArchivedFilesHashVerified": 19584,
+    "privateSdkSourceAndFrozenShippedFilesUnchanged": true,
+    "originalApprovedReadOnlyGuardPassed": true,
+    "originalDemoDataAssetsConfigurationKeysLocksContainersSupervisorTailnetUnchanged": true,
+    "privateAdoptionOrDeployment": false,
+    "signoff": false,
+    "currentOwnedProjectsAbsent": 18,
+    "currentOwnedParentAbsent": true,
+    "currentArchivedSourceRawControllerFiles": 1748,
+    "allCopiedBytesIndependentlyRehashed": true
+  },
+  "probeSetupHistory": {
+    "registry406": "First metadata helper incorrectly reused GitHub-specific Accept for npm; preserved HTTP406, corrected only the request header. Not a product/runtime red or registry workaround.",
+    "maintainerRangeWhitespace": "Global and maintainer endpoints render identical ranges with different whitespace; initial exact-string probe assertion failed, original raw response retained; normalized whitespace without changing semantic affected/patched bounds.",
+    "fundingShape": "Registry funding string vs npm-lock normalized object caused one private metadata comparison assertion; verified identical URL and retained lock metadata. No dependency upgrade/expectation waiver."
+  },
+  "historicalUnknownStartup": "CI41548029405 stock startup0/121unexecuted cases including6historical assertions remains separate and unexplained; later local stock115/6 does not repair it.",
+  "releaseAcceptance": "BLOCKED: active security/critical branch/browser/TLS/accessibility/resources/physical devices/platforms/three clean same-candidate runs/named maintainer acceptance remain incomplete; zero clean full release runs; G1/G7 and14strict research failures unwaived.",
+  "normalSubstantivePushAndOneExactCiAudit": "Pending at local-evidence snapshot; no rerun/upstream messages/package publication/deployment/private adoption",
+  "signoff": false
+}

@@ -42,6 +42,15 @@ Runtime coverage uses exact `@vitest/coverage-v8@5.0.3`, matching Vitest, for ev
 
 `test:release:candidate` executes13 real existing official-supported commands and remains nonzero for unresolved acceptance. `test:release:automated` exposes only that bounded automation verdict and always reports qualification blocked/signoff false. Contract/security/E2E/package/all placeholders remain incomplete until their full active matrices exist; do not alias them to this subset. Tests cover absent/failing/duplicate/out-of-order results, source drift, continued cleanup, private-log boundaries and refusal of an existing fixture lock. Both pinned Node full units/types/package/coverage/installed consumers plus all affected real scopes/three browsers/strict research/cleanup remain applicable. Physical devices, complete accessibility/resource proof, three clean same-commit runs and named maintainer signoff stay distinct.
 
+### Bounded development Vite security patch (DP01–DP04)
+
+Maintainer authorizes only the smallest supported official patch for the six demonstrated Vite8.3.2 advisories, expected8.3.3; no blanket audit fix, unrelated upgrades, runtime/backend/browser pin changes or SDK behavior change. Existing release acceptance remains blocked.
+
+- **DP01 / L1-24/L1-27/S10:** before lock changes, verify all six maintainer/GitHub advisory affected/patched ranges, official tag/package metadata and registry tarball SHA512/SHA1 integrity. Pin/integrity regression must fail on8.3.2 first; this is dependency-policy proof, not an exploit reproduction. Keep Vitest/coverage5.0.3 and every other locked package/runtime graph unchanged.
+- **DP02 / L1-24/L1-26:** clean install, installed Vite/Vitest/provider compatibility on both exact Nodes, separate full and `--omit=dev` registry audits with explicit six-advisory disposition. Audit0 is not complete security approval; preserve findings/setup failures and do not waive unrelated gates.
+- **DP03 / active CRUD/auth rows:** current-source full units/types/package/coverage/installed consumers on both pinned Nodes, real supported candidate/DB/constraints/reference/three-engine browser/expiry/legacy/upgrade/strict research/cleanup regressions. Same thresholds/assertions/pins and strict14historical names/statuses; actual default candidate remains nonzero for incomplete acceptance. Archive owned source/raw results; preserve original/private resources.
+- **DP04 / L1-26/L1-27/S10:** read-only actual demo reachability before exposure statements, scoped to observation origin; no listener/security/network/live-process/deployment changes. Review minimal lock/test/docs/evidence and fold prior terminal notes, then normal substantive push and one exact source/head/artifact/pin/step/direct-log CI audit; no rerun, upstream messages, package publication or signoff.
+
 ## 1. What counts as proof
 
 A feature is supported only when its documented behavior has reproducible evidence against the pinned backend and, where compatibility is claimed, the real reference Supabase SDK/backend. Passing unit mocks, type checks, screenshots, a successful HTTP status, or a happy-path demo alone is insufficient.
