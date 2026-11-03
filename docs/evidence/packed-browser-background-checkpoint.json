@@ -1,0 +1,788 @@
+{
+  "scope": "Finite BF01–BF08 packed-browser background/focus-handler and terminal/transient recovery acceptance, NOT physical-focus/hidden-tab/fullE08/S07/S08/security/release/maintainer signoff",
+  "parentCommit": "843af5c5b39e218d6ab74e01f3afa1481076ae3c",
+  "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+  "change": {
+    "sdkProductionApiSrcLockDependenciesFixturesConfigsCiPinsAndBudgetsUnchanged": true,
+    "sharedRunnerChange": "Report scope label only; no runner/profile/dispatch policy change",
+    "existingScope": "npm run test:sdk:browser:refresh",
+    "originalPbCases": 12,
+    "addedCases": 24,
+    "totalShortAuthCases": 36,
+    "defaultPersistenceBrowserCasesUnchanged": 39,
+    "candidateCommandsUnchanged": 14,
+    "noFakeClockJwtIdentityRepairOrSuccessfulAuthDataResponse": true,
+    "controlledDomStimuliNotPhysicalFocus": true,
+    "failureOnlyHttp503And403ExplicitlyInjectedAfterActualNative200": true,
+    "truncatedBodyIsActualNative200BytePrefix": true,
+    "cancelledFetchIsRealBrowserBeforeDispatchAbort": true
+  },
+  "reconciliation": {
+    "governingContract": "Existing README: default enabled;30s margin/1s minimum/10s transient retry; visible focus handlers share refresh; only native refresh401 terminal; four events only. No new semantics or Supabase parity.",
+    "existingCoverage": "sdk-auth-background fake clocks/credentials/EventTargets; sdk-refresh/PN06 healthy Node; PB01–04 and PS01–08 explicitly disable background refresh",
+    "errorObservability": "Public operation joins held background flight and returns null/error. No invented background error event."
+  },
+  "acceptance": {
+    "cases": [
+      "BF01 native default timer renewal without public request trigger",
+      "BF02 disabled background owns no scheduling; explicit manual renewal still works",
+      "BF03 visible DOM focus/visibility stimuli coalesce held genuine renewal",
+      "BF04 real cancelled Fetch preserves state and real10s retry recovers without password replay",
+      "BF05 explicitly injected HTTP503 after native200 preserves state and genuine retry recovers",
+      "BF06 actual native200 body truncated to a byte prefix preserves state and genuine retry recovers",
+      "BF07 explicitly injected HTTP403 after native200 preserves state and genuine retry recovers",
+      "BF08 native exact-session revocation and real background401 clears/stops; explicit password login recovers"
+    ],
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "caseCount": 24,
+    "retries": 0,
+    "skips": 0,
+    "flakes": 0,
+    "unhandledBrowserErrors": 0,
+    "nativeTimerCallbacksArgumentsReceiverAndTimePreserved": true,
+    "exactOwnedTimersFocusVisibilityListenersChecked": true,
+    "truthfulCommittedStorageAndEventSnapshots": true,
+    "completeSevenScalarOwnerControlRowsAndAuditChecked": true,
+    "zeroMutationDispatch": true,
+    "unrelatedKeysAccountsSessionsDataPreserved": true,
+    "ordinaryFreshCleanupAndZeroOwnedRefreshSessionsBeforeFixtureRemoval": true,
+    "targeted": {
+      "scope": "Finite BF01–BF08; actual timer/failure recovery with labelled DOM/fault stimuli, not physical-focus/fullE08/security/release signoff",
+      "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+      "label": "first",
+      "passed": 36,
+      "failed": 0,
+      "newCases": 24,
+      "existingPbCases": 12,
+      "setup": "ready",
+      "cleanup": "passed",
+      "productionBytesAndGraphUnchanged": true,
+      "failedTests": [],
+      "signoff": false
+    },
+    "fullCurrentSourceShortAuthReport": {
+      "suite": "sdk-browser-refresh",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 36,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    "counterfactual": {
+      "scope": "Separate test-only HTTP503-terminal-misclassification counterfactual, never current SDK/research status normalization, product defect/fix or release signoff",
+      "baselineSourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+      "mutantSourceSha256": "22ffbf36db97371fe919d5160413a4a88975250399d9985450bf5f374aa12cb0",
+      "actualTestExitCode": 1,
+      "actualReportStatus": "failed",
+      "selected": "BF05 Chromium only",
+      "failedAssertion": "transient failure preserves authoritative disk and events",
+      "setup": "ready",
+      "cleanup": "passed",
+      "expectedFailureObserved": true,
+      "productionSourceUnchanged": true,
+      "signoff": false
+    }
+  },
+  "regression": {
+    "fullPlaceholdersRemainFailClosed": {
+      "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+      "results": [
+        {
+          "command": "npm run test:contract",
+          "exitCode": 1,
+          "notImplemented": true
+        },
+        {
+          "command": "npm run test:security",
+          "exitCode": 1,
+          "notImplemented": true
+        },
+        {
+          "command": "npm run test:e2e",
+          "exitCode": 1,
+          "notImplemented": true
+        },
+        {
+          "command": "npm run test:package",
+          "exitCode": 1,
+          "notImplemented": true
+        },
+        {
+          "command": "npm run test:all",
+          "exitCode": 1,
+          "notImplemented": true
+        }
+      ]
+    },
+    "commands": 27,
+    "controllerCommands": 14,
+    "commandAccounting": "Two sequential bounded groups of7completed controller commands; candidate expands to14constituent commands. No uninterrupted clean full release run claimed.",
+    "unitsEachNode": 279,
+    "packageEachNode": 4,
+    "realInstalledNodeEach": 8,
+    "reports": [
+      {
+        "suite": "sdk-auth",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-refresh",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-data",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "database",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "constraints",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 39,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser-refresh",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 36,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "lifecycle",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-reference",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 16,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "expiry",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-migration",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "all",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 115,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "characterization",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "smtp",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "browser",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 60,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "native-upgrade",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "owned-ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "todos-launcher",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "bd99e9150048c1a2eb67d16e1f323eddae15e03e139874ebb5b87b25fb85aadd",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v24.21.0",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "bd99e9150048c1a2eb67d16e1f323eddae15e03e139874ebb5b87b25fb85aadd",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      }
+    ],
+    "guards": [
+      {
+        "node": "22.23.2",
+        "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+        "units": 279,
+        "packageChecks": 4
+      },
+      {
+        "node": "24.21.0",
+        "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+        "units": 279,
+        "packageChecks": 4
+      }
+    ],
+    "candidate": {
+      "commands": [
+        {
+          "id": "check",
+          "status": "passed"
+        },
+        {
+          "id": "units",
+          "status": "passed"
+        },
+        {
+          "id": "coverage",
+          "status": "passed"
+        },
+        {
+          "id": "package",
+          "status": "passed"
+        },
+        {
+          "id": "node",
+          "status": "passed"
+        },
+        {
+          "id": "auth",
+          "status": "passed"
+        },
+        {
+          "id": "refresh",
+          "status": "passed"
+        },
+        {
+          "id": "data",
+          "status": "passed"
+        },
+        {
+          "id": "database",
+          "status": "passed"
+        },
+        {
+          "id": "constraints",
+          "status": "passed"
+        },
+        {
+          "id": "browser",
+          "status": "passed"
+        },
+        {
+          "id": "browser-refresh",
+          "status": "passed"
+        },
+        {
+          "id": "example",
+          "status": "passed"
+        },
+        {
+          "id": "cleanup",
+          "status": "passed"
+        }
+      ],
+      "automation": "passed",
+      "qualification": "blocked",
+      "defaultExitCode": 1,
+      "remainingAcceptance": [
+        "complete-active-matrix-and-critical-security-branch-review",
+        "real-disabled-registration-and-mfa-negative-controls",
+        "browser-cap-operator-expiry-race-and-storage-failure-matrix",
+        "trusted-local-tls-auth-smoke-and-security-assessment",
+        "complete-accessibility-and-100-cycle-auth-app-resource-proof",
+        "physical-device-and-advertised-platform-acceptance",
+        "three-consecutive-clean-same-candidate-runs",
+        "named-maintainer-feature-limitations-and-release-signoff"
+      ],
+      "signoff": false
+    },
+    "coverage": [
+      {
+        "node": "v22.23.2",
+        "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+        "status": "passed",
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "thresholdsPassed": true,
+        "total": {
+          "statements": {
+            "total": 838,
+            "covered": 814,
+            "skipped": 0,
+            "pct": 97.13
+          },
+          "lines": {
+            "total": 555,
+            "covered": 552,
+            "skipped": 0,
+            "pct": 99.45
+          },
+          "functions": {
+            "total": 136,
+            "covered": 135,
+            "skipped": 0,
+            "pct": 99.26
+          },
+          "branches": {
+            "total": 655,
+            "covered": 622,
+            "skipped": 0,
+            "pct": 94.96
+          }
+        },
+        "files": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 509,
+                "covered": 495,
+                "skipped": 0,
+                "pct": 97.24
+              },
+              "lines": {
+                "total": 311,
+                "covered": 311,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 80,
+                "covered": 79,
+                "skipped": 0,
+                "pct": 98.75
+              },
+              "branches": {
+                "total": 376,
+                "covered": 356,
+                "skipped": 0,
+                "pct": 94.68
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 14,
+              "functions": 1,
+              "branches": 20
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 0,
+              "functions": 0,
+              "branches": 2
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 291,
+                "covered": 281,
+                "skipped": 0,
+                "pct": 96.56
+              },
+              "lines": {
+                "total": 215,
+                "covered": 212,
+                "skipped": 0,
+                "pct": 98.6
+              },
+              "functions": {
+                "total": 48,
+                "covered": 48,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 248,
+                "covered": 237,
+                "skipped": 0,
+                "pct": 95.56
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 10,
+              "functions": 0,
+              "branches": 11
+            }
+          }
+        ],
+        "completeSanitizedReportSha256": "55772966be3d7988405595b28643ed353a2dff0a28d65beea23173fe7665f65b"
+      },
+      {
+        "node": "v24.21.0",
+        "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+        "status": "passed",
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "thresholdsPassed": true,
+        "total": {
+          "statements": {
+            "total": 838,
+            "covered": 814,
+            "skipped": 0,
+            "pct": 97.13
+          },
+          "lines": {
+            "total": 555,
+            "covered": 552,
+            "skipped": 0,
+            "pct": 99.45
+          },
+          "functions": {
+            "total": 136,
+            "covered": 135,
+            "skipped": 0,
+            "pct": 99.26
+          },
+          "branches": {
+            "total": 655,
+            "covered": 622,
+            "skipped": 0,
+            "pct": 94.96
+          }
+        },
+        "files": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 509,
+                "covered": 495,
+                "skipped": 0,
+                "pct": 97.24
+              },
+              "lines": {
+                "total": 311,
+                "covered": 311,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 80,
+                "covered": 79,
+                "skipped": 0,
+                "pct": 98.75
+              },
+              "branches": {
+                "total": 376,
+                "covered": 356,
+                "skipped": 0,
+                "pct": 94.68
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 14,
+              "functions": 1,
+              "branches": 20
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 0,
+              "functions": 0,
+              "branches": 2
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 291,
+                "covered": 281,
+                "skipped": 0,
+                "pct": 96.56
+              },
+              "lines": {
+                "total": 215,
+                "covered": 212,
+                "skipped": 0,
+                "pct": 98.6
+              },
+              "functions": {
+                "total": 48,
+                "covered": 48,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 248,
+                "covered": 237,
+                "skipped": 0,
+                "pct": 95.56
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 10,
+              "functions": 0,
+              "branches": 11
+            }
+          }
+        ],
+        "completeSanitizedReportSha256": "22b51182dc93578efd87b75c0fbbb6c49a2b1fb56118f107ed79e077df222f5e"
+      }
+    ],
+    "strictResearchFailures": 14,
+    "exactHistoricalResearchNamesStatusesUnchanged": true,
+    "allSetupAndCleanupPassed": true,
+    "unchangedShippedFiles": [
+      "package.json",
+      "LICENSE",
+      "dist/index.js",
+      "dist/auth.js",
+      "dist/common.js",
+      "dist/index.d.ts",
+      "dist/auth.d.ts",
+      "dist/common.d.ts"
+    ],
+    "changedShippedMetadata": [
+      "README.md"
+    ],
+    "runtimeDistributionAndGraphUnchanged": true,
+    "completeSourceRawReportsAndCoverageMapsPreserved": true
+  },
+  "preservation": {
+    "scope": "Read-only historical/original preservation, not new private runtime work or MVP dependency",
+    "privateArtifactsUnchanged": 7,
+    "retainedPriorFilesHashVerified": 575,
+    "priorCompleteArchivesVerified": 24,
+    "priorArchivedFilesHashVerified": 34421,
+    "privateSdkSourceAndFrozenShippedFilesUnchanged": true,
+    "originalApprovedReadOnlyGuardPassed": true,
+    "originalDemoDataAssetsConfigurationKeysLocksContainersSupervisorTailnetUnchanged": true,
+    "privateAdoptionOrDeployment": false,
+    "signoff": false,
+    "currentArchives": [
+      {
+        "label": "first",
+        "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+        "ownedProjectsAbsent": 1,
+        "archivedFiles": 1288,
+        "allCopiedBytesIndependentlyRehashed": true,
+        "ownedParentAbsent": true
+      },
+      {
+        "label": "mutant",
+        "sourceSha256": "22ffbf36db97371fe919d5160413a4a88975250399d9985450bf5f374aa12cb0",
+        "ownedProjectsAbsent": 1,
+        "archivedFiles": 1290,
+        "allCopiedBytesIndependentlyRehashed": true,
+        "ownedParentAbsent": true
+      },
+      {
+        "label": "final",
+        "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+        "ownedProjectsAbsent": 19,
+        "archivedFiles": 1797,
+        "allCopiedBytesIndependentlyRehashed": true,
+        "ownedParentAbsent": true
+      }
+    ],
+    "currentOwnedProjectsAbsent": 21,
+    "currentOwnedParentsAbsent": 3,
+    "currentArchivedFiles": 4375
+  },
+  "setupHistory": {
+    "initialCompilerFailure": "TS2339 callback-assigned nullable snapshot; corrected test-only container, original failure retained",
+    "unstartedPreparationCorrection": "Native timer callback receiver preservation synchronized before any fixture/test execution; original unstarted metadata retained",
+    "productDefectOrFix": false
+  },
+  "historicalCi": {
+    "reviewedParentRun": 41615064527,
+    "parentMandatory26ReportAuditPassed": true,
+    "parentSupportedDefault39Pb12Passed": true,
+    "parentExecutedStrictResearchFailures": 14,
+    "parentLocalBatchInterrupted": true,
+    "parentCompletedReports": 18,
+    "parentInterruptedScopePassed": false,
+    "parentInterruptionCause": "not-established",
+    "parentExactOwnedRecoveryAnd1776PreCleanupFilesPreserved": true,
+    "parentIndependentMissingBrowser": {
+      "passed": 60,
+      "failed": 6,
+      "cleanup": "passed"
+    },
+    "viteRun": 41584110829,
+    "viteRequiredFullBaselineAuditPassed": false,
+    "stockExecuted": 0,
+    "unexecutedCases": 121,
+    "unexecutedHistoricalAssertions": 6,
+    "earlierStockStartup0Run": 41548029405,
+    "cause": "not-established",
+    "laterPassDoesNotExplainHistoricalFailures": true,
+    "noSameSourceGreenSeekingRerun": true
+  },
+  "remainingAcceptance": "BLOCKED: physical-focus/hidden tabs/fullE08/S07/S08/browser cap/operator matrix/disabled-registration-MFA negatives/critical security/TLS/accessibility/100cycle resources/devices/platforms/three clean full runs/named maintainer acceptance. G1/G7/null signup/409/global uncertainty/14strict requirements remain unwaived; zero clean full release runs.",
+  "normalReviewedSubstantivePushAndOneExactCiAudit": "Pending at local snapshot; inherited3terminal notes/evidence folded byte-identically; no extra publication/deployment/live/network/security/pin/private-adoption change",
+  "signoff": false
+}

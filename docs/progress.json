@@ -1,5 +1,240 @@
 {
   "schemaVersion": 1,
+  "pendingWorkBeforePackedBrowserBackground": {
+    "scope": "Finite PS01–PS08 packed-browser corrupt/unavailable/read/write/compensation/remove faults and two held-storage races, only demonstrated in-scope fixes permitted.",
+    "status": "Finite PS01–PS08 local partial-plus-independent-continuation/exactCI/terminal proof complete, no production defect/fix. Original interruption and historical startup0 causes unknown. Broader security/browser/device/release acceptance and14strict requirements remain blocked.",
+    "remainingAcceptance": [
+      "complete-active-matrix-and-critical-security-branch-review",
+      "real-disabled-registration-and-mfa-negative-controls",
+      "browser-cap-operator-expiry-race-and-storage-failure-matrix",
+      "trusted-local-tls-auth-smoke-and-security-assessment",
+      "complete-accessibility-and-100-cycle-auth-app-resource-proof",
+      "physical-device-and-advertised-platform-acceptance",
+      "three-consecutive-clean-same-candidate-runs",
+      "named-maintainer-feature-limitations-and-release-signoff"
+    ],
+    "fullReleaseAcceptance": "blocked",
+    "signoff": false
+  },
+  "phaseBeforePackedBackgroundLocal": "Finite BF01–BF08 source0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0 genuine packed-browser36/36passed(24new+unchangedPB12),3engines/retries0/ready-cleanup passed, native timer/focus-handler/default-disabled/real10s retry and native401 terminal/relogin truth verified. Separate503-terminal-misclassification BF05Chromium fails intended retained-disk/event assertion, ready-cleanup passed; production untouched/no SDK defect/fix. Full bothNode/current-source supported-strict qualification begins in2separately bounded sequential groups, not one uninterrupted clean release run. Archive/preservation/review/push/exactCI pending. Prior PS interruption/recovery/independent continuation and all failures unchanged; no fullE08/security/release signoff.",
+  "releaseQualificationBeforePackedBrowserBackground": {
+    "plan": "docs/RELEASE_QUALIFICATION.md",
+    "status": "bounded-official-automation-coverage-PB-PS01-PS08-local-reconciled-exactCI-verified-full-release-blocked",
+    "governingThresholds": {
+      "statements": 95,
+      "lines": 95,
+      "functions": 95,
+      "branches": 90,
+      "globalAndPerBehavioralModule": true,
+      "exclusions": []
+    },
+    "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+    "evidence": "docs/evidence/packed-browser-storage-checkpoint.json",
+    "local": {
+      "commands": 27,
+      "reports": 19,
+      "unitsEachNode": 279,
+      "packageEachNode": 4,
+      "installedNodeEach": 8,
+      "coverageGlobalAndPerAll3ModulesPassed": true,
+      "candidateCommands": 14,
+      "candidateAutomation": "passed",
+      "candidateDefaultExitCode": 1,
+      "qualification": "blocked",
+      "completedConstituentCommands": 27,
+      "additionalInterruptedScopeAttempts": 1,
+      "originalBatchCompleted": false,
+      "partialBatchCompletedReports": 18,
+      "independentMissingBrowserReports": 1,
+      "totalPackedBrowserCases": 39,
+      "storageFaultCases": 24
+    },
+    "publication": {
+      "commit": "843af5c5b39e218d6ab74e01f3afa1481076ae3c",
+      "ciRun": 41615064527,
+      "ciUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41615064527",
+      "ciEvidence": "docs/evidence/ci-843af5c-packed-browser-storage-checkpoint.json",
+      "sourceBoundReports": 26,
+      "requiredBaselineAuditPassed": true,
+      "supportedBothNodesAndStorage24Packed39Pb12Passed": true,
+      "strictResearchFailuresExecuted": 14,
+      "exactHistoricalNamesStatusesUnchanged": true,
+      "allSetupAndCleanupPassed": true,
+      "workflowConclusion": "failure",
+      "noRerun": true
+    },
+    "resources": {
+      "ownedProjectsAbsent": 23,
+      "ownedParentsAbsent": 5,
+      "rawSourceControllerFilesArchivedRehashed": 6974,
+      "additionalPreCleanupInterruptionFilesArchivedRehashed": 1776,
+      "terminalVerification": "passed"
+    },
+    "security": {
+      "completeAssessment": false,
+      "criticalBranchReview": false,
+      "coverageIsNotSecurityClearance": true,
+      "developmentVite": "8.3.3 pin/regression passed both Nodes; dependency/lock unchanged, prior6advisory remediation evidence preserved, no fresh registry audit claimed"
+    },
+    "remainingAcceptance": [
+      "complete-active-matrix-and-critical-security-branch-review",
+      "real-disabled-registration-and-mfa-negative-controls",
+      "browser-cap-operator-expiry-race-and-storage-failure-matrix",
+      "trusted-local-tls-auth-smoke-and-security-assessment",
+      "complete-accessibility-and-100-cycle-auth-app-resource-proof",
+      "physical-device-and-advertised-platform-acceptance",
+      "three-consecutive-clean-same-candidate-runs",
+      "named-maintainer-feature-limitations-and-release-signoff"
+    ],
+    "productChanges": false,
+    "privateAdoption": false,
+    "signoff": false,
+    "persistenceAcceptance": {
+      "scope": "Finite PS01–PS08 only, not full E07/S07/S08/security/release",
+      "cases": 24,
+      "totalPacked": 39,
+      "engines": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ],
+      "local": "passed",
+      "ci": "passed-exact26report-audit-workflow-red14research",
+      "signoff": false,
+      "commit": "843af5c5b39e218d6ab74e01f3afa1481076ae3c",
+      "run": 41615064527
+    }
+  },
+  "phaseBeforePackedBackgroundQualification": "Active finite BF01–BF08 existing browser background/focus-handler and terminal/transient-failure acceptance after reviewed843af5c/exactCI41615064527. Reconciled fake-clock units/healthy Node versus background-disabled PB/PS;24new cases authored in existing short-auth packed command alongside unchangedPB12, no new scope/config/fixture/pin/dependency/budget. Native timers observed without fake time; successes genuine, DOM stimuli/failure-only injected responses explicitly labelled. Targeted real proof/counterfactual/bothNode/full supported-strict/archive-preservation/review/push/exactCI pending; no defect/fix or signoff claimed.",
+  "packedBrowserBackground": {
+    "status": "finite-local-current-source-qualified-review-push-exactCI-pending",
+    "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+    "baseCommit": "843af5c5b39e218d6ab74e01f3afa1481076ae3c",
+    "cases": [
+      "BF01",
+      "BF02",
+      "BF03",
+      "BF04",
+      "BF05",
+      "BF06",
+      "BF07",
+      "BF08"
+    ],
+    "authoredCases": 24,
+    "existingPbCases": 12,
+    "targetShortAuthBrowserCases": 36,
+    "originalStorageAndInterruptionHistoryPreserved": true,
+    "priorCi": "docs/evidence/ci-843af5c-packed-browser-storage-checkpoint.json",
+    "runtimeSdkChanges": false,
+    "fixtureDependencyPinBudgetChanges": false,
+    "missingProof": [
+      "review/staged bothNode checks/normal substantive push",
+      "one exactCI required audit",
+      "terminal operational verification"
+    ],
+    "signoff": false,
+    "authoredSourceBeforeCallbackReceiverCorrection": "83d9f336d4d37df372bf5b15a48ba4ce0c113dd022bc9819342801206c7d7ba1",
+    "targeted": {
+      "scope": "Finite BF01–BF08; actual timer/failure recovery with labelled DOM/fault stimuli, not physical-focus/fullE08/security/release signoff",
+      "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+      "label": "first",
+      "passed": 36,
+      "failed": 0,
+      "newCases": 24,
+      "existingPbCases": 12,
+      "setup": "ready",
+      "cleanup": "passed",
+      "productionBytesAndGraphUnchanged": true,
+      "failedTests": [],
+      "signoff": false
+    },
+    "counterfactual": {
+      "scope": "Separate test-only HTTP503-terminal-misclassification counterfactual, never current SDK/research status normalization, product defect/fix or release signoff",
+      "baselineSourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+      "mutantSourceSha256": "22ffbf36db97371fe919d5160413a4a88975250399d9985450bf5f374aa12cb0",
+      "actualTestExitCode": 1,
+      "actualReportStatus": "failed",
+      "selected": "BF05 Chromium only",
+      "failedAssertion": "transient failure preserves authoritative disk and events",
+      "setup": "ready",
+      "cleanup": "passed",
+      "expectedFailureObserved": true,
+      "productionSourceUnchanged": true,
+      "signoff": false
+    },
+    "setupHistory": {
+      "initialCompilerFailure": "TS2339 callback-assigned nullable snapshot narrowing; test-only mutable snapshot container correction, original compiler output retained",
+      "unstartedPreparationCorrection": "Preserve native timer callback receiver; only unstarted owned source/markers synchronized before fixture/test execution, previous preparation metadata retained"
+    },
+    "qualificationControllers": "Two sequential bounded groups; no uninterrupted full clean run claim",
+    "evidence": "docs/evidence/packed-browser-background-checkpoint.json",
+    "fullQualification": {
+      "commands": 27,
+      "controllerCommands": 14,
+      "sequentialBoundedGroups": 2,
+      "reports": 19,
+      "unitsEachNode": 279,
+      "packageEachNode": 4,
+      "installedNodeEach": 8,
+      "shortAuthBrowserCases": 36,
+      "defaultBrowserCases": 39,
+      "candidateAutomation": "passed",
+      "qualification": "blocked",
+      "strictResearchFailures": 14,
+      "exactHistoricalNamesStatusesUnchanged": true,
+      "allSetupAndCleanupPassed": true
+    },
+    "preservation": {
+      "scope": "Read-only historical/original preservation, not new private runtime work or MVP dependency",
+      "privateArtifactsUnchanged": 7,
+      "retainedPriorFilesHashVerified": 575,
+      "priorCompleteArchivesVerified": 24,
+      "priorArchivedFilesHashVerified": 34421,
+      "privateSdkSourceAndFrozenShippedFilesUnchanged": true,
+      "originalApprovedReadOnlyGuardPassed": true,
+      "originalDemoDataAssetsConfigurationKeysLocksContainersSupervisorTailnetUnchanged": true,
+      "privateAdoptionOrDeployment": false,
+      "signoff": false,
+      "currentArchives": [
+        {
+          "label": "first",
+          "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+          "ownedProjectsAbsent": 1,
+          "archivedFiles": 1288,
+          "allCopiedBytesIndependentlyRehashed": true,
+          "ownedParentAbsent": true
+        },
+        {
+          "label": "mutant",
+          "sourceSha256": "22ffbf36db97371fe919d5160413a4a88975250399d9985450bf5f374aa12cb0",
+          "ownedProjectsAbsent": 1,
+          "archivedFiles": 1290,
+          "allCopiedBytesIndependentlyRehashed": true,
+          "ownedParentAbsent": true
+        },
+        {
+          "label": "final",
+          "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+          "ownedProjectsAbsent": 19,
+          "archivedFiles": 1797,
+          "allCopiedBytesIndependentlyRehashed": true,
+          "ownedParentAbsent": true
+        }
+      ],
+      "currentOwnedProjectsAbsent": 21,
+      "currentOwnedParentsAbsent": 3,
+      "currentArchivedFiles": 4375
+    }
+  },
+  "phaseBeforePackedBrowserBackground": "Finite PS01–PS08 packed-browser persistence acceptance reviewed/pushed at843af5c5b39e218d6ab74e01f3afa1481076ae3c/source98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f, exactCI41615064527 attempt1 mandatory26report baseline/provenance audit PASSED. BothNodes279units/coverage/package4/installed8/default packed39(24PS+15original)/PB12/reference16/all supported/setup-cleanup pass. Workflow failure solely14unchanged executed strict research assertions; no accepted exceptions. Local original full batch interrupted at13/14commands/18reports, exact owned fixture recovered with1776file precleanup archive; only missing research-browser ran once independently60/6, never relabeled original batch complete. Cause unknown, no full-batch rerun or clean release-run credit. No SDK defect/fix or production/pin/live/private-adoption changes. Terminal original-private/remote-source/23owned projects5parents/current5checkout archives plus1776file precleanup interruption archive/prior18archives25671files/private7artifacts575files/history/fresh bothNode-check/progress/diff verification PASSED. Full E07/S07/S08/security/device/release/maintainer signoff blocked.",
+  "gitCheckpointBeforePackedBrowserStorage": {
+    "commit": "24379b269e065ae92c2427aa2a0cf30728fe51c8",
+    "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+    "scope": "Normal reviewed15-file finite packed-browser auth schedules/test-runner/docs/evidence checkpoint; prior Vite terminal evidence folded byte-identically",
+    "ciStatus": "ExactCI41599278163 attempt1/26reports mandatory baseline audit PASSED; bothNodes/support/new12browser/required steps/direct logs/allsetupcleanup pass; workflow failure solely14unchanged executed research failures. No rerun or signoff; terminal original-private/remote-source/resources/history/bothNode-check/progress/diff passed; retain3terminal notes uncommitted.",
+    "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41599278163"
+  },
+  "phaseBeforePackedStoragePush": "Finite PS01–PS08 packed-browser session persistence faults locally verified at source98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f:24new cases plus15original=39pass on3engines, no retries/skips/flakes/unhandled errors. Genuine corrupt reload/unavailable/read/write/compensation/removal faults and held write/hydration ownership schedules; exact sanitized errors/null results/events/disk truth, zero forbidden mutation dispatch/audit writes and complete owner/control rows preserved. Initial36pass/3PS07 test-start scheduling failures retained/corrected (immediate .then vs deferred Promise.resolve), no SDK defect/fix. Isolated PS04 storage consistency guard-removal counterfactual failed intended assertion, setup/cleanup passed. Reconciled27completedcommands19reports (18from interrupted batch plus1independent missing-browser scope; original batch remains incomplete,1additional interrupted attempt retained): both pinnedNodes279units/coverage95–90all3modules/package4/installed8, candidate14 automationPASS/default1/8releaseblocks, default39/PB12/reference16/all supported/setup-cleanup pass;14exact strict historical research failures unchanged. Production src/scripts/config/CI/lock/pins and8shipped files/runtime graph unchanged; README metadata alone differs. 23owned projects/resources/5parents absent,23projects total;1776pre-cleanup interrupted archive files additionally preserved/rehashed,6974complete source/raw/controller files archived/rehashed. Original/private7artifacts575files/18priorarchives25671files unchanged. Inherited24379b2/exactCI41599278163 terminal evidence folded unchanged. Older41584110829 and41548029405 stockstartup0 remain unknown/unrepaired. Review/normal substantive push/one exact new-source CI audit pending; no full E07/S07/S08/security/device/release/signoff.",
   "phaseBeforePackedStorageInterruption": "Finite PS01–PS08 genuine packed persistence faults: corrected39/39 targeted browsers passed, isolated PS04 failClosed-guard counterfactual failed intended assertion with ready/cleanup passed. Initial36pass/3PS07 scheduling failures retained, corrected only query start (.then vs deferred Promise.resolve). Production unchanged. Final strengthened source98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f now running both pinned Node/full candidate/coverage and affected supported-strict real regressions in owned isolation; no signoff.",
   "packedBrowserStorage": {
     "plan": "docs/TEST_PLAN.md",
@@ -18,15 +253,13 @@
       "firefox",
       "webkit"
     ],
-    "status": "finite-local-current-source-verified-review-push-ci-pending",
+    "status": "finite-PS01-PS08-local-reconciled-exactCI-terminal-verified-broader-release-blocked",
     "productionChanges": false,
     "signoff": false,
     "preservationBefore": "passed-original-private7artifacts575files18archives25671files",
     "contract": "Existing README persistence policy; not Storage product or new Supabase fault parity. Canonical E07; E06 remains cardinality.",
     "missingProof": [
-      "connected review and staged fresh bothNode checks",
-      "normal substantive push and one exactCI audit",
-      "terminal remote/source/resource/history/original-private preservation"
+      "Broader acceptance remains outside finite PS01–PS08 closure; full E07/S07/S08/security/device/release/maintainer signoff remains blocked"
     ],
     "targeted": {
       "scope": "Finite PS01–PS08 packed browser persistence faults, no full E07/S07/S08/security/release signoff",
@@ -165,7 +398,37 @@
       "currentArchivedFiles": 6974,
       "additionalPreCleanupInterruptionArchiveFiles": 1776,
       "additionalPreCleanupInterruptionArchiveIndependentlyRehashed": true
-    }
+    },
+    "publication": {
+      "commit": "843af5c5b39e218d6ab74e01f3afa1481076ae3c",
+      "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+      "remoteVerified": true,
+      "reviewedFiles": 8
+    },
+    "ci": {
+      "commit": "843af5c5b39e218d6ab74e01f3afa1481076ae3c",
+      "run": 41615064527,
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41615064527",
+      "attempt": 1,
+      "evidence": "docs/evidence/ci-843af5c-packed-browser-storage-checkpoint.json",
+      "requiredBaselineAuditPassed": true,
+      "reports": 26,
+      "supportedBothNodesAnd24StorageCasesPassed": true,
+      "strictResearchFailures": 14,
+      "allSetupAndCleanupPassed": true,
+      "workflowConclusion": "failure",
+      "rerun": false
+    },
+    "terminalMetadataCorrection": {
+      "failedCommand": "npm run check (Node22.23.2)",
+      "failure": "Markdown target not in the Git index: docs/PROGRESS.md -> docs/evidence/ci-843af5c-packed-browser-storage-checkpoint.json",
+      "cause": "Terminal generator used a Markdown link to intentionally untracked next-substantive-change evidence",
+      "correction": "Inline evidence path; same treatment as preceding checkpoint; guard/source/index unchanged",
+      "failurePreservedPrivately": true,
+      "exactGuardRegressionPassed": true,
+      "freshBothNodeChecks": "passed-after-inline-path-correction"
+    },
+    "terminalOperationalVerification": "passed"
   },
   "releaseQualificationBeforePackedBrowserStorage": {
     "plan": "docs/RELEASE_QUALIFICATION.md",
@@ -756,7 +1019,7 @@
   "phaseBeforeReleaseQualificationCi": "Official-only release qualification tooling locally verified at sourcea24119d17aa1edfdf0f1cce4666b34e61847fc4ffb40ce5adab8a741f6cde209: both pinnedNodes275units/package4/real installed8/coverage pass; global97.13statements99.45lines99.26functions94.96branches and every behavioral module95/90. No SDK/native/runtime pin change; exact development-only V8 provider5.0.3 added. First26-command/18-runtime-report batch retains14exact historical research failures/all fixture setup-cleanup pass but initial candidate and Node24 static checks FAILED due private clone omitted intent-to-add docs from index. Preserve failures, not product reds. Corrected same-source checkout actual13-command default candidate has all automation PASSED and release BLOCKED/exit1 for8explicit acceptance requirements; separate Node24 check0 and9fresh real reports audited. No validator relaxation/hidden retry/source relabel. Initial1739/current1525source-raw-controller files independently archived/rehashed;27owned projects/resources and2exact temporary parents absent. Original approved read-only guard/private7artifacts575files12archives16320files/source/shipped preservation passed. Existing development Vite8.3.2 has one high audit entry unresolved; runtime-only registry audit0 is not security signoff; no audit fix/pin change. Full placeholders5 explicitly fail. Final scoped review/staged bothNode checks/normal substantive commit-push and one exactCI audit remain pending. No full security/device/accessibility/repeated-clean-run/maintainer signoff or publication/deployment.",
   "releaseQualification": {
     "plan": "docs/RELEASE_QUALIFICATION.md",
-    "status": "bounded-official-automation-coverage-PB-and-PS01-PS08-local-verified-full-release-blocked",
+    "status": "bounded-official-automation-PB-PS-BF01-BF08-local-qualified-full-release-blocked",
     "governingThresholds": {
       "statements": 95,
       "lines": 95,
@@ -765,8 +1028,8 @@
       "globalAndPerBehavioralModule": true,
       "exclusions": []
     },
-    "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
-    "evidence": "docs/evidence/packed-browser-storage-checkpoint.json",
+    "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+    "evidence": "docs/evidence/packed-browser-background-checkpoint.json",
     "local": {
       "commands": 27,
       "reports": 19,
@@ -778,23 +1041,19 @@
       "candidateAutomation": "passed",
       "candidateDefaultExitCode": 1,
       "qualification": "blocked",
-      "completedConstituentCommands": 27,
-      "additionalInterruptedScopeAttempts": 1,
-      "originalBatchCompleted": false,
-      "partialBatchCompletedReports": 18,
-      "independentMissingBrowserReports": 1,
-      "totalPackedBrowserCases": 39,
-      "storageFaultCases": 24
+      "qualificationControllers": "Two sequential bounded groups, not an uninterrupted clean full release run",
+      "shortAuthBrowserCases": 36,
+      "backgroundCases": 24,
+      "defaultBrowserCases": 39
     },
     "publication": {
       "status": "pending-reviewed-substantive-push-and-exactCI",
-      "previousVerifiedCheckpoint": "Preserved in releaseQualificationBeforePackedBrowserStorage.publication"
+      "previousVerifiedCheckpoint": "Preserved in releaseQualificationBeforePackedBrowserBackground.publication"
     },
     "resources": {
-      "ownedProjectsAbsent": 23,
-      "ownedParentsAbsent": 5,
-      "rawSourceControllerFilesArchivedRehashed": 6974,
-      "additionalPreCleanupInterruptionFilesArchivedRehashed": 1776,
+      "ownedProjectsAbsent": 21,
+      "ownedParentsAbsent": 3,
+      "rawSourceControllerFilesArchivedRehashed": 4375,
       "terminalVerification": "pending"
     },
     "security": {
@@ -826,6 +1085,16 @@
         "webkit"
       ],
       "local": "passed",
+      "ci": "passed-exact26report-audit-workflow-red14research",
+      "signoff": false,
+      "commit": "843af5c5b39e218d6ab74e01f3afa1481076ae3c",
+      "run": 41615064527
+    },
+    "backgroundAcceptance": {
+      "cases": 24,
+      "scope": "Finite BF01–BF08 only; DOM/failure stimuli explicitly labelled",
+      "evidence": "docs/evidence/packed-browser-background-checkpoint.json",
+      "local": "passed",
       "ci": "pending",
       "signoff": false
     }
@@ -836,7 +1105,7 @@
     "Upstream issue310postedasburggraf under new explicit Mark existing-gh/sole-executor override; exact fetched URL-title-body-author verified and no further create/auth/access changes. Prior integration403/noissue preserved historically; publication request is no longer blocked. Keep prior stockCI121unexecuted/6historical assertions distinct from8other executed failures. Official0358/JS0143 and documented409/null-signup/no-resend/global-uncertainty limitations unchanged; no fork/deferred-feature/adoption/security-release-coverage-physical-device-maintainer signoff."
   ],
   "phaseBeforeReleaseQualification": "New explicit Mark existing-gh/sole-executor publisher authorization completed: https://github.com/trailbaseio/trailbase/issues/310 posted asburggraf in1attempt, exact fetched URL/title/body/author verified, immutable8c15evidence links/no private data/no auth changes. Earlier403/no-alternate restriction preserved as historical and superseded only for this issue; no further create. Packed verification uninterrupted. Run46 actual installed-tarball consumer passes8/8 on EACH pinned Node22.23.2/24.21.0/sourcec1540915, same tarballdbd1a257,268units each, complete native postconditions/fixture cleanup passed. No SDK/native/dependency/pin change. First source92564c90 Node22 passed6 then failed a new invalid SIGNED_OUT callback-storage-timing assertion; PN08 and Node24 unexecuted. Corrected consumer to existing immediate public event/awaited key removal, added unit and documented boundary; private settled semantics not adopted. Earlier missing-controller setup0 preserved separately. Fresh24command/18report proc_904a terminal1 after2091s solely14exact historical strict research failures; independent audit passed supported/reference16/refresh4/data6/DB9/constraints6/browser15/expiry2/legacy1/upgrade9/launcher2/lifecycle1 and bothNode268/package4/installed8each, every setup-cleanup passed. First1289/current1717source-raw-controller files archived/rehashed,19owned projects/2parents absent; post-full7artifacts/575files/10archives13314files/private source/shipped and original official read-only guard passed. Final16file connected-flow/scope/history/basic-privacy and exact staged hashes/bothNode staged checks/progress/diff passed; normal commit-push3a66fd3716a1a938e6806e3c3e31e3464b383d0c/1230insertions24deletions and remote/exact bytes verified. ExactCI41563708961 attempt1 COMPLETED/failure, independent strict23report audit PASSED on commit3a66fd3/sourcec154: bothNode268/package4/installed8each/static-types-docs-build and supported SDK job/auth6/reference16/browser15/all applicable scopes/all setup-cleanup pass. Stock115/6,candidate9/1,SMTP0/1,browser60/6 preserve all14exact historical executed research names/statuses; required steps/pins/producer-specific commit-source-artifact binding/nonempty direct command-correlated four-job log hashes verified. Collectorproc_0840 terminal0 after1119s/watch exit1 is workflow failure, auditor0. No rerun; current stock completeness does NOT explain prior415480startup0 or waive old gaps. Terminal3operational files retained uncommitted for next substantive checkpoint, no extra push/full security-coverage-release-device-maintainer signoff. At authorization: reconciled main/origin8c15a0e, retained exact priorCI41548029405 terminal audit and3dirty operational files byte-for-byte privately. No newer tracked instructions or active managed jobs. Build/install actual tarball in owned disposable consumers on Node22.23.2/24.21.0 against official0358; PN01-PN08 defined before implementation. Cover real signup/confirmation/login, persistence/process reload/live validation/actual expiry/manual-background refresh, owner CRUD/negative/security and explicit local/global/error contract plus complete DB/session/audit/resource postconditions. No SDK changes absent demonstrated red-green supported defect. Parent reports create_issue403 Resource not accessible by integration/no issue; Mark informed/public draft-newissue links supplied. Publication BLOCKED, no alternate credentials/browser/gh attempt; separate from implementation. Fold prior audit into normal reviewed substantive commit/push and one exactCI audit; no blind rerun/cache-network-security workaround. Preserve original official demo/data/sixcontainers/keys/config/tailnet and immutable private historical artifacts; no fork/deferred features or signoff. Prior stockCI0 remains121unexecuted cases including6historical assertions, other8executed research failures exact; cause beyond image-pull/rate-limit text unestablished.",
-  "currentPhase": "Finite PS01–PS08 packed-browser session persistence faults locally verified at source98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f:24new cases plus15original=39pass on3engines, no retries/skips/flakes/unhandled errors. Genuine corrupt reload/unavailable/read/write/compensation/removal faults and held write/hydration ownership schedules; exact sanitized errors/null results/events/disk truth, zero forbidden mutation dispatch/audit writes and complete owner/control rows preserved. Initial36pass/3PS07 test-start scheduling failures retained/corrected (immediate .then vs deferred Promise.resolve), no SDK defect/fix. Isolated PS04 storage consistency guard-removal counterfactual failed intended assertion, setup/cleanup passed. Reconciled27completedcommands19reports (18from interrupted batch plus1independent missing-browser scope; original batch remains incomplete,1additional interrupted attempt retained): both pinnedNodes279units/coverage95–90all3modules/package4/installed8, candidate14 automationPASS/default1/8releaseblocks, default39/PB12/reference16/all supported/setup-cleanup pass;14exact strict historical research failures unchanged. Production src/scripts/config/CI/lock/pins and8shipped files/runtime graph unchanged; README metadata alone differs. 23owned projects/resources/5parents absent,23projects total;1776pre-cleanup interrupted archive files additionally preserved/rehashed,6974complete source/raw/controller files archived/rehashed. Original/private7artifacts575files/18priorarchives25671files unchanged. Inherited24379b2/exactCI41599278163 terminal evidence folded unchanged. Older41584110829 and41548029405 stockstartup0 remain unknown/unrepaired. Review/normal substantive push/one exact new-source CI audit pending; no full E07/S07/S08/security/device/release/signoff.",
+  "currentPhase": "Finite BF01–BF08 source0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0 genuine short-auth browser36/36(24BF+unchangedPB12) verified across3pinned engines; timer/default-disabled/visible DOM handler coalescing/real10s retry of cancelled Fetch and labelled failure-only HTTP/truncated bytes/native401 terminal-explicit-login recovery. No SDK defect/fix; original SDK runtime/native/pins/config/CI/fixtures/dependencies/budgets unchanged; shared runner scope label only. Two sequential bounded qualification groups27completed constituent commands/19real reports; both exactNodes279units/coverage95-90all3modules/package4/installed8/candidate14PASS/default1 solely8remaining requirements/default39/reference16/all supported/setup-cleanup pass;14strict failures exact unchanged. Current3archives4375files/21owned projects3parents absent; original/private7artifacts575files/24prior archives34421files preserved including PS interruption/exact recovery/independent continuation. Review/staged checks/normal substantive push/one exactCI pending. No physical-focus/hidden-tab/fullE08/S07/S08/security/device/release/maintainer signoff.",
   "packedNodeCheckpoint": {"status":"3a66fd3-exact-ci41563708961-attempt1-23reports-audited-supported-and-both-nodes-pass14unchanged-strict-research-failures","statusBeforeTerminalAudit":"reviewed16file3a66fd3-pushed-exact-ci41563708961-sole-watch-collector-proc0840-audit-pending","statusBeforePush":"full-local-audit-archive-original-private-preservation-complete-final-review-scoped-publication-ci-pending","gitPublicationBeforeTerminalAudit":{"commit":"3a66fd3716a1a938e6806e3c3e31e3464b383d0c","sourceSha256":"c1540915c6314e20aacc76c8b8a6092a23efc6f3a1f8128176aaa7ec89250856","files":16,"insertions":1230,"deletions":24,"normalPush":true,"remoteExactReviewedBytesVerified":true,"ci":41563708961,"url":"https://github.com/burggraf/trailbase-supabase/actions/runs/41563708961","status":"in_progress","watcherCollector":"proc_0840","terminalAudit":"pending","rerun":false,"signoff":false},"gitPublication":{"commit":"3a66fd3716a1a938e6806e3c3e31e3464b383d0c","sourceSha256":"c1540915c6314e20aacc76c8b8a6092a23efc6f3a1f8128176aaa7ec89250856","files":16,"insertions":1230,"deletions":24,"normalPush":true,"remoteExactReviewedBytesVerified":true,"ci":41563708961,"url":"https://github.com/burggraf/trailbase-supabase/actions/runs/41563708961","attempt":1,"status":"completed","conclusion":"failure","watcherCollector":"proc_0840 terminal0","terminalAudit":"passed23exact-source-commit-artifact-reports/bothNode268package4installed8each/support/reference16/all setup-cleanup/requiredsteps-runtime-directlogs/14exact historical executed research names-statuses","evidence":"docs/evidence/ci-3a66fd3-packed-node-checkpoint.json","rerun":false,"terminalNotes":"Uncommitted3operational files for next substantive checkpoint; no docs-only push/CI churn","signoff":false},"ciObservation":{"reports":23,"unitsEachNode":268,"packageEachNode":4,"realPackedNodeEach":8,"supportedJobAndBothNodeJobsPassed":true,"auth":6,"reference":16,"packedBrowser":15,"stockPassed":115,"stockFailed":6,"executedStrictResearchFailures":14,"exactHistoricalNamesStatusesUnchanged":true,"allSetupAndCleanupPassed":true,"requiredStepsRuntimeSourceCommitArtifactAndDirectLogsVerified":true,"priorStockStartupCause":"Not established; current pass does not explain prior0collection/121missing cases/6historical assertions","activeJobs":[],"rerun":false,"readinessOrSignoff":false},"baseCommit":"8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf","testPlan":"PN01-PN08 in docs/TEST_PLAN.md","sdkChanges":"none; no supported SDK defect demonstrated","currentVerification":{"sourceSha256":"c1540915c6314e20aacc76c8b8a6092a23efc6f3a1f8128176aaa7ec89250856","tarballSha256":"dbd1a257314d7b46d80a6016bb7c2ae8b35c220f35e414942db60dc8399597d2","node22Cases":8,"node24Cases":8,"unitsEachNode":268,"completeNativePostconditionsAndFixtureCleanupPassed":true,"fullBatch":"proc_904a terminal1 solely14exact historical strict research failures; independent24command/18report audit0: all supported/reference/browser/expiry/legacy/upgrade/launcher/lifecycle and every setup-cleanup pass","packageEachNode":4,"strictResearchFailures":14,"exactHistoricalResearchNamesStatusesUnchanged":true,"afterBatchOriginalPrivatePreservation":"passed7artifacts/575files/10archives13314files/private source/shipped/original official approved read-only guard","archive":"First1289/current1717source-raw-controller files independently rehashed;19owned projects/resources and2exact parents absent","evidence":"docs/evidence/packed-node-checkpoint.json"},"firstConsumerFailure":{"sourceSha256":"92564c9059a75a12439656a108574f49215fcb5a358408203f77c4d0c74df4c5","node":"22.23.2","passed":6,"failed":1,"notExecuted":1,"node24":"not-executed","cleanup":"passed","cause":"New consumer incorrectly required owned key absent inside immediate public SIGNED_OUT notification; not SDK defect/red. Existing policy clears async disk key before awaited logout settles. Corrected new assertion, retained null notification and awaited key absence checks; added policy unit/documentation, no private settlement adoption"},"initialOrchestrationFailure":"Two private MODULE_NOT_FOUND helper-start races preserved separately as setup0/no backend execution; second after successful bothNode post-publication check/progress/diff, independent later bookkeeping0. Neither is runtime or TDD evidence", "publicationBeforeExistingGhAuthorization":{"status":"blocked","source":"maintainer relays parent attempt","operation":"GitHub create_issue in trailbaseio/trailbase","httpStatus":403,"message":"Resource not accessible by integration","issueCreated":false,"markInformed":true,"draftAndNewIssueLinksSupplied":true,"alternateAttemptsAuthorized":false},"publication":{"status":"posted-and-independently-fetched-verified","authorization":"Mark explicitly approved existing VPS gh after integration403; sole executor publisher for this one issue, parent will not create","url":"https://github.com/trailbaseio/trailbase/issues/310","author":"burggraf","title":"v0.35.8: provide authenticated nonredirect acknowledgement for global logout","bodySha256":"49b2f33b90e1edc383419655573b6a0988c8bb3e625b026bf0a48765b5d03b37","exactFetchedTitleBodyAuthorVerified":true,"immutableEvidenceCommit":"8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf","createAttempts":1,"automaticRetry":false,"newLoginTokenScopesOrAccessChanges":false,"privatePrototypeDataPosted":false,"verificationInterrupted":false,"backendFixOrSignoff":false},"signoff":false},
   "previousPhaseBeforePackedNodeCheckpoint": "Official-only8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf/source6a3ee09a published normally; exactCI41548029405 attempt1 terminal FAILURE. Both pinnedNode264/package4/static-types-docs-build and supported SDK job/auth6/browser15 pass, reference16/other applicable scopes and every cleanup pass. Required full expected-baseline CI audit FAILED: stock research stopped at Supabase-start with0collected/0assertions (121cases including6historical failure assertions NOT executed). CLI image-pull/rate-limit text signatures with aggregate-reported supabase_auth attempt, six images initially absent, no HTTPstatus; actual image/network/registry/quota cause remains not established. Other3research scopes execute8exact prior failures (candidate1/SMTP1/browser6), not14current-CI executions. Independent observation audit verifies21exact-run/source/artifact reports/requiredstep-version observations/nonempty direct command-correlated logs; this does NOT waive stock setup failure or replace missing CI proof with local115/6. Collector proc_9d09 terminal0, original expected auditor1 retained, new observation auditor0; no rerun or retry-registry-pin-budget-permission change. Local full16report/264package4/14historical failure proof, initial3ccsnapshot failure,32project2parent teardown, original official and private artifacts/sources remain preserved. Terminal operational3files are uncommitted for next substantive checkpoint, no docs-only CI churn. Global-logout draft/evidence/verified upstream URL ready for baba sole publisher; executor posted nothing. Next official MVP task real packed Node consumer integration; stock CI completeness/cause and full coverage/security/release/physical-device/maintainer signoff remain incomplete.",
   "previousPhaseBeforeOfficialOnlyTerminalCiAudit": "Official-only contract/app checkpoint8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf published normally:22reviewed files/1090insertions26deletions, exact staged-committed hashes/source6a3ee09a and origin/main verified. Single exactCI41548029405 attempt1 is in_progress under proc_9d09; no rerun or terminal current-CI claim. Local fresh bothNode264/package4/static-types-docs and16real-report supported/auth6/reference16/browser15/setup-cleanup audit passed with14exact historical local research failures unchanged; initial source3cc snapshot RangeError retained separately.32owned projects/2parents absent; original official and private7artifacts/575files/8archives10057files/source/shippedfiles unchanged. Official0.35.8/JS0.14.3 remains selected; public SDK/native/deps/pins unchanged, no fork adoption. Focused global-logout draft/evidence/verified upstream URL ready for baba sole publisher; no executor issue/comment. Await exact CI report-case-source-required-step-direct-log-setup-cleanup audit; then retain terminal operational notes for next substantive checkpoint, not docs-only churn. Next official MVP task is real packed Node consumer integration; no full security/coverage/release/physical-device/maintainer signoff.",
@@ -859,7 +1128,7 @@
   "previousPhaseBeforePullDetail": "Priority: make repeated supported CI sdk-auth startup0 failures actionable, not a readiness claim. D03/D04 source34bad9e4 adds bounded fixed CLI signatures/progress and pre-start owned operation/config/environment/cache facts; aligns version probe with actual sanitized launch environment. Meaningful10-red and separate real-bind/pinned-health phrase reds preserved; final both pinned Nodes static/types/docs,252units/package4 each pass. Exact-source owned fault plus16 independent real reports terminally audited: supported auth3/refresh4/data6/DB9/constraints6/browser15/launcher2, reference10/expiry2/legacy1/upgrade9/lifecycle1 pass; research112/6,9/1,0/1,60/6 remains14 exact baseline-matching assertions red.20owned projects absent/1597private source+raw files archived/temp parent removed; original read-only post-batch guard passes. This code/tests/evidence checkpoint carries the implementation and exact local proof; independent CI for its commit remains to be terminally audited. Exact0ead CI independently audited: supported startup0 cause UNKNOWN. Private120s actual-expiry reference11/11 and C06 official/frozen-private4checks/3gaps each verified separately; no authenticated JSON capability implemented or custom deployment/signoff.",
   "previousPhaseBeforeStartupActionable": "Exact4273541/CI41438278896 terminal21-report audit at d5fa: supported sdk-auth failed Supabase-start/0tests/cleanup passed, exit1/no signal/not killed/six inspections unavailable; cause UNKNOWN, not an assertion or inferred common historical cause. Both Nodes242/package4 and later supported scopes pass;14 exact research assertion failures retained. Independent default/global logout reference10/10 at9832850b (new3 plus existing7), both Nodes242/package4, six owned projects absent/1291 private files archived/temp removed. Actual expiry/faults/official-private capability implementation remain open; no runtime/public API/adoption/signoff change. Historical C04/C05 immutable proofs preserved; no duplicate C05.",
   "lastSession": {
-    "state": "packed-browser-persistence-PS01-PS08-local-current-source-verified-review-push-exactCI-pending",
+    "state": "BF01-BF08-local-current-source-qualified-review-push-exactCI-pending",
     "stateBeforeReleaseQualification": "packed-node3a66fd3-exact-ci41563708961-attempt1-audited23reports-supported-bothNode8each-pass14unchanged-research-failures",
     "stateBeforePackedNodeTerminalCiAudit": "packed-node-reviewed16file3a66fd3-pushed-exact-ci41563708961-proc0840-running-terminal-audit-pending",
     "stateBeforePackedNodePush": "packed-node-c154-full24commands18reports-audited-original-private-preserved-archive19projects2parents-absent-ready-final-review-publication-ci",
@@ -1614,9 +1883,18 @@
     "stateBeforePackedBrowserCiObservation": "packed-browser-auth-24379b2-pushed-one-exactCI-running-no-release-signoff",
     "packedBrowserStorageCheckpoint": {
       "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
-      "evidence": "docs/evidence/packed-browser-storage-checkpoint.json",
+      "evidence": "docs/evidence/ci-843af5c-packed-browser-storage-checkpoint.json",
       "local": "passed",
-      "ci": "pending",
+      "ci": 41615064527,
+      "signoff": false,
+      "commit": "843af5c5b39e218d6ab74e01f3afa1481076ae3c",
+      "terminal": "passed"
+    },
+    "stateBeforePackedBrowserBackground": "PS01-PS08-reviewed-push-exactCI26report-terminal-preservation-verified-full-release-blocked",
+    "packedBrowserBackgroundCheckpoint": {
+      "sourceSha256": "0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0",
+      "evidence": "docs/evidence/packed-browser-background-checkpoint.json",
+      "local": "passed",
       "signoff": false
     }
   },
@@ -1982,11 +2260,12 @@
     "missing": "Push verified followup and inspect actual current-HEAD CI; broad runtime/reference/security/coverage/release/G1/G7/null-user decisions and maintainer signoff remain incomplete"
   },
   "gitCheckpoint": {
-    "commit": "24379b269e065ae92c2427aa2a0cf30728fe51c8",
-    "sourceSha256": "56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd",
+    "commit": "843af5c5b39e218d6ab74e01f3afa1481076ae3c",
+    "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
     "scope": "Normal reviewed15-file finite packed-browser auth schedules/test-runner/docs/evidence checkpoint; prior Vite terminal evidence folded byte-identically",
-    "ciStatus": "ExactCI41599278163 attempt1/26reports mandatory baseline audit PASSED; bothNodes/support/new12browser/required steps/direct logs/allsetupcleanup pass; workflow failure solely14unchanged executed research failures. No rerun or signoff; terminal original-private/remote-source/resources/history/bothNode-check/progress/diff passed; retain3terminal notes uncommitted.",
-    "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41599278163"
+    "ciStatus": "Exact26report mandatory audit passed; workflow red14unchanged strict assertions. Terminal original-private/remote-source/resources/history/fresh bothNode checks passed; retain3terminal notes uncommitted.",
+    "ciRunUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/41599278163",
+    "ciRun": 41615064527
   },
   "gitCheckpointBeforePackedNodeCheckpoint": {
     "commit": "8c15a0ed1e0abcf6854baeb1ade6e9e8eaa83abf",
@@ -2067,7 +2346,7 @@
       "G7 logout acknowledgement and late-response/session races"
     ],
     "status": "in-progress",
-    "checks": "Finite PB01–PB04 current-source local and exactCI proof verified: normal15file commit24379b269e065ae92c2427aa2a0cf30728fe51c8/source56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd, exactCI41599278163 attempt1/26source-head-artifact-bound reports/required-step-direct-log-pin audit PASSED, bothNodes279/coverage/package4/installed8/new3engine12/default15/reference16/allsetupcleanup pass. Workflow remains FAILURE solely14unchanged executed strict research assertions, not waived. Local27commands19reports/candidate14 automationPASS/default1/releaseBLOCKED8; separate guard-removal negative meaningful/no production src changes.21ownedprojects3parents absent/4339archived-rehashedfiles/original-private15priorarchives21332files preserved. Terminal remote/source/21ownedprojects3parents/current3archives4339files/prior15archives21332files/7privateartifacts575files/original-private/history/bothNode-check/progress/diff verification PASSED; no extra push/rerun and no full E08/security/feature/release signoff; no extra push/rerun or release/security/fullE08/feature signoff. Prior Vite41584110829 stock0/unexecuted121/sixhistorical/full-baseline FAILED and41548029405 remain separately unexplained/unrepaired.",
+    "checks": "Finite BF01–BF08 source0550fcb760e9732291cf8470ea3e398c78b7e4d8b3ebabe111ca524bd4c852a0 genuine short-auth browser36/36(24BF+unchangedPB12) verified across3pinned engines; timer/default-disabled/visible DOM handler coalescing/real10s retry of cancelled Fetch and labelled failure-only HTTP/truncated bytes/native401 terminal-explicit-login recovery. No SDK defect/fix; original SDK runtime/native/pins/config/CI/fixtures/dependencies/budgets unchanged; shared runner scope label only. Two sequential bounded qualification groups27completed constituent commands/19real reports; both exactNodes279units/coverage95-90all3modules/package4/installed8/candidate14PASS/default1 solely8remaining requirements/default39/reference16/all supported/setup-cleanup pass;14strict failures exact unchanged. Current3archives4375files/21owned projects3parents absent; original/private7artifacts575files/24prior archives34421files preserved including PS interruption/exact recovery/independent continuation. Review/staged checks/normal substantive push/one exactCI pending. No physical-focus/hidden-tab/fullE08/S07/S08/security/device/release/maintainer signoff.",
     "checksBeforeReleaseQualification": "Currentc154 full local24commands/18reports independent audit passed; eachNode268units/package4/installed8 and all supported/reference16/browser15/setup-cleanup passed,14exact historical research failures unchanged. First1289/current1717archives independently rehashed;19owned projects2parents absent; original/private7artifacts575files10archives13314files/source/shipped preserved. Upstream310posted/fetched verified under explicit one-issue override. Reviewed16file3a66fd3 normal push/exact staged-committed bytes/remote/bothNode staged-checks passed; exactCI41563708961 attempt1 audited23source-commit-artifact-bound reports: bothNodes268/package4/installed8each/supported/reference16/browser15/all setup-cleanup and requiredsteps/directlogs pass; only14unchanged executed research failures, no rerun or release/signoff.",
     "checksBeforePackedNodeCheckpoint": "Official-only8c15a0e/source6a3ee09a published; terminalCI41548029405 bothNodes264/package4 and supported/auth6/browser15/reference16/cleanup pass. Stock research supabase-start0tests leaves121cases/6historical assertions unexecuted; other3research scopes8prior failures.21source/artifact/run/step/log observations audited but required full-baseline audit FAILED. Local full115/6 and14historical reds remain separate evidence; no rerun/stock waiver/signoff.",
     "checksBeforeOfficialOnlyTerminalCiAudit": "Official-only8c15a0e/source6a3ee09a published normally after22file scope/history/basic-privacy and fresh staged bothNode docs/progress checks. Local eachNode264/package4 and full16report supported/auth6/reference16/browser15/setup-cleanup pass,14historical research failures unchanged; initial RangeError source3cc preserved. ExactCI41548029405 under proc_9d09, terminal artifact/case/source/setup-cleanup/direct-log audit pending; no full release/signoff.",
@@ -2078,8 +2357,8 @@
     "historicalStorageParentChecks": "Historical source93345a16: mixed units125/125 on Node22/24, clean package checks Node22/24, check/diff pass. Real persistent auth1/1 and packed browser6/6 (data UI plus genuine password/localStorage reload on Chromium/Firefox/WebKit) passed with exact-source/setup/cleanup checks. Data/database/constraints refresh proc_ee08 and independent storage reviewer370c214b running. Refresh/live getUser/logout/events/default refresh still unsupported; G1/G7 open; no compatibility/signoff.",
     "parentPreviousDataChecks": "Historical source5c55be11: targeted auth parser privacy/import-graph regressions GREEN7/7 after preserved4pass/2fail and6pass/1fail REDs; mixed units114/114 on Node22/24, build/check/diff passed. Current clean package Node22/24 passed. Final-source proc_27fc passed: real memory-auth1/1,data6/6,database9/9,constraints6/6,packed data browsers3/3 Chromium/Firefox/WebKit; every source/setup/cleanup check passed and lock clear. Reviewer recheck2601f0f5 resolved both findings with no new issues; no maintainer signoff. Prior9fcb2e9f real auth1/1,data6/6,database9/9,constraints6/6,browsers3/3 and package22/24 passed source/setup/cleanup, now historical. Auth explicitly memory-only, no persistence/defaults/refresh/logout implemented; G1/G7 open; no compatibility/signoff.",
     "restart": [
-      "Finite PB01–PB04 request-expiry/shared-renewal/three delayed-response schedules verified at24379b2/source56d205a4 locally and exactCI41599278163/26reports/new12browser. BothNodes279/coverage/package4/installed8/reference16/default15/allsetupcleanup pass. Workflow remains red solely14unwaived historical assertions; no general E08/security/feature/release signoff.",
-      "Terminal original-private/remote-source/resources/history/bothNode-check/progress/diff passed. Retain3terminal notes uncommitted for the next substantive approved change, no docs-only push/workflow retry/publisher/issue310 rerun. Broader remaining acceptance and historical stockstartup0 unknown causes remain separate."
+      "Review9files including unchanged prior terminalCI proof and new finite tests/scope-label/docs/evidence; staged both exactNode checks/progress/diff, normal commit/push, one exactCI audit.",
+      "No physical-focus/hidden-tab/fullE08/S07/S08/security/device/release signoff, original demo/private/interruption history unchanged."
     ],
     "restartBeforeReleaseQualificationTerminalCi": [
       "Read releaseQualification/currentPhase/current nextSteps and docs/RELEASE_QUALIFICATION.md; existing official-only CRUD/auth code is implemented with bounded proof, not signed off",
@@ -2127,6 +2406,11 @@
     "restartBeforePackedBrowserCiObservation": [
       "Do not repeat the publisher or start another CI watcher. 24379b2 source56d205a4 normal15file push complete; managed proc_fbf7 is collecting one exact normal new-source CI. Continue its completion event with audit-exact-ci.mjs, preserve all raw outcomes and any original auditor failure; no green-seeking rerun.",
       "Then terminal remote/source/3current archives4339files/21projects3parents/prior15archives21332files/original-private and bothNode checks/progress/diff. Retain terminal3notes for next substantive work, no docs-only push or inferred release/feature/security approval."
+    ],
+    "checksBeforePackedBackgroundLocal": "Finite PB01–PB04 current-source local and exactCI proof verified: normal15file commit24379b269e065ae92c2427aa2a0cf30728fe51c8/source56d205a4cab3750b97e9e578538fa1aca5e2342e72957a07f68d39406c77c0bd, exactCI41599278163 attempt1/26source-head-artifact-bound reports/required-step-direct-log-pin audit PASSED, bothNodes279/coverage/package4/installed8/new3engine12/default15/reference16/allsetupcleanup pass. Workflow remains FAILURE solely14unchanged executed strict research assertions, not waived. Local27commands19reports/candidate14 automationPASS/default1/releaseBLOCKED8; separate guard-removal negative meaningful/no production src changes.21ownedprojects3parents absent/4339archived-rehashedfiles/original-private15priorarchives21332files preserved. Terminal remote/source/21ownedprojects3parents/current3archives4339files/prior15archives21332files/7privateartifacts575files/original-private/history/bothNode-check/progress/diff verification PASSED; no extra push/rerun and no full E08/security/feature/release signoff; no extra push/rerun or release/security/fullE08/feature signoff. Prior Vite41584110829 stock0/unexecuted121/sixhistorical/full-baseline FAILED and41548029405 remain separately unexplained/unrepaired.",
+    "restartBeforePackedBackgroundLocal": [
+      "Finite PB01–PB04 request-expiry/shared-renewal/three delayed-response schedules verified at24379b2/source56d205a4 locally and exactCI41599278163/26reports/new12browser. BothNodes279/coverage/package4/installed8/reference16/default15/allsetupcleanup pass. Workflow remains red solely14unwaived historical assertions; no general E08/security/feature/release signoff.",
+      "Terminal original-private/remote-source/resources/history/bothNode-check/progress/diff passed. Retain3terminal notes uncommitted for the next substantive approved change, no docs-only push/workflow retry/publisher/issue310 rerun. Broader remaining acceptance and historical stockstartup0 unknown causes remain separate."
     ]
   },
   "maintainer": "burggraf",
@@ -4861,9 +5145,10 @@
     }
   ],
   "nextSteps": [
-    "Review exact8-file substantive tests/docs/evidence scope and unchanged feature/gate/reviewer/deferred history; inherited terminalCI evidence byte-identical. Fresh staged bothNode checks/progress/diff then normal commit/push only.",
-    "Collect/audit one exact new-source normal CI head/source/artifacts/steps/logs/pins/strict baseline; preserve any actual failure without retry/status normalization.",
-    "Terminal original/private18archives25671files/current5checkout archives plus1776file interruption archive/23projects5parents/remote-source/status history and fresh bothNode checks; retain terminal notes for future substantive work, no docs-only push or full signoff."
+    "Connected9file scope/privacy/history review; staged bothNode checks/progress/diff and normal substantive commit/push from843af5c, folding prior3terminal notes.",
+    "Audit exactly one new-source CI attempt/head/26reports/case counts/steps/direct logs/pins/setup-cleanup; no blind rerun.",
+    "Terminal original-private/remote-source/resources/current archives/prior24archives34421files/fresh bothNode checks/progress/diff; retain3terminal notes for next substantive work, no docs-only push.",
+    "FullE08/S07/S08/physical focus-hidden tabs/critical security/TLS/accessibility/100cycle resources/devices/platform/three clean full runs/named maintainer acceptance remains blocked; G1/G7/14strict requirements and original/historical interruptions remain unwaived/unexplained."
   ],
   "nextStepsBeforePackedNodeCheckpoint": [
     "Current exactCI41548029405 observation is audited, NOT full required-baseline green: stock supabase-start0tests with image-pull/rate-limit text signatures/unknown actual cause;121cases and6historical stock assertions unexecuted. Keep original strict auditor failure/raw/artifacts and separate local full115/6 proof; no retry/warm-up/registry/pin/budget/permission change or blind rerun.",
@@ -5851,7 +6136,7 @@
   },
   "pendingWork": {
     "scope": "Finite PS01–PS08 packed-browser corrupt/unavailable/read/write/compensation/remove faults and two held-storage races, only demonstrated in-scope fixes permitted.",
-    "status": "Finite PS01–PS08 local/full qualification/owned archive and preservation verified; reviewed normal substantive push and one exactCI audit pending. Broader security/browser/device/release acceptance blocked.",
+    "status": "Finite BF01–BF08 local qualified, review/push/exactCI pending; broader release/security/browser/device acceptance remains blocked.",
     "remainingAcceptance": [
       "complete-active-matrix-and-critical-security-branch-review",
       "real-disabled-registration-and-mfa-negative-controls",
