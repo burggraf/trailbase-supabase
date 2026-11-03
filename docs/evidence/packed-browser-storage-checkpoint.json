@@ -1,0 +1,796 @@
+{
+  "scope": "Finite PS01–PS08 genuine packed-browser session persistence fault handling. NOT full E07/S07/S08/security/release acceptance, SDK defect/fix, deferred Storage product, cross-tab synchronization or Supabase storage-error parity",
+  "parentCommit": "24379b269e065ae92c2427aa2a0cf30728fe51c8",
+  "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+  "change": {
+    "publicApiProductionSrcScriptsCiConfigsLockAndAllPinsUnchanged": true,
+    "existingScope": "npm run test:sdk:browser",
+    "originalCases": 15,
+    "addedCases": 24,
+    "totalCases": 39,
+    "candidateCommandsUnchanged": 14,
+    "realAuthenticationAndLocalStorageDiskEffects": true,
+    "storageFailuresInjectedAtDocumentedAdapterBoundary": true,
+    "noFakeJwtClockSuccessfulResponseIdentityRepairOrPrivateCapability": true,
+    "autoRefreshToken": false
+  },
+  "reconciliation": {
+    "canonicalPersistenceScenario": "E07; historical packed storage case labeled E06, canonical E06 remains cardinality",
+    "existingUnitFaults": "sdk-auth-storage, storage-review, storage-property, storage-options, logout and refresh cover corruption/read/unavailable/write/compensation/removal/races with injected credentials",
+    "existingNodeAndBrowser": "PN03 real async disk/process reload and sdk-auth/default browsers prove healthy persistence; not these packed-browser faults",
+    "governingContract": "README Explicit persistent storage subset; existing fail-closed consistency latch and truthful disk uncertainty. No semantic change."
+  },
+  "acceptance": {
+    "cases": [
+      "PS01 actual genuine corrupt saved-envelope reload: truncated JSON/unknown version/missing credential; sanitized errors/null initialization/zero dispatch/no auto repair, explicit repaired new-instance live validation",
+      "PS02 unavailable default getter/sync throw/async read rejection; zero dispatch/write and real memory-only login/zero adapter calls/actual reload control",
+      "PS03 sync/async write rejection before and after genuine B disk effect restores exact committed A; no B install/event, live A complete rows",
+      "PS04 genuine B write then failed compensation leaves actual B disk explicit; sanitized restore latch blocks all further auth/data even after external repair; new instance live-validates repaired A",
+      "PS05 sync/async logout removal failures before/after disk effect: genuine captured refresh revoked401, null event, sanitized latch and exact disk truth",
+      "PS06 genuinely revoked refresh401 with sync/async removal before/after disk effect: terminal null/latch/zero unauthorized dispatch",
+      "PS07 actual refresh write held after disk effect versus queued mutation/local logout/B login; stale renewal/query, zero mutation dispatch, exact B storage/live/event authority",
+      "PS08 genuine A hydration held versus local logout/B login; no late A installation/event, actual old refresh401, exact B authority"
+    ],
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "caseCount": 24,
+    "retries": 0,
+    "skips": 0,
+    "flakes": 0,
+    "unhandledBrowserErrors": 0,
+    "zeroForbiddenMutationDispatchAndAuditWrites": true,
+    "completeSevenScalarOwnerControlRowsPreserved": true,
+    "unrelatedKeysAccountsSessionsRowsAuditPreserved": true,
+    "ordinaryFreshCleanupAndZeroOwnedRefreshSessionsBeforeFixtureRemoval": true,
+    "targeted": {
+      "scope": "Finite PS01–PS08 packed browser persistence faults, no full E07/S07/S08/security/release signoff",
+      "sourceSha256": "a19374a3b6d1a48546be33c5feba55c6c059128fbee5a8f6e56dfc5da6f9751f",
+      "label": "corrected",
+      "passed": 39,
+      "failed": 0,
+      "setup": "ready",
+      "cleanup": "passed",
+      "productionSourceUnchanged": true,
+      "signoff": false
+    },
+    "fullStrengthenedCurrentSourceBrowserReport": {
+      "suite": "sdk-browser",
+      "node": "v22.23.2",
+      "status": "passed",
+      "setupStage": "ready",
+      "passed": 39,
+      "failed": 0,
+      "cleanup": "passed"
+    },
+    "counterfactual": {
+      "scope": "Separate test-only guard-removal counterfactual, never current SDK/research status normalization, product defect/fix or release signoff",
+      "baselineSourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+      "mutantSourceSha256": "aacd47195a2d0812b15f34f8faf7acbc1db8f315e3e17ade8d87a831878e5acf",
+      "actualTestExitCode": 1,
+      "actualReportStatus": "failed",
+      "selected": "PS04 Chromium only",
+      "failedAssertion": "sanitized AuthStorageRestoreError",
+      "setup": "ready",
+      "cleanup": "passed",
+      "expectedFailureObserved": true,
+      "productionSourceUnchanged": true,
+      "signoff": false
+    }
+  },
+  "regression": {
+    "commands": 27,
+    "controllerCommands": 14,
+    "commandAccounting": "27 completed constituent commands across original partial batch and independent continuation; one additional interrupted research-browser attempt retained, not a completed full batch",
+    "unitsEachNode": 279,
+    "packageEachNode": 4,
+    "realInstalledNodeEach": 8,
+    "reports": [
+      {
+        "suite": "sdk-auth",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-refresh",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-data",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "database",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "constraints",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 39,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-browser-refresh",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 12,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "lifecycle",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-reference",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 16,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "expiry",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-migration",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "all",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 115,
+        "failed": 6,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "characterization",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "smtp",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "native-upgrade",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "owned-ready",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "todos-launcher",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v22.23.2",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "b8d3497f4e90a573e10437d3cf3badc75fb9d8af09767fd86cc03d8d992d6ad8",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      },
+      {
+        "suite": "sdk-node",
+        "node": "v24.21.0",
+        "status": "passed",
+        "setupStage": "ready",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "tarballSha256": "b8d3497f4e90a573e10437d3cf3badc75fb9d8af09767fd86cc03d8d992d6ad8",
+        "postconditions": {
+          "addedConfirmedOwners": 2,
+          "ownedPendingIdentities": 0,
+          "ownedRefreshSessions": 0,
+          "ownedRows": 0,
+          "expectedAuditOperations": 7,
+          "existingAccountsSessionsRowsAuditUnchanged": true
+        }
+      },
+      {
+        "suite": "browser",
+        "node": "v22.23.2",
+        "status": "failed",
+        "setupStage": "ready",
+        "passed": 60,
+        "failed": 6,
+        "cleanup": "passed"
+      }
+    ],
+    "guards": [
+      {
+        "node": "22.23.2",
+        "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+        "units": 279,
+        "packageChecks": 4
+      },
+      {
+        "node": "24.21.0",
+        "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+        "units": 279,
+        "packageChecks": 4
+      }
+    ],
+    "candidate": {
+      "commands": [
+        {
+          "id": "check",
+          "status": "passed"
+        },
+        {
+          "id": "units",
+          "status": "passed"
+        },
+        {
+          "id": "coverage",
+          "status": "passed"
+        },
+        {
+          "id": "package",
+          "status": "passed"
+        },
+        {
+          "id": "node",
+          "status": "passed"
+        },
+        {
+          "id": "auth",
+          "status": "passed"
+        },
+        {
+          "id": "refresh",
+          "status": "passed"
+        },
+        {
+          "id": "data",
+          "status": "passed"
+        },
+        {
+          "id": "database",
+          "status": "passed"
+        },
+        {
+          "id": "constraints",
+          "status": "passed"
+        },
+        {
+          "id": "browser",
+          "status": "passed"
+        },
+        {
+          "id": "browser-refresh",
+          "status": "passed"
+        },
+        {
+          "id": "example",
+          "status": "passed"
+        },
+        {
+          "id": "cleanup",
+          "status": "passed"
+        }
+      ],
+      "automation": "passed",
+      "qualification": "blocked",
+      "defaultExitCode": 1,
+      "remainingAcceptance": [
+        "complete-active-matrix-and-critical-security-branch-review",
+        "real-disabled-registration-and-mfa-negative-controls",
+        "browser-cap-operator-expiry-race-and-storage-failure-matrix",
+        "trusted-local-tls-auth-smoke-and-security-assessment",
+        "complete-accessibility-and-100-cycle-auth-app-resource-proof",
+        "physical-device-and-advertised-platform-acceptance",
+        "three-consecutive-clean-same-candidate-runs",
+        "named-maintainer-feature-limitations-and-release-signoff"
+      ],
+      "signoff": false
+    },
+    "coverage": [
+      {
+        "node": "v22.23.2",
+        "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+        "status": "passed",
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "thresholdsPassed": true,
+        "total": {
+          "statements": {
+            "total": 838,
+            "covered": 814,
+            "skipped": 0,
+            "pct": 97.13
+          },
+          "lines": {
+            "total": 555,
+            "covered": 552,
+            "skipped": 0,
+            "pct": 99.45
+          },
+          "functions": {
+            "total": 136,
+            "covered": 135,
+            "skipped": 0,
+            "pct": 99.26
+          },
+          "branches": {
+            "total": 655,
+            "covered": 622,
+            "skipped": 0,
+            "pct": 94.96
+          }
+        },
+        "files": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 509,
+                "covered": 495,
+                "skipped": 0,
+                "pct": 97.24
+              },
+              "lines": {
+                "total": 311,
+                "covered": 311,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 80,
+                "covered": 79,
+                "skipped": 0,
+                "pct": 98.75
+              },
+              "branches": {
+                "total": 376,
+                "covered": 356,
+                "skipped": 0,
+                "pct": 94.68
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 14,
+              "functions": 1,
+              "branches": 20
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 0,
+              "functions": 0,
+              "branches": 2
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 291,
+                "covered": 281,
+                "skipped": 0,
+                "pct": 96.56
+              },
+              "lines": {
+                "total": 215,
+                "covered": 212,
+                "skipped": 0,
+                "pct": 98.6
+              },
+              "functions": {
+                "total": 48,
+                "covered": 48,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 248,
+                "covered": 237,
+                "skipped": 0,
+                "pct": 95.56
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 10,
+              "functions": 0,
+              "branches": 11
+            }
+          }
+        ],
+        "completeSanitizedReportSha256": "0b591fffb6203ccfbef4e935666d56e7e73a3fc494f3e97ae8e8bf51393804fc"
+      },
+      {
+        "node": "v24.21.0",
+        "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+        "status": "passed",
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "thresholdsPassed": true,
+        "total": {
+          "statements": {
+            "total": 838,
+            "covered": 814,
+            "skipped": 0,
+            "pct": 97.13
+          },
+          "lines": {
+            "total": 555,
+            "covered": 552,
+            "skipped": 0,
+            "pct": 99.45
+          },
+          "functions": {
+            "total": 136,
+            "covered": 135,
+            "skipped": 0,
+            "pct": 99.26
+          },
+          "branches": {
+            "total": 655,
+            "covered": 622,
+            "skipped": 0,
+            "pct": 94.96
+          }
+        },
+        "files": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 509,
+                "covered": 495,
+                "skipped": 0,
+                "pct": 97.24
+              },
+              "lines": {
+                "total": 311,
+                "covered": 311,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 80,
+                "covered": 79,
+                "skipped": 0,
+                "pct": 98.75
+              },
+              "branches": {
+                "total": 376,
+                "covered": 356,
+                "skipped": 0,
+                "pct": 94.68
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 14,
+              "functions": 1,
+              "branches": 20
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 0,
+              "functions": 0,
+              "branches": 2
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 291,
+                "covered": 281,
+                "skipped": 0,
+                "pct": 96.56
+              },
+              "lines": {
+                "total": 215,
+                "covered": 212,
+                "skipped": 0,
+                "pct": 98.6
+              },
+              "functions": {
+                "total": 48,
+                "covered": 48,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 248,
+                "covered": 237,
+                "skipped": 0,
+                "pct": 95.56
+              }
+            },
+            "uncoveredLocationCounts": {
+              "statements": 10,
+              "functions": 0,
+              "branches": 11
+            }
+          }
+        ],
+        "completeSanitizedReportSha256": "6eb4555bca205cb55963c7bcd62c772a533068ecac2329e19734a2bab60739c9"
+      }
+    ],
+    "strictResearchFailures": 14,
+    "exactHistoricalResearchNamesStatusesUnchanged": true,
+    "allSetupAndCleanupPassed": true,
+    "unchangedShippedFiles": [
+      "package.json",
+      "LICENSE",
+      "dist/index.js",
+      "dist/auth.js",
+      "dist/common.js",
+      "dist/index.d.ts",
+      "dist/auth.d.ts",
+      "dist/common.d.ts"
+    ],
+    "changedShippedMetadata": [
+      "README.md"
+    ],
+    "runtimeDistributionAndGraphMatchReviewed24379b2OnBothNodes": true,
+    "completeSourceRawReportsAndCoverageMapsPreserved": true
+  },
+  "preservation": {
+    "scope": "Read-only historical/original preservation, not new private runtime work or MVP dependency",
+    "privateArtifactsUnchanged": 7,
+    "retainedPriorFilesHashVerified": 575,
+    "priorCompleteArchivesVerified": 18,
+    "priorArchivedFilesHashVerified": 25671,
+    "privateSdkSourceAndFrozenShippedFilesUnchanged": true,
+    "originalApprovedReadOnlyGuardPassed": true,
+    "originalDemoDataAssetsConfigurationKeysLocksContainersSupervisorTailnetUnchanged": true,
+    "privateAdoptionOrDeployment": false,
+    "signoff": false,
+    "currentArchives": [
+      {
+        "label": "first",
+        "sourceSha256": "24430393f7a8f29e9e2e89e64fe988543e9174698151394172f1f89e3832b796",
+        "ownedProjectsAbsent": 1,
+        "archivedFiles": 1273,
+        "allCopiedBytesIndependentlyRehashed": true,
+        "ownedParentAbsent": true
+      },
+      {
+        "label": "corrected",
+        "sourceSha256": "a19374a3b6d1a48546be33c5feba55c6c059128fbee5a8f6e56dfc5da6f9751f",
+        "ownedProjectsAbsent": 1,
+        "archivedFiles": 1281,
+        "allCopiedBytesIndependentlyRehashed": true,
+        "ownedParentAbsent": true
+      },
+      {
+        "label": "mutant",
+        "sourceSha256": "aacd47195a2d0812b15f34f8faf7acbc1db8f315e3e17ade8d87a831878e5acf",
+        "ownedProjectsAbsent": 1,
+        "archivedFiles": 1285,
+        "allCopiedBytesIndependentlyRehashed": true,
+        "ownedParentAbsent": true
+      },
+      {
+        "label": "final",
+        "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+        "ownedProjectsAbsent": 19,
+        "archivedFiles": 1784,
+        "allCopiedBytesIndependentlyRehashed": true,
+        "ownedParentAbsent": true
+      },
+      {
+        "label": "missing-browser",
+        "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+        "ownedProjectsAbsent": 1,
+        "archivedFiles": 1351,
+        "allCopiedBytesIndependentlyRehashed": true,
+        "ownedParentAbsent": true
+      }
+    ],
+    "currentOwnedProjectsAbsent": 23,
+    "currentOwnedParentsAbsent": 5,
+    "currentArchivedFiles": 6974,
+    "additionalPreCleanupInterruptionArchiveFiles": 1776,
+    "additionalPreCleanupInterruptionArchiveIndependentlyRehashed": true
+  },
+  "interruption": {
+    "originalBatchCompleted": false,
+    "originalCompletedControllerCommands": 13,
+    "originalCompletedRealReports": 18,
+    "originalMissingResearchBrowserPassed": false,
+    "interruptedAdditionalScopeAttempts": 1,
+    "cause": "not-established",
+    "recovery": {
+      "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+      "interruptedRun": "1793697550778-83540040a161",
+      "project": "trailbase-supabase-test-83540040a161",
+      "exactOwnershipConfigMarkersLockNetworkAndVolumeLabelsVerified": true,
+      "runnerAndNativePidsAbsentBeforeCleanup": true,
+      "partialReportsPreserved": 18,
+      "partialArchiveFiles": 1776,
+      "allCopiedBytesRehashed": true,
+      "documentedOwnedCleanupPassed": true,
+      "ownedContainersNetworksVolumesAndLockAbsent": true,
+      "completedReportBytesUnchanged": true,
+      "unrelatedContainerIdsAndRootLockUnchanged": true,
+      "cause": "not-established",
+      "missingResearchBrowserPassed": false,
+      "signoff": false
+    },
+    "independentContinuation": {
+      "command": "npm run test:phase-a -- browser",
+      "sourceSha256": "98504e3b9552a1b5db114de2721eae39b0176efe50844a62afffe8152867d79f",
+      "exitCode": 1,
+      "setup": "ready",
+      "cleanup": "passed",
+      "passed": 60,
+      "failed": 6,
+      "wholeBatchRerun": false
+    }
+  },
+  "setupHistory": {
+    "initialSource": "24430393f7a8f29e9e2e89e64fe988543e9174698151394172f1f89e3832b796",
+    "initialResult": "36pass/3fail, PS07 all engines; setup/cleanup passed. Promise.resolve deferred lazy query start until after logout. Correct schedule uses immediate query.then as existing PB tests do; no production fix.",
+    "correctedTargetedSource": "a19374a3b6d1a48546be33c5feba55c6c059128fbee5a8f6e56dfc5da6f9751f",
+    "finalStrengthening": "Final full source additionally asserts unhandled browser errors absent and leaves a genuine memory-only session active before actual reload; earlier targeted proof is not relabeled to final source."
+  },
+  "historicalCi": {
+    "reviewedParentRun": 41599278163,
+    "parentMandatory26ReportAuditPassed": true,
+    "parentSupportedAndPBPassed": true,
+    "parentExecutedStrictResearchFailures": 14,
+    "viteRun": 41584110829,
+    "viteRequiredFullBaselineAuditPassed": false,
+    "stockSetup": "supabase-start",
+    "stockExecuted": 0,
+    "unexecutedCases": 121,
+    "unexecutedHistoricalAssertions": 6,
+    "historicalFailuresExecutedElsewhere": 8,
+    "earlierStockStartup0Run": 41548029405,
+    "cause": "not-established",
+    "laterPassDoesNotExplainHistoricalFailures": true,
+    "noSameSourceGreenSeekingRerun": true
+  },
+  "remainingAcceptance": "BLOCKED: full E07/S07/S08, browser background/focus/transient/cap/operator matrix, disabled-registration/MFA negatives, critical security/TLS/accessibility/100cycle resources/physical-device/platform/three clean full runs/named maintainer acceptance. G1/G7/null signup/409/global uncertainty and14strict requirements remain unwaived; zero clean full release runs.",
+  "normalReviewedSubstantivePushAndOneExactCiAudit": "Pending at local snapshot; inherited3terminal notes/evidence folded without rewriting prior evidence. No publication/upstream messages/deployment/live/security/pin changes.",
+  "signoff": false
+}
