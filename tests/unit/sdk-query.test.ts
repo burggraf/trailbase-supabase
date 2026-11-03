@@ -51,6 +51,22 @@ it('L1-09/U09 supports all six scalar filters with safe value encoding', async (
   expect(requests[0].searchParams.get('filter[priority][$lte]')).toBe('8');
 });
 
+for (const limit of [1000, 0]) it(`L1-09/U09 repeated same-operator predicates retain indexed native AND at limit ${limit}`, async () => {
+  const requests: URL[] = [];
+  const query = makeClient(requests).from('todos').select().lt('priority', 3).gt('priority', 1).gt('priority', 99).eq('completed', true).eq('title', 'a&b + c').order('title').limit(limit);
+  expect(requests).toHaveLength(0);
+  expect(await query).toEqual({ data: [], error: null });
+  expect(requests).toHaveLength(1);
+  expect([...requests[0].searchParams]).toEqual([
+    ['limit', String(limit)],
+    ...(limit === 0 ? [] : [['order', '+title']]),
+    ['filter[$and][0][priority][$lt]', '3'], ['filter[$and][1][priority][$gt]', '1'],
+    ['filter[$and][2][priority][$gt]', '99'], ['filter[$and][3][completed][$eq]', '1'],
+    ['filter[$and][4][title][$eq]', 'a&b + c'],
+    ...(limit === 0 ? [['order', '+title']] : []),
+  ]);
+});
+
 it('L1-10/U10 L1-11/U11 orders fields and uses inclusive ranges with last effective bounds', async () => {
   const requests: URL[] = [];
   const query = makeClient(requests).from('todos').select('*');

@@ -11,12 +11,14 @@ A planned Supabase-shaped TypeScript SDK for TrailBase: start with a lightweight
 | Methods | Implemented boundary |
 | --- | --- |
 | `select()` / `select('*')` | Mapped fields only; projections, count/head and extra options throw before wire. |
-| Six filters, `order`, `limit`, `range` | Declared scalar domain, non-null ordering, 1000-row cap; last effective bounds win. |
+| Six filters, `order`, `limit`, `range` | Declared scalar domain, non-null ordering, 1000-row cap; last effective bounds win (a later limit retains the previous range offset). |
 | `single()` / `maybeSingle()` | Cardinality after caller bounds; no implicit `limit(1)`. Adapter `CardinalityError` has no fabricated HTTP/SQL code. |
 | `insert(record)` | One own-field plain object; omitted defaults remain omitted; success data is null. |
 | `update(values).eq(key, value)` / `delete().eq(key, value)` | Exactly one explicit mapped primary-key equality; no extra/non-key/conflicting predicates, key changes, ordering, limits or returning. Missing key resolves an unsupported-feature error without a request. |
 
 Constructor/builder validation throws before side effects; awaited backend/transport/cardinality errors resolve `{ data: null, error }`. Native errors remain native (including forbidden/missing writes), not reference no-op successes. Create acknowledgements are validated before their IDs are discarded: padded native UUIDv4 or canonical safe-integer decimal strings from the pinned server. Malformed success replies remain observable errors with unknown write outcome, never replayed. No read-after-write or replay is added; every await executes freshly, including repeated mutations. Independent builders isolate. Views require an explicit `readOnly: true` mapping for runtime write rejection; generated `public.Views` are read-only in types. Mutation primary keys must be declared non-null UUIDv4 or safe integers; text, boolean and nullable key mappings remain read-only for this slice. Arrays, inherited/unmapped fields, upsert and mutation options/returning are rejected. `npm run build:sdk`, `npm run test:sdk:unit` and `npm run test:sdk:data` exercise only the current data slice; full browser/package/security/release gates remain incomplete.
+
+Bounded BQ01–BQ04 browser acceptance in `test:sdk:browser` targets the existing1000-row cap, declared six-operator and setter/execution matrix against real packed TrailBase and official Supabase clients. L1-09 repeated same-operator predicates use the official native indexed-AND encoding (including permission-checked zero limit), not duplicate flat keys that the pinned server rejects; this preserves existing AND semantics, not a new public query feature. Count/head and richer operators remain unsupported; no invented count, native HTTP416 or Unicode/collation parity. See [the test plan](docs/TEST_PLAN.md) and current-source ledger for actual execution status, not an inferred feature/security/release signoff.
 
 ## Development password auth (not signed off)
 

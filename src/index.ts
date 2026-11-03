@@ -210,19 +210,24 @@ class SelectQuery<Row, Data = Row[]> implements PromiseLike<QueryResult<Data>> {
   private async execute(): Promise<QueryResult<Data>> {
     try {
       if (this.pageLimit === 0 && this.offset > 0) throw new RangeError('Adapter range error: positive offset with zero limit is not supported');
+      // Repeated flat column/operator keys are rejected by the native parser.
+      // Preserve existing AND semantics using the official client's indexed form.
+      const filterKeys = this.filters.map(filter => `${filter.column}:${filter.op}`);
+      const indexedAnd = new Set(filterKeys).size !== filterKeys.length;
       let response: unknown;
       if (this.pageLimit === 0) {
         // The pinned list client omits zero. Use native HTTP without bypassing access rules.
         const params = new URLSearchParams({ limit: '0' });
         const operators = { equal: '$eq', notEqual: '$ne', greaterThan: '$gt', greaterThanEqual: '$gte', lessThan: '$lt', lessThanEqual: '$lte' };
-        for (const filter of this.filters) {
+        for (const [index, filter] of this.filters.entries()) {
           const operator = operators[filter.op as keyof typeof operators];
-          params.append(`filter[${filter.column}][${operator}]`, filter.value);
+          const prefix = indexedAnd ? `filter[$and][${index}]` : 'filter';
+          params.append(`${prefix}[${filter.column}][${operator}]`, filter.value);
         }
         if (this.ordering.length) params.set('order', this.ordering.join(','));
         response = await (await this.native.fetch(`/api/records/v1/${this.mapping.api}?${params}`)).json();
       } else {
-        response = await this.native.records(this.mapping.api).list({ filters: this.filters, order: this.ordering.length ? this.ordering : undefined, pagination: { limit: this.pageLimit, offset: this.offset } });
+        response = await this.native.records(this.mapping.api).list({ filters: indexedAnd ? [{ and: this.filters }] : this.filters, order: this.ordering.length ? this.ordering : undefined, pagination: { limit: this.pageLimit, offset: this.offset } });
       }
       if (!response || typeof response !== 'object') throw new TypeError('TrailBase returned an invalid list');
       const records: unknown = Reflect.get(response, 'records');
