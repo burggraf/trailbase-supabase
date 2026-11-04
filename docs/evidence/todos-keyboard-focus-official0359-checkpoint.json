@@ -1,0 +1,155 @@
+{
+  "status": "local-real-red-green-honest19plus2-and-preservation-verified-publication-pending",
+  "featureIds": [
+    "L1-09",
+    "L1-24",
+    "L1-26",
+    "E04",
+    "E10",
+    "E13",
+    "E14",
+    "KF01"
+  ],
+  "baseCommit": "951f1f07c69a3c0e277d987c3a2b5caf7bdc1f5a",
+  "sourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+  "scope": "Existing normal todos keyboard completion focus, not a new API or release criterion. No SDK/auth/permission/dependency/pin/reference-default-policy change.",
+  "supportedNativeMinimum": "Official TrailBase0.35.9 or newer, operator-enforced on every actual handler/replica; no version detection or setting. Later wire qualification, unsupported old/mixed/rolled-back servers and residual JWT/race limits remain explicit.",
+  "fixture": {
+    "native": "0.35.9",
+    "commit": "a106ce6338f9831140c92ac16e051901ed92d576",
+    "nativeJs": "0.14.3",
+    "referenceJs": "2.117.2"
+  },
+  "red": {
+    "sourceSha256": "70d883e1fc78a5d471d0cbd9a64dc81ce87e375e3c1c5120fbb297fa8c3de31a",
+    "existingPassed": 66,
+    "newFailed": 6,
+    "setup": "ready",
+    "cleanup": "passed",
+    "actualFailure": "KF assertion: completion retains keyboard checkbox focus; exactly one intended assertion error in each backend/engine case, no cleanup AggregateError",
+    "appEqualsReviewedBase": true,
+    "originalFailureAndCompleteRawEvidenceRetained": true
+  },
+  "green": {
+    "passed": 72,
+    "failed": 0,
+    "setup": "ready",
+    "cleanup": "passed",
+    "identicalTestBytes": true,
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "backends": [
+      "official TrailBase with packed adapter",
+      "local Supabase with official client"
+    ],
+    "cases": "Keyboard complete/undo, aborted real outgoing PATCH, committed PATCH plus aborted real GET, filtered row removal and no focus theft after held genuine successful PATCH delivery",
+    "postconditions": "Exact one PATCH and applicable bounded GET without replay; full owner rows and exact UPDATE audit deltas; independent-owner rows/audit unchanged; independent row/identity cleanup; complete old native users/sessions/rows/audit and reference old per-ID audit fingerprints preserved",
+    "transportBoundary": "Only reference test uses supported db.retry:false to deliver an aborted GET; no product/default reference retry-policy change or parity claim",
+    "noFabricatedSuccessfulReplies": true
+  },
+  "fix": "Capture checkbox focus ownership before disabling controls. After settling and re-enabling, restore current same-row checkbox or New task if filtered out, only while focus remains on old checkbox/body. No focus restoration after disposal; moved outside focus is not stolen. Existing rollback/saved-refresh/error/no-replay behavior retained.",
+  "bothPinnedStatic": {
+    "status": "passed",
+    "nodes": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "check": "passed",
+    "unitCasesPerNode": 302,
+    "coverage": "95% statements/lines/functions and90% branches globally and each of all3 src runtime modules, zero skipped/exclusions or reduced thresholds",
+    "packageChecksPerNode": 4
+  },
+  "interruption": {
+    "originalController": "proc_d35b interrupted19of21, original terminal/primary-error/managed-stdout records absent",
+    "cause": "UNKNOWN",
+    "originalCompletedCommands": 19,
+    "supportedCompletedPassed": 16,
+    "strictCompletedFailures": 8,
+    "snapshotFiles": 78,
+    "original19ReportsLogsCodeAndSnapshotsUnchanged": true,
+    "ownedRecovery": "PASS: documented cleanup only exact isolated generated run after immediate ownership/source/config/lock/deadPID/full-container-ID-label/network/volume checks; original live lock/demo and all unrelated container IDs/PIDs/starttimes unchanged; original demo before/after guards PASS",
+    "remaining": "None for finite local scopes: honest19+2 verified, not original21-controller completion",
+    "separateUnfinishedCommands": 2,
+    "separateTerminal": "audit-passed",
+    "original19And78SnapshotUnchanged": true
+  },
+  "applicableVerification": "PASS:22current-source runtime reports (separate fixed72 plus honest original19+only2unfinished),6static reports/bothNodes302/unchanged95–90global+each3module coverage/no skips/package4/installed8, all setupcleanupPASS; all14 actual strict failures and complete prior/frozen names unchanged. Original controller remains interrupted19of21/causeUNKNOWN, not completed21.",
+  "review": "Executor connected-code review: no open findings in focus ownership/current-row lookup/filtered fallback/rollback/saved-refresh/disposal/no-theft/test cleanup and lower-layer applicability. Not independent model review or maintainer signoff.",
+  "preservationBefore": "PASS:51archives75975files,7privateartifacts575files, original0358demo/assets/data/sixcontainers/live lock/supervisor/Tailnet/protected failure histories; three pending NR01 terminal files privately snapshotted",
+  "historicalBoundaries": {
+    "strictResearchFailures": 14,
+    "nrOriginalLocalController": "Interrupted19/21, terminal/primary-error absent, cause UNKNOWN; separate honest19+2 preserved",
+    "priorCi": "41789091995 attempt1 failed supabase-start/0of123unexecuted and original strict auditor failed; cause NOT ESTABLISHED. Attempt2 effective27report audit PASS explicitly9new research+18inherited successful reports. Retry nonrecurrence did not establish cause or repair attempt1.",
+    "anSrHistories": "AN unknown interruption/honest19+4 and SR known failed1+22 remain distinct and immutable"
+  },
+  "publication": {
+    "status": "pending",
+    "normalScopedCommitPushRequired": true,
+    "exactNewCommitCi": "pending",
+    "noRerun": true
+  },
+  "remaining": [
+    "Full E14 associated errors/status/keyboard signup-login acceptance",
+    "100-cycle app/auth resources and physical-device/platform acceptance",
+    "Existing complete contract/security/E2E/package/all and TLS/security/release/three-clean-candidate/named-maintainer gates",
+    "Documented native signup null user/session,409/424,no supported resend/identity repair; operator version prerequisite and residual JWT/race limitations"
+  ],
+  "noLiveDeploymentNetworkSecurityCredentialForkOutreachChange": true,
+  "signoff": false,
+  "localAudit": {
+    "status": "passed",
+    "sourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+    "currentSourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+    "runtimeReports": 22,
+    "staticReports": 6,
+    "completedFixed72NotRestarted": true,
+    "remainingCommands": 21,
+    "reconciliation": "original interrupted19 plus separate2 unfinished scopes, not original21-controller completion",
+    "originalController": "interrupted19of21-terminal-and-primary-error-absent",
+    "interruptionCause": "unknown",
+    "exactOwnedAbandonedRunRecovery": "passed",
+    "noCompletedScopeRestarted": true,
+    "actualRuntimeReportCount": 22,
+    "bothNodeUnits": 302,
+    "coverage": "95/90-global-and-each3modules-zero-skipped",
+    "packagePerNode": 4,
+    "installedPerNode": 8,
+    "defaultPackedCases": 72,
+    "newCases": 6,
+    "shortPackedCases": 36,
+    "negativeCasesPerNode": 14,
+    "strictResearchFailures": 14,
+    "exactCompletePriorNamesAndFrozenHistoricalFailureNamesUnchanged": true,
+    "allSetupAndCleanupPassed": true,
+    "realRedGreenVerified": true,
+    "reviewKind": "executor connected-code review, not independent model or maintainer review",
+    "productionSdkPinsReferencePolicyUnchanged": true,
+    "protectedAnSrNrControllerAndPriorCiFailureHistoriesUnchanged": true,
+    "original51archiveAndDemoBeforeProof": "passed; final read-only proof still required",
+    "signoff": false
+  },
+  "preservationFinal": {
+    "status": "passed",
+    "phase": "final",
+    "sourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+    "archives": 53,
+    "archivedFiles": 79286,
+    "newOwnedArchives": 2,
+    "newOwnedFiles": 3311,
+    "newOwnedProjectsAbsent": 24,
+    "newOwnedParentsAbsent": 2,
+    "allArchiveBytesRehashed": true,
+    "privateArtifacts": 7,
+    "privateRetainedFiles": 575,
+    "originalAttempt1Failed0of123AndAttempt2Explicit9new18inheritedAndAllControlErrorsUnchanged": true,
+    "protectedAnUnknown19plus4SrFailed1plus22NrUnknown19plus2HistoriesUnchanged": true,
+    "originalKfUnknown19of21AndSeparate19plus2With78SnapshotFilesPreserved": true,
+    "threePendingNrTerminalSnapshotsAndHistoricalLedgerMarkdownPreserved": true,
+    "original0358DemoDataAssetsSixContainersLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+    "noDeploymentNetworkSecurityCredentialsForkOutreachChange": true,
+    "signoff": false
+  }
+}

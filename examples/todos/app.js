@@ -154,7 +154,15 @@ export function mountTodos(root, client, options = {}) {
   root.addEventListener('change', event => {
     const checkbox = event.target; if (busy || disposed || checkbox.type !== 'checkbox') return;
     const task = rows.find(task => task.id === checkbox.closest('li').dataset.id); if (!task) return;
-    const completed = checkbox.checked; void run(() => client.from(table).update({ completed }).eq('id', task.id), completed ? 'Task completed.' : 'Task moved to active.').then(saved => { if (!saved && !disposed) checkbox.checked = task.completed; });
+    const completed = checkbox.checked, restoreFocus = document.activeElement === checkbox;
+    void run(() => client.from(table).update({ completed }).eq('id', task.id), completed ? 'Task completed.' : 'Task moved to active.').then(saved => {
+      if (disposed) return;
+      if (!saved) checkbox.checked = task.completed;
+      if (restoreFocus && (document.activeElement === document.body || document.activeElement === checkbox)) {
+        const current = Array.from(list.children).find(item => item.dataset.id === task.id)?.querySelector('input[type="checkbox"]');
+        (current ?? input).focus();
+      }
+    });
   }, { signal: listeners.signal });
   root.addEventListener('click', event => {
     const button = event.target.closest('button'); if (!button || busy || disposed) return;

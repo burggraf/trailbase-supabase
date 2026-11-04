@@ -1,5 +1,5 @@
 {
-  "status": "local-real-red-green-honest19plus2-and-preservation-verified-publication-pending",
+  "status": "published-effective-exactCI-audit-passed-after-single-job-retry-attempt1-failed-preserved",
   "scope": "NR01 bounded normal todos page/filter/fallback failed-read recovery; existing CRUD MVP UI requirement, not a new SDK API or release gate",
   "baseCommit": "8f72189fbb20b7ed7a35abb1e55ae253e7ea1625",
   "sourceSha256": "888030151168837171d5201f6f4a472bbe6c63d74a73ea75b4bd592099f750c7",
@@ -112,10 +112,181 @@
     "noCompletedScopeRestarted": true
   },
   "publication": {
-    "status": "pending",
-    "normalScopedCommitPushRequired": true,
-    "exactNewCommitCiAuditRequired": true,
-    "rerunRequested": false
+    "status": "normal-scoped-push-effective-qualification-passed-after-single-job-retry",
+    "commit": "951f1f07c69a3c0e277d987c3a2b5caf7bdc1f5a",
+    "parent": "8f72189fbb20b7ed7a35abb1e55ae253e7ea1625",
+    "sourceSha256": "888030151168837171d5201f6f4a472bbe6c63d74a73ea75b4bd592099f750c7",
+    "reviewedFiles": 9,
+    "exactNewCommitCi": {
+      "id": 41789091995,
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41789091995/attempts/1",
+      "commit": "951f1f07c69a3c0e277d987c3a2b5caf7bdc1f5a",
+      "attempt": 1,
+      "status": "completed",
+      "workflowConclusion": "failure",
+      "requiredAudit": "failed",
+      "originalAuditAssertion": "actual [0,0] !== expected [117,6]",
+      "stockScope": {
+        "status": "failed",
+        "setupStage": "supabase-start",
+        "expectedCases": 123,
+        "executedCases": 0,
+        "cleanup": "passed",
+        "commandKind": "nonzero-exit",
+        "exitCode": 1,
+        "reportedFailedService": "supabase_kong",
+        "reportedSignals": [
+          "image-pull",
+          "rate-limit"
+        ],
+        "rootCause": "not-established"
+      },
+      "actualStrictFailures": 8,
+      "expectedHistoricalStrictFailures": 14,
+      "unexecutedHistoricalStrictFailures": 6,
+      "fiveOtherJobs": "success",
+      "sixUploaderBoundArtifacts": 6,
+      "sourceBoundReportsAssessed": 27,
+      "other26ReportsCountsPinsNamesAndApplicableSetupCleanupChecked": true,
+      "defaultPackedBrowserCases": 66,
+      "allCleanupPassed": true,
+      "allSetupPassed": false,
+      "originalAuditorAndLogsPreserved": true,
+      "separateReadOnlyAssessment": "blocked, not passing audit",
+      "noRerun": true
+    },
+    "rerunRequested": false,
+    "postCiBookkeeping": "Only3local notes, no automatic docs-only publication",
+    "releaseSignoff": false,
+    "effectiveExactCommitQualification": {
+      "status": "single-job-attempt2-effective-exact-commit-audit-passed-workflow-red-only14historical-strict-failures",
+      "run": 41789091995,
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41789091995/attempts/2",
+      "attempt": 2,
+      "commit": "951f1f07c69a3c0e277d987c3a2b5caf7bdc1f5a",
+      "sourceSha256": "888030151168837171d5201f6f4a472bbe6c63d74a73ea75b4bd592099f750c7",
+      "actualRerunRequests": 1,
+      "initialLocalCliUsageErrorsWithoutSubmission": 1,
+      "newResearchExecutionJobId": 126456155884,
+      "newReports": 9,
+      "inheritedSuccessfulJobs": 5,
+      "inheritedReports": 18,
+      "effectiveSourceBoundReports": 27,
+      "effectiveAudit": "passed",
+      "workflowConclusion": "failure",
+      "actualHistoricalStrictFailures": 14,
+      "stockCases": {
+        "executed": 123,
+        "passed": 117,
+        "failed": 6,
+        "setup": "ready",
+        "cleanup": "passed"
+      },
+      "rerunReportResults": [
+        {
+          "suite": "native-upgrade",
+          "passed": 9,
+          "failed": 0,
+          "setup": "owned-ready",
+          "cleanup": "passed"
+        },
+        {
+          "suite": "all",
+          "passed": 117,
+          "failed": 6,
+          "setup": "ready",
+          "cleanup": "passed"
+        },
+        {
+          "suite": "expiry",
+          "passed": 2,
+          "failed": 0,
+          "setup": "ready",
+          "cleanup": "passed"
+        },
+        {
+          "suite": "characterization",
+          "passed": 9,
+          "failed": 1,
+          "setup": "ready",
+          "cleanup": "passed"
+        },
+        {
+          "suite": "smtp",
+          "passed": 0,
+          "failed": 1,
+          "setup": "ready",
+          "cleanup": "passed"
+        },
+        {
+          "suite": "auth-reference",
+          "passed": 16,
+          "failed": 0,
+          "setup": "ready",
+          "cleanup": "passed"
+        },
+        {
+          "suite": "auth-migration",
+          "passed": 1,
+          "failed": 0,
+          "setup": "ready",
+          "cleanup": "passed"
+        },
+        {
+          "suite": "browser",
+          "passed": 60,
+          "failed": 6,
+          "setup": "ready",
+          "cleanup": "passed"
+        },
+        {
+          "suite": "lifecycle",
+          "passed": 1,
+          "failed": 0,
+          "setup": "ready",
+          "cleanup": "passed"
+        }
+      ],
+      "allActualCurrentAndFrozenFailureNamesUnchanged": true,
+      "allApplicableSetupCleanupPassed": true,
+      "attempt1": {
+        "status": "failed",
+        "setupStage": "supabase-start",
+        "stockCasesExecuted": 0,
+        "stockCasesUnexecuted": 123,
+        "originalRequiredAudit": "failed",
+        "original62FilesAndManifestRehashed": true,
+        "rootCause": "not-established; Kong image-pull/rate-limit regex signals do not prove cause"
+      },
+      "inheritedProvenance": "GitHub projects carried successes under new attempt2 job record IDs. Complete execution times/steps/byte-identical logs/uploader IDs prove five original attempt1 executions; not five new executions.",
+      "provenanceIdentityAudit": "passed",
+      "acceptanceGates": "All original expected counts/pins/coverage/full names/setupcleanup/step assertions unchanged; only explicit attempt/evidence provenance adapted, reversible byte-identically",
+      "executorControlFailures": "CLI usage rejection before POST; immediate stale attempt1 GET after successful POST; incorrect assumption that six attempt2 API job records meant six executions. All original errors/logs/metadata preserved, corrected via read-only checks and watch/collection only. No second actual rerun.",
+      "postRetryPreservation": {
+        "status": "passed",
+        "phase": "retry-after",
+        "sourceSha256": "888030151168837171d5201f6f4a472bbe6c63d74a73ea75b4bd592099f750c7",
+        "archives": 51,
+        "archivedFiles": 75975,
+        "newOwnedArchives": 3,
+        "newOwnedFiles": 4665,
+        "newOwnedProjectsAbsent": 25,
+        "exactOwnedParentsAbsent": 3,
+        "allArchiveBytesRehashed": true,
+        "privateArtifacts": 7,
+        "privateRetainedFiles": 575,
+        "pendingSrTerminal3SnapshotsRehashedAndHistoricalLedgerMarkdownPreserved": true,
+        "protectedSrFailed1plus22AndAnUnknown19plus4HistoryUnchanged": true,
+        "original0358DemoDataSixContainersLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+        "noDeploymentNetworkSecurityCredentialsForkOutreachChange": true,
+        "signoff": false
+      },
+      "rawPrivateAudit": ".runtime/ci-951f1f07-retry/retry-required-audit-private.json",
+      "startupConclusion": "Did not recur on this single retry; original cause remains not established",
+      "moreReruns": 0,
+      "noSourceWorkflowPinCredentialNetworkOrDeploymentChange": true,
+      "releaseSignoff": false
+    }
   },
   "preservationBefore": {
     "status": "passed",
@@ -174,6 +345,178 @@
   "preservationFinal": {
     "status": "passed",
     "phase": "final",
+    "sourceSha256": "888030151168837171d5201f6f4a472bbe6c63d74a73ea75b4bd592099f750c7",
+    "archives": 51,
+    "archivedFiles": 75975,
+    "newOwnedArchives": 3,
+    "newOwnedFiles": 4665,
+    "newOwnedProjectsAbsent": 25,
+    "exactOwnedParentsAbsent": 3,
+    "allArchiveBytesRehashed": true,
+    "privateArtifacts": 7,
+    "privateRetainedFiles": 575,
+    "pendingSrTerminal3SnapshotsRehashedAndHistoricalLedgerMarkdownPreserved": true,
+    "protectedSrFailed1plus22AndAnUnknown19plus4HistoryUnchanged": true,
+    "original0358DemoDataSixContainersLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+    "noDeploymentNetworkSecurityCredentialsForkOutreachChange": true,
+    "signoff": false
+  },
+  "postCiPreservation": {
+    "status": "passed",
+    "phase": "postci",
+    "sourceSha256": "888030151168837171d5201f6f4a472bbe6c63d74a73ea75b4bd592099f750c7",
+    "archives": 51,
+    "archivedFiles": 75975,
+    "newOwnedArchives": 3,
+    "newOwnedFiles": 4665,
+    "newOwnedProjectsAbsent": 25,
+    "exactOwnedParentsAbsent": 3,
+    "allArchiveBytesRehashed": true,
+    "privateArtifacts": 7,
+    "privateRetainedFiles": 575,
+    "pendingSrTerminal3SnapshotsRehashedAndHistoricalLedgerMarkdownPreserved": true,
+    "protectedSrFailed1plus22AndAnUnknown19plus4HistoryUnchanged": true,
+    "original0358DemoDataSixContainersLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+    "noDeploymentNetworkSecurityCredentialsForkOutreachChange": true,
+    "signoff": false
+  },
+  "remaining": [
+    "Finite requested investigation and single failed-job retry/audit complete. No more CI rerun, new feature, local scope replay, commit/push or deployment is authorized/inferred. Attempt2 effective27report audit passed (9new/18inherited), workflow red only14 unchanged historical strict failures; not release signoff.",
+    "Preserve attempt1 failed startup0/123 and original strict auditor/log/ZIP/report evidence, original62hash manifest, corrected executor-control failures and explicit GitHub carried-job provenance. Retry success never establishes the original cause or repairs attempt1.",
+    "Carry only three postRetry bookkeeping notes with the next approved substantive checkpoint; no automatic docs-only publication. Keep all51archives75975files/private575/original0358demo/live lock/history unchanged. Broader incomplete suites/auth/version/TLS/security/device/resource/three-clean-candidate/named-maintainer gates remain unpassed."
+  ],
+  "ciRetry": {
+    "status": "single-job-attempt2-effective-exact-commit-audit-passed-workflow-red-only14historical-strict-failures",
+    "run": 41789091995,
+    "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41789091995/attempts/2",
+    "attempt": 2,
+    "commit": "951f1f07c69a3c0e277d987c3a2b5caf7bdc1f5a",
+    "sourceSha256": "888030151168837171d5201f6f4a472bbe6c63d74a73ea75b4bd592099f750c7",
+    "actualRerunRequests": 1,
+    "initialLocalCliUsageErrorsWithoutSubmission": 1,
+    "newResearchExecutionJobId": 126456155884,
+    "newReports": 9,
+    "inheritedSuccessfulJobs": 5,
+    "inheritedReports": 18,
+    "effectiveSourceBoundReports": 27,
+    "effectiveAudit": "passed",
+    "workflowConclusion": "failure",
+    "actualHistoricalStrictFailures": 14,
+    "stockCases": {
+      "executed": 123,
+      "passed": 117,
+      "failed": 6,
+      "setup": "ready",
+      "cleanup": "passed"
+    },
+    "rerunReportResults": [
+      {
+        "suite": "native-upgrade",
+        "passed": 9,
+        "failed": 0,
+        "setup": "owned-ready",
+        "cleanup": "passed"
+      },
+      {
+        "suite": "all",
+        "passed": 117,
+        "failed": 6,
+        "setup": "ready",
+        "cleanup": "passed"
+      },
+      {
+        "suite": "expiry",
+        "passed": 2,
+        "failed": 0,
+        "setup": "ready",
+        "cleanup": "passed"
+      },
+      {
+        "suite": "characterization",
+        "passed": 9,
+        "failed": 1,
+        "setup": "ready",
+        "cleanup": "passed"
+      },
+      {
+        "suite": "smtp",
+        "passed": 0,
+        "failed": 1,
+        "setup": "ready",
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-reference",
+        "passed": 16,
+        "failed": 0,
+        "setup": "ready",
+        "cleanup": "passed"
+      },
+      {
+        "suite": "auth-migration",
+        "passed": 1,
+        "failed": 0,
+        "setup": "ready",
+        "cleanup": "passed"
+      },
+      {
+        "suite": "browser",
+        "passed": 60,
+        "failed": 6,
+        "setup": "ready",
+        "cleanup": "passed"
+      },
+      {
+        "suite": "lifecycle",
+        "passed": 1,
+        "failed": 0,
+        "setup": "ready",
+        "cleanup": "passed"
+      }
+    ],
+    "allActualCurrentAndFrozenFailureNamesUnchanged": true,
+    "allApplicableSetupCleanupPassed": true,
+    "attempt1": {
+      "status": "failed",
+      "setupStage": "supabase-start",
+      "stockCasesExecuted": 0,
+      "stockCasesUnexecuted": 123,
+      "originalRequiredAudit": "failed",
+      "original62FilesAndManifestRehashed": true,
+      "rootCause": "not-established; Kong image-pull/rate-limit regex signals do not prove cause"
+    },
+    "inheritedProvenance": "GitHub projects carried successes under new attempt2 job record IDs. Complete execution times/steps/byte-identical logs/uploader IDs prove five original attempt1 executions; not five new executions.",
+    "provenanceIdentityAudit": "passed",
+    "acceptanceGates": "All original expected counts/pins/coverage/full names/setupcleanup/step assertions unchanged; only explicit attempt/evidence provenance adapted, reversible byte-identically",
+    "executorControlFailures": "CLI usage rejection before POST; immediate stale attempt1 GET after successful POST; incorrect assumption that six attempt2 API job records meant six executions. All original errors/logs/metadata preserved, corrected via read-only checks and watch/collection only. No second actual rerun.",
+    "postRetryPreservation": {
+      "status": "passed",
+      "phase": "retry-after",
+      "sourceSha256": "888030151168837171d5201f6f4a472bbe6c63d74a73ea75b4bd592099f750c7",
+      "archives": 51,
+      "archivedFiles": 75975,
+      "newOwnedArchives": 3,
+      "newOwnedFiles": 4665,
+      "newOwnedProjectsAbsent": 25,
+      "exactOwnedParentsAbsent": 3,
+      "allArchiveBytesRehashed": true,
+      "privateArtifacts": 7,
+      "privateRetainedFiles": 575,
+      "pendingSrTerminal3SnapshotsRehashedAndHistoricalLedgerMarkdownPreserved": true,
+      "protectedSrFailed1plus22AndAnUnknown19plus4HistoryUnchanged": true,
+      "original0358DemoDataSixContainersLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+      "noDeploymentNetworkSecurityCredentialsForkOutreachChange": true,
+      "signoff": false
+    },
+    "rawPrivateAudit": ".runtime/ci-951f1f07-retry/retry-required-audit-private.json",
+    "startupConclusion": "Did not recur on this single retry; original cause remains not established",
+    "moreReruns": 0,
+    "noSourceWorkflowPinCredentialNetworkOrDeploymentChange": true,
+    "releaseSignoff": false
+  },
+  "postRetryPreservation": {
+    "status": "passed",
+    "phase": "retry-after",
     "sourceSha256": "888030151168837171d5201f6f4a472bbe6c63d74a73ea75b4bd592099f750c7",
     "archives": 51,
     "archivedFiles": 75975,
