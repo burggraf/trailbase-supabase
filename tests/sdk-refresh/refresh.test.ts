@@ -5,6 +5,9 @@ import { resolve } from 'node:path';
 import { createClient, type AuthStorage } from '../../src/index.js';
 import { context, confirmEmail, nativeUuid, nativeAuthSnapshot, deadline, type Context } from '../phase-a/helpers.js';
 import { withCleanup, cleanupOwnedRows } from '../sdk-browser/cleanup.js';
+import { realRecordOperationExpiry } from './auth-operation.js';
+
+it('L1-18/19/24/S07/S08/AL05–AL07 genuine captured credential expiry and native401 retire without renewal or replay', realRecordOperationExpiry, 120000);
 
 const mapping = { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' as const }, user_id: { type: 'uuid' as const }, title: { type: 'text' as const }, completed: { type: 'boolean' as const }, priority: { type: 'integer' as const }, note: { type: 'text' as const, nullable: true }, created_at: { type: 'integer' as const } } } } };
 function fixture(env: Context) {

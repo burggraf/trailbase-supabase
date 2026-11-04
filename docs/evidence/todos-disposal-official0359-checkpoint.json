@@ -1,5 +1,5 @@
 {
-  "status": "local-finite-verification-passed-publication-and-exact-ci-pending",
+  "status": "scoped-checkpoint-pushed-exact27-report-ci-audit-passed-workflow-red-only14historical",
   "baseCommit": "5eb340af0ea77418c2a6090cd719c6e3ae673464",
   "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
   "scope": "DR01 existing L1-07/16/19/24/26/E04/E11/E14/S08 app lifetime: no new follow-up read from a view retired during an accepted mutation; no new API or release criterion",
@@ -428,13 +428,245 @@
     "allPriorFailedInterruptedAndExplicitRetryHistories": "unchanged, no retroactive passes or invented causes"
   },
   "reviewKind": "executor connected-code review, not independent model or maintainer review",
-  "publication": "pending-normal-scoped-nine-file-commit-and-push",
-  "ci": "pending-exact-new-commit-attempt1-audit-no-rerun",
+  "publication": {
+    "commit": "9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb",
+    "parent": "5eb340af0ea77418c2a6090cd719c6e3ae673464",
+    "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+    "files": 9,
+    "pushed": true,
+    "reviewedBytesVerified": true,
+    "ciAuditPending": false,
+    "defaultPackedCases": 84,
+    "newDisposedMutationCases": 6,
+    "genuineRedCases": 6,
+    "onlyProductChangeIsOnePostMutationLifetimeGuard": true,
+    "sdkApiPinsDependenciesPoliciesBudgetsUnchanged": true,
+    "additionalApplicableCommands": 21,
+    "executionGroups": "original interrupted19 plus separate2 after exact-owned recovery; original terminal/error absent, cause unknown; corrected84 and genuine red84 remain distinct",
+    "noCompletedScopeRestarted": true,
+    "allPriorInterruptionAndCiRetryHistoriesPreserved": true,
+    "reviewKind": "executor connected-code review, not independent model or maintainer review",
+    "existingAuthenticatedProcessLocalTransportOnly": true,
+    "noDeploymentOrOutreachOrSignoff": true,
+    "remoteVerified": true,
+    "exactCiAudit": "passed",
+    "run": 41851417891,
+    "attempt": 1
+  },
+  "ci": "required-exact-new-commit-attempt1-audit-passed-workflow-red-only14historical-strict",
   "remaining": [
     "Full E14/accessibility/pending-operation/resource matrix beyond the two bounded disposal schedules",
     "Full contract/security/E2E/package/all commands remain incomplete",
     "Trusted TLS/security/critical branches, physical devices/platforms, three clean full candidates, named maintainer approval",
     "Official signup null-user/native409/424/no-resend, residual JWT/race/late-work/operator-minimum limitations and14historical strict failures remain"
   ],
-  "signoff": false
+  "signoff": false,
+  "ciWatch": {
+    "status": "running-read-only-watch-collection-required-audit-pending",
+    "run": 41851417891,
+    "attempt": 1,
+    "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41851417891/attempts/1",
+    "process": "proc_c56f",
+    "rerunRequests": 0
+  },
+  "exactCi": {
+    "status": "required-exact-new-commit-audit-passed-workflow-red-only-preserved-strict-research",
+    "commit": "9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb",
+    "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+    "run": 41851417891,
+    "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41851417891/attempts/1",
+    "attempt": 1,
+    "conclusion": "failure",
+    "jobs": [
+      {
+        "id": 126648426336,
+        "name": "Static, units and packed consumer / Node 22.23.2",
+        "conclusion": "success"
+      },
+      {
+        "id": 126648426575,
+        "name": "Static, units and packed consumer / Node 24.21.0",
+        "conclusion": "success"
+      },
+      {
+        "id": 126648932447,
+        "name": "Real backends / browser infrastructure / cleanup",
+        "conclusion": "failure"
+      },
+      {
+        "id": 126648932570,
+        "name": "Packed Node CRUD-auth / Node 24.21.0",
+        "conclusion": "success"
+      },
+      {
+        "id": 126648932571,
+        "name": "Packed Node CRUD-auth / Node 22.23.2",
+        "conclusion": "success"
+      },
+      {
+        "id": 126648932806,
+        "name": "Focused SDK CRUD-auth / real fixtures / packed browsers",
+        "conclusion": "success"
+      }
+    ],
+    "sourceBoundReports": 27,
+    "artifactBinding": [
+      {
+        "label": "supported",
+        "jobId": 126648932806,
+        "artifactId": 13336862547,
+        "sha256": "fd2ee9627d938aa2f3d6a53ae5c9c493404b541e6de701ead58105149d9fd7ca"
+      },
+      {
+        "label": "research",
+        "jobId": 126648932447,
+        "artifactId": 13335869437,
+        "sha256": "937eb20b6c55a4ea05f594292604f20ab1be13d2d95523680e61276f7688c8c1"
+      },
+      {
+        "label": "node22",
+        "jobId": 126648932571,
+        "artifactId": 13334288655,
+        "sha256": "b21f8131be9ea2a4c7ec5eecd2b0189cf4c467d55148241cc44b726151344e90"
+      },
+      {
+        "label": "node24",
+        "jobId": 126648932570,
+        "artifactId": 13335801959,
+        "sha256": "7566b8a2497a7cc193852ea78838119f55bde14597460c9ba81a98cf3f0e9dce"
+      },
+      {
+        "label": "static22",
+        "jobId": 126648426336,
+        "artifactId": 13334108414,
+        "sha256": "5dd133ca68b137e87568277b0832bba19dcf5dbd76530d1d84c922ec574731a9"
+      },
+      {
+        "label": "static24",
+        "jobId": 126648426575,
+        "artifactId": 13334483103,
+        "sha256": "8ee9e383876878e1caaa1670dcdd75fdbd756fef5ede71047c01f2c874b17b7c"
+      }
+    ],
+    "bothNodeUnits": 302,
+    "defaultPackedBrowserCases": 84,
+    "shortPackedBrowserCases": 36,
+    "negativeAuthCases": 14,
+    "installedCasesPerNode": 8,
+    "referenceCases": 16,
+    "newDr01Cases": 6,
+    "browserCasesSingleAttempt": 186,
+    "strictResearchFailures": 14,
+    "allFrozenAndCurrentStrictNamesUnchanged": true,
+    "allSetupCleanupPassed": true,
+    "allSixJobsNewExactCommitExecutions": true,
+    "noRerun": true,
+    "notGreenWorkflowOrReleaseSignoff": true
+  },
+  "preservationPostCi": {
+    "status": "passed",
+    "phase": "postci",
+    "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+    "archives": 59,
+    "archivedFiles": 88671,
+    "newOwnedArchives": 2,
+    "newOwnedFiles": 3349,
+    "newOwnedProjectsAbsent": 24,
+    "newOwnedParentsAbsent": 2,
+    "allArchiveBytesRehashed": true,
+    "privateArtifacts": 7,
+    "privateRetainedFiles": 575,
+    "priorAr95FileCiImmutableManifestAndAllProtectedArProofsRehashed": true,
+    "priorKf78FileCiImmutableManifestAnd78InterruptionSnapshotRehashed": true,
+    "allPriorAnSrNrKfArFailuresKnownUnknownInterruptionsAndExplicitCiRetryProvenancePreserved": true,
+    "pendingArTerminalSnapshotsAndAllPreviousLedgerFieldsMarkdownPreserved": true,
+    "original0358DemoDataAssetsSixContainersRootLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+    "noDeploymentNetworkSecurityCredentialsForkOutreachChange": true,
+    "signoff": false
+  },
+  "remainingTerminal": "Finite assignment complete; only3terminal bookkeeping files local for next substantive checkpoint, no automatic extra commit/push/retry/signoff",
+  "terminalOperational": {
+    "status": "passed",
+    "commit": "9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb",
+    "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+    "headOriginMainAndAll9ReviewedCommittedBytesVerified": true,
+    "requiredExactCiAudit": "passed",
+    "run": 41851417891,
+    "attempt": 1,
+    "conclusion": "workflow-failure-only14-preserved-strict-research-failures",
+    "sourceBoundReports": 27,
+    "defaultPackedCases": 84,
+    "newDr01Cases": 6,
+    "bothNodeUnits": 302,
+    "allApplicableSetupCleanupPassed": true,
+    "oneAppLifetimeGuard": true,
+    "genuineIdenticalTestRedGreenVerified": true,
+    "localExecution": "Original interrupted19/21, no terminal/error, causeUNKNOWN; separate2completed after exact-owned recovery, no completed scope restarted. Corrected84 and original red84 remain distinct.",
+    "interruptionSnapshotFiles": 81,
+    "allEarlierFailureInterruptionAndExplicitRetryHistoriesUnchanged": true,
+    "preservation": {
+      "archives": 59,
+      "files": 88671,
+      "privateArtifacts": 7,
+      "privateFiles": 575,
+      "prior95FileCiManifest": "unchanged",
+      "original0358DemoDataAssetsSixContainersRootLockSupervisorTailnet": "unchanged"
+    },
+    "freshBothPinnedCheckProgressDiffPassed": true,
+    "staged": 0,
+    "untrackedPublic": 0,
+    "only3TerminalBookkeepingFilesLocal": true,
+    "noRerun": true,
+    "noAdditionalCommitPush": true,
+    "sdkApiPinsDependenciesPoliciesBudgetsUnchanged": true,
+    "existingGitGhCredentialAndGlobalConfigurationUnchanged": true,
+    "repositoryConfigQualifiedDelta": {
+      "status": "exact-authorized-lane-bookkeeping-delta-characterized",
+      "originalTerminalVerifierFailed": true,
+      "originalFailureFile": "terminal-operational-stderr-private.log",
+      "originalFrozenVerifierAnd333FileManifestUnchanged": true,
+      "repositoryConfig": "/root/dev/trailbase-supabase/.git/config",
+      "originalSha256": "e4301730c715bb7bdd4c597f077a1105eff44ae08a31f7305b0b9929e00b575c",
+      "currentSha256": "2e4e1e70dd70c00bf809d556b2df9f0bcf5d112161735a50166f4536d669f0a7",
+      "reconstructedWithoutOnlyTwoLaneSectionsSha256": "e4301730c715bb7bdd4c597f077a1105eff44ae08a31f7305b0b9929e00b575c",
+      "onlyAdditions": [
+        {
+          "branch": "parallel/storage-contract-20261104",
+          "keys": [
+            "gh-merge-base",
+            "t3-merge-base"
+          ],
+          "values": {
+            "t3-merge-base": "main",
+            "gh-merge-base": "main"
+          }
+        },
+        {
+          "branch": "parallel/realtime-channel-20261104",
+          "keys": [
+            "gh-merge-base",
+            "t3-merge-base"
+          ],
+          "values": {
+            "t3-merge-base": "main",
+            "gh-merge-base": "main"
+          }
+        }
+      ],
+      "globalGitGhAndCredentialFilesUnchanged": [
+        "/root/.gitconfig",
+        "/root/.config/gh/hosts.yml",
+        "/root/.config/gh/config.yml"
+      ],
+      "existingOriginHelpersAndAllPriorConfigBytesExactlyPreserved": true,
+      "executorConfigWrite": false,
+      "writerIdentity": "not-established; additions match only the two user-authorized worktree branches",
+      "noCredentialValueOutput": true,
+      "qualification": "Repository config is not byte-identical: four branch merge-base metadata entries were added for two authorized lanes. This must not be described as all Git configuration unchanged.",
+      "noBackendOrRuntimeScopeRestart": true
+    },
+    "originalUnqualifiedTerminalCheckFailedAndPreserved": true,
+    "noDeploymentNetworkSecurityCredentialForkOutreachChange": true,
+    "signoff": false
+  }
 }

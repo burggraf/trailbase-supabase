@@ -83,6 +83,8 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
   const key = ownOption('storageKey') ?? `trailbase-supabase.auth:${base.origin}`;
   let storage: AuthStorage | undefined = ownOption('storage');
   let generation = 0, commitVersion = 0, state: AuthState | null = null, committed: AuthState | null = null;
+  let recordOwner = new AbortController();
+  function retireRecordOperations() { const previous = recordOwner; recordOwner = new AbortController(); previous.abort(); }
   let initialization: Promise<AuthState | null> | undefined, hydrationPending = false;
   let storageTail: Promise<void> = Promise.resolve(), storageFailure: Error | null = null;
   const requireAuth = () => { if (!enabled) unsupported('Auth defaults are not implemented; explicitly configure auth'); };
@@ -176,6 +178,7 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
     } catch {
       storageFailure = namedError('AuthStorageRestoreError', 'Auth storage consistency unknown after restoration failure'); stopBackground();
       Object.assign(storageFailure, { details: `primary=${primary}; restoration=AuthStorageRestoreError` });
+      retireRecordOperations();
       throw storageFailure;
     }
   }
@@ -196,7 +199,10 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
           await restore(authoritative(), 'AuthStaleOperationError'); guard();
         }
       }
-      failClosed(); guard(); committed = next; state = next; commitVersion++; armBackground();
+      failClosed(); guard(); committed = next; state = next; commitVersion++;
+      // New password sessions retire owners; refresh/status rotate credentials within the same owner.
+      if (!baseline) retireRecordOperations();
+      armBackground();
     });
     storageTail = operation.catch(() => {});
     await operation;
@@ -282,6 +288,7 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
     state = committed = null; stopBackground();
     notify('SIGNED_OUT');
     const clearedVersion = ++commitVersion;
+    retireRecordOperations();
     const operation = storageTail.then(async () => {
       failClosed();
       if (commitVersion !== clearedVersion || state !== null || committed !== null) return;
@@ -290,6 +297,7 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
         catch {
           storageFailure = namedError('AuthStorageRemoveError', 'Auth storage consistency unknown after rejected-session removal failed'); stopBackground();
           Object.assign(storageFailure, { details: 'primary=AuthRefreshUnauthorized; status=401; removal=AuthStorageRemoveError' });
+          retireRecordOperations();
           throw storageFailure;
         }
       }
@@ -298,10 +306,10 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
     await operation;
   }
   async function performRefresh(epoch: number): Promise<AuthResponse> {
-    let baseline: AuthState | null = null;
+    let baseline: AuthState | null = null, owner = recordOwner;
     try {
       await ready(); stale(epoch);
-      const previous = state; baseline = previous;
+      const previous = state; baseline = previous; owner = recordOwner;
       if (!previous) throw namedError('AuthSessionMissingError', 'No session available to refresh');
       const response = await request('refresh', { refresh_token: previous.tokens.refresh_token });
       let payload: unknown;
@@ -318,7 +326,11 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
     } catch (error) {
       if (error instanceof FetchError && error.status === 401 && baseline && !storageFailure) {
         try { await clearRejected(epoch, baseline); }
-        catch (clearError) { error = clearError; }
+        catch (clearError) {
+          // Public generation/baseline staleness cannot revive this same native owner after401.
+          if (owner === recordOwner) owner.abort();
+          error = clearError;
+        }
       }
       await storageTail;
       return { data: { user: null, session: null }, error: operationError(error) };
@@ -346,6 +358,94 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
       }
     }
     failClosed();
+  }
+  async function recordOperation(): Promise<{
+    readonly signal: AbortSignal;
+    assertCurrent(): void;
+    fetch(path: string, init?: RequestInit): Promise<Response>;
+    dispose(): Promise<void>;
+  }> {
+    if (arguments.length) unsupported('Record operation acquisition accepts no arguments');
+    const owner = recordOwner;
+    if (enabled) await sessionReady();
+    const staleOperation = () => namedError('AuthStaleOperationError', 'Record operation is no longer current');
+    failClosed();
+    if (owner !== recordOwner || owner.signal.aborted || state !== committed) throw staleOperation();
+    const bearer = state?.session.access_token, expires = state?.session.expires_at;
+    const controller = new AbortController(), signal = AbortSignal.any([owner.signal, controller.signal]);
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const cleanup = () => { clearTimeout(timer); timer = undefined; };
+    signal.addEventListener('abort', cleanup, { once: true });
+    function expire() {
+      cleanup();
+      const remaining = expires! * 1000 - Date.now();
+      if (remaining <= 0) controller.abort();
+      else { timer = setTimeout(expire, Math.min(remaining, 2147483647)); (timer as unknown as { unref?: () => void }).unref?.(); }
+    }
+    if (expires !== undefined) expire();
+    function assertCurrent() {
+      failClosed();
+      if (signal.aborted || owner !== recordOwner || expires !== undefined && expires <= Date.now() / 1000) {
+        controller.abort(); throw staleOperation();
+      }
+    }
+    let resolveDisposal!: () => void, rejectDisposal!: (reason: Error) => void;
+    const disposal = new Promise<void>((resolve, reject) => { resolveDisposal = resolve; rejectDisposal = reject; });
+    let closing = false, pending = 0, cleanupFailed = false;
+    function drain() {
+      if (closing && pending === 0) {
+        if (cleanupFailed) rejectDisposal(namedError('AuthOperationCleanupError', 'Record operation cleanup could not be confirmed'));
+        else resolveDisposal();
+      }
+    }
+    const settled = () => { pending--; drain(); };
+    function cancelRejected(response: Response | undefined) {
+      try {
+        const body = response?.body;
+        if (!body) return;
+        const cancellation = body.cancel();
+        if (!cancellation || typeof cancellation.then !== 'function') { cleanupFailed = true; return; }
+        pending++;
+        void Promise.resolve(cancellation).then(settled, () => { cleanupFailed = true; settled(); });
+      } catch { cleanupFailed = true; } // Keep the primary fetch failure; disposal separately reports unconfirmed cleanup.
+    }
+    async function capturedFetch(path: string, init?: RequestInit): Promise<Response> {
+      assertCurrent();
+      const url = new URL(path, base);
+      if (!path.startsWith('/api/records/v1/') || url.origin !== base.origin || !url.pathname.startsWith('/api/records/v1/')) throw new TypeError('Expected a same-origin record API path');
+      const headers = new Headers(init?.headers);
+      for (const header of ['authorization', 'cookie', 'refresh-token', 'csrf-token', 'apikey']) headers.delete(header);
+      if (bearer !== undefined) headers.set('authorization', `Bearer ${bearer}`);
+      const requestSignal = init?.signal ? AbortSignal.any([signal, init.signal]) : signal;
+      let response: Response | undefined;
+      try {
+        const request: RequestInit = { ...init, headers, signal: requestSignal, credentials: 'omit', redirect: 'error' };
+        assertCurrent();
+        if (requestSignal.aborted) throw new DOMException('Record request aborted', 'AbortError');
+        response = await fetcher(url, request);
+        assertCurrent();
+        if (requestSignal.aborted) throw new DOMException('Record request aborted', 'AbortError');
+        if (response.redirected || response.status >= 300 && response.status < 400 || response.type === 'opaqueredirect' || response.url && response.url !== url.href) throw new TypeError('Invalid record response origin');
+        assertCurrent();
+        return response; // Body/reader ownership transfers to the caller; disposal cannot attest its cleanup.
+      } catch (error) {
+        cancelRejected(response); // The enclosing fetch is still counted during reentrant cancellation/disposal.
+        assertCurrent();
+        if (requestSignal.aborted) throw new DOMException('Record request aborted', 'AbortError');
+        throw error;
+      }
+    }
+    return {
+      signal, assertCurrent,
+      dispose(): Promise<void> { closing = true; controller.abort(); drain(); return disposal; },
+      fetch(path: string, init?: RequestInit): Promise<Response> {
+        if (closing) return capturedFetch(path, init); // Reject through the existing stale/storage precedence; no new work can dispatch.
+        pending++; // Register before caller getters or abort callbacks can reenter disposal.
+        const request = capturedFetch(path, init);
+        void request.then(settled, settled);
+        return request;
+      },
+    };
   }
   async function liveUser(epoch: number): Promise<{ data: { user: AuthUser | null }; error: AuthError | null }> {
     let discardResponse: (() => void) | undefined;
@@ -428,12 +528,13 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
     const previous = state ?? committed, hydration = initialize();
     const epoch = ++generation;
     state = committed = null; commitVersion++; stopBackground();
+    retireRecordOperations();
     if (previous || needsHydration) notify('SIGNED_OUT');
     const removal = storageTail.then(async () => {
       try { await hydration; } catch { /* Explicit logout still removes only its owned key. */ }
       if (persist) {
         try { await ownedStorage().removeItem(key); }
-        catch { storageFailure = namedError('AuthStorageRemoveError', 'Local logout storage removal failed; stored credentials may remain'); throw storageFailure; }
+        catch { storageFailure = namedError('AuthStorageRemoveError', 'Local logout storage removal failed; stored credentials may remain'); retireRecordOperations(); throw storageFailure; }
       }
     });
     storageTail = removal.catch(() => {});
@@ -477,6 +578,7 @@ export function createAuth(base: URL, fetcher: typeof fetch, options: AuthOption
         return subscribe(callback);
       },
     },
+    recordOperation,
     async recordFetch(path: string, init?: RequestInit): Promise<Response> {
       if (enabled) await sessionReady();
       const headers = new Headers(init?.headers);

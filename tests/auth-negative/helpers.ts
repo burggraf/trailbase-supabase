@@ -115,7 +115,12 @@ export async function deleteNativeOwner(env: Context, owner: Owner) {
       assert.equal(response.status, 200); assert.equal(response.redirected, false); assert.equal(response.url, `${env.trailUrl}/api/auth/v1/logout`);
       assert.equal(response.headers.get('location'), null); assert.equal(response.headers.get('content-type'), 'text/plain; charset=utf-8'); assert.deepEqual(new Uint8Array(await response.arrayBuffer()), new TextEncoder().encode('logged out'));
     },
-    async () => { await client.deleteUser(); },
+    async () => {
+      // JS0143 can refresh the revoked short session, clear credentials on401,
+      // then send an anonymous/no-op DELETE. Use a fresh exact-owner session.
+      const deletionClient = await ordinaryLogin(env, owner);
+      await deletionClient.deleteUser();
+    },
     async () => {
       const after = nativeState(env), own = (value: unknown) => value instanceof Uint8Array && Buffer.from(nativeUuid(owner.id!), 'base64url').equals(value);
       assert.deepEqual(after.users, before.users.filter(value => !own(value.id)));

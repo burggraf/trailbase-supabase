@@ -9,6 +9,9 @@ import { createClient, type AuthStorage } from '../../src/index.js';
 import { context, confirmEmail, supabase, nativeUuid, canonicalUuid, confirmedTrailUser, confirmedSupabaseUser, nativeAuthSnapshot } from './helpers.js';
 import { cleanupOwnedRows, withCleanup } from '../sdk-browser/cleanup.js';
 import { httpStreamFixture } from '../proofs/http-stream-fixture.js';
+import { realRecordOperationContract } from './sdk-auth-operation.js';
+
+it('L1-16/18/19/24/S07/S08/AL02–AL07 genuine captured operation retires without cross-owner follow-up or accepted-write replay', realRecordOperationContract, 120000);
 
 it('L1-14/I14 L1-15/I15 L1-16/I16 fresh SDK signup/real mail/login, reference failed replacement and bearer owner isolation', async () => {
   const env = await context();

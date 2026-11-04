@@ -1,0 +1,423 @@
+{
+  "status": "internal-offline-checkpoint-not-genuine-integration-or-signoff",
+  "sourceSha256": "dcefb21800d04e6bb94297495e2ce279bc1469e2aeca10d22ca3982bfb996f43",
+  "authSha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d",
+  "contract": {
+    "internalOnly": true,
+    "members": [
+      "signal",
+      "assertCurrent",
+      "fetch",
+      "dispose"
+    ],
+    "signal": "readonly AbortSignal",
+    "dispose": "Synchronous seal/abort; identical sticky Promise<void>; drain accepted Fetch settlement and successful unhanded-body cancellations",
+    "primaryFetchFailureIsNotCleanupFailure": true,
+    "returnedResponseAndReader": "consumer-owned; not covered by Core receipt",
+    "hungCleanup": "pending; consumer deadline fails, no manufactured completion",
+    "cleanupFailure": "fixed sanitized AuthOperationCleanupError; sticky; no fail-fast",
+    "remoteQuiescenceProved": false,
+    "publicApiOrOptionsAdded": false,
+    "ordinaryRecordFetchAndLazyCrudChanged": false
+  },
+  "nodes": [
+    {
+      "node": "22.23.2",
+      "unitTests": 370,
+      "unitPassed": 370,
+      "unitPending": 0,
+      "operationCases": 57,
+      "reviewFollowupCases": 2,
+      "check": "passed",
+      "coverage": {
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "global": {
+          "statements": {
+            "total": 985,
+            "covered": 960,
+            "skipped": 0,
+            "pct": 97.46
+          },
+          "lines": {
+            "total": 643,
+            "covered": 640,
+            "skipped": 0,
+            "pct": 99.53
+          },
+          "functions": {
+            "total": 155,
+            "covered": 154,
+            "skipped": 0,
+            "pct": 99.35
+          },
+          "branches": {
+            "total": 747,
+            "covered": 711,
+            "skipped": 0,
+            "pct": 95.18
+          }
+        },
+        "modules": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 652,
+                "covered": 637,
+                "skipped": 0,
+                "pct": 97.69
+              },
+              "lines": {
+                "total": 396,
+                "covered": 396,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 98,
+                "covered": 97,
+                "skipped": 0,
+                "pct": 98.97
+              },
+              "branches": {
+                "total": 464,
+                "covered": 441,
+                "skipped": 0,
+                "pct": 95.04
+              }
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 295,
+                "covered": 285,
+                "skipped": 0,
+                "pct": 96.61
+              },
+              "lines": {
+                "total": 218,
+                "covered": 215,
+                "skipped": 0,
+                "pct": 98.62
+              },
+              "functions": {
+                "total": 49,
+                "covered": 49,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 252,
+                "covered": 241,
+                "skipped": 0,
+                "pct": 95.63
+              }
+            }
+          }
+        ],
+        "thresholdsPassed": true
+      },
+      "packageChecks": 4,
+      "packageCleanup": "passed"
+    },
+    {
+      "node": "24.21.0",
+      "unitTests": 370,
+      "unitPassed": 370,
+      "unitPending": 0,
+      "operationCases": 57,
+      "reviewFollowupCases": 2,
+      "check": "passed",
+      "coverage": {
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "global": {
+          "statements": {
+            "total": 985,
+            "covered": 960,
+            "skipped": 0,
+            "pct": 97.46
+          },
+          "lines": {
+            "total": 643,
+            "covered": 640,
+            "skipped": 0,
+            "pct": 99.53
+          },
+          "functions": {
+            "total": 155,
+            "covered": 154,
+            "skipped": 0,
+            "pct": 99.35
+          },
+          "branches": {
+            "total": 747,
+            "covered": 711,
+            "skipped": 0,
+            "pct": 95.18
+          }
+        },
+        "modules": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": {
+                "total": 652,
+                "covered": 637,
+                "skipped": 0,
+                "pct": 97.69
+              },
+              "lines": {
+                "total": 396,
+                "covered": 396,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 98,
+                "covered": 97,
+                "skipped": 0,
+                "pct": 98.97
+              },
+              "branches": {
+                "total": 464,
+                "covered": 441,
+                "skipped": 0,
+                "pct": 95.04
+              }
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": {
+                "total": 38,
+                "covered": 38,
+                "skipped": 0,
+                "pct": 100
+              },
+              "lines": {
+                "total": 29,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 100
+              },
+              "functions": {
+                "total": 8,
+                "covered": 8,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 31,
+                "covered": 29,
+                "skipped": 0,
+                "pct": 93.54
+              }
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": {
+                "total": 295,
+                "covered": 285,
+                "skipped": 0,
+                "pct": 96.61
+              },
+              "lines": {
+                "total": 218,
+                "covered": 215,
+                "skipped": 0,
+                "pct": 98.62
+              },
+              "functions": {
+                "total": 49,
+                "covered": 49,
+                "skipped": 0,
+                "pct": 100
+              },
+              "branches": {
+                "total": 252,
+                "covered": 241,
+                "skipped": 0,
+                "pct": 95.63
+              }
+            }
+          }
+        ],
+        "thresholdsPassed": true
+      },
+      "packageChecks": 4,
+      "packageCleanup": "passed"
+    }
+  ],
+  "review": {
+    "kind": "independent-read-only-model-source-review",
+    "model": "openai/gpt-6.1-sol",
+    "thinking": "high",
+    "verifiedP1P2": 0,
+    "inspectedStandardPromiseFollowup": true,
+    "coverageGapsIdentified": 2,
+    "followupCasesAddedAndPassed": 2,
+    "reviewerRanTests": false,
+    "maintainerSignoff": false
+  },
+  "realtimeAuthoredAssertions": {
+    "laneCheckpoint": "5a038d1083721a1c1b528b9a026cbc3250aa0007",
+    "executor": "Core using separately authored lane cases",
+    "assembly": "Private source-module assembly of actual Core build; not installed SDK/Realtime package or active-lane adoption",
+    "nodes": [
+      {
+        "node": "v22.23.2",
+        "entered": 7,
+        "passed": 7,
+        "failed": 0,
+        "cases": [
+          "captureBeforeReadiness",
+          "synchronousIndependentDisposal",
+          "lateFetchAndBodySettlement",
+          "stickyCancellationFailure",
+          "rejectedResponseCleanupSettlement",
+          "callerAbortCleanupStillOwned",
+          "replacementCannotReviveLease"
+        ]
+      },
+      {
+        "node": "v24.21.0",
+        "entered": 7,
+        "passed": 7,
+        "failed": 0,
+        "cases": [
+          "captureBeforeReadiness",
+          "synchronousIndependentDisposal",
+          "lateFetchAndBodySettlement",
+          "stickyCancellationFailure",
+          "rejectedResponseCleanupSettlement",
+          "callerAbortCleanupStillOwned",
+          "replacementCannotReviveLease"
+        ]
+      }
+    ],
+    "oldVoidExpectedRedEachNode": {
+      "pass": 1,
+      "fail": 6,
+      "laneReported": true
+    },
+    "insufficientPromiseWrapperExpectedRedEachNode": {
+      "pass": 3,
+      "fail": 4,
+      "laneReported": true
+    }
+  },
+  "preservedReds": {
+    "receiptVoidContract": {
+      "selected": 11,
+      "pass": 0,
+      "fail": 11,
+      "oldCasesUnselected": 42
+    },
+    "readonlyType": "TS2578 before explicit readonly return contract",
+    "packageBuild": {
+      "sourceSha256": "61f8d1f26f1f90858edbc543ed6c50b702bcbdcdcc327cf2b17e5575f6f8c0c3",
+      "node": "22.23.2",
+      "error": "TS2550 Promise.withResolvers absent from SDK ES2022 compilation",
+      "checksEntered": 0,
+      "cleanup": "passed",
+      "correction": "Standard Promise resolver pair; no compiler/target/dependency change"
+    },
+    "privatePeerCompiler": {
+      "error": "TS5112 default config with explicit file arguments",
+      "casesEntered": 0,
+      "correction": "Explicit standalone --ignoreConfig; project configuration unchanged"
+    },
+    "reportAnalysisErrorsRetained": [
+      "53!=11 skipped-versus-pending filter",
+      "0!=57 guessed suite name"
+    ]
+  },
+  "preservation": {
+    "kind": "offline byte rehash only; no live resource/configuration/original-demo guard replay",
+    "historicalArchives": 59,
+    "historicalFiles": 88671,
+    "privateArtifacts": 7,
+    "privateRetainedFiles": 575,
+    "alArchives": [
+      {
+        "files": 1329
+      },
+      {
+        "files": 1333
+      },
+      {
+        "files": 1280
+      },
+      {
+        "files": 1292
+      }
+    ],
+    "drEvidenceFiles": [
+      333,
+      24
+    ]
+  },
+  "currentSourceRealCasesExecuted": 0,
+  "fixtureRequestedOrReservedOrStarted": false,
+  "realtimeRuntimeIntegrated": false,
+  "realtimeIncludedInActualTarball": false,
+  "pushOrNewCommitCi": false,
+  "historicalOutcomes": {
+    "firstReal": "0/5",
+    "revisedReal": "3/5",
+    "firstNoDispatch": "0 entered / 0PASS / 0FAIL / 2unexecuted / 0fixtures",
+    "secondNoDispatch": "0 entered / 0PASS / 0FAIL / 2unexecuted / 0fixtures",
+    "realtimeNative": "C04 and C01–C03 separate graphs, never combined4/4"
+  },
+  "pending": [
+    "Current-source genuine AL default/short and installed/browser/full applicable regressions",
+    "Actual Realtime consumer wiring and shipped-artifact qualification",
+    "Fresh explicit user handoff before any fixture",
+    "Publication/exact-new-commit CI/full security/platform/maintainer release gates"
+  ],
+  "signoff": false
+}

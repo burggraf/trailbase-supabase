@@ -1,5 +1,9 @@
 import { createClient, type AuthUser, type AuthSession, type AuthResponse } from '../../src/index.js';
 const client = createClient('http://localhost:4000', undefined, { trailbase: { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' } } } } }, auth: { persistSession: false, autoRefreshToken: false } });
+// @ts-expect-error Captured operation lifetimes are internal, not a public client API.
+client.recordOperation();
+// @ts-expect-error Captured operation lifetimes are not public auth methods.
+client.auth.recordOperation();
 const response: Promise<AuthResponse> = client.auth.signInWithPassword({ email: 'placeholder@example.test', password: 'placeholder' });
 void response;
 void client.auth.signUp({ email: 'placeholder@example.test', password: 'placeholder' });

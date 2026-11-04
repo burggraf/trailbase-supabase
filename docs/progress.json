@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "DR01 minimal app lifetime fix sourced14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740: genuine84PASS/identical-test6failure red, bothNodes302/check/unchanged95–90coverage/package4/installed8 and22runtime+6static auditPASS. Original19 interrupted/causeUNKNOWN plus separate2, all14 strict failures preserved. All59archives/88671files/private575/original0358demo/live safeguards/prior histories preserved. Scoped9file commit/push and exactnewCI pending, no release/maintainer signoff.",
+  "currentPhase": "AL internal owned-cleanup receipt reviewed/offline verified; final sourcedcefb218/auth04699c57. Both exactNodes370/370units (57operation), check/unchanged global+each3module coverage/package4cleanup PASS. GPT6.1Sol/high no verifiedP1/P2, inspected standard-Promise correction; two coverage gaps closed without runtime change. Seven peer-authored actual-Core source-module assertions7/7 eachNode, not installedRealtime/adoption/independent execution. Fresh byte-only preservation59archives88671/private7+575/all4ALarchives/DR333+24PASS, no live guard replay. Initial61f package-buildTS2550 and all historical reds/stops preserved. Local offline source checkpoint; commit identity/outcome is in Git and private receipt, not a release status; no fixture/push/CI/signoff. Current-source genuineAL0, broader native/installed/browser/regressions/publication/release pending.",
   "keyboardCompletion0359": {
     "status": "scoped-checkpoint-pushed-exact-newCI27report-audit-passed-workflow-red-only14historical-strict-failures",
     "fixedSourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
@@ -7804,9 +7804,10 @@
     }
   ],
   "nextSteps": [
-    "Review/stage exactly9 public-safe substantive files carrying prior3ARterminal notes; normal scoped commit/push with existing authenticated process-local transport only.",
-    "Audit exact-new-commit CIattempt1:6newjobs/6uploader-boundZIP/27source-bound reports, source/pins/Nodes/coverage/fullnames/setupcleanup/steps and14historical strict failures. No automatic rerun.",
-    "PostCI rehash original/private/59archives/history and immutable CI evidence; fresh terminal operational checks, then only3terminal bookkeeping notes local with no extra docs-only publication."
+    "Read Git HEAD/private local-commit receipt for normal scoped offline checkpoint outcome. Source dcefb218 has370units/coverage/package4/check PASS eachNode and reviewed auth04699c57; no push or CI fixture launch without coordination. No public auth/client/options/exports/recordFetch/lazyCRUD change.",
+    "Share implemented four-member internal receipt and source-bound dcefb218 verification with Realtime. Peer seven assertions pass actualCore eachNode only as private source-module characterization; lane remains clean5a038d1, no active auth adoption or Realtime package qualification.",
+    "Every real fixture through user after fresh explicit handoff/guards/source/artifact freeze, one bounded unchanged-source attempt and cleanup audit/RELEASE. No slot currently requested/reserved. Keep nativeC04 andC01–03 separate graphs, historical0/5,3/5/two no-dispatch stops and unknown guard origins intact.",
+    "Current-source genuine AL default/short, installed Node/browser/full applicable regressions, actual Realtime artifact/wiring, publication/exact-new-commit CI/full security/platform/maintainer release gates remain pending. Fresh offline59archive88671/private575 preservation is passed, not a live demo/resource audit or fixture clearance."
   ],
   "nextStepsBeforeKeyboardCompletion": [
     "Finite requested investigation and single failed-job retry/audit complete. No more CI rerun, new feature, local scope replay, commit/push or deployment is authorized/inferred. Attempt2 effective27report audit passed (9new/18inherited), workflow red only14 unchanged historical strict failures; not release signoff.",
@@ -9857,7 +9858,7 @@
     }
   },
   "disposedMutation0359": {
-    "status": "locally-verified-awaiting-scoped-publication-and-exact-ci",
+    "status": "scoped-checkpoint-pushed-exact27-report-ci-audit-passed-workflow-red-only14historical",
     "baseCommit": "5eb340af0ea77418c2a6090cd719c6e3ae673464",
     "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
     "scope": "Existing app disposal/owner-replacement boundary; no new API or release requirement",
@@ -10047,8 +10048,32 @@
       "separateUnfinishedCommands": 2,
       "noCompletedScopeRestarted": true
     },
-    "publication": "pending-normal-scoped-commit-and-push",
-    "exactNewCommitCi": "pending",
+    "publication": {
+      "commit": "9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb",
+      "parent": "5eb340af0ea77418c2a6090cd719c6e3ae673464",
+      "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+      "files": 9,
+      "pushed": true,
+      "reviewedBytesVerified": true,
+      "ciAuditPending": false,
+      "defaultPackedCases": 84,
+      "newDisposedMutationCases": 6,
+      "genuineRedCases": 6,
+      "onlyProductChangeIsOnePostMutationLifetimeGuard": true,
+      "sdkApiPinsDependenciesPoliciesBudgetsUnchanged": true,
+      "additionalApplicableCommands": 21,
+      "executionGroups": "original interrupted19 plus separate2 after exact-owned recovery; original terminal/error absent, cause unknown; corrected84 and genuine red84 remain distinct",
+      "noCompletedScopeRestarted": true,
+      "allPriorInterruptionAndCiRetryHistoriesPreserved": true,
+      "reviewKind": "executor connected-code review, not independent model or maintainer review",
+      "existingAuthenticatedProcessLocalTransportOnly": true,
+      "noDeploymentOrOutreachOrSignoff": true,
+      "remoteVerified": true,
+      "exactCiAudit": "passed",
+      "run": 41851417891,
+      "attempt": 1
+    },
+    "exactNewCommitCi": "pending-attempt1-watch-and-required27-report-audit",
     "fullLocalAudit": "passed22runtime6static-honest19plus2",
     "evidence": "docs/evidence/todos-disposal-official0359-checkpoint.json",
     "local": {
@@ -10070,6 +10095,1254 @@
       "prior95FileCiManifest": "rehashed unchanged",
       "original0358DemoDataAssetsSixContainersRootLockSupervisorTailnet": "unchanged",
       "allPriorFailedInterruptedAndExplicitRetryHistories": "unchanged, no retroactive passes or invented causes"
+    },
+    "ciWatch": {
+      "status": "completed-required-audit-passed",
+      "noRerun": true
+    },
+    "exactCi": {
+      "status": "required-exact-new-commit-audit-passed-workflow-red-only-preserved-strict-research",
+      "commit": "9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb",
+      "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+      "run": 41851417891,
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41851417891/attempts/1",
+      "attempt": 1,
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "id": 126648426336,
+          "name": "Static, units and packed consumer / Node 22.23.2",
+          "conclusion": "success"
+        },
+        {
+          "id": 126648426575,
+          "name": "Static, units and packed consumer / Node 24.21.0",
+          "conclusion": "success"
+        },
+        {
+          "id": 126648932447,
+          "name": "Real backends / browser infrastructure / cleanup",
+          "conclusion": "failure"
+        },
+        {
+          "id": 126648932570,
+          "name": "Packed Node CRUD-auth / Node 24.21.0",
+          "conclusion": "success"
+        },
+        {
+          "id": 126648932571,
+          "name": "Packed Node CRUD-auth / Node 22.23.2",
+          "conclusion": "success"
+        },
+        {
+          "id": 126648932806,
+          "name": "Focused SDK CRUD-auth / real fixtures / packed browsers",
+          "conclusion": "success"
+        }
+      ],
+      "sourceBoundReports": 27,
+      "artifactBinding": [
+        {
+          "label": "supported",
+          "jobId": 126648932806,
+          "artifactId": 13336862547,
+          "sha256": "fd2ee9627d938aa2f3d6a53ae5c9c493404b541e6de701ead58105149d9fd7ca"
+        },
+        {
+          "label": "research",
+          "jobId": 126648932447,
+          "artifactId": 13335869437,
+          "sha256": "937eb20b6c55a4ea05f594292604f20ab1be13d2d95523680e61276f7688c8c1"
+        },
+        {
+          "label": "node22",
+          "jobId": 126648932571,
+          "artifactId": 13334288655,
+          "sha256": "b21f8131be9ea2a4c7ec5eecd2b0189cf4c467d55148241cc44b726151344e90"
+        },
+        {
+          "label": "node24",
+          "jobId": 126648932570,
+          "artifactId": 13335801959,
+          "sha256": "7566b8a2497a7cc193852ea78838119f55bde14597460c9ba81a98cf3f0e9dce"
+        },
+        {
+          "label": "static22",
+          "jobId": 126648426336,
+          "artifactId": 13334108414,
+          "sha256": "5dd133ca68b137e87568277b0832bba19dcf5dbd76530d1d84c922ec574731a9"
+        },
+        {
+          "label": "static24",
+          "jobId": 126648426575,
+          "artifactId": 13334483103,
+          "sha256": "8ee9e383876878e1caaa1670dcdd75fdbd756fef5ede71047c01f2c874b17b7c"
+        }
+      ],
+      "bothNodeUnits": 302,
+      "defaultPackedBrowserCases": 84,
+      "shortPackedBrowserCases": 36,
+      "negativeAuthCases": 14,
+      "installedCasesPerNode": 8,
+      "referenceCases": 16,
+      "newDr01Cases": 6,
+      "browserCasesSingleAttempt": 186,
+      "strictResearchFailures": 14,
+      "allFrozenAndCurrentStrictNamesUnchanged": true,
+      "allSetupCleanupPassed": true,
+      "allSixJobsNewExactCommitExecutions": true,
+      "noRerun": true,
+      "notGreenWorkflowOrReleaseSignoff": true
+    },
+    "preservationPostCi": {
+      "status": "passed",
+      "phase": "postci",
+      "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+      "archives": 59,
+      "archivedFiles": 88671,
+      "newOwnedArchives": 2,
+      "newOwnedFiles": 3349,
+      "newOwnedProjectsAbsent": 24,
+      "newOwnedParentsAbsent": 2,
+      "allArchiveBytesRehashed": true,
+      "privateArtifacts": 7,
+      "privateRetainedFiles": 575,
+      "priorAr95FileCiImmutableManifestAndAllProtectedArProofsRehashed": true,
+      "priorKf78FileCiImmutableManifestAnd78InterruptionSnapshotRehashed": true,
+      "allPriorAnSrNrKfArFailuresKnownUnknownInterruptionsAndExplicitCiRetryProvenancePreserved": true,
+      "pendingArTerminalSnapshotsAndAllPreviousLedgerFieldsMarkdownPreserved": true,
+      "original0358DemoDataAssetsSixContainersRootLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+      "noDeploymentNetworkSecurityCredentialsForkOutreachChange": true,
+      "signoff": false
+    },
+    "remainingTerminal": "Finite assigned DR01 fix/recovery/publication/exactCI/preservation/operational verification complete. Broader existing E14/resource/security/device/platform/TLS/three-clean-candidate/maintainer acceptance remains unpassed.",
+    "terminalOperational": {
+      "status": "passed",
+      "commit": "9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb",
+      "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+      "headOriginMainAndAll9ReviewedCommittedBytesVerified": true,
+      "requiredExactCiAudit": "passed",
+      "run": 41851417891,
+      "attempt": 1,
+      "conclusion": "workflow-failure-only14-preserved-strict-research-failures",
+      "sourceBoundReports": 27,
+      "defaultPackedCases": 84,
+      "newDr01Cases": 6,
+      "bothNodeUnits": 302,
+      "allApplicableSetupCleanupPassed": true,
+      "oneAppLifetimeGuard": true,
+      "genuineIdenticalTestRedGreenVerified": true,
+      "localExecution": "Original interrupted19/21, no terminal/error, causeUNKNOWN; separate2completed after exact-owned recovery, no completed scope restarted. Corrected84 and original red84 remain distinct.",
+      "interruptionSnapshotFiles": 81,
+      "allEarlierFailureInterruptionAndExplicitRetryHistoriesUnchanged": true,
+      "preservation": {
+        "archives": 59,
+        "files": 88671,
+        "privateArtifacts": 7,
+        "privateFiles": 575,
+        "prior95FileCiManifest": "unchanged",
+        "original0358DemoDataAssetsSixContainersRootLockSupervisorTailnet": "unchanged"
+      },
+      "freshBothPinnedCheckProgressDiffPassed": true,
+      "staged": 0,
+      "untrackedPublic": 0,
+      "only3TerminalBookkeepingFilesLocal": true,
+      "noRerun": true,
+      "noAdditionalCommitPush": true,
+      "sdkApiPinsDependenciesPoliciesBudgetsUnchanged": true,
+      "existingGitGhCredentialAndGlobalConfigurationUnchanged": true,
+      "repositoryConfigQualifiedDelta": {
+        "status": "exact-authorized-lane-bookkeeping-delta-characterized",
+        "originalTerminalVerifierFailed": true,
+        "originalFailureFile": "terminal-operational-stderr-private.log",
+        "originalFrozenVerifierAnd333FileManifestUnchanged": true,
+        "repositoryConfig": "/root/dev/trailbase-supabase/.git/config",
+        "originalSha256": "e4301730c715bb7bdd4c597f077a1105eff44ae08a31f7305b0b9929e00b575c",
+        "currentSha256": "2e4e1e70dd70c00bf809d556b2df9f0bcf5d112161735a50166f4536d669f0a7",
+        "reconstructedWithoutOnlyTwoLaneSectionsSha256": "e4301730c715bb7bdd4c597f077a1105eff44ae08a31f7305b0b9929e00b575c",
+        "onlyAdditions": [
+          {
+            "branch": "parallel/storage-contract-20261104",
+            "keys": [
+              "gh-merge-base",
+              "t3-merge-base"
+            ],
+            "values": {
+              "t3-merge-base": "main",
+              "gh-merge-base": "main"
+            }
+          },
+          {
+            "branch": "parallel/realtime-channel-20261104",
+            "keys": [
+              "gh-merge-base",
+              "t3-merge-base"
+            ],
+            "values": {
+              "t3-merge-base": "main",
+              "gh-merge-base": "main"
+            }
+          }
+        ],
+        "globalGitGhAndCredentialFilesUnchanged": [
+          "/root/.gitconfig",
+          "/root/.config/gh/hosts.yml",
+          "/root/.config/gh/config.yml"
+        ],
+        "existingOriginHelpersAndAllPriorConfigBytesExactlyPreserved": true,
+        "executorConfigWrite": false,
+        "writerIdentity": "not-established; additions match only the two user-authorized worktree branches",
+        "noCredentialValueOutput": true,
+        "qualification": "Repository config is not byte-identical: four branch merge-base metadata entries were added for two authorized lanes. This must not be described as all Git configuration unchanged.",
+        "noBackendOrRuntimeScopeRestart": true
+      },
+      "originalUnqualifiedTerminalCheckFailedAndPreserved": true,
+      "noDeploymentNetworkSecurityCredentialForkOutreachChange": true,
+      "signoff": false
+    }
+  },
+  "authLifetime0359": {
+    "status": "implemented-offline-corrections-verified-real-qualification-pending",
+    "baseCommit": "9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb",
+    "baseSourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+    "authorization": "Smallest shared internal captured-owner/operation lifetime only; no public auth semantics or Storage/Realtime integration/export expansion",
+    "plan": "docs/plans/2026-11-04-shared-auth-lifetime.md",
+    "reviewedBranches": {
+      "storage": [
+        "7516679c7bc9d2ca6d055ecf3d307cee98974b38",
+        "b15da0c"
+      ],
+      "realtime": "d899c83b4ab890b81e37f655e3e3303df25c2c96"
+    },
+    "existingCrudSemantics": "Independent requests remain current-session, lazy builders unchanged; new lease explicit internal use only",
+    "runtimeExecuted": true,
+    "offlineBaseline": "3DRterminal snapshots/333CI+24supplement frozen bytes verified",
+    "freshFullArchiveAndOriginalGuard": "Preflight and post-window original guards plus separate teardown audit passed; full59archive88671file/private575 rehash remains pending, historical count not relabelled current",
+    "fixturesStarted": 4,
+    "heavyWindow": "Core remains RELEASED, offline only. No fixture request/reservation, signaling or global-resource replay. Any future window requires user handoff after source-bound diagnostics/consumer decisions.",
+    "tests": "Current-source352full units/check/unchanged95-90 global+all3module coverage/package4cleanup each exactNodePASS, including all51focused names; first real0/5 and revised3/5 frozen, current real0, full installed/real/regression/history/final review/publication/CI pending",
+    "reviewKind": "Executor connected-flow inspection and test-driven boundary corrections; final review pending",
+    "signoff": false,
+    "realRuntimeExecuted": true,
+    "initialOfflineFixturesStarted": 0,
+    "targetedUnit": {
+      "nodes": [
+        "22.23.2",
+        "24.21.0"
+      ],
+      "each": {
+        "total": 32,
+        "passed": 32,
+        "failed": 0,
+        "pending": 0
+      },
+      "syntheticOnly": true,
+      "historicalCheckpoint": "Initial32-test draft, not latest full verification"
+    },
+    "typeAndDocsCheck": "Both exact Nodes passed at current final source; docs-only checkpoint changes require final freshness check",
+    "firstFeatureRed": "24 total:1pass/23missing-method failures; identical-test first24green preserved",
+    "boundaryRedGreen": "30 total:24pass/6failure then30pass; synthetic request-getter retirement and custom redirect rejection",
+    "authoredExpectationCorrection": "Two new expectations incorrectly assumed existing identity/session guards permit commits; raw32/30/2 preserved, tests corrected to require existing errors and preserved A, production unchanged",
+    "freshOriginalPreflight": "no competing test/backend processes;29199204352bytes memory/161247963136bytes disk available; original6identity/PID/start/image/native-start/rootlock/config/TCP-listeners/health200 captured;333CI+24supplement bytes rehashed",
+    "realtimeCandidateFailure": {
+      "source": "53c527b0323de302c3ddb1dea61cc1c1f8216d24e45233e8030089716041e1d0",
+      "runId": "1793812126488-2f07fb5d6422",
+      "executed": 4,
+      "passed": 0,
+      "failed": 4,
+      "pending": 0,
+      "provenance": "user/lane terminal report; core has not independently re-audited candidate raw bytes",
+      "rootCause": "UNCONFIRMED: source-reconstructed ping/comment sequence counterexample is not captured wire evidence",
+      "noCandidateFixOrRebookingInCore": true
+    },
+    "firstRealWindow": {
+      "sourceSha256": "27e76645e0f1694e53776922a047588878e066f27fd47e447f2fdd6102583254",
+      "executed": 5,
+      "passed": 0,
+      "failed": 5,
+      "unexecuted": 0,
+      "fixtureRunIds": [
+        "1793814800863-7581593719b1",
+        "1793814864160-1647358476cb"
+      ],
+      "setupPassed": 2,
+      "cleanupPassed": 2,
+      "teardownVerified": true,
+      "slotReleased": true,
+      "noRetry": true,
+      "signupFailureCause": "NOT ESTABLISHED; normalized response status/body not retained",
+      "browserCause": "primary local-cleanup assertion present in all three reports; earlier assertion reach not promoted to acceptance",
+      "legacyUnselected": "8default+4short Node cases explicitly filtered/skipped, other browser files not selected; no full zero-skip gate claimed"
+    },
+    "fullVerification": "Offline current-source layers passed; current genuine/installed auth/browser/all applicable regressions/history/final review/publication/CI still pending",
+    "postWindowOffline": {
+      "status": "historical-ready-checkpoint-before-revised-real-window",
+      "sourceSha256": "b92638c14dbe8acbe3da2a60454450be19bfbd5392f17170e3ec5977996087d6",
+      "nodes": [
+        {
+          "version": "22.23.2",
+          "focusedPassed": 42,
+          "failed": 0,
+          "pending": 0,
+          "checkPassed": true
+        },
+        {
+          "version": "24.21.0",
+          "focusedPassed": 42,
+          "failed": 0,
+          "pending": 0,
+          "checkPassed": true
+        }
+      ],
+      "productionAuthUnchangedSinceFirstReal": true,
+      "firstReal": {
+        "sourceSha256": "27e76645e0f1694e53776922a047588878e066f27fd47e447f2fdd6102583254",
+        "executed": 5,
+        "passed": 0,
+        "failed": 5,
+        "slotReleased": true,
+        "immutableArchiveFiles": 1329,
+        "ownedParentRemoved": true
+      },
+      "sourceInputFacts": {
+        "oldDefaultLocalPartLength": 68,
+        "oldShortLocalPartLength": 73,
+        "revisedDefaultLocalPartLength": 34,
+        "revisedShortLocalPartLength": 39,
+        "runtimeRejectionCause": "NOT CONFIRMED; old status/body were not retained"
+      },
+      "corrections": "Established owned-identity helper; existing latched logout error remains observable; exact success audits retained, early-failure traces constrained to owned effects; private exclusive0600/1MiB errors and browser assertion-reach observations; existing installed-consumer type gate strengthened; no production auth fix",
+      "revisedRealExecutions": 0,
+      "freshPreflightProcess": "proc_2391",
+      "freshPreflightPassed": true,
+      "memoryAvailableBytes": 29591625728,
+      "diskAvailableBytes": 161193111552,
+      "fullUnitCoveragePackageInstalledAndApplicableRegressionsPending": true,
+      "fullHistorical59Archive88671FilePrivate575RehashPending": true,
+      "noBranchIntegration": true,
+      "noCommitPushCI": true,
+      "historicalCheckpointNotCurrentReservation": true
+    },
+    "revisedWindow": {
+      "status": "revised-five-case-real-attempt-completed3pass2fail-resource-audit-passed-explicitly-released",
+      "sourceSha256": "b92638c14dbe8acbe3da2a60454450be19bfbd5392f17170e3ec5977996087d6",
+      "cases": {
+        "executed": 5,
+        "passed": 3,
+        "failed": 2,
+        "unexecuted": 0
+      },
+      "browserCases": {
+        "chromium": "passed",
+        "firefox": "passed",
+        "webkit": "passed",
+        "attemptsEach": 1
+      },
+      "nativeContract": {
+        "status": "failed",
+        "location": "tests/phase-a/sdk-auth-operation.ts:46:147",
+        "privateAuditAnalysis": "Both todo_id/user_id have all16equal bytes; actualUint8Array vs expectedBuffer. Test representation premise, no data-owner mismatch established. Later Node schedule not reached."
+      },
+      "shortExpiry": {
+        "status": "failed",
+        "diagnostics": "No primary error log; only cleanup-1/cleanup-2 logs. Retained failure is deleteNativeOwner users postcondition and final full-state comparison. Primary schedule completion is not a passing case or accepted cleanup.",
+        "cause": "Precise installedJS0143 with mocked HTTP/owned SQLite confirms possible near-expiry refresh401 credential clearing before anonymous/no-op DELETE after global revocation; fresh exact-owner deletion login corrects this modeled mechanism. Actual original cleanup wire was not captured, so precise native runtime cause remains unestablished and original real failure remains failed."
+      },
+      "fixtureRunIds": [
+        "1793818665992-baeba703c359",
+        "1793818726802-8ee2ca8c8b25"
+      ],
+      "fixtureResourceSetupPassed": 2,
+      "fixtureResourceCleanupPassed": 2,
+      "testDatabaseCleanupNotPassing": true,
+      "independentResourceAndOriginalGuardAuditPassed": true,
+      "explicitSlotRelease": true,
+      "noRetryOrSourceChange": true,
+      "first0of5And1329FileArchivePreserved": true,
+      "revisedArchive": "passed1333files/all bytes rehashed/exact owned parent removed; original failure outcomes unchanged",
+      "openConnectedReviewQuestion": "Release-time question confirmed offline by two deterministic same-owner401 reds, fixed with identical46green and replacement-owner negatives; authored genuine controls remain unexecuted at this checkpoint.",
+      "fullVerificationPublicationCIAndSignoff": false,
+      "archive": {
+        "status": "passed",
+        "files": 1333,
+        "allBytesRehashed": true,
+        "exactOwnedParentRemoved": true,
+        "sourceSha256": "b92638c14dbe8acbe3da2a60454450be19bfbd5392f17170e3ec5977996087d6",
+        "first1329FileArchivePreserved": true,
+        "historical59Archive88671FilePrivate575FreshRehashStillPending": true
+      }
+    },
+    "activeFixtureReservations": 0,
+    "currentSourceRealExecutions": 0,
+    "additionalRealFixtureRunsAfterRevisedRelease": 0,
+    "offlinePostRelease": {
+      "status": "passed-offline-only",
+      "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+      "nodes": [
+        {
+          "version": "22.23.2",
+          "fullUnitPassed": 352,
+          "zeroPending": true,
+          "includesAll51FocusedNames": true,
+          "checkPassed": true,
+          "coverageThresholdsPassed": true,
+          "coverageTotal": {
+            "statements": 97.26,
+            "lines": 99.51,
+            "functions": 98.66,
+            "branches": 94.95
+          },
+          "runtimeModules": [
+            {
+              "path": "src/auth.ts",
+              "metrics": {
+                "statements": 97.41,
+                "lines": 100,
+                "functions": 97.84,
+                "branches": 94.66
+              }
+            },
+            {
+              "path": "src/common.ts",
+              "metrics": {
+                "statements": 100,
+                "lines": 100,
+                "functions": 100,
+                "branches": 93.54
+              }
+            },
+            {
+              "path": "src/index.ts",
+              "metrics": {
+                "statements": 96.61,
+                "lines": 98.62,
+                "functions": 100,
+                "branches": 95.63
+              }
+            }
+          ],
+          "packageChecks": 4,
+          "packageCleanup": "passed"
+        },
+        {
+          "version": "24.21.0",
+          "fullUnitPassed": 352,
+          "zeroPending": true,
+          "includesAll51FocusedNames": true,
+          "checkPassed": true,
+          "coverageThresholdsPassed": true,
+          "coverageTotal": {
+            "statements": 97.26,
+            "lines": 99.51,
+            "functions": 98.66,
+            "branches": 94.95
+          },
+          "runtimeModules": [
+            {
+              "path": "src/auth.ts",
+              "metrics": {
+                "statements": 97.41,
+                "lines": 100,
+                "functions": 97.84,
+                "branches": 94.66
+              }
+            },
+            {
+              "path": "src/common.ts",
+              "metrics": {
+                "statements": 100,
+                "lines": 100,
+                "functions": 100,
+                "branches": 93.54
+              }
+            },
+            {
+              "path": "src/index.ts",
+              "metrics": {
+                "statements": 96.61,
+                "lines": 98.62,
+                "functions": 100,
+                "branches": 95.63
+              }
+            }
+          ],
+          "packageChecks": 4,
+          "packageCleanup": "passed"
+        }
+      ],
+      "owner401": {
+        "red": {
+          "executed": 46,
+          "passed": 44,
+          "failed": 2
+        },
+        "identicalTestsGreenEachNode": 46,
+        "confirmedSyntheticCases": [
+          "same owner after failed B public-generation advance",
+          "same owner after held same-session live-status rotation"
+        ],
+        "negativeControls": [
+          "old A401 after B commit",
+          "old A401 after B to new A commit"
+        ],
+        "change": "Only matching captured internal owner aborts when public rejected-refresh clearing is stale; acquisition rejects aborted owner; public cached auth and independent CRUD unchanged"
+      },
+      "cleanup": {
+        "actualInstalledNativeVersion": "0.14.3",
+        "distributionSha256": "e7c9879aa97fd81fa87219bf82cad88e48d5074b4e81a2eb00d3c0ca406604f3",
+        "red": {
+          "executed": 4,
+          "passed": 1,
+          "failed": 3
+        },
+        "identicalTestsGreenEachNode": 4,
+        "mechanismConfirmedOnlyWithMockedHttpAndOwnedSqlite": true,
+        "originalRealCleanupWireAndCauseNotEstablished": true,
+        "change": "Fresh ordinary login of the exact generated owner after global revocation, then deletion; independent full postconditions unchanged",
+        "controls": [
+          "short3s and normal3600s credentials",
+          "failed fresh login: no anonymous DELETE/no claimed restoration",
+          "full foreign users/sessions/rows/audits/int64 preserved"
+        ]
+      },
+      "auditPremise": "Only normalize actual SQLite todo_id/user_id to Buffer at exact owned audit comparison; sixteen-byte equality, IDs, operation/order/count remain required",
+      "genuine401SchedulesAuthoredNotExecuted": [
+        "failed-b",
+        "status",
+        "b",
+        "b-a"
+      ],
+      "currentSourceRealCases": 0,
+      "first0of5AndRevised3of5Unchanged": true,
+      "noNewFixturesYet": true,
+      "finalReviewHistoryInstalledRealRegressionPublicationAndCIPending": true,
+      "signoff": false
+    },
+    "realtimeLatestReleasedCheckpoint": {
+      "provenance": "User/lane report only; not independently re-audited in core",
+      "docsOnlyCommits": [
+        "470388d",
+        "3979dba"
+      ],
+      "runtimeSource": "3589aa1/e1907e2c",
+      "correctedC04": {
+        "entered": 1,
+        "passed": 0,
+        "failed": 1,
+        "unselected": 3,
+        "mainAssertionsComplete": true,
+        "strictTeardown": "failed active1/forced1/associated0/unassociated1; active-zero +fallback-not-running errors; forced-zero assertion unreached but observedforced1 violates gate",
+        "remainingTrackedSocketCauseClientTimingAndActualPostDestroyOsState": "unknown"
+      },
+      "released": true,
+      "newReservation": false,
+      "teardownPlan": "TD01-08 proposal only; semantic acceptance/implementation/new native attempt not authorized by completed window",
+      "noBranchIntegration": true,
+      "historicalBeforeLatestFiniteNativePass": true
+    },
+    "remainingWindow": {
+      "status": "explicitly-released-after-pre-dispatch-controller-stop-and-independent-audit",
+      "at": "2026-11-04T20:33:27.274Z",
+      "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+      "plannedCases": 2,
+      "plannedFixtures": 2,
+      "plannedBrowserCases": 0,
+      "actualExecutedCases": 0,
+      "automaticRetry": false,
+      "originalGuardPassed": true,
+      "memoryAvailableBytes": 29446516736,
+      "diskAvailableBytes": 161093944320,
+      "oldArchivesRehashed": [
+        {
+          "label": "first",
+          "files": 1329
+        },
+        {
+          "label": "revised",
+          "files": 1333
+        }
+      ],
+      "scope": "Only previously unproved default-native AL and short-expiry AL; no passing browsers/older tests; four genuine401 schedules inside existing default case; no source edits or retry in window",
+      "actualRealCases": {
+        "executed": 0,
+        "passed": 0,
+        "failed": 0,
+        "unexecuted": 2
+      },
+      "controllerExit": 1,
+      "fixturesCreated": 0,
+      "noAutomaticRetry": true,
+      "sourceOnlyParentRetainedForEvidence": "/tmp/trailbase-auth-lifetime0359-remaining-C0yLIy",
+      "old0of5And3of5Unchanged": true,
+      "nextAttemptRequiresFreshUserHandoff": true,
+      "signoff": false,
+      "resourceAndOriginalAudit": {
+        "status": "passed-resource-source-original-audit-only",
+        "actualRealCases": {
+          "executed": 0,
+          "passed": 0,
+          "failed": 0,
+          "unexecuted": 2
+        },
+        "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+        "fixturesCreated": 0,
+        "controllerGone": true,
+        "ownedRuntimeRunsLockDepotAbsent": true,
+        "originalSixFullIdentityPidStartImageNativeStartLockBytesMetadataConfigsFullTcpListenersAndHealth200Match": true,
+        "bothOld1329And1333FileArchivesRehashedUnchanged": true,
+        "noFakeCanonicalRunnerTerminalOrCaseReportsCreated": true,
+        "noAutomaticRetry": true,
+        "kernelTimeWaitAndPerSocketPostDestroyAbsenceNotClaimed": true,
+        "sourceOnlyOwnedParentRetainedForEvidence": "/tmp/trailbase-auth-lifetime0359-remaining-C0yLIy",
+        "detectedNodeIdentityCauseAndWhetherItsMatchWasFalsePositive": "unknown; observed PID and parent absent before capture",
+        "independentReleaseReady": true,
+        "fullHistorical59ArchiveAuditStillPending": true,
+        "signoff": false
+      },
+      "stop": {
+        "status": "controller-stopped-before-dispatch-no-retry",
+        "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+        "stage": "Imported preflight competition guard, before runner body/harness creation",
+        "actualRealCases": {
+          "executed": 0,
+          "passed": 0,
+          "failed": 0,
+          "unexecuted": 2
+        },
+        "controllerExit": 1,
+        "fixtureRunsCreated": 0,
+        "noPerCaseReportResultsOrTerminalFileCreated": true,
+        "isolatedRunsAndLockAbsent": true,
+        "sourceUnchanged": true,
+        "observedGuardProcess": {
+          "pid": 4111561,
+          "ppid": 4110596,
+          "command": "node"
+        },
+        "laterProcessPresence": [
+          {
+            "pid": 4111561,
+            "present": false
+          },
+          {
+            "pid": 4110596,
+            "present": false
+          },
+          {
+            "pid": 4111568,
+            "present": false
+          }
+        ],
+        "processIdentityAndCause": "not-established unless separate captured private evidence proves it; absent PIDs do not establish a cause",
+        "noAutomaticRetry": true,
+        "sourceParentRetained": true,
+        "resourceAndOriginalAuditPending": true,
+        "slotStillReservedUntilAudit": true,
+        "signoff": false
+      },
+      "archive": {
+        "status": "passed",
+        "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+        "files": 1280,
+        "allBytesRehashed": true,
+        "exactOwnedSourceOnlyParentRemoved": true,
+        "actualCases": {
+          "executed": 0,
+          "passed": 0,
+          "failed": 0,
+          "unexecuted": 2
+        },
+        "fixturesCreated": 0,
+        "priorSlotReleaseUnchanged": true,
+        "noGlobalStateChecksOrNativeExecutionAfterRelease": true,
+        "old0of5And3of5And59HistoricalArchivesNotModified": true,
+        "fullHistorical59ArchiveRehashNotClaimed": true
+      },
+      "sourceOnlyParentCurrentlyRetained": false
+    },
+    "controllerImportPlumbing": {
+      "status": "offline-corrected-and-modeled-not-real-preflight-rerun",
+      "sourceSha256": "ee28cac5f356c383a7c0aedde2a97a22d1e39a2b55ae6aebef534bcbbf2f30fc",
+      "failedSourceSha256": "a6f7faa6bdaf46423ada8421cb74b4a2f618b4765b44c5804e51395c76c95389",
+      "red": "Mere import unexpectedly invoked synthetic competition guard and rejected",
+      "eachNodeGreenCases": 3,
+      "nodes": [
+        "22.23.2",
+        "24.21.0"
+      ],
+      "controls": [
+        "mere import has zero resource calls",
+        "explicit call still invokes competition first",
+        "standalone CLI still invokes competition first"
+      ],
+      "allResourceFunctionsSyntheticBlockingSentinels": true,
+      "realGlobalGuardsNativeSocketListenerFetchAndFixtureActions": false,
+      "actualGuardStopProcessIdentityAndMatchReasonStillUnknown": true,
+      "unreachedPotentialEexistNotReclassifiedAsObservedCause": true,
+      "nextCoreNativeAttemptRequiresFreshUserHandoffAndUniqueOutputNames": true,
+      "failedControllersPreservedIn1280FileArchive": true
+    },
+    "bookkeepingFreshness": "Offline investigation/review bookkeeping; final compiler/docs/progress checks pending",
+    "realtimeLatestFinitePass": {
+      "provenance": "User/lane terminal report; no core raw or global audit replay",
+      "checkpoint": "61c74c0",
+      "source": "c494e98e",
+      "runId": "1793824818051-c9a1ea516a96",
+      "cases": {
+        "entered": 1,
+        "passed": 1,
+        "failed": 0,
+        "unselected": 3
+      },
+      "exit": 0,
+      "retry": false,
+      "strict": {
+        "active": 0,
+        "explicitForced": 0,
+        "platformCloseDestructions": 0,
+        "preexistingDestroyed": 0,
+        "listenerClosed": true,
+        "closeFailed": false,
+        "historySockets": 2,
+        "allHistoryClosed": true,
+        "overflow": false
+      },
+      "socketOrders": {
+        "acceptedSse": {
+          "accept": 1,
+          "close": 3
+        },
+        "unassociated": {
+          "accept": 2,
+          "requestSeen": false,
+          "close": 6
+        },
+        "listener": {
+          "request": 4,
+          "callback": 5
+        }
+      },
+      "remainingAttribution": "No client/idle/reconnect/FIN-RST attribution or historical reclassification",
+      "main": "Genuine Insert/seq1, body-only AbortError/both locks, REST DELETE/audit",
+      "fragmentation": {
+        "fetchChunks": 236,
+        "bytes": 237,
+        "inFrameBoundaries": 234,
+        "utf8Splits": 6,
+        "completeFrameHashesMatched": 2
+      },
+      "resourceAndOriginalGuardsReportedPassed": true,
+      "explicitRelease": true,
+      "allThreeNativeFailuresPreserved": true,
+      "notQualified": [
+        "channel C01-C03",
+        "auth",
+        "reference",
+        "browser",
+        "installed SDK",
+        "G5/G6",
+        "release signoff"
+      ],
+      "docsOnlyCheckpoint": "0f252ac",
+      "helperRuntimeUnchangedFrom61c74c0": true,
+      "offline455CoveragePackageEvidenceHistoricalNotRerunForDocsOnly": true,
+      "socketAttribution": "Socket2 requestSeenfalse; client/idle/partial-bytes/close-initiator/FIN-RST unproved, no historical reclassification"
+    },
+    "sessionTerminalOffline": {
+      "status": "passed-offline-checkpoint-only",
+      "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+      "bothExactNodesCompilerDocsLinksTraceabilityFreshnessSecretScanPassed": true,
+      "progressAndDiffPassed": true,
+      "sourceUnchanged": true,
+      "noGlobalGuardOrNativeFixtureReplay": true,
+      "coreReleased": true,
+      "currentSourceRealCases": 0,
+      "fullUnitCoveragePackageEachNode": "Earlier current-source352/full module coverage/package4 PASS retained, not rerun for docs-only status recording",
+      "privateVmImportControlsEachNode": 3,
+      "sourceOnlyStopArchiveFiles": 1280,
+      "sourceOnlyParentRemoved": true,
+      "observedGuardNodeIdentityAndMatchReasonStillUnknown": true,
+      "noCommitPushCIOrSignoff": true
+    },
+    "rerunWindow": {
+      "status": "explicitly-released",
+      "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+      "plannedCases": 2,
+      "executed": 0,
+      "plannedFixtures": 2,
+      "plannedBrowserCases": 0,
+      "oneAttemptOnly": true,
+      "automaticRetry": false,
+      "sourceOrTestEditsInWindow": false,
+      "controllerHashes": {
+        "preflight-rerun-window.mjs": "205ea6d9fcdcc70b39535e74aa0560708680ce5984412fedcb673622af32d16f",
+        "prepare-rerun-isolation.mjs": "1493e97e99899028e05c9ac414a994581a80425f2b86ef450d03ebfc12984c4e",
+        "run-rerun-window.mjs": "46f6bc021ae29692f7c405d98b706ac469a99273e1a921c79930d1d573653cfe",
+        "verify-rerun-teardown.mjs": "f0eba1f6abf016b997315483db53aff59a08e39f8defb22e912170b2c8820ca3",
+        "preflight-revised-window.mjs": "a494b8356d787ba39b069d5ed7777f4b96a3309f6a03deffce1f7f150e9e2482",
+        "test-rerun-import-offline.mjs": "faf3b5884835fbccb7f8099ad3de3b70ef1801bf60a1acfa417d94580ccaae37"
+      },
+      "priorArchives": [
+        {
+          "label": "first",
+          "files": 1329,
+          "manifestSha256": "3119b52748c57aab78d7c0636eae4ca41410066c28418dc2c3ed397684517a18",
+          "actualCases": {
+            "executed": 5,
+            "passed": 0,
+            "failed": 5
+          }
+        },
+        {
+          "label": "revised",
+          "files": 1333,
+          "manifestSha256": "74ba32be2131d1aa6bd381aca34586efa8af3f14be33821c916f251c5bccc7fc",
+          "actualCases": {
+            "executed": 5,
+            "passed": 3,
+            "failed": 2
+          }
+        },
+        {
+          "label": "pre-dispatch",
+          "files": 1280,
+          "manifestSha256": "f85998dc79f2f8e3d781a280460153a907db729b49c19644ccca56e236f9fd8c",
+          "actualCases": {
+            "executed": 0,
+            "passed": 0,
+            "failed": 0,
+            "unexecuted": 2
+          }
+        }
+      ],
+      "originalGuardMatch": true,
+      "capacityBytes": {
+        "memory": 29473177600,
+        "disk": 161025999872
+      },
+      "uniqueParent": "/tmp/trailbase-auth-lifetime0359-rerun-o1t8cI",
+      "at": "2026-11-04T21:14:21.810Z",
+      "actualRealCases": {
+        "executed": 0,
+        "passed": 0,
+        "failed": 0,
+        "unexecuted": 2
+      },
+      "controllerExit": 1,
+      "fixturesCreated": 0,
+      "noRetry": true,
+      "ownedRuntimeResourcesNeverCreatedAndAbsent": true,
+      "originalGuardAuditPassed": true,
+      "prior0of5And3of5AndEarlierNoDispatchUnchanged": true,
+      "frozenControllersUnchanged": true,
+      "sourceOnlyOwnedParentRetainedForEvidence": "/tmp/trailbase-auth-lifetime0359-rerun-o1t8cI",
+      "canonicalRunnerTerminalResultsAndCaseReportsRemainAbsent": true,
+      "observedMatch": {
+        "pid": 4159881,
+        "ppid": 4159329,
+        "command": "MainThread"
+      },
+      "identityAndMatchReason": "unknown; detected process, parent and controller all gone before capture",
+      "nextAttemptRequiresFreshUserHandoff": true,
+      "signoff": false,
+      "stop": {
+        "status": "controller-stopped-before-dispatch-no-retry",
+        "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+        "stage": "Runner own competition guard after import/ownership/source checks, before harness or fixture creation; no import-time guard execution",
+        "actualRealCases": {
+          "executed": 0,
+          "passed": 0,
+          "failed": 0,
+          "unexecuted": 2
+        },
+        "controllerPid": 4159880,
+        "controllerExit": 1,
+        "fixtureRunsCreated": 0,
+        "noPerCaseReportResultsOrCanonicalTerminalCreated": true,
+        "isolatedRunsLockDepotAbsent": true,
+        "sourceUnchanged": true,
+        "observedGuardProcess": {
+          "pid": 4159881,
+          "ppid": 4159329,
+          "command": "MainThread"
+        },
+        "allThreePidsAbsentBeforeCapture": true,
+        "identityMatchReasonAndFalsePositiveStatus": "unknown; no argv or executable evidence survived capture",
+        "noAutomaticRetry": true,
+        "freshInitialCapacityCompetitionOriginalAndThreeArchivesPassed": true,
+        "correctedImportThreeControlsEachPinnedNodePassed": true,
+        "sourceOnlyParentRetained": true,
+        "resourceAndOriginalAuditPending": true,
+        "slotStillReservedUntilAudit": true,
+        "signoff": false
+      },
+      "resourceAndOriginalAudit": {
+        "status": "passed-resource-source-original-audit-only",
+        "actualRealCases": {
+          "executed": 0,
+          "passed": 0,
+          "failed": 0,
+          "unexecuted": 2
+        },
+        "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+        "fixturesCreated": 0,
+        "controllerGone": true,
+        "ownedRuntimeRunsLockDepotAbsent": true,
+        "originalSixFullIdentityPidStartImageNativeStartLockBytesMetadataConfigsFullTcpListenersAndHealth200Match": true,
+        "bothOld1329And1333FileArchivesRehashedUnchanged": true,
+        "prior1280FileNoDispatchArchiveRehashedUnchanged": true,
+        "frozenControllersUnchanged": true,
+        "noFakeCanonicalRunnerTerminalOrCaseReportsCreated": true,
+        "noAutomaticRetry": true,
+        "kernelTimeWaitAndPerSocketPostDestroyAbsenceNotClaimed": true,
+        "sourceOnlyOwnedParentRetainedForEvidence": "/tmp/trailbase-auth-lifetime0359-rerun-o1t8cI",
+        "detectedNodeIdentityCauseAndWhetherItsMatchWasFalsePositive": "unknown; observed MainThread PID4159881 and parent4159329 absent before capture",
+        "independentReleaseReady": true,
+        "fullHistorical59ArchiveAuditStillPending": true,
+        "signoff": false
+      },
+      "archive": {
+        "status": "passed",
+        "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+        "files": 1292,
+        "allBytesRehashed": true,
+        "exactOwnedSourceOnlyParentRemoved": true,
+        "actualCases": {
+          "executed": 0,
+          "passed": 0,
+          "failed": 0,
+          "unexecuted": 2
+        },
+        "fixturesCreated": 0,
+        "priorSlotReleaseUnchanged": true,
+        "noGlobalStateChecksOrNativeExecutionAfterRelease": true,
+        "old0of5And3of5AndEarlier1280StopAnd59HistoricalArchivesNotModified": true,
+        "fullHistorical59ArchiveRehashNotClaimed": true
+      },
+      "sourceOnlyParentCurrentlyRetained": false,
+      "sourceOnlyParentState": "Archived/rehashed1292files and exact owned parent removed after explicit slot release",
+      "finalOfflineBookkeeping": {
+        "status": "passed-offline-bookkeeping-only",
+        "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+        "finalBothExactNodesCheckPassed": true,
+        "progressAndDiffPassed": true,
+        "sourceUnchanged": true,
+        "noGlobalGuardOrNativeReplayAfterRelease": true,
+        "actualCases": {
+          "executed": 0,
+          "passed": 0,
+          "failed": 0,
+          "unexecuted": 2
+        },
+        "fixturesCreated": 0,
+        "sourceOnlyArchiveFiles": 1292,
+        "exactOwnedSourceOnlyParentRemoved": true,
+        "activeReservation": false,
+        "observedProcessIdentityAndMatchReasonUnknown": true,
+        "priorThreeALHistoriesUnchanged": true,
+        "earlier352UnitCoveragePackageProofsNotRerun": true,
+        "noCommitPushCIOrSignoff": true
+      }
+    },
+    "realtimeC01C03OfflinePreparation": {
+      "provenance": "User/lane report, not core raw/source re-audit",
+      "checkpoint": "fbc631b",
+      "sourceSha256": "3e5d10249ee68b968b34c32d5c8d6d0990cd7413637f462ee5aab22554b0d686",
+      "offlineOnly": true,
+      "nativeCasesExecuted": 0,
+      "fixtureReservation": false,
+      "noDispatchAuthorizedByNotice": true,
+      "bothExactNodesReported": {
+        "tests": 458,
+        "pending": 0,
+        "coverageAndCheckAndPackage4Cleanup": "passed"
+      },
+      "newSocketFreeControls": 3,
+      "collectionOnlySelected": 3,
+      "c04Unselected": true,
+      "earlierNativeOutcomesUnchanged": [
+        "0/4",
+        "0/1",
+        "0/1",
+        "1/1"
+      ],
+      "coreAlreadyReleased": true,
+      "coreObservedMainThreadIdentityStillUnknown": true,
+      "requiresLaterExplicitHandoff": true,
+      "noBroaderAcceptance": true
+    },
+    "guardOfflineInvestigation": {
+      "status": "offline-characterized-not-historical-root-cause",
+      "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+      "diagnosticSha256": "38fb8ee49bd7bbd9da19b796b35758a40842a7debbc6f20a52ab70afd38e768b",
+      "captureSha256": "326debad96d28b8be1b081a441b772c7befbbf6752c152a045b6e604f8a0a392",
+      "allFourALArchivesRehashedUnchanged": true,
+      "bothNoDispatchRawRecordsAndFrozenGuardsUnchanged": true,
+      "controlsEachExactNode": 20,
+      "originalProjectionSchedules": 512,
+      "legacyRed": {
+        "cases": 13,
+        "passed": 3,
+        "failed": 10
+      },
+      "captureRed": {
+        "cases": 7,
+        "passed": 2,
+        "failed": 5
+      },
+      "observation": {
+        "status": "source-and-read-only-control-characterized-not-historical-root-cause",
+        "normal": {
+          "runtimePid": 4192479,
+          "managedShellPid": 4192474,
+          "matches": 0,
+          "complete": true
+        },
+        "inertArgvControl": {
+          "runtimePid": 681,
+          "managedShellPid": 673,
+          "matchedPid": 673,
+          "relation": "ancestor",
+          "markerOnlyNoReferencedScriptExecuted": true,
+          "strictDecision": "stop",
+          "signalsSent": 0,
+          "fixtures": 0
+        },
+        "conclusion": "Exact Node runtime PID excluded by archived policy; an owned shell ancestor carrying inert script-path text can match and still stops. Historical raw argv/runtime PID missing; do not attribute either old stop to this mechanism.",
+        "safeProposedCorrection": "Preserve bounded exact same-snapshot argv/runtime identity/reasons before assertion; no matcher/relative exemptions",
+        "sdkAuthRuntimeUnchanged": true
+      },
+      "actualGuardRuntimePidNotRecordedHistorically": true,
+      "managedLaunchPidLabelsQualifiedNotRewritten": true,
+      "noMatcherDecisionWeakening": true,
+      "proposedCorrection": "Same-snapshot bounded private identity/argv/reasons before assertion only; not installed in fixture controller",
+      "noSignalsFixturesDockerListenersHealthOrGlobalResourceAuditReplay": true,
+      "noHistoricalFalsePositiveOrRootCauseClaim": true,
+      "independentAuthReview": {
+        "model": "openai/gpt-6.1-sol",
+        "thinking": "high",
+        "status": "completed-read-only-no-verified-P1-P2-not-signoff",
+        "failedGpt55LaunchPreserved": true,
+        "reportSha256": "fa85c7cbf233e0878d84a79181ce3b69e75fc47fffd18ead7508aef4abcd9300",
+        "coverageGaps": [
+          "already-dispatched caller abort/late response",
+          "body or EOF held across owner replacement/expiry"
+        ],
+        "gapsVerifiedByParentSourceReadButNewTestsNotAuthoredOrRun": true,
+        "noRuntimeTestsOrHashRecomputationByReviewer": true
+      },
+      "strictRealtimeAuthIntegration": "Blocked: initiation-only lease is not awaitable owned-body cleanup receipt; no ABI/shared-source changes",
+      "realALCasesAtThisSource": 0,
+      "fixtureReservation": false,
+      "fullHistorical59ArchiveAuditStillPending": true,
+      "noCommitPushOrSignoff": true
+    },
+    "independentAuthSourceReview": {
+      "model": "openai/gpt-6.1-sol",
+      "thinking": "high",
+      "status": "completed-read-only-no-verified-P1-P2-not-signoff",
+      "failedGpt55LaunchPreserved": true,
+      "reportSha256": "fa85c7cbf233e0878d84a79181ce3b69e75fc47fffd18ead7508aef4abcd9300",
+      "coverageGaps": [
+        "already-dispatched caller abort/late response",
+        "body or EOF held across owner replacement/expiry"
+      ],
+      "gapsVerifiedByParentSourceReadButNewTestsNotAuthoredOrRun": true,
+      "noRuntimeTestsOrHashRecomputationByReviewer": true
+    },
+    "historicalControllerPidQualification": "Values recorded from process-tool launch receipts are not independently recorded guard Node runtime PIDs; preserve raw old labels, no inferred replacement PID",
+    "realtimeLatestReleasedDocsCheckpoint": "3aa1a01",
+    "realtimeC01C03NativeWindow": {
+      "provenance": "User/lane report, no core source/raw/global-resource audit replay",
+      "docsCheckpoint": "3aa1a01",
+      "runtimeCheckpoint": "fbc631b",
+      "sourcePrefix": "3e5d1024",
+      "actualSelectedCases": {
+        "entered": 3,
+        "passed": 3,
+        "failed": 0,
+        "unselected": 1
+      },
+      "c04Unselected": true,
+      "retry": false,
+      "explicitlyReleased": true,
+      "fixtureReservation": false,
+      "strictActiveExplicitFallbackObservedPlatform": [
+        0,
+        0,
+        0
+      ],
+      "actualCloseEvents": 11,
+      "ownedTodoInsertUpdateDeleteCounts": [
+        0,
+        5,
+        3,
+        5
+      ],
+      "earlierFourNativeHistoriesUnchanged": true,
+      "notSameGraphFourOfFour": true,
+      "noCapturedAuthSessionIntegrationOrBroaderAcceptance": true,
+      "noFixtureDispatchAuthorizedByNotice": true
+    },
+    "capturedAuthConsumerBoundary": {
+      "workingLeaseMembers": [
+        "signal",
+        "fetch",
+        "assertCurrent",
+        "dispose"
+      ],
+      "acquireAtSynchronousSubscribe": true,
+      "assertAfterDecodeBeforeDelivery": true,
+      "cancellationInitiationOnly": true,
+      "awaitableCleanupReceiptNotPresent": true,
+      "strictRealtimeIntegrationBlocked": true,
+      "noPublicApiOrSharedSourceChange": true,
+      "currentReceipt": {
+        "status": "implemented-offline-verified-Core-only-not-consumer-adopted",
+        "sourceSha256": "dcefb21800d04e6bb94297495e2ce279bc1469e2aeca10d22ca3982bfb996f43",
+        "contract": "recordOperation():Promise<{readonly signal:AbortSignal;assertCurrent():void;fetch(path:string,init?:RequestInit):Promise<Response>;dispose():Promise<void>}>",
+        "priorVoidBoundary": "historical; now superseded only for owned-unhanded cleanup confirmation",
+        "readerOwnership": "consumer-owned"
+      }
+    },
+    "ownedCleanupReceipt": {
+      "status": "implemented-independently-source-reviewed-and-offline-verified-not-genuine-qualified",
+      "sourceSha256": "dcefb21800d04e6bb94297495e2ce279bc1469e2aeca10d22ca3982bfb996f43",
+      "authSha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d",
+      "authorization": "User independently confirmed four-member disposal receipt boundary with Realtime; narrow implementation/adversarial tests and review/checkpoint; Core sole shared-auth writer, every fixture through user",
+      "interface": "recordOperation():Promise<{readonly signal:AbortSignal;assertCurrent():void;fetch(path:string,init?:RequestInit):Promise<Response>;dispose():Promise<void>}>",
+      "ownership": "Accepted Fetch settlement and successful UNHANDED-body cancellation; returned Response/reader consumer-owned, no remote quiescence claim",
+      "gapCharacterizations": {
+        "sourceSha256": "e66b75ddfc93d650365190dfe8903879a3b777f94b1a24a5c92cea2ea9e01786",
+        "authUnchanged": true,
+        "newCases": 3,
+        "operationTestsEachNode": 42,
+        "fullUnitsEachNode": 355,
+        "coveragePackage4CheckEachNode": "passed"
+      },
+      "receiptRed": {
+        "sourceSha256": "06c1e5f1b87e7934b74f02260be8ec8624b5035793caed31708a3450892ad5af",
+        "selected": 11,
+        "pass": 0,
+        "fail": 11,
+        "unselectedOld": 42,
+        "reason": "undefined disposal versus Promise"
+      },
+      "firstGreen": {
+        "operationTestsEachNode": 53,
+        "checkEachNode": "passed",
+        "laterAddedTransportControls": 2
+      },
+      "typeRed": "TS2578 unused expected-error for mutable inferred signal; inline readonly return contract added",
+      "initialFull": {
+        "sourceSha256": "61f8d1f26f1f90858edbc543ed6c50b702bcbdcdcc327cf2b17e5575f6f8c0c3",
+        "node22Unit": "passed",
+        "node22Coverage": "passed",
+        "node22Package": "failed-build-TS2550-Promise.withResolvers",
+        "packageChecksEntered": 0,
+        "packageCleanup": "passed",
+        "remainingCheckAndNode24": "unexecuted"
+      },
+      "correction": "Standard native Promise/resolver pair, unchanged ES2022/compiler/dependency/budget contract",
+      "fullCurrentVerification": {
+        "status": "passed",
+        "process": "proc_8648",
+        "nodes": [
+          "22.23.2",
+          "24.21.0"
+        ],
+        "unitTestsEachNode": 370,
+        "passedEachNode": 370,
+        "pendingEachNode": 0,
+        "operationCasesEachNode": 57,
+        "checkEachNode": "passed",
+        "globalAndEach3ModuleThresholds": "95statements/95lines/95functions/90branches unchanged, passed",
+        "globalCoverage": {
+          "statements": 97.46,
+          "lines": 99.53,
+          "functions": 99.35,
+          "branches": 95.18
+        },
+        "packageChecksEachNode": 4,
+        "packageCleanupEachNode": "passed"
+      },
+      "review": {
+        "status": "completed-no-verified-P1-P2-not-signoff",
+        "provider": "pi",
+        "model": "openai/gpt-6.1-sol",
+        "thinking": "high",
+        "taskId": "node:delegated-task:command%3Amcp%3A6412f75d-1f89-4b73-b61d-f1e3e9eb9152%3Adelegate-task%3Abedb4d2b-c9b6-4222-b153-cb98cc754fa0",
+        "launchSourceSha256": "61f8d1f26f1f90858edbc543ed6c50b702bcbdcdcc327cf2b17e5575f6f8c0c3",
+        "laterBuildCompatibilityPatch": "standard Promise pair only; final review source accounting required",
+        "explicitlyInspectedFinalAuthSha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d",
+        "coverageGaps": 2,
+        "followupTestsAddedPassed": 2,
+        "runtimeUnchangedForFollowupTests": true,
+        "evidence": ".runtime/auth-lifetime-0359/owned-cleanup-receipt/independent-review-gpt61-high-private.md"
+      },
+      "privateEvidence": ".runtime/auth-lifetime-0359/owned-cleanup-receipt/",
+      "realCasesExecuted": 0,
+      "fixtureReservation": false,
+      "publicApiChange": false,
+      "laneRuntimeIntegrated": false,
+      "signoff": false,
+      "realtimeAuthoredAssertions": {
+        "laneCheckpoint": "5a038d1083721a1c1b528b9a026cbc3250aa0007",
+        "perNode": {
+          "entered": 7,
+          "passed": 7,
+          "failed": 0
+        },
+        "kind": "Core-executed separately authored assertions, private actual-build source-module assembly; not installedRealtime/active adoption/independent execution",
+        "compilerErrorPreserved": "TS5112/0entered; private standalone --ignoreConfig correction, project config unchanged",
+        "laneExpectedRed": {
+          "void": "1PASS/6FAIL eachNode",
+          "insufficientWrapper": "3PASS/4FAIL eachNode"
+        }
+      },
+      "offlineHistoryPreservation": {
+        "status": "passed-byte-only",
+        "process": "proc_0613",
+        "historicalArchives": 59,
+        "historicalFiles": 88671,
+        "privateArtifacts": 7,
+        "privateRetainedFiles": 575,
+        "alArchives": [
+          1329,
+          1333,
+          1280,
+          1292
+        ],
+        "drEvidence": [
+          333,
+          24
+        ],
+        "protectedDrProofs": 11,
+        "liveResourceConfigDemoGuardsReplayed": false,
+        "fixtureClearance": false
+      },
+      "publicEvidence": "docs/evidence/auth-lifetime-receipt-offline-checkpoint.json",
+      "localCheckpoint": {
+        "kind": "local-offline-source-checkpoint",
+        "identityAndOutcome": "Git history and .runtime/auth-lifetime-0359/owned-cleanup-receipt/local-commit-private.json",
+        "noReleaseOrGenuineSignoff": true,
+        "push": false,
+        "newCommitCi": false
+      },
+      "reportAnalysisErrorsPreserved": [
+        "53!=11 skipped-versus-pending filter",
+        "0!=57 guessed suite name"
+      ]
+    },
+    "guardFinalChecksCorrection": {
+      "status": "passed",
+      "process": "proc_5620",
+      "bothExactNodeCheck": true,
+      "progress": true,
+      "diffCheck": true,
+      "stagedQuiet": true,
+      "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
+      "priorPendingWording": "pre-check bookkeeping, not actual execution outcome; raw/frozen prior proof unchanged"
     }
   }
 }
