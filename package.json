@@ -39,6 +39,7 @@
     "test:sdk:browser:refresh": "node scripts/run-phase-a.mjs sdk-browser-refresh",
     "test:sdk:refresh": "node scripts/run-phase-a.mjs sdk-refresh",
     "test:sdk:auth": "node scripts/run-phase-a.mjs sdk-auth",
+    "test:sdk:auth:negative": "node scripts/run-phase-a.mjs sdk-auth-negative",
     "test:sdk:data": "node scripts/run-phase-a.mjs sdk-data",
     "example:todos": "node scripts/run-todos.mjs",
     "test:example:todos": "node scripts/run-todos.mjs --check",

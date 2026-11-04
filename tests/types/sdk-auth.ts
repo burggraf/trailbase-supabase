@@ -5,6 +5,10 @@ void response;
 void client.auth.signUp({ email: 'placeholder@example.test', password: 'placeholder' });
 const cached: Promise<{ data: { session: AuthSession | null }; error: import('../../src/index.js').AuthError | null }> = client.auth.getSession(); void cached;
 const user: AuthUser = { id: 'placeholder', email: null }; void user;
+// @ts-expect-error MFA APIs remain unsupported; native MFA is only a fixture negative control
+client.auth.mfa.enroll({ factorType: 'totp' });
+// @ts-expect-error no native pending-MFA login overload
+client.auth.signInWithPassword({ mfaToken: 'placeholder', totp: '123456' });
 // @ts-expect-error metadata unsupported
 client.auth.signUp({ email: 'placeholder', password: 'placeholder', options: { data: {} } });
 // @ts-expect-error phone unsupported

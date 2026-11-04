@@ -6,7 +6,7 @@ import { verifyOwner, waitReady } from '../../scripts/harness.mjs';
 import { exec } from '../../scripts/tools.mjs';
 import { context, type Context } from '../phase-a/helpers.js';
 
-const authTables = ['users', 'identities', 'sessions', 'refresh_tokens', 'one_time_tokens', 'flow_state', 'audit_log_entries'];
+const authTables = ['users', 'identities', 'sessions', 'refresh_tokens', 'one_time_tokens', 'flow_state', 'audit_log_entries', 'mfa_factors', 'mfa_challenges', 'mfa_amr_claims'];
 export const identity = (label: string) => ({ email: `reference-${label}-${randomUUID()}@example.test`, password: `Fixture-${randomUUID()}-Aa1!` });
 export const replacementPassword = () => `Fixture-${randomUUID()}-Aa1!`;
 export const fixtureEmail = (email: string) => {
@@ -27,7 +27,7 @@ async function ownedProject(env: Context) {
   if (!host.startsWith('unix://') || process.env.DOCKER_HOST && !process.env.DOCKER_HOST.startsWith('unix://')) throw new Error('Reference database/fault checks require local Docker');
   return project;
 }
-async function sql<T>(env: Context, query: string): Promise<T> {
+export async function sql<T>(env: Context, query: string): Promise<T> {
   const project = await ownedProject(env);
   const result = await exec('docker', ['exec', `supabase_db_${project}`, 'psql', '-U', 'postgres', '-d', 'postgres', '-At', '-v', 'ON_ERROR_STOP=1', '-c', query], { timeout: 15000 });
   return JSON.parse(result.stdout.trim());

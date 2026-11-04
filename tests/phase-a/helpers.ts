@@ -13,7 +13,7 @@ export async function deadline<T>(promise: Promise<T>, milliseconds = 10000, lab
   } finally { clearTimeout(timer!); }
 }
 
-export type Context = { id: string; project: string; directory: string; origins: string[]; trailUrl: string; supabaseUrl: string; mailUrl: string; publicOrigin?: string; anonKey: string; authVariant: 'stock' | 'candidate-email-reservation' | 'private-native-prototype'; prototypePatchSha256?: string; nativeAuthProfile: 'default'|'short-native-auth'; nativeServerProfile?: 'default'|'legacy-upgrade' };
+export type Context = { id: string; project: string; directory: string; origins: string[]; trailUrl: string; supabaseUrl: string; mailUrl: string; publicOrigin?: string; anonKey: string; authVariant: 'stock' | 'candidate-email-reservation' | 'private-native-prototype'; prototypePatchSha256?: string; nativeAuthProfile: 'default'|'short-native-auth'; nativeServerProfile?: 'default'|'legacy-upgrade'; registrationPolicyTest?: true; registrationDisabled?: boolean };
 export async function context(): Promise<Context> {
   const path = process.env.PHASE_A_CONTEXT;
   if (!path || !path.endsWith('/context.json')) throw new Error('Run this suite via npm run test:phase-a (not a hosted backend)');

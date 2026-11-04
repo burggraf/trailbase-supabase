@@ -1,0 +1,186 @@
+{
+  "scope": "Finite official0359 registration-disabled/nativeMFA-required negative-control checkpoint; no SDK MFA feature, enabled-reference parity, broad security/release/maintainer signoff.",
+  "baseCommit": "0a977d90718834ce847349b0d0acd87c11a9dbdb",
+  "sourceSha256": "bd8415747efc5f3b40bfc952e103127749607f6168e8e42442420492fbbaa5bc",
+  "nativeMinimum": "official0.35.9+ operator assumption, not autodetected",
+  "nativePin": {
+    "version": "0.35.9",
+    "commit": "a106ce6338f9831140c92ac16e051901ed92d576"
+  },
+  "officialJs": "0.14.3",
+  "runtimeSdkSourceChanged": false,
+  "dependencyOrReferenceConfigChanged": false,
+  "negative": {
+    "cases": 14,
+    "failed": 0,
+    "nodes": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "genuineNativeMfa": {
+      "httpStatus": 403,
+      "sessionInstalled": false
+    },
+    "distinctDisabledReferenceEnrollment": {
+      "httpStatus": 422,
+      "code": "mfa_totp_enroll_not_enabled",
+      "enabledMfaEnforcement": false
+    },
+    "packedBrowsers": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "realOwnedPolicyWriteAndPreSpawnRecovery": true,
+    "rowLossIndependentIdentityRevocationCleanup": true,
+    "existingReferenceAuditFingerprintsPreserved": true
+  },
+  "verification": {
+    "static": [
+      {
+        "node": "22.23.2",
+        "units": 302,
+        "packageChecks": 4,
+        "coverage": {
+          "statements": {
+            "total": 875,
+            "covered": 851,
+            "skipped": 0,
+            "pct": 97.25
+          },
+          "lines": {
+            "total": 574,
+            "covered": 571,
+            "skipped": 0,
+            "pct": 99.47
+          },
+          "functions": {
+            "total": 141,
+            "covered": 140,
+            "skipped": 0,
+            "pct": 99.29
+          },
+          "branches": {
+            "total": 687,
+            "covered": 654,
+            "skipped": 0,
+            "pct": 95.19
+          }
+        }
+      },
+      {
+        "node": "24.21.0",
+        "units": 302,
+        "packageChecks": 4,
+        "coverage": {
+          "statements": {
+            "total": 875,
+            "covered": 851,
+            "skipped": 0,
+            "pct": 97.25
+          },
+          "lines": {
+            "total": 574,
+            "covered": 571,
+            "skipped": 0,
+            "pct": 99.47
+          },
+          "functions": {
+            "total": 141,
+            "covered": 140,
+            "skipped": 0,
+            "pct": 99.29
+          },
+          "branches": {
+            "total": 687,
+            "covered": 654,
+            "skipped": 0,
+            "pct": 95.19
+          }
+        }
+      }
+    ],
+    "installedRealBackendPerNode": 8,
+    "sourceBoundReconciledCommands": 23,
+    "originalControllerCompleted": 19,
+    "originalControllerTerminal": "absent",
+    "interruptionCause": "unknown",
+    "interruptionResultNotFabricated": true,
+    "documentedExactOwnedRecovery": "passed",
+    "onlyUnfinishedFreshScopes": 4,
+    "noCompletedLocalScopesRestarted": true,
+    "setupCleanup": "passed",
+    "strictResearch": [
+      {
+        "suite": "all",
+        "passed": 117,
+        "failed": 6,
+        "fullPriorNamesAndStatusesEqual": true,
+        "frozenHistoricalFailedNamesAndStatusesEqual": true
+      },
+      {
+        "suite": "characterization",
+        "passed": 9,
+        "failed": 1,
+        "fullPriorNamesAndStatusesEqual": true,
+        "frozenHistoricalFailedNamesAndStatusesEqual": true
+      },
+      {
+        "suite": "smtp",
+        "passed": 0,
+        "failed": 1,
+        "fullPriorNamesAndStatusesEqual": true,
+        "frozenHistoricalFailedNamesAndStatusesEqual": true
+      },
+      {
+        "suite": "browser",
+        "passed": 60,
+        "failed": 6,
+        "fullPriorNamesAndStatusesEqual": true,
+        "frozenHistoricalFailedNamesAndStatusesEqual": true
+      }
+    ],
+    "strictActualFailures": 14,
+    "counterfactual": {
+      "status": "FAILED",
+      "sourceSha256": "5b8e0f3fba2533e263c48bdc4ed7438b3034df80151f098275fba867e515185c",
+      "cases": 7,
+      "failed": 1,
+      "intendedAN03": true,
+      "exactByteRestoreAnd14Pass": true
+    }
+  },
+  "review": {
+    "model": "openai/gpt-6.1-sol",
+    "thinking": "high",
+    "freshReviewTasks": 1,
+    "findings": 4,
+    "priority": "P2",
+    "parentVerified": true,
+    "realFaultRedGreenAnd14CaseFixProof": true,
+    "maintainerSignoff": false
+  },
+  "preservation": {
+    "archives": 44,
+    "files": 65254,
+    "privateArtifacts": 7,
+    "privateRetainedFiles": 575,
+    "allRehashed": true,
+    "ownedAnParentsAbsent": 5,
+    "ownedAnProjectsAbsent": 53,
+    "originalDemoDataSixContainersLockSupervisorTailnetUnchanged": true
+  },
+  "publication": {
+    "scopedCommit": "pending",
+    "exactNewCommitCi": "pending",
+    "expectedReports": 27,
+    "noAutomaticCiRetry": true
+  },
+  "remaining": [
+    "Native signupnull-user/session and409/no supported resend limitations",
+    "Issued-JWT/late-login/racing-work global logout limits and unsupported older/mixed/rolled-back handlers",
+    "Five full-suite placeholders remain NOT IMPLEMENTED/exit1",
+    "TLS/full security/accessibility/device/platform/resource100cycle/threeclean-candidate/named-maintainer gates unpassed"
+  ],
+  "signoff": false
+}

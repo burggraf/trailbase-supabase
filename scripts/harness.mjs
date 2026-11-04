@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:net';
 import { createHash, randomUUID } from 'node:crypto';
-import { mkdir, readFile, writeFile, cp, rm, open, lstat } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, cp, rm, open, lstat, rename } from 'node:fs/promises';
 import { resolve, relative, sep } from 'node:path';
 import { once } from 'node:events';
 import { baseline, exec, installTrail } from './tools.mjs';
@@ -98,6 +98,12 @@ export function nativeAuthConfig(config, profile) {
   return config.replace(/\bauth\s*\{/, 'auth { auth_token_ttl_sec: 3');
 }
 
+// Only the generated negative-control config; never a backend policy API.
+export function registrationPolicyConfig(config) {
+  if (typeof config !== 'string' || [...config.matchAll(/\bauth\s*\{/g)].length !== 1 || !/\bauth\s*\{[^{}]*\}/.test(config) || /disable_password_auth/.test(config)) throw new Error('Invalid registration-policy config');
+  return config.replace(/\bauth\s*\{/, 'auth { disable_password_auth: true');
+}
+
 export function fixtureEnvironment(environment = process.env) {
   const child = { ...environment };
   for (const key of Object.keys(child)) if (key.startsWith('SUPABASE_') || key.startsWith('TRAILBASE_')) delete child[key];
@@ -162,7 +168,8 @@ export function nativeSiteConfig(config, publicOrigin = undefined) {
   return config.replace(original, `site_url: "${publicOrigin}"`);
 }
 
-export async function createHarness({ authMitigation = false, nativeAuthProfile = 'default', privateNativePrototype = false, sdkBrowser = false, publicOrigin, nativeServerProfile = 'default' } = {}) {
+export async function createHarness({ authMitigation = false, nativeAuthProfile = 'default', privateNativePrototype = false, sdkBrowser = false, publicOrigin, nativeServerProfile = 'default', registrationPolicyTest = false } = {}) {
+  if (typeof registrationPolicyTest !== 'boolean' || registrationPolicyTest && (authMitigation || privateNativePrototype || nativeServerProfile !== 'default' || nativeAuthProfile !== 'default' || publicOrigin !== undefined)) throw new Error('Invalid registration-policy fixture');
   const nativePin = fixtureNativePin(nativeServerProfile);
   if (nativeServerProfile !== 'default' && (authMitigation || privateNativePrototype)) throw new Error('Legacy upgrade profile requires stock fixture');
   if (publicOrigin !== undefined && !sdkBrowser) throw new Error('Remote origin is only supported for the owned SDK browser fixture');
@@ -181,8 +188,26 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
   const childEnv = fixtureEnvironment();
   const context = { id, project, directory, setupStage:'created', origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, nativeServerProfile, authVariant, ...(publicOrigin ? { publicOrigin } : {}) };
   const ownerRecord = { id, project, nativeAuthProfile, nativeServerProfile, authVariant, runnerPid: process.pid, trailPid: null };
+  if (registrationPolicyTest) {
+    Object.assign(context, { registrationPolicyTest: true, registrationDisabled: false });
+    Object.assign(ownerRecord, { registrationPolicyTest: true });
+  }
   await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
-  let trail, log, stockBinary, stockBackupTimestamp;
+  let trail, log, stockBinary, stockBackupTimestamp, registrationOriginalConfig;
+  let registrationChanging = false, registrationRecovery;
+  async function writeRegistrationConfig(path, expected, desired) {
+    const temporary = resolve(directory, 'traildepot', `.registration-${randomUUID()}.tmp`);
+    let primary;
+    try {
+      await writeFile(temporary, desired, { mode: 0o600, flag: 'wx' });
+      if (!(await lstat(path)).isFile() || await readFile(path, 'utf8') !== expected) throw new Error('Registration-policy config drift');
+      await rename(temporary, path);
+    } catch (error) { primary = error; throw error; }
+    finally {
+      try { await rm(temporary, { force: true }); }
+      catch (cleanup) { throw primary ? new AggregateError([primary, cleanup], 'Owned config write/temporary cleanup failed', { cause: primary }) : cleanup; }
+    }
+  }
   let startAttempted = false;
   async function collectStartupFailure(error) {
     try {
@@ -301,7 +326,9 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     const depot = resolve(directory, 'traildepot');
     await cp(resolve('tests/fixtures/trailbase'), depot, { recursive: true });
     if (authMitigation) await cp(resolve('tests/fixtures/auth-mitigation/U1790991000__reserve_auth_email.sql'),resolve(depot,'migrations/main/U1790991000__reserve_auth_email.sql'));
-    await writeFile(resolve(depot, 'config.textproto'), replaceTokens(nativeConfig, values));
+    registrationOriginalConfig = replaceTokens(nativeConfig, values);
+    if (registrationPolicyTest) registrationPolicyConfig(registrationOriginalConfig);
+    await writeFile(resolve(depot, 'config.textproto'), registrationOriginalConfig);
     const publicDirectory = resolve(directory, 'public');
     await mkdir(publicDirectory);
     await writeFile(resolve(publicDirectory, 'index.html'), '<!doctype html><html lang="en"><meta charset="utf-8"><title>Phase A verification complete</title><main><h1>Verification complete</h1><p>Sign in explicitly.</p></main></html>');
@@ -345,6 +372,54 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     context.setupCheck='passed';
     context.setupStage='ready';
     return { ...context, containers, trailVersion: trailVersion.trim(), cliVersion: version.trim() };
+  }
+  async function setRegistrationDisabled(disabled) {
+    if (!registrationPolicyTest || typeof disabled !== 'boolean' || registrationChanging || !startAttempted || !stockBinary || !registrationOriginalConfig || context.authVariant !== 'stock' || registrationRecovery && disabled || !trail && !(registrationRecovery && disabled === false)) throw new Error('Invalid registration-policy control');
+    registrationChanging = true;
+    try {
+      assertRunDirectory(directory);
+      const owner = JSON.parse(await readFile(resolve(directory, 'owner.json'), 'utf8'));
+      verifyOwner(id, owner, await readFile(resolve(directory, 'supabase/config.toml'), 'utf8'));
+      if (owner.runnerPid !== process.pid || !(registrationRecovery ? registrationRecovery.pids.has(owner.trailPid) : owner.trailPid === trail?.pid) || owner.registrationPolicyTest !== true || owner.nativeServerProfile !== 'default' || owner.nativeAuthProfile !== 'default' || owner.authVariant !== 'stock') throw new Error('Registration-policy owner mismatch');
+      const path = resolve(directory, 'traildepot/config.textproto');
+      if (!(await lstat(path)).isFile()) throw new Error('Registration-policy config drift');
+      const expected = await readFile(path, 'utf8');
+      const configured = context.registrationDisabled ? registrationPolicyConfig(registrationOriginalConfig) : registrationOriginalConfig;
+      if (!(await lstat(path)).isFile() || !(registrationRecovery ? registrationRecovery.configs.has(expected) : expected === configured)) throw new Error('Registration-policy config drift');
+      if (trail && trail.exitCode === null && trail.signalCode === null) {
+        const marker = await fetch(`${context.trailUrl}/phase-a-owner.txt`, { signal: AbortSignal.timeout(5000) });
+        if (!marker.ok || await marker.text() !== id) throw new Error('Registration-policy origin mismatch');
+      }
+      if (!registrationRecovery && disabled === context.registrationDisabled && trail.exitCode === null && trail.signalCode === null) return;
+      const desired = disabled ? registrationPolicyConfig(registrationOriginalConfig) : registrationOriginalConfig;
+      registrationRecovery ??= { pids: new Set([owner.trailPid]), configs: new Set([expected, desired, registrationOriginalConfig]) };
+      async function restart(config, name) {
+        await stopChild(trail); await log?.close(); trail = undefined; log = undefined;
+        if (!(await lstat(path)).isFile()) throw new Error('Registration-policy config drift');
+        const current = await readFile(path, 'utf8');
+        if (!registrationRecovery.configs.has(current)) throw new Error('Registration-policy config drift');
+        await writeRegistrationConfig(path, current, config);
+        context.registrationDisabled = config !== registrationOriginalConfig;
+        try { await launchTrail(stockBinary, name, true); }
+        finally { if (trail) registrationRecovery.pids.add(trail.pid ?? null); }
+        await waitReady(`${context.trailUrl}/api/healthcheck`, 30000, trail);
+        const marker = await fetch(`${context.trailUrl}/phase-a-owner.txt`, { signal: AbortSignal.timeout(5000) });
+        if (!marker.ok || await marker.text() !== id || await readFile(path, 'utf8') !== config) throw new Error('Registration-policy restart mismatch');
+        await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
+      }
+      try { await restart(desired, disabled ? 'trail-registration-disabled.log' : 'trail-registration-restored.log'); }
+      catch (primary) {
+        try {
+          if (!(await lstat(path)).isFile()) throw new Error('Registration-policy recovery config drift');
+          const current = await readFile(path, 'utf8');
+          if (!registrationRecovery.configs.has(current)) throw new Error('Registration-policy recovery config drift');
+          await restart(registrationOriginalConfig, 'trail-registration-recovery.log');
+          registrationRecovery = undefined;
+        } catch (recovery) { throw new AggregateError([primary, recovery], 'Owned registration transition/recovery failed', { cause: primary }); }
+        throw primary;
+      }
+      registrationRecovery = undefined;
+    } finally { registrationChanging = false; }
   }
   async function restartWithPrivatePrototype({ expectAmbiguousRefusal = false } = {}) {
     if (!startAttempted || !['stock', 'private-native-prototype'].includes(context.authVariant) || !trail) throw new Error('Private G1 restart requires a running owned fixture');
@@ -433,5 +508,5 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
     return { version };
   }
-  return { context, start, restartWithPrivatePrototype, createStockBackup, restoreStockBackupAndRestart, stopNativeForUpgrade, startNativeForUpgrade, cleanup };
+  return { context, start, setRegistrationDisabled, restartWithPrivatePrototype, createStockBackup, restoreStockBackupAndRestart, stopNativeForUpgrade, startNativeForUpgrade, cleanup };
 }

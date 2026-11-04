@@ -7,7 +7,7 @@ import { execFileSync } from 'node:child_process';
 it('L1-26/L1-27 RQ02/RQ03 candidate automation is finite and never converts missing release acceptance into approval', async () => {
   const release = await import('../../scripts/run-release-candidate.mjs');
   expect(release.assessCandidate).toBeTypeOf('function');
-  expect(release.candidateCommands.map((entry: { id: string }) => entry.id)).toEqual(['check','units','coverage','package','node','auth','refresh','data','database','constraints','browser','browser-refresh','example','cleanup']);
+  expect(release.candidateCommands.map((entry: { id: string }) => entry.id)).toEqual(['check','units','coverage','package','node','auth','auth-negative','refresh','data','database','constraints','browser','browser-refresh','example','cleanup']);
   const results = release.candidateCommands.map((entry: { id: string }) => ({ id: entry.id, status: 'passed' }));
   expect(release.assessCandidate(results, true)).toMatchObject({ automation: 'passed', qualification: 'blocked', signoff: false });
   expect(release.assessCandidate(results.slice(1), true).automation).toBe('failed');

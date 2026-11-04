@@ -2,12 +2,24 @@ import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { inspect } from 'node:util';
 import { baseline, exec } from './tools.mjs';
-import { createHarness, fixtureNativePin } from './harness.mjs';
+import { createHarness, fixtureNativePin, assertRunDirectory } from './harness.mjs';
 import { vitestCase, playwrightCase, runnerFailure } from './phase-a-diagnostics.mjs';
 
+// Raw control exceptions never enter public reports. Preserve original and logging errors in order.
+export async function writeNegativeControlDiagnostic(context, error) {
+  try {
+    assertRunDirectory(context.directory);
+    const owner = JSON.parse(await readFile(resolve(context.directory, 'owner.json'), 'utf8'));
+    if (resolve('.runtime/runs', context.id) !== context.directory || owner.id !== context.id || owner.project !== context.project || owner.runnerPid !== process.pid || owner.registrationPolicyTest !== true || context.registrationPolicyTest !== true || context.authVariant !== 'stock' || context.nativeServerProfile !== 'default' || context.nativeAuthProfile !== 'default') throw new Error('Invalid private negative diagnostic owner');
+    const diagnostic = inspect(error, { depth: null, maxArrayLength: null, maxStringLength: null, customInspect: false });
+    if (Buffer.byteLength(diagnostic) > 1048576) throw new Error('Owned control diagnostic exceeds1MiB');
+    await writeFile(resolve(context.directory, 'negative-control-errors-private.log'), diagnostic, { mode: 0o600, flag: 'wx' });
+  } catch (logging) { throw new AggregateError([error, logging], 'Owned control/private diagnostic failure', { cause: error }); }
+}
 export async function sourceHash() {
-  const paths = ['package.json','package-lock.json','tsconfig.json','tsconfig.sdk.json','vitest.config.ts','playwright.config.ts','playwright.sdk-data.config.ts','playwright.sdk-refresh.config.ts','.gitignore','README.md','PLAN.md','AGENTS.md','docs/LEVEL1_PLAN.md','docs/RESEARCH.md','docs/TEST_PLAN.md','docs/RELEASE_QUALIFICATION.md','docs/AUTH_MIGRATION_INVESTIGATION.md','docs/PROOF_INVESTIGATIONS.md'];
+  const paths = ['package.json','package-lock.json','tsconfig.json','tsconfig.sdk.json','vitest.config.ts','playwright.config.ts','playwright.sdk-data.config.ts','playwright.sdk-refresh.config.ts','playwright.sdk-auth-negative.config.ts','.gitignore','README.md','PLAN.md','AGENTS.md','docs/LEVEL1_PLAN.md','docs/RESEARCH.md','docs/TEST_PLAN.md','docs/RELEASE_QUALIFICATION.md','docs/AUTH_MIGRATION_INVESTIGATION.md','docs/PROOF_INVESTIGATIONS.md'];
   const listed = (await exec('git',['ls-files','--cached','--others','--exclude-standard','-z'])).stdout.split('\0');
   const inputs = [...new Set(listed.filter(path => paths.includes(path) || /^(scripts|tests|\.github|src|examples)\//.test(path)))].sort();
   const hash = createHash('sha256');
@@ -36,9 +48,11 @@ async function main() {
   const privateNativeAmbiguousUpgrade = suite === 'private-g1-ambiguous-upgrade';
   if ((privateNativePrototype || privateNativeUpgrade || privateNativeAmbiguousUpgrade) && options.length) throw new Error('Private G1 suites have pinned source/auth variants; no fixture override is allowed');
   const nativeAuthProfile = nativeAuthProfileForSuite(suite);
-  const packedBrowser = suite === 'sdk-browser' || suite === 'sdk-browser-refresh';
+  const authNegative = suite === 'sdk-auth-negative';
+  if (authNegative && options.length) throw new Error('Negative auth controls require the stock/default owned fixture');
+  const packedBrowser = suite === 'sdk-browser' || suite === 'sdk-browser-refresh' || authNegative;
   const nativeServerProfile = nativeServerProfileForSuite(suite), nativePin = fixtureNativePin(nativeServerProfile);
-  if (!['all','sdk-data','sdk-auth','sdk-refresh','sdk-browser','sdk-browser-refresh','auth-reference','database','constraints','characterization','domains','boundaries','auth-lifecycle','auth-migration','proofs','expiry','network','pagination','streaming','smtp','lifecycle','browser','private-g1-prototype','private-g1-upgrade','private-g1-ambiguous-upgrade'].includes(suite)) throw new Error('Unknown Phase A suite');
+  if (!['all','sdk-data','sdk-auth','sdk-auth-negative','sdk-refresh','sdk-browser','sdk-browser-refresh','auth-reference','database','constraints','characterization','domains','boundaries','auth-lifecycle','auth-migration','proofs','expiry','network','pagination','streaming','smtp','lifecycle','browser','private-g1-prototype','private-g1-upgrade','private-g1-ambiguous-upgrade'].includes(suite)) throw new Error('Unknown Phase A suite');
   if (suite === 'auth-migration' && authMitigation) throw new Error('Existing-depot migration rehearsal requires the stock fixture');
   if (suite === 'sdk-browser-refresh' && authMitigation) throw new Error('Packed short-auth browser checks require the stock fixture');
   await mkdir('.runtime', { recursive: true, mode: 0o700 });
@@ -47,7 +61,7 @@ async function main() {
   await mkdir('.runtime/phase-a.lock');
   await writeFile('.runtime/phase-a.lock/owner.json', JSON.stringify({ runnerPid: process.pid, runId: null }), { mode: 0o600 });
   let harness, testChild;
-  const report = { scope: privateNativePrototype ? 'Private pinned upstream G1 source prototype with owned disposable services; NOT stock/default behavior, SDK verification, or gate signoff' : privateNativeUpgrade ? 'Owned existing-depot stock-to-private G1 prototype upgrade rehearsal; NOT stock behavior, deployment readiness, or gate signoff' : privateNativeAmbiguousUpgrade ? 'Owned ambiguous legacy-depot refusal rehearsal on the private G1 prototype; NOT stock behavior, deployment readiness, or gate signoff' : suite === 'sdk-browser-refresh' ? 'PB01–PB04 request-driven races and BF01–BF08 background/focus-handler/terminal-transient faults on genuine short-TTL packed browsers; NOT physical-focus/full E08/security/release signoff' : suite === 'sdk-browser' ? 'Packed SDK data/storage and real password-auth application/official0359 global receipt, delivery/storage/held-owner checks without version detection; NOT complete E2E/security/release signoff' : suite === 'sdk-refresh' ? 'Focused SDK request/manual/background refresh and genuinely expired captured-JWT global401/no DELETE with owned short-native-auth; NOT complete lifecycle/compatibility/signoff' : suite === 'sdk-auth' ? 'Focused SDK signup/login/storage/live-user/official0359 global receipt and failure checks with pinned reference; signup null-user and broader auth/security/release gates unresolved, NOT compatibility/signoff' : suite === 'sdk-data' ? 'Focused SDK data adapter/official Supabase contract suite; incomplete feature layers, NOT signoff' : suite === 'auth-reference' ? 'Independent pinned Supabase auth reference database/SMTP contracts; NOT native/SDK parity or signoff' : suite === 'auth-migration' ? 'LEGACY0.34.3 ambiguous-depot SQL preflight/refusal; NOT current official0359 upgrade or G1 recovery signoff' : 'Phase A upstream/infrastructure harness; all scope includes focused SDK data checks, NOT complete SDK verification', nativeServerProfile, nativeServerPin: { version: nativePin.version, commit: nativePin.commit }, authVariant:privateNativePrototype ? 'private-native-prototype' : privateNativeUpgrade ? 'stock-to-private-native-prototype-upgrade' : privateNativeAmbiguousUpgrade ? 'stock-to-private-native-prototype-ambiguous-refusal' : authMitigation ? 'candidate-email-reservation' : 'stock', suite, nativeAuthProfile, status: 'failed', startedAt: new Date().toISOString(), baseline, node: process.version, platform: `${process.platform}-${process.arch}`, tests: [], cleanup: 'not-started' };
+  const report = { scope: authNegative ? 'AN01–AN06 owned0359 registration-disabled/nativeMFA403 negative controls, distinct pinned disabled-reference-enrollment and genuine packed three-browser restoration/cleanup; NOT MFA support or security/release signoff' : privateNativePrototype ? 'Private pinned upstream G1 source prototype with owned disposable services; NOT stock/default behavior, SDK verification, or gate signoff' : privateNativeUpgrade ? 'Owned existing-depot stock-to-private G1 prototype upgrade rehearsal; NOT stock behavior, deployment readiness, or gate signoff' : privateNativeAmbiguousUpgrade ? 'Owned ambiguous legacy-depot refusal rehearsal on the private G1 prototype; NOT stock behavior, deployment readiness, or gate signoff' : suite === 'sdk-browser-refresh' ? 'PB01–PB04 request-driven races and BF01–BF08 background/focus-handler/terminal-transient faults on genuine short-TTL packed browsers; NOT physical-focus/full E08/security/release signoff' : suite === 'sdk-browser' ? 'Packed SDK data/storage and real password-auth application/official0359 global receipt, delivery/storage/held-owner checks without version detection; NOT complete E2E/security/release signoff' : suite === 'sdk-refresh' ? 'Focused SDK request/manual/background refresh and genuinely expired captured-JWT global401/no DELETE with owned short-native-auth; NOT complete lifecycle/compatibility/signoff' : suite === 'sdk-auth' ? 'Focused SDK signup/login/storage/live-user/official0359 global receipt and failure checks with pinned reference; signup null-user and broader auth/security/release gates unresolved, NOT compatibility/signoff' : suite === 'sdk-data' ? 'Focused SDK data adapter/official Supabase contract suite; incomplete feature layers, NOT signoff' : suite === 'auth-reference' ? 'Independent pinned Supabase auth reference database/SMTP contracts; NOT native/SDK parity or signoff' : suite === 'auth-migration' ? 'LEGACY0.34.3 ambiguous-depot SQL preflight/refusal; NOT current official0359 upgrade or G1 recovery signoff' : 'Phase A upstream/infrastructure harness; all scope includes focused SDK data checks, NOT complete SDK verification', nativeServerProfile, nativeServerPin: { version: nativePin.version, commit: nativePin.commit }, authVariant:privateNativePrototype ? 'private-native-prototype' : privateNativeUpgrade ? 'stock-to-private-native-prototype-upgrade' : privateNativeAmbiguousUpgrade ? 'stock-to-private-native-prototype-ambiguous-refusal' : authMitigation ? 'candidate-email-reservation' : 'stock', suite, nativeAuthProfile, status: 'failed', startedAt: new Date().toISOString(), baseline, node: process.version, platform: `${process.platform}-${process.arch}`, tests: [], cleanup: 'not-started' };
   let interrupted = false;
   const interrupt = () => { interrupted = true; testChild?.kill('SIGTERM'); };
   process.on('SIGINT', interrupt); process.on('SIGTERM', interrupt);
@@ -75,11 +89,25 @@ async function main() {
     report.tests.push(...results.testResults.flatMap(result => result.assertionResults.map(vitestCase)));
     if (!success) throw new Error('Phase A assertions failed; inspect private run diagnostics');
   }
+  async function runPlaywright(name, config, testFile) {
+    const file = resolve(harness.context.directory, `${name}.json`);
+    const success = await runTests(name, 'playwright', ['test', ...(config ? ['--config', config] : []), ...(testFile ? [testFile] : [])], { PLAYWRIGHT_JSON_OUTPUT_FILE: file });
+    const results = JSON.parse(await readFile(file, 'utf8'));
+    function collect(suites) {
+      for (const suite of suites) {
+        for (const spec of suite.specs ?? []) for (const test of spec.tests) report.tests.push(playwrightCase(spec, test));
+        collect(suite.suites ?? []);
+      }
+    }
+    collect(results.suites);
+    report.browserRevisions = JSON.parse(await readFile('node_modules/playwright-core/browsers.json', 'utf8')).browsers;
+    if (!success) throw new Error('Phase A browser assertions failed; inspect private run diagnostics');
+  }
   try {
     report.sourceSha256 = await sourceHash();
     report.baseCommit = (await exec('git', ['rev-parse','HEAD'])).stdout.trim();
     if (process.env.GITHUB_RUN_ID) report.ci = { commit:process.env.GITHUB_SHA, runUrl:`https://github.com/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}` };
-    harness = await createHarness({ authMitigation, nativeAuthProfile, nativeServerProfile, privateNativePrototype, sdkBrowser: packedBrowser });
+    harness = await createHarness({ authMitigation, nativeAuthProfile, nativeServerProfile, privateNativePrototype, sdkBrowser: packedBrowser, registrationPolicyTest: authNegative });
     report.runId = harness.context.id;
     await writeFile('.runtime/phase-a.lock/owner.json', JSON.stringify({ runnerPid:process.pid, runId:harness.context.id }), { mode:0o600 });
     const environment = await harness.start();
@@ -90,7 +118,31 @@ async function main() {
     if (interrupted) throw new Error('Run interrupted');
     console.log(privateNativePrototype || privateNativeUpgrade || privateNativeAmbiguousUpgrade ? 'Private G1 disposable backend ready; running isolated checks.' : suite === 'sdk-data' ? 'Disposable backends ready; running focused SDK data/reference checks.' : 'Phase A backends ready; running real upstream checks.');
     if (suite === 'lifecycle') { report.injectedFailure='after-start'; throw new Error('Injected fixture setup failure'); }
-    if (privateNativeUpgrade || privateNativeAmbiguousUpgrade) {
+    if (authNegative) {
+      const errors = [];
+      try {
+        const { registrationPolicyFault } = await import('../tests/proofs/registration-policy-faults.mjs');
+        for (const kind of ['pre-spawn', 'partial-write']) {
+          const name = `L1-27/AN01F${kind === 'partial-write' ? '1' : '2'} owned ${kind} failure restores exact policy/process/error`;
+          try { await registrationPolicyFault(harness, kind); report.tests.push({ name, status: 'passed' }); }
+          catch (error) { report.tests.push({ name, status: 'failed' }); throw error; }
+        }
+        await runVitest('negative-setup', 'tests/auth-negative/setup.test.ts');
+        await harness.setRegistrationDisabled(true);
+        await runVitest('negative-disabled', 'tests/auth-negative/disabled.test.ts');
+        await runPlaywright('negative-disabled-browsers', 'playwright.sdk-auth-negative.config.ts', 'disabled.spec.ts');
+      } catch (error) { errors.push(error); }
+      try {
+        await harness.setRegistrationDisabled(false);
+        if (!errors.length) {
+          await runVitest('negative-restored', 'tests/auth-negative/restored.test.ts');
+          await runPlaywright('negative-restored-browsers', 'playwright.sdk-auth-negative.config.ts', 'restored.spec.ts');
+        }
+      } catch (error) { errors.push(error); }
+      try { await runVitest('negative-cleanup', 'tests/auth-negative/cleanup.test.ts'); }
+      catch (error) { errors.push(error); }
+      if (errors.length) throw new AggregateError(errors, 'Negative controls/restoration/cleanup failed');
+    } else if (privateNativeUpgrade || privateNativeAmbiguousUpgrade) {
       const ambiguous = privateNativeAmbiguousUpgrade;
       const stockTest = ambiguous ? 'tests/phase-a/private-g1-ambiguous-stock.test.ts' : 'tests/phase-a/private-g1-upgrade-stock.test.ts';
       const prototypeTest = ambiguous ? 'tests/phase-a/private-g1-ambiguous-prototype.test.ts' : 'tests/phase-a/private-g1-upgrade-prototype.test.ts';
@@ -120,19 +172,8 @@ async function main() {
       const testPath = suite === 'all' ? 'tests/phase-a' : suite === 'sdk-refresh' ? 'tests/sdk-refresh' : suite === 'expiry' ? 'tests/expiry' : suite === 'auth-reference' ? 'tests/auth-reference' : suite === 'auth-migration' ? 'tests/migration' : suite === 'private-g1-prototype' ? 'tests/phase-a/private-g1-prototype.test.ts' : `tests/phase-a/${suite}.test.ts`;
       await runVitest(suite, testPath);
     }
-    if (suite === 'all' || suite === 'browser' || packedBrowser) {
-      const file = resolve(harness.context.directory,'playwright.json');
-      const success = await runTests('playwright','playwright',['test', ...(packedBrowser ? ['--config', suite === 'sdk-browser-refresh' ? 'playwright.sdk-refresh.config.ts' : 'playwright.sdk-data.config.ts'] : [])],{ PLAYWRIGHT_JSON_OUTPUT_FILE:file });
-      const results = JSON.parse(await readFile(file,'utf8'));
-      function collect(suites) {
-        for (const suite of suites) {
-          for (const spec of suite.specs ?? []) for (const test of spec.tests) report.tests.push(playwrightCase(spec, test));
-          collect(suite.suites ?? []);
-        }
-      }
-      collect(results.suites);
-      report.browserRevisions = JSON.parse(await readFile('node_modules/playwright-core/browsers.json','utf8')).browsers;
-      if (!success) throw new Error('Phase A browser assertions failed; inspect private run diagnostics');
+    if (!authNegative && (suite === 'all' || suite === 'browser' || packedBrowser)) {
+      await runPlaywright('playwright', packedBrowser ? suite === 'sdk-browser-refresh' ? 'playwright.sdk-refresh.config.ts' : 'playwright.sdk-data.config.ts' : undefined);
     }
     if (!report.tests.length || report.tests.some(test => test.status !== 'passed')) throw new Error('Phase A missing/skipped/failed tests');
     report.status = 'passed';
@@ -142,6 +183,10 @@ async function main() {
       report.status='passed';
       report.tests=[{ name:'L1-27/I27 injected setup failure reaches unconditional owned-resource cleanup', status:'passed' }];
     } else {
+      if (authNegative && harness) {
+        try { await writeNegativeControlDiagnostic(harness.context, error); report.negativeControlDiagnostic = 'passed'; }
+        catch (diagnosticError) { error = diagnosticError; report.negativeControlDiagnostic = 'failed'; }
+      }
       report.failure = runnerFailure(error);
       console.error(`Phase A ${report.failure}; inspect private .runtime diagnostics`);
       report.status='failed';

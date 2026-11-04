@@ -72,6 +72,8 @@ jobs:
           npm cache add uuid@14.0.2
       - run: npx playwright install --with-deps chromium firefox webkit
       - run: npm run test:sdk:auth
+      - run: npm run test:sdk:auth:negative
+        if: always()
       - run: npm run test:sdk:refresh
         if: always()
       - run: npm run test:sdk:data

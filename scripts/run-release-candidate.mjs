@@ -9,7 +9,7 @@ import { sourceHash } from './run-phase-a.mjs';
 export const candidateCommands = [
   ['check', 'check'], ['units', 'test:unit'], ['coverage', 'test:sdk:coverage'],
   ['package', 'test:sdk:package'], ['node', 'test:sdk:node'],
-  ['auth', 'test:sdk:auth'], ['refresh', 'test:sdk:refresh'], ['data', 'test:sdk:data'],
+  ['auth', 'test:sdk:auth'], ['auth-negative', 'test:sdk:auth:negative'], ['refresh', 'test:sdk:refresh'], ['data', 'test:sdk:data'],
   ['database', 'test:db'], ['constraints', 'test:phase-a', 'constraints'],
   ['browser', 'test:sdk:browser'], ['browser-refresh', 'test:sdk:browser:refresh'], ['example', 'test:example:todos'], ['cleanup', 'test:cleanup'],
 ].map(([id, script, ...args]) => Object.freeze({ id, script, args: Object.freeze(args) }));
