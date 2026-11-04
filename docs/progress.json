@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "KF01 app-only keyboard task-completion focus fixed/sourced021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a locally verified: identical-test real red66PASS/6intendedFAIL -> fixed72PASS/both backends/all3engines; both pinned Nodes302/check/95–90global+each3module coverage/no skips/package4/installed8. Original proc_d35b remains interrupted19of21/no terminal-primary-error-managedstdout/cause UNKNOWN, original19/78snapshot unchanged; user-authorized exact-owned cleanup preserved original/unrelated resources, only2unfinished scopes separately completed and honest19+2/full source-pins-names-setupcleanup audit PASS. All14strict failures actually executed/unchanged. Final2owned archives/parents and24projects absent; all53archives79286files/private575/original0358demo-data-sixcontainers-live lock-supervisor-Tailnet and earlier histories preserved. Executor connected-code review only, not independent/maintainer signoff. Await scoped9-file normal commit/push/exact-new-commit CI audit; no new API/release gate/SDK/pin/dependency/reference-default-policy/deferred/live deployment/network/security/credential/fork/outreach change.",
+  "currentPhase": "AR01 local finite checkpoint source3117e5b06a0eb3fe372d005e6d4355fbf712fa7e1cc7cf1a89c039065c68187b: default78PASS/six100-cycle reused-client auth/app schedules, designated6failure unsubscribe counterfactual/restoration, bothNodes302/check/unchanged95–90coverage/package4/installed8 and22runtime+6static auditPASS. One completed21-controller after separate78;14actual strict failures/fullnames preserved. All57archives/85322files/private575/original0358demo/live safeguards/prior histories preserved. Production/API/pin/policy/budget unchanged. Normal scoped8file commit/push and exactnewCI pending; no full E14/security/release/maintainer signoff.",
   "keyboardCompletion0359": {
-    "status": "local-real-red-green-and-honest19plus2-verified-scoped-publication-pending",
+    "status": "scoped-checkpoint-pushed-exact-newCI27report-audit-passed-workflow-red-only14historical-strict-failures",
     "fixedSourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
     "fixedPackedBrowser": {
       "passed": 72,
@@ -20,7 +20,7 @@
         "supabase"
       ]
     },
-    "activeControllers": "All local requested commands completed, original proc_d35b interrupted19of21 remains unchanged, only2unfinished scopes separately completed",
+    "activeControllers": "All assigned local/runtime/recovery/publication/exactCI work completed; original interrupted19 remains unchanged, separate2 completed; no more rerun or additional commit/push",
     "interruption": {
       "originalCompletedCommands": 19,
       "supportedPassed": 16,
@@ -63,7 +63,7 @@
     "scope": "KF01 existing normal todos keyboard completion focus, no API/permission/pin/dependency/transport-policy change or full E14 signoff",
     "contract": "docs/TEST_PLAN.md bounded KF01; six new real packed-browser schedules, existing66 to72, same backends/three engines/budgets; real writes/faults/audits/control rows and no focus theft after delayed genuine response",
     "preservationBefore": "51archives75975files/private7artifacts575files/original0358demo-data-sixcontainers-live-lock-supervisor-Tailnet/history PASS; three pending NR01 terminal notes snapshotted",
-    "missing": "Scoped reviewed normal publication/exact-new-commit CI and postCI preservation; broader existing E14/security/resource/device/release gates remain unpassed",
+    "missing": "Finite assigned checkpoint/recovery/publication/exactCI/preservation/operational verification complete. Broader existing E14/resource/physical-device/platform/TLS/security/release/maintainer acceptance remains unpassed; no new feature or docs-only publication inferred.",
     "signoff": false,
     "localAudit": {
       "status": "passed",
@@ -119,10 +119,171 @@
       "signoff": false
     },
     "publication": {
-      "status": "pending",
-      "normalScopedCommitPushRequired": true,
-      "exactNewCommitCi": "pending",
+      "commit": "9206f3f80acaee34e0e700b8fa8e67f65b3d5768",
+      "parent": "951f1f07c69a3c0e277d987c3a2b5caf7bdc1f5a",
+      "sourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+      "files": 9,
+      "pushed": true,
+      "reviewedBytesAndOriginVerified": true,
+      "exactNewCommitCi": "required audit passed, workflow failure only14preserved strict historical failures",
+      "noRerun": true,
+      "run": 41811627841,
+      "attempt": 1,
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41811627841/attempts/1"
+    },
+    "ciWatch": {
+      "run": 41811627841,
+      "attempt": 1,
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41811627841/attempts/1",
+      "controller": "proc_4859 terminal",
+      "status": "completed-required-audit-passed",
       "noRerun": true
+    },
+    "publicationControlHistory": "Original SSH publickey preflight failed before staging/commit/push. Incorrect gh auth status --active flag rejected locally; corrected existing gh auth status/API push permission and process-local HTTPS Git helper probe passed, config/credential storage unchanged. One actual normal scoped commit/push, no credential/origin/live setting change.",
+    "exactCi": {
+      "status": "required-exact-new-commit-audit-passed-workflow-red-only-preserved-strict-research",
+      "commit": "9206f3f80acaee34e0e700b8fa8e67f65b3d5768",
+      "sourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+      "run": 41811627841,
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41811627841/attempts/1",
+      "attempt": 1,
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "id": 126512037747,
+          "name": "Static, units and packed consumer / Node 22.23.2",
+          "conclusion": "success"
+        },
+        {
+          "id": 126512037872,
+          "name": "Static, units and packed consumer / Node 24.21.0",
+          "conclusion": "success"
+        },
+        {
+          "id": 126512372236,
+          "name": "Focused SDK CRUD-auth / real fixtures / packed browsers",
+          "conclusion": "success"
+        },
+        {
+          "id": 126512372967,
+          "name": "Real backends / browser infrastructure / cleanup",
+          "conclusion": "failure"
+        },
+        {
+          "id": 126512373095,
+          "name": "Packed Node CRUD-auth / Node 24.21.0",
+          "conclusion": "success"
+        },
+        {
+          "id": 126512381733,
+          "name": "Packed Node CRUD-auth / Node 22.23.2",
+          "conclusion": "success"
+        }
+      ],
+      "sourceBoundReports": 27,
+      "artifactBinding": [
+        {
+          "label": "supported",
+          "jobId": 126512372236,
+          "artifactId": 13313413013,
+          "sha256": "27b84350953064975fc6b5e636261bb1a24a20c2ab9ee18ad9df3a43632fdf7b"
+        },
+        {
+          "label": "research",
+          "jobId": 126512372967,
+          "artifactId": 13313338241,
+          "sha256": "49880ee6b8897e6726dccb332efdc2fe9db5a3b7068022f49c58f28982d9d81f"
+        },
+        {
+          "label": "node22",
+          "jobId": 126512381733,
+          "artifactId": 13312243666,
+          "sha256": "19ff5e3dd7d9869d81d773907e0a84fcc5dea21698cb58c3ded3108af484618a"
+        },
+        {
+          "label": "node24",
+          "jobId": 126512373095,
+          "artifactId": 13311524509,
+          "sha256": "5b7e8b0e64033f7f557acbbb62e5206cda96ff4b03b927f7648ebc700143bb4c"
+        },
+        {
+          "label": "static22",
+          "jobId": 126512037747,
+          "artifactId": 13312542705,
+          "sha256": "810070ec665235ed4e5c0661ec32fdf86d6f3a489e2121f7f81a1fbe1d88ae9f"
+        },
+        {
+          "label": "static24",
+          "jobId": 126512037872,
+          "artifactId": 13311798502,
+          "sha256": "c65279729491779b8d65fc9ebd5a201a90a5a59b0ca5b673c950f02cf1457c42"
+        }
+      ],
+      "bothNodeUnits": 302,
+      "defaultPackedBrowserCases": 72,
+      "shortPackedBrowserCases": 36,
+      "negativeAuthCases": 14,
+      "installedCasesPerNode": 8,
+      "referenceCases": 16,
+      "strictResearchFailures": 14,
+      "exactHistoricalFailureNamesAndStatusesUnchanged": true,
+      "allSetupAndCleanupPassed": true,
+      "noRerun": true,
+      "allSixJobsNewExactCommitExecutions": true,
+      "notGreenWorkflowOrReleaseSignoff": true
+    },
+    "preservationPostCi": {
+      "status": "passed",
+      "phase": "postci",
+      "sourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+      "archives": 53,
+      "archivedFiles": 79286,
+      "newOwnedArchives": 2,
+      "newOwnedFiles": 3311,
+      "newOwnedProjectsAbsent": 24,
+      "newOwnedParentsAbsent": 2,
+      "allArchiveBytesRehashed": true,
+      "privateArtifacts": 7,
+      "privateRetainedFiles": 575,
+      "originalAttempt1Failed0of123AndAttempt2Explicit9new18inheritedAndAllControlErrorsUnchanged": true,
+      "protectedAnUnknown19plus4SrFailed1plus22NrUnknown19plus2HistoriesUnchanged": true,
+      "originalKfUnknown19of21AndSeparate19plus2With78SnapshotFilesPreserved": true,
+      "threePendingNrTerminalSnapshotsAndHistoricalLedgerMarkdownPreserved": true,
+      "original0358DemoDataAssetsSixContainersLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+      "noDeploymentNetworkSecurityCredentialsForkOutreachChange": true,
+      "signoff": false
+    },
+    "terminalOperational": {
+      "status": "passed",
+      "commit": "9206f3f80acaee34e0e700b8fa8e67f65b3d5768",
+      "sourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+      "headOriginMainAndAll9ReviewedCommittedBytesVerified": true,
+      "requiredExactCiAudit": "passed",
+      "run": 41811627841,
+      "attempt": 1,
+      "conclusion": "workflow-failure-only14-preserved-strict-research-failures",
+      "sourceBoundReports": 27,
+      "defaultPackedCases": 72,
+      "bothNodeUnits": 302,
+      "allApplicableSetupCleanupPassed": true,
+      "localExecution": "original interrupted19 plus separate2 unfinished; original terminal-primary-error-managedstdout absent/causeUNKNOWN",
+      "original19And78SnapshotAndAllPriorHistoriesPreserved": true,
+      "preservation": {
+        "archives": 53,
+        "files": 79286,
+        "privateArtifacts": 7,
+        "privateFiles": 575,
+        "originalLiveDemoDataAssetsSixContainersLockSupervisorTailnet": "unchanged"
+      },
+      "freshBothPinnedCheckAndProgressDiffPassed": true,
+      "staged": 0,
+      "untrackedPublic": 0,
+      "only3PostCiBookkeepingFilesLocal": true,
+      "noRerun": true,
+      "noAdditionalCommitPush": true,
+      "existingGitGhConfigurationAndCredentialStorageUnchanged": true,
+      "noDeploymentNetworkSecurityCredentialForkOutreachChange": true,
+      "signoff": false
     }
   },
   "authNegative0359Resumption": {
@@ -7643,9 +7804,9 @@
     }
   ],
   "nextSteps": [
-    "Review exact nine public-safe files/bytes, then normal scoped commit/push carrying three snapshotted NR01 terminal notes; no broad staging or unrelated changes.",
-    "Audit exact new normal-attempt1 CI: six jobs/uploader-bound artifacts/27source-bound reports, source/pins/nodes/setupcleanup/full names and all14 actual historical strict failures. No automatic rerun or accepted-red product fiction.",
-    "After CI terminal, all53archive/private/original-demo read-only preservation plus reviewed committed bytes/HEAD/remote/source/fresh both-pinned checks/progress/diff. Keep only three postCI bookkeeping notes local; no docs-only follow-up or release signoff."
+    "Review/stage exactly8 public-safe files, carrying the prior3KF terminal notes, then one normal scoped substantive commit/push using existing authenticated transport without configuration or credential changes.",
+    "Audit one exact-new-commit CI attempt1: all6new jobs/6uploader-bound artifacts/27source-bound reports, full names/pins/coverage/setupcleanup/steps and14historical failures. No automatic rerun.",
+    "Rehash archives/private/original-demo/history and immutable CI evidence; leave only3terminal bookkeeping files local for the next approved substantive checkpoint. No deployment/network/security/credentials/fork/outreach change or signoff."
   ],
   "nextStepsBeforeKeyboardCompletion": [
     "Finite requested investigation and single failed-job retry/audit complete. No more CI rerun, new feature, local scope replay, commit/push or deployment is authorized/inferred. Attempt2 effective27report audit passed (9new/18inherited), workflow red only14 unchanged historical strict failures; not release signoff.",
@@ -9420,5 +9581,105 @@
     },
     "finalRemoteAndCommittedReviewed8Bytes": "verified",
     "postCiBookkeeping": "Only docs/PROGRESS.md, docs/progress.json and SR public-safe evidence updated locally for next substantive checkpoint; no automatic docs-only commit/push or secondCI."
+  },
+  "appResources0359": {
+    "status": "locally-verified-awaiting-normal-publication-and-exact-ci",
+    "baseCommit": "9206f3f80acaee34e0e700b8fa8e67f65b3d5768",
+    "scope": "AR01 existing E14/S07/S08/S10:100 reused-client password login/mount/read/checkbox UPDATE/dispose/local logout cycles per backend/engine; final real refresh, subscription/DOM/timer/listener/request/row/audit/storage accounting. No100-new-client/heap/physical-device/fullaccessibility/security/release claim.",
+    "tests": "Six real new packed cases verified, default72 to78, each100 reused-client auth/app cycles. Separate missing-unsubscribe mutant failed all6 designated assertions, exact source restored. Production/fixture/dependency/policy/deadlines unchanged.",
+    "preservation": {
+      "archives": 57,
+      "files": 85322,
+      "newOwnedArchives": 4,
+      "newOwnedFiles": 6036,
+      "newOwnedProjectsAbsent": 25,
+      "newOwnedParentsAbsent": 4,
+      "privateArtifacts": 7,
+      "privateFiles": 575,
+      "original0358DemoDataAssetsSixContainersRootLockSupervisorTailnet": "unchanged",
+      "priorCiAndUnknownInterruptionHistories": "unchanged; no retroactive successes or invented causes",
+      "earlyArchiveTemplateLabelMistake": "Original raw inherited finalRuntimeParentRemoved... label retained; qualified as2early parents only, no final-controller success implied"
+    },
+    "missing": "Normal scoped publication and exact-new-commit CI pending. Broader existing full E14/TLS/security/device/platform/resource/three-clean-candidate/named-maintainer requirements remain unpassed; no new features, requirements or signoff.",
+    "signoff": false,
+    "first": {
+      "status": "retained-test-accounting-failure-not-product-defect",
+      "sourceSha256": "cc90a60dda5bbb723e451cb1fcfd83c1336f77498bfdd594c628701d941ceaa7",
+      "runId": "1793790121816-8ae43659ec49",
+      "passed": 75,
+      "failed": 3,
+      "rawSha256": "bcfd37d692de402da8d0681e3c3d90216868a37b7724c25cb765981bb0f5e690",
+      "all72PriorCasesPassed": true,
+      "threeNative100CycleCasesPassed": true,
+      "threeReferenceCasesFailed": "AR assertion: stable real auth listeners",
+      "cleanup": "passed",
+      "probeSourceSha256": "0edcb6f939e9bd25a0107e2dae5d8bdf75c667ba92cdb9e6463891f785ddc445",
+      "probeObservedWindowVisibility": 2,
+      "correction": "Count the source-observed constant reference transport baseline separately from app/auth resources; close owned page. Native zero/stable assertions and100 actual cycles unchanged. Also preserve removeEventListener callback identity in test observer and release completed test observers.",
+      "productionCodeChanged": false
+    },
+    "referenceAccounting": "Source/runtime-proven auth visibility plus constant caller-client transport visibility/pagehide/pageshow. Count separately, stop auth, require only unchanged transport baseline, close owned page. First failed expectation and one-case diagnostic preserved, never product-red or acceptancePASS.",
+    "sourceSha256": "3117e5b06a0eb3fe372d005e6d4355fbf712fa7e1cc7cf1a89c039065c68187b",
+    "green": {
+      "runId": "1793791034726-3afc0400d1eb",
+      "passed": 78,
+      "failed": 0,
+      "newCases": 6,
+      "cyclesPerNewCase": 100,
+      "updatesPerCase": 100,
+      "dataRequestsPerCase": 300,
+      "retiredCallbacks": 0,
+      "cleanup": "passed",
+      "rawSha256": "3c7a1ea3d144f46ad5da75f644456abe09803b42269ebf4bc1fed638dbe5881b",
+      "caseBudgetMs": 60000,
+      "aggregateBudgetMs": 600000
+    },
+    "static": {
+      "nodes": [
+        "22.23.2",
+        "24.21.0"
+      ],
+      "unitsEach": 302,
+      "coverage": "unchanged95/90global+each3modules,zero skips",
+      "packageChecksEach": 4,
+      "status": "passed"
+    },
+    "earlyArchives": {
+      "count": 2,
+      "files": 2602,
+      "ownedProjectsAbsent": 2,
+      "ownedParentsAbsent": 2
+    },
+    "counterfactual": {
+      "sourceSha256": "e28a6b3529bae0c19b397155efe0533c847c9a756b0fd30236425fd7357c3ebb",
+      "tests": 6,
+      "failed": 6,
+      "assertion": "AR assertion: retired auth callback is unsubscribed",
+      "cleanup": "passed",
+      "productBytesRestored": true,
+      "notProductSuccess": true
+    },
+    "reviewKind": "executor connected-code review, not independent model or maintainer review",
+    "runtimeController": {
+      "process": "proc_9255",
+      "script": ".runtime/app-resources-0359/run-final-runtime.mjs",
+      "scope": "Exactly21 additional existing real scopes after separate78; no completed scope replay",
+      "status": "completed-audit-passed",
+      "stdout": ".runtime/app-resources-0359/final-runtime-managed-stdout-private.log",
+      "stderr": ".runtime/app-resources-0359/final-runtime-managed-stderr-private.log",
+      "terminal": ".runtime/app-resources-0359/final-runtime-terminal-private.json",
+      "commands": 21,
+      "incomplete": 0
+    },
+    "earlyArchiveLabelCorrection": "Original raw inherited finalRuntimeParentRemoved...=true label retained; separate qualification records only2EARLY source parents removed, not completion/removal of current runtime parent.",
+    "evidence": "docs/evidence/app-resources-official0359-checkpoint.json",
+    "local": {
+      "runtimeReports": 22,
+      "staticReports": 6,
+      "additionalCommands": 21,
+      "execution": "one completed controller after separate default78",
+      "strictResearchFailures": 14,
+      "completeCurrentAndFrozenNamesUnchanged": true
+    }
   }
 }

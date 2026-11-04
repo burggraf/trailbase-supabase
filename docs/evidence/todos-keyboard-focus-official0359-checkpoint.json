@@ -1,5 +1,13 @@
 {
-  "status": "local-real-red-green-honest19plus2-and-preservation-verified-publication-pending",
+  "status": "scoped-checkpoint-pushed-exact-newCI27report-audit-passed-workflow-red-only14historical-strict-failures",
+  "ciWatch": {
+    "run": 41811627841,
+    "attempt": 1,
+    "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41811627841/attempts/1",
+    "controller": "proc_4859 terminal",
+    "status": "completed-required-audit-passed",
+    "noRerun": true
+  },
   "featureIds": [
     "L1-09",
     "L1-24",
@@ -86,10 +94,17 @@
     "anSrHistories": "AN unknown interruption/honest19+4 and SR known failed1+22 remain distinct and immutable"
   },
   "publication": {
-    "status": "pending",
-    "normalScopedCommitPushRequired": true,
-    "exactNewCommitCi": "pending",
-    "noRerun": true
+    "commit": "9206f3f80acaee34e0e700b8fa8e67f65b3d5768",
+    "parent": "951f1f07c69a3c0e277d987c3a2b5caf7bdc1f5a",
+    "sourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+    "files": 9,
+    "pushed": true,
+    "reviewedBytesAndOriginVerified": true,
+    "exactNewCommitCi": "required audit passed, workflow failure only14preserved strict historical failures",
+    "noRerun": true,
+    "run": 41811627841,
+    "attempt": 1,
+    "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41811627841/attempts/1"
   },
   "remaining": [
     "Full E14 associated errors/status/keyboard signup-login acceptance",
@@ -150,6 +165,153 @@
     "threePendingNrTerminalSnapshotsAndHistoricalLedgerMarkdownPreserved": true,
     "original0358DemoDataAssetsSixContainersLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
     "noDeploymentNetworkSecurityCredentialsForkOutreachChange": true,
+    "signoff": false
+  },
+  "publicationControlHistory": "Original SSH publickey preflight failed before staging/commit/push. Incorrect gh auth status --active flag rejected locally; corrected existing gh auth status/API push permission and process-local HTTPS Git helper probe passed, config/credential storage unchanged. One actual normal scoped commit/push, no credential/origin/live setting change.",
+  "exactCi": {
+    "status": "required-exact-new-commit-audit-passed-workflow-red-only-preserved-strict-research",
+    "commit": "9206f3f80acaee34e0e700b8fa8e67f65b3d5768",
+    "sourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+    "run": 41811627841,
+    "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41811627841/attempts/1",
+    "attempt": 1,
+    "conclusion": "failure",
+    "jobs": [
+      {
+        "id": 126512037747,
+        "name": "Static, units and packed consumer / Node 22.23.2",
+        "conclusion": "success"
+      },
+      {
+        "id": 126512037872,
+        "name": "Static, units and packed consumer / Node 24.21.0",
+        "conclusion": "success"
+      },
+      {
+        "id": 126512372236,
+        "name": "Focused SDK CRUD-auth / real fixtures / packed browsers",
+        "conclusion": "success"
+      },
+      {
+        "id": 126512372967,
+        "name": "Real backends / browser infrastructure / cleanup",
+        "conclusion": "failure"
+      },
+      {
+        "id": 126512373095,
+        "name": "Packed Node CRUD-auth / Node 24.21.0",
+        "conclusion": "success"
+      },
+      {
+        "id": 126512381733,
+        "name": "Packed Node CRUD-auth / Node 22.23.2",
+        "conclusion": "success"
+      }
+    ],
+    "sourceBoundReports": 27,
+    "artifactBinding": [
+      {
+        "label": "supported",
+        "jobId": 126512372236,
+        "artifactId": 13313413013,
+        "sha256": "27b84350953064975fc6b5e636261bb1a24a20c2ab9ee18ad9df3a43632fdf7b"
+      },
+      {
+        "label": "research",
+        "jobId": 126512372967,
+        "artifactId": 13313338241,
+        "sha256": "49880ee6b8897e6726dccb332efdc2fe9db5a3b7068022f49c58f28982d9d81f"
+      },
+      {
+        "label": "node22",
+        "jobId": 126512381733,
+        "artifactId": 13312243666,
+        "sha256": "19ff5e3dd7d9869d81d773907e0a84fcc5dea21698cb58c3ded3108af484618a"
+      },
+      {
+        "label": "node24",
+        "jobId": 126512373095,
+        "artifactId": 13311524509,
+        "sha256": "5b7e8b0e64033f7f557acbbb62e5206cda96ff4b03b927f7648ebc700143bb4c"
+      },
+      {
+        "label": "static22",
+        "jobId": 126512037747,
+        "artifactId": 13312542705,
+        "sha256": "810070ec665235ed4e5c0661ec32fdf86d6f3a489e2121f7f81a1fbe1d88ae9f"
+      },
+      {
+        "label": "static24",
+        "jobId": 126512037872,
+        "artifactId": 13311798502,
+        "sha256": "c65279729491779b8d65fc9ebd5a201a90a5a59b0ca5b673c950f02cf1457c42"
+      }
+    ],
+    "bothNodeUnits": 302,
+    "defaultPackedBrowserCases": 72,
+    "shortPackedBrowserCases": 36,
+    "negativeAuthCases": 14,
+    "installedCasesPerNode": 8,
+    "referenceCases": 16,
+    "strictResearchFailures": 14,
+    "exactHistoricalFailureNamesAndStatusesUnchanged": true,
+    "allSetupAndCleanupPassed": true,
+    "noRerun": true,
+    "allSixJobsNewExactCommitExecutions": true,
+    "notGreenWorkflowOrReleaseSignoff": true
+  },
+  "preservationPostCi": {
+    "status": "passed",
+    "phase": "postci",
+    "sourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+    "archives": 53,
+    "archivedFiles": 79286,
+    "newOwnedArchives": 2,
+    "newOwnedFiles": 3311,
+    "newOwnedProjectsAbsent": 24,
+    "newOwnedParentsAbsent": 2,
+    "allArchiveBytesRehashed": true,
+    "privateArtifacts": 7,
+    "privateRetainedFiles": 575,
+    "originalAttempt1Failed0of123AndAttempt2Explicit9new18inheritedAndAllControlErrorsUnchanged": true,
+    "protectedAnUnknown19plus4SrFailed1plus22NrUnknown19plus2HistoriesUnchanged": true,
+    "originalKfUnknown19of21AndSeparate19plus2With78SnapshotFilesPreserved": true,
+    "threePendingNrTerminalSnapshotsAndHistoricalLedgerMarkdownPreserved": true,
+    "original0358DemoDataAssetsSixContainersLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+    "noDeploymentNetworkSecurityCredentialsForkOutreachChange": true,
+    "signoff": false
+  },
+  "remainingTerminal": "Finite requested task complete; only3postCI bookkeeping notes local for next substantive checkpoint, no automatic additional commit/push/retry or signoff.",
+  "terminalOperational": {
+    "status": "passed",
+    "commit": "9206f3f80acaee34e0e700b8fa8e67f65b3d5768",
+    "sourceSha256": "d021ba4cbdaa2950e3f1523587a0b88164d780e14bdc98bb481dd5992e12f26a",
+    "headOriginMainAndAll9ReviewedCommittedBytesVerified": true,
+    "requiredExactCiAudit": "passed",
+    "run": 41811627841,
+    "attempt": 1,
+    "conclusion": "workflow-failure-only14-preserved-strict-research-failures",
+    "sourceBoundReports": 27,
+    "defaultPackedCases": 72,
+    "bothNodeUnits": 302,
+    "allApplicableSetupCleanupPassed": true,
+    "localExecution": "original interrupted19 plus separate2 unfinished; original terminal-primary-error-managedstdout absent/causeUNKNOWN",
+    "original19And78SnapshotAndAllPriorHistoriesPreserved": true,
+    "preservation": {
+      "archives": 53,
+      "files": 79286,
+      "privateArtifacts": 7,
+      "privateFiles": 575,
+      "originalLiveDemoDataAssetsSixContainersLockSupervisorTailnet": "unchanged"
+    },
+    "freshBothPinnedCheckAndProgressDiffPassed": true,
+    "staged": 0,
+    "untrackedPublic": 0,
+    "only3PostCiBookkeepingFilesLocal": true,
+    "noRerun": true,
+    "noAdditionalCommitPush": true,
+    "existingGitGhConfigurationAndCredentialStorageUnchanged": true,
+    "noDeploymentNetworkSecurityCredentialForkOutreachChange": true,
     "signoff": false
   }
 }
