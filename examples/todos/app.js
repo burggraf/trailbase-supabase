@@ -120,9 +120,11 @@ export function mountTodos(root, client, options = {}) {
       list.append(item);
     }
   }
-  async function read() {
-    let result = await loadTaskPage(client, { table, filter, page, pageSize }); if (disposed) return;
-    if (page > 0 && !result.rows.length) { page--; result = await loadTaskPage(client, { table, filter, page, pageSize }); if (disposed) return; }
+  async function read(destination = { filter, page }) {
+    let nextPage = destination.page;
+    let result = await loadTaskPage(client, { table, filter: destination.filter, page: nextPage, pageSize }); if (disposed) return;
+    if (nextPage > 0 && !result.rows.length) { nextPage--; result = await loadTaskPage(client, { table, filter: destination.filter, page: nextPage, pageSize }); if (disposed) return; }
+    filter = destination.filter; page = nextPage;
     rows = result.rows; hasMore = result.hasMore; renderRows();
     for (const kind of taskFilters) { const tab = find(`[data-filter="${kind}"]`); tab.setAttribute('aria-selected', String(kind === filter)); tab.tabIndex = kind === filter ? 0 : -1; }
     const empty = find('.empty-state'); empty.hidden = rows.length !== 0;
@@ -130,18 +132,18 @@ export function mountTodos(root, client, options = {}) {
     empty.querySelector('p').textContent = filter === 'all' ? 'No tasks yet. Add your first one above.' : filter === 'active' ? 'Take a breath. Your active list is clear.' : 'Check off a task and celebrate a little progress.';
     find('.pagination').hidden = page === 0 && !hasMore; find('.pagination span').textContent = `Page ${page + 1}`;
   }
-  async function run(operation, success = '') {
+  async function run(operation, success = '', destination) {
     if (disposed || busy) return false;
     busy = true; error.textContent = ''; controls(); let saved = false;
     try {
       if (operation) { const result = await operation(); if (result.error) throw result.error; if (result.data !== null) throw new Error('Unexpected mutation result'); saved = true; editing = undefined; }
-      await read(); if (!disposed) update.textContent = success; return operation ? saved : true;
+      await read(destination); if (!disposed) update.textContent = success; return operation ? saved : true;
     } catch (failure) {
       if (!disposed) error.textContent = operation ? taskMutationErrorMessage(failure, saved) : 'We couldn’t load your tasks. Check your connection and choose Refresh.';
       return saved;
     } finally { busy = false; if (!disposed) controls(); }
   }
-  function chooseFilter(next) { if (busy || !taskFilters.includes(next)) return; filter = next; page = 0; editing = undefined; void run().then(() => { if (!disposed) find(`[data-filter="${filter}"]`).focus(); }); }
+  function chooseFilter(next) { if (busy || !taskFilters.includes(next)) return; editing = undefined; void run(undefined, '', { filter: next, page: 0 }).then(() => { if (!disposed) find(`[data-filter="${filter}"]`).focus(); }); }
   root.addEventListener('submit', event => {
     const form = event.target; if (!form.dataset.taskForm) return; event.preventDefault(); if (busy || disposed) return;
     const field = form.querySelector('input'), title = field.value.trim(); field.setCustomValidity(title ? '' : 'Enter a task title.'); if (!form.reportValidity()) return;
@@ -159,7 +161,7 @@ export function mountTodos(root, client, options = {}) {
     if (button.dataset.filter) { chooseFilter(button.dataset.filter); return; }
     const action = button.dataset.taskAction, task = rows.find(task => task.id === button.closest('li')?.dataset.id);
     if (action === 'refresh') void run();
-    else if (action === 'previous' || action === 'next') { page += action === 'previous' ? -1 : 1; editing = undefined; void run(); }
+    else if (action === 'previous' || action === 'next') { editing = undefined; void run(undefined, '', { filter, page: page + (action === 'previous' ? -1 : 1) }); }
     else if (action === 'edit' && task) { editing = task.id; renderRows(); const field = find('.edit-title'); field.focus(); field.select(); }
     else if (action === 'cancel-edit') { editing = undefined; renderRows(); input.focus(); }
     else if (action === 'delete' && task) { pendingDelete = task.id; find('.delete-title').textContent = task.title; dialog.showModal(); }

@@ -1,5 +1,5 @@
 {
-  "status": "local-source-bound-verified-scoped-checkpoint-and-exact-new-commit-ci-pending",
+  "status": "finite-checkpoint-published-exact-new-commit-audit-passed-workflow-red-only-preserved-strict-research",
   "sourceSha256": "e00e68431b04b6da3c2b07da733345d4281d2c9dd4430cdf85283138c8cd5b03",
   "priorCommit": "d81e8cae92aa4599f05aa53209f01e7a11e1ed0c",
   "existingRequirements": [
@@ -166,7 +166,8 @@
     "original0358DemoDataSixContainersLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
     "pendingTerminal3SnapshotsAndHistoryPreserved": true,
     "originalFailedControllerEightProtectedHashesMatch": true,
-    "originalANInterruptionCause": "unknown-preserved"
+    "originalANInterruptionCause": "unknown-preserved",
+    "postCiReverified": true
   },
   "limitations": [
     "Actual response JSON-call count, cancellation invocation and SDK signal abortion are observed; not completed transport cancellation/universal resource reclamation.",
@@ -176,9 +177,33 @@
   ],
   "bookkeeping": "Raw complete sources/logs/reports and immutable failed controller remain private. Preserve analysis/clerical errors without treating them as SDK/runtime proof: codec TS2339 corrected before execution; private/raw versus sanitized-output parsing; analysis wording/cleanup-stack heuristic; inherited old MFA-counter scope label; corrected unverified progress runID. These do not change raw reports or passing source.",
   "publication": {
-    "status": "pending-normal-scoped-commit-push",
-    "exactNewCommitCi": "pending",
-    "rerunRequests": 0,
+    "status": "normal-scoped-commit-pushed-exactCI-audited",
+    "commit": "8f72189fbb20b7ed7a35abb1e55ae253e7ea1625",
+    "parent": "d81e8cae92aa4599f05aa53209f01e7a11e1ed0c",
+    "files": 8,
+    "reviewedBytesVerified": true,
+    "stagedBothNodeChecks": "passed",
+    "exactNewCommitCi": {
+      "id": 41773137773,
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41773137773/attempts/1",
+      "commit": "8f72189fbb20b7ed7a35abb1e55ae253e7ea1625",
+      "attempt": 1,
+      "status": "completed",
+      "workflowConclusion": "failure",
+      "requiredAudit": "passed",
+      "jobs": 6,
+      "fiveOtherJobs": "success",
+      "researchJob": "failure-only-four-preserved-strict-steps",
+      "uploaderBoundArtifacts": 6,
+      "sourceBoundReports": 27,
+      "strictActualFailures": 14,
+      "allSetupCleanupPassed": true,
+      "fullCurrentAndFrozenHistoricalFailedNamesAndStatusesUnchanged": true,
+      "rawAudit": ".runtime/auth-status-race-0359/new-ci-audit-private.json",
+      "publicSafeSummary": ".runtime/auth-status-race-0359/new-ci-public-safe-summary.json",
+      "noRerun": true
+    },
+    "postCiBookkeeping": "Recorded locally after commit; carry with next substantive checkpoint, no automatic docs-only publication.",
     "releaseSignoff": false
   }
 }
