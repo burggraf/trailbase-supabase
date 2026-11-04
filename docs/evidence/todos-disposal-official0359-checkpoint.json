@@ -1,0 +1,440 @@
+{
+  "status": "local-finite-verification-passed-publication-and-exact-ci-pending",
+  "baseCommit": "5eb340af0ea77418c2a6090cd719c6e3ae673464",
+  "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+  "scope": "DR01 existing L1-07/16/19/24/26/E04/E11/E14/S08 app lifetime: no new follow-up read from a view retired during an accepted mutation; no new API or release criterion",
+  "supportedMinimum": "official TrailBase0.35.9 or newer on every actual handler/replica; operator invariant, no version detection, later releases require wire qualification",
+  "fixture": {
+    "version": "0.35.9",
+    "commit": "a106ce6338f9831140c92ac16e051901ed92d576",
+    "js": "0.14.3"
+  },
+  "productChange": "One disposed guard after accepted mutation await before follow-up read; no cancellation, rollback or replay of accepted work",
+  "sdkApiPinsDependenciesPoliciesAndBudgetsUnchanged": true,
+  "realBrowser": {
+    "passed": 84,
+    "failed": 0,
+    "newCases": 6,
+    "backends": [
+      "official TrailBase adapter",
+      "official Supabase reference"
+    ],
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "schedulesPerCase": 2,
+    "worker": 1,
+    "retries": 0,
+    "caseBudgetMs": 60000,
+    "aggregateBudgetMs": 600000
+  },
+  "genuineRed": {
+    "actual": 84,
+    "passed": 78,
+    "failed": 6,
+    "assertion": "DR assertion: disposed mutation starts no follow-up select or genuine GET",
+    "scopeReached": "first explicit-disposal schedule; owner-replacement and healthy-B schedules not reached on red",
+    "rawSha256": "938b99e12e4e377a98b9011d11622bfbb19424231d9e89dfc2d7f2ae636f3704"
+  },
+  "green": {
+    "actual": 84,
+    "passed": 84,
+    "failed": 0,
+    "rawSha256": "34006be7b5e7e8cb85a435a4245e68e55091e39b0afa5799143d63507919c1d7",
+    "durationMs": 525156.935,
+    "cases": [
+      {
+        "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [trailbase]",
+        "project": "chromium",
+        "durationMs": 2001
+      },
+      {
+        "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [supabase]",
+        "project": "chromium",
+        "durationMs": 7447
+      },
+      {
+        "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [trailbase]",
+        "project": "firefox",
+        "durationMs": 2840
+      },
+      {
+        "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [supabase]",
+        "project": "firefox",
+        "durationMs": 8652
+      },
+      {
+        "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [trailbase]",
+        "project": "webkit",
+        "durationMs": 2646
+      },
+      {
+        "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [supabase]",
+        "project": "webkit",
+        "durationMs": 7907
+      }
+    ]
+  },
+  "testBytesIdenticalAcrossRedGreen": true,
+  "postconditionsPerGreenCase": {
+    "aUpdates": 2,
+    "bHealthyControlUpdates": 1,
+    "dataRequests": [
+      "GET:A",
+      "PATCH:A",
+      "GET:A",
+      "PATCH:A",
+      "GET:B",
+      "PATCH:B",
+      "GET:B"
+    ],
+    "retiredSelects": 0,
+    "retiredRequests": 0,
+    "currentDomUnchanged": true,
+    "bFocusRetained": true,
+    "completeOwnerRowsAuditsAndOldStatePreserved": true
+  },
+  "verification": {
+    "nodes": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "unitsPerNode": 302,
+    "packageChecksPerNode": 4,
+    "installedCasesPerNode": 8,
+    "runtimeReports": 22,
+    "staticReports": 6,
+    "globalAndEachOf3ModulesCoverageThresholds": {
+      "statements": 95,
+      "lines": 95,
+      "functions": 95,
+      "branches": 90,
+      "skipped": 0
+    },
+    "execution": "Original remaining21 controller interrupted after19, cause UNKNOWN/no original terminal or primary error. Separate2unfinished commands completed after exact-owned recovery, no completed scope restarted; corrected84 and original red84 remain distinct.",
+    "interruptionSnapshotFiles": 81,
+    "reports": [
+      {
+        "label": "fixed-packed",
+        "suite": "sdk-browser",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 84,
+        "failed": 0,
+        "cleanup": "passed"
+      },
+      {
+        "label": "final-runtime-negative22",
+        "suite": "sdk-auth-negative",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 14,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-negative24",
+        "suite": "sdk-auth-negative",
+        "node": "v24.21.0",
+        "status": "passed",
+        "passed": 14,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-auth",
+        "suite": "sdk-auth",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-refresh",
+        "suite": "sdk-refresh",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 4,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-data",
+        "suite": "sdk-data",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-database",
+        "suite": "database",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-constraints",
+        "suite": "constraints",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 6,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-packed-short",
+        "suite": "sdk-browser-refresh",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 36,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-todos",
+        "suite": "todos-launcher",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-lifecycle",
+        "suite": "lifecycle",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-reference",
+        "suite": "auth-reference",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 16,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-expiry",
+        "suite": "expiry",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 2,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-legacy",
+        "suite": "auth-migration",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-native-upgrade",
+        "suite": "native-upgrade",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 9,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "owned-ready"
+      },
+      {
+        "label": "final-runtime-installed-22.23.2",
+        "suite": "sdk-node",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-installed-24.21.0",
+        "suite": "sdk-node",
+        "node": "v24.21.0",
+        "status": "passed",
+        "passed": 8,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-stock",
+        "suite": "all",
+        "node": "v22.23.2",
+        "status": "failed",
+        "passed": 117,
+        "failed": 6,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-candidate",
+        "suite": "characterization",
+        "node": "v22.23.2",
+        "status": "failed",
+        "passed": 9,
+        "failed": 1,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "final-runtime-smtp",
+        "suite": "smtp",
+        "node": "v22.23.2",
+        "status": "failed",
+        "passed": 0,
+        "failed": 1,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "unfinished-research-browser",
+        "suite": "browser",
+        "node": "v22.23.2",
+        "status": "failed",
+        "passed": 60,
+        "failed": 6,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      },
+      {
+        "label": "unfinished-terminal-lifecycle",
+        "suite": "lifecycle",
+        "node": "v22.23.2",
+        "status": "passed",
+        "passed": 1,
+        "failed": 0,
+        "cleanup": "passed",
+        "setupStage": "ready"
+      }
+    ]
+  },
+  "strictResearch": {
+    "status": "failed-not-waived",
+    "failures": 14,
+    "completeCurrentAndFrozenNamesUnchanged": true,
+    "cases": [
+      {
+        "suite": "all",
+        "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff reference unawaited async hydration must not notify recovered A after genuine newer B login",
+        "status": "failed"
+      },
+      {
+        "suite": "all",
+        "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late refresh response must not restore a locally logged-out client",
+        "status": "failed"
+      },
+      {
+        "suite": "all",
+        "name": "L1-27 G7/S04 upstream auth lifecycle/races, NOT SDK lifecycle signoff native late status response must not restore a locally logged-out client",
+        "status": "failed"
+      },
+      {
+        "suite": "all",
+        "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native unconfirmed duplicate keeps the original password and requires real confirmation",
+        "status": "failed"
+      },
+      {
+        "suite": "all",
+        "name": "L1-27/S01/S07 native header set at permissive foreign origin, NOT a logout acknowledgement strategy raw Fetch redirect follow must not export native credentials to permissive receiver",
+        "status": "failed"
+      },
+      {
+        "suite": "all",
+        "name": "L1-27 G1/S04 real SMTP outage reports failure, creates no session, and distinguishes native retry from reference recovery",
+        "status": "failed"
+      },
+      {
+        "suite": "characterization",
+        "name": "L1-27 upstream characterization; G1-G7 still require approval G1/S04 native unconfirmed duplicate keeps the original password and requires real confirmation",
+        "status": "failed"
+      },
+      {
+        "suite": "smtp",
+        "name": "L1-27 G1/S04 real SMTP outage reports failure, creates no session, and distinguishes native retry from reference recovery",
+        "status": "failed"
+      },
+      {
+        "suite": "browser",
+        "name": "L1-27/G7/S08 reference unawaited async hydration must not notify recovered A after newer B login [chromium]",
+        "status": "failed"
+      },
+      {
+        "suite": "browser",
+        "name": "L1-27/G7/S08 reference unawaited async hydration must not notify recovered A after newer B login [firefox]",
+        "status": "failed"
+      },
+      {
+        "suite": "browser",
+        "name": "L1-27/G7/S08 reference unawaited async hydration must not notify recovered A after newer B login [webkit]",
+        "status": "failed"
+      },
+      {
+        "suite": "browser",
+        "name": "L1-27/S01/S07 raw Fetch redirect follow must not export native headers to permissive foreign receiver [chromium]",
+        "status": "failed"
+      },
+      {
+        "suite": "browser",
+        "name": "L1-27/S01/S07 raw Fetch redirect follow must not export native headers to permissive foreign receiver [firefox]",
+        "status": "failed"
+      },
+      {
+        "suite": "browser",
+        "name": "L1-27/S01/S07 raw Fetch redirect follow must not export native headers to permissive foreign receiver [webkit]",
+        "status": "failed"
+      }
+    ]
+  },
+  "preservation": {
+    "archives": 59,
+    "files": 88671,
+    "newOwnedArchives": 2,
+    "newOwnedFiles": 3349,
+    "newOwnedProjectsAbsent": 24,
+    "newOwnedParentsAbsent": 2,
+    "privateArtifacts": 7,
+    "privateFiles": 575,
+    "prior95FileCiManifest": "rehashed unchanged",
+    "original0358DemoDataAssetsSixContainersRootLockSupervisorTailnet": "unchanged",
+    "allPriorFailedInterruptedAndExplicitRetryHistories": "unchanged, no retroactive passes or invented causes"
+  },
+  "reviewKind": "executor connected-code review, not independent model or maintainer review",
+  "publication": "pending-normal-scoped-nine-file-commit-and-push",
+  "ci": "pending-exact-new-commit-attempt1-audit-no-rerun",
+  "remaining": [
+    "Full E14/accessibility/pending-operation/resource matrix beyond the two bounded disposal schedules",
+    "Full contract/security/E2E/package/all commands remain incomplete",
+    "Trusted TLS/security/critical branches, physical devices/platforms, three clean full candidates, named maintainer approval",
+    "Official signup null-user/native409/424/no-resend, residual JWT/race/late-work/operator-minimum limitations and14historical strict failures remain"
+  ],
+  "signoff": false
+}

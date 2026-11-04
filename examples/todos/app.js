@@ -137,6 +137,7 @@ export function mountTodos(root, client, options = {}) {
     busy = true; error.textContent = ''; controls(); let saved = false;
     try {
       if (operation) { const result = await operation(); if (result.error) throw result.error; if (result.data !== null) throw new Error('Unexpected mutation result'); saved = true; editing = undefined; }
+      if (disposed) return saved;
       await read(destination); if (!disposed) update.textContent = success; return operation ? saved : true;
     } catch (failure) {
       if (!disposed) error.textContent = operation ? taskMutationErrorMessage(failure, saved) : 'We couldn’t load your tasks. Check your connection and choose Refresh.';

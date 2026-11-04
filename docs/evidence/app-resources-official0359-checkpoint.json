@@ -1,5 +1,5 @@
 {
-  "status": "local-finite-verification-passed-publication-and-exact-ci-pending",
+  "status": "scoped-checkpoint-pushed-exact-newCI27report-audit-passed-workflow-red-only14historical-strict-failures",
   "baseCommit": "9206f3f80acaee34e0e700b8fa8e67f65b3d5768",
   "sourceSha256": "3117e5b06a0eb3fe372d005e6d4355fbf712fa7e1cc7cf1a89c039065c68187b",
   "scope": "AR01 existing E14/S07/S08/S10:100 auth/app lifecycles on one reused caller-owned installed client per backend/engine, not100 new clients or full accessibility/security/release acceptance",
@@ -382,13 +382,187 @@
     "earlyArchiveTemplateLabelMistake": "Original raw inherited finalRuntimeParentRemoved... label retained; qualified as2early parents only, no final-controller success implied"
   },
   "reviewKind": "executor connected-code review, not independent model or maintainer review",
-  "publication": "pending-normal-scoped-commit-and-push",
-  "ci": "pending-exact-new-commit-attempt1-audit-no-rerun",
+  "publication": {
+    "commit": "5eb340af0ea77418c2a6090cd719c6e3ae673464",
+    "parent": "9206f3f80acaee34e0e700b8fa8e67f65b3d5768",
+    "sourceSha256": "3117e5b06a0eb3fe372d005e6d4355fbf712fa7e1cc7cf1a89c039065c68187b",
+    "files": 8,
+    "pushed": true,
+    "remoteVerified": true,
+    "exactNewCommitCi": "required audit passed; workflow failure only14preserved strict historical failures",
+    "run": 41828852995,
+    "attempt": 1,
+    "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41828852995/attempts/1",
+    "noRerun": true
+  },
+  "ci": "required-exact-new-commit-attempt1-audit-passed-workflow-red-only14historical-strict",
   "remaining": [
     "Full keyboard/associated-error/status accessibility and resource matrix beyond this reused-client schedule",
     "Full contract/security/E2E/package/all suites remain incomplete",
     "Trusted TLS/security/critical branches, physical devices/platforms, three clean full candidates, named maintainer approval",
     "Signup null-user/409/424/no-resend and residual JWT/race/late-work/version limitations; historical14 failures unchanged"
   ],
-  "signoff": false
+  "signoff": false,
+  "ciWatch": {
+    "status": "completed-required-audit-passed",
+    "script": ".runtime/app-resources-0359/watch-new-ci.mjs",
+    "audit": ".runtime/app-resources-0359/audit-new-ci.mjs",
+    "attempt": 1,
+    "rerunRequests": 0,
+    "run": 41828852995,
+    "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41828852995/attempts/1",
+    "process": "proc_5478"
+  },
+  "exactCi": {
+    "status": "required-exact-new-commit-audit-passed-workflow-red-only-preserved-strict-research",
+    "commit": "5eb340af0ea77418c2a6090cd719c6e3ae673464",
+    "sourceSha256": "3117e5b06a0eb3fe372d005e6d4355fbf712fa7e1cc7cf1a89c039065c68187b",
+    "run": 41828852995,
+    "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41828852995/attempts/1",
+    "attempt": 1,
+    "conclusion": "failure",
+    "jobs": [
+      {
+        "id": 126570498711,
+        "name": "Static, units and packed consumer / Node 22.23.2",
+        "conclusion": "success"
+      },
+      {
+        "id": 126570498727,
+        "name": "Static, units and packed consumer / Node 24.21.0",
+        "conclusion": "success"
+      },
+      {
+        "id": 126570911733,
+        "name": "Focused SDK CRUD-auth / real fixtures / packed browsers",
+        "conclusion": "success"
+      },
+      {
+        "id": 126570911815,
+        "name": "Real backends / browser infrastructure / cleanup",
+        "conclusion": "failure"
+      },
+      {
+        "id": 126570911870,
+        "name": "Packed Node CRUD-auth / Node 22.23.2",
+        "conclusion": "success"
+      },
+      {
+        "id": 126570911876,
+        "name": "Packed Node CRUD-auth / Node 24.21.0",
+        "conclusion": "success"
+      }
+    ],
+    "sourceBoundReports": 27,
+    "artifactBinding": [
+      {
+        "label": "supported",
+        "jobId": 126570911733,
+        "artifactId": 13322389289,
+        "sha256": "5dc3580133851edb49b1622e6db5d5b4838af96a88964f5c832c25738aa233b1"
+      },
+      {
+        "label": "research",
+        "jobId": 126570911815,
+        "artifactId": 13322918709,
+        "sha256": "cbb2ced7524dde8baaa8b078cd50edd566564a3e4b33e3dacddca0b38b8f7967"
+      },
+      {
+        "label": "node22",
+        "jobId": 126570911870,
+        "artifactId": 13323050514,
+        "sha256": "1caf1b61acc5d4f08d6d1858f93a16139ebfc07d302722e373a1648392334867"
+      },
+      {
+        "label": "node24",
+        "jobId": 126570911876,
+        "artifactId": 13321322142,
+        "sha256": "b607c8f02ff55a8ec4bc2bbbe97d073f6ef736c93dbe820c374fa51b5196b0ba"
+      },
+      {
+        "label": "static22",
+        "jobId": 126570498711,
+        "artifactId": 13322935098,
+        "sha256": "ba1ecbef6f1be90fe855804fa26a8f36571b74eb71efcf583f4da31a15f5ebd2"
+      },
+      {
+        "label": "static24",
+        "jobId": 126570498727,
+        "artifactId": 13322240362,
+        "sha256": "8b70ad9420ee3432391e045595c9366a49e2716afe558070f9f1cf61d642c9ef"
+      }
+    ],
+    "bothNodeUnits": 302,
+    "defaultPackedBrowserCases": 78,
+    "shortPackedBrowserCases": 36,
+    "negativeAuthCases": 14,
+    "installedCasesPerNode": 8,
+    "referenceCases": 16,
+    "resourceCases": 6,
+    "cyclesPerResourceCase": 100,
+    "strictResearchFailures": 14,
+    "exactHistoricalFailureNamesAndStatusesUnchanged": true,
+    "allSetupAndCleanupPassed": true,
+    "noRerun": true,
+    "allSixJobsNewExactCommitExecutions": true,
+    "notGreenWorkflowOrReleaseSignoff": true
+  },
+  "preservationPostCi": {
+    "status": "passed",
+    "phase": "postci",
+    "sourceSha256": "3117e5b06a0eb3fe372d005e6d4355fbf712fa7e1cc7cf1a89c039065c68187b",
+    "archives": 57,
+    "archivedFiles": 85322,
+    "newOwnedArchives": 4,
+    "newOwnedFiles": 6036,
+    "newOwnedProjectsAbsent": 25,
+    "newOwnedParentsAbsent": 4,
+    "allArchiveBytesRehashed": true,
+    "privateArtifacts": 7,
+    "privateRetainedFiles": 575,
+    "priorKf78FileCiImmutableManifestAnd78InterruptionSnapshotRehashed": true,
+    "priorAnUnknown19plus4SrFailed1plus22NrUnknown19plus2KfUnknown19plus2AndAllControlFailuresPreserved": true,
+    "priorCiAttempt1Failed0of123AndAttempt2Explicit9new18inheritedProvenancePreserved": true,
+    "pendingKfTerminalSnapshotsAndAllPreviousLedgerFieldsMarkdownPreserved": true,
+    "original0358DemoDataAssetsSixContainersRootLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+    "noDeploymentNetworkSecurityCredentialsForkOutreachChange": true,
+    "earlyArchiveTemplateLabelMistakeQualifiedWithoutRewritingRaw": true,
+    "signoff": false
+  },
+  "remainingTerminal": "Finite requested task complete; only3postCI bookkeeping notes local for next substantive checkpoint, no automatic additional commit/push/retry or signoff.",
+  "terminalOperational": {
+    "status": "passed",
+    "commit": "5eb340af0ea77418c2a6090cd719c6e3ae673464",
+    "sourceSha256": "3117e5b06a0eb3fe372d005e6d4355fbf712fa7e1cc7cf1a89c039065c68187b",
+    "headOriginMainAndAll8ReviewedCommittedBytesVerified": true,
+    "requiredExactCiAudit": "passed",
+    "run": 41828852995,
+    "attempt": 1,
+    "conclusion": "workflow-failure-only14-preserved-strict-research-failures",
+    "sourceBoundReports": 27,
+    "defaultPackedCases": 78,
+    "resourceCases": 6,
+    "cyclesPerResourceCase": 100,
+    "bothNodeUnits": 302,
+    "allApplicableSetupCleanupPassed": true,
+    "localExecution": "one completed21-command controller after separate78;6separate designated counterfactual failures/cleanup/exact restore, not product defect",
+    "earlierUnknownInterruptionAndFailedCiRetryHistoriesUnchanged": true,
+    "preservation": {
+      "archives": 57,
+      "files": 85322,
+      "privateArtifacts": 7,
+      "privateFiles": 575,
+      "originalLiveDemoDataAssetsSixContainersLockSupervisorTailnet": "unchanged"
+    },
+    "freshBothPinnedCheckAndProgressDiffPassed": true,
+    "staged": 0,
+    "untrackedPublic": 0,
+    "only3PostCiBookkeepingFilesLocal": true,
+    "noRerun": true,
+    "noAdditionalCommitPush": true,
+    "productionCodeApiPinsDependenciesPoliciesBudgetsUnchanged": true,
+    "existingGitGhConfigurationAndCredentialStorageUnchanged": true,
+    "noDeploymentNetworkSecurityCredentialForkOutreachChange": true,
+    "signoff": false
+  }
 }
