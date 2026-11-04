@@ -1,0 +1,184 @@
+{
+  "status": "local-source-bound-verified-scoped-checkpoint-and-exact-new-commit-ci-pending",
+  "sourceSha256": "e00e68431b04b6da3c2b07da733345d4281d2c9dd4430cdf85283138c8cd5b03",
+  "priorCommit": "d81e8cae92aa4599f05aa53209f01e7a11e1ed0c",
+  "existingRequirements": [
+    "L1-16",
+    "L1-17",
+    "L1-19",
+    "L1-20",
+    "E07",
+    "E08",
+    "E11",
+    "E13",
+    "S07",
+    "S08"
+  ],
+  "scope": "Six native-specific genuine packed getUser status delivery schedules across local logout/B replacement; existing default54plus6=60, no new public API, SDK MFA, reference-user rotation parity or release criterion.",
+  "productSourceDependenciesPinsReferenceConfigChanged": false,
+  "native": {
+    "minimum": "official0.35.9+operator-enforced, no detection/option",
+    "fixture": "0.35.9",
+    "commit": "a106ce6338f9831140c92ac16e051901ed92d576",
+    "officialJs": "0.14.3",
+    "originalDemo": "0.35.8-unchanged"
+  },
+  "sourceHistory": [
+    {
+      "source": "c67d317d90867757ef634cb5cdc7b8759a57a660f637eb8d0aedd57321d544fa",
+      "passed": 57,
+      "failed": 3,
+      "cause": "Test intercepted later B positive-control status against captured A; immutable, not SDK defect."
+    },
+    {
+      "source": "a43a48c22bed4430726a8a73053268cfab0f85a6547c6a06e29861a672de7504",
+      "passed": 60,
+      "failed": 0,
+      "note": "Before targeted review; not proof of later strengthened observations."
+    },
+    {
+      "source": "445667fd56e15e6fb9004130dbdaf7b63223203afd4284efc2b9ae04efbcacfa",
+      "passed": 54,
+      "failed": 6,
+      "cause": "Genuine owned DELETE committed/reply lost; old sequential cleanup skips owner revocation/delete. All6bodies reached completed then owner-presence/final-postcondition failures. Preserved real red."
+    },
+    {
+      "source": "e00e68431b04b6da3c2b07da733345d4281d2c9dd4430cdf85283138c8cd5b03",
+      "passed": 60,
+      "failed": 0,
+      "cleanup": "passed",
+      "reviewClosure": "Reused unchanged proven ordinary deleteNativeOwner; exact expected rowFailure retained, independent revocation/delete/full state. Full pretransition/control sessions, real full persisted credential/JWT CSRF and defensive complete event-session coherence verified."
+    }
+  ],
+  "review": {
+    "model": "openai/gpt-6.1-sol",
+    "thinking": "high",
+    "freshSubstantiveReviews": 1,
+    "parentVerifiedFindings": 3,
+    "realRedGreenClosure": true,
+    "failedModelAttempt": "GPT5.5/high model_not_found, no findings; user approved6.1-sol/high replacement",
+    "extraReviewOrMaintainerSignoff": false
+  },
+  "localVerification": {
+    "sourceGroups": [
+      {
+        "role": "Known failed controller after completed genuine counterfactual; not23command success",
+        "completed": 1,
+        "raw": "final-runtime-terminal-private.json",
+        "status": "failed",
+        "cause": "Wrong designated-error search in intentionally sanitized stdout; separately verified complete private raw report."
+      },
+      {
+        "role": "Only22unexecuted commands, no completed counterfactual rerun",
+        "completed": 22,
+        "raw": "final-runtime-continuation-terminal-private.json",
+        "status": "audit-passed",
+        "sourceSha256": "e00e68431b04b6da3c2b07da733345d4281d2c9dd4430cdf85283138c8cd5b03"
+      }
+    ],
+    "reconciledCommands": 23,
+    "originalController": "FAILED1of23-known sanitized-stdout assertion after completed genuine counterfactual; immutable. Separate raw proof and22only continuation, never original23controller success.",
+    "counterfactual": {
+      "status": "FAILED",
+      "sourceSha256": "83175dc20bb9c5bad040f167d01a908de628fce8231619a658ccb79c8521ef4c",
+      "cases": 60,
+      "passed": 54,
+      "failed": 6,
+      "allSixDesignated": true,
+      "rawAndByteRestoreAudit": "counterfactual-raw-and-restoration-audit-private.json",
+      "exactByteRestoreAnd60Pass": true
+    },
+    "defaultPackedBrowser": 60,
+    "shortPackedBrowser": 36,
+    "negativeAuthPerNode": 14,
+    "nodes": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "unitsPerNode": 302,
+    "packagePerNode": 4,
+    "installedPerNode": 8,
+    "coverage": {
+      "statements": 97.25,
+      "lines": 99.47,
+      "functions": 99.29,
+      "branches": 95.19,
+      "globalAndAll3Modules95_90": true,
+      "skipped": 0
+    },
+    "realCases": {
+      "auth": 8,
+      "refresh": 4,
+      "data": 6,
+      "database": 9,
+      "constraints": 6,
+      "todos": 2,
+      "lifecycle": 2,
+      "reference": 16,
+      "expiry": 2,
+      "legacy": 1,
+      "nativeUpgrade": 9
+    },
+    "strictResearch": [
+      {
+        "suite": "all",
+        "passed": 117,
+        "failed": 6,
+        "fullPriorNamesAndStatusesEqual": true,
+        "frozenHistoricalFailedNamesAndStatusesEqual": true
+      },
+      {
+        "suite": "characterization",
+        "passed": 9,
+        "failed": 1,
+        "fullPriorNamesAndStatusesEqual": true,
+        "frozenHistoricalFailedNamesAndStatusesEqual": true
+      },
+      {
+        "suite": "smtp",
+        "passed": 0,
+        "failed": 1,
+        "fullPriorNamesAndStatusesEqual": true,
+        "frozenHistoricalFailedNamesAndStatusesEqual": true
+      },
+      {
+        "suite": "browser",
+        "passed": 60,
+        "failed": 6,
+        "fullPriorNamesAndStatusesEqual": true,
+        "frozenHistoricalFailedNamesAndStatusesEqual": true
+      }
+    ],
+    "strictFailures": 14,
+    "fullCurrentNamesAndFrozenHistoricalFailedNamesEqual": true,
+    "allSetupCleanupPassed": true,
+    "packedInstalledByteGraphsAndDependenciesEqual": true
+  },
+  "preservation": {
+    "archives": 48,
+    "archivedFiles": 71310,
+    "newOwnedArchives": 4,
+    "newOwnedProjectsAbsent": 27,
+    "exactNewOwnedParentsAbsent": 4,
+    "privateArtifacts": 7,
+    "privateRetainedFiles": 575,
+    "allBytesRehashed": true,
+    "original0358DemoDataSixContainersLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+    "pendingTerminal3SnapshotsAndHistoryPreserved": true,
+    "originalFailedControllerEightProtectedHashesMatch": true,
+    "originalANInterruptionCause": "unknown-preserved"
+  },
+  "limitations": [
+    "Actual response JSON-call count, cancellation invocation and SDK signal abortion are observed; not completed transport cancellation/universal resource reclamation.",
+    "Native POST local logout removes captured refresh session only; direct B replacement does not revoke A. Issued JWT validity and racing/late sessions remain separate.",
+    "No signup409/null-user/session/resend limitation or historical strict failure is fixed/waived.",
+    "Full S08/security/TLS/100-cycle/device/accessibility/platform/three-clean-candidate/release/named-maintainer gates remain incomplete. Five contract/security/e2e/package/all placeholders remain NOT IMPLEMENTED/exit1."
+  ],
+  "bookkeeping": "Raw complete sources/logs/reports and immutable failed controller remain private. Preserve analysis/clerical errors without treating them as SDK/runtime proof: codec TS2339 corrected before execution; private/raw versus sanitized-output parsing; analysis wording/cleanup-stack heuristic; inherited old MFA-counter scope label; corrected unverified progress runID. These do not change raw reports or passing source.",
+  "publication": {
+    "status": "pending-normal-scoped-commit-push",
+    "exactNewCommitCi": "pending",
+    "rerunRequests": 0,
+    "releaseSignoff": false
+  }
+}

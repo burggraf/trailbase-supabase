@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "authNegative0359Resumption": {
-    "status": "local19plus4-reconciliation-and44archives-preservation-verified-ready-scoped-commit-exactCI-pending",
+    "status": "substantive-checkpoint-pushed-exact-newCI27report-audit-passed-workflow-red-only14historical-strict-failures",
     "baseCommit": "0a977d90718834ce847349b0d0acd87c11a9dbdb",
     "priorExactCi": "41720234348/attempt1 required26report audit passed; workflow red14; original checkpoint not restarted",
     "archive": ".runtime/auth-negative-controls/checkpoint-before0359-private/manifest-private.json",
@@ -28,7 +28,7 @@
     },
     "controller": "First proc_ba49 terminal exit1/99s; corrected fresh-source owned verification next, never rewrite/erase/restart first run",
     "preservationBefore": "Passed39archives56380files/private7artifacts575files/protected failures/original0358demo-data-six containers-supervisor-tailnet; first owned fixture backend teardown passed",
-    "remaining": "Explicit final public-safe diff/reviewed-byte manifest, normal scoped substantive commit/push and exact NEW commit/attempt1 CI/all6jobs/uploader-bound27reports/nodes/pins/source/names/setup/cleanup audit. No automatic retries, further delegate, live/security/network/credential/upstream outreach change or blanket signoff.",
+    "remaining": "This finite authorized AN checkpoint/normalpush/exactCI audit is complete. No further work launched. Original proc_b166 interruption cause UNKNOWN; strict14failures/authlimitations and broader full5placeholder suites/TLS/security/device/accessibility/platform/resource100cycles/threeclean-candidate/named-maintainer gates remain unpassed. Future substantive work needs its approved scope, not new retries/fork/adoption/deployment/network/credential/outreach/MFA expansion.",
     "nextStepsBeforeResumption": [
       "Authorized official0359 global-acknowledgement checkpoint is complete:0a977d90718834ce847349b0d0acd87c11a9dbdb/sourcecf3eea93109365e8fb3959f5eb9c303d650ea89855a673aae55d9ce19f125a33; required exactCI41720234348attempt1/26reports and terminal operational preservation audits passed. Workflow remains red solely14historical strict failures. Do not repeat completed fixtures, verification, review, cleanup or CI rerun.",
       "Carry local postCI docs/progress.json,docs/PROGRESS.md and docs/evidence/ci-0a977d9-official0359-global-logout-checkpoint.json into the next substantive approved checkpoint; no automatic docs-only push. Preserve all actual historical/model-start/native/cleanup-red/expiry-version/strict24/mutant failures and frozen auditors unchanged.",
@@ -464,7 +464,65 @@
       "interruptionCause": "unknown",
       "scope": "Read-only original/private44archive preservation and exact owned absence, not deployment/adoption/security/release/maintainer signoff",
       "signoff": false
-    }
+    },
+    "publication": {
+      "commit": "d81e8cae92aa4599f05aa53209f01e7a11e1ed0c",
+      "parent": "0a977d90718834ce847349b0d0acd87c11a9dbdb",
+      "sourceSha256": "bd8415747efc5f3b40bfc952e103127749607f6168e8e42442420492fbbaa5bc",
+      "files": 29,
+      "pushed": true,
+      "reviewedBytesVerified": true,
+      "ciAuditPending": false,
+      "interruptionCause": "unknown",
+      "prior19Preserved": true,
+      "onlyUnfinished4Executed": true,
+      "noDeploymentOrUpstreamOutreach": true,
+      "remoteVerified": true,
+      "subject": "test(auth): verify registration and MFA-required negative controls",
+      "bothPinnedStagedChecks": "passed",
+      "exactCi": {
+        "id": 41755723695,
+        "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41755723695/attempts/1",
+        "commit": "d81e8cae92aa4599f05aa53209f01e7a11e1ed0c",
+        "attempt": 1,
+        "status": "completed",
+        "workflowConclusion": "failure",
+        "requiredAudit": "passed",
+        "jobs": 6,
+        "fiveOtherJobs": "success",
+        "researchJob": "failure-only4frozen-strict-steps",
+        "uploaderBoundArtifacts": 6,
+        "sourceBoundReports": 27,
+        "strictActualFailures": 14,
+        "allSetupCleanupPassed": true,
+        "fullCurrentAndFrozenHistoricalFailedNamesAndStatusesUnchanged": true,
+        "rawAudit": ".runtime/auth-negative-0359/new-ci-audit-private.json",
+        "publicSafeSummary": ".runtime/auth-negative-0359/new-ci-public-safe-summary.json",
+        "noRerun": true
+      }
+    },
+    "postCiPreservation": {
+      "status": "passed",
+      "sourceSha256": "bd8415747efc5f3b40bfc952e103127749607f6168e8e42442420492fbbaa5bc",
+      "archives": 44,
+      "archivedFiles": 65254,
+      "newOwnedArchives": 5,
+      "newOwnedFiles": 8874,
+      "newOwnedProjectsAbsent": 53,
+      "exactNewOwnedParentsAbsent": 5,
+      "allArchiveBytesRehashed": true,
+      "privateArtifacts": 7,
+      "privateRetainedFiles": 575,
+      "protectedHistoricalFailuresAndAuditorsUnchanged": true,
+      "original0358DemoDataSixContainersSupervisorTailnetReadOnlyGuardPassed": true,
+      "originalLiveLockUnchanged": true,
+      "interruptedEvidenceInFinalArchive": true,
+      "interruptionCause": "unknown",
+      "scope": "Read-only original/private44archive preservation and exact owned absence, not deployment/adoption/security/release/maintainer signoff",
+      "signoff": false
+    },
+    "finalRemoteAndCommittedReviewed29Bytes": "verified",
+    "postCiBookkeeping": "Only docs/PROGRESS.md, docs/progress.json and existing AN public-safe evidence updated locally for next substantive checkpoint; no automatic docs-only commit/push or secondCI."
   },
   "official0359SdkAcknowledgement": {
     "status": "authorized-checkpoint-complete-required-exact-newCI-and-terminal-operational-audits-passed-workflow-red-only-historical14-no-release-signoff",
@@ -2940,7 +2998,7 @@
     "Upstream issue310postedasburggraf under new explicit Mark existing-gh/sole-executor override; exact fetched URL-title-body-author verified and no further create/auth/access changes. Prior integration403/noissue preserved historically; publication request is no longer blocked. Keep prior stockCI121unexecuted/6historical assertions distinct from8other executed failures. Official0358/JS0143 and documented409/null-signup/no-resend/global-uncertainty limitations unchanged; no fork/deferred-feature/adoption/security-release-coverage-physical-device-maintainer signoff."
   ],
   "phaseBeforeReleaseQualification": "New explicit Mark existing-gh/sole-executor publisher authorization completed: https://github.com/trailbaseio/trailbase/issues/310 posted asburggraf in1attempt, exact fetched URL/title/body/author verified, immutable8c15evidence links/no private data/no auth changes. Earlier403/no-alternate restriction preserved as historical and superseded only for this issue; no further create. Packed verification uninterrupted. Run46 actual installed-tarball consumer passes8/8 on EACH pinned Node22.23.2/24.21.0/sourcec1540915, same tarballdbd1a257,268units each, complete native postconditions/fixture cleanup passed. No SDK/native/dependency/pin change. First source92564c90 Node22 passed6 then failed a new invalid SIGNED_OUT callback-storage-timing assertion; PN08 and Node24 unexecuted. Corrected consumer to existing immediate public event/awaited key removal, added unit and documented boundary; private settled semantics not adopted. Earlier missing-controller setup0 preserved separately. Fresh24command/18report proc_904a terminal1 after2091s solely14exact historical strict research failures; independent audit passed supported/reference16/refresh4/data6/DB9/constraints6/browser15/expiry2/legacy1/upgrade9/launcher2/lifecycle1 and bothNode268/package4/installed8each, every setup-cleanup passed. First1289/current1717source-raw-controller files archived/rehashed,19owned projects/2parents absent; post-full7artifacts/575files/10archives13314files/private source/shipped and original official read-only guard passed. Final16file connected-flow/scope/history/basic-privacy and exact staged hashes/bothNode staged checks/progress/diff passed; normal commit-push3a66fd3716a1a938e6806e3c3e31e3464b383d0c/1230insertions24deletions and remote/exact bytes verified. ExactCI41563708961 attempt1 COMPLETED/failure, independent strict23report audit PASSED on commit3a66fd3/sourcec154: bothNode268/package4/installed8each/static-types-docs-build and supported SDK job/auth6/reference16/browser15/all applicable scopes/all setup-cleanup pass. Stock115/6,candidate9/1,SMTP0/1,browser60/6 preserve all14exact historical executed research names/statuses; required steps/pins/producer-specific commit-source-artifact binding/nonempty direct command-correlated four-job log hashes verified. Collectorproc_0840 terminal0 after1119s/watch exit1 is workflow failure, auditor0. No rerun; current stock completeness does NOT explain prior415480startup0 or waive old gaps. Terminal3operational files retained uncommitted for next substantive checkpoint, no extra push/full security-coverage-release-device-maintainer signoff. At authorization: reconciled main/origin8c15a0e, retained exact priorCI41548029405 terminal audit and3dirty operational files byte-for-byte privately. No newer tracked instructions or active managed jobs. Build/install actual tarball in owned disposable consumers on Node22.23.2/24.21.0 against official0358; PN01-PN08 defined before implementation. Cover real signup/confirmation/login, persistence/process reload/live validation/actual expiry/manual-background refresh, owner CRUD/negative/security and explicit local/global/error contract plus complete DB/session/audit/resource postconditions. No SDK changes absent demonstrated red-green supported defect. Parent reports create_issue403 Resource not accessible by integration/no issue; Mark informed/public draft-newissue links supplied. Publication BLOCKED, no alternate credentials/browser/gh attempt; separate from implementation. Fold prior audit into normal reviewed substantive commit/push and one exactCI audit; no blind rerun/cache-network-security workaround. Preserve original official demo/data/sixcontainers/keys/config/tailnet and immutable private historical artifacts; no fork/deferred features or signoff. Prior stockCI0 remains121unexecuted cases including6historical assertions, other8executed research failures exact; cause beyond image-pull/rate-limit text unestablished.",
-  "currentPhase": "Official0359 AN01–AN06 local14case proof and bothNode302/static/coverage/package sourcebd841 unchanged; targeted one6.1-sol/highreview and4P2real red-green fixes complete. Interrupted proc_b16619/23 preserved, cause UNKNOWN; exact owned recovery passed. Only4unfinished fresh scopes proc_d431 completed610s and19+4source/name/cleanup audit PASS. Strict14remain realFAIL:117/6,9/1,0/1,60/6. Final owned parent archived2278files/25projects absent, all5ANparents8874files/53projects absent; total44archives65254files rehashed/seven private artifacts575files/original0358demo/data/sixcontainers/lock/supervisor/Tailnet unchanged. No local completed scope restarted. Ready scoped substantive commit/push/exact newCI27report audit; no newCI pass or compatibility/security/release/maintainer signoff inferred.",
+  "currentPhase": "Sourcee00e6843 SR01/02 finite local proof VERIFIED: final60/review3P2real-red-green/302units-check-coverage-package4+installed8bothNodes/all supported real scopes PASS. Honest completedcounterfactual1 +22only continuation AUDIT PASS, originalfailed1/23controller unchanged; mutant60/6designatedFAIL/54PASS then exact-byte restored60PASS. Actual strict14FAIL names/full prior names unchanged, not product passes. Preservation48archives71310files/27ownedprojects+4parents absent/private7artifacts575files/original0358demo-data-sixcontainers-lock-supervisor-Tailnet/terminal3history PASS. Explicit scoped substantive publication/exact newCI pending, no SDK change/full security/release/maintainer signoff.",
   "currentPhaseBefore0359CiTerminal": "Reviewed38-file official0359 minimum/global-receipt checkpoint normally committed/pushed0a977d90718834ce847349b0d0acd87c11a9dbdb/sourcecf3eea93109365e8fb3959f5eb9c303d650ea89855a673aae55d9ce19f125a33; exact reviewed/index/commit bytes, both pinned staged checks/progress and remote verified, clean immediately after publication. Exact normal new-commit CI watch/artifact collection proc_7f38 running, no rerun. Local source-group audit/review-fix/counterfactual/owned29project cleanup/39archive56380file/private/original0358guard proof retained;14historical strict failures unchanged, prior failed scopes never converted into acceptance. PostCI ledger/evidence kept for next substantive checkpoint; do not rerun/redeploy/publish externally or infer feature/security/release/maintainer signoff. AN real controls and broader acceptance remain unexecuted/incomplete.",
   "currentPhaseBefore0359Publication": "Official0359+ minimum global receipt implemented without detection/setting/private capability; finite local source-group audit passed, independent GPT6.1-sol high P2 cleanup fix red3/green8 verified, all original failed source/raw retained. Current cf3eea93109365e8fb3959f5eb9c303d650ea89855a673aae55d9ce19f125a33 fresh bothNode295units/checks and native8within stock123; exact research14failure names restored after separately recorded0359 expiry/User/JSON version bindings. Earlier coverage/package/packed54-short36/installed8/reference16/genuineexpiry4 remain at their own sources, not one clean candidate.3owned archives5056files rehashed/29projects absent/3parents removed; original0358demo/data/six containers, protected failures,39archives56380files and private7artifacts575files preserved. Await scoped normal commit/push and exact new-commit26report CI audit; no deployment/outreach or feature/security/release/maintainer signoff; AN real controls still unexecuted.",
   "currentPhaseBefore0359LocalAudit": "Official0359+ global receipt implemented/reviewed under explicit minimum, no detection/option/private adoption. Preserve all individually bound runtime, real cleanup-red3/fix8, failed old0358 expiry1/2 and corrected0359 expiry2/2, genuine truncated-EOF counterfactual failure/byte-identical restoration8/8. caf091 continuation completed collection but research24failures did NOT match historical14; raw/source/terminal preserved. Verified0359 User+JSON semantics explain old assertions; three test-only version bindings strengthened, research names and all historical failures unchanged. Current cf3eea93109365e8fb3959f5eb9c303d650ea89855a673aae55d9ce19f125a33 targeted proc_4dd2 runs only fresh bothNode checks/295units and3changed research scopes with immediate exact failure-name/status guards. No duplicate/restart of prior completed verification. Archive/preservation/scoped normal commit/push/exact changed-commit CI still pending; no deployment/outreach or feature/security/release/maintainer signoff; original0358demo/data/private evidence preserved.",
@@ -7015,9 +7073,9 @@
     }
   ],
   "nextSteps": [
-    "Explicit scoped final diff/public-safe evidence/byte manifest and normal substantive commit/push only. BothNode302/check/coverage/package and all completed local scopes already source-bound, do not restart completed fixtures or run another delegate. Fresh staged static/type/docs checks may validate index without representing new runtime evidence.",
-    "Discover/audit exact NEW commit/attempt1 CI: all6jobs, explicit uploader artifact IDs/ZIP digests, all27reports/pins/Node versions/setup/cleanup/complete current and frozen strict names. Existing local19+4audit is not exactCI; no automatic retry or normalization of14strict failures.",
-    "After exactCI, preserve results and verify source/remote/original-private state, record truthful final status and carry postCI bookkeeping into next substantive checkpoint rather than automatic docs-only publication. Broader5incomplete suites/TLS/security/devices/resources/threecandidate/maintainer and auth/version/JWT limitations remain."
+    "Review explicit8file public-safe diff/bytes, staged bothNode check/progress, normal scoped commit/push without changing e00e source.",
+    "Exact-new-commit normal attempt1 CI collect/audit6jobs/uploader-ID-bound artifacts/27source-bound reports/pins/nodes/setupcleanup/full current and frozen strict14names. No automatic retry, release signoff or deployment.",
+    "Reverify source/remote/reviewed commit bytes and read-only original/private48archives; retain terminal CI notes for next substantive checkpoint, no automatic docs-only follow-up."
   ],
   "nextStepsBefore0359CiAudit": [
     "Reconcile existing exact new-commit CI watcher proc_7f38 for0a977d90718834ce847349b0d0acd87c11a9dbdb/sourcecf3eea93109365e8fb3959f5eb9c303d650ea89855a673aae55d9ce19f125a33; do not restart/replay completed local work or launch duplicate watcher/workflow rerun.",
@@ -8563,5 +8621,174 @@
       "Independent re-review and fresh full parent controls22/24; no next lifecycle implementation"
     ],
     "signoff": "none"
+  },
+  "authStatusRace0359": {
+    "status": "local-verified-review-closed-preservation-passed-scoped-publication-exactCI-pending",
+    "sourceSha256": "e00e68431b04b6da3c2b07da733345d4281d2c9dd4430cdf85283138c8cd5b03",
+    "baseCommit": "d81e8cae92aa4599f05aa53209f01e7a11e1ed0c",
+    "evidence": "docs/evidence/auth-status-race-official0359-checkpoint.json",
+    "scope": "Six native-specific genuine packed getUser status delivery schedules across local logout/B replacement; existing default54plus6=60, no new public API, SDK MFA, reference-user rotation parity or release criterion.",
+    "sourceHistory": [
+      {
+        "source": "c67d317d90867757ef634cb5cdc7b8759a57a660f637eb8d0aedd57321d544fa",
+        "passed": 57,
+        "failed": 3,
+        "cause": "Test intercepted later B positive-control status against captured A; immutable, not SDK defect."
+      },
+      {
+        "source": "a43a48c22bed4430726a8a73053268cfab0f85a6547c6a06e29861a672de7504",
+        "passed": 60,
+        "failed": 0,
+        "note": "Before targeted review; not proof of later strengthened observations."
+      },
+      {
+        "source": "445667fd56e15e6fb9004130dbdaf7b63223203afd4284efc2b9ae04efbcacfa",
+        "passed": 54,
+        "failed": 6,
+        "cause": "Genuine owned DELETE committed/reply lost; old sequential cleanup skips owner revocation/delete. All6bodies reached completed then owner-presence/final-postcondition failures. Preserved real red."
+      },
+      {
+        "source": "e00e68431b04b6da3c2b07da733345d4281d2c9dd4430cdf85283138c8cd5b03",
+        "passed": 60,
+        "failed": 0,
+        "cleanup": "passed",
+        "reviewClosure": "Reused unchanged proven ordinary deleteNativeOwner; exact expected rowFailure retained, independent revocation/delete/full state. Full pretransition/control sessions, real full persisted credential/JWT CSRF and defensive complete event-session coherence verified."
+      }
+    ],
+    "review": {
+      "model": "openai/gpt-6.1-sol",
+      "thinking": "high",
+      "freshSubstantiveReviews": 1,
+      "parentVerifiedFindings": 3,
+      "realRedGreenClosure": true,
+      "failedModelAttempt": "GPT5.5/high model_not_found, no findings; user approved6.1-sol/high replacement",
+      "extraReviewOrMaintainerSignoff": false
+    },
+    "verification": {
+      "sourceGroups": [
+        {
+          "role": "Known failed controller after completed genuine counterfactual; not23command success",
+          "completed": 1,
+          "raw": "final-runtime-terminal-private.json",
+          "status": "failed",
+          "cause": "Wrong designated-error search in intentionally sanitized stdout; separately verified complete private raw report."
+        },
+        {
+          "role": "Only22unexecuted commands, no completed counterfactual rerun",
+          "completed": 22,
+          "raw": "final-runtime-continuation-terminal-private.json",
+          "status": "audit-passed",
+          "sourceSha256": "e00e68431b04b6da3c2b07da733345d4281d2c9dd4430cdf85283138c8cd5b03"
+        }
+      ],
+      "reconciledCommands": 23,
+      "originalController": "FAILED1of23-known sanitized-stdout assertion after completed genuine counterfactual; immutable. Separate raw proof and22only continuation, never original23controller success.",
+      "counterfactual": {
+        "status": "FAILED",
+        "sourceSha256": "83175dc20bb9c5bad040f167d01a908de628fce8231619a658ccb79c8521ef4c",
+        "cases": 60,
+        "passed": 54,
+        "failed": 6,
+        "allSixDesignated": true,
+        "rawAndByteRestoreAudit": "counterfactual-raw-and-restoration-audit-private.json",
+        "exactByteRestoreAnd60Pass": true
+      },
+      "defaultPackedBrowser": 60,
+      "shortPackedBrowser": 36,
+      "negativeAuthPerNode": 14,
+      "nodes": [
+        "22.23.2",
+        "24.21.0"
+      ],
+      "unitsPerNode": 302,
+      "packagePerNode": 4,
+      "installedPerNode": 8,
+      "coverage": {
+        "statements": 97.25,
+        "lines": 99.47,
+        "functions": 99.29,
+        "branches": 95.19,
+        "globalAndAll3Modules95_90": true,
+        "skipped": 0
+      },
+      "realCases": {
+        "auth": 8,
+        "refresh": 4,
+        "data": 6,
+        "database": 9,
+        "constraints": 6,
+        "todos": 2,
+        "lifecycle": 2,
+        "reference": 16,
+        "expiry": 2,
+        "legacy": 1,
+        "nativeUpgrade": 9
+      },
+      "strictResearch": [
+        {
+          "suite": "all",
+          "passed": 117,
+          "failed": 6,
+          "fullPriorNamesAndStatusesEqual": true,
+          "frozenHistoricalFailedNamesAndStatusesEqual": true
+        },
+        {
+          "suite": "characterization",
+          "passed": 9,
+          "failed": 1,
+          "fullPriorNamesAndStatusesEqual": true,
+          "frozenHistoricalFailedNamesAndStatusesEqual": true
+        },
+        {
+          "suite": "smtp",
+          "passed": 0,
+          "failed": 1,
+          "fullPriorNamesAndStatusesEqual": true,
+          "frozenHistoricalFailedNamesAndStatusesEqual": true
+        },
+        {
+          "suite": "browser",
+          "passed": 60,
+          "failed": 6,
+          "fullPriorNamesAndStatusesEqual": true,
+          "frozenHistoricalFailedNamesAndStatusesEqual": true
+        }
+      ],
+      "strictFailures": 14,
+      "fullCurrentNamesAndFrozenHistoricalFailedNamesEqual": true,
+      "allSetupCleanupPassed": true,
+      "packedInstalledByteGraphsAndDependenciesEqual": true
+    },
+    "preservation": {
+      "archives": 48,
+      "archivedFiles": 71310,
+      "newOwnedArchives": 4,
+      "newOwnedProjectsAbsent": 27,
+      "exactNewOwnedParentsAbsent": 4,
+      "privateArtifacts": 7,
+      "privateRetainedFiles": 575,
+      "allBytesRehashed": true,
+      "original0358DemoDataSixContainersLiveLockSupervisorTailnetReadOnlyGuardPassed": true,
+      "pendingTerminal3SnapshotsAndHistoryPreserved": true,
+      "originalFailedControllerEightProtectedHashesMatch": true,
+      "originalANInterruptionCause": "unknown-preserved"
+    },
+    "privateEvidence": {
+      "localAudit": ".runtime/auth-status-race-0359/local-audit-private.json",
+      "originalFailedController": ".runtime/auth-status-race-0359/final-runtime-terminal-private.json",
+      "continuation": ".runtime/auth-status-race-0359/final-runtime-continuation-terminal-private.json",
+      "rawCounterfactualAndRestore": ".runtime/auth-status-race-0359/counterfactual-raw-and-restoration-audit-private.json",
+      "preservation": ".runtime/auth-status-race-0359/preservation-final-private.json",
+      "reviewFindings": ".runtime/auth-status-race-0359/review-findings-private.json",
+      "reviewClosure": ".runtime/auth-status-race-0359/review-fix-real-proof-private.json",
+      "terminal3Snapshot": ".runtime/auth-status-race-0359/terminal-before-private/",
+      "interimDerivedLedgersRetained": ".runtime/auth-status-race-0359/progress-before-final-consolidation-private.json"
+    },
+    "remaining": [
+      "Review explicit8file public-safe diff/bytes, staged bothNode check/progress, normal scoped commit/push without changing e00e source.",
+      "Exact-new-commit normal attempt1 CI collect/audit6jobs/uploader-ID-bound artifacts/27source-bound reports/pins/nodes/setupcleanup/full current and frozen strict14names. No automatic retry, release signoff or deployment.",
+      "Reverify source/remote/reviewed commit bytes and read-only original/private48archives; retain terminal CI notes for next substantive checkpoint, no automatic docs-only follow-up."
+    ],
+    "signoff": false
   }
 }

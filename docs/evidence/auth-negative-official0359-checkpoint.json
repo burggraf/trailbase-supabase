@@ -168,13 +168,32 @@
     "allRehashed": true,
     "ownedAnParentsAbsent": 5,
     "ownedAnProjectsAbsent": 53,
-    "originalDemoDataSixContainersLockSupervisorTailnetUnchanged": true
+    "originalDemoDataSixContainersLockSupervisorTailnetUnchanged": true,
+    "postCiReverified": true
   },
   "publication": {
-    "scopedCommit": "pending",
-    "exactNewCommitCi": "pending",
+    "scopedCommit": "d81e8cae92aa4599f05aa53209f01e7a11e1ed0c",
+    "normalPush": true,
+    "remoteVerified": true,
+    "files": 29,
+    "exactNewCommitCi": {
+      "id": 41755723695,
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/41755723695/attempts/1",
+      "attempt": 1,
+      "status": "completed",
+      "workflowConclusion": "failure",
+      "requiredAudit": "passed",
+      "jobs": 6,
+      "uploaderBoundArtifacts": 6,
+      "sourceBoundReports": 27,
+      "fiveOtherJobs": "success",
+      "strictResearchFailures": 14,
+      "allSetupCleanupPassed": true,
+      "exactHistoricalFailureNamesAndStatusesUnchanged": true
+    },
     "expectedReports": 27,
-    "noAutomaticCiRetry": true
+    "noAutomaticCiRetry": true,
+    "postCiBookkeeping": "Recorded locally after this commit; carry with next substantive checkpoint, not automatically published by a docs-only commit."
   },
   "remaining": [
     "Native signupnull-user/session and409/no supported resend limitations",
