@@ -44,6 +44,20 @@ test('L1-05–13/E04/E05/E06/E11/E13 packed data UI, permissions, zero-request g
       const ui = app.mountTodos(document.querySelector('#todos'), a, { diagnostics: true, ownerId, makeId: () => ids.shift()!, pageSize: 2 });
       window.sdkData = { a, b, anonymous, calls, ui };
       await ui.refresh();
+      const list = await a.from('todos').select().limit(1);
+      if (list.error || list.data?.length !== 1) throw new Error('Owned row prototype control failed');
+      const selected = list.data[0];
+      const single = await a.from('todos').select().eq('id', selected.id).single();
+      const optional = await a.from('todos').select().eq('id', selected.id).maybeSingle();
+      if (single.error || optional.error) throw new Error('Owned cardinality prototype control failed');
+      // Validate in the browser realm, before returning serialized page results.
+      for (const row of [selected, single.data, optional.data]) {
+        if (!row || Object.getPrototypeOf(row) !== Object.prototype) throw new Error('Expected ordinary decoded row');
+        for (const [key, value] of Object.entries(row)) {
+          const field = Object.getOwnPropertyDescriptor(row, key);
+          if (!field || !Object.hasOwn(field, 'value') || !field.enumerable || !field.writable || !field.configurable || field.value !== value) throw new Error('Expected own data field');
+        }
+      }
       return true;
     }, { base: env.trailUrl, headers, ownerId: canonicalUuid(a.user.id), ids: ids.slice(2, 4) })).toBe(true);
     for (const label of ['Filter field', 'Filter operator', 'Order field', 'Cardinality']) await expect(page.getByLabel(label, { exact: true })).toHaveCount(1);

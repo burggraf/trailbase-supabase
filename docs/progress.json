@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "From reviewed3852be8: concrete backend-contract proposal separates independently verified physical/config facts, declared backend semantics, least-privilege named-operation disclosure and immutable non-reused native route/fence-drain-stop/retire-before-open/forward-recovery lifecycle.12SQLite/state-model controls PASS each pinnedNode, with unsafe false-descriptor/wrong-row/backup-loss controls and explicit model limitations; real native two-handler/config/migration/rollback gates unexecuted, separate coordination required. Independent result-data proposal identifies ordinary own-property mapped rows only; actual built SDK vs installed reference reproduces3prototype mismatches each exactNode with0escaped requests; correction not implemented. Both builds/392units/prior9models PASS each pin. No carrier decision/architecture adoption/runtime/app/auth/fixture/pin change or live/global/resource/guard replay, commit/push/CI/deployment/outreach/signoff. All3852/BM/rejected419and444/AL2PASS3FAIL/history/missing evidence remain preserved.",
+  "currentPhase": "Exact accepted7file proposal/model checkpoint committed c9e7f175be73a05846a3b782be58c8cd58e7130e after staged/committed byte verification. Authorized L1-04 ordinary mapped read-row correction implemented only at mapRow public return using safe own-property spread;internal dictionaries/validation/codecs/auth/common/types/defaults/explicitmappings/errors/mutations unchanged. SourceTDD10tests2PASS8FAIL then10PASS;old-null and unsafe-assignment compiledcounterfactuals fail designated assertions. Source5d4376361cf764f788e940513d3c76f2b6cf4e0cc634b9a7c8943a038bdea5cd:both22.23.2/24.21.0 check/build/402root/293SDK/coverage/package4/18packed-injected-browser-controls each PASS;real backend/full regression qualification remains unexecuted/unwaived. TS7053 browser-test authoring failure preserved. Remote freshly reconciled9a20c2f ancestor,c9e7local7ahead;no push. No architecture/overallCRUD/full-envelope claim,fixture/live/global/resource/guard replay/deployment/outreach/signoff. Historical BM/AL2PASS3FAIL/strictStorageRealtime/missing evidence and original demo preserved.",
   "currentSourceAl47cWindow": {
     "status": "failed-current-source-genuine-window-not-qualified",
     "checkpoint": "47c1a8fcf232dc409554863e139be563784833cd",
@@ -7876,10 +7876,10 @@
     }
   ],
   "nextSteps": [
-    "Review docs/plans/2026-11-06-backend-contract-proposal.md and its12offline controls as a conditional model, not real native lifecycle qualification. Verify authority/leastprivilege/disclosure and immutable-incarnation/retirement/fence/unknown-outcome/rollback invariants before selecting a carrier;no architecture adoption or premature Mark choice.",
+    "c9e7f17commits the exact accepted7file proposal/model checkpoint. Ordinary-row correction now has fresh source/packed/injected3engine evidence at5d437636;review exact runtime/test/docs/evidence/ledger delta separately and preserve all old failures. No overallCRUD/full-envelope/standardbootstrap/metadata architecture adoption or signoff.",
     "User-requested four bounded repairs implemented after20offline controls4PASS/16FAIL, then20PASS each pinnedNode; same BM01-BM09 scope. Do not dispatch rejected419file freeze83b4fc3a. BM four repairs and once-only proof complete:462file freezef9b224 accepted, unchanged fresh guards passed, one fixture/9entered9PASS, separate admin rows1to0/audit+1each, independentresource audit/archive1324/RELEASE. Do not replay guards/claims/backend scopes or either rejected419/444candidate; accepted root/controller bytes preserved before bookkeeping. No new Mark approval was needed for this bounded proof; material architecture adoption still held.",
     "If advancing the backend candidate, coordinate a separate fresh frozen/reviewed fixture plan for actual per-operationCREATE-onlymetadata,independent wrong-facts verification,twoofficial handlers/configDBmismatch/staleinflightcutover/rollback/retiredURLhistory and installed sameTodo proof. No fixture is allocated or cleared;no BM claim/controller/guard reuse.12model passes cannot certify actual serving/SQL settlement/lifecycle. Preserve3852observations and all original/historical failures.",
-    "Independently evaluate the finite ordinary-result-row correction in docs/plans/2026-11-06-result-row-proposal.md only if separately authorized for implementation: permanent list/single/maybeSingle/prototype-key/setter/no-partial-result reds, safe own-property construction, direct packed/browser-realm proofs and full applicable tests. Constructor/auth-default/outer-envelope/cardinality/code/status/mappingfreeCRUD claims remain unchanged;backend403/signup/identity gaps stay separate.",
+    "Ordinary-row implementation remains real-qualification-pending:coordinate a new frozen/reviewed owned fixture window for current-source real data/DB/constraints/sharedreference/installedNodebothpins,primary genuine3engine auth/CRUD/permissions/fault/teardown and applicable regressions. Existing real assertions authored but unexecuted;18packed synthetic cases per pin do not substitute. No BMclaim/guard/resource replay,live demo change,constructor/auth-default/error/envelope/mappingfreeCRUD claim or historical pass promotion.",
     "Continue independent AL diagnosis through narrowly reviewed test-only per-lease/cancel/body/nested-browser diagnostics; offline synthetic similarity is not historical cause. No AbortError suppression or weakened cleanup; current genuine47c5entered2PASS3FAIL remains unresolved.",
     "No architecture, schema, deployment, credential, dependency, outreach or capability adoption inferred. Before eventual authorized normal push, inspect/reconcile remote main, stop on unexpected divergence, verify exact source and exact new-commit CI/artifacts. No force/reset/rebase, automatic retry or historical pass promotion; full applicable/security/platform/maintainer gates remain unpassed."
   ],
@@ -11488,6 +11488,33 @@
     "Every real fixture through user after fresh explicit handoff/guards/source/artifact freeze, one bounded unchanged-source attempt and cleanup audit/RELEASE. No slot currently requested/reserved. Keep nativeC04 andC01–03 separate graphs, historical0/5,3/5/two no-dispatch stops and unknown guard origins intact.",
     "Current-source genuine AL default/short, installed Node/browser/full applicable regressions, actual Realtime artifact/wiring, publication/exact-new-commit CI/full security/platform/maintainer release gates remain pending. Fresh offline59archive88671/private575 preservation is passed, not a live demo/resource audit or fixture clearance."
   ],
+  "resultRowParity": {
+    "status": "implemented-offline-source-and-packed-verified;real-qualification-pending",
+    "baseCommit": "c9e7f175be73a05846a3b782be58c8cd58e7130e",
+    "reviewedProposalCommit": "c9e7f175be73a05846a3b782be58c8cd58e7130e",
+    "reviewedProposalDiffSha256": "9cb0faa2b12ffd187b7352b513c9f3b653cd7169d020cb362c08d5a21259ad26",
+    "sourceSha256": "5d4376361cf764f788e940513d3c76f2b6cf4e0cc634b9a7c8943a038bdea5cd",
+    "evidence": "docs/evidence/result-row-parity.json",
+    "change": "Only mapRow public return uses object spread over validated null-prototype dictionary;ordinary own enumerable/writable/configurable properties including prototype-like keys;no inherited setters",
+    "sourceTdd": "10tests2PASS8FAIL on old null-prototype output;10PASS after safe return. Separate original-null/unsafe-assignment compiled copies fail designated assertions;actual safe build passes",
+    "comparativeTests": "Installed Supabase2.117.2 list/single/maybeSingle,direct strict data equality,own property descriptors,dangerous names,empty list/optional,fresh repeated reads,invalid later rows/no partial result/no getter execution",
+    "authoringFailure": "Initial broader check stopped before suite entry:TS7053 in new browser-test union index;original spec/driver/raw failure retained;Array.isArray narrowing corrected without weakening assertions",
+    "checks": "Both exactNodes22.23.2/24.21.0 check/build/402rootunits/293SDKunits/95-90global-per-modulecoverage/package4cleanup PASS;18actualpacked browser controls per pin6eachChromiumFirefoxWebKit,retries0,injected success transports not primary realE2E",
+    "tarballSha256": "844f8dcb197071013429b9c0c3e2cbc6126724dca747c987238546a2ea98c05c",
+    "realAssertionsAuthored": "Existing tests/phase-a/sdk-data.test.ts and tests/sdk-browser/data.spec.ts strengthened;not executed at current source",
+    "requiredMissing": "Fresh separately coordinated/frozen owned real data/DB/constraints/sharedreference/installedNodebothpins,genuine3browser confirmation/auth/CRUD/permissions/fault/teardown and applicable full regressions/security/release. Not N/A or waived;retained demo/lock and RELEASED BM claims not reusable",
+    "remoteReconciliation": "Fresh fetch9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb is ancestor ofc9e7f17;0remote-only7local-only;no merge/rebase/reset/force/configchange/push",
+    "authCommonFixturesDependenciesPinsChanged": false,
+    "overallCrudCompatibility": false,
+    "fullEnvelopeParity": false,
+    "metadataArchitectureAdopted": false,
+    "newRealFixtures": 0,
+    "postReleaseResourceQueries": 0,
+    "implementationCommitted": false,
+    "push": false,
+    "newCi": false,
+    "signoff": false
+  },
   "backendContractProposal": {
     "status": "reviewable-research-proposal-not-adopted;real-lifecycle-unexecuted",
     "baseCommit": "3852be86fb9fa8ae6aa87b6aae6fc951557936fa",

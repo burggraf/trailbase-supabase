@@ -1,3 +1,4 @@
+import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { createClient, type TrailBaseMapping } from '../../src/index.js';
@@ -26,6 +27,12 @@ beforeAll(async () => {
   sa = await confirmedSupabaseUser(env, 'sdk-a'); sb = await confirmedSupabaseUser(env, 'sdk-b');
   requests = [];
 });
+function assertOrdinaryRow(row: unknown) {
+  assert(row && typeof row === 'object');
+  assert.equal(Object.getPrototypeOf(row), Object.prototype);
+  assert.deepEqual(row, { ...row });
+  for (const [key, value] of Object.entries(row)) assert.deepEqual(Object.getOwnPropertyDescriptor(row, key), { value, enumerable: true, writable: true, configurable: true });
+}
 function commonClients(native: ReturnType<typeof adapter>) {
   return [
     [{ from: (name: string) => native.from(name) }, canonicalUuid(a.user.id)],
@@ -66,6 +73,7 @@ describe('SDK data slice against owned TrailBase and official Supabase reference
         for (const [index, id] of ids.entries()) expect(await client.from('todos').insert({ id, user_id: owner, title: `sdk-${id}`, ...(index ? { note: 'control' } : {}) })).toMatchObject({ data: null, error: null });
         const before = await client.from('todos').select('*').order('title');
         expect(before.error).toBeNull(); expect(before.data).toHaveLength(2);
+        before.data!.forEach(assertOrdinaryRow);
         const target = before.data!.find(row => row.id === ids[0])!;
         expect(target).toMatchObject({ id: ids[0], user_id: owner, completed: false, priority: 0, note: null });
         expect(Number.isSafeInteger(target.created_at)).toBe(true);
@@ -99,6 +107,7 @@ describe('SDK data slice against owned TrailBase and official Supabase reference
           expect(empty.data).toBeNull(); expect(empty.error === null).toBe(method === 'maybeSingle');
           const one = await client.from('todos').select('*').eq('id', ids[0])[method]();
           expect(one.error).toBeNull(); expect(one.data?.id).toBe(ids[0]);
+          assertOrdinaryRow(one.data);
           const two = await client.from('todos').select('*').lte('priority', 1)[method]();
           expect(two.data).toBeNull(); expect(two.error).not.toBeNull();
           const many = await client.from('todos').select('*')[method]();

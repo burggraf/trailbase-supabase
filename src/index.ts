@@ -125,7 +125,8 @@ function mapRow<Row>(mapping: TableMapping, input: unknown): Row {
     if (!field) throw new TypeError(`TrailBase returned unmapped field: ${column}`);
     output[column] = fieldFromNative(field, value);
   }
-  return output as Row;
+  // Spread defines own data properties (including __proto__) without inherited setters.
+  return { ...output } as Row;
 }
 
 

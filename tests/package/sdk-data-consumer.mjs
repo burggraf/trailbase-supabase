@@ -28,7 +28,9 @@ const client = createClient('http://trailbase.test', 'unused-placeholder', { tra
 const table = client.from('todos');
 const query = table.select().eq('title', row.title).order('priority').range(2, 2).single();
 assert.equal(requests.length, 0);
-assert.deepEqual(JSON.parse(JSON.stringify(await query)), { data: { ...row, id, completed: true }, error: null });
+const first = await query;
+assert.deepEqual(first, { data: { ...row, id, completed: true }, error: null });
+assert.equal(Object.getPrototypeOf(first.data), Object.prototype);
 assert.equal(requests[0].url.searchParams.get('filter[title][$eq]'), row.title);
 assert.equal(requests[0].url.searchParams.get('offset'), '2');
 assert.equal(requests[0].url.searchParams.get('limit'), '1');
@@ -61,4 +63,31 @@ assert.equal(requests.length, count + 1);
 loseReply = false; denyRead = true;
 const denied = await table.select().single();
 assert.equal(denied.data, null); assert.equal(denied.error?.status, 403); assert.equal(denied.error?.code, undefined);
-console.log('PASS installed-tarball data transport boundary (not backend/browser proof)');
+// Check prototypes here, before any JSON/report serialization can hide a regression.
+denyRead = false;
+const specialKeys = ['__proto__', 'constructor', 'toString', 'hasOwnProperty', 'row_setter_probe'];
+const specialRow = Object.fromEntries([...Object.entries(row), ...specialKeys.map(key => [key, `own-${key}`])]);
+const specialFields = Object.fromEntries([...Object.entries(fields), ...specialKeys.map(key => [key, { type: 'text' }])]);
+let rowCalls = 0, setterCalls = 0;
+const previousSetter = Object.getOwnPropertyDescriptor(Object.prototype, 'row_setter_probe');
+Object.defineProperty(Object.prototype, 'row_setter_probe', { configurable: true, set() { setterCalls++; } });
+try {
+  const special = createClient('http://trailbase.test', undefined, { trailbase: { tables: { todos: { api: 'todos', primaryKey: 'id', fields: specialFields } } }, global: { fetch: async () => {
+    rowCalls++; return Response.json({ records: [specialRow] });
+  } } });
+  const expected = { ...specialRow, id, completed: true };
+  for (const mode of ['list', 'single', 'maybeSingle']) {
+    const read = special.from('todos').select();
+    const result = await (mode === 'list' ? read : read[mode]());
+    assert.equal(result.error, null);
+    assert.deepEqual(result.data, mode === 'list' ? [expected] : expected);
+    const decoded = mode === 'list' ? result.data[0] : result.data;
+    assert.equal(Object.getPrototypeOf(decoded), Object.prototype);
+    for (const [key, value] of Object.entries(expected)) {
+      assert(Object.hasOwn(decoded, key));
+      assert.deepEqual(Object.getOwnPropertyDescriptor(decoded, key), { value, enumerable: true, writable: true, configurable: true });
+    }
+  }
+  assert.equal(rowCalls, 3); assert.equal(setterCalls, 0);
+} finally { if (previousSetter) Object.defineProperty(Object.prototype, 'row_setter_probe', previousSetter); else Reflect.deleteProperty(Object.prototype, 'row_setter_probe'); }
+console.log('PASS installed-tarball data transport/ordinary-own-row boundaries (not backend/browser proof)');

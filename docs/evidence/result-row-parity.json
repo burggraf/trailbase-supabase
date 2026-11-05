@@ -1,0 +1,538 @@
+{
+  "scope": "L1-04 ordinary mapped read-row object parity only;source and packed synthetic-transport comparison,not overall CRUD compatibility or release qualification",
+  "baseCommit": "c9e7f175be73a05846a3b782be58c8cd58e7130e",
+  "proposalCheckpoint": {
+    "commit": "c9e7f175be73a05846a3b782be58c8cd58e7130e",
+    "parent": "3852be86fb9fa8ae6aa87b6aae6fc951557936fa",
+    "exactReviewedSevenFiles": true,
+    "diffSha256": "9cb0faa2b12ffd187b7352b513c9f3b653cd7169d020cb362c08d5a21259ad26",
+    "pushed": false
+  },
+  "sourceSha256": "5d4376361cf764f788e940513d3c76f2b6cf4e0cc634b9a7c8943a038bdea5cd",
+  "indexSha256": "ef773f3c2a07b48d84c3356e9fb3063210fa0b73a0c6626242a06ef59247aba3",
+  "authSha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d",
+  "commonSha256": "37882c9399fb4d4b92fb6ad99fb37aa990e58a50df575938729426dd3c69389e",
+  "sourceFiles": [
+    {
+      "path": "README.md",
+      "sha256": "e91c63e5587a7564a15497c7f5b8669c3da62d8d4635995d0d8aaa1687257d2d",
+      "bytes": 37985
+    },
+    {
+      "path": "docs/LEVEL1_PLAN.md",
+      "sha256": "b5408e0950e961b131d4493ce8516474fb10a3c2526d658be5d6c7cdb88c7e6d",
+      "bytes": 28303
+    },
+    {
+      "path": "src/index.ts",
+      "sha256": "ef773f3c2a07b48d84c3356e9fb3063210fa0b73a0c6626242a06ef59247aba3",
+      "bytes": 22034
+    },
+    {
+      "path": "tests/package/sdk-data-consumer.mjs",
+      "sha256": "018d98d2761ca9af27d4110ddd74ce7b965f937c1b6fb2329a53050c3ff0776b",
+      "bytes": 5987
+    },
+    {
+      "path": "tests/phase-a/sdk-data.test.ts",
+      "sha256": "05ee6cf8a613ba709650f13ae3c9fdbd547b03667a016055303b6aa322f7a1a9",
+      "bytes": 22030
+    },
+    {
+      "path": "tests/result-rows/playwright.config.ts",
+      "sha256": "7c36f3fc5e3d837c967ac6a6115757c41c6a757807789f3de8017d65faf30abb",
+      "bytes": 778
+    },
+    {
+      "path": "tests/result-rows/rows.spec.ts",
+      "sha256": "1def5132ed8712bd4a932ea3e25ab250bee49b50af7da5498e6df928f168162b",
+      "bytes": 7393
+    },
+    {
+      "path": "tests/sdk-browser/data.spec.ts",
+      "sha256": "5492aa176ed9b7ff1027cc183334f4cbd7585227b3cd0713829d018ea68fb102",
+      "bytes": 14074
+    },
+    {
+      "path": "tests/unit/sdk-result-rows.test.ts",
+      "sha256": "416768da5653736d190c9edc635a870a87e6b787152468f5e81bc0fe0ac593b6",
+      "bytes": 7835
+    }
+  ],
+  "implementation": {
+    "status": "implemented-offline-source-and-packed-verified;real-qualification-pending",
+    "change": "Public mapRow return spreads validated internal null-prototype dictionary into ordinary own-data-property object;internal validation/codecs/dictionaries unchanged",
+    "ownKeys": [
+      "__proto__",
+      "constructor",
+      "toString",
+      "hasOwnProperty",
+      "row_setter_probe"
+    ],
+    "modes": [
+      "list",
+      "single",
+      "maybeSingle"
+    ],
+    "unchanged": [
+      "auth and defaults",
+      "explicit mappings/constructor requirements",
+      "types/exports",
+      "cardinality/envelope/error/status fields",
+      "mutation guards/UUID encodings/no replay",
+      "backend/schema/grants/dependencies/pins",
+      "metadata architecture"
+    ]
+  },
+  "tdd": {
+    "node": "22.23.2",
+    "before": {
+      "passed": 2,
+      "failed": 8,
+      "reason": "Actual SDK null row prototype/direct strict-data difference versus ordinary installed reference",
+      "reportSha256": "87bb7829b2ac986373593a280e8329aa4b9e512624ccf833631d85dc9634a2e8"
+    },
+    "after": {
+      "passed": 10,
+      "failed": 0,
+      "reportSha256": "3f97ebed8506408b84d9daf9605910db36d016012bac4e326da4788347f55b9e"
+    },
+    "adversarial": "Own field descriptors/prototypes, inherited setters, zero-row maybeSingle/list, fresh repeated reads, invalid later row no partial success/no accessor execution",
+    "counterfactuals": {
+      "status": "passed",
+      "node": "v22.23.2",
+      "scope": "Test-only compiledJS copies;not realbackend/browser/cause attribution",
+      "actualBuiltIndexSha256": "3f98ba04f9e17135210bf1d46e9f68477f1bd0cbda42f6448a33d0c2322528f6",
+      "rootSourceChanged": false,
+      "escapedGlobalFetchCalls": 0,
+      "cases": [
+        {
+          "variant": "safe",
+          "expectedAssertionFailure": false,
+          "assertionFailureObserved": false,
+          "compiledIndexSha256": "3f98ba04f9e17135210bf1d46e9f68477f1bd0cbda42f6448a33d0c2322528f6",
+          "passed": true
+        },
+        {
+          "variant": "old-null-result",
+          "expectedAssertionFailure": true,
+          "assertionFailureObserved": true,
+          "compiledIndexSha256": "6b7801f37e648229df5b9ea56b0df1b2e57c2149ee3b4312779d838b25846333",
+          "passed": false
+        },
+        {
+          "variant": "unsafe-object-assignment",
+          "expectedAssertionFailure": true,
+          "assertionFailureObserved": true,
+          "compiledIndexSha256": "1350f1e12f63e91aefeb7bfb417af8b8a640079ba895fb7cdbf0f27676f520d6",
+          "passed": false
+        }
+      ]
+    },
+    "authoringFailure": {
+      "stage": "First broader check stopped before suites",
+      "diagnostic": "TS7053: browser-test union data cannot be indexed by0 until Array.isArray narrowing",
+      "preserved": true,
+      "notProductFailure": true
+    }
+  },
+  "nodes": [
+    {
+      "node": "22.23.2",
+      "rootUnits": {
+        "passed": 402,
+        "failed": 0,
+        "reportSha256": "35a2aec09f4336223cb59d70cd0119237c4e7f16279273e50bb1e33e5c30f9d6"
+      },
+      "sdkUnits": {
+        "passed": 293,
+        "failed": 0
+      },
+      "coverage": {
+        "status": "passed",
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "totals": {
+          "statements": {
+            "total": 985,
+            "covered": 960,
+            "skipped": 0,
+            "pct": 97.46
+          },
+          "lines": {
+            "total": 643,
+            "covered": 640,
+            "skipped": 0,
+            "pct": 99.53
+          },
+          "functions": {
+            "total": 155,
+            "covered": 154,
+            "skipped": 0,
+            "pct": 99.35
+          },
+          "branches": {
+            "total": 747,
+            "covered": 711,
+            "skipped": 0,
+            "pct": 95.18
+          }
+        },
+        "perModuleThresholdsPassed": true,
+        "reportSha256": "a574c12abbeb46201e8828d40cd58239f279f19949a2ec1cbc9c6fb2f0f5fb9f"
+      },
+      "package": {
+        "checks": 4,
+        "cleanup": "passed",
+        "tarballSha256": "844f8dcb197071013429b9c0c3e2cbc6126724dca747c987238546a2ea98c05c",
+        "reportSha256": "6f1265283100a32ef5fee66a672bc0f3d37877310522c72c8d52a57b95bf6a45"
+      },
+      "browser": {
+        "status": "passed",
+        "cases": 18,
+        "engines": [
+          "chromium",
+          "firefox",
+          "webkit"
+        ],
+        "retries": 0,
+        "transport": "injected synthetic responses;not real-backend E2E",
+        "tarballSha256": "844f8dcb197071013429b9c0c3e2cbc6126724dca747c987238546a2ea98c05c",
+        "installedSdkSha256": "3f98ba04f9e17135210bf1d46e9f68477f1bd0cbda42f6448a33d0c2322528f6",
+        "installedAuthSha256": "de2ff388e456f166396285deed6e5b1214e655aa021b70afe802b1b83d357f28",
+        "referenceUmdSha256": "59d39487c3589843b410322d8a3d562ce022aba1e5ccb16898ef3fb2a0da2ecd",
+        "runtimeDependencies": {
+          "trailbase": {
+            "version": "0.14.3",
+            "integrity": "sha512-nWc+DozEa0Jmv1WQJltUPUExfqYU/hIZEpyHeCpmpRz7uzqQh5fnbxBdE4PArz1tvyDV64NUbU0Dhh/+igXHXg=="
+          },
+          "@types/geojson": {
+            "version": "7946.0.16",
+            "integrity": "sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg=="
+          },
+          "@ungap/raw-json": {
+            "version": "0.4.4",
+            "integrity": "sha512-mUDobz3DeEItDmI34Hg+eL9hTTJSZbIvsvGAr42YoK4IyS7SWKmF5Xa0pI8RWFZSijL8QmfvCNH3s8HYJNxKaw=="
+          },
+          "geojson": {
+            "version": "0.5.0",
+            "integrity": "sha512-/Bx5lEn+qRF4TfQ5aLu6NH+UKtvIv7Lhc487y/c8BdludrCTpiWf9wyI0RTyqg49MFefIAvFDuEi5Dfd/zgNxQ=="
+          },
+          "jwt-decode": {
+            "version": "4.0.0",
+            "integrity": "sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA=="
+          },
+          "uuid": {
+            "version": "14.0.2",
+            "integrity": "sha512-xZe/16rV4aa+HGSOCiY2YeLT1OybRLrrkL/Rqaq7p7GMVXjFh+6wN4oMYgjFmnSnhY8t6Xpdl2l9qmnHYuMHwQ=="
+          }
+        },
+        "reportSha256": "28fe7f69eab4da270707e90e9bd1f996b0a2bd646ba30113ca549e6208e8fd4b",
+        "ownedTemporaryCleanup": "passed",
+        "engineCasesEach": 6
+      }
+    },
+    {
+      "node": "24.21.0",
+      "rootUnits": {
+        "passed": 402,
+        "failed": 0,
+        "reportSha256": "db53b6ab51cc9c28df04e40ebfc37695628c2d4c9aed0799308c9cd756221856"
+      },
+      "sdkUnits": {
+        "passed": 293,
+        "failed": 0
+      },
+      "coverage": {
+        "status": "passed",
+        "thresholds": {
+          "statements": 95,
+          "lines": 95,
+          "functions": 95,
+          "branches": 90
+        },
+        "totals": {
+          "statements": {
+            "total": 985,
+            "covered": 960,
+            "skipped": 0,
+            "pct": 97.46
+          },
+          "lines": {
+            "total": 643,
+            "covered": 640,
+            "skipped": 0,
+            "pct": 99.53
+          },
+          "functions": {
+            "total": 155,
+            "covered": 154,
+            "skipped": 0,
+            "pct": 99.35
+          },
+          "branches": {
+            "total": 747,
+            "covered": 711,
+            "skipped": 0,
+            "pct": 95.18
+          }
+        },
+        "perModuleThresholdsPassed": true,
+        "reportSha256": "d722dab6a588a0009b7f5fa8d4eeb1ddd912895725018ac398d09b9c23dcb0fd"
+      },
+      "package": {
+        "checks": 4,
+        "cleanup": "passed",
+        "tarballSha256": "844f8dcb197071013429b9c0c3e2cbc6126724dca747c987238546a2ea98c05c",
+        "reportSha256": "a63982b260245cd32543e5dfb8a2e089272e1b13bc7318cb81494b01c9a3c763"
+      },
+      "browser": {
+        "status": "passed",
+        "cases": 18,
+        "engines": [
+          "chromium",
+          "firefox",
+          "webkit"
+        ],
+        "retries": 0,
+        "transport": "injected synthetic responses;not real-backend E2E",
+        "tarballSha256": "844f8dcb197071013429b9c0c3e2cbc6126724dca747c987238546a2ea98c05c",
+        "installedSdkSha256": "3f98ba04f9e17135210bf1d46e9f68477f1bd0cbda42f6448a33d0c2322528f6",
+        "installedAuthSha256": "de2ff388e456f166396285deed6e5b1214e655aa021b70afe802b1b83d357f28",
+        "referenceUmdSha256": "59d39487c3589843b410322d8a3d562ce022aba1e5ccb16898ef3fb2a0da2ecd",
+        "runtimeDependencies": {
+          "trailbase": {
+            "version": "0.14.3",
+            "integrity": "sha512-nWc+DozEa0Jmv1WQJltUPUExfqYU/hIZEpyHeCpmpRz7uzqQh5fnbxBdE4PArz1tvyDV64NUbU0Dhh/+igXHXg=="
+          },
+          "@types/geojson": {
+            "version": "7946.0.16",
+            "integrity": "sha512-6C8nqWur3j98U6+lXDfTUWIfgvZU+EumvpHKcYjujKH7woYyLj2sUmff0tRhrqM7BohUw7Pz3ZB1jj2gW9Fvmg=="
+          },
+          "@ungap/raw-json": {
+            "version": "0.4.4",
+            "integrity": "sha512-mUDobz3DeEItDmI34Hg+eL9hTTJSZbIvsvGAr42YoK4IyS7SWKmF5Xa0pI8RWFZSijL8QmfvCNH3s8HYJNxKaw=="
+          },
+          "geojson": {
+            "version": "0.5.0",
+            "integrity": "sha512-/Bx5lEn+qRF4TfQ5aLu6NH+UKtvIv7Lhc487y/c8BdludrCTpiWf9wyI0RTyqg49MFefIAvFDuEi5Dfd/zgNxQ=="
+          },
+          "jwt-decode": {
+            "version": "4.0.0",
+            "integrity": "sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA=="
+          },
+          "uuid": {
+            "version": "14.0.2",
+            "integrity": "sha512-xZe/16rV4aa+HGSOCiY2YeLT1OybRLrrkL/Rqaq7p7GMVXjFh+6wN4oMYgjFmnSnhY8t6Xpdl2l9qmnHYuMHwQ=="
+          }
+        },
+        "reportSha256": "15d2ce522ab190ac5b383142fa84ab3bfdeb398b873e22762942952cc3bd7bff",
+        "ownedTemporaryCleanup": "passed",
+        "engineCasesEach": 6
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "22.23.2-check",
+      "node": "22.23.2",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "b160301dfde1a9bd08e6edde2f26598f48aab3a6c28c92a1ef2558daf0aae2a9"
+    },
+    {
+      "name": "22.23.2-build-sdk",
+      "node": "22.23.2",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "2c7e2caf07dc0060ac7b8219a844ae0b83026247dd05b4edf7e3bac59054bb09"
+    },
+    {
+      "name": "22.23.2-test-unit",
+      "node": "22.23.2",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "0d60080e66cdfaf6345e019dfc3dd81ef7a24521f4089b7a344483630e364d07"
+    },
+    {
+      "name": "22.23.2-test-sdk-unit",
+      "node": "22.23.2",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "6d35fe1088db58c283c2cb0577276fb8117fc503fefd8f8d3ffb8d5142b4e3de"
+    },
+    {
+      "name": "22.23.2-test-sdk-coverage",
+      "node": "22.23.2",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "c5391992b166b5ce142a98b70df3f0a0aa4c7085a031756381f301b87ee0ac3e"
+    },
+    {
+      "name": "22.23.2-test-sdk-package",
+      "node": "22.23.2",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "58014bcc1c5926fbd04d7211a31a51eee6f075c971ba9d30df5cb3ac94a8f4a6"
+    },
+    {
+      "name": "22.23.2-browser-pack",
+      "node": "22.23.2",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "844154a0f49c1da133178af36d0d8a1ed8097be63f40d0fcfbf826452597e6db"
+    },
+    {
+      "name": "22.23.2-browser-offline-install",
+      "node": "22.23.2",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "9e24f597ec2cb658476a7fbf0ac50262fe76ae4bccc60ac1ea49b97315e2fe36"
+    },
+    {
+      "name": "22.23.2-browser-realms",
+      "node": "22.23.2",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "ee5fbe32e1a18514a42e08a94c6074e8074be81536c0f281111bbd56b52a3965"
+    },
+    {
+      "name": "24.21.0-check",
+      "node": "24.21.0",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "b160301dfde1a9bd08e6edde2f26598f48aab3a6c28c92a1ef2558daf0aae2a9"
+    },
+    {
+      "name": "24.21.0-build-sdk",
+      "node": "24.21.0",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "2c7e2caf07dc0060ac7b8219a844ae0b83026247dd05b4edf7e3bac59054bb09"
+    },
+    {
+      "name": "24.21.0-test-unit",
+      "node": "24.21.0",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "0d60080e66cdfaf6345e019dfc3dd81ef7a24521f4089b7a344483630e364d07"
+    },
+    {
+      "name": "24.21.0-test-sdk-unit",
+      "node": "24.21.0",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "8e7c800604300ca8b46bafcafd7a9d1f42ebd047722a59a68f12d0c9b1ece35c"
+    },
+    {
+      "name": "24.21.0-test-sdk-coverage",
+      "node": "24.21.0",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "a9e84ab7a699f420cfeb2323e413df958c3e296a935dd7a8ba5294221358df64"
+    },
+    {
+      "name": "24.21.0-test-sdk-package",
+      "node": "24.21.0",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "58014bcc1c5926fbd04d7211a31a51eee6f075c971ba9d30df5cb3ac94a8f4a6"
+    },
+    {
+      "name": "24.21.0-browser-pack",
+      "node": "24.21.0",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "844154a0f49c1da133178af36d0d8a1ed8097be63f40d0fcfbf826452597e6db"
+    },
+    {
+      "name": "24.21.0-browser-offline-install",
+      "node": "24.21.0",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "ec1fa1e8c8e412f74723e76d9b1bc7c60c6304dd3c572ea6b70ca1a0990f52ab"
+    },
+    {
+      "name": "24.21.0-browser-realms",
+      "node": "24.21.0",
+      "status": "passed",
+      "exit": 0,
+      "error": null,
+      "logSha256": "27fe91a0799e25e4d75171909ea30a45db643c9e66e104727a76b59c91593606"
+    }
+  ],
+  "realProof": {
+    "newBackendFixtures": 0,
+    "mailOrLiveAuthExecuted": false,
+    "currentSourceRealDataDatabaseReferenceInstalledNodeExecuted": false,
+    "existingRealAssertionsStrengthened": [
+      "tests/phase-a/sdk-data.test.ts",
+      "tests/sdk-browser/data.spec.ts"
+    ],
+    "strengthenedRealAssertionsExecuted": false,
+    "missing": [
+      "Fresh separately coordinated frozen owned fixture for current source:real data/DB/constraints/shared reference and installed Node both pins",
+      "Primary real confirmation/auth/CRUD/persistence/refresh/logout/permissions/fault/teardown packed browsers Chromium Firefox WebKit",
+      "Applicable supported auth/security/fault/refresh/strict research/expiry/upgrade/legacy/example/cleanup regressions",
+      "Complete release/platform/security/maintainer signoff"
+    ],
+    "reason": "Retained original demo lock/resources protected;BMwindowRELEASED/claimsconsumed;no new real fixture handoff/freeze/clearance obtained. Not N/A or waived;synthetic checks cannot substitute.",
+    "postReleaseResourceQueries": 0
+  },
+  "remoteReconciliation": {
+    "status": "remote-reconciled-ancestor",
+    "remote": "9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb",
+    "local": "c9e7f175be73a05846a3b782be58c8cd58e7130e",
+    "remoteOnly": 0,
+    "localOnly": 7,
+    "relationship": "local-ahead",
+    "merge": false,
+    "rebase": false,
+    "reset": false,
+    "force": false,
+    "configChange": false,
+    "credentialsPrinted": false,
+    "push": false,
+    "ci": false
+  },
+  "history": {
+    "priorProposalAndBmEvidencePreserved": true,
+    "originalDemoChanged": false,
+    "genuine47c": "historical2PASS3FAILunchanged",
+    "strictAndStorageRealtimeFailures": "unchanged/unwaived",
+    "missingArtifacts": "remainmissing"
+  },
+  "boundaries": {
+    "overallCrudCompatibility": false,
+    "fullEnvelopeParity": false,
+    "mappingFreeCrud": false,
+    "metadataArchitectureAdopted": false,
+    "dependenciesOrPinsChanged": false,
+    "backendOrLiveDeploymentChanged": false,
+    "implementationCommitted": false,
+    "push": false,
+    "newCi": false,
+    "maintainerSignoff": false
+  }
+}
