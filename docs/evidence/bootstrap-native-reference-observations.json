@@ -1,0 +1,853 @@
+{
+  "scope": "Offline sanitized case-by-case extraction of the completed once-only BM diagnostics; no live replay, architecture adoption or signoff",
+  "baseCommit": "dcafdcf62f55ae8dc4175bb61c5b39bd33b74914",
+  "sourceSha256": "e50637bd4aa604b6e5850047c7043eba901985b336a88ea7afa4e483e97bf749",
+  "authSha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d",
+  "pins": {
+    "executionNode": "22.23.2",
+    "nativeServer": "official TrailBase 0.35.9 / a106ce6338f9831140c92ac16e051901ed92d576",
+    "nativeClient": "0.14.3",
+    "referenceClient": "2.117.2",
+    "referenceCli": "2.119.0"
+  },
+  "bindings": {
+    "acceptedFreezeSha256": "f9b224f138a307171c122011f9522055f20a327eed25fc2ae6643071c0e08f31",
+    "archiveManifestSha256": "223efc5b6f6a1e4f23bf20c80a18491424965f497bbec720ba224ea7762d58a3",
+    "archiveFilesRehashed": 1324,
+    "releaseReceiptSha256": "21190e01a55724b1c5d64b2d7858e92170eac5832a5d69d224d460a76b1229e2",
+    "sourceFiles": [
+      {
+        "path": "source/examples/todos/app.js",
+        "bytes": 49015,
+        "sha256": "261a96e0941049fed274abb21909f48af26affd3cf44bdf8dba140623234644e"
+      },
+      {
+        "path": "source/package-lock.json",
+        "bytes": 70226,
+        "sha256": "bc04dd5a6681f5a387b127600bfbde8789d0e4ff3c324d0eb9a1fd6a12e03040"
+      },
+      {
+        "path": "source/package.json",
+        "bytes": 2816,
+        "sha256": "f368c46b7472690c17a49b14aa74e71843c9c80533d8d4a38f32bf54b389ce5f"
+      },
+      {
+        "path": "source/src/auth.ts",
+        "bytes": 39557,
+        "sha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d"
+      },
+      {
+        "path": "source/src/common.ts",
+        "bytes": 2757,
+        "sha256": "37882c9399fb4d4b92fb6ad99fb37aa990e58a50df575938729426dd3c69389e"
+      },
+      {
+        "path": "source/src/index.ts",
+        "bytes": 21938,
+        "sha256": "3bf9008ffa96cb611496858833ea40de13ec7df037ee17cbc7926a6e365b538a"
+      },
+      {
+        "path": "source/tests/fixtures/supabase/config.toml",
+        "bytes": 1122,
+        "sha256": "382f4843364d47c10ad0a5d4e44e2ecceb9823eea06bc292d3201d166b46c676"
+      },
+      {
+        "path": "source/tests/fixtures/supabase/migrations/20260602000000_phase_a.sql",
+        "bytes": 4925,
+        "sha256": "8e916463d0d850518b7cfbc6a4b19550891b0553a55f1a7503fc6e9f84ef3b4c"
+      },
+      {
+        "path": "source/tests/fixtures/supabase/migrations/20261105000000_bootstrap_metadata.sql",
+        "bytes": 3275,
+        "sha256": "2d3123a6bf65f5d71fcce5d2180cafeca65784951652d5cb6d99274a6ce7d754"
+      },
+      {
+        "path": "source/tests/fixtures/trailbase/config.textproto",
+        "bytes": 4481,
+        "sha256": "790a8d1f6eeab9e7a637066936c4c701e01c22be7cf900251212baf62e5f4559"
+      },
+      {
+        "path": "source/tests/fixtures/trailbase/migrations/main/U1780400000__phase_a.sql",
+        "bytes": 2102,
+        "sha256": "b999a269ffba30fa0dde5bdad573566cba602129e42b643dd1f9ee2e01c52b86"
+      },
+      {
+        "path": "source/tests/fixtures/trailbase/migrations/main/U1793839000__bootstrap_metadata.sql",
+        "bytes": 6314,
+        "sha256": "33e9834528f851022833f879ca0fee835c88627dfe0bbbdbb12b9159784ee414"
+      },
+      {
+        "path": "source/tests/proofs/bootstrap-mutation-effects.mjs",
+        "bytes": 1786,
+        "sha256": "9b436a7d68d2d3aa20d12ac4f8b10033fac6656c932b183830714f9c8e05b1ef"
+      },
+      {
+        "path": "source/tests/proofs/bootstrap-native-reference.test.ts",
+        "bytes": 30729,
+        "sha256": "d3ebd220f11415111ae67bf2ef01105c371918f086cc50f79ac8ba04296a6141"
+      },
+      {
+        "path": "source/tests/proofs/bootstrap-network-owner.mjs",
+        "bytes": 8387,
+        "sha256": "c7cf5bbedda899dd90a517b27c1b85b03eb432f478ad6a8ed6731ce7ae309529"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "BM01",
+      "observed": {
+        "wholeSchemaEqualAfterOnlyTitleReplacement": [
+          {
+            "mode": "Insert",
+            "wholeSchemaEqual": true
+          },
+          {
+            "mode": "Select",
+            "wholeSchemaEqual": true
+          },
+          {
+            "mode": "Update",
+            "wholeSchemaEqual": true
+          }
+        ],
+        "physicalPrimaryKeys": [
+          {
+            "table": "metadata_pk_a",
+            "primaryKey": [
+              "id"
+            ]
+          },
+          {
+            "table": "metadata_pk_b",
+            "primaryKey": [
+              "alternate"
+            ]
+          }
+        ],
+        "controlledPathOneUpdatedExposedId": [
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ]
+      },
+      "conclusion": "All three full schemas hide a real PK difference. Guessing id can change the wrong allowed logical row; generic schema is not sufficient authority.",
+      "status": "passed-diagnostic-not-parity",
+      "evidence": [
+        {
+          "path": "run/BM01-observations-private.jsonl",
+          "bytes": 9651,
+          "sha256": "8bbc7c10f1ad4db844833f0a853424d2cb726a9c5f2c8571f6e07ba356bf45e7"
+        },
+        {
+          "path": "run/BM01-private.json",
+          "bytes": 8908,
+          "sha256": "2049336f5e97f459d20e5b4ff893970d2dea78fddaa47672e1a9057674fb51d3"
+        }
+      ]
+    },
+    {
+      "id": "BM02",
+      "observed": {
+        "nativePermissionMatrix": [
+          {
+            "api": "todos",
+            "actor": "anonymous",
+            "schemaStatus": 403,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos",
+            "actor": "A",
+            "schemaStatus": 200,
+            "readStatus": 200,
+            "createStatus": 200,
+            "visibleRows": 0
+          },
+          {
+            "api": "todos",
+            "actor": "foreign-B",
+            "schemaStatus": 200,
+            "readStatus": 200,
+            "createStatus": 403,
+            "visibleRows": 0
+          },
+          {
+            "api": "todos_meta_schema",
+            "actor": "anonymous",
+            "schemaStatus": 403,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos_meta_schema",
+            "actor": "A",
+            "schemaStatus": 200,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos_meta_schema",
+            "actor": "foreign-B",
+            "schemaStatus": 200,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos_meta_read",
+            "actor": "anonymous",
+            "schemaStatus": 403,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos_meta_read",
+            "actor": "A",
+            "schemaStatus": 403,
+            "readStatus": 200,
+            "createStatus": 403,
+            "visibleRows": 1
+          },
+          {
+            "api": "todos_meta_read",
+            "actor": "foreign-B",
+            "schemaStatus": 403,
+            "readStatus": 200,
+            "createStatus": 403,
+            "visibleRows": 0
+          },
+          {
+            "api": "todos_meta_create",
+            "actor": "anonymous",
+            "schemaStatus": 403,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos_meta_create",
+            "actor": "A",
+            "schemaStatus": 403,
+            "readStatus": 403,
+            "createStatus": 200
+          },
+          {
+            "api": "todos_meta_create",
+            "actor": "foreign-B",
+            "schemaStatus": 403,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos_meta_rule_denied",
+            "actor": "anonymous",
+            "schemaStatus": 403,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos_meta_rule_denied",
+            "actor": "A",
+            "schemaStatus": 403,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos_meta_rule_denied",
+            "actor": "foreign-B",
+            "schemaStatus": 403,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos_meta_world_schema",
+            "actor": "anonymous",
+            "schemaStatus": 200,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos_meta_world_schema",
+            "actor": "A",
+            "schemaStatus": 200,
+            "readStatus": 403,
+            "createStatus": 403
+          },
+          {
+            "api": "todos_meta_world_schema",
+            "actor": "foreign-B",
+            "schemaStatus": 200,
+            "readStatus": 403,
+            "createStatus": 403
+          }
+        ],
+        "reference": {
+          "inserted": {
+            "ownFields": [
+              "count",
+              "data",
+              "error",
+              "status",
+              "statusText",
+              "success"
+            ],
+            "status": 201,
+            "dataType": "null",
+            "error": null
+          },
+          "denied": {
+            "ownFields": [
+              "count",
+              "data",
+              "error",
+              "status",
+              "statusText",
+              "success"
+            ],
+            "status": 403,
+            "dataType": "null",
+            "error": {
+              "code": "42501",
+              "ownFields": [
+                "code",
+                "details",
+                "hint",
+                "message"
+              ]
+            }
+          },
+          "spoof": {
+            "ownFields": [
+              "count",
+              "data",
+              "error",
+              "status",
+              "statusText",
+              "success"
+            ],
+            "status": 403,
+            "dataType": "null",
+            "error": {
+              "code": "42501",
+              "ownFields": [
+                "code",
+                "details",
+                "hint",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "conclusion": "SCHEMA, READ and CREATE are independently enforced. A mandatory target schema/data lookup breaks legitimate CREATE-only operation; separate metadata permission is a real cost.",
+      "status": "passed-diagnostic-not-parity",
+      "evidence": [
+        {
+          "path": "run/BM02-observations-private.jsonl",
+          "bytes": 224402,
+          "sha256": "f1645897d279d31a1530a589aba0edca4cee782affdf9a34ca118362aff1679b"
+        },
+        {
+          "path": "run/BM02-private.json",
+          "bytes": 22124,
+          "sha256": "d6c84622b2b95612e08112b537fd840b203589caf33c910696ebfb95c5375e7f"
+        }
+      ]
+    },
+    {
+      "id": "BM03",
+      "observed": {
+        "canonicalBodyAndRecordPathAccepted": true,
+        "readStatus": 200,
+        "rawUuidOutput": "base64url string, not canonical UUID",
+        "rawCompleted": 1,
+        "databaseIdBytes": 16,
+        "databaseCompletedType": "integer",
+        "updateStatus": 200,
+        "deleteStatus": 200,
+        "referenceCompleted": false
+      },
+      "conclusion": "Native accepts canonical UUID body/path and boolean JSON for INTEGER writes, but raw UUID/INTEGER output still differs from reference. Not a UUID filter proof.",
+      "status": "passed-diagnostic-not-parity",
+      "evidence": [
+        {
+          "path": "run/BM03-observations-private.jsonl",
+          "bytes": 7468,
+          "sha256": "139236dac8fb768a932511768c003afbf49834cf63f5d2be6e6e626dde675f84"
+        },
+        {
+          "path": "run/BM03-private.json",
+          "bytes": 6359,
+          "sha256": "4835ff5cb5d1b031db553064ec6ee905dc2886b2a6c1ec7ed4391020025249ad"
+        }
+      ]
+    },
+    {
+      "id": "BM04",
+      "observed": {
+        "nativeCanonicalUuidFilterRows": 0,
+        "nativePaddedBase64FilterRows": 1,
+        "referenceCanonicalUuidFilterRows": 1
+      },
+      "conclusion": "Canonical UUID filter returned empty while encoded native and canonical reference each returned the exact row. Body/path support cannot justify canonical BLOB filters.",
+      "status": "passed-diagnostic-not-parity",
+      "evidence": [
+        {
+          "path": "run/BM04-observations-private.jsonl",
+          "bytes": 1378,
+          "sha256": "ed67b7630c6efa6877aaa042cf74510f13799003f8a5bec8ca97b6140faf3336"
+        },
+        {
+          "path": "run/BM04-private.json",
+          "bytes": 872,
+          "sha256": "e483e13e0b8b6a490957fe791e6f7a8e2b8329417a77ddefc862845cf78b0e76"
+        }
+      ]
+    },
+    {
+      "id": "BM05",
+      "observed": {
+        "predicates": [
+          {
+            "value": false,
+            "nativeCount": 2,
+            "referenceCount": 2,
+            "nativeAllBoolean": true
+          },
+          {
+            "value": true,
+            "nativeCount": 1,
+            "referenceCount": 1,
+            "nativeAllBoolean": true
+          }
+        ],
+        "invalidInputs": [
+          {
+            "input": 1,
+            "nativeStatus": 400,
+            "reference": {
+              "ownFields": [
+                "count",
+                "data",
+                "error",
+                "status",
+                "statusText",
+                "success"
+              ],
+              "status": 201,
+              "dataType": "null",
+              "error": null
+            }
+          },
+          {
+            "input": "not-json",
+            "nativeStatus": 400,
+            "reference": {
+              "ownFields": [
+                "count",
+                "data",
+                "error",
+                "status",
+                "statusText",
+                "success"
+              ],
+              "status": 400,
+              "dataType": "null",
+              "error": {
+                "code": "22P02",
+                "ownFields": [
+                  "code",
+                  "details",
+                  "hint",
+                  "message"
+                ]
+              }
+            }
+          }
+        ],
+        "jsonStringTrueAccepted": true,
+        "omittedDefaultAndExplicitFalse": "false JSON in TEXT; boolean false on native output",
+        "sqlDefault": "'false'",
+        "storageTypes": [
+          "string"
+        ],
+        "updatedDefaultReadTrue": true,
+        "indexPlan": [
+          "SEARCH todos_json USING INDEX todos_json_completed (completed=?)"
+        ]
+      },
+      "conclusion": "Declared JSON-TEXT boolean reduces output mapping and supports tested equality/default/update behavior, but requires different DDL/default/index/storage. Numeric 1 is rejected natively but accepted by reference: not full coercion parity.",
+      "status": "passed-diagnostic-not-parity",
+      "evidence": [
+        {
+          "path": "run/BM05-observations-private.jsonl",
+          "bytes": 39553,
+          "sha256": "cb00928256963eb9ec7115dad9ad4e38cea54807908f08af6c4de9d7c648b17a"
+        },
+        {
+          "path": "run/BM05-private.json",
+          "bytes": 6222,
+          "sha256": "bee3f25e3c745b0c57568a2ad6e9fb36b41a5dbe07648a744815d238223ef28f"
+        }
+      ]
+    },
+    {
+      "id": "BM06",
+      "observed": {
+        "apis": [
+          {
+            "api": "todos_json",
+            "physicalPrimaryKey": [
+              "id"
+            ],
+            "modes": [
+              {
+                "mode": "Insert",
+                "annotationPresent": true,
+                "hiddenColumnInProperties": true
+              },
+              {
+                "mode": "Select",
+                "annotationPresent": false,
+                "hiddenColumnInProperties": false
+              },
+              {
+                "mode": "Update",
+                "annotationPresent": true,
+                "hiddenColumnInProperties": true
+              }
+            ]
+          },
+          {
+            "api": "metadata_bad_marker",
+            "physicalPrimaryKey": [
+              "id"
+            ],
+            "modes": [
+              {
+                "mode": "Insert",
+                "annotationPresent": true,
+                "hiddenColumnInProperties": true
+              },
+              {
+                "mode": "Select",
+                "annotationPresent": false,
+                "hiddenColumnInProperties": false
+              },
+              {
+                "mode": "Update",
+                "annotationPresent": true,
+                "hiddenColumnInProperties": true
+              }
+            ]
+          }
+        ],
+        "falseMarkerPreserved": true,
+        "usedMarkerForRouting": false,
+        "dataRowHidesCarrier": true
+      },
+      "conclusion": "Insert/Update preserve annotations while Select/data hide the carrier. The same mechanism preserves a false PK marker: a carrier, not authoritative validation.",
+      "status": "passed-diagnostic-not-parity",
+      "evidence": [
+        {
+          "path": "run/BM06-observations-private.jsonl",
+          "bytes": 10626,
+          "sha256": "8532365f44f89ee453ca3e24a3e944c2e8931433749e624c98653248e4bc2768"
+        },
+        {
+          "path": "run/BM06-private.json",
+          "bytes": 12971,
+          "sha256": "4dd84047e3f209b3a8feca57ce80fb028c5871d8e7d25e7aa027c72f35611c43"
+        }
+      ]
+    },
+    {
+      "id": "BM07",
+      "observed": {
+        "backends": [
+          {
+            "backend": "current mapped source SDK",
+            "pages": [
+              {
+                "count": 1,
+                "hasMore": true
+              },
+              {
+                "count": 1,
+                "hasMore": true
+              },
+              {
+                "count": 1,
+                "hasMore": false
+              }
+            ],
+            "defaults": {
+              "completed": false,
+              "priority": 0,
+              "note": null
+            },
+            "activeFilterRows": 2,
+            "completedFilterRows": 1,
+            "updatedTargetCompleted": true,
+            "controlUnchanged": true
+          },
+          {
+            "backend": "installed official Supabase SDK",
+            "pages": [
+              {
+                "count": 1,
+                "hasMore": true
+              },
+              {
+                "count": 1,
+                "hasMore": true
+              },
+              {
+                "count": 1,
+                "hasMore": false
+              }
+            ],
+            "defaults": {
+              "completed": false,
+              "priority": 0,
+              "note": null
+            },
+            "activeFilterRows": 2,
+            "completedFilterRows": 1,
+            "updatedTargetCompleted": true,
+            "controlUnchanged": true
+          }
+        ],
+        "immediateFullMutationAndAuditAssertionsReevaluated": 4,
+        "legacyMappingAndAuthBootstrap": true,
+        "standardConstructorPassed": false,
+        "mountedApp": false
+      },
+      "conclusion": "Actual loadTaskPage and fixed Todo data workload work with legacy mapping/auth. No standard bootstrap, mounted browser or installed candidate package proof.",
+      "status": "passed-diagnostic-not-parity",
+      "evidence": [
+        {
+          "path": "run/BM07-observations-private.jsonl",
+          "bytes": 96557,
+          "sha256": "b947c7aa6e852e6cdc71740406314ea5acb18777190f97fff73af679fc468106"
+        },
+        {
+          "path": "run/BM07-private.json",
+          "bytes": 22685,
+          "sha256": "75fef1b866075f1eb12aee7350f9f3cf7cb545eae54e9d646ceafbfb9ae63506"
+        }
+      ]
+    },
+    {
+      "id": "BM08",
+      "observed": {
+        "cardinality": [
+          {
+            "backend": "current mapped source SDK",
+            "zero": {
+              "ownFields": [
+                "data",
+                "error"
+              ],
+              "dataType": "null",
+              "error": {
+                "name": "CardinalityError",
+                "ownFields": [
+                  "message",
+                  "name"
+                ]
+              }
+            },
+            "one": {
+              "ownFields": [
+                "data",
+                "error"
+              ],
+              "dataType": "object",
+              "error": null
+            },
+            "many": {
+              "ownFields": [
+                "data",
+                "error"
+              ],
+              "dataType": "null",
+              "error": {
+                "name": "CardinalityError",
+                "ownFields": [
+                  "message",
+                  "name"
+                ]
+              }
+            }
+          },
+          {
+            "backend": "installed official Supabase SDK",
+            "zero": {
+              "ownFields": [
+                "count",
+                "data",
+                "error",
+                "status",
+                "statusText",
+                "success"
+              ],
+              "status": 406,
+              "dataType": "null",
+              "error": {
+                "code": "PGRST116",
+                "ownFields": [
+                  "code",
+                  "details",
+                  "hint",
+                  "message"
+                ]
+              }
+            },
+            "one": {
+              "ownFields": [
+                "count",
+                "data",
+                "error",
+                "status",
+                "statusText",
+                "success"
+              ],
+              "status": 200,
+              "dataType": "object",
+              "error": null
+            },
+            "many": {
+              "ownFields": [
+                "count",
+                "data",
+                "error",
+                "status",
+                "statusText",
+                "success"
+              ],
+              "status": 406,
+              "dataType": "null",
+              "error": {
+                "code": "PGRST116",
+                "ownFields": [
+                  "code",
+                  "details",
+                  "hint",
+                  "message"
+                ]
+              }
+            }
+          }
+        ],
+        "knownAndUnknownPatch": {
+          "nativeStatus": 200,
+          "nativeExactTitleChangeAndOneAuditReevaluated": true,
+          "reference": {
+            "ownFields": [
+              "count",
+              "data",
+              "error",
+              "status",
+              "statusText",
+              "success"
+            ],
+            "status": 400,
+            "dataType": "null",
+            "error": {
+              "code": "PGRST204",
+              "ownFields": [
+                "code",
+                "details",
+                "hint",
+                "message"
+              ]
+            }
+          },
+          "referenceCompleteStateUnchanged": true
+        },
+        "nativeForeignRecordReadStatus": 403,
+        "nativeMissingRecordReadStatus": 403,
+        "referenceForeignListStatus": 200,
+        "referenceForeignListRows": 0,
+        "standardTwoArgumentConstructorThrows": true
+      },
+      "conclusion": "Cardinality rejection categories align, result/error fields do not. Native partially applies known+unknown PATCH; reference rejects atomically. Record read versus filtered list is not a like-for-like mutation comparison.",
+      "status": "passed-diagnostic-not-parity",
+      "evidence": [
+        {
+          "path": "run/BM08-observations-private.jsonl",
+          "bytes": 83232,
+          "sha256": "8cb2af77c2fbb1d700388a57c740b6196c564c929e87c99f70a96736a4782809"
+        },
+        {
+          "path": "run/BM08-private.json",
+          "bytes": 39005,
+          "sha256": "413d7d2f45fde20b9f0dd8d3e6224623773b669e6b2edbb19b411aaf024f052d"
+        }
+      ]
+    },
+    {
+      "id": "BM09",
+      "observed": {
+        "catalogRows": 2,
+        "targetSchemaStatus": 403,
+        "targetReadStatus": 403,
+        "physicalPrimaryKey": [
+          "id"
+        ],
+        "logicalCodecsUnresolved": true,
+        "falseDescriptorAlsoReadable": true,
+        "usedCatalogForRouting": false,
+        "atomicRequestBindingProven": false,
+        "rollbackSafetyProven": false
+      },
+      "conclusion": "A separately readable generated catalog can expose physical facts without target READ/SCHEMA, but adds API/grant/provisioning and permits inconsistent descriptors. No logical-codec/atomic-binding/rollback solution.",
+      "status": "passed-diagnostic-not-parity",
+      "evidence": [
+        {
+          "path": "run/BM09-observations-private.jsonl",
+          "bytes": 3018,
+          "sha256": "c13f8c7939f55b3ee04c6a1b9fc4bcce088b800db5e4f75194ae70308dcc2fdc"
+        },
+        {
+          "path": "run/BM09-private.json",
+          "bytes": 2892,
+          "sha256": "4b98480b1263da4414afe4fce53c38ec8ed4778bb7a58675ffe58485681968d5"
+        }
+      ]
+    }
+  ],
+  "extractionVerification": {
+    "all1324ArchiveLengthsAndHashesVerified": true,
+    "fourBm07AndOneBm08ImmediateMutationAssertionsReevaluated": true,
+    "credentialOrRowValuesPublished": false,
+    "postReleaseGlobalOrResourceQueries": 0
+  },
+  "boundaries": {
+    "actualFixtures": 1,
+    "entered": 9,
+    "diagnosticPasses": 9,
+    "failures": 0,
+    "unexecutedCases": 0,
+    "retries": 0,
+    "resourceWindow": "RELEASED",
+    "standardBootstrapPassed": false,
+    "architectureAdopted": false,
+    "releaseSignoff": false,
+    "newBackendExecution": false,
+    "untested": [
+      "BM08 missing/foreign UPDATE/DELETE no-op semantics were planned but not executed in this case; only record GET vs filtered list was captured",
+      "BM05 reference numeric-1 coercion exact row value/postcondition not asserted immediately; status201 is not complete coercion proof",
+      "BM05 predicates were tested before update; no post-update filter/index matrix or performance measurement",
+      "BM07 page workload is source SDK/backend only, not installed candidate or mounted browser; no populated opposite-owner data control in this workload",
+      "BM01 complete-schema equality is only for two controlled integer-PK fixtures, not arbitrary schema equivalence",
+      "No generic resolver, JSON-boolean current-codec qualification, stale-cache migration, mixed handlers, rollback or lookup/write atomic binding",
+      "No current installed-package/browser/security/platform/mobile/accessibility/TLS/full release qualification"
+    ],
+    "history": "Rejected419/444 freezes and red controls, genuine47c2PASS3FAIL, earlier AL/Storage/Realtime/strict failures and missing evidence remain unchanged; 9 diagnostic passes do not supersede them"
+  }
+}

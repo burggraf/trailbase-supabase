@@ -1,0 +1,362 @@
+{
+  "scope": "Read-only feasibility audit and source-bound independent offline diagnosis, no architecture adoption or parity signoff",
+  "baseCommit": "dcafdcf62f55ae8dc4175bb61c5b39bd33b74914",
+  "sourceSha256": "e50637bd4aa604b6e5850047c7043eba901985b336a88ea7afa4e483e97bf749",
+  "goal": "Limited feature coverage; each claimed feature matches corresponding supabase.js API AND observable behavior. No REQUIRED TrailBase-specific createClient/app mapping/wrapper/global/env registration.",
+  "hold": "Material architecture adoption pending informed decision; no SDK/sample runtime/dependency/live schema/permission/deployment edits. The earlier authoring-only/no-fixture state is historical: completedBackendWindow records one executed/released fixture, followed by offline case extraction only.",
+  "caseComparison": "docs/evidence/bootstrap-native-reference-comparison.md",
+  "caseObservations": "docs/evidence/bootstrap-native-reference-observations.json",
+  "checkpointBoundary": "newCommit:false below describes execution/release bookkeeping; a later bounded local evidence checkpoint does not alter the executed freeze or imply push/CI/adoption/signoff.",
+  "currentConstructor": "createClient<Database=unknown>(url:string,key?:string,options?:ClientOptions) nevertheless requires options.trailbase.tables at runtime; key only type-checked/unused; normal auth requires options.auth",
+  "reference": "Installed/lockfile SupabaseJS/AuthJS/StorageJS/RealtimeJS2.117.2, TrailBaseJS0.14.3, official0359/a106ce6338f9831140c92ac16e051901ed92d576. Current Context7 docs orientation only, installed/pinned source governs.",
+  "publicOfficialSources": [
+    {
+      "commit": "a106ce6338f9831140c92ac16e051901ed92d576",
+      "path": "crates/core/src/records/json_schema.rs",
+      "bytes": 2761,
+      "sha256": "e515cbb565c47860f14009ab48bbe7d3cc6586c608688a61e679a17e0e119003",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/src/records/json_schema.rs"
+    },
+    {
+      "commit": "a106ce6338f9831140c92ac16e051901ed92d576",
+      "path": "crates/schema/src/json_schema/mod.rs",
+      "bytes": 18082,
+      "sha256": "7c6aedcbc794d342675f4244fec00edbbad4f2fe12fe523f7c9900792839159c",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/schema/src/json_schema/mod.rs"
+    },
+    {
+      "commit": "a106ce6338f9831140c92ac16e051901ed92d576",
+      "path": "crates/core/proto/config.proto",
+      "bytes": 12726,
+      "sha256": "c8ec9abb9a6dcdcdcc8c540730f7ddb7faa197c8955d81b36100e52edf0ad710",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/proto/config.proto"
+    },
+    {
+      "commit": "a106ce6338f9831140c92ac16e051901ed92d576",
+      "path": "crates/core/src/records/mod.rs",
+      "bytes": 3067,
+      "sha256": "4d1397a64bc68f05276396c342f289c7e716144c98c3c8f85563f45642ae1cb0",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/src/records/mod.rs"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/schema/src/db/metadata.rs",
+      "bytes": 33130,
+      "sha256": "f64906562b030ddcc1d4a0d7a195e0317cdf6e007e4be7dfd202a90a423fc222"
+    },
+    {
+      "path": "crates/schema/src/json/mod.rs",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/schema/src/json/mod.rs",
+      "bytes": 6237,
+      "sha256": "343fb4b19faa5440ef6f8660ad1f670e8f419c93e88fd44e29e6c93229442ef6"
+    },
+    {
+      "path": "crates/schema/src/json/record.rs",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/schema/src/json/record.rs",
+      "bytes": 9702,
+      "sha256": "2b0dd287580be7ecce4e58a2268bfaba3acf54f68f63a85ce09389b1c113e1a4"
+    },
+    {
+      "path": "crates/core/src/records/record_api.rs",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/src/records/record_api.rs",
+      "bytes": 34701,
+      "sha256": "50ed0ac555f65133cf794afe31a5a9ad09d1e735a30358096129a00264468c5f"
+    },
+    {
+      "path": "crates/core/src/records/params/mod.rs",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/src/records/params/mod.rs",
+      "bytes": 28136,
+      "sha256": "414af5413efc60f65c293c52d67d96150ae167b83b57770da87cad04884864b1"
+    },
+    {
+      "path": "crates/core/src/records/filter.rs",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/src/records/filter.rs",
+      "bytes": 12176,
+      "sha256": "c0412d6093594af0ca7107cc656be5957b176497548e1debd38b794d1b3943ff"
+    },
+    {
+      "path": "crates/core/src/records/transaction.rs",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/src/records/transaction.rs",
+      "bytes": 15602,
+      "sha256": "f2bbcf15b4a582e0fac6902a9c841e7399ff72d48252a9e5455969e364e5e2a1"
+    }
+  ],
+  "prototype": {
+    "path": "docs/prototypes/bootstrap-metadata-contract.mjs",
+    "sha256": "279c2581fa438d93c3db944d6116b44cedee22c137dcdc5f9eaf6ea51cafba38",
+    "scope": "9case actual in-memory SQLite + limited source-derived schema/parser models; not native/Supabase runtime or production resolver",
+    "results": [
+      {
+        "node": "v22.23.2",
+        "cases": [
+          {
+            "name": "M01 identical modeled schemas in all three modes, different actual primary keys",
+            "status": "passed"
+          },
+          {
+            "name": "M02 guessing id can update a different logical row, not just fail harmlessly",
+            "status": "passed"
+          },
+          {
+            "name": "M03 BLOB/TEXT modeled schemas and wire values collide; value-shape UUID decoding is unsafe",
+            "status": "passed"
+          },
+          {
+            "name": "M09 native body/path UUID handling must not be generalized to BLOB filters",
+            "status": "passed"
+          },
+          {
+            "name": "M04 identical INTEGER0/1 storage cannot reveal target boolean versus bounded-integer intent",
+            "status": "passed"
+          },
+          {
+            "name": "M05 deployment introspection supplies PK/native types/fingerprint, not logical codecs",
+            "status": "passed"
+          },
+          {
+            "name": "M06 same-database catalog and DDL can roll back together; separate files do not inherit this",
+            "status": "passed"
+          },
+          {
+            "name": "M07 a fresh catalog lookup still races migration before a separate native operation",
+            "status": "passed"
+          },
+          {
+            "name": "M08 explicit JSON boolean storage reduces an output conversion, not UUID/PK requirements",
+            "status": "passed"
+          }
+        ],
+        "databasesClosed": 7,
+        "reportSha256": "b9efad0a2f8cac245d76cc1608a236cfb1fcf26d53fb1cb560474723253da8b6"
+      },
+      {
+        "node": "v24.21.0",
+        "cases": [
+          {
+            "name": "M01 identical modeled schemas in all three modes, different actual primary keys",
+            "status": "passed"
+          },
+          {
+            "name": "M02 guessing id can update a different logical row, not just fail harmlessly",
+            "status": "passed"
+          },
+          {
+            "name": "M03 BLOB/TEXT modeled schemas and wire values collide; value-shape UUID decoding is unsafe",
+            "status": "passed"
+          },
+          {
+            "name": "M09 native body/path UUID handling must not be generalized to BLOB filters",
+            "status": "passed"
+          },
+          {
+            "name": "M04 identical INTEGER0/1 storage cannot reveal target boolean versus bounded-integer intent",
+            "status": "passed"
+          },
+          {
+            "name": "M05 deployment introspection supplies PK/native types/fingerprint, not logical codecs",
+            "status": "passed"
+          },
+          {
+            "name": "M06 same-database catalog and DDL can roll back together; separate files do not inherit this",
+            "status": "passed"
+          },
+          {
+            "name": "M07 a fresh catalog lookup still races migration before a separate native operation",
+            "status": "passed"
+          },
+          {
+            "name": "M08 explicit JSON boolean storage reduces an output conversion, not UUID/PK requirements",
+            "status": "passed"
+          }
+        ],
+        "databasesClosed": 7,
+        "reportSha256": "cdc6560846de72f27ffa58e4bf05b605bd3ef950cdd90b3a712061c64c6ca107"
+      }
+    ],
+    "earlierEightCasePrivateResultsPreserved": true
+  },
+  "reducedRequirements": [
+    "from(name) can identify native RecordApi name; server config resolves backing table",
+    "native mutation JSON/record-ID paths accept canonical UUID strings; BLOB filters still only base64",
+    "native JSON mutation booleans convert toINTEGER0/1; read semantics unresolved under current schema",
+    "native explicitly JSON-typed TEXT can preserve boolean values, but requires schema/default/filter/index proof and does not solve PK/UUID barriers",
+    "remaining possible metadata minimum is PK identity, output/filter exceptions and write-field allowlist, not whole old app map"
+  ],
+  "metadataApproaches": [
+    "ordinary existing native schema",
+    "native JSON-schema annotation carrier: no new endpoint but new backend declarations/drift/SCHEMA grant, viability unproven",
+    "reduced native interoperable representation/profile",
+    "operator-generated static artifact",
+    "same-DB transactional generated catalog via ordinary native API",
+    "deployment-specific bundled generated artifact",
+    "enriched official native schema: not current0359 availability or approval"
+  ],
+  "independentlyEvaluableApiWork": [
+    "decouple auth from required mapping, standard constructor options/defaults/types without claiming functional CRUD",
+    "plain result objects and default envelope/error/cardinality formatting with source-bound reference controls",
+    "potential redundant native body/path conversion removal, not filters/output"
+  ],
+  "backendDependent": [
+    "safe mutation PK and BLOB/boolean output semantics",
+    "native mutation403 versus RLS zero-row and constraint-code attribution",
+    "missing auth identity/timestamp/confirmation facts: ordinary endpoint audit before asserting backend change"
+  ],
+  "metadataConclusion": "Per-API schema is SCHEMA-permission/rule guarded, not admin-only; wire types/required/$defs, but existing BLOB/text collide as string, integer boolean meaning and explicit PK absent. is_uuid and ordinary SQL CHECK/FK semantics not JSON-check extraction. Source observation, no new live endpoint request.",
+  "metadataDecision": "Need a complete backend-authoritative semantic source without application-supplied mapping. Ordinary0359 schema alone insufficient. Upstream enrichment or deterministic deployment-owned generation are unadopted design alternatives; no gateway/fork implied by deferred features.",
+  "controls": [
+    {
+      "node": "v22.23.2",
+      "constructorObservations": 5,
+      "networkCalls": 0,
+      "constructorReportSha256": "7170403c3213a6488f18dd78f9eedf35b15c87be7b8cf70ecac9e90d7882309b",
+      "nativeFetchCoreScenarios": [
+        {
+          "mode": "unread-open",
+          "cancellation": "rejected",
+          "receipt": "rejected",
+          "ownedSocketsBeforeExplicitPlatformClose": 1,
+          "ownedSocketsAfterJoinedClose": 0
+        },
+        {
+          "mode": "closed-unlocked",
+          "cancellation": "fulfilled",
+          "receipt": "fulfilled",
+          "ownedSocketsBeforeExplicitPlatformClose": 0,
+          "ownedSocketsAfterJoinedClose": 0
+        },
+        {
+          "mode": "unread-complete",
+          "cancellation": "rejected",
+          "receipt": "rejected",
+          "ownedSocketsBeforeExplicitPlatformClose": 0,
+          "ownedSocketsAfterJoinedClose": 0
+        }
+      ],
+      "platformReportSha256": "c46974bfb756ceb875553af296d6e858c9e669e10226197013bbfc47353daafd",
+      "scope": "Synthetic construction/loopback/native Fetch controls, not genuine TrailBase/Supabase runtime or original-failure attribution"
+    },
+    {
+      "node": "v24.21.0",
+      "constructorObservations": 5,
+      "networkCalls": 0,
+      "constructorReportSha256": "1eb80dde25d753a0b0f5396c4fa30471f16dd2f4886eb6da9ce35c7735993894",
+      "nativeFetchCoreScenarios": [
+        {
+          "mode": "unread-open",
+          "cancellation": "rejected",
+          "receipt": "rejected",
+          "ownedSocketsBeforeExplicitPlatformClose": 1,
+          "ownedSocketsAfterJoinedClose": 0
+        },
+        {
+          "mode": "closed-unlocked",
+          "cancellation": "fulfilled",
+          "receipt": "fulfilled",
+          "ownedSocketsBeforeExplicitPlatformClose": 0,
+          "ownedSocketsAfterJoinedClose": 0
+        },
+        {
+          "mode": "unread-complete",
+          "cancellation": "rejected",
+          "receipt": "rejected",
+          "ownedSocketsBeforeExplicitPlatformClose": 0,
+          "ownedSocketsAfterJoinedClose": 0
+        }
+      ],
+      "platformReportSha256": "e8e3bb42039535e5914a341e471c95d13cd9abba50bdfabb55b019f00c2b62fb",
+      "scope": "Synthetic construction/loopback/native Fetch controls, not genuine TrailBase/Supabase runtime or original-failure attribution"
+    }
+  ],
+  "unresolvedClaimedPaths": [
+    "required map/default-auth conflict",
+    "query envelope/error/class/cardinality/object-shape differences",
+    "native403 versus reference RLS zero-row behavior, constraint/error attribution",
+    "signup/null identity/409 and incomplete user/session parity",
+    "fresh real same-source Todo/metadata/permissions/auth/browser/installed/current-source qualification"
+  ],
+  "deferral": "Projection/returning/bulk/upsert/relations/RPC/Functions/OAuth/SSR/MFA/extra options/Storage/Realtime may remain explicitly unsupported; omission alone is not a defect or reason for gateway/fork. No silent ignore or invented fields.",
+  "laneReviews": "Read-only Storage34725111/Realtime09b1b971 findings with later limited-coverage/citation corrections; not new-root runtime qualification. No internal runtime/lease/bucket mapping becomes required app config.",
+  "cleanup": {
+    "historical": {
+      "entered": 5,
+      "passed": 2,
+      "failed": 3,
+      "state": "RELEASED/unresolved",
+      "rawDiagnosticHashesPreserved": {
+        "native": {
+          "bytes": 1886,
+          "sha256": "094a62b49561145e18cf4f1a27ed0de0309f6a82dad239f5eb27dd152b52875e"
+        },
+        "firefox": {
+          "bytes": 406108,
+          "sha256": "a6a841cb27c38db755aaa8e17fcef7f775cb1ebbe8659c8cee39a93fc5af6fac"
+        },
+        "webkit": {
+          "bytes": 418707,
+          "sha256": "4ded8ba5dee53fcdca5215665e231b0a833e2049c13fb3db1572e4e0ccd9fb72"
+        }
+      }
+    },
+    "offlineConclusion": "Actual built unchanged Core can retain strict cleanup failure when native Fetch body.cancel rejects AbortError after retirement; EOF-unlocked control succeeds. This is a demonstrated possible mechanism, not missing genuine Node/browser cause. No runtime fix or assertion weakening warranted.",
+    "next": "Test-only per-lease/body/cancel/nested-browser diagnostic capture needs narrow review and fresh source-bound guarded handoff before genuine execution"
+  },
+  "sampleReview": "User reports separate limited static recorded-source/output review with no actionable defect, not fresh checkout or release signoff",
+  "completedBackendWindow": {
+    "status": "bounded-backend-diagnostics-passed-and-owned-window-released-not-compatibility",
+    "acceptedFreezeSha256": "f9b224f138a307171c122011f9522055f20a327eed25fc2ae6643071c0e08f31",
+    "frozenFiles": 462,
+    "independentAgentExecutionGateAccepted": true,
+    "independentAgentControlsPassedEachPinnedNode": 37,
+    "freshSourceChecksEachPinnedNode": { "strictOverlayTypes": true, "ownershipTransportControls": 24, "repairControls": 24, "syntheticImportControls": 3, "rootCheck": true, "unitTestsPassed": 392 },
+    "allUnchangedFreshGuardsPassed": true,
+    "fixtureDispatches": 1,
+    "retries": 0,
+    "actualCases": { "entered": 9, "passed": 9, "failed": 0, "unexecuted": 0 },
+    "caseStatuses": { "BM01": "passed", "BM02": "passed", "BM03": "passed", "BM04": "passed", "BM05": "passed", "BM06": "passed", "BM07": "passed", "BM08": "passed", "BM09": "passed" },
+    "acceptedClientWorkSettled": true,
+    "administrativeEachBackend": { "beforeRows": 1, "afterRows": 0, "deleteAuditAdded": 1 },
+    "referenceSelectGrant": false,
+    "referenceDeleteGrant": false,
+    "separateResourceAuditPassed": true,
+    "ownedLiveTcp": 0,
+    "timeWaitAbsenceNotClaimed": true,
+    "archivedFiles": 1324,
+    "archiveManifestSha256": "223efc5b6f6a1e4f23bf20c80a18491424965f497bbec720ba224ea7762d58a3",
+    "archiveRehashPassed": true,
+    "exactOwnedSourceRemoved": true,
+    "windowReleased": true,
+    "acceptedFrozenRootAndControllerSourcesPreserved": true,
+    "historicalLedgerObjectsUnchanged": true,
+    "postReleaseGlobalAuditReplay": false,
+    "runtimeSdkChanged": false,
+    "mappingFreeBootstrapProven": false,
+    "compatibilityQualified": false,
+    "signoff": false
+  },
+  "auditVerification": {
+    "priorBothPinnedNodes": "Final pre-review current-source check52markdown/27features/7gates and392/392units passed each exactNode22.23.2/24.21.0; strict private-overlay types,24ownership/transport and3synthetic import/refusal controls each passed. No native/PG runtime proof inferred.",
+    "boundedProofPlan": "docs/plans/2026-11-05-native-metadata-proof.md",
+    "authorization": "Standing isolated non-deployed tests/prototypes authorized; no fresh Mark approval. Storage/Realtime conditional handoffs stand, not live clearance/allocation.",
+    "planReview": "Independent read-only GPT6.1Sol/high plan review completed; fourP2 corrections incorporated, no verifiedP1. GPT5.5 launch unavailable before review, not findings. Subsequent exact frozen implementation review rejected dispatch.",
+    "createOnlyCleanup": "Separate marker/path/realm/owner/exact-key-verified administrative teardown; no target DELETE grant/ordinary route added to CREATE-only actor. Row/audit/grant verification and independent whole-resource receipt both required; unknown remains unconfirmed.",
+    "privateOwnershipRegression": "Four genuine unit reds reproduced premature pending-Fetch/body certification in new test helper; corrected to join accepted original Fetch/decoder/reader/cancel work and require EOF/cancellation. Further thenable/rejection/reentrant-close controls preserved. No Core change or47c cause attribution.",
+    "historicalR3Review": "444file freeze2d654c2d rejected remaining R3/P2 evidence-write error masking. Executor source-verified and reproduced24controls21PASS3FAIL, then24PASS each pinnedNode after accumulating command errors independently and appending log/terminal failures. Fresh both-pin types/24ownership/24repair/3import/check/392units passed with per-node canonical reports. Rejected444files/6root docs/status/diffs preserved; new exact freeze/review pending, zero live guards/fixtures/dispatch/acceptance. Missing failed receipts remain missing; no remote SQL settlement inferred.",
+    "historicalFirstRepairState": "Earlier first repair checkpoint: after original rejected review, user requested only four bounded repairs. Observed20offline controls4PASS/16FAIL then20/20PASS each pinnedNode; additional R3 child-error closure control observed20PASS/1FAIL then21/21 each pinnedNode; repaired source passed fresh final both-pin types/24ownership/21repair/3import/check/392units and still requires new freeze/exact review before unchanged guards. Original rejected bytes/history preserved; no scope expansion/acceptance/live guards/allocation/dispatch. All9backend cases unexecuted; no RELEASE.",
+    "historicalOfflineRepairQualification": "Earlier offline-only phase (current genuine result is completedBackendWindow): R1/R3 actual-controller execution with synthetic dependencies; R2 actual SQL source/JSON scalar control; R4 no-op extraction/pure effect mutants and actual test wiring. Not native/PG runtime successes. Fresh source checks passed; new freeze/review pending. Byte-only verification confirms original419inputs/6root docs/diffs/history/source unchanged or exactly preserved originals. Exact owned child SIGKILL retains closure join and remote SQL uncertainty; full mutation effects replace incomplete checks; pins/budgets/grants unchanged.",
+    "rejectedExactFreeze": { "sha256": "83b4fc3ac9159e29e478384799a2945c003b080214eded06dc51fca5bb44fb95", "files": 419, "reviewVerifiedBeforeAndAfter": true, "accepted": false },
+    "remainingBoundedReviewBlockers": [],
+    "historicalRejectedReviewBlockers": [
+      { "id": "BM-R1", "priority": "P1", "category": "release-possible-after-setup-or-audit-failure", "executorSourceVerified": true },
+      { "id": "BM-R2", "priority": "P2", "category": "postgres-boolean-scalar-not-json", "executorSourceVerified": true },
+      { "id": "BM-R3", "priority": "P2", "category": "unbounded-administrative-child-close-after-sigterm", "executorSourceVerified": true },
+      { "id": "BM-R4", "priority": "P2", "category": "missing-complete-immediate-mutation-postconditions", "executorSourceVerified": true }
+    ],
+    "actualBackendCases": { "entered": 9, "passed": 9, "failed": 0, "unexecuted": 0 }
+  },
+  "realBackendFixtures": 1,
+  "liveDemoChanged": false,
+  "push": false,
+  "newCi": false,
+  "newCommit": false,
+  "signoff": false,
+  "report": "docs/plans/2026-11-05-bootstrap-feasibility.md"
+}
