@@ -1,6 +1,33 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "Core and Storage agree private observation optionA/no shared ABI change: finish consumer reader finalization while lease open, controlled nonthenable native-Promise producer settlement immediately after final fence, separately owned tracked disposal; not downstream owner-currentness/cleanup-confirmed upload or strongerB. Invalid pre-fence/awaited-finally ordering is a consumer counterexample, not Core defect. Unchanged auth04699c57; final source63c4c449 both exactNodes383/383units/no pending,70operation/check/unchanged global+each3module coverage/package4cleanup PASS. Five initial and seven actual-Promise cases peer-reviewed read-only; nonblocking positive-publication/late-Core-failure proof gap verified/closed by one parent case after frozen382 checks. allSettled is not all-success. Narrow enumeration-only diff reviewed/frozen72461df3 with12entire-block synthetic controls eachNode; no live rerun, historical entrypoint consumed/not runnable. Storage/Realtime unmerged; reported Realtime470normal and13Core-composition separate. No fixture assigned/reserved/live-global check/push/newCI/signoff; current-source genuineAL0, fresh handoff required.",
+  "currentPhase": "Fresh exclusive47c/source63c4c449 real AL window completed5entered/2PASS/3FAIL/0unexecuted, two fixtures, no retry/source change. New one-use frozen19inputs; actual reviewed enumeration identical;15offline controls eachNode and all fresh/repeated strict live guards PASS. Whole Chromium and short-auth PASS; default-native cleanup-0 AuthOperationCleanupError unconfirmed; Firefox/WebKit cleanup-0 page-evaluate aggregate,34recorded passed checks each/no primary diagnostic. Actual cancellation/body state and browser nested causes uncaptured; no root-cause/fix/exception/signoff inferred. Both setups/resource cleanups and independent owned-source/original/fullLISTEN/health/report-byte audit PASS; Core RELEASED.1370file new private source/raw archive rehashed/exact owned parent removed;59historical archives88671files/private575/four old AL/DR333+24 retained and rehashed. Push/newCI withheld with3genuine failures; no current assignment/global replay. Runtime/public surface/pins/budgets unchanged, private A not adopted. Prior383offline proof remains distinct. Further live diagnostic attempt requires fresh handoff; full applicable regressions/publication/CI/release gates pending.",
+  "currentSourceAl47cWindow": {
+    "status": "failed-current-source-genuine-window-not-qualified",
+    "checkpoint": "47c1a8fcf232dc409554863e139be563784833cd",
+    "sourceSha256": "63c4c449828d484aa18aea560c982dbdb3087b324cbab0dad2785f883be7c718",
+    "authSha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d",
+    "evidence": "docs/evidence/auth-lifetime-47c-genuine-window.json",
+    "actualCases": { "entered": 5, "passed": 2, "failed": 3, "unexecuted": 0 },
+    "wholeCasePasses": ["packed Chromium AL", "genuine short-native-auth AL"],
+    "wholeCaseFailures": ["default-native cleanup-0 AuthOperationCleanupError: Record operation cleanup could not be confirmed", "packed Firefox cleanup-0 browser aggregate", "packed WebKit cleanup-0 browser aggregate"],
+    "failureEvidenceLimit": "No primary diagnostic recorded for those three; Firefox/WebKit retain34successful checks each including public absence/local latch cleanup. Underlying native cancellation reason/body state and nested browser aggregate errors not serialized; no abort/engine root cause or approved exception inferred. Initial Name-colon parser miss of Node inspect Error[Name] preserved and separately qualified.",
+    "controllers": "Fresh one-use/current47c binding/frozen19inputs; reviewed ownership block byte-identical.12enumeration+3import/function/CLI controls eachNode PASS; strict competition/exclusions unchanged, private complete same-decision diagnostics; exact created lock inode/uid+runner/run owner checked before removing owned lock.",
+    "liveGuards": "Initial capacity and complete preflight PASS; competition/original-demo/container+checkout ownership/source/freeze checks repeated PASS before each fixture; no bypass or unknown-process signal",
+    "fixtures": 2,
+    "setupAndResourceCleanup": "2/2passed; independent source/owned PIDs+depots+Docker resources+lock/report bytes/original six/native/root lock/config/fullLISTEN/health audit PASS; owned liveTCP0each, TIME-WAIT absence not claimed",
+    "window": "RELEASED",
+    "retry": false,
+    "archive": "1370files source/raw/controller/trace/errors copied/rehashed; exact known owner/source/parent checked then only owned source parent removed; no post-release global/fixture replay",
+    "preservation": "Fresh byte-only59archives88671files/7private artifacts575files/four oldAL1329,1333,1280,1292/protectedDR333+24and11proofs PASS; all old genuine/native/no-dispatch/interruption/CI histories unchanged",
+    "sourceOrScopeChange": "None: shared auth04699c57/public API/ordinaryCRUD/pins/policies/dependencies/budgets unchanged; private A test-only and B unsupported; no Storage/Realtime adoption",
+    "publication": "Normal safe push/newCI withheld as unwarranted while3genuine cleanup failures unresolved; no remote reconciliation or history/index tricks",
+    "next": [
+      "Review existing raw failures offline and capture per-lease native body/cancel settlement plus normalized browser nested cleanup outcomes without changing successful data or weakening receipts",
+      "Review before any shared-auth edit; obtain fresh explicit handoff before a diagnostic real fixture/rerun; old window fully consumed/released",
+      "After genuine qualification run full applicable installed/browser/regressions, then only warranted safe push/exact-new-commit CI and remaining release gates"
+    ],
+    "signoff": false
+  },
   "authDeliveryContractCoordination": {
     "status": "private-option-A-cross-characterized-offline-shared-auth-unchanged",
     "sourceSha256": "63c4c449828d484aa18aea560c982dbdb3087b324cbab0dad2785f883be7c718",

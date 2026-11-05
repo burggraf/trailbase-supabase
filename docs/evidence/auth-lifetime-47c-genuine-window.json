@@ -1,0 +1,66 @@
+{
+  "scope": "One explicitly authorized exclusive Core genuine AL window; fixed checkpoint, five selected cases, two disposable owned fixtures, no retries or consumer adoption",
+  "status": "failed-current-source-genuine-window-not-qualified",
+  "checkpoint": "47c1a8fcf232dc409554863e139be563784833cd",
+  "sourceSha256": "63c4c449828d484aa18aea560c982dbdb3087b324cbab0dad2785f883be7c718",
+  "authSha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d",
+  "sourceRuntimePinsOrPublicApiChanged": false,
+  "controller": {
+    "freshOneUse": true,
+    "frozenInputs": 19,
+    "sourceBinding": "Exact clean47c and source63c4c449; reviewed enumeration block byte-identical, unique output/claim paths, stored owner marker before source-only clone preparation",
+    "offlineControlsEachPinnedNode": { "enumeration": 12, "importFunctionCli": 3 },
+    "competition": "Original strict predicate/exclusions unchanged; complete same-decision private argv/runtime snapshots before refusal; no relative/MainThread/helper exemptions",
+    "livePreflight": "passed: complete competition0matches; capacity; exact original six running/stopped-container identities; original native identity/start, root lock/hash/metadata, configuration hashes, full LISTEN set/health200; all discovered checkout locks absent",
+    "beforeEachFixture": "Fresh strict competition/original/ownership/source/frozen-controller checks passed",
+    "newLockRemovalGuard": "Exact created lock inode/uid plus runner/run owner metadata verified before removing only the owned fixture lock"
+  },
+  "execution": {
+    "node": "22.23.2",
+    "nativeServer": "official TrailBase0.35.9/a106ce6338f9831140c92ac16e051901ed92d576",
+    "nativeJs": "0.14.3",
+    "fixtures": 2,
+    "casesEntered": 5,
+    "passed": 2,
+    "failed": 3,
+    "unexecuted": 0,
+    "retry": 0,
+    "controllerExit": 1,
+    "cases": [
+      { "case": "default-native AL", "status": "failed", "recordedFailure": "cleanup-0: one AuthOperationCleanupError, Record operation cleanup could not be confirmed", "primaryFailureDiagnosticPresent": false },
+      { "case": "packed Chromium AL", "status": "passed" },
+      { "case": "packed Firefox AL", "status": "failed", "recordedFailure": "cleanup-0: page.evaluate AL browser operation cleanup aggregate", "recordedPageChecks": 34, "recordedPageChecksFailed": 0, "primaryFailureDiagnosticPresent": false },
+      { "case": "packed WebKit AL", "status": "failed", "recordedFailure": "cleanup-0: page.evaluate AL browser operation cleanup aggregate", "recordedPageChecks": 34, "recordedPageChecksFailed": 0, "primaryFailureDiagnosticPresent": false },
+      { "case": "short-native-auth AL", "status": "passed" }
+    ],
+    "otherTests": "Eight default-native and four short-native cases explicitly unselected; not passing/full-suite evidence",
+    "packedInternalModules": "Actual installed build; auth.js de2ff388e456f166396285deed6e5b1214e655aa021b70afe802b1b83d357f28, common.js429f8e79d930e762b33ebe6cfc0067578f88a65a54f36291b7f740cfec444e7a; internal module proof is not a new public seam"
+  },
+  "review": {
+    "native": "Only receipt-cleanup diagnostic recorded, not a primary failure. Other owned account/row/session/audit cleanup checks produced no additional failure. Whole case remains failed, never promoted to passing based on main-path reach.",
+    "browsers": "Firefox/WebKit private observations each retain34successful checks including public absence and local latch cleanup; aggregate fails the owned operation cleanup step. Nested browser aggregate causes were not serialized, so their individual failure type is not established.",
+    "rootCause": "Underlying native cancellation rejection/body state and per-receipt browser causes were not captured. Abort/late-body cancellation platform behavior is a hypothesis, not demonstrated cause, shared-Core defect/fix or approved compatibility exception.",
+    "analysisQualification": "Initial exact Name-colon search labeled native unclassified because Node inspect prints Error[Name]. Raw and initial analysis retained; separate name/fixed-message check confirms AuthOperationCleanupError. No raw report rewritten.",
+    "nextDiagnosticBoundary": "Before any shared-auth change, preserve per-lease real returned-body/cancellation settlement and full normalized browser cleanup outcomes without replacing successful wire data, weakening cancellation requirements or changing the agreed A/B boundary.",
+    "privateA": "Unchanged/test-only consumer contract; these real AL cases do not implement or qualify public Storage/Realtime or strongerB"
+  },
+  "teardownAndRelease": {
+    "driverSetupPassed": 2,
+    "driverResourceCleanupPassed": 2,
+    "separateAudit": "passed: report bytes/outcomes, exact source/controller bindings, owned native PIDs/depots/containers/volumes/networks/lock absent; original guards match",
+    "ownedLiveTcpAfterEach": 0,
+    "kernelTimeWaitNotClaimedAbsent": true,
+    "window": "RELEASED",
+    "noUnknownProcessSignaledOrGuardBypassed": true,
+    "freshUserHandoffRequiredForAnotherLiveAttempt": true
+  },
+  "historicalEvidence": {
+    "freshBytesOnlyPreservation": "59archives/88671files,7private artifacts/575files, four older AL archives1329/1333/1280/1292, protected DR333+24 and11proofs all rehashed; no live/global actions in that preservation process",
+    "oldGenuineOutcomes": "Original0/5 and revised3/5 remain source-separated; old competition/enumeration stops remain0dispatch; new2/5 does not overwrite or aggregate them",
+    "newRawArchive": "1370files copied/rehashed in a new private archive: exact owned source, controller, raw canonical reports, browser traces and private errors. Exact owner marker/source/parent verified before removing only that owned source parent. No post-release live/global guard replay; earlier archives unchanged."
+  },
+  "offlineChecks": "Unchanged-source both-pin383units/70operation/check/coverage/package proof remains distinct from this failed genuine window; final documentation checks are separately recorded, not a real-test retry",
+  "publication": { "push": false, "newCi": false, "decision": "Withheld: three unresolved genuine cleanup failures make publication/CI-as-a-retry unwarranted; no remote reconciliation or force/history/index manipulation" },
+  "remaining": "Resolve captured cleanup failures with source-bound diagnostics/review, then freshly authorized genuine qualification and applicable full installed/browser/regressions, safe publication/exact CI, all broader release/security/platform/maintainer gates. No failure waived or relabeled.",
+  "signoff": false
+}
