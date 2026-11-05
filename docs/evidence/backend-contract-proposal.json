@@ -1,0 +1,266 @@
+{
+  "scope": "Concrete backend-contract and independently bounded result-data proposal; no adoption or SDK implementation",
+  "baseCommit": "3852be86fb9fa8ae6aa87b6aae6fc951557936fa",
+  "sourceSha256": "e50637bd4aa604b6e5850047c7043eba901985b336a88ea7afa4e483e97bf749",
+  "authSha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d",
+  "sourceFiles": [
+    {
+      "path": "docs/plans/2026-11-06-backend-contract-proposal.md",
+      "bytes": 26806,
+      "sha256": "7408e0de763679971dcfe139eec9511b3dba65e31954e87d4b35d2078e41c9fe"
+    },
+    {
+      "path": "docs/plans/2026-11-06-result-row-proposal.md",
+      "bytes": 7413,
+      "sha256": "5511ab17a2c9ae9dca7134f561004d9983c857b825084e3c75a4224ec4c75c0d"
+    },
+    {
+      "path": "docs/prototypes/backend-contract-lifecycle.mjs",
+      "bytes": 9024,
+      "sha256": "4c56db0f0bee134f2c561f011463f699cb5f62b2d25312e5910e2ebd496d321c"
+    },
+    {
+      "path": "docs/prototypes/backend-contract-lifecycle.test.mjs",
+      "bytes": 8884,
+      "sha256": "72a060111e10b5c940343681bc17cc7d3fa231775c041db7f89b1c4e89cb0e01"
+    }
+  ],
+  "priorObservedEvidence": {
+    "path": "docs/evidence/bootstrap-native-reference-observations.json",
+    "sha256": "31c1f43979ce00ec3cb736d7c0ae6028c7a60137cc6436c4fd23f837a88cf75e",
+    "backendCases": "historical9diagnosticPASS/once;BM08missingForeignMutationSubproofAbsent",
+    "resourceWindow": "RELEASED;noReuse"
+  },
+  "pinnedNativeSourceBindings": [
+    {
+      "commit": "a106ce6338f9831140c92ac16e051901ed92d576",
+      "path": "crates/core/src/records/json_schema.rs",
+      "bytes": 2761,
+      "sha256": "e515cbb565c47860f14009ab48bbe7d3cc6586c608688a61e679a17e0e119003",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/src/records/json_schema.rs"
+    },
+    {
+      "path": "crates/core/src/records/record_api.rs",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/src/records/record_api.rs",
+      "bytes": 34701,
+      "sha256": "50ed0ac555f65133cf794afe31a5a9ad09d1e735a30358096129a00264468c5f"
+    },
+    {
+      "path": "crates/core/src/records/params/mod.rs",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/src/records/params/mod.rs",
+      "bytes": 28136,
+      "sha256": "414af5413efc60f65c293c52d67d96150ae167b83b57770da87cad04884864b1"
+    },
+    {
+      "path": "crates/core/src/records/filter.rs",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/src/records/filter.rs",
+      "bytes": 12176,
+      "sha256": "c0412d6093594af0ca7107cc656be5957b176497548e1debd38b794d1b3943ff"
+    },
+    {
+      "path": "crates/core/src/records/transaction.rs",
+      "url": "https://raw.githubusercontent.com/trailbaseio/trailbase/a106ce6338f9831140c92ac16e051901ed92d576/crates/core/src/records/transaction.rs",
+      "bytes": 15602,
+      "sha256": "f2bbcf15b4a582e0fac6902a9c841e7399ff72d48252a9e5455969e364e5e2a1"
+    }
+  ],
+  "backendProposal": {
+    "status": "conditionally-coherent-tested-model;real-lifecycle-unexecuted",
+    "authority": "Deployment-only independent actual physical/config verification plus explicit backend semantics; false self-hashed descriptors refused, not trusted as truth",
+    "stockCandidate": "Non-reused immutable native API incarnations; named-operation metadata; exclusive all-handler fence/drain/stop; closed DB/config verification; retirement before reopen; forward recovery with independent monotonic publication history",
+    "carriers": "Generated per-operation catalog and generated static artifact are conditional transports of the same facts; annotation/schema alone insufficient; no carrier adopted",
+    "atomicAlternative": "Native metadata plus same-operation expected-contract enforcement not available/proven in inspected0359; no patch/header sent",
+    "structuralDisclosure": "Approved public field/PK/directional codec/route facts only; no private table/SQL/rule/default hashes or credentials; operation-specific ordinary metadata READ is explicit added permission",
+    "newBackendExecutions": 0,
+    "fixtureCoordination": "No window requested/allocated;separate frozen/reviewed real handler/config/migration/CREATE-only/rollback proof required",
+    "models": [
+      {
+        "node": "22.23.2",
+        "cases": 12,
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "real in-memory SQLite facts/transactions plus explicit deployment/permission/cache model; not native lifecycle",
+        "logSha256": "fa16e20c2150447dbb50043ee8e4a5ab6062bc580fae5847c7c7be01d62db693"
+      },
+      {
+        "node": "24.21.0",
+        "cases": 12,
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "real in-memory SQLite facts/transactions plus explicit deployment/permission/cache model; not native lifecycle",
+        "logSha256": "71b0de1df84d135e64828453db8c5134d320904ca5bf20b78258a9035d97975c"
+      }
+    ],
+    "controls": [
+      {
+        "id": "BC01",
+        "status": "passed-model-each-pinned-node"
+      },
+      {
+        "id": "BC02",
+        "status": "passed-model-each-pinned-node"
+      },
+      {
+        "id": "BC03",
+        "status": "passed-model-each-pinned-node"
+      },
+      {
+        "id": "BC04",
+        "status": "passed-model-each-pinned-node"
+      },
+      {
+        "id": "BC05",
+        "status": "passed-model-each-pinned-node"
+      },
+      {
+        "id": "BC06",
+        "status": "passed-model-each-pinned-node"
+      },
+      {
+        "id": "BC07",
+        "status": "passed-model-each-pinned-node"
+      },
+      {
+        "id": "BC08",
+        "status": "passed-model-each-pinned-node"
+      },
+      {
+        "id": "BC09",
+        "status": "passed-model-each-pinned-node"
+      },
+      {
+        "id": "BC10",
+        "status": "passed-model-each-pinned-node"
+      },
+      {
+        "id": "BC11",
+        "status": "passed-model-each-pinned-node"
+      },
+      {
+        "id": "BC12",
+        "status": "passed-model-each-pinned-node"
+      }
+    ],
+    "modelHistory": {
+      "initialBc01": "new naive model assertion id versus actual alternate failed;not a native/SDK regression",
+      "bc03Extension": "new model CREATE method absent,TypeError before positive insert control;implemented only in model",
+      "intermediate12Pass": "preserved separately before CREATE and unsafe-backup-loss controls expanded"
+    },
+    "limits": [
+      "Fixed integer/text a/b fixture verification only, not arbitrary SQL/native config/constraint compiler",
+      "UUID/boolean directional codec plans copied from observed BM facts, not exercised native codecs",
+      "CREATE/metadata/owner/cache/handler/fence behavior simulated, no real permission or network enforcement",
+      "Known h1/h2 inventory supplied; no discovery of unknown reachable handlers",
+      "Same-model fresh-incarnation recovery only; no inverse schema/data conversion, durable journal or real crash recovery",
+      "Unsafe SQL backup restoration genuinely loses newer values; model cannot prevent out-of-procedure operator SQL",
+      "Catalog/static labels share model; neither actual HTTP carrier/publication/ACL implemented",
+      "No real two-handler stale/inflight/cutover/mixed/rollback schedule, no installed mapping-free Todo or security/parser/browser qualification"
+    ]
+  },
+  "independentApiProposal": {
+    "status": "identified-and-before-change-observed;not-implemented",
+    "change": "Ordinary own-property mapped read rows only, safe construction for prototype-like keys; no constructor/auth-default/outer-envelope/error change",
+    "assessmentTask": "parallel-read-only-assessment",
+    "observations": [
+      {
+        "scope": "Before-change actual built SDK/injected transports, no backend qualification",
+        "node": "v22.23.2",
+        "observations": [
+          {
+            "mode": "list",
+            "serializedDataEqual": true,
+            "candidateNullPrototype": true,
+            "referenceOrdinaryPrototype": true,
+            "directStrictDataEquality": false
+          },
+          {
+            "mode": "single",
+            "serializedDataEqual": true,
+            "candidateNullPrototype": true,
+            "referenceOrdinaryPrototype": true,
+            "directStrictDataEquality": false
+          },
+          {
+            "mode": "maybeSingle",
+            "serializedDataEqual": true,
+            "candidateNullPrototype": true,
+            "referenceOrdinaryPrototype": true,
+            "directStrictDataEquality": false
+          }
+        ],
+        "requests": {
+          "candidate": 3,
+          "reference": 3
+        },
+        "escapedGlobalRequests": 0,
+        "sourceIndexSha256": "3bf9008ffa96cb611496858833ea40de13ec7df037ee17cbc7926a6e365b538a",
+        "builtIndexSha256": "f8c22b5ea8eb360c0ff153fbbc1852bd6c7e6485c2e240801ebbd644c4c111b0",
+        "builtAuthSha256": "de2ff388e456f166396285deed6e5b1214e655aa021b70afe802b1b83d357f28",
+        "implemented": false,
+        "receiptSha256": "3589ff5f82dd73d594e81237feba9afd5a78bc9c69b09b15492c65ed5c11aa62"
+      },
+      {
+        "scope": "Before-change actual built SDK/injected transports, no backend qualification",
+        "node": "v24.21.0",
+        "observations": [
+          {
+            "mode": "list",
+            "serializedDataEqual": true,
+            "candidateNullPrototype": true,
+            "referenceOrdinaryPrototype": true,
+            "directStrictDataEquality": false
+          },
+          {
+            "mode": "single",
+            "serializedDataEqual": true,
+            "candidateNullPrototype": true,
+            "referenceOrdinaryPrototype": true,
+            "directStrictDataEquality": false
+          },
+          {
+            "mode": "maybeSingle",
+            "serializedDataEqual": true,
+            "candidateNullPrototype": true,
+            "referenceOrdinaryPrototype": true,
+            "directStrictDataEquality": false
+          }
+        ],
+        "requests": {
+          "candidate": 3,
+          "reference": 3
+        },
+        "escapedGlobalRequests": 0,
+        "sourceIndexSha256": "3bf9008ffa96cb611496858833ea40de13ec7df037ee17cbc7926a6e365b538a",
+        "builtIndexSha256": "f8c22b5ea8eb360c0ff153fbbc1852bd6c7e6485c2e240801ebbd644c4c111b0",
+        "builtAuthSha256": "de2ff388e456f166396285deed6e5b1214e655aa021b70afe802b1b83d357f28",
+        "implemented": false,
+        "receiptSha256": "efc648d495281fa5b03b6868fa6a0b04313712cba534d064fff3a4ea25581791"
+      }
+    ],
+    "earlierLaneControl": "transformed-source synthetic3mode mismatch on unpinnedNode24.22.1;first import-relocation driver failed before query;separate from actual-built pinned parent controls",
+    "requiredAcceptance": "Permanent list/single/maybeSingle direct prototype/property/strict-equality reds; adversarial keys/setters/invalid rows/no partial success; direct packed assertions; type/security/real installed Node/browser realm proof",
+    "requiredRealVerification": "Separate coordinated real data/DB/reference/installed bothNodes/packed3engines plus applicable auth/security/fault/regressions;no gates waived"
+  },
+  "checks": {
+    "bothPinnedNodesBuild": true,
+    "bothPinnedNodesUnits": 392,
+    "bothPinnedNodesPriorModel": 9,
+    "controlsReceiptSha256": "ebb59e4feb6dacf02b4ac9445007e33b5388d0f3cae135d3b817af642d72e1dc"
+  },
+  "boundaries": {
+    "rootSdkAuthTodoChanged": false,
+    "newDependencyOrPin": false,
+    "newFixture": false,
+    "postReleaseResourceQueries": 0,
+    "architectureAdopted": false,
+    "carrierDecisionRequested": false,
+    "apiCorrectionImplemented": false,
+    "commit": false,
+    "push": false,
+    "newCi": false,
+    "maintainerSignoff": false,
+    "history": "3852observations/rejected419and444/BM01-BM09gaps/genuine47c2PASS3FAIL/strictStorageRealtimefailuresandmissingartifactsunchanged"
+  }
+}
