@@ -34,6 +34,26 @@ function fixture(options: AuthOptions = { persistSession: false, autoRefreshToke
   const login = (owner: 'a' | 'b' = 'a', password = 'fixture-password') => auth.api.signInWithPassword({ email: `${owner}@example.test`, password });
   return { auth, calls, control, login, credential: () => latest.auth_token };
 }
+// Test-only candidate A: no SDK adoption/API. Result linearization and cleanup are separate obligations.
+function deliveryCandidate(lease: Awaited<ReturnType<ReturnType<typeof fixture>['auth']['recordOperation']>>, consume: () => Promise<string>) {
+  const producer = deferred<Readonly<{ kind: string; then: undefined }>>(), coreSlot = deferred<void>();
+  const receipts: Promise<void>[] = []; let linearized = false;
+  const consumer = (async () => {
+    try {
+      const kind = await consume(); // Includes actual returned-reader cancellation and lock release.
+      const observation = Object.freeze(Object.assign(Object.create(null) as { kind: string; then: undefined }, { kind, then: undefined }));
+      lease.assertCurrent(); producer.resolve(observation); // No await, application callback or untrusted then getter between these two steps.
+      linearized = true;
+    } catch (error) { producer.reject(error); throw error; }
+    finally {
+      try { const receipt = lease.dispose(); receipts.push(receipt); void receipt.then(coreSlot.resolve, coreSlot.reject); }
+      catch (error) { coreSlot.reject(error); }
+    }
+  })();
+  // The pending slot exists before disposal can reenter, and no failure can short-circuit the other obligation.
+  const cleanup = Promise.allSettled([consumer, coreSlot.promise]);
+  return { result: producer.promise, cleanup, receipts, get linearized() { return linearized; } };
+}
 afterEach(() => vi.useRealTimers());
 
 describe('AL01–AL08 internal captured record-operation lifetime; synthetic unit contracts, not real auth proof', () => {
@@ -380,6 +400,154 @@ describe('AL01–AL08 internal captured record-operation lifetime; synthetic uni
       expect((await f.login('b')).error?.name).toBe('AuthStaleOperationError'); expect(logout).toBeDefined(); expect((await logout!).error).toBeNull();
       expect((await f.auth.api.getSession()).data.session).toBeNull(); expect(old.signal.aborted).toBe(true); await expect(old.fetch(recordPath)).rejects.toHaveProperty('name', 'AuthStaleOperationError'); expect(f.calls.filter(c => c.path === recordPath)).toHaveLength(0);
     } finally { old.dispose(); }
+  });
+  it('delivery characterization: healthy disposal seals the operation, not the still-committed owner', async () => {
+    const f = fixture(); await f.login(); const lease = await f.auth.recordOperation(), session = (await f.auth.api.getSession()).data.session;
+    try {
+      await (await lease.fetch(recordPath)).json(); lease.assertCurrent(); await lease.dispose();
+      expect(() => lease.assertCurrent()).toThrowError(expect.objectContaining({ name: 'AuthStaleOperationError' }));
+      expect((await f.auth.api.getSession()).data.session).toEqual(session);
+      await expect(lease.fetch(recordPath)).rejects.toHaveProperty('name', 'AuthStaleOperationError');
+      expect(f.calls.filter(c => c.path === recordPath)).toHaveLength(1);
+    } finally { await lease.dispose(); }
+  });
+  it('delivery characterization: pre-fence then awaited finally can publish after disposal reenters logout', async () => {
+    const f = fixture(); await f.login(); const lease = await f.auth.recordOperation(), order: string[] = [];
+    let logout: ReturnType<typeof f.auth.api.signOut> | undefined;
+    lease.signal.addEventListener('abort', () => { order.push('dispose-abort'); logout = f.auth.api.signOut({ scope: 'local' }); }, { once: true });
+    const unsafe = (async () => {
+      try { const snapshot = await (await lease.fetch(recordPath)).json(); lease.assertCurrent(); order.push('pre-dispose-fence'); return snapshot; }
+      finally { await lease.dispose(); }
+    })();
+    try {
+      expect(await unsafe).toEqual({ records: [] }); order.push('published');
+      expect(order).toEqual(['pre-dispose-fence', 'dispose-abort', 'published']);
+      expect(logout).toBeDefined(); expect((await logout!).error).toBeNull(); expect((await f.auth.api.getSession()).data.session).toBeNull();
+    } finally { await lease.dispose(); await logout; }
+  });
+  it('delivery characterization: an awaited consumer-cleanup gap also invalidates a pre-cleanup fence', async () => {
+    const f = fixture(); await f.login(); const lease = await f.auth.recordOperation(), entered = deferred<void>(), finish = deferred<void>();
+    const unsafe = (async () => {
+      try { const snapshot = await (await lease.fetch(recordPath)).json(); lease.assertCurrent(); entered.resolve(); await finish.promise; return snapshot; }
+      finally { await lease.dispose(); }
+    })();
+    try {
+      await entered.promise; expect((await f.login('b')).error).toBeNull(); finish.resolve();
+      expect(await unsafe).toEqual({ records: [] }); expect((await f.auth.api.getSession()).data.session?.user.email).toBe('b@example.test');
+      expect(() => lease.assertCurrent()).toThrow();
+    } finally { finish.resolve(); await unsafe; await lease.dispose(); }
+  });
+  it('delivery characterization: synchronous publication before disposal is distinct from cleanup-confirmed publication', async () => {
+    const f = fixture(); await f.login(); const lease = await f.auth.recordOperation(), order: string[] = [], deliveries: unknown[] = [];
+    let logout: ReturnType<typeof f.auth.api.signOut> | undefined;
+    lease.signal.addEventListener('abort', () => { order.push('dispose-abort'); logout = f.auth.api.signOut({ scope: 'local' }); }, { once: true });
+    try {
+      const snapshot: unknown = await (await lease.fetch(recordPath)).json();
+      lease.assertCurrent(); deliveries.push(snapshot); order.push('synchronous-publication'); // No await or callback between fence and this producer linearization point.
+      await lease.dispose(); expect((await logout!).error).toBeNull();
+      expect(order).toEqual(['synchronous-publication', 'dispose-abort']); expect(deliveries).toEqual([{ records: [] }]);
+      expect((await f.auth.api.getSession()).data.session).toBeNull(); // Not a guarantee of currentness when arbitrary downstream code later runs.
+    } finally { await lease.dispose(); await logout; }
+  });
+  it('delivery characterization: handed-off reader cleanup remains separate when the Core receipt fulfills', async () => {
+    const f = fixture(); await f.login(); const lease = await f.auth.recordOperation(), finish = deferred<void>();
+    const cancel = vi.fn(() => finish.promise), privateFailure = new Error('synthetic consumer-owned cancellation failure');
+    f.control.record = async () => new Response(new ReadableStream({ cancel }), { status: 500 });
+    const response = await lease.fetch(recordPath), reader = response.body!.getReader(), cancellation = reader.cancel();
+    const joined = Promise.allSettled([lease.dispose(), cancellation]), observed = settlement(joined);
+    try {
+      await lease.dispose(); expect(cancel).toHaveBeenCalledTimes(1); expect(observed.state).toBe('pending');
+      finish.reject(privateFailure); const outcomes = await joined;
+      expect(outcomes[0].status).toBe('fulfilled'); expect(outcomes[1]).toEqual({ status: 'rejected', reason: privateFailure });
+      expect(response.status).toBe(500); // Neither successful Core cleanup nor a rejected consumer receipt changes the primary observation.
+    } finally { finish.resolve(); await joined; reader.releaseLock(); await lease.dispose(); }
+  });
+  it.each([false, true])('candidate A awaits real reader cleanup/release before its final fence; retired=%s', async retired => {
+    const f = fixture(); await f.login(); const lease = await f.auth.recordOperation(), entered = deferred<void>(), finish = deferred<void>();
+    let response!: Response;
+    f.control.record = async () => response = new Response(new ReadableStream({ cancel: () => finish.promise }), { status: 500 });
+    const candidate = deliveryCandidate(lease, async () => {
+      const returned = await lease.fetch(recordPath), reader = returned.body!.getReader();
+      try { entered.resolve(); await reader.cancel(); return 'unverified-status'; }
+      finally { reader.releaseLock(); }
+    }), result = settlement(candidate.result);
+    try {
+      await entered.promise; expect(response.body!.locked).toBe(true); expect(result.state).toBe('pending'); expect(candidate.linearized).toBe(false);
+      if (retired) await f.login('b'); finish.resolve();
+      if (retired) { expect(await result.done).toHaveProperty('name', 'AuthStaleOperationError'); expect(candidate.linearized).toBe(false); }
+      else { const observation = await candidate.result; expect(observation.kind).toBe('unverified-status'); expect(observation.then).toBeUndefined(); expect(Object.getPrototypeOf(observation)).toBeNull(); expect(Object.isFrozen(observation)).toBe(true); }
+      await candidate.cleanup; expect(response.body!.locked).toBe(false); expect(candidate.receipts).toEqual([lease.dispose()]);
+    } finally { finish.resolve(); await result.done; await candidate.cleanup; await lease.dispose(); }
+  });
+  it('candidate A rejects failed consumer cleanup and releases its reader before any publication', async () => {
+    const f = fixture(); await f.login(); const lease = await f.auth.recordOperation(), failure = new Error('synthetic reader cleanup failure');
+    let response!: Response;
+    f.control.record = async () => response = new Response(new ReadableStream({ cancel: () => Promise.reject(failure) }), { status: 500 });
+    const candidate = deliveryCandidate(lease, async () => {
+      const reader = (await lease.fetch(recordPath)).body!.getReader();
+      try { await reader.cancel(); return 'unverified-status'; } finally { reader.releaseLock(); }
+    });
+    await expect(candidate.result).rejects.toBe(failure); const outcomes = await candidate.cleanup;
+    expect(outcomes).toEqual([{ status: 'rejected', reason: failure }, { status: 'fulfilled', value: undefined }]);
+    expect(response.body!.locked).toBe(false); expect(candidate.linearized).toBe(false); expect(candidate.receipts[0]).toBe(lease.dispose());
+  });
+  it('candidate A settles its controlled producer before disposal logout but downstream observes changed ownership', async () => {
+    const f = fixture(); await f.login(); const lease = await f.auth.recordOperation(); let logout: ReturnType<typeof f.auth.api.signOut> | undefined;
+    let candidate!: ReturnType<typeof deliveryCandidate>, linearizedAtAbort = false;
+    lease.signal.addEventListener('abort', () => { linearizedAtAbort = candidate.linearized; logout = f.auth.api.signOut({ scope: 'local' }); }, { once: true });
+    candidate = deliveryCandidate(lease, async () => {
+      const reader = (await lease.fetch(recordPath)).body!.getReader(), decoder = new TextDecoder(); let text = '';
+      try { for (;;) { const { done, value } = await reader.read(); if (done) break; text += decoder.decode(value, { stream: true }); } text += decoder.decode(); }
+      finally { reader.releaseLock(); }
+      expect(JSON.parse(text)).toEqual({ records: [] }); return 'observed-records';
+    });
+    const observation = await candidate.result;
+    expect(linearizedAtAbort).toBe(true); expect(candidate.linearized).toBe(true); expect(observation.kind).toBe('observed-records');
+    expect(observation).not.toHaveProperty('cleanupConfirmed'); expect((await f.auth.api.getSession()).data.session).toBeNull();
+    expect((await logout!).error).toBeNull(); await candidate.cleanup; expect(candidate.receipts[0]).toBe(lease.dispose());
+  });
+  it('candidate A negative control: an untrusted then getter can retire ownership inside Promise resolution', async () => {
+    const f = fixture(); await f.login(); const lease = await f.auth.recordOperation(), producer = deferred<object>(), order: string[] = [];
+    let logout: ReturnType<typeof f.auth.api.signOut> | undefined;
+    const untrusted = { get then() { order.push('then-getter'); logout = f.auth.api.signOut({ scope: 'local' }); return undefined; } };
+    try {
+      lease.assertCurrent(); order.push('fence'); producer.resolve(untrusted); expect(await producer.promise).toBe(untrusted); order.push('observer');
+      expect(order).toEqual(['fence', 'then-getter', 'observer']); expect((await logout!).error).toBeNull(); expect((await f.auth.api.getSession()).data.session).toBeNull();
+    } finally { await lease.dispose(); await logout; }
+  });
+  it.each(['fulfilled', 'rejected'] as const)('candidate A keeps primary failure and a sticky timeout while Core cleanup later becomes %s', async outcome => {
+    vi.useFakeTimers(); const f = fixture(); await f.login(); const lease = await f.auth.recordOperation(), headers = deferred<Response>(), cancel = deferred<void>();
+    f.control.record = () => headers.promise; const accepted = settlement(lease.fetch(recordPath)), primary = new Error('synthetic primary observation failure');
+    const candidate = deliveryCandidate(lease, async () => { throw primary; }), cleanup = settlement(candidate.cleanup);
+    const bounded = Promise.race([candidate.cleanup.then(() => 'settled'), new Promise<string>(resolve => setTimeout(() => resolve('timeout'), 1000))]);
+    try {
+      await expect(candidate.result).rejects.toBe(primary); expect(candidate.linearized).toBe(false); expect(cleanup.state).toBe('pending');
+      await vi.advanceTimersByTimeAsync(1000); expect(await bounded).toBe('timeout');
+      headers.resolve(new Response(new ReadableStream({ cancel: () => cancel.promise })));
+      expect(await accepted.done).toHaveProperty('name', 'AuthStaleOperationError'); expect(cleanup.state).toBe('pending');
+      if (outcome === 'rejected') cancel.reject(new Error('synthetic private Core cancellation failure')); else cancel.resolve();
+      const outcomes = await candidate.cleanup; expect(outcomes[0]).toEqual({ status: 'rejected', reason: primary });
+      expect(outcomes[1].status).toBe(outcome); if (outcomes[1].status === 'rejected') expect(outcomes[1].reason).toHaveProperty('name', 'AuthOperationCleanupError');
+      expect(await bounded).toBe('timeout'); expect(candidate.receipts[0]).toBe(lease.dispose());
+    } finally { headers.resolve(new Response(null)); cancel.resolve(); await accepted.done; await candidate.cleanup; await lease.dispose().catch(() => {}); }
+  });
+  it('candidate A preserves an already-published observation while pending Core cleanup later rejects, never converting its sticky timeout to ok', async () => {
+    vi.useFakeTimers(); const f = fixture(); await f.login(); const lease = await f.auth.recordOperation(), headers = deferred<Response>(), cancel = deferred<void>();
+    f.control.record = () => headers.promise; const accepted = settlement(lease.fetch(recordPath));
+    const candidate = deliveryCandidate(lease, async () => 'local-observation'), cleanup = settlement(candidate.cleanup);
+    const bounded = Promise.race([candidate.cleanup.then(() => 'settled'), new Promise<string>(resolve => setTimeout(() => resolve('timeout'), 1000))]);
+    try {
+      const observation = await candidate.result;
+      expect(observation.kind).toBe('local-observation'); expect(Object.isFrozen(observation)).toBe(true); expect(observation).not.toHaveProperty('cleanupConfirmed');
+      expect(candidate.linearized).toBe(true); expect(cleanup.state).toBe('pending'); expect(candidate.receipts[0]).toBe(lease.dispose());
+      await vi.advanceTimersByTimeAsync(1000); expect(await bounded).toBe('timeout');
+      headers.resolve(new Response(new ReadableStream({ cancel: () => cancel.promise })));
+      expect(await accepted.done).toHaveProperty('name', 'AuthStaleOperationError'); expect(cleanup.state).toBe('pending');
+      cancel.reject(new Error('synthetic private late Core cancellation failure'));
+      const outcomes = await candidate.cleanup; expect(outcomes[0]).toEqual({ status: 'fulfilled', value: undefined });
+      expect(outcomes[1]).toEqual({ status: 'rejected', reason: expect.objectContaining({ name: 'AuthOperationCleanupError', message: 'Record operation cleanup could not be confirmed' }) });
+      expect(await candidate.result).toBe(observation); expect(await bounded).toBe('timeout'); expect(candidate.receipts[0]).toBe(lease.dispose());
+    } finally { headers.resolve(new Response(null)); cancel.resolve(); await accepted.done; await candidate.cleanup; await lease.dispose().catch(() => {}); }
   });
   it('keeps the primitive absent from current public client/auth entrypoints', () => {
     const client = createClient(base.href, undefined, { auth: { persistSession: false, autoRefreshToken: false }, trailbase: { tables: { todos: { api: 'todos', primaryKey: 'id', fields: { id: { type: 'uuid' } } } } } });

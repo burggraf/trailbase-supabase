@@ -1,0 +1,88 @@
+{
+  "scope": "AL consumer result-delivery characterization and private option-A agreement; unchanged Core runtime, not public Storage adoption or genuine compatibility qualification",
+  "status": "private-option-A-cross-characterized-offline-shared-auth-unchanged",
+  "baseCommit": "cfc377a70cd20b5eccabbe7962728b73d744dc95",
+  "reviewedCoreImplementationCommit": "2f82bca05998599862219a5e1b7214bf3ae89eeb",
+  "sourceSha256": "63c4c449828d484aa18aea560c982dbdb3087b324cbab0dad2785f883be7c718",
+  "authSha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d",
+  "testFileSha256": "0d771350b43e997be436c86f4c634c8f82d1a9b5a4d4e28a57314ef73e8bc128",
+  "classification": {
+    "counterexample": "Pre-dispose assert plus awaited finally/disposal can publish after synchronous reentrant logout; an awaited consumer-cleanup gap can similarly publish after replacement",
+    "coreDefectEstablished": false,
+    "healthyControl": "Normal disposal invalidates lease assertCurrent while the original owner can remain committed",
+    "sharedAuthOrPublicApiChange": false,
+    "contract": "Existing four-member lease remains unchanged; result-delivery ordering and handed-off reader cleanup belong to the consumer"
+  },
+  "privateOptionA": {
+    "agreement": "Storage explicitly selected A for current private observation research, not a public upload promise or B",
+    "consumerWork": "Await decoder/reader work and actual cancellation/finalization including lock release while lease stays open. Failed cleanup prevents verified publication; pending work stays owned/unconfirmed.",
+    "delivery": "Prepare a controlled stable nonthenable observation; final assertCurrent and native producer-Promise settlement occur synchronously without intervening await/application callback/thenable adoption",
+    "limit": "Producer settlement linearization only; arbitrary downstream then/await may observe a changed owner",
+    "teardown": "Immediately initiate disposal, register its exact stable receipt in separately owned tracked teardown with a preallocated pending obligation before reentrancy, join independently without fail-fast and preserve primary/cleanup errors and sticky deadlines",
+    "cleanupConfirmedResult": false,
+    "productionConsumerImplemented": false,
+    "strongerOptionB": "Awaited-all-Core-disposal plus owner-current producer fulfillment would require separately agreed post-seal captured-owner completion semantics; current four members do not expose that fence",
+    "forbiddenSubstitutes": "No cached-session/user-ID equality, second lease/auth cache, ignored stale throw or asynchronous fence callback"
+  },
+  "characterizations": {
+    "initialFive": {
+      "testSnapshotSha256": "3e994c44bda79348793bb0068f5ad2aa39f9bfd43fba811dc842ff0f94684e19",
+      "operationCasesEachNode": 62,
+      "storageReadOnlyPeerReview": "No verified blocking finding; parsed supplied reports, did not rerun Core. Correctly qualified array publication as weaker than actual-Promise A and cancellation-only join as weaker than reader finalization.",
+      "storageReviewCommit": "34725111c4f3cddac93b8a14522d2ad9dbb136d1"
+    },
+    "additionalPrivateOptionA": {
+      "cases": 8,
+      "operationCasesEachNode": 70,
+      "initialSevenFrozenSourceSha256": "a971fbe1d0a8f8d3917fdc3d374a7cad07572afb3e3964c29ac5f359a1ab1106",
+      "initialSevenPeerReviewedTestSha256": "123d74b045466c62d1db078a3f33f9c1ccf791e236df5ee399a8b0ba7a13ebd6",
+      "observations": [
+        "Pending real reader cancellation/lock release delays publication; healthy control publishes only afterward",
+        "Owner retirement during that cleanup await fails the final fence and prevents publication",
+        "Rejected reader cleanup prevents publication and the cleanup receipt includes lock release",
+        "Controlled frozen null-prototype nonthenable native producer settlement precedes disposal reentrancy; downstream sees logout without contradicting producer linearization",
+        "Untrusted then-getter negative control can retire ownership during native Promise resolution",
+        "Primary failure plus pending accepted Core work drains independently; later Core fulfillment preserves earlier timeout",
+        "Core cancellation failure remains a separate safe cleanup error; it neither masks primary failure nor retroactively changes timeout",
+        "Already-fulfilled producer observation remains the same frozen object after pending Core cleanup later rejects; allSettled reports consumer fulfilled/Core AuthOperationCleanupError while prior timeout stays sticky"
+      ],
+      "testOnlyCandidate": true,
+      "peerReview": "Storage read-only reviewed seven exact-snapshot cases and independently parsed69/69 supplied reports eachNode, no tests run or full-suite certification. No verified blocker; identified missing positive-result-plus-late-Core-failure combination. After frozen382 checks finished, parent verified the gap and added the eighth bounded case without runtime change. No independent re-review of that follow-up claimed.",
+      "allSettledLimit": "Group fulfillment means all settled, not all succeeded; inspect each outcome before acknowledging cleanup. No failed/pending cleanup becomes ok."
+
+    }
+  },
+  "freshOfflineVerification": {
+    "nodes": ["22.23.2", "24.21.0"],
+    "unitCasesEachNode": 383,
+    "operationCasesEachNode": 70,
+    "preservedEarlierFullVerification": "a971fbe1/123d74b0:382units/69operation/check/coverage/package eachNode PASS, closed and frozen before follow-up edit",
+    "unitFailedOrPending": 0,
+    "checkEachNode": "passed",
+    "packageChecksEachNode": 4,
+    "packageOwnedCleanup": "passed",
+    "coverage": "unchanged95/95/95/90 globally and each3runtime modules; no exclusions",
+    "globalPercent": { "statements": 97.46, "lines": 99.53, "functions": 99.35, "branches": 95.18 },
+    "realOrInstalledBrowserQualification": false
+  },
+  "fixtureEnumeration": {
+    "controllerSha256": "72461df393ae9e7826466d5bfe971c4fabe8cec66bf4329ea67c430b0308f63a",
+    "review": "Executor source/diff review plus separately authored entire-block synthetic refusal controls, not independent executor/model or maintainer review",
+    "onlyCorrection": "Directory-entry types exclude regular diagnostic files from directory descent and refuse prefixed symlinks/unknown types; no other guard assertion or competition predicate/exemption changes",
+    "controlsEachPinnedNode": { "passed": 12, "failed": 0 },
+    "preservedEarlierRedGreen": "Original8controls6PASS/2FAIL, then8PASS eachNode remain separately frozen",
+    "frozen": true,
+    "liveRetested": false,
+    "historicalEntrypointRunnable": false,
+    "limit": "Historical one-use entrypoint retains consumed outputs/old commit binding and must not be launched. Future controller needs unique outputs, current-source binding, review/freeze and fresh user handoff.",
+    "clearanceOrReservation": false
+  },
+  "laneStatusNotCoreAdoption": {
+    "storage": "Local34725111 review/docs checkpoint, parent8b451ec; lane-reported383units/31ST13 eachNode at efb88bac. Earlier native4/2 and separate9/1 false-success evidence remain failures.",
+    "realtime": "User-reported local09b1b971/source13944e24:470normal lane units and separate actualCore+channel13/13 eachNode; RA actual12, not earlier draft13. Mocked HTTP/source assemblies, not installed/native/browser proof. No shared/public wiring or Core adoption; native histories remain separate.",
+    "noCountsSummedOrHistoricalPassExtrapolation": true
+  },
+  "liveWork": { "fixtures": 0, "livePreflightOrGlobalAudit": false, "currentSourceGenuineAlExecutions": 0, "windowAssigned": false, "pushOrNewCi": false },
+  "remaining": "Obtain a fresh explicit Core-only live handoff, then prepare/freeze unique current-source one-use controllers before any real safeguard or fixture dispatch. Genuine AL, installed/browser/regression qualification, remote reconciliation/publication/exact-commit CI and broader release/security/platform/maintainer gates remain unpassed.",
+  "signoff": false
+}
