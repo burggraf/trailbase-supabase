@@ -70,6 +70,37 @@ npm run fixtures:cleanup -- <owned-run-id>
 
 Do not remove the lock manually, target a linked project, or prune Docker. A running runner, wrong ownership or non-local Docker target must be inspected rather than bypassed. Cleanup failure is failure, not permission to start overlapping fixtures.
 
+## Unfinished Storage / Realtime sample panels
+
+This is **sample-only preparation**, not SDK support: the current public client still has neither `storage` nor `channel`, so the signed-in panels show **UNAVAILABLE** and leave auth/CRUD/manual **Refresh tasks** working. There is no raw-record shim, SDK export change, bucket/table provisioning or todos schema change. The existing running demo uses startup-copied assets: **do not restart, deploy to or change it** for this work. A real fixture/backend/browser qualification needs a fresh explicit handoff.
+
+The provisional intended calls, coordinated against Storage `34725111` and Realtime `09b1b971`, are:
+
+```js
+const bucket = client.storage.from('attachments');
+await bucket.upload(path, blob);  // Exactly two arguments; acknowledgement only.
+await bucket.download(path);    // {data: Blob, error: null}; no URL API.
+const channel = client.channel(name)
+  .on('postgres_changes', { event: '*', schema: 'public', table: 'todos' }, invalidate)
+  .subscribe(statusCallback);   // Same channel synchronously; not a readiness Promise.
+await channel.unsubscribe();   // Inspect 'ok' / 'error', never assume all-settled means success.
+```
+
+If methods are subsequently present, the panels still say **experimental / backend UNQUALIFIED**. Live updates require an explicit Connect, invalidate once on SUBSCRIBED and on notifications, and coalesce a single dirty flag/timer/in-flight refresh. They retain the current server filter/page, defer during editing/modal/loading or unresolved task errors, preserve appropriate focus and do not steal moved focus. Errors/stop are terminal for that view: no automatic reconnect/replay or payload-to-row synthesis. Manual refresh remains available; automatic invalidation does not erase an unconfirmed-write diagnostic before explicit manual reconciliation. Notifications and SUBSCRIBED are not a snapshot/stream synchronization barrier.
+
+Attachments use only the sample convention `daylist/<lowercase UUIDv4>.bin`, never the filename. Paste an earlier sample path to download or generate a new path for a create-only attempt. The **5 MiB UI limit** is not a claimed SDK/native limit. Proposed upload data is `{id,path,fullPath}`: opaque genuine backing-record ID, exact logical path and `attachments/` + path, not a URL. Acknowledgement is visibly **UNVERIFIED** until a fresh SDK Blob download passes exact size and complete byte-for-byte comparison. Only **Read-back bytes match selected file** is reported—not generic verified upload, durability, record/generation binding, owner continuity or SDK cleanup. Two public calls cannot independently establish the same Core owner lifetime. Lost/error/mismatched outcomes may have effects and reserve the path; no automatic retry/delete/overwrite, and a path is not attempted twice within the same view. Future dedicated create/read-only bucket/schema/native owner rules are prerequisites, not provisioned here. Paths/attempt history are view-local; reload/sign-out loses them. Without list/remove the app cannot enumerate or clean up orphaned effects/reservations; local object-URL revocation is not backend cleanup. Blob MIME is observed, not promised; no inline execution/preview. A downloaded Blob is offered as a local save link; owned object URLs are revoked on replacement/disposal.
+
+UI disposal seals callbacks synchronously and returns one stable `Promise<'ok'|'error'>` joining started feature UI work and channel unsubscribe. **Inspect the value**: fulfillment alone is not success. Pending work stays pending; error is sticky. This is not a Storage/Core cleanup receipt, rollback or universal network quiescence proof, and cannot cancel an already-started CRUD query. Same-user SIGNED_IN conservatively retires optional features (reload to open a fresh feature view), without token comparisons, while keeping the task view/filter/page. Existing auth/data client ownership is unchanged.
+
+Offline mocked DOM checks (HTTP(S) network aborted; owned local Blob URLs checked natively; no backend/fixture):
+
+```sh
+node node_modules/@playwright/test/cli.js test --config=tests/todos-mock/playwright.config.ts
+npm run test:unit
+```
+
+Run under each pinned Node. The browser config uses Chromium/Firefox/WebKit, one worker, zero retries, 60s per case; invocation budget600s. Mock clients are explicitly injected into the real app module, with all positive feature statuses prefixed **MOCK**. This does not certify native/installed/browser-backend compatibility, current real app regressions, permission/durability/security gates or release. See [scope and test contracts](../../docs/plans/daylist-storage-realtime-preparation.md) and the progress ledger for exact results/missing checks.
+
 ## Automated checks
 
 ```sh

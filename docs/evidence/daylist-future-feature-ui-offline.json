@@ -1,0 +1,147 @@
+{
+  "scope": "Daylist sample-only unfinished Storage/Realtime preparation; offline UI/unit/existing SDK artifact checks, NOT native/public feature compatibility or signoff",
+  "status": "implemented-offline-verified-for-review",
+  "baseCommit": "d6a4a32a87dfeb3c65291ed6e2d8e99cba49cc51",
+  "sourceSha256": "e50637bd4aa604b6e5850047c7043eba901985b336a88ea7afa4e483e97bf749",
+  "sdkAuthSha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d",
+  "sourceFiles": {
+    "README.md": "10fae9f41bff8b9b2a651ea80f5983f5b587afbee10b3fc3b88b785350ce4bf3",
+    "docs/plans/daylist-storage-realtime-preparation.md": "7494f8752dd89c3e64a44a1678195ba814525a12e0986a898545934e77352162",
+    "examples/todos/README.md": "a116457f257a3d9a92fe97545e173d440485a4e261efd72280ddd67e1d15fa1a",
+    "examples/todos/app.js": "261a96e0941049fed274abb21909f48af26affd3cf44bdf8dba140623234644e",
+    "examples/todos/styles.css": "acaf1cf3c2c3a90254aa6574a38d322331eb8e22342053f636ae9de0aba456a0",
+    "tests/todos-mock/features.spec.ts": "86e379cf7f4c535e4164736ac71a73b386766bbfdb5af099a0f3aaba3dc0bedb",
+    "tests/todos-mock/fixture.js": "eded93e29f2e6230e1dca045f72dab37f028ddb78f0f4814575a9ba104f7c024",
+    "tests/todos-mock/playwright.config.ts": "b6528ab1d1d6f69914402317d828602398263b116819be0e5655feff7bf384b3",
+    "tests/unit/daylist-features.test.ts": "e8c15fd4dca0380395063e8c54d6fb3bd366987569fafe5109d0fd9356488eb0"
+  },
+  "approvedBoundary": {
+    "boundedSingleWriterSampleOnly": true,
+    "sdkRuntimeExportsOptionsChanged": false,
+    "sdkStorageChannelWiring": "absent",
+    "laneImplementationsAdopted": false,
+    "todosSchemaChanged": false,
+    "dependenciesPinsBudgetsChanged": false,
+    "backendFixtures": 0,
+    "existingDemoRestartDeploymentExposureDataMutation": false,
+    "push": false,
+    "newCommitCi": false
+  },
+  "coordinatedIntendedContracts": {
+    "storage": "34725111c4f3cddac93b8a14522d2ad9dbb136d1",
+    "realtime": "single-use fluent channel.on(postgres_changes,{event:*,schema:public,table:todos},callback).subscribe(status); unsubscribe Promise<ok|error>",
+    "kind": "READ-ONLY checkpoint confirmation; future public shapes remain provisional, not supported exports",
+    "storageMethods": [
+      "storage.from(attachments).upload(path,blob)",
+      "storage.from(attachments).download(path)"
+    ]
+  },
+  "behavior": {
+    "unavailable": "Missing/partial/throwing unfinished capability probes show UNAVAILABLE without breaking auth/CRUD/manual refresh. No raw record/file HTTP shim.",
+    "storage": "48-byte canonical UUIDv4 sample paths; create-only two-argument upload; opaque backing-record handle acknowledgement is UNVERIFIED until fresh actual Blob exact-size/full-byte read-back. No list/remove/overwrite/options/signed/public URLs. No automatic replay and no second attempt at a path within a view; view-local history is not lifetime uniqueness.",
+    "storageLimits": "5MiB sample UI input/read-back bound, not an SDK/native maximum. No MIME/filename promise or inline content. Matching bytes is NOT durability, record/generation binding, owner continuity or Core/Storage cleanup. Paths/history can be lost and effects cannot be enumerated/cleaned by this API.",
+    "realtime": "Explicit opt-in, invalidate on SUBSCRIBED and notifications, one dirty flag/timer/in-flight refetch. Preserve current filter/page/focus and moved focus, defer edits/modal/loading/unresolved task errors; manual reconciliation preserves unknown-write diagnostics. No event-row synthesis/replay/reconnect/Broadcast/Presence.",
+    "lifecycle": "Retire callbacks/timers synchronously on disposal/auth replacement and conservatively same-user SIGNED_IN, no new token/auth store/listener. Stable UI drain joins started feature work plus unsubscribe and inspects ok/error and every allSettled outcome. Pending stays pending; local UI result is not universal SDK/network quiescence or cleanup B.",
+    "mock": "Actual example module in blank pages with injected in-memory clients; positive feature states prefixed MOCK. HTTP(S) aborted, owned local Blob bytes/revocation checked natively; no backend/server/mail fixtures."
+  },
+  "verification": {
+    "nodes": [
+      {
+        "node": "v22.23.2",
+        "unitPassed": 392,
+        "sampleUnitPassed": 9,
+        "mockUiPassed": 63,
+        "engines": {
+          "chromium": 21,
+          "firefox": 21,
+          "webkit": 21
+        },
+        "packageChecks": 4,
+        "packageCleanup": "passed",
+        "tarballSha256": "4c65d9f094fbcb35eadc8841d8ac11f73e7812b19f684a2014418b37e3d6b11f",
+        "coverage": {
+          "statements": 97.46,
+          "lines": 99.53,
+          "functions": 99.35,
+          "branches": 95.18
+        },
+        "coverageModules": 3
+      },
+      {
+        "node": "v24.21.0",
+        "unitPassed": 392,
+        "sampleUnitPassed": 9,
+        "mockUiPassed": 63,
+        "engines": {
+          "chromium": 21,
+          "firefox": 21,
+          "webkit": 21
+        },
+        "packageChecks": 4,
+        "packageCleanup": "passed",
+        "tarballSha256": "4c65d9f094fbcb35eadc8841d8ac11f73e7812b19f684a2014418b37e3d6b11f",
+        "coverage": {
+          "statements": 97.46,
+          "lines": 99.53,
+          "functions": 99.35,
+          "branches": 95.18
+        },
+        "coverageModules": 3
+      }
+    ],
+    "commandsPerNode": [
+      "npm run check",
+      "npm run test:unit",
+      "npm run test:sdk:coverage",
+      "npm run test:sdk:package",
+      "node node_modules/@playwright/test/cli.js test --config=tests/todos-mock/playwright.config.ts"
+    ],
+    "reportSha256": {
+      "22-unit": "4f772798cb3191ec182df8d352435822bbdb58c5c86004a304300814eabace8c",
+      "22-coverage": "855992f6c321b5138211bcef919f15fe3475ff14d08f442dc74a2eae4bf6c04b",
+      "22-package": "1476e7c1f3963cf0aad42c3f785fc3db3e31fcaa1309ccbb182f53e968c8804f",
+      "22-mock-ui": "3eeba1778db8b78d5af8fdbbe58897631fbeb7263d37459f4b57e5893297df05",
+      "24-unit": "7936662c9b6e39cb237c47a76da6bc199a9a9bb912d9fb7cc920a8f817060057",
+      "24-coverage": "3c7bdf6de134c9ff9d386a3a4262cefc5fc8fdc1474cdd5ab1fc161ab20dc8b3",
+      "24-package": "88366075f470c9e7789ac7b7ac45c30d43c413aa30266987c2a47a29ff767fb7",
+      "24-mock-ui": "64d7da3e2b93e0f44164ccf50f76afc01c7179688e180cf5610d8c169526206f"
+    },
+    "coverageScope": "Unchanged global and each3SDK-runtime-module thresholds95statements/lines/functions,90branches; not measured sample UI branch coverage or release/security acceptance",
+    "mockBrowserScope": "21cases per engine; Chromium/Firefox/WebKit1worker/retries0/60s each, command<=300s within600s aggregate bound; no skip/xfail/retry",
+    "deployedAssetProof": "7 existing deployed asset regular-file bytes/hashes unchanged; startup-copy inode separation established. File-only check, no live server/data/global-guard replay."
+  },
+  "preservedEvidenceAndCorrections": [
+    "Initial unit0PASS6FAIL for missing helpers and Chromium1FAIL for missing unavailable status; raw JSON/log retained. Initial JSON reporter path was relative to config; actual original and byte-copy retained; earlier expected root path remains absent.",
+    "Initial mock-red trace/error context were overwritten by the old shared Playwright output directory and remain missing, not reconstructed. Later reports use distinct artifact directories; all subsequent failure traces retained.",
+    "First mock suite45PASS/no failures on older test graph, not current qualification. Focused SUBSCRIBED/focus2FAIL and throwing-getter1FAIL then3focusedPASS; unknown-write diagnostic1FAIL then guarded; modeled Blob reads7PASS2FAIL then drained via allSettled.",
+    "Trailing-control expected-red premise was invalid: existing non-multiline regex already rejected controls,7testsPASS/controllerexit1. No runtime fix inferred; additive passing control retained.",
+    "First full controller failed ten TS18046 authoring diagnostics; no unit/coverage/package/UI or Node24 entered. Typed numeric model generics fixed it without compiler/assertion changes. Original false asset-preservation flag was !primary bookkeeping, not an observed byte change; qualified separately.",
+    "Source90f77f5b Node22 check/392units/coverage/package PASS, mock59PASS4FAIL; Node24 unentered. Three tests awaited disposal before releasing held upload; corrected side-effect page.evaluate now returns undefined. WebKit catch-all route aborted blob:; four private route/origin controls proved HTTP-only blocking permits valid bytes then native revocation failure. Runtime app unchanged by those harness corrections; focused6/6PASS before final full checks.",
+    "First summary sampleUnitPassed0 matched filenames against name-only canonical records; original summary retained and explicitly qualified to9DL-STpassed cases per Node."
+  ],
+  "review": {
+    "kind": "executor connected-source/caller/security review plus READ-ONLY lane contract confirmation; not independent model execution or maintainer signoff",
+    "requiredFollowup": "Review this checkpoint and unresolved interfaces/layers before any SDK wiring/adoption or real fixture grant."
+  },
+  "realQualification": {
+    "sampleNativeInstalledBackendBrowser": "not run; no fresh handoff or public SDK features",
+    "core47c": {
+      "checkpoint": "47c1a8fcf232dc409554863e139be563784833cd",
+      "sourceSha256": "63c4c449828d484aa18aea560c982dbdb3087b324cbab0dad2785f883be7c718",
+      "entered": 5,
+      "passed": 2,
+      "failed": 3,
+      "status": "RELEASED; failures unresolved, no fix/exception inferred"
+    },
+    "storageFalseSuccess": "Historical official0359 upload200/metadata/download500 remains failed; no new native run",
+    "remaining": [
+      "current-source real app/auth/CRUD/mail/installed/backend-browser regressions under fresh isolated handoff",
+      "future actual Storage/Realtime adapter, database/security/shared-contract/native fault/permission/durability/resource qualification",
+      "sample mobile/accessibility/critical-branch coverage and broader platform/TLS/release/maintainer gates",
+      "three genuine Core47c cleanup causes remain uncaptured; AL qualification/publication blocked",
+      "all14 historical strict failures and five incomplete full SDK command families remain unpassed"
+    ]
+  },
+  "signoff": false,
+  "publication": "local review checkpoint only; no push/CI/deployment or release"
+}

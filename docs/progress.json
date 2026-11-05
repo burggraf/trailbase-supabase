@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "currentPhase": "Fresh exclusive47c/source63c4c449 real AL window completed5entered/2PASS/3FAIL/0unexecuted, two fixtures, no retry/source change. New one-use frozen19inputs; actual reviewed enumeration identical;15offline controls eachNode and all fresh/repeated strict live guards PASS. Whole Chromium and short-auth PASS; default-native cleanup-0 AuthOperationCleanupError unconfirmed; Firefox/WebKit cleanup-0 page-evaluate aggregate,34recorded passed checks each/no primary diagnostic. Actual cancellation/body state and browser nested causes uncaptured; no root-cause/fix/exception/signoff inferred. Both setups/resource cleanups and independent owned-source/original/fullLISTEN/health/report-byte audit PASS; Core RELEASED.1370file new private source/raw archive rehashed/exact owned parent removed;59historical archives88671files/private575/four old AL/DR333+24 retained and rehashed. Push/newCI withheld with3genuine failures; no current assignment/global replay. Runtime/public surface/pins/budgets unchanged, private A not adopted. Prior383offline proof remains distinct. Further live diagnostic attempt requires fresh handoff; full applicable regressions/publication/CI/release gates pending.",
+  "currentPhase": "Daylist SAMPLE ONLY preparation afterd6a4a32, aggregatee50637bd4aa604b6e5850047c7043eba901985b336a88ea7afa4e483e97bf749. READ-ONLY Storage34725111/Realtime09b1b971 intended contracts coordinated; SDK runtime/auth04699c57/public auth/from/exports/options/pins/schema unchanged; public storage/channel absent and default UI UNAVAILABLE. Both exactNodes22.23.2/24.21.0 check/392units(9sample)/unchanged3module+globalcoverage/package4cleanup and63mockUI(21each3engines,retries0,no skips/flakes)PASS. Positive feature states MOCK; no native/backend/mail/real app fixture or SDK feature qualification. Seven deployed asset file bytes preserved, no existing-demo restart/deploy/exposure/data mutation/global guard replay. Source90f77 Node22 mock59PASS4FAIL plus earlier authoring/control/analyzer errors retained/qualified; test-only promise-adoption/blob-routing corrections focused6PASS then finalfull PASS. Initial mock-red trace missing after shared output clearing, not reconstructed; subsequent traces retained. Executor review, no independent/maintainer signoff or layer waiver. Core47c RELEASED5entered2PASS3FAIL remains unresolved; no live assignment, push/newCI/publication. Review local sample checkpoint; fresh explicit handoff required for genuine diagnostics/current real app/native Storage/Realtime/installed/security/compatibility/release layers.",
   "currentSourceAl47cWindow": {
     "status": "failed-current-source-genuine-window-not-qualified",
     "checkpoint": "47c1a8fcf232dc409554863e139be563784833cd",
@@ -11416,5 +11416,67 @@
       "sourceSha256": "8ae269af233896e1afdc4067a9241a405a8480b0140089e7bdf666c73e272705",
       "priorPendingWording": "pre-check bookkeeping, not actual execution outcome; raw/frozen prior proof unchanged"
     }
+  },
+  "daylistFutureFeatureSample": {
+    "status": "implemented-offline-mock-verified-for-review",
+    "baseCommit": "d6a4a32a87dfeb3c65291ed6e2d8e99cba49cc51",
+    "sourceSha256": "e50637bd4aa604b6e5850047c7043eba901985b336a88ea7afa4e483e97bf749",
+    "sdkAuthSha256": "04699c578cb3b208331e006e7a018b3378aae4ebf18bdc1a09031f76f1ef837d",
+    "scope": "Bounded single-writer example/tests/docs only; no SDK implementation/public wiring/adoption/schema/provisioning/deployment/dependency/pin/budget change or MVP promotion",
+    "coordinatedCheckpoints": {
+      "storage": "34725111c4f3cddac93b8a14522d2ad9dbb136d1",
+      "realtime": "09b1b9716adb7d15d92d0cdc491c395dea8e9fe8",
+      "kind": "READ-ONLY intended-contract confirmation; public Storage/Realtime methods remain absent/provisional"
+    },
+    "uiContract": [
+      "UNAVAILABLE for absent/partial/throwing unfinished capabilities; auth/CRUD/manual refresh remain independent",
+      "Canonical48ASCII-byte UUIDv4 sample paths,5MiB UI bound only; no filename keys or SDK limit claim",
+      "Two-argument create-only upload acknowledgement is UNVERIFIED until fresh actual Blob exact-size/full-byte read-back; matching bytes is not durable/record-generation/owner-continuous/Core-cleanup success",
+      "No list/remove/overwrite/options/signed/public URLs, auto-replay or repeat path attempt within one view; lost view history/orphaned effects cannot be enumerated/cleaned here",
+      "Explicit single-use Realtime connection, SUBSCRIBED/events invalidate only; one dirty flag/timer/in-flight refetch; preserve filter/page/focus/moved focus/edit/modal/error state and manual reconciliation",
+      "No replay/reconnect/full-old-row/Broadcast/Presence invention; callbacks/timers retire on disposal/auth replacement, no new token store/auth listener/currentness proof",
+      "Stable UI teardown joins started feature UI work and native unsubscribe; inspect ok/error and every allSettled outcome; pending stays pending, not Storage/Core cleanup B or universal quiescence"
+    ],
+    "verification": {
+      "nodes": ["22.23.2", "24.21.0"],
+      "checkEachNode": "passed",
+      "unitEachNode": {"passed": 392, "failed": 0, "pending": 0, "newSampleCases": 9},
+      "mockUiEachNode": {"passed": 63, "failed": 0, "skipped": 0, "flaky": 0, "engines": {"chromium": 21, "firefox": 21, "webkit": 21}, "workers": 1, "retries": 0},
+      "coverage": "Unchanged global and each3SDK-runtime-module95statements/lines/functions,90branches PASS; total97.46/99.53/99.35/95.18percent; not measured sample UI branch/security coverage",
+      "packageEachNode": {"checks": 4, "cleanup": "passed", "featureBackendQualification": false},
+      "backendFixtures": 0,
+      "realCurrentSampleBackendBrowser": "not run; no public SDK wiring/fresh handoff",
+      "deployedAssets": "7 existing asset regular-file byte/hashes unchanged; independent startup copies, file-only proof; no live server/data/global-guard replay",
+      "mockBoundary": "In-memory injected clients, all positive feature states MOCK, HTTP(S) aborted, owned local Blob bytes/revocation checked natively; not backend/native compatibility"
+    },
+    "preservedFailures": [
+      "Initial missing helpers0/6 and missing unavailable-status1FAIL; first mock45PASS older graph, not current qualification",
+      "SUBSCRIBED/focus2red, throwing getter1red, unknown-write1red and modeled Blob drain7PASS2FAIL retained before corrections",
+      "Ten TS18046 authoring diagnostics; typed count generics fixed without compiler/assertion weakening; first asset false flag was !primary bookkeeping/not an observed byte change",
+      "Trailing-control expected-red premise invalid:7testsPASS/controllerexit1, no runtime fix; report-path/name-prefix analyzer mistakes retained/qualified",
+      "Source90f77 Node22 check/392unit/coverage/package PASS, mock59PASS4FAIL, Node24 unentered; three test promise-adoption deadlocks and WebKit catch-all abort of blob: proven by route/origin controls",
+      "Corrected side-effect expression returns undefined and HTTP-only routing leaves Blob checks native; no app/runtime change for these harness fixes; focused6PASS then finalfull63PASS eachNode",
+      "Initial mock-red trace/error context overwritten by old shared output directory and still missing, no reconstruction; subsequent distinct artifact directories preserve failure traces",
+      "Core47c genuine5entered2PASS3FAIL remains RELEASED/unresolved, no fix/exception inferred; Storage native false-success/history untouched"
+    ],
+    "review": "Executor connected-source/caller/security review and READ-ONLY lane confirmation only, not independent model execution or maintainer signoff",
+    "evidence": "docs/evidence/daylist-future-feature-ui-offline.json",
+    "plan": "docs/plans/daylist-storage-realtime-preparation.md",
+    "missing": [
+      "Review this sample-only checkpoint/provisional interfaces; no maintainer signoff inferred",
+      "Current-source genuine app/auth/CRUD/mail/permissions/resource/installed/backend-browser regressions require fresh isolated handoff",
+      "Public Storage/Realtime SDK wiring/adoption requires separate scope/real adapter/database/shared-contract/native/security/fault/cleanup/durability qualification",
+      "Sample mobile/accessibility/critical-branch coverage and broader platform/TLS/release gates remain pending; no layer waived",
+      "Three genuine Core47c cleanup causes uncaptured; AL qualification/publication blocked; all14 historical strict failures/five incomplete full SDK command families stay unpassed"
+    ],
+    "restart": [
+      "Review the local sample checkpoint, exact source-bound offline reports and provisional limitations",
+      "No fixture assigned; obtain fresh explicit bounded handoff before any real diagnostic/app/backend run; do not touch existing demo/assets/data/six containers/tailnet",
+      "If separately approved, capture actual per-lease cancellation/body state and normalized nested browser cleanup causes before any shared-auth fix",
+      "SDK wiring/backend adoption/native current-source qualification and safe publication/exact CI remain future approved work, never inferred from mocks"
+    ],
+    "push": false,
+    "newCommitCi": false,
+    "signoff": false
   }
 }

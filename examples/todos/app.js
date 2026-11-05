@@ -26,7 +26,9 @@ export function mountAuthTodos(root, client, options = {}) {
   if (options.diagnostics) return mountAuthHarness(root, client, options);
   if (!root || !client?.auth) throw new TypeError('Explicit auth client and root required');
   const listeners = new AbortController();
-  let disposed = false, busy = false, mode = 'login', ownerId, tasks;
+  let disposed = false, busy = false, mode = 'login', ownerId, tasks, disposal;
+  let retiredFeatures = Promise.resolve('ok');
+  function retireTasks() { if (tasks) { retiredFeatures = joinFeatureWork(retiredFeatures, tasks.dispose()); tasks = undefined; } }
   root.innerHTML = `<header class="app-header"><a class="brand" href="/sdk-data/index.html"><span class="brand-mark">${mark}</span>Daylist</a><div class="account" hidden><span class="account-email"></span><button type="button" class="quiet-button" data-auth="local">Sign out</button></div></header>
 <p class="sr-only" role="status" aria-label="Auth status">Restoring your session</p><p class="auth-activity" role="status" aria-label="Auth activity"></p><p class="error-banner" role="alert" id="todos-auth-error" aria-label="Auth error"></p>
 <section class="auth-card"><span class="eyebrow">A LITTLE LESS TO REMEMBER</span><h1>Welcome back.</h1><p class="auth-intro">A clear space for everything you want to get done.</p><div class="confirmation-note" role="note" hidden><strong>Confirm your email, then sign in.</strong><p>Open your message in the private test inbox and follow the confirmation link. Come back here to sign in. Please don’t submit sign-up again while waiting.</p><a class="inbox-link" target="_blank" rel="noopener" hidden>Open test inbox ↗</a></div>
@@ -46,19 +48,20 @@ export function mountAuthTodos(root, client, options = {}) {
     form.elements.namedItem('password').autocomplete = mode === 'login' ? 'current-password' : 'new-password';
     form.elements.namedItem('password').minLength = mode === 'login' ? 1 : 12;
   }
-  function render(session) {
+  function render(session, event) {
     if (disposed) return;
     status.textContent = session ? `Signed in: ${session.user.email ?? session.user.id}` : 'Signed out';
     authCard.hidden = !!session; dataRoot.hidden = !session; account.hidden = !session; settings.hidden = !session;
     find('.account-email').textContent = session?.user.email ?? '';
     if (!session) { settings.open = false; setMode('login'); }
-    if (session?.user.id === ownerId) return;
-    tasks?.dispose(); tasks = undefined; dataRoot.replaceChildren(); ownerId = session?.user.id;
+    if (session?.user.id === ownerId) { if (event === 'SIGNED_IN') tasks?.retireFeatures(); return; }
+    retireTasks(); dataRoot.replaceChildren(); ownerId = session?.user.id;
     if (session) { tasks = mountTodos(dataRoot, client, { ...options, ownerId }); void tasks.refresh(); }
   }
-  const subscription = client.auth.onAuthStateChange((_event, session) => render(session)).data.subscription;
+  const subscription = client.auth.onAuthStateChange((event, session) => render(session, event)).data.subscription;
   async function run(action) {
     if (disposed || busy) return;
+    if (action === 'local' || action === 'global') tasks?.retireFeatures();
     busy = true; error.textContent = ''; activity.textContent = action === 'signup' ? 'Creating your account…' : action === 'login' ? 'Signing in…' : 'One moment…';
     for (const button of root.querySelectorAll('button[data-auth], [data-auth-mode], .auth-submit')) button.disabled = true;
     try {
@@ -82,7 +85,14 @@ export function mountAuthTodos(root, client, options = {}) {
     if (button.hasAttribute('data-auth-mode')) { setMode(mode === 'login' ? 'signup' : 'login'); form.elements.namedItem('email').focus(); }
     else if (button.dataset.auth) void run(button.dataset.auth);
   }, { signal: listeners.signal });
-  return { dispose() { if (disposed) return; disposed = true; subscription.unsubscribe(); listeners.abort(); tasks?.dispose(); } };
+  return { dispose() {
+    if (disposal) return disposal;
+    let finish; disposal = new Promise(resolve => { finish = resolve; });
+    disposed = true; listeners.abort();
+    let authStopped = 'ok'; try { subscription.unsubscribe(); } catch { authStopped = 'error'; }
+    retireTasks(); joinFeatureWork(retiredFeatures, Promise.resolve(authStopped)).then(finish);
+    return disposal;
+  } };
 }
 
 export function mountTodos(root, client, options = {}) {
@@ -90,7 +100,7 @@ export function mountTodos(root, client, options = {}) {
   const { ownerId, table = 'todos', makeId = () => crypto.randomUUID(), pageSize = 20 } = options;
   if (!root || !client || typeof ownerId !== 'string') throw new TypeError('Explicit client and owner bootstrap required');
   const listeners = new AbortController();
-  let disposed = false, busy = false, page = 0, filter = 'all', rows = [], hasMore = false, editing, pendingDelete;
+  let disposed = false, busy = false, page = 0, filter = 'all', rows = [], hasMore = false, editing, pendingDelete, disposal;
   root.innerHTML = `<div class="task-heading"><div><span class="eyebrow">ONE THING AT A TIME</span><h1>My tasks</h1><p>A little focus goes a long way.</p></div><button type="button" class="refresh-button" data-task-action="refresh" aria-label="Refresh tasks" title="Refresh tasks">↻</button></div>
 <form class="add-task" data-task-form="add"><label class="sr-only" for="new-task">New task</label><input id="new-task" name="title" placeholder="What needs to get done?" autocomplete="off" maxlength="1000" required><button class="primary-button" type="submit"><span aria-hidden="true">＋</span> Add task</button></form>
 <div class="task-toolbar"><div role="tablist" aria-label="Task filters">${taskFilters.map((kind, index) => `<button type="button" role="tab" data-filter="${kind}" aria-selected="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}">${kind[0].toUpperCase() + kind.slice(1)}</button>`).join('')}</div><span class="task-activity" role="status" aria-label="Task activity"></span></div>
@@ -99,7 +109,7 @@ export function mountTodos(root, client, options = {}) {
   const find = selector => root.querySelector(selector), list = find('.task-list'), input = find('#new-task'), error = find('[aria-label="Task error"]'), activity = find('[aria-label="Task activity"]'), update = find('[aria-label="Task update"]'), dialog = find('dialog');
   function controls() {
     root.setAttribute('aria-busy', String(busy)); activity.textContent = busy ? 'Loading…' : '';
-    for (const control of root.querySelectorAll('button, input')) control.disabled = busy;
+    for (const control of root.querySelectorAll('button, input')) if (!control.closest('.future-features')) control.disabled = busy;
     find('[data-task-action="previous"]').disabled = busy || page === 0;
     find('[data-task-action="next"]').disabled = busy || !hasMore;
   }
@@ -182,7 +192,147 @@ export function mountTodos(root, client, options = {}) {
     const tab = event.target.closest('[data-filter]'); if (!tab || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault(); const index = taskFilters.indexOf(tab.dataset.filter); chooseFilter(taskFilters[event.key === 'Home' ? 0 : event.key === 'End' ? 2 : (index + (event.key === 'ArrowRight' ? 1 : 2)) % 3]);
   }, { signal: listeners.signal });
-  return { refresh: async () => { await run(); }, dispose() { disposed = true; listeners.abort(); if (dialog.open) dialog.close(); } };
+  const featureRoot = document.createElement('section'); featureRoot.className = 'future-features'; root.append(featureRoot);
+  const features = mountDaylistFeatures(featureRoot, client, { makeId, mock: options.mockFeatures === true, table, async invalidate() {
+    if (disposed) return false;
+    if (busy || editing || dialog.open || error.textContent) return 'deferred';
+    const focused = document.activeElement, item = focused?.closest('.task-row');
+    const id = item?.dataset.id, selector = focused?.matches('input[type="checkbox"]') ? 'input[type="checkbox"]' : focused?.dataset.taskAction ? `[data-task-action="${focused.dataset.taskAction}"]` : undefined;
+    const refreshed = await run();
+    if (!disposed && (document.activeElement === document.body || document.activeElement === focused)) {
+      const replacement = id && selector ? Array.from(list.children).find(row => row.dataset.id === id)?.querySelector(selector) : root.contains(focused) ? focused : undefined;
+      (replacement ?? (id ? input : undefined))?.focus();
+    }
+    return refreshed;
+  } });
+  return { refresh: async () => { await run(); }, retireFeatures: () => features.dispose(), dispose() {
+    if (disposal) return disposal;
+    disposed = true; listeners.abort(); if (dialog.open) dialog.close();
+    disposal = features.dispose(); return disposal;
+  } };
+}
+
+// Sample observations/conventions, not SDK validation, auth-owner or cleanup attestations.
+export const daylistAttachmentPath = path => typeof path === 'string' && /^daylist\/[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.bin$/.test(path);
+export async function attachmentBytesMatch(original, downloaded) {
+  if (!(original instanceof Blob) || !(downloaded instanceof Blob) || original.size !== downloaded.size) return false;
+  const reads = await Promise.allSettled([original.arrayBuffer(), downloaded.arrayBuffer()]);
+  if (reads.some(read => read.status !== 'fulfilled')) return false;
+  const left = new Uint8Array(reads[0].value), right = new Uint8Array(reads[1].value);
+  return left.length === original.size && right.length === downloaded.size && left.every((byte, index) => byte === right[index]);
+}
+function joinFeatureWork(...receipts) {
+  return Promise.allSettled(receipts).then(outcomes => outcomes.every(outcome => outcome.status === 'fulfilled' && outcome.value === 'ok') ? 'ok' : 'error');
+}
+function mountDaylistFeatures(root, client, { makeId, mock, table, invalidate }) {
+  root.innerHTML = `<span class="eyebrow">UNFINISHED SDK FEATURES · OPTIONAL</span><p class="feature-note">Method detection is not backend qualification. Auth, tasks and manual refresh do not depend on these panels.</p>
+<div class="feature-grid"><section><h2>Live updates</h2><p role="status" aria-label="Realtime status"></p><button type="button" class="quiet-button" data-live="connect">Connect live updates</button><button type="button" class="quiet-button" data-live="stop" disabled>Stop live updates</button><p class="feature-note">Notifications only request a bounded list refresh. No replay or automatic reconnect; use Refresh tasks after errors.</p></section>
+<section><h2>Private attachments</h2><p role="status" aria-label="Attachments status"></p><label>Attachment path<input name="attachment-path" placeholder="daylist/&lt;UUIDv4&gt;.bin" autocomplete="off"></label><button type="button" class="quiet-button" data-attachment="new">New unique path</button><label>Attachment file<input type="file" name="attachment-file"></label><button type="button" class="quiet-button" data-attachment="upload">Upload and check read-back</button><button type="button" class="quiet-button" data-attachment="download">Download attachment</button><a hidden download="attachment.bin" rel="noopener">Save downloaded attachment</a><p class="feature-note">Create-only unique paths, no overwrite/delete/list/URLs. Acknowledgement is not stored bytes. Read-back cannot prove durability, record generation, same auth-owner lifetime or SDK cleanup. MIME/filename fidelity is not promised. Sample input/read-back limit: 5 MiB, not an SDK limit. Future private bucket/schema/access rules are not provisioned here.</p></section></div>`;
+  const find = selector => root.querySelector(selector), listeners = new AbortController(), attempted = new Set();
+  const path = find('[name="attachment-path"]'), file = find('[name="attachment-file"]'), link = find('a'), liveStatus = find('[aria-label="Realtime status"]'), storageStatus = find('[aria-label="Attachments status"]');
+  const connect = find('[data-live="connect"]'), stop = find('[data-live="stop"]');
+  let active = true, busy = false, job, objectUrl, bucket, channel, started = false, live = false, dirty = false, timer, readJob, closingLive, closing;
+  const status = (target, text) => { if (active) target.textContent = `${mock ? 'MOCK · ' : ''}${text}`; };
+  const clearDownload = () => { if (objectUrl) URL.revokeObjectURL(objectUrl); objectUrl = undefined; link.hidden = true; link.removeAttribute('href'); };
+  try { if (typeof client.storage?.from === 'function') { const candidate = client.storage.from('attachments'); if (typeof candidate?.upload === 'function' && typeof candidate?.download === 'function') bucket = candidate; } } catch { /* Partial/unconfigured mapping stays unavailable. */ }
+  const storageReady = !!bucket;
+  let realtimeReady = false; try { realtimeReady = typeof client.channel === 'function' && table === 'todos'; } catch { /* Unfinished capability getters cannot break CRUD. */ }
+  status(storageStatus, storageReady ? 'Experimental API detected; backend UNQUALIFIED. Choose a unique sample path and file.' : 'UNAVAILABLE · Storage upload/download wiring is unfinished.');
+  status(liveStatus, realtimeReady ? 'Experimental API detected; backend UNQUALIFIED. Connect explicitly to try invalidation.' : 'UNAVAILABLE · Realtime wiring is unfinished. Use Refresh tasks.');
+  connect.disabled = !realtimeReady;
+  function storageControls() {
+    for (const control of root.querySelectorAll('[data-attachment], [name^="attachment-"]')) control.disabled = !active || !storageReady || busy || (control.dataset.attachment === 'upload' && attempted.has(path.value));
+  }
+  storageControls();
+  function arm() { if (active && live && dirty && timer === undefined && !readJob) timer = setTimeout(refreshLive, 250); }
+  function notify() { if (active && live) { dirty = true; arm(); } }
+  function refreshLive() {
+    timer = undefined; if (!active || !live || !dirty) return;
+    dirty = false;
+    readJob = Promise.resolve().then(() => active && live ? invalidate() : false);
+    void readJob.then(result => {
+      if (!active || !live) return;
+      if (result === 'deferred') { dirty = true; status(liveStatus, 'Live change waiting while editing, loading or an error needs attention.'); }
+      else status(liveStatus, result ? 'Live updates connected; list refreshed.' : 'Live refresh failed. Use Refresh tasks.');
+    }, () => { status(liveStatus, 'Live refresh failed. Use Refresh tasks.'); }).then(() => { readJob = undefined; arm(); });
+  }
+  function stopLive() {
+    if (closingLive) return closingLive;
+    live = false; dirty = false; clearTimeout(timer); timer = undefined; stop.disabled = true; connect.disabled = true;
+    let finish; closingLive = new Promise(resolve => { finish = resolve; });
+    let native;
+    try { native = channel ? channel.unsubscribe() : Promise.resolve('ok'); } catch { native = Promise.reject(new Error('Unconfirmed channel stop')); }
+    const receipt = Promise.resolve(native).then(value => value === 'ok' ? 'ok' : 'error', () => 'error');
+    joinFeatureWork(receipt, readJob ? readJob.then(() => 'ok', () => 'error') : Promise.resolve('ok')).then(finish);
+    return closingLive;
+  }
+  function subscribe() {
+    if (!active || started || !realtimeReady) return;
+    started = true; live = true; connect.disabled = true; stop.disabled = false; status(liveStatus, 'Connecting; backend remains UNQUALIFIED.');
+    try {
+      channel = client.channel(`daylist-todos-${makeId()}`);
+      if (typeof channel?.on !== 'function' || typeof channel?.subscribe !== 'function' || typeof channel?.unsubscribe !== 'function') throw new Error('Partial channel');
+      channel.on('postgres_changes', { event: '*', schema: 'public', table: 'todos' }, notify).subscribe(value => {
+        if (!active || closingLive) return;
+        if (value === 'SUBSCRIBED') { status(liveStatus, 'Live updates connected; notifications only invalidate, not a snapshot barrier.'); notify(); }
+        else if (['CHANNEL_ERROR', 'TIMED_OUT', 'CLOSED'].includes(value)) {
+          status(liveStatus, 'Live updates stopped. Use Refresh tasks.');
+          void stopLive().then(outcome => { if (outcome !== 'ok') status(liveStatus, 'Live update cleanup UNCONFIRMED. Use Refresh tasks; do not reconnect.'); });
+        }
+      });
+    } catch {
+      status(liveStatus, 'UNAVAILABLE · Realtime fluent wiring is unfinished. Use Refresh tasks.');
+      void stopLive().then(outcome => { if (outcome !== 'ok') status(liveStatus, 'UNAVAILABLE · Live update cleanup UNCONFIRMED. Use Refresh tasks.'); });
+    }
+  }
+  function attachment(action) {
+    if (!active || !storageReady || busy) return;
+    const key = path.value, selected = file.files[0];
+    if (!daylistAttachmentPath(key)) { status(storageStatus, 'Use the exact daylist/<lowercase UUIDv4>.bin sample path, without normalization.'); return; }
+    if (action === 'upload' && (!selected || selected.size > 5 * 1024 * 1024)) { status(storageStatus, 'Choose a file within the 5 MiB sample limit (not an SDK limit).'); return; }
+    if (action === 'upload' && attempted.has(key)) { status(storageStatus, 'UNVERIFIED · This path was already attempted. Do not replay; choose a new path.'); return; }
+    if (action === 'upload') attempted.add(key);
+    clearDownload(); busy = true; storageControls(); status(storageStatus, action === 'upload' ? 'Uploading; outcome UNVERIFIED.' : 'Downloading SDK Blob; transport remains unqualified here.');
+    // Register UI work before SDK callbacks; settlement cannot attest Storage/Core cleanup.
+    job = Promise.resolve().then(async () => {
+      if (!active) return;
+      if (action === 'upload') {
+        const response = await bucket.upload(key, selected); if (!active) return;
+        if (response?.error !== null || typeof response.data?.id !== 'string' || !response.data.id || response.data.path !== key || response.data.fullPath !== `attachments/${key}`) throw new Error('Unverified acknowledgement');
+        status(storageStatus, 'Upload acknowledged; read-back UNVERIFIED. Checking fresh complete bytes…');
+      }
+      if (!active) return;
+      const response = await bucket.download(key); if (!active) return;
+      if (response?.error !== null || !(response.data instanceof Blob) || response.data.size > 5 * 1024 * 1024) throw new Error('Unverified download');
+      if (action === 'upload') {
+        const matches = await attachmentBytesMatch(selected, response.data); if (!active) return;
+        if (!matches) throw new Error('Read-back mismatch');
+        status(storageStatus, 'Read-back bytes match selected file; not durability, record generation, owner continuity or SDK cleanup proof.');
+      } else {
+        objectUrl = URL.createObjectURL(response.data); link.href = objectUrl; link.hidden = false;
+        status(storageStatus, 'SDK Blob returned. Save locally; transport, MIME and record identity are not attested by this UI.');
+      }
+    }).catch(() => { status(storageStatus, 'UNVERIFIED · Could not verify attachment bytes. Effects may exist and the path may be reserved. Do not replay, overwrite or delete; reconcile before choosing a new path.'); }).then(() => { busy = false; storageControls(); });
+  }
+  root.addEventListener('click', event => {
+    const button = event.target.closest('button'); if (!active || !button) return;
+    if (button.dataset.live === 'connect') subscribe();
+    else if (button.dataset.live === 'stop') { status(liveStatus, 'Stopping live updates; cleanup pending.'); void stopLive().then(outcome => status(liveStatus, outcome === 'ok' ? 'Live updates stopped. Use Refresh tasks.' : 'Live update cleanup UNCONFIRMED. Use Refresh tasks; do not reconnect.')); }
+    else if (button.dataset.attachment === 'new' && !busy && storageReady) {
+      try { const key = `daylist/${makeId()}.bin`; if (!daylistAttachmentPath(key)) throw new Error('Invalid sample ID'); path.value = key; clearDownload(); status(storageStatus, 'Unique sample path generated; no upload or lifetime uniqueness is confirmed.'); storageControls(); }
+      catch { status(storageStatus, 'Unique path generation unavailable; a secure context/UUIDv4 generator is required.'); }
+    } else if (['upload', 'download'].includes(button.dataset.attachment)) attachment(button.dataset.attachment);
+  }, { signal: listeners.signal });
+  root.addEventListener('input', () => { if (!busy) { clearDownload(); status(storageStatus, storageReady ? 'Attachment selection changed; read-back UNVERIFIED.' : 'UNAVAILABLE · Storage wiring is unfinished.'); storageControls(); } }, { signal: listeners.signal });
+  return { dispose() {
+    if (closing) return closing;
+    status(liveStatus, 'Feature view retired; SDK cleanup is not attested here. Reload before reconnecting.');
+    status(storageStatus, 'Feature view retired; pending effects/SDK cleanup remain unverified.');
+    active = false; listeners.abort(); clearDownload(); path.value = ''; file.value = ''; storageControls();
+    let finish; closing = new Promise(resolve => { finish = resolve; });
+    joinFeatureWork(stopLive(), job ? job.then(() => 'ok', () => 'error') : Promise.resolve('ok')).then(finish);
+    return closing;
+  } };
 }
 
 const operators = ['eq', 'neq', 'gt', 'gte', 'lt', 'lte'];
