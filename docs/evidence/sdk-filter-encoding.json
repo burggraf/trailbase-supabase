@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "status": "passed-unit-request-formation",
+  "featureIds": [
+    "L1-09",
+    "U09",
+    "S02"
+  ],
+  "milestone": "SDK-ENC01",
+  "scope": "Deterministic existing SDK filter request formation; only final Fetch injected, not backend filtering or compatibility signoff",
+  "publicationBaseCommit": "9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb",
+  "reviewedTestSha256": "f7d3c674017771c4ea00604b47efffe10a63c83a93250daab52d049ab5047d44",
+  "review": {
+    "taskId": "ef1b5b65-2fe4-42f2-9442-d1d9bfa154c0",
+    "result": "One focused read-only review, no concrete P1/P2; encoding test unchanged; no duplicate reviewer",
+    "manifestSha256": "095fb2035e95b4b3e57d134f163c356b39092092366346eec90acf561cc214fc"
+  },
+  "corpus": {
+    "seed": 432078830,
+    "adversarialStrings": 12,
+    "seededWellFormedUnicodeStrings": 64,
+    "operators": [
+      "eq",
+      "neq",
+      "gt",
+      "gte",
+      "lt",
+      "lte"
+    ],
+    "limits": [
+      0,
+      7
+    ],
+    "grammars": [
+      "flat",
+      "repeated-column-indexed-AND"
+    ],
+    "casesEachPin": 24,
+    "requestFormationsEachPin": 1824
+  },
+  "authoringFailure": "Before publication, new test initially asserted redirect:manual and failed24cases/pin. Existing records policy is stricter redirect:error; only the new assertion corrected, raw first source/results preserved privately. Not a production defect/fix or product RED/GREEN.",
+  "limitations": [
+    "Finite well-formed Unicode corpus, not all malformed UTF16/backend collation policy",
+    "Genuine backend/database/shared-reference/three-engine browser/installed-package/security-resource/full release gates remain unwaived; unit request formation only",
+    "Earlier426unit and coverage results on unpublished Core source are not promoted to this different publication base",
+    "No production/API/default/codec/dependency/fixture/live-demo/auth-scope/fork change; no feature signoff"
+  ],
+  "sourceSha256": "f6854acceddfd4dbb665e64ca6003ac0b6d4a8b5968ea34cc434867b6ce6d71c",
+  "qualification": {
+    "nodes": [
+      "v22.23.2",
+      "v24.21.0"
+    ],
+    "commands": [
+      "build:sdk",
+      "check",
+      "test:unit",
+      "test:sdk:coverage",
+      "progress"
+    ],
+    "exitCodes": [
+      0,
+      0
+    ],
+    "unitTestsEachPin": 326,
+    "encodingCasesEachPin": 24,
+    "encodingRequestsEachPin": 1824,
+    "unitCoverageTotals": {
+      "statements": 97.25,
+      "lines": 99.47,
+      "functions": 99.29,
+      "branches": 95.19
+    },
+    "runtimeModules": 3,
+    "globalAndPerModuleThresholds": {
+      "statements": 95,
+      "lines": 95,
+      "functions": 95,
+      "branches": 90
+    },
+    "thresholdsPassed": true,
+    "skippedOrExcludedCoverage": false,
+    "backendOrInstalledPackageExecution": false,
+    "ci": "Not claimed by this pre-publication local evidence; inspect exact pushed commit and actual CI separately",
+    "isolation": "Clean env, owned empty distinct npm configs/HOME/cache/tmp, offline installed npm, child-only network namespace loopback, cap-drop/NNP; same locked installed dependencies with separate writable caches/outputs; no install"
+  }
+}

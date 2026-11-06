@@ -1,4 +1,12 @@
 {
+  "sdkFilterEncoding": {
+    "status": "unit-request-formation-verified-not-feature-signoff",
+    "sourceSha256": "f6854acceddfd4dbb665e64ca6003ac0b6d4a8b5968ea34cc434867b6ce6d71c",
+    "verification": "Exact public-base Node22.23.2/24.21.0 build/check/326units(24encoding)/95-95-95statements-lines-functions90branches global+all3runtime modules/progress passed, no excludes/skips;1824SDK request formations per pin. No backend/installed-package/CI/parity/release signoff inferred.",
+    "feature": "L1-09",
+    "evidence": "docs/evidence/sdk-filter-encoding.json",
+    "scope": "Only reviewed deterministic filter test + public-safe finite evidence/ledger, no runtime/fixture/API change. Actual qualification binds exact public base and reviewed test, not unpublished Core source; unrelated commits/private proof artifacts not carried."
+  },
   "schemaVersion": 1,
   "currentPhase": "DR01 minimal app lifetime fix sourced14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740: genuine84PASS/identical-test6failure red, bothNodes302/check/unchanged95–90coverage/package4/installed8 and22runtime+6static auditPASS. Original19 interrupted/causeUNKNOWN plus separate2, all14 strict failures preserved. All59archives/88671files/private575/original0358demo/live safeguards/prior histories preserved. Scoped9file commit/push and exactnewCI pending, no release/maintainer signoff.",
   "keyboardCompletion0359": {
@@ -6122,7 +6130,7 @@
       "id": "L1-09",
       "title": "Six read filters",
       "status": "in-progress",
-      "evidence": [
+      "evidence": ["docs/evidence/sdk-filter-encoding.json",
         "docs/evidence/sdk-browser-revision-checkpoint-node22.json",
         "docs/evidence/sdk-browser-revision-unit-node22.json",
         "docs/evidence/sdk-browser-cleanup-red-node22.json",
@@ -7803,7 +7811,7 @@
       "reviewedSourceSha256": null
     }
   ],
-  "nextSteps": [
+  "nextSteps": ["SDK-ENC01 reviewed test-only increment: actual exact public-base both-pin build/check/326units24encoding/95-90global+3module coverage/progress pass; verify actual remote commit/exact new CI after normal scoped publication. No unpublished Core commit/private artifact or backend/installed-package/parity/release signoff inferred.",
     "Review/stage exactly9 public-safe substantive files carrying prior3ARterminal notes; normal scoped commit/push with existing authenticated process-local transport only.",
     "Audit exact-new-commit CIattempt1:6newjobs/6uploader-boundZIP/27source-bound reports, source/pins/Nodes/coverage/fullnames/setupcleanup/steps and14historical strict failures. No automatic rerun.",
     "PostCI rehash original/private/59archives/history and immutable CI evidence; fresh terminal operational checks, then only3terminal bookkeeping notes local with no extra docs-only publication."
