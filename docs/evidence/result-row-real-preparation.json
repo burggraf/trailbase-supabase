@@ -1,0 +1,163 @@
+{
+  "scope": "RR-real-prep-3d0cdcc: preparation, NOT genuine qualification or dispatch clearance",
+  "feature": "L1-04 ordinary mapped read rows; L1-03/05/12/13/24/26 regressions",
+  "status": "prepared-inert-inputs-and-finite-contract; exact controllers pending",
+  "checkpoint": {
+    "commit": "3d0cdcc4eb8d5bf0c0412b490dfe5413e7613ddd",
+    "parent": "c9e7f175be73a05846a3b782be58c8cd58e7130e",
+    "reviewedDiffSha256": "c7c65672419a4f715d616aa9f7977bd5b21c01f57e231cb8e9189ca9df86eceb",
+    "allReviewedCommittedBytesVerified": true,
+    "cleanImmediatelyAfterCommit": true,
+    "sourceSha256": "5d4376361cf764f788e940513d3c76f2b6cf4e0cc634b9a7c8943a038bdea5cd",
+    "receiptSha256": "003fb26d0e02f72fb5274b67ed4e440276f8e746f8bcd8a84ed5667cc20eb1a0",
+    "pushed": false,
+    "ciStarted": false
+  },
+  "coordination": {
+    "window": "RR-real-prep-3d0cdcc",
+    "storage": {
+      "head": "34725111c4f3cddac93b8a14522d2ad9dbb136d1",
+      "ownGitCleanReported": true,
+      "conditionalYieldReported": true,
+      "plannedCompetingHeavyWorkReported": false,
+      "knownOwnAllocationOrCleanupObligationReported": false
+    },
+    "realtime": {
+      "head": "09b1b9716adb7d15d92d0cdc491c395dea8e9fe8",
+      "ownGitCleanReported": true,
+      "conditionalYieldReported": true,
+      "plannedCompetingHeavyWorkReported": false,
+      "knownOwnAllocationOrCleanupObligationReported": false
+    },
+    "physicalState": "unknown-not-scanned",
+    "liveClearance": false,
+    "allocation": false,
+    "oldBmPermitReused": false
+  },
+  "proposedWindow": {
+    "fixtures": 1,
+    "profiles": "stock/default only",
+    "nodes": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "serial": true,
+    "topLevelCases": 20,
+    "actorsPerBackend": 2,
+    "seededRowsPerBackend": 6,
+    "retries": 0
+  },
+  "preparationControls": {
+    "status": "passed-preparation-only",
+    "validationSha256": "13988744c181ea3a6b3ef5b8e8fd2dacf3297ea53fbdfc05ea3fc61b47a3f0e8",
+    "inputs": [
+      {
+        "file": "inputs/cases.json",
+        "bytes": 1056,
+        "sha256": "ec9b8618967416ed889f5edf9951a5a9207b4135eb76fc03ab8e7a5db2b5fd84"
+      },
+      {
+        "file": "inputs/native.sql",
+        "bytes": 1571,
+        "sha256": "c170e8a9cb0e9fa0c006f4a145925453a92249db916280888919b71db6be4bd8"
+      },
+      {
+        "file": "inputs/reference.sql",
+        "bytes": 2331,
+        "sha256": "615b73fc5fa5b97d6cf9d92b84bf5b95965daef5ee1176ad13e73bd8565dbf3e"
+      },
+      {
+        "file": "inputs/native.textproto",
+        "bytes": 562,
+        "sha256": "f6a5eec1a3f083d0d89eba1bf1fe9b71a0055ba1b9f2cc33292a9422d3376c29"
+      },
+      {
+        "file": "validate-inputs.test.mjs",
+        "bytes": 7118,
+        "sha256": "a658748bdb6c7519ef60c15c3cf1fc9637c3cb1e106f1998524ca5fcb3ee0995"
+      }
+    ],
+    "observations": [
+      {
+        "node": "22.23.2",
+        "tests": 6,
+        "passed": 6,
+        "failed": 0,
+        "scope": "Node in-memory SQLite stand-in + static templates/inventory only",
+        "log": "22.23.2-draft-input-controls-private.log",
+        "logSha256": "6683e3a0360102f5e9a9829f1666ccc9aeec48f2e62d816a2018aee34350ce4f"
+      },
+      {
+        "node": "24.21.0",
+        "tests": 6,
+        "passed": 6,
+        "failed": 0,
+        "scope": "Node in-memory SQLite stand-in + static templates/inventory only",
+        "log": "24.21.0-draft-input-controls-private.log",
+        "logSha256": "309a7ee8b380e9be638d04ecbd7b5290cf70095553e76bbbfb9e63f0fe912dab"
+      }
+    ],
+    "limits": [
+      "Node standard in-memory SQLite with explicit is_uuid_v4 stand-in; not native extension/runtime proof",
+      "Static reference SQL/native API template assertions; no PostgreSQL/textproto parser or real authorization",
+      "No executable qualification controller or pending/unknown-outcome cleanup implementation yet"
+    ]
+  },
+  "currentSessionExecuted": {
+    "genuineCases": 0,
+    "backendFixtures": 0,
+    "liveGuards": 0,
+    "globalResourceQueries": 0,
+    "psQueries": 0,
+    "dockerQueries": 0,
+    "tcpQueries": 0,
+    "healthQueries": 0,
+    "lockQueries": 0,
+    "deployments": 0,
+    "pushes": 0,
+    "ciRuns": 0
+  },
+  "pending": [
+    "Implement and source-bind runner, actor/row/session registry, body/drain receipts, SQL settlement gate, exact data/pending-identity cleanup and separate inventory/archive/RELEASE auditor",
+    "Run controller negative controls, freeze and independently review exact execution bytes",
+    "Fresh unchanged strict guards and new isolated allocation before once-only dispatch; conditional yields are not permanent/live clearance",
+    "Run all20 genuine cases and report backend/mode subassertions, primary and cleanup failures without promotion",
+    "Current-source full applicable regression/platform/security/release gates remain required, unexecuted and unwaived"
+  ],
+  "preservation": {
+    "historicalEvidenceUnchanged": true,
+    "originalDemoNotAccessed": true,
+    "originalRootLockNotAccessed": true,
+    "metadataArchitectureAdopted": false,
+    "injectedBrowserEvidenceIsRealProof": false,
+    "overallCrudClaim": false,
+    "compatibilitySignoff": false,
+    "maintainerSignoff": false,
+    "releaseSignoff": false
+  },
+  "documentValidation": {
+    "sourceSha256": "5d4376361cf764f788e940513d3c76f2b6cf4e0cc634b9a7c8943a038bdea5cd",
+    "checksReceiptSha256": "52a4b4a48a1c709f15a52574ebcc38ef57aa5e63c4d21a92c0f9814609ef12a7",
+    "nodes": [
+      {
+        "node": "22.23.2",
+        "check": "passed",
+        "rootUnitTests": 402,
+        "rootUnitStatus": "passed",
+        "reportSha256": "9ff5b12334258d6d6be913a6ed039a0ca87d84843fa4f13bf9c63714fa501856"
+      },
+      {
+        "node": "24.21.0",
+        "check": "passed",
+        "rootUnitTests": 402,
+        "rootUnitStatus": "passed",
+        "reportSha256": "012928f91aff0370e757ab15816ff32f453102c6445dd3d8edf98c1e2cac920b"
+      }
+    ]
+  }
+}

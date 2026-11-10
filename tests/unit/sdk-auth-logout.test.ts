@@ -35,10 +35,11 @@ it('L1-19/U19/S07 local signOut clears owned memory/storage and sends captured r
 
 it('L1-19/U19/S01 default global never follows or accepts a redirect/health response as authenticated acknowledgement', async () => {
   for (const variant of ['redirect', 'opaque', 'health'] as const) {
-    const data = new Map([['owned', envelope('A')]]); let calls = 0, cancelled = 0;
+    const captured = tokens('A');
+    const data = new Map([['owned', JSON.stringify({ version: 1, tokens: captured })]]); let calls = 0, cancelled = 0;
     const client = factory(async (_input, init) => {
       calls++; expect(init?.method).toBe('GET'); expect(init?.body).toBeUndefined(); expect(init?.redirect).toBe('manual'); expect(init?.credentials).toBe('omit');
-      expect([...new Headers(init?.headers)]).toEqual([['authorization', `Bearer ${tokens('A').auth_token}`], ['content-type', 'application/json']]);
+      expect([...new Headers(init?.headers)]).toEqual([['authorization', `Bearer ${captured.auth_token}`], ['content-type', 'application/json']]);
       const response = new Response(new ReadableStream({ cancel() { cancelled++; } }), variant === 'redirect' ? { status: 303, headers: { location: '/' } } : { status: 200 });
       if (variant === 'opaque') Object.defineProperty(response, 'type', { value: 'opaqueredirect' });
       return response;

@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "status": "authoring-repairs-offline-tested-controller-still-incomplete",
+  "checkpoint": "3d0cdcc4eb8d5bf0c0412b490dfe5413e7613ddd",
+  "sourceSha256": "5d4376361cf764f788e940513d3c76f2b6cf4e0cc634b9a7c8943a038bdea5cd",
+  "authoringFreezeSha256": "d63791720a217ba82eb9fbe3ec9bde91764b7724efd72b2d8a018da00c4302d2",
+  "frozenFilesVerified": 32,
+  "review": {
+    "status": "launch-failed",
+    "provider": "pi",
+    "model": "openai/gpt-5.5",
+    "errorCode": "model_not_found",
+    "independentReviewCredit": false,
+    "accepted": false,
+    "retried": false,
+    "switched": false
+  },
+  "priorOfflineChecks": {
+    "pins": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "controlsPerPin": 37,
+    "rootUnitsPerPin": 402,
+    "checkPerPin": "passed",
+    "scope": "Private synthetic/import/syntax controls and unchanged-source root checks before this bookkeeping; NOT native/PostgreSQL/ACL/HTTP or genuine qualification."
+  },
+  "implementation": {
+    "helpers": "draft-implemented-offline-controls-only",
+    "installedNodeCases": "authored-unexecuted",
+    "threeEngineBrowserCases": "authored-unexecuted",
+    "connectedOnceOnlyController": false,
+    "sourceBoundSqlSettlementAuthority": false,
+    "independentInventoryArchiveReleaseAuditor": false
+  },
+  "execution": {
+    "backendFixturesAllocated": 0,
+    "genuineCasesExecuted": 0,
+    "plannedTopLevelCases": 20,
+    "liveGuardsRun": false,
+    "dispatchPermit": false,
+    "releaseClaim": false
+  },
+  "missingProof": [
+    "Connected source-isolated once-only controller and durable complete actor/row/session ownership.",
+    "Source-bound SQL settlement independent of HTTP/body completion and kill acknowledgement.",
+    "Bounded joined child/output/deadline/evidence-failure handling and pending/unknown-outcome cleanup controls.",
+    "Real native/PostgreSQL/textproto/ACL/shared-reference/installed Node and genuine three-engine execution.",
+    "Separate exact resource/session/inventory/archive/removal/RELEASE audit.",
+    "Successful independent exact-byte review using an approved supported provider/model."
+  ],
+  "history": {
+    "initialSkeletonRed": {
+      "passed": 16,
+      "failed": 7
+    },
+    "firstImplementation": {
+      "passed": 22,
+      "failed": 1,
+      "reason": "SQLite Uint8Array versus expected Buffer representation"
+    },
+    "sealedReceiptRed": {
+      "passed": 23,
+      "failed": 1
+    },
+    "originalStubSourceRetained": false,
+    "rawRedLogsRetained": true,
+    "initialTestSourceRetained": true
+  },
+  "scope": {
+    "ordinaryRowRuntimeUnchanged": true,
+    "pendingActorNegativeControlProposedNotExecuted": true,
+    "metadataArchitectureAdopted": false,
+    "compatibilitySignoff": false,
+    "maintainerSignoff": false,
+    "push": false,
+    "newCi": false,
+    "deployment": false,
+    "originalDemoAccess": false,
+    "originalRootLockAccess": false,
+    "globalResourceScan": false
+  },
+  "next": "Stop pending approval of a supported reviewer model/provider; no retry, replacement, live guard or dispatch is inferred. Then finish missing controller/settlement/cleanup/audit controls and review exact executable bytes before fresh unchanged guards/one isolated dispatch if safe.",
+  "completedAuthoringReview": {
+    "identity": {
+      "provider": "pi",
+      "model": "openai/gpt-6.1-sol",
+      "thinking": "high",
+      "scope": "Original exact32file authoring slice only; changes required, not dispatch clearance",
+      "reviewedFreezeSha256": "d63791720a217ba82eb9fbe3ec9bde91764b7724efd72b2d8a018da00c4302d2"
+    },
+    "conclusion": "changes-required-no-dispatch",
+    "independentControlsPerPin": 37,
+    "rootUnitsNewlyRunByReviewer": false,
+    "rootCheckNewlyRunByReviewer": false,
+    "findings": {
+      "p1": 1,
+      "p2": 7
+    },
+    "priorFailedModelLaunchPreserved": true
+  },
+  "repairs": {
+    "status": "authoring-repairs-offline-tested-controller-still-incomplete",
+    "agentReviewIdentity": {
+      "provider": "pi",
+      "model": "openai/gpt-6.1-sol",
+      "thinking": "high",
+      "scope": "Original exact32file authoring slice only; changes required, not dispatch clearance",
+      "reviewedFreezeSha256": "d63791720a217ba82eb9fbe3ec9bde91764b7724efd72b2d8a018da00c4302d2"
+    },
+    "reviewFindings": {
+      "p1": 1,
+      "p2": 7,
+      "findings": [
+        {
+          "id": "RR-R1",
+          "severity": "P1",
+          "status": "implemented-offline-tested-not-independently-rechecked",
+          "implementation": "Native transactions reject inbound dependents before deletion, preserve complete declared controls and both prior audit histories; native account precheck scans user foreign keys. Reference cleanup adds locked control snapshots, pre-delete dependent checks and unchanged-control assertions. Parent cleanup checks schema/control baseline before destructive work.",
+          "proofLimit": "Native actual fixture SQL in memory with explicit UUID-predicate substitution; reference SQL/handler behavior remains unexecuted."
+        },
+        {
+          "id": "RR-R2",
+          "severity": "P2",
+          "status": "implemented-offline-tested-not-independently-rechecked",
+          "implementation": "Reference snapshots retain private ID/email inventory; exclude baseline ID/email before deletion, including before-ID cleanup; prove generated-email absence before signup on each backend.",
+          "proofLimit": "Two exact cleanupActor function controls with captured/missing IDs and no administrative call; real signup/delete unexecuted."
+        },
+        {
+          "id": "RR-R3",
+          "severity": "P2",
+          "status": "implemented-offline-tested-not-independently-rechecked",
+          "implementation": "One emitted audit predicate requires one key/owner/operation receipt per expected row plus unchanged prior history and exact total; final cross-table audit checks repeat before commit.",
+          "proofLimit": "The emitted predicate runs against in-memory SQLite for duplicate/missing/wrong-owner attribution; not PostgreSQL parsing/execution."
+        },
+        {
+          "id": "RR-R4",
+          "severity": "P2",
+          "status": "implemented-offline-tested-not-independently-rechecked",
+          "implementation": "Persist outcome errors before throwing; evidence-write failures append rather than replace; data postconditions and reference-admin stop preserve both primary and cleanup failures.",
+          "proofLimit": "Exact finishActors function with in-memory dependencies retains both backend, snapshot and evidence-write errors; no backend ran."
+        },
+        {
+          "id": "RR-R5",
+          "severity": "P2",
+          "status": "implemented-offline-tested-not-independently-rechecked",
+          "implementation": "Private bounded recursive capture preserves AggregateError children, cause chains and shared references; capture/truncation/cycle failures are explicit. Node/browser/case serializers use it.",
+          "proofLimit": "Real Error/AggregateError controls; no genuine browser or wire failure was executed."
+        },
+        {
+          "id": "RR-R6",
+          "severity": "P2",
+          "status": "implemented-offline-tested-not-independently-rechecked",
+          "implementation": "Setup validates exact native INSERT additions and unchanged prior history; private reference pre-seed copies and the per-row audit predicate validate reference INSERT history.",
+          "proofLimit": "Native audit controls and shared relational predicate only; real seed/audit effects remain unexecuted."
+        },
+        {
+          "id": "RR-R7",
+          "severity": "P2",
+          "status": "implemented-offline-tested-not-independently-rechecked",
+          "implementation": "Setup/N6/browser sources perform explicit ordinary and anonymous private-resource denials; reference grant predicates cover private guard, row audit and private baseline copies. Baseline todo_audit policy and original fixture remain unchanged.",
+          "proofLimit": "Synthetic HTTP denial/exposure controls only; no genuine ACL, PostgreSQL grant or native API execution."
+        },
+        {
+          "id": "RR-R8",
+          "severity": "P2",
+          "status": "implemented-offline-tested-not-independently-rechecked",
+          "implementation": "Record bounded private origin/path/query/body observations; require one request per data/private operation with exact method/target/filter/order/limit/payload and mutation intent. Apply in Node and browser sources.",
+          "proofLimit": "Replay/wrong-predicate/extra-parameter controls and built-candidate/installed-native injected transport; not real backend/browser qualification."
+        }
+      ]
+    },
+    "repairValidationSha256": "cedc6ca8401e20b52ec6a203dc764aa4c2be3d653c7002585532c888c6785b0d",
+    "checks": [
+      {
+        "pin": "22.23.2",
+        "authoringControls": 58,
+        "rootUnits": 402,
+        "focusedPackageChecks": 4,
+        "build": "passed",
+        "check": "passed",
+        "status": "passed"
+      },
+      {
+        "pin": "24.21.0",
+        "authoringControls": 58,
+        "rootUnits": 402,
+        "focusedPackageChecks": 4,
+        "build": "passed",
+        "check": "passed",
+        "status": "passed"
+      }
+    ],
+    "currentPrivateInputs": [
+      {
+        "path": "safety.mjs",
+        "sha256": "b0b861efe7dee60c18c51b3bca0e42e7a587c1ea6a9ddbd6b61eead757724960",
+        "bytes": 8534
+      },
+      {
+        "path": "network.mjs",
+        "sha256": "70eabbfd4b3a165df9ab901c4bf2153310e51e6585a909986d7369a14651a0b3",
+        "bytes": 9094
+      },
+      {
+        "path": "database.mjs",
+        "sha256": "c83725004ef8bd2c0081839f16b5065657cdd11695780d4c68d670ff5a773436",
+        "bytes": 10637
+      },
+      {
+        "path": "lifecycle.mjs",
+        "sha256": "8e1b74a9df9339d6b6355cb4a859d4058c09bdcc2eba5ad6a3421d2df025b9af",
+        "bytes": 17988
+      },
+      {
+        "path": "contract.mjs",
+        "sha256": "a829a3b752b2b60c41f4b17cef5a5e5dc4c62afdbacbda3fb1f5037abe2c8b88",
+        "bytes": 7109
+      },
+      {
+        "path": "node-cases.mjs",
+        "sha256": "645e57da797dd4820ce1e906c8d0519a78114d8abab0035bf3edea8359057fff",
+        "bytes": 4694
+      },
+      {
+        "path": "browser-cases.mjs",
+        "sha256": "7ef4e27e2b0c7ca769f1f1d908881d85b4a1a174e29e5f40c07aa6885d470a73",
+        "bytes": 6729
+      },
+      {
+        "path": "private-errors.mjs",
+        "sha256": "a7ee1191a7e58487f79379962fbfdd6828e1bb8821f3c5532787824e36d05c1f",
+        "bytes": 2719
+      },
+      {
+        "path": "request-proof.mjs",
+        "sha256": "63984e66a65378e3e1ab922d3d5c829d37a38b3f08b4862940eb6c43f4db1904",
+        "bytes": 3673
+      },
+      {
+        "path": "safety.test.mjs",
+        "sha256": "d501db70dde003533ff91518e1deeecaf6fa76a5dc733897839e552ae876dbf5",
+        "bytes": 8084
+      },
+      {
+        "path": "network.test.mjs",
+        "sha256": "58f719bf3ba9991301c0aed263a8466c59389178c4c173600d86fb1ba7bda440",
+        "bytes": 7550
+      },
+      {
+        "path": "review-repairs.test.mjs",
+        "sha256": "ad0b0b690c7730f5c6dc395ac820264bf99d447e1cce005c35894d57dd84f3e8",
+        "bytes": 3681
+      },
+      {
+        "path": "review-outcomes.test.mjs",
+        "sha256": "2032124bd5fb80a8c242699c979752132fdd9c3731fb6120f8b134e3648ac4d8",
+        "bytes": 6241
+      },
+      {
+        "path": "review-requests.test.mjs",
+        "sha256": "6b7686fcf2188fe66dd1e59aee9903c4827d41a787b51df3ff8ce656bad66cc3",
+        "bytes": 4823
+      },
+      {
+        "path": "inputs/native.sql",
+        "sha256": "c170e8a9cb0e9fa0c006f4a145925453a92249db916280888919b71db6be4bd8",
+        "bytes": 1571
+      },
+      {
+        "path": "inputs/reference.sql",
+        "sha256": "615b73fc5fa5b97d6cf9d92b84bf5b95965daef5ee1176ad13e73bd8565dbf3e",
+        "bytes": 2331
+      },
+      {
+        "path": "inputs/native.textproto",
+        "sha256": "f6a5eec1a3f083d0d89eba1bf1fe9b71a0055ba1b9f2cc33292a9422d3376c29",
+        "bytes": 562
+      }
+    ],
+    "previous32FilesArchivedAndRehashed": true,
+    "proposedPendingActorControl": "Authored P/backend failure moved to immediately after genuine signup acknowledgement, before ID capture; durable exact-email cleanup intent resolves and journals ID before deletion. Six actor intents/twelve rows/twenty planned top-level cases remain unexecuted.",
+    "authoringFailuresPreserved": [
+      "First R1 regression fixture used a zero-arity substituted UUID function: five authoring failures, not five product regressions. One-argument substitution corrected before intended reds.",
+      "Corrected initial R1 suite had two passes/three failures, with one broad matcher falsely accepting the missing helper name; stricter matcher produced designated refusals.",
+      "First R1 implementation run had28passes/1failure due to an incorrect expected Error class prefix; AssertionError message predicate corrected without weakening the dependent-row refusal.",
+      "R2-R6 eight controls initially failed; their later passing layer is synthetic/helper proof, not backend proof.",
+      "R7-R8 seven controls initially failed; an additional built-distribution order control then exposed expected id versus actual +id (7passes/1failure), corrected against installed native source."
+    ],
+    "independentRepairAcceptance": false,
+    "connectedOnceOnlyController": false,
+    "sourceBoundSqlSettlementAuthority": false,
+    "independentResourceArchiveReleaseAuditor": false,
+    "backendFixturesAllocated": 0,
+    "genuineCasesExecuted": 0,
+    "liveGuardsRun": false,
+    "dispatchPermit": false,
+    "metadataArchitectureAdopted": false,
+    "compatibilitySignoff": false,
+    "maintainerSignoff": false,
+    "push": false,
+    "newCi": false,
+    "next": "Complete connected source-isolated once-only controller and durable ownership/settlement/unknown-outcome/child/output/evidence controls plus separate inventory/archive/RELEASE auditor. Validate all applicable layers, freeze exact dispatch bytes and independently review those bytes before fresh lane coordination/unchanged strict live guards and at most one safe isolated execution. Available reviewer selection needs no separate approval; never reuse BM permits or treat this authoring review as dispatch clearance."
+  }
+}

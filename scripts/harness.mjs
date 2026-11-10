@@ -1,11 +1,19 @@
-import { spawn } from 'node:child_process';
 import { createServer } from 'node:net';
 import { createHash, randomUUID } from 'node:crypto';
-import { mkdir, readFile, writeFile, cp, rm, open, lstat, rename } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, cp, rm, lstat, rename } from 'node:fs/promises';
 import { resolve, relative, sep } from 'node:path';
 import { once } from 'node:events';
 import { baseline, exec, installTrail } from './tools.mjs';
+import { fixtureNetwork } from './fixture-network.mjs';
+import { createNativeProcess } from './native-process.mjs';
+import { createFixtureFiles } from './fixture-files.mjs';
+import { createFixtureFrontendCli } from './fixture-cli.mjs';
 import { collectSupabaseStartupCache, collectSupabaseStartupEvidence, supabaseStartupEvidence } from './startup-diagnostics.mjs';
+import { createFixtureDocker, localDockerTarget } from './fixture-docker.mjs';
+import { createOwnedMailpitHarness } from './fixture-mailpit.mjs';
+export function createMailpitHarness() { return createOwnedMailpitHarness(fixtureEnvironment()); }
+import { createOwnedPostgresHarness } from './fixture-postgres.mjs';
+export function createPostgresHarness() { return createOwnedPostgresHarness(fixtureEnvironment()); }
 export { supabaseStartupEvidence } from './startup-diagnostics.mjs';
 
 const legacyNativePin = JSON.parse(await readFile(new URL('../tests/fixtures/trailbase-v0.34.3.json', import.meta.url)));
@@ -69,7 +77,7 @@ export async function freePort() {
 export async function waitReady(url, timeoutMs, child) {
   const deadline = Date.now() + timeoutMs;
   while (Date.now() < deadline) {
-    if (child && (child.exitCode !== null || child.signalCode !== null)) throw new Error('Fixture exited before readiness');
+    if (child && (child.exited === true || child.exitCode !== null || child.signalCode !== null)) throw new Error('Fixture exited before readiness');
     try { const response = await fetch(url, { signal: AbortSignal.timeout(1000) }); if (response.ok) return; }
     catch { /* Bounded startup polling within the harness, not a skipped setup. */ }
     await new Promise(yes => setTimeout(yes, 100));
@@ -179,7 +187,6 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
   const directory = resolve('.runtime/runs', id);
   assertRunDirectory(directory);
   const project = `trailbase-supabase-test-${id.split('-')[1]}`;
-  await mkdir(directory, { recursive: true, mode: 0o700 });
   const ports = {};
   for (const key of ['API_PORT','DB_PORT','SHADOW_PORT','MAIL_PORT','SMTP_PORT','TRAIL_PORT','ADMIN_PORT']) {
     do { ports[key] = await freePort(); } while (Object.values(ports).filter(value => value === ports[key]).length > 1);
@@ -187,13 +194,13 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
   const origins = ['API_PORT','MAIL_PORT','TRAIL_PORT'].map(key => `http://127.0.0.1:${ports[key]}`);
   const childEnv = fixtureEnvironment();
   const context = { id, project, directory, setupStage:'created', origins, trailUrl: origins[2], supabaseUrl: origins[0], mailUrl: origins[1], nativeAuthProfile, nativeServerProfile, authVariant, ...(publicOrigin ? { publicOrigin } : {}) };
-  const ownerRecord = { id, project, nativeAuthProfile, nativeServerProfile, authVariant, runnerPid: process.pid, trailPid: null };
+  const ownerRecord = { id, project, nativeAuthProfile, nativeServerProfile, authVariant, runnerPid: process.pid, trailPid: null, networkOwnership: 'original-creator-required' };
   if (registrationPolicyTest) {
     Object.assign(context, { registrationPolicyTest: true, registrationDisabled: false });
     Object.assign(ownerRecord, { registrationPolicyTest: true });
   }
-  await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
-  let trail, log, stockBinary, stockBackupTimestamp, registrationOriginalConfig;
+  const files = await createFixtureFiles(directory, ownerRecord);
+  let trail, log, nativeStop, stockBinary, stockBackupTimestamp, registrationOriginalConfig;
   let registrationChanging = false, registrationRecovery;
   async function writeRegistrationConfig(path, expected, desired) {
     const temporary = resolve(directory, 'traildepot', `.registration-${randomUUID()}.tmp`);
@@ -208,80 +215,111 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
       catch (cleanup) { throw primary ? new AggregateError([primary, cleanup], 'Owned config write/temporary cleanup failed', { cause: primary }) : cleanup; }
     }
   }
-  let startAttempted = false;
+  let startAttempted = false, startCalled = false, starting = false, network, dockerTarget, cliOwner, dockerOwner;
+  const docker = (args, options = {}) => dockerOwner.run(args, options);
+  async function inventoryResources() {
+    // Partial, same-process inventory only. This is not RR admission or container/TCP/SQL settlement.
+    return { complete: false, files: await files.inventory(), cli: cliOwner ? await cliOwner.inventory() : null, docker: dockerOwner ? await dockerOwner.inventory() : null, network: network ? await network.inventory() : null, native: trail ? Object.freeze({ ...trail.inventory(), ports: Object.freeze([ports.TRAIL_PORT, ports.ADMIN_PORT]) }) : null };
+  }
   async function collectStartupFailure(error) {
     try {
       const config = await readFile(resolve(directory, 'supabase/config.toml'), 'utf8');
       verifyOwner(id, ownerRecord, config);
-      verifyOwner(id, JSON.parse(await readFile(resolve(directory, 'owner.json'), 'utf8')), config);
-      return await collectSupabaseStartupEvidence(project, error);
+      verifyOwner(id, await files.readOwner(), config);
+      return await collectSupabaseStartupEvidence(project, error, childEnv, docker);
     } catch { return supabaseStartupEvidence(error); }
   }
   async function command(args, name) {
     try {
-      const result = await exec(cli, [...args, '--workdir', directory, '--agent', 'no', '--network-id', `supabase_network_${project}`], { env: childEnv, timeout: baseline.startupTimeoutMs, maxBuffer: 20_000_000 });
-      await writeFile(resolve(directory, `${name}.log`), result.stdout + result.stderr, { mode: 0o600 });
+      await dockerOwner.fence();
+      if (!(await inventoryResources()).network?.exists) throw new Error('Original fixture network is unavailable');
+      const result = await cliOwner.run(name, [...args, '--workdir', directory, '--agent', 'no', '--network-id', network.id]);
       return result.stdout;
     } catch (error) {
-      await writeFile(resolve(directory, `${name}.log`), String(error.stdout ?? '') + String(error.stderr ?? ''), { mode: 0o600 });
+      // Original stdout/stderr leases stay private and retained; never reopen/truncate a pathname.
       if (name === 'start') context.supabaseStartup = await collectStartupFailure(error);
-      throw new Error(`Local Supabase ${name} failed; private diagnostics: ${relative(process.cwd(), directory)}/${name}.log`);
+      throw new Error(`Local Supabase ${name} failed; ${name === 'start' || name === 'status' ? 'original command output remains private in the retained error cause, not log files' : `private diagnostics: ${relative(process.cwd(), directory)}/${name}.log and stderr companion`}`, { cause: error });
     }
   }
   async function cleanup() {
+    if (files.closed) return;
+    if (starting) throw new Error('Fixture start is unsettled; resources retained');
+    // Original creation custody permits containment, even if disk metadata is corrupt; not deletion.
+    try { await nativeStop?.(); }
+    catch (error) { throw new AggregateError([error], 'Original native stop/log join unconfirmed; resources retained'); }
+    await cliOwner?.fence(); // Direct-command closure only, never container/SQL/session settlement.
+    await dockerOwner?.fence(); // Original direct Docker commands, not CLI descendants or daemon/resource settlement.
     assertRunDirectory(directory);
-    const owner = JSON.parse(await readFile(resolve(directory, 'owner.json')));
+    const owner = await files.readOwner();
     if (owner.project !== project || owner.id !== id) throw new Error('Fixture ownership mismatch');
     if (startAttempted) verifyOwner(id, owner, await readFile(resolve(directory, 'supabase/config.toml'), 'utf8'));
     const errors = [];
-    try { await stopChild(trail); } catch { errors.push('TrailBase stop failed'); }
-    try { await log?.close(); } catch { errors.push('TrailBase log close failed'); }
     if (startAttempted) {
+      // Unknown creation/drift is not permission to adopt by name or run broad CLI cleanup.
+      try { if (!(await inventoryResources()).network?.exists) throw new Error('Original network absent'); }
+      catch (error) { throw new AggregateError([error], 'Fixture network ownership unconfirmed; resources retained'); }
       // Private, bounded diagnostics only; auth/WAL logs may contain credentials or record values.
       for (const service of ['realtime','auth']) {
         try {
-          const result = await exec('docker',['logs','--tail','200',`supabase_${service}_${project}`],{timeout:10000});
+          const result = await docker(['logs','--tail','200',`supabase_${service}_${project}`],{timeout:10000});
           await writeFile(resolve(directory,`${service}-private.log`),result.stdout+result.stderr,{mode:0o600});
         } catch { /* An absent container must not prevent cleanup. */ }
       }
       try { await command(['stop', '--no-backup'], 'stop'); } catch { errors.push('Supabase stop failed'); }
-      const networks = await exec('docker',['network','ls','-q','--filter',`name=^supabase_network_${project}$`]);
-      if (networks.stdout.trim()) await exec('docker',['network','rm',`supabase_network_${project}`]);
-      const { stdout } = await exec('docker', ['ps', '-aq', '--filter', `name=_${project}$`]);
+      await cliOwner.fence(); // An uncertain stop cannot authorize subsequent network/data effects.
+      await dockerOwner.fence();
+      try { await network.remove(); } catch { errors.push('Original fixture network removal unconfirmed'); }
+      const { stdout } = await docker(['ps', '-aq', '--filter', `name=_${project}$`]);
       if (stdout.trim()) errors.push('Owned Docker containers still exist after cleanup');
       for (const resource of ['volume','network']) {
-        const remaining = await exec('docker', [resource,'ls','-q','--filter',`name=_${project}$`]);
+        const remaining = await docker([resource,'ls','-q','--filter',`name=_${project}$`]);
         if (remaining.stdout.trim()) errors.push(`Owned Docker ${resource} still exists after cleanup`);
       }
     }
     if (errors.length) throw new Error(errors.join('; '));
     // Diagnostics stay private and gitignored. Delete only the owned depot (including keys/data).
-    await rm(resolve(directory, 'traildepot'), { recursive: true, force: true });
-    await rm(resolve(directory, 'context.json'), { force: true });
-    await rm(resolve(directory, 'sdk-package'), { recursive: true, force: true });
-    await rm(resolve(directory, 'private-g1-upgrade-fixture.json'), { force: true });
+    await dockerOwner?.fence();
+    await files.removeData();
+    await files.close();
   }
   async function launchTrail(binary, logName, append = false) {
-    log = await open(resolve(directory, logName), append ? 'a' : 'w', 0o600);
-    trail = spawn(binary, ['--depot', resolve(directory, 'traildepot'), 'run', '--address', `127.0.0.1:${ports.TRAIL_PORT}`, '--admin-address', `127.0.0.1:${ports.ADMIN_PORT}`, '--public-dir', resolve(directory, 'public'), '--runtime-threads', '2'], {
-      env: childEnv, stdio: ['ignore', log.fd, log.fd]
+    if (trail || log) throw new Error('Original native owner must be joined before replacement');
+    nativeStop = undefined;
+    log = await files.openLog(logName, append);
+    const originalLog = log;
+    // Factory validation cannot spawn; retain the opened file even if validation fails.
+    nativeStop = () => originalLog.close();
+    trail = createNativeProcess(binary, ['--depot', resolve(directory, 'traildepot'), 'run', '--address', `127.0.0.1:${ports.TRAIL_PORT}`, '--admin-address', `127.0.0.1:${ports.ADMIN_PORT}`, '--public-dir', resolve(directory, 'public'), '--runtime-threads', '2'], { env: childEnv, logFd: originalLog.fd });
+    const original = trail;
+    let stop;
+    nativeStop = () => stop ??= original.stop().then(() => originalLog.close());
+    await original.start(async pid => {
+      ownerRecord.trailPid = pid; // Observation only; control remains in the original creating owner.
+      await files.writeOwner(ownerRecord); // Same original descriptor is flushed/checked before GO.
     });
-    trail.on('error', () => {});
-    ownerRecord.trailPid = trail.pid ?? null;
-    await writeFile(resolve(directory, 'owner.json'), JSON.stringify(ownerRecord), { mode: 0o600 });
   }
   async function start() {
+    if (startCalled) throw new Error('Fixture start is once-only');
+    startCalled = true; starting = true;
+    try { await files.admit(); return await startOwned(); } finally { starting = false; }
+  }
+  async function startOwned() {
     context.setupStage='config-and-binaries';
     const prototype = privateNativePrototype ? await verifyPrivateG1Prototype() : null;
     if (prototype) {
       context.prototypePatchSha256 = prototype.patchSha256;
       ownerRecord.prototypePatchSha256 = prototype.patchSha256;
     }
-    const { stdout: dockerHost } = await exec('docker', ['context', 'inspect', '--format', '{{.Endpoints.docker.Host}}']);
+    dockerOwner = createFixtureDocker(files, childEnv);
+    const dockerHost = await dockerOwner.context();
     if (process.env.DOCKER_HOST && !process.env.DOCKER_HOST.startsWith('unix://') || !dockerHost.trim().startsWith('unix://')) {
       throw new Error('Fixture requires a local Unix-socket Docker daemon');
     }
-    const { stdout: version } = await exec(cli, ['--version'], { env: childEnv });
+    dockerTarget = localDockerTarget(childEnv.DOCKER_HOST || dockerHost.trim());
+    dockerOwner.bind(dockerTarget);
+    childEnv.DOCKER_HOST = dockerTarget; delete childEnv.DOCKER_CONTEXT;
+    cliOwner = await createFixtureFrontendCli(files, childEnv);
+    const { stdout: version } = await cliOwner.run('version', ['--version']);
     if (version.trim() !== baseline.supabaseCli) throw new Error('Supabase CLI version drift');
     await cp(resolve('tests/fixtures/supabase'), resolve(directory, 'supabase'), { recursive: true });
     const values = { ...ports, PROJECT_ID: project };
@@ -294,7 +332,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     context.setupStage='supabase-start';
     const config = await readFile(resolve(directory, 'supabase/config.toml'), 'utf8');
     verifyOwner(id, ownerRecord, config);
-    verifyOwner(id, JSON.parse(await readFile(resolve(directory, 'owner.json'), 'utf8')), config);
+    verifyOwner(id, await files.readOwner(), config);
     context.supabaseStartContext = {
       operation: 'network-create', cliVersion: baseline.supabaseCli,
       configSha256: createHash('sha256').update(config).digest('hex'),
@@ -305,11 +343,13 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
         proxyVariablesPresent: ['HTTP_PROXY','HTTPS_PROXY','ALL_PROXY','NO_PROXY','http_proxy','https_proxy','all_proxy','no_proxy'].some(key => Boolean(childEnv[key])),
         nodeOptionsPresent: Boolean(childEnv.NODE_OPTIONS)
       },
-      imageCacheBeforeStart: await collectSupabaseStartupCache(project)
+      imageCacheBeforeStart: await collectSupabaseStartupCache(project, childEnv, docker)
     };
+    network = fixtureNetwork(id, dockerTarget, childEnv, dockerOwner);
+    // The owner.json marker denies legacy adoption; it never restores this creating object.
     startAttempted = true;
     try {
-      await exec('docker',['network','create','--driver','bridge','--opt','com.docker.network.bridge.host_binding_ipv4=127.0.0.1','--label',`trailbase-supabase.run=${id}`,`supabase_network_${project}`]);
+      await network.create();
       context.supabaseStartContext.operation = 'cli-start';
       await command(['start', '--exclude', 'studio,postgres-meta,storage-api,imgproxy,edge-runtime,logflare,vector,supavisor'], 'start');
     } catch (error) {
@@ -350,13 +390,13 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     if (!marker.ok || await marker.text() !== id) throw new Error('Native fixture origin ownership mismatch');
     await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
     context.setupStage='verify-image-digests';
-    const { stdout: names } = await exec('docker', ['ps', '--format', '{{.Names}}', '--filter', `name=_${project}$`]);
+    const { stdout: names } = await docker(['ps', '--format', '{{.Names}}', '--filter', `name=_${project}$`]);
     const containers = [],expected=JSON.parse(await readFile('tests/fixtures/service-images.json','utf8'));
     for (const name of names.trim().split('\n').filter(Boolean)) {
-      const { stdout } = await exec('docker', ['inspect', '--format', '{{.Config.Image}}|{{.Image}}', name]);
+      const { stdout } = await docker(['inspect', '--format', '{{.Config.Image}}|{{.Image}}', name]);
       const [image, imageId] = stdout.trim().split('|');
-      const { stdout: digests } = await exec('docker', ['image', 'inspect', '--format', '{{json .RepoDigests}}', imageId]);
-      const { stdout: ports } = await exec('docker',['inspect','--format','{{json .NetworkSettings.Ports}}',name]);
+      const { stdout: digests } = await docker(['image', 'inspect', '--format', '{{json .RepoDigests}}', imageId]);
+      const { stdout: ports } = await docker(['inspect','--format','{{json .NetworkSettings.Ports}}',name]);
       const publishedPorts = JSON.parse(ports);
       containers.push({ service: name.replace(`_${project}`, ''), image, imageId, repoDigests: JSON.parse(digests), publishedPorts });
       context.setupCheck='loopback-bindings';
@@ -386,15 +426,15 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
       const expected = await readFile(path, 'utf8');
       const configured = context.registrationDisabled ? registrationPolicyConfig(registrationOriginalConfig) : registrationOriginalConfig;
       if (!(await lstat(path)).isFile() || !(registrationRecovery ? registrationRecovery.configs.has(expected) : expected === configured)) throw new Error('Registration-policy config drift');
-      if (trail && trail.exitCode === null && trail.signalCode === null) {
+      if (trail && !trail.exited) {
         const marker = await fetch(`${context.trailUrl}/phase-a-owner.txt`, { signal: AbortSignal.timeout(5000) });
         if (!marker.ok || await marker.text() !== id) throw new Error('Registration-policy origin mismatch');
       }
-      if (!registrationRecovery && disabled === context.registrationDisabled && trail.exitCode === null && trail.signalCode === null) return;
+      if (!registrationRecovery && disabled === context.registrationDisabled && !trail.exited) return;
       const desired = disabled ? registrationPolicyConfig(registrationOriginalConfig) : registrationOriginalConfig;
       registrationRecovery ??= { pids: new Set([owner.trailPid]), configs: new Set([expected, desired, registrationOriginalConfig]) };
       async function restart(config, name) {
-        await stopChild(trail); await log?.close(); trail = undefined; log = undefined;
+        await nativeStop?.(); trail = undefined; log = undefined;
         if (!(await lstat(path)).isFile()) throw new Error('Registration-policy config drift');
         const current = await readFile(path, 'utf8');
         if (!registrationRecovery.configs.has(current)) throw new Error('Registration-policy config drift');
@@ -424,8 +464,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
   async function restartWithPrivatePrototype({ expectAmbiguousRefusal = false } = {}) {
     if (!startAttempted || !['stock', 'private-native-prototype'].includes(context.authVariant) || !trail) throw new Error('Private G1 restart requires a running owned fixture');
     const fromStock = context.authVariant === 'stock';
-    await stopChild(trail);
-    await log?.close();
+    await nativeStop?.();
     trail = undefined;
     log = undefined;
     const prototype = await verifyPrivateG1Prototype();
@@ -440,7 +479,8 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     try {
       await waitReady(`${context.trailUrl}/api/healthcheck`, 30000, trail);
     } catch {
-      if (!expectAmbiguousRefusal || (trail.exitCode === null && trail.signalCode === null)) throw new Error('Private prototype startup failed; inspect private run diagnostics');
+      if (!expectAmbiguousRefusal || !trail.exited) throw new Error('Private prototype startup failed; inspect private run diagnostics');
+      await trail.join();
       const logText = await readFile(resolve(directory, 'trail-upgrade.log'), 'utf8').catch(() => '');
       if (!/CHECK constraint failed/i.test(logText)) throw new Error('Private prototype startup failed for an unexpected reason; inspect private run diagnostics');
       context.setupStage = 'private-prototype-ambiguous-refusal';
@@ -475,8 +515,7 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
   }
   async function restoreStockBackupAndRestart() {
     if (!startAttempted || context.authVariant !== 'private-native-prototype' || !trail || stockBackupTimestamp === undefined) throw new Error('Stock backup restore requires an upgraded owned depot and verified backup');
-    await stopChild(trail);
-    await log?.close();
+    await nativeStop?.();
     trail = undefined;
     log = undefined;
     await runStockBackupCommand('backup-restore', ['restore', String(stockBackupTimestamp)]);
@@ -492,9 +531,14 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
     return { restored: true };
   }
+  async function stopNative() {
+    if (!trail || !nativeStop) throw new Error('Original native owner unavailable');
+    await nativeStop();
+    return trail.inventory(); // Native join/log lease sealed; file FD retained until cleanup. Never SQL/session settlement.
+  }
   async function stopNativeForUpgrade() {
     if (nativeServerProfile !== 'legacy-upgrade' || context.authVariant !== 'stock') throw new Error('Native upgrade control requires owned legacy profile');
-    await stopChild(trail); await log?.close(); trail = undefined; log = undefined;
+    await nativeStop?.(); trail = undefined; log = undefined;
   }
   async function startNativeForUpgrade(profile = 'default') {
     if (nativeServerProfile !== 'legacy-upgrade' || context.authVariant !== 'stock' || trail) throw new Error('Native upgrade control requires stopped owned legacy profile');
@@ -508,5 +552,5 @@ export async function createHarness({ authMitigation = false, nativeAuthProfile 
     await writeFile(resolve(directory, 'context.json'), JSON.stringify(context), { mode: 0o600 });
     return { version };
   }
-  return { context, start, setRegistrationDisabled, restartWithPrivatePrototype, createStockBackup, restoreStockBackupAndRestart, stopNativeForUpgrade, startNativeForUpgrade, cleanup };
+  return { context, start, inventoryResources, stopNative, setRegistrationDisabled, restartWithPrivatePrototype, createStockBackup, restoreStockBackupAndRestart, stopNativeForUpgrade, startNativeForUpgrade, cleanup };
 }

@@ -42,8 +42,12 @@ it('L1-27/D02 startup diagnostics are collected only through owned exact service
   const text = await readFile('scripts/harness.mjs', 'utf8'), runner = await readFile('scripts/run-phase-a.mjs', 'utf8');
   expect(text).toContain('verifyOwner(id, ownerRecord');
   expect(text).toContain('context.supabaseStartup = await collectStartupFailure(error)');
-  expect(text).toContain('return await collectSupabaseStartupEvidence(project, error)');
-  expect(text).toContain("verifyOwner(id, JSON.parse(await readFile(resolve(directory, 'owner.json'), 'utf8')), config)");
+  expect(text).toContain('return await collectSupabaseStartupEvidence(project, error, childEnv, docker)');
+  expect(text).toContain('dockerOwner = createFixtureDocker(files, childEnv)');
+  expect(text).not.toContain("exec('docker',");
+  expect(text).toContain('childEnv.DOCKER_HOST = dockerTarget; delete childEnv.DOCKER_CONTEXT;');
+  expect(text).toContain('const files = await createFixtureFiles(directory, ownerRecord)');
+  expect(text).toContain('verifyOwner(id, await files.readOwner(), config)');
   expect(text).toContain('throw error;');
   expect(runner).toContain('report.supabaseStartup=harness?.context.supabaseStartup');
 });

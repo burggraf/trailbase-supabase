@@ -68,12 +68,15 @@ function verifyProject(project) {
   if (typeof project !== 'string' || !/^trailbase-supabase-test-[a-f0-9]{12}$/.test(project)) throw new Error('Invalid owned startup diagnostic project');
 }
 
-export async function collectSupabaseStartupCache(project) {
+/** @param {NodeJS.ProcessEnv | undefined} env */
+export async function collectSupabaseStartupCache(project, env = undefined, docker = undefined) {
   verifyProject(project);
   return Promise.all(services.map(async service => {
     let cache = 'unavailable';
     try {
-      const { stdout } = await exec('docker', ['image', 'inspect', '--format', '{{json .RepoDigests}}', imagePins[service].image], { timeout: 5000, maxBuffer: 4096 });
+      const args = ['image', 'inspect', '--format', '{{json .RepoDigests}}', imagePins[service].image];
+      const options = { ...(env === undefined ? {} : { env }), timeout: 5000, maxBuffer: 4096 };
+      const { stdout } = await (docker ? docker(args, options) : exec('docker', args, options));
       const digests = JSON.parse(stdout);
       if (Array.isArray(digests)) cache = imagePins[service].repoDigests.some(digest => digests.includes(digest)) ? 'pinned' : 'not-pinned';
     } catch (error) {
@@ -106,13 +109,16 @@ export function supabaseStartupEvidence(error, observations = {}) {
   };
 }
 
-export async function collectSupabaseStartupEvidence(project, error) {
+/** @param {NodeJS.ProcessEnv | undefined} env */
+export async function collectSupabaseStartupEvidence(project, error, env = undefined, docker = undefined) {
   verifyProject(project);
   const observations = {};
   const format = '{"status":{{json .State.Status}},"exitCode":{{json .State.ExitCode}},"oomKilled":{{json .State.OOMKilled}},"restartCount":{{json .RestartCount}},"health":{{if .State.Health}}{{json .State.Health.Status}}{{else}}null{{end}}}';
   await Promise.all(services.map(async service => {
     try {
-      const { stdout } = await exec('docker', ['inspect', '--format', format, `${service}_${project}`], { timeout: 5000, maxBuffer: 4096 });
+      const args = ['inspect', '--format', format, `${service}_${project}`];
+      const options = { ...(env === undefined ? {} : { env }), timeout: 5000, maxBuffer: 4096 };
+      const { stdout } = await (docker ? docker(args, options) : exec('docker', args, options));
       observations[service] = JSON.parse(stdout);
     } catch { /* Missing resources/daemon/inspection failure remain unknown, not guessed. */ }
   }));

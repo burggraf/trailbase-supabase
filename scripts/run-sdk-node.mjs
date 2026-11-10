@@ -98,12 +98,15 @@ async function main() {
   } finally {
     for (const db of [mainDb, sessionDb]) { try { db?.close(); } catch { report.status = 'failed'; report.databaseClose = 'failed'; } }
     report.setupStage = harness?.context.setupStage ?? 'not-created'; report.supabaseStartup = harness?.context.supabaseStartup; report.supabaseStartContext = harness?.context.supabaseStartContext;
-    try { if (harness) { await harness.cleanup(); report.cleanup = 'passed'; } }
-    catch { report.cleanup = 'failed'; report.status = 'failed'; }
+    try {
+      if (harness) { await harness.cleanup(); report.cleanup = 'passed'; }
+      const owner = JSON.parse(await readFile('.runtime/phase-a.lock/owner.json', 'utf8'));
+      if (owner.runnerPid !== process.pid || owner.runId !== (report.runId ?? null)) throw new Error('Refusing unrelated lock removal');
+      await rm('.runtime/phase-a.lock', { recursive: true });
+    } catch { report.cleanup = 'failed'; report.status = 'failed'; }
     if (report.sourceSha256 && await sourceHash() !== report.sourceSha256) { report.status = 'failed'; report.sourceChanged = true; }
     process.removeListener('SIGINT', interrupt); process.removeListener('SIGTERM', interrupt);
     await mkdir('artifacts/sdk-node', { recursive: true }); await writeFile(`artifacts/sdk-node/${report.runId ?? Date.now()}.json`, JSON.stringify(report,null,2)+'\n');
-    await rm('.runtime/phase-a.lock', { recursive: true });
     console.log(`Packed Node scope: ${report.status}; ${report.tests.filter(t=>t.status==='passed').length}/8 cases passed; owned cleanup ${report.cleanup}.`);
     process.exitCode = report.status === 'passed' ? 0 : 1;
   }

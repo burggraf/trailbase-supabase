@@ -126,11 +126,16 @@ try {
   if (env) await writeFile(resolve(env.directory, 'native-upgrade-failure-private.log'), String(error.stack ?? error), { mode: 0o600 });
   report.failure = 'owned-native-upgrade-assertion-or-setup-failure';
 } finally {
-  try { if (harness) await harness.cleanup(); if (backup) await rm(backup, { recursive: true, force: true }); report.cleanup = 'passed'; }
-  catch { report.cleanup = 'failed'; report.status = 'failed'; }
+  try {
+    if (harness) await harness.cleanup();
+    if (backup) await rm(backup, { recursive: true, force: true });
+    const owner = JSON.parse(await readFile('.runtime/phase-a.lock/owner.json', 'utf8'));
+    if (owner.runnerPid !== process.pid || owner.runId !== (report.runId ?? null)) throw new Error('Refusing unrelated lock removal');
+    await rm('.runtime/phase-a.lock', { recursive: true });
+    report.cleanup = 'passed';
+  } catch { report.cleanup = 'failed'; report.status = 'failed'; }
   if (await sourceHash() !== report.sourceSha256) { report.status = 'failed'; report.failure = 'source-drift'; }
   await mkdir('artifacts/native-upgrade', { recursive: true }); await writeFile('artifacts/native-upgrade/latest.json', JSON.stringify(report, null, 2) + '\n');
-  await rm('.runtime/phase-a.lock', { recursive: true });
 }
 console.log(JSON.stringify({ scope: report.scope, status: report.status, tests: report.tests, cleanup: report.cleanup, evidence: 'artifacts/native-upgrade/latest.json' }));
 process.exitCode = report.status === 'passed' ? 0 : 1;

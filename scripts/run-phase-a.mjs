@@ -197,8 +197,12 @@ async function main() {
     report.setupImageInventory=harness?.context.setupImageInventory;
     report.supabaseStartup=harness?.context.supabaseStartup;
     report.supabaseStartContext=harness?.context.supabaseStartContext;
-    try { if (harness) { await harness.cleanup(); report.cleanup='passed'; } else { report.cleanup='not-started'; } }
-    catch { report.cleanup='failed'; report.status='failed'; console.error('Fixture cleanup failed; see private run logs before restarting.'); }
+    try {
+      if (harness) { await harness.cleanup(); report.cleanup='passed'; } else { report.cleanup='not-started'; }
+      const owner = JSON.parse(await readFile('.runtime/phase-a.lock/owner.json', 'utf8'));
+      if (owner.runnerPid !== process.pid || owner.runId !== (report.runId ?? null)) throw new Error('Refusing unrelated lock removal');
+      await rm('.runtime/phase-a.lock', { recursive: true });
+    } catch { report.cleanup='failed'; report.status='failed'; console.error('Fixture cleanup failed; retain the lock and private run logs before restarting.'); }
     if (report.sourceSha256 && await sourceHash() !== report.sourceSha256) { report.status='failed'; console.error('Harness sources changed during run; evidence is stale, rerun.'); }
     report.finishedAt=new Date().toISOString();
     await mkdir('artifacts/phase-a',{recursive:true});
@@ -206,7 +210,6 @@ async function main() {
     await writeFile(path,JSON.stringify(report,null,2)+'\n');
     for (const test of report.tests) console.log(`${test.status.toUpperCase()} ${test.name}${test.diagnostic ? ` [${test.diagnostic.step}:${test.diagnostic.category}]` : ''}`);
     console.log(`Sanitized evidence: ${path} (${report.status}; cleanup ${report.cleanup})`);
-    await rm('.runtime/phase-a.lock',{recursive:true});
     process.exitCode=report.status === 'passed' ? 0 : 1;
   }
 }

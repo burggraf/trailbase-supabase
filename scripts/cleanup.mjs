@@ -16,6 +16,8 @@ async function main() {
   const owner = JSON.parse(await readFile(resolve(directory,'owner.json'),'utf8'));
   const config = await readFile(resolve(directory,'supabase/config.toml'),'utf8');
   const project = verifyOwner(id,owner,config);
+  // This disk marker only denies legacy recovery; it is never a capability to adopt resources.
+  if (Object.hasOwn(owner, 'networkOwnership')) throw new Error('Original fixture network owner is unavailable; retain resources and diagnostics instead of recorded-PID/name recovery');
   if (isAlive(owner.runnerPid)) throw new Error('Run is still active; interrupt its runner and let finally-cleanup finish');
   const host = (await exec('docker',['context','inspect','--format','{{.Endpoints.docker.Host}}'])).stdout.trim();
   if ((process.env.DOCKER_HOST && !process.env.DOCKER_HOST.startsWith('unix://')) || !host.startsWith('unix://')) throw new Error('Recovery requires local Docker');

@@ -90,9 +90,16 @@ it('L1-27/D03 pull detail is gated, bounded and never guesses an image or status
 
 it('L1-27/D03 report wiring captures launch boundary and cache before the first CLI start', async () => {
   const harness = await readFile('scripts/harness.mjs', 'utf8'), runner = await readFile('scripts/run-phase-a.mjs', 'utf8');
-  expect(harness).toContain("await exec(cli, ['--version'], { env: childEnv })");
+  expect(harness).toContain('cliOwner = await createFixtureFrontendCli(files, childEnv)');
+  expect(harness).not.toContain('cliOwner = createFixtureCli(files, childEnv)');
+  expect(harness).toContain("await cliOwner.run('version', ['--version'])");
+  expect(harness).not.toContain('await exec(cli,');
+  const startup = harness.slice(harness.indexOf('async function startOwned()'));
+  const version = startup.indexOf("await cliOwner.run('version'"), cache = startup.indexOf('await collectSupabaseStartupCache(project, childEnv, docker)'), start = startup.indexOf("await command(['start'");
+  expect(Math.min(version, cache, start)).toBeGreaterThanOrEqual(0);
+  expect(version).toBeLessThan(cache);
   expect(harness).toContain('context.supabaseStartContext');
-  expect(harness.indexOf('await collectSupabaseStartupCache(project)')).toBeLessThan(harness.indexOf("await command(['start'"));
+  expect(cache).toBeLessThan(start);
   expect(harness).toContain("operation = 'cli-start'");
   expect(runner).toContain('report.supabaseStartContext=harness?.context.supabaseStartContext');
 });
