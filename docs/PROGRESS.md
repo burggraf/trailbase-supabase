@@ -1,3 +1,18 @@
+# Publication cleanup: integrated source verified; not release approval
+
+The existing nine local commits, remote996 history and44 missing portable source/test/doc files are reconciled without rewriting either parent. On source `9f0037089fb0a0c55c6a2325df1fd1232333e83ffbd17cc0d4fd362926a57423`, **Node22.23.2 then24.21.0 each passed check,867unit/0failed/0pending, SDKcoverage, build, offline packed-consumer/type/transport checks and progress**. Thresholds remain95/95/95/90 globally and for each3SDKmodule. Eight untracked private-controller test files/66cases stay preserved privately, not exported or claimed passing here; no committed test was removed. See [the bounded source/evidence record](evidence/publication-completion-43be95a.json).
+
+This is a development/publication checkpoint, not SDK/native readiness or release approval. Historical Auth cleanup failures and all20 genuine RR unexecuted/guards closed remain unchanged. Backend/reference/three-browser/security/resource/parity/signoff gates remain open. No local real backend/daemon/SQL/Auth/migration/retained-owner/live-demo operation occurred. The containing commit identifies publication; exact remote ref and resulting CI must be checked separately. CI was unobserved at commit time, not green by inference. Development remains stopped.
+
+## Preserved exact remote SDK-ENC01 checkpoint (public-base326, not Core426/933)
+
+
+## SDK-ENC01 — deterministic filter request formation
+
+New reviewed24-case property test exercises six comparison operators, limit0/7, flat/repeated indexed-AND grammar and76adversarial/seeded well-formed Unicode strings (seed432078830):1824actual SDK request formations per pin, only final Fetch injected. [Finite evidence](evidence/sdk-filter-encoding.json). Existing native serialization/strict record redirect:error policy preserved; initial new-test redirect:manual authoring failure was corrected, not a product defect/fix. No runtime/API/fixture/dependency change. Fresh qualification on the exact public base/source`f6854acceddfd4dbb665e64ca6003ac0b6d4a8b5968ea34cc434867b6ce6d71c`: Node22.23.2/24.21.0 each passed build/check/326units(including24encoding)/runtime coverage/progress. All3runtime modules and total pass unchanged95% statements/lines/functions,90% branches without excludes/skips; both totals97.25/99.47/99.29/95.19. Unrelated unpublished Core commits, audit plans and private proof artifacts are excluded. This evidence does not infer CI; inspect the exact pushed commit's actual run. Genuine backend/database/shared-reference/three-engine browser/installed-package/security-resource/release gates remain unwaived; no feature signoff.
+
+## Preserved Core checkpoint history (historical source-bound evidence)
+
 # Publication checkpoint — Core224 complete; history conflicts; STOP (2026-11-07)
 
 - **Development stopped; no new commit/push/CI.** `.runtime/core224-publication-20261107-01/RESULTS.md`, `result.json`, `merge-tree.stdout.txt`. Actual native Git remote-ref read confirms main **996d1ee11d1ce32923ad39ac0e75d537c043749a**; local HEAD **3d0cdcc4eb8d5bf0c0412b490dfe5413e7613ddd**, base **9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb**; **8 local-only /1 remote-only** commits. Non-applied merge-tree exits1 with content conflicts in **docs/PROGRESS.md and docs/progress.json**. Original HEAD/index/staged unchanged; no merge/resolution/stage/reset/force/workaround or publication performed.

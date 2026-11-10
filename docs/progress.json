@@ -73,7 +73,15 @@
     "changedOrNewPairs": 4,
     "unchangedPairs": 58,
     "evidenceRoot": ".runtime/fixture-auth-socket-20261107-01/",
-    "reports": ["RESULTS.md", "DESIGN.md", "CONNECTED_REVIEW.md", "qualification.json", "metadata-validation.json", "completion.json", "critical-records.json"],
+    "reports": [
+      "RESULTS.md",
+      "DESIGN.md",
+      "CONNECTED_REVIEW.md",
+      "qualification.json",
+      "metadata-validation.json",
+      "completion.json",
+      "critical-records.json"
+    ],
     "implemented": "Explicit launch-inert socket family: one anonymous original-created local tmpfs uid100/gid101/mode0710 separate from PGDATA, sole no-copy PG RW/Auth RO mount. PG100:101/Auth1000:101, socket0620. Fixed Auth SCRAM postgres/supabase_auth_admin; exact OS-postgres administrative peer map; reject other role/database/host/replication paths. Separate fixed Docker gate/factory, no ambient credential/context env, original creation/image/realm/mount/config checks, stopped-only nonforce disposition/absence/fences and sticky uncertainty. Default no-mount execution unchanged.",
     "notImplementedOrClaimed": "No credential/Auth role/schema/global config provision or start/exec/migration capability; caller retains original file-close responsibility, not executable harness/keeper/service integration. Models are not native getpeereid/SCRAM/mount/role/resource proof; migrationReady/credentialProvisioned/logicalSettlement false. No production/public SDK adoption.",
     "qualification": {
@@ -81,7 +89,13 @@
       "observedExit": 0,
       "observedSeconds": 347,
       "order": "exact Node22.23.2 THEN24.21.0 serial; existing offline/private-net/capabilities-dropped setup",
-      "eachPin": {"fullPassed": 907, "focusedPassed": 500, "newPassed": 48, "failed": 0, "pending": 0},
+      "eachPin": {
+        "fullPassed": 907,
+        "focusedPassed": 500,
+        "newPassed": 48,
+        "failed": 0,
+        "pending": 0
+      },
       "checks": "npm run check, test:unit, test:sdk:coverage, progress and frozen-source/archive checks exit0; raw/source/maps archived before next pin",
       "sdkCoverage": "97.46statements/99.53lines/99.35functions/95.18branches; unchanged95/95/95/90 global/each3SDKmodules; sourceUnchanged/thresholdsPassed true",
       "rawFailedPhases": "RED0/44; firstGREEN148/19 exact-filter bug; GREEN167/0 then static prior222 unindexed report link failure; resourceRED44/3; projection/resourceRED44/4; focusedfinalGREEN171/0/check0. All raw source/log/JSON retained. No assertion/exclusion/threshold weakening."
@@ -140,22 +154,83 @@
     "inputManifests": 1,
     "accepted220Source": "5c8e3cde2f233a085fbd6b495035bb60c5e876b4ba0f1cd1d6d9507e458acc43",
     "accepted220ClosedStaticRecords": 425,
-    "creationSteps": ["not-entered", "daemon", "name-check", "image-command", "image-validation", "create-command", "create-acknowledgement", "verify-daemon", "verify-id", "verify-command", "verify-configuration", "creator-return"],
+    "creationSteps": [
+      "not-entered",
+      "daemon",
+      "name-check",
+      "image-command",
+      "image-validation",
+      "create-command",
+      "create-acknowledgement",
+      "verify-daemon",
+      "verify-id",
+      "verify-command",
+      "verify-configuration",
+      "creator-return"
+    ],
     "design": "One original creator closure-local last-entered boundary, immutable getter/frozen literal allowlist; future controller captures original own getter once before launch and copies only allowed primitive markers into cached status. No owner/resource query, coercion, new method/action/options/framework or authority. Shared inspect updates only while creating; rejected replay/later operations preserve history.",
     "semantics": "SOURCE boundary only, not command-issued/success/existence/ownership/disposition/settlement proof. Awaited wrapper/native/file failures remain grouped; creator-return only identifies existing return branch before next controller guard. Existing absence handling unchanged; in-flight creator may advance after control loss while earlier packets/first reason remain separate.",
     "firstRetentionSameOwnerMetadataAndDispositionRulesPreserved": true,
     "cachedDiagnosticReadsIssueNoCommandsOrResourceObservations": true,
     "tests": {
-      "featureIds": ["L1-27/CS01", "L1-27/CS02", "L1-27/CS03", "L1-27/CS04", "L1-27/CS05"],
-      "red": {"process": "proc_7e3f", "passed": 146, "failed": 16, "pending": 0, "baselineProgressExit": 0, "meaningful": true},
-      "firstGreen": {"process": "proc_c226", "passed": 160, "failed": 2, "cause": "Test fault injection matched image inspect instead of container inspect; markers exposed mismatch; discriminator corrected without weakening assertions; failed source/inputs/raw logs/report retained"},
-      "typeFailure": {"process": "proc_e957", "passed": 162, "failed": 0, "static": "TS2322 default-inferred stdin/stdout excluded supported PassThrough; explicit Node Readable/Writable annotations, no cast/ts-ignore/strictness relaxation; raw failure/source retained"},
-      "finalGreen": {"process": "proc_1772", "passed": 162, "failed": 0, "checkExit": 0},
+      "featureIds": [
+        "L1-27/CS01",
+        "L1-27/CS02",
+        "L1-27/CS03",
+        "L1-27/CS04",
+        "L1-27/CS05"
+      ],
+      "red": {
+        "process": "proc_7e3f",
+        "passed": 146,
+        "failed": 16,
+        "pending": 0,
+        "baselineProgressExit": 0,
+        "meaningful": true
+      },
+      "firstGreen": {
+        "process": "proc_c226",
+        "passed": 160,
+        "failed": 2,
+        "cause": "Test fault injection matched image inspect instead of container inspect; markers exposed mismatch; discriminator corrected without weakening assertions; failed source/inputs/raw logs/report retained"
+      },
+      "typeFailure": {
+        "process": "proc_e957",
+        "passed": 162,
+        "failed": 0,
+        "static": "TS2322 default-inferred stdin/stdout excluded supported PassThrough; explicit Node Readable/Writable annotations, no cast/ts-ignore/strictness relaxation; raw failure/source retained"
+      },
+      "finalGreen": {
+        "process": "proc_1772",
+        "passed": 162,
+        "failed": 0,
+        "checkExit": 0
+      },
       "final": {
-        "process": "proc_3918", "observedExitCode": 0, "observedSeconds": 326,
-        "serialOrder": ["22.23.2", "24.21.0"],
-        "perPin": {"fullPassed": 859, "focusedPassed": 452, "newCases": 19, "failed": 0, "pending": 0, "checkExit": 0, "unitExit": 0, "sdkCoverageExit": 0, "progressSourceArchiveExit": 0},
-        "sdkCoverageBothPins": {"statements": 97.46, "lines": 99.53, "functions": 99.35, "branches": 95.18},
+        "process": "proc_3918",
+        "observedExitCode": 0,
+        "observedSeconds": 326,
+        "serialOrder": [
+          "22.23.2",
+          "24.21.0"
+        ],
+        "perPin": {
+          "fullPassed": 859,
+          "focusedPassed": 452,
+          "newCases": 19,
+          "failed": 0,
+          "pending": 0,
+          "checkExit": 0,
+          "unitExit": 0,
+          "sdkCoverageExit": 0,
+          "progressSourceArchiveExit": 0
+        },
+        "sdkCoverageBothPins": {
+          "statements": 97.46,
+          "lines": 99.53,
+          "functions": 99.35,
+          "branches": 95.18
+        },
         "unchangedThresholdsGlobalEach3Modules": "95/95/95/90",
         "offlinePrivateNetCapabilitiesDropped": true,
         "ordinaryUnitActors": "Existing finite generated offline native/control actors only; no new Docker/backend fixture/native-server attempt or genuine irreversible RR fault qualification",
@@ -169,7 +244,11 @@
     "newBackendNativeAttempts": 0,
     "newContainers": 0,
     "newMigrations": 0,
-    "retainedOriginals": ["proc_bbd2", "proc_6a65", "proc_bfe6"],
+    "retainedOriginals": [
+      "proc_bbd2",
+      "proc_6a65",
+      "proc_bfe6"
+    ],
     "resourceDisposition": "ALL3_ORIGINALS_ENTIRELY_UNOBSERVED_UNTOUCHED_NO_CLOSURE_RECOVERY_OR_CURRENT_EXISTENCE_COUNT_LIVENESS_CLAIM",
     "retainedTreesReadTraversedStattedHashedChmoddedCopied": false,
     "signalsEofCleanupRetryRecoveryDiscoveryAdoption": false,
@@ -205,14 +284,51 @@
       "No new methods/framework/commands/fences/log IO/raw Error or output serialization; unbranded assertions remain unclassified; no current keeper repair/reload/recovery"
     ],
     "tests": {
-      "features": ["L1-27/CD01", "L1-27/CD02", "L1-27/CD03", "L1-27/CD04", "L1-27/CD05"],
-      "red": {"process": "proc_e98c", "passed": 73, "failed": 5, "baselineProgressExit": 0, "meaningful": true},
-      "green": {"process": "proc_6bd8", "passed": 127, "failed": 0, "checkExit": 0},
+      "features": [
+        "L1-27/CD01",
+        "L1-27/CD02",
+        "L1-27/CD03",
+        "L1-27/CD04",
+        "L1-27/CD05"
+      ],
+      "red": {
+        "process": "proc_e98c",
+        "passed": 73,
+        "failed": 5,
+        "baselineProgressExit": 0,
+        "meaningful": true
+      },
+      "green": {
+        "process": "proc_6bd8",
+        "passed": 127,
+        "failed": 0,
+        "checkExit": 0
+      },
       "final": {
-        "process": "proc_0796", "observedExitCode": 0, "observedSeconds": 333,
-        "serialOrder": ["22.23.2", "24.21.0"],
-        "perPin": {"fullPassed": 840, "focusedPassed": 433, "newCases": 7, "failed": 0, "pending": 0, "checkExit": 0, "unitExit": 0, "sdkCoverageExit": 0, "progressSourceArchiveExit": 0},
-        "sdkCoverageBothPins": {"statements": 97.46, "lines": 99.53, "functions": 99.35, "branches": 95.18},
+        "process": "proc_0796",
+        "observedExitCode": 0,
+        "observedSeconds": 333,
+        "serialOrder": [
+          "22.23.2",
+          "24.21.0"
+        ],
+        "perPin": {
+          "fullPassed": 840,
+          "focusedPassed": 433,
+          "newCases": 7,
+          "failed": 0,
+          "pending": 0,
+          "checkExit": 0,
+          "unitExit": 0,
+          "sdkCoverageExit": 0,
+          "progressSourceArchiveExit": 0
+        },
+        "sdkCoverageBothPins": {
+          "statements": 97.46,
+          "lines": 99.53,
+          "functions": 99.35,
+          "branches": 95.18
+        },
         "unchangedThresholdsGlobalEach3Modules": "95/95/95/90",
         "offlinePrivateNetCapabilitiesDropped": true,
         "ordinaryUnitActors": "Existing finite generated native/control test actors; NOT a separate Docker/backend fixture/native server probe or genuine irreversible RR fault qualification",
@@ -220,12 +336,21 @@
         "assertionsSkipsExclusionsThresholdsWeakened": false
       }
     },
-    "metadataValidationFirst": {"process": "proc_a95e", "progressExit": 0, "metadataExit": 1, "cause": "RESULTS Markdown heading missing space after #; failed inputs/raw logs preserved, heading corrected; no source/native change or policy denial"},
+    "metadataValidationFirst": {
+      "process": "proc_a95e",
+      "progressExit": 0,
+      "metadataExit": 1,
+      "cause": "RESULTS Markdown heading missing space after #; failed inputs/raw logs preserved, heading corrected; no source/native change or policy denial"
+    },
     "liveOriginalControlObservations": 0,
     "newBackendNativeAttempts": 0,
     "newContainers": 0,
     "newMigrations": 0,
-    "retainedOriginals": ["proc_bbd2", "proc_6a65", "proc_bfe6"],
+    "retainedOriginals": [
+      "proc_bbd2",
+      "proc_6a65",
+      "proc_bfe6"
+    ],
     "resourceDisposition": "ALL_ORIGINALS_PRESERVED_UNOBSERVED_NO_CLOSURE_OR_RECOVERY_CLAIM_CONTAINER_EXISTENCE_COUNTS_UNKNOWN",
     "retainedTreesReadTraversedStattedHashedChmoddedCopied": false,
     "signalsEofCleanupRetryRecoveryDiscoveryAdoption": false,
@@ -493,46 +618,12 @@
     "signoff": false
   },
   "sdkFilterEncoding": {
-    "milestone": "SDK-ENC01",
-    "status": "existing-contract-unit-property-increment-verified-not-backend-feature-signoff",
+    "status": "unit-request-formation-verified-not-feature-signoff",
+    "sourceSha256": "f6854acceddfd4dbb665e64ca6003ac0b6d4a8b5968ea34cc434867b6ce6d71c",
+    "verification": "Exact public-base Node22.23.2/24.21.0 build/check/326units(24encoding)/95-95-95statements-lines-functions90branches global+all3runtime modules/progress passed, no excludes/skips;1824SDK request formations per pin. No backend/installed-package/CI/parity/release signoff inferred.",
+    "feature": "L1-09",
     "evidence": "docs/evidence/sdk-filter-encoding.json",
-    "privateEvidence": ".runtime/sdk-filter-encoding-20261106-01",
-    "scope": "Existing L1-09/U09/S02 seeded Unicode/metacharacter literal filters,6operators ×2limits ×flat/indexed AND; real SDK/installednativeclient, only final Fetch injected. No production/API/default/codec/result/error-policy change or lane integration.",
-    "seed": 432078830,
-    "uniqueCasesEachPin": 24,
-    "valuesEachCase": 76,
-    "requestsEachPin": 1824,
-    "exactPins": [
-      "22.23.2",
-      "24.21.0"
-    ],
-    "focused": "proc_1453/proc_28f9 each24PASS0FAIL; no cancellations/skips",
-    "rootCheck": "npm run check proc_c814/proc_932d exit0 on both pins",
-    "fullRootUnits": "npm run test:unit proc_6fba/proc_b9c7 each426PASS0FAIL; same sourceSHA b3a558c69bb074e18c9dda8f2389ff6cb76a818c007e5efd5397b89dffb8c145; previous root reports archived byte-exact before serial writes",
-    "initialAuthoringFailure": "proc_beca/proc_3502 each24FAIL: new test incorrectly expected record redirect:manual instead of existing stricter redirect:error. Only new assertion corrected; wrong source/full raw/reports preserved. Not product RED/GREEN or a production fix.",
-    "review": "One read-only new SDK test/clarification review ef1b5b65-2fe4-42f2-9442-d1d9bfa154c0, no concreteP1/P2, no postreview source repair/duplicate review or old proof review; manifest095fb2035e95b4b3e57d134f163c356b39092092366346eec90acf561cc214fc matched3files before/after. Visible Pi/openai/gpt-6.1-sol/thinkinghigh is route configuration not backend attestation. Original reviewer Node24-pending handoff preserved; Core later independently verified24 exit/report. Supervising management thread then selected official fixture-bound route under existing project authorization; plan document intentionally revised under that decision after review, original reviewed bytes retained; encoding test/scope unchanged, no duplicate encoding review.",
-    "execution": "Managed exact pinned Nodes/clean env/owned HOME/configs/tmp; child-only network namespace/no external routes/capdrop/NNP. Full units enable ONLY child namespace loopback for existing owned ephemeral HTTP unit tests, not host network change/backend fixture. Focused outputs/cache distinct; full-unit shared outputs serial and archived; full raw/lifecycle/source bindings retained.",
-    "runtimeCoverage": "Existing npm run test:sdk:coverage proc_c36f/proc_685a observed0,426PASS each exactpin, same source b3a558c69bb074e18c9dda8f2389ff6cb76a818c007e5efd5397b89dffb8c145/global3modules95statements-lines-functions/90branches passed without exclusions/skips. Totalsboth97.46statements/99.53lines/99.35functions/95.18branches; minmodulebranches93.54. Full raw/V8maps/uncoveredlocations archived after prior output bytes preserved. Core ANSI count-parser premise assertion preserved/corrected parsing only, no test rerun. Unit coverage not critical-branch/security/backend/release signoff.",
-    "emittedBuildAndTypes": "Continued independent SDK verification: existing npm run build:sdk with distinct owned --outDir followed by verbatim existing sdk-data/sdk-query type fixtures with ONLY import changed to emitted declarations, strict/noEmit/skipLibCheck:false; proc_2653/proc_8fb0 observed0. All6emitted JS/d.ts files identical both exactpins. Not installed bare-package/reference/backend proof; no dependency installation/source edit/new encoding review/old Auth closure.",
-    "publication": {
-      "status": "normal-scoped-push-actual-remote-verified-exact-CI-running",
-      "commit": "996d1ee11d1ce32923ad39ac0e75d537c043749a",
-      "parent": "9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb",
-      "sourceSha256": "f6854acceddfd4dbb665e64ca6003ac0b6d4a8b5968ea34cc434867b6ce6d71c",
-      "scope": "Exactly1commit4files: unchanged reviewed encoding test, public-safe actual publication-base evidence, narrow PROGRESS/progress ledger additions. No source/API/fixture/privateproof/auditplan/dependency change. Actual remote main verified via postpush ls-remote; no force/reset/Core index/staged-content change.",
-      "ancestry": "Core main3d0cdcc was8commits ahead of actual remote9a20, including unrelated unqualified auth-operation/Daylist/row-result work. Did NOT push CoreHEAD. Separate owned publish/sdk-encoding-20261106 worktree based directly9a20; all8Core commits and staged/uncommitted scope preserved, no unrelated commit carried. Root3d0 remains CoreHEAD; remote advance intentionally makes expected divergence, not authority to reset/merge.",
-      "qualification": "Public base/runtime differs from Core: same dependency manifests, fresh exact22.23.2/24.21.0 each build/check/326unit(24encoding)/95statements-lines-functions90branches global+3modules/progress0, proc_22ca/proc_1d65. Sourcef6854acc both, totals97.25/99.47/99.29/95.19 no excludes/skips. Final metadata docs/progress proc_6986 observed0. Core426/b3a evidence not promoted; preserved privately/current ledger. Same test bytes/single original review, no new reviewer. Own first public ledger formatting/2trailing spaces corrected before verified check/commit.",
-      "publicEvidenceIntegration": "Only own new Core evidence draft archived Core-prepublication-evidence.json then aligned to actual published source-bound record; current RootSDK/Core426 source remains distinct, untouched. No unexpected file reset/source integration.",
-      "pushProcess": "proc_2477 observed0; actual remote996d1ee, parent9a20,1commit4files verified",
-      "ci": "Exact push run42259318016 head996d1ee identified via gh, in_progress; managed proc_a6c9 watching to actual completion, no historical CI substitute/automatic retry",
-      "ciUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/42259318016",
-      "releaseSignoffOrParity": false
-    },
-    "guardsAuthSourceOriginalLockUnchanged": true,
-    "closedControlsNativeRunsReconcilerReplayed": false,
-    "remaining": "Local encoding checks do not certify genuine backend/database/shared-reference/three-engine browser/packedconsumer/security-resource/full release gates; unwaived, not N/A. Actual scoped-publication CI tracked separately above. All20genuineRR remain unexecuted; root24 units do not close old Auth Build24. No parity/signoff/deployment; later finite publication authorization permits ONLY described scoped Git/remote/exactCI actions, no broader effect.",
-    "release": false,
-    "signoff": false
+    "scope": "Only reviewed deterministic filter test + public-safe finite evidence/ledger, no runtime/fixture/API change. Actual qualification binds exact public base and reviewed test, not unpublished Core source; unrelated commits/private proof artifacts not carried."
   },
   "rrAuditBodyPipe": {
     "featureId": "RR-AUDIT-BODY-PIPE-01",
@@ -10041,6 +10132,7 @@
     }
   ],
   "nextSteps": [
+    "PUBLICATION CHECKPOINT: source9f0037089fb0a0c55c6a2325df1fd1232333e83ffbd17cc0d4fd362926a57423 passed both exact Node22.23.2/24.21.0 check/867full-unit/SDKcoverage/build/offlinepackage/progress. Verify the containing commit exact remote ref and CI separately; no retry/green/signoff inference. Development stopped; no native/backend or retained-owner action. Older instructions below are historical source-bound records, not fresh execution authority.",
     "STOP: Core224 complete; publication held at actual docs/PROGRESS.md and docs/progress.json history conflicts (8 local/1 remote). No commit/push/CI retry, next development or worker. Preserve checkpoint until deliberate ledger-history/staged-work reconciliation and full final integration/public-safe review.",
     "STOP development after bounded224. Only Mark-authorized scoped publication review/history reconciliation; preserve/report conflict or unverified prerequisite. No next milestone, specialist/Mantis restart or physical action.",
     "STOP bounded223 after source/offline result: .runtime/fixture-auth-socket-20261107-01/RESULTS.md and actual completion/critical records. Source981bd32ee40e07970016c0849d018b31da1f178b75767f629cbcc4b0076008b2; exact22THEN24 each907full500focus48new/0failedpending/check-coverage-progress-source0. New opt-in launch-inert socket-only tmpfs/UID/DAC/SCRAM-peer/stopped-original family, default no-mount profile unchanged; no physical resources/daemon/mount/credential/Auth/SQL/Vault/migration operation. Next concrete dependency ephemeral fixture verifier/global config/least-privilege catalog preconditions plus same-original startup/settlement wiring, then genuinely owned bootstrap/Auth sessions qualification under a physical grant. No generic internal approval gate or unrelated diagnostics. ALL3 retained originals/trees/possible containers UNOBSERVED_UNTOUCHED;219UNCLASSIFIED/Vaultnotreached/all20RR0/guardsclosed; broadergatesopenunwaivednotNA; no agents/email/outreach/commit-push-CI-deploy/host-security-network-mount-access changes. Stop.",
@@ -18279,5 +18371,434 @@
       "Broader backend/reference/three-browser/package/security/fault/resource/release/fullbootstrap/auth.sessions/complete inventory/descendant/independent logical settlement/parity/signoff remain unexecuted/unwaived as applicable, NOT N/A.",
       "Originalrootfixture/lock/demo/inbox/accounts/tasks/sessions/keys/config/backups/sixcontainers/tailnet/frozenlanes/AuthSTOP/Build24/history preserved; no live reobservation/global census/agents/Mantis/email/outreach/commit/push/CI/deployment/host security-mount-exposure-persistent-access changes. Public996d1ee/CI42259318016attempt1failure/eightUNCLASSIFIED separate/unqueried."
     ]
+  },
+  "coreSdkFilterEncodingCheckpoint20261106": {
+    "milestone": "SDK-ENC01",
+    "status": "existing-contract-unit-property-increment-verified-not-backend-feature-signoff",
+    "evidence": "docs/evidence/sdk-filter-encoding.json",
+    "privateEvidence": ".runtime/sdk-filter-encoding-20261106-01",
+    "scope": "Existing L1-09/U09/S02 seeded Unicode/metacharacter literal filters,6operators ×2limits ×flat/indexed AND; real SDK/installednativeclient, only final Fetch injected. No production/API/default/codec/result/error-policy change or lane integration.",
+    "seed": 432078830,
+    "uniqueCasesEachPin": 24,
+    "valuesEachCase": 76,
+    "requestsEachPin": 1824,
+    "exactPins": [
+      "22.23.2",
+      "24.21.0"
+    ],
+    "focused": "proc_1453/proc_28f9 each24PASS0FAIL; no cancellations/skips",
+    "rootCheck": "npm run check proc_c814/proc_932d exit0 on both pins",
+    "fullRootUnits": "npm run test:unit proc_6fba/proc_b9c7 each426PASS0FAIL; same sourceSHA b3a558c69bb074e18c9dda8f2389ff6cb76a818c007e5efd5397b89dffb8c145; previous root reports archived byte-exact before serial writes",
+    "initialAuthoringFailure": "proc_beca/proc_3502 each24FAIL: new test incorrectly expected record redirect:manual instead of existing stricter redirect:error. Only new assertion corrected; wrong source/full raw/reports preserved. Not product RED/GREEN or a production fix.",
+    "review": "One read-only new SDK test/clarification review ef1b5b65-2fe4-42f2-9442-d1d9bfa154c0, no concreteP1/P2, no postreview source repair/duplicate review or old proof review; manifest095fb2035e95b4b3e57d134f163c356b39092092366346eec90acf561cc214fc matched3files before/after. Visible Pi/openai/gpt-6.1-sol/thinkinghigh is route configuration not backend attestation. Original reviewer Node24-pending handoff preserved; Core later independently verified24 exit/report. Supervising management thread then selected official fixture-bound route under existing project authorization; plan document intentionally revised under that decision after review, original reviewed bytes retained; encoding test/scope unchanged, no duplicate encoding review.",
+    "execution": "Managed exact pinned Nodes/clean env/owned HOME/configs/tmp; child-only network namespace/no external routes/capdrop/NNP. Full units enable ONLY child namespace loopback for existing owned ephemeral HTTP unit tests, not host network change/backend fixture. Focused outputs/cache distinct; full-unit shared outputs serial and archived; full raw/lifecycle/source bindings retained.",
+    "runtimeCoverage": "Existing npm run test:sdk:coverage proc_c36f/proc_685a observed0,426PASS each exactpin, same source b3a558c69bb074e18c9dda8f2389ff6cb76a818c007e5efd5397b89dffb8c145/global3modules95statements-lines-functions/90branches passed without exclusions/skips. Totalsboth97.46statements/99.53lines/99.35functions/95.18branches; minmodulebranches93.54. Full raw/V8maps/uncoveredlocations archived after prior output bytes preserved. Core ANSI count-parser premise assertion preserved/corrected parsing only, no test rerun. Unit coverage not critical-branch/security/backend/release signoff.",
+    "emittedBuildAndTypes": "Continued independent SDK verification: existing npm run build:sdk with distinct owned --outDir followed by verbatim existing sdk-data/sdk-query type fixtures with ONLY import changed to emitted declarations, strict/noEmit/skipLibCheck:false; proc_2653/proc_8fb0 observed0. All6emitted JS/d.ts files identical both exactpins. Not installed bare-package/reference/backend proof; no dependency installation/source edit/new encoding review/old Auth closure.",
+    "publication": {
+      "status": "normal-scoped-push-actual-remote-verified-exact-CI-running",
+      "commit": "996d1ee11d1ce32923ad39ac0e75d537c043749a",
+      "parent": "9a20c2f3f6fe355a183cd2b9eeb451c3626c01bb",
+      "sourceSha256": "f6854acceddfd4dbb665e64ca6003ac0b6d4a8b5968ea34cc434867b6ce6d71c",
+      "scope": "Exactly1commit4files: unchanged reviewed encoding test, public-safe actual publication-base evidence, narrow PROGRESS/progress ledger additions. No source/API/fixture/privateproof/auditplan/dependency change. Actual remote main verified via postpush ls-remote; no force/reset/Core index/staged-content change.",
+      "ancestry": "Core main3d0cdcc was8commits ahead of actual remote9a20, including unrelated unqualified auth-operation/Daylist/row-result work. Did NOT push CoreHEAD. Separate owned publish/sdk-encoding-20261106 worktree based directly9a20; all8Core commits and staged/uncommitted scope preserved, no unrelated commit carried. Root3d0 remains CoreHEAD; remote advance intentionally makes expected divergence, not authority to reset/merge.",
+      "qualification": "Public base/runtime differs from Core: same dependency manifests, fresh exact22.23.2/24.21.0 each build/check/326unit(24encoding)/95statements-lines-functions90branches global+3modules/progress0, proc_22ca/proc_1d65. Sourcef6854acc both, totals97.25/99.47/99.29/95.19 no excludes/skips. Final metadata docs/progress proc_6986 observed0. Core426/b3a evidence not promoted; preserved privately/current ledger. Same test bytes/single original review, no new reviewer. Own first public ledger formatting/2trailing spaces corrected before verified check/commit.",
+      "publicEvidenceIntegration": "Only own new Core evidence draft archived Core-prepublication-evidence.json then aligned to actual published source-bound record; current RootSDK/Core426 source remains distinct, untouched. No unexpected file reset/source integration.",
+      "pushProcess": "proc_2477 observed0; actual remote996d1ee, parent9a20,1commit4files verified",
+      "ci": "Exact push run42259318016 head996d1ee identified via gh, in_progress; managed proc_a6c9 watching to actual completion, no historical CI substitute/automatic retry",
+      "ciUrl": "https://github.com/burggraf/trailbase-supabase/actions/runs/42259318016",
+      "releaseSignoffOrParity": false
+    },
+    "guardsAuthSourceOriginalLockUnchanged": true,
+    "closedControlsNativeRunsReconcilerReplayed": false,
+    "remaining": "Local encoding checks do not certify genuine backend/database/shared-reference/three-engine browser/packedconsumer/security-resource/full release gates; unwaived, not N/A. Actual scoped-publication CI tracked separately above. All20genuineRR remain unexecuted; root24 units do not close old Auth Build24. No parity/signoff/deployment; later finite publication authorization permits ONLY described scoped Git/remote/exactCI actions, no broader effect.",
+    "release": false,
+    "signoff": false
+  },
+  "publicationCompletion43be95a": {
+    "status": "both-exact-node-public-source-checkpoint-verified-not-release-signoff",
+    "localParent": "43be95af7fe6b3f082d71a9b64874aa6bde57625",
+    "remoteParent": "996d1ee11d1ce32923ad39ac0e75d537c043749a",
+    "scope": "Complete existing committed development checkpoint plus its missing source/test dependency graph; reconcile both histories without release or native qualification claims. No new SDK feature, dependency, deployment or live resource change.",
+    "publicCanonicalEncodingRecordUnchanged": true,
+    "coreEncodingRecordKey": "coreSdkFilterEncodingCheckpoint20261106",
+    "remoteHistoricalChangedSharedRecordSnapshots": {
+      "currentPhase": "DR01 minimal app lifetime fix sourced14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740: genuine84PASS/identical-test6failure red, bothNodes302/check/unchanged95–90coverage/package4/installed8 and22runtime+6static auditPASS. Original19 interrupted/causeUNKNOWN plus separate2, all14 strict failures preserved. All59archives/88671files/private575/original0358demo/live safeguards/prior histories preserved. Scoped9file commit/push and exactnewCI pending, no release/maintainer signoff.",
+      "nextSteps": [
+        "SDK-ENC01 reviewed test-only increment: actual exact public-base both-pin build/check/326units24encoding/95-90global+3module coverage/progress pass; verify actual remote commit/exact new CI after normal scoped publication. No unpublished Core commit/private artifact or backend/installed-package/parity/release signoff inferred.",
+        "Review/stage exactly9 public-safe substantive files carrying prior3ARterminal notes; normal scoped commit/push with existing authenticated process-local transport only.",
+        "Audit exact-new-commit CIattempt1:6newjobs/6uploader-boundZIP/27source-bound reports, source/pins/Nodes/coverage/fullnames/setupcleanup/steps and14historical strict failures. No automatic rerun.",
+        "PostCI rehash original/private/59archives/history and immutable CI evidence; fresh terminal operational checks, then only3terminal bookkeeping notes local with no extra docs-only publication."
+      ],
+      "disposedMutation0359": {
+        "status": "locally-verified-awaiting-scoped-publication-and-exact-ci",
+        "baseCommit": "5eb340af0ea77418c2a6090cd719c6e3ae673464",
+        "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+        "scope": "Existing app disposal/owner-replacement boundary; no new API or release requirement",
+        "productUnchangedBeforeRed": true,
+        "testsAuthored": 6,
+        "defaultBrowserExpected": 84,
+        "realRuntimeExecuted": true,
+        "initialTypeCheckFailure": "TS2322 deadline handle typed number; corrected to ReturnType<typeof setTimeout>",
+        "authoredPinned22Check": "Authored check passed after test-only TS2322 correction; fresh first-source and corrected-source pinned22 checks also passed (private logs retained)",
+        "preservationBefore": {
+          "status": "passed",
+          "archives": 57,
+          "files": 85322,
+          "privateArtifacts": 7,
+          "privateFiles": 575,
+          "priorCiManifestFiles": 95,
+          "original0358DemoUnchanged": true
+        },
+        "priorArThreeTerminalNotesPreserved": true,
+        "signoff": false,
+        "firstRed": {
+          "status": "genuine-designated-red-confirmed",
+          "sourceSha256": "4c630b1d9408b6a076e41f353c00e62ccc2161563d1f3643381a6b226456a047",
+          "runId": "1793798505924-8f7a9efd69e7",
+          "actualCases": 84,
+          "passed": 78,
+          "failed": 6,
+          "failedCases": [
+            {
+              "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [trailbase]",
+              "project": "chromium"
+            },
+            {
+              "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [supabase]",
+              "project": "chromium"
+            },
+            {
+              "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [trailbase]",
+              "project": "firefox"
+            },
+            {
+              "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [supabase]",
+              "project": "firefox"
+            },
+            {
+              "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [trailbase]",
+              "project": "webkit"
+            },
+            {
+              "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [supabase]",
+              "project": "webkit"
+            }
+          ],
+          "designatedAssertion": "DR assertion: disposed mutation starts no follow-up select or genuine GET",
+          "observedPerFailedCase": {
+            "retiredSelects": 1,
+            "genuineRequests": [
+              "GET:A"
+            ],
+            "currentDomUnchanged": true
+          },
+          "scopeReached": "first explicit-disposal schedule; owner-replacement and healthy-B schedules not reached on red",
+          "productUnchanged": true,
+          "setupCleanup": "passed",
+          "singleAttempt": true,
+          "rawSha256": "938b99e12e4e377a98b9011d11622bfbb19424231d9e89dfc2d7f2ae636f3704",
+          "productDefect": true,
+          "noSyntheticSuccess": true,
+          "signoff": false
+        },
+        "productChange": "One disposed check after awaiting mutation, before follow-up read; accepted mutation result retained, no cancellation/rollback/replay",
+        "correctedSourceRuntimeVerified": true,
+        "genuineLifetimeProof": {
+          "status": "passed",
+          "sourceSha256": "d14c212d1057236e62eefba99793eca1d3d9de1b56dd038279529b6e08cf6740",
+          "redSourceSha256": "4c630b1d9408b6a076e41f353c00e62ccc2161563d1f3643381a6b226456a047",
+          "red": {
+            "actual": 84,
+            "passed": 78,
+            "failed": 6,
+            "assertion": "DR assertion: disposed mutation starts no follow-up select or genuine GET",
+            "scopeReached": "first explicit-disposal schedule; owner-replacement and healthy-B schedules not reached on red",
+            "rawSha256": "938b99e12e4e377a98b9011d11622bfbb19424231d9e89dfc2d7f2ae636f3704"
+          },
+          "green": {
+            "actual": 84,
+            "passed": 84,
+            "failed": 0,
+            "rawSha256": "34006be7b5e7e8cb85a435a4245e68e55091e39b0afa5799143d63507919c1d7",
+            "durationMs": 525156.935,
+            "cases": [
+              {
+                "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [trailbase]",
+                "project": "chromium",
+                "durationMs": 2001
+              },
+              {
+                "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [supabase]",
+                "project": "chromium",
+                "durationMs": 7447
+              },
+              {
+                "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [trailbase]",
+                "project": "firefox",
+                "durationMs": 2840
+              },
+              {
+                "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [supabase]",
+                "project": "firefox",
+                "durationMs": 8652
+              },
+              {
+                "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [trailbase]",
+                "project": "webkit",
+                "durationMs": 2646
+              },
+              {
+                "title": "L1-07/16/19/24/26/E04/E11/E14/S08/DR01 disposed mutation does not start a retired follow-up read [supabase]",
+                "project": "webkit",
+                "durationMs": 7907
+              }
+            ]
+          },
+          "testBytesIdenticalAcrossRedGreen": true,
+          "onlyProductChange": "One disposed guard after accepted mutation await, before follow-up read",
+          "appSha256": "91cfcf1572dc3e32cb23de5c6561afe5d1bae90b983e686f07e3af988a13b4eb",
+          "acceptedMutationCancelledRolledBackOrReplayed": false,
+          "schedulesPerCase": [
+            "explicit idempotent UI disposal after genuine committed PATCH before original response delivery",
+            "genuine A-to-B password login retiring A task view through mountAuthTodos before old response delivery"
+          ],
+          "postconditionsPerGreenCase": {
+            "aUpdates": 2,
+            "bHealthyControlUpdates": 1,
+            "dataRequests": [
+              "GET:A",
+              "PATCH:A",
+              "GET:A",
+              "PATCH:A",
+              "GET:B",
+              "PATCH:B",
+              "GET:B"
+            ],
+            "retiredSelects": 0,
+            "retiredRequests": 0,
+            "currentDomUnchanged": true,
+            "bFocusRetained": true,
+            "completeOwnerRowsAuditsAndOldStatePreserved": true
+          },
+          "setupCleanup": "passed",
+          "noFabricatedSuccessfulResponses": true,
+          "singleAttempt": true,
+          "budgetsUnchanged": true,
+          "fullReleaseOrMaintainerApproval": false
+        },
+        "static": {
+          "bothNodeUnits": 302,
+          "checks": "passed",
+          "globalAndEachOf3ModulesCoverageThresholds": {
+            "statements": 95,
+            "lines": 95,
+            "functions": 95,
+            "branches": 90
+          },
+          "zeroSkips": true,
+          "packagePerNode": 4
+        },
+        "review": {
+          "kind": "executor connected-code review, not independent model or maintainer review",
+          "openFindings": [],
+          "maintainerApproval": false
+        },
+        "firstOwnedArchive": {
+          "status": "passed",
+          "files": 1306,
+          "projectsAbsent": 1,
+          "parentsAbsent": 1
+        },
+        "remainingRealScopes": {
+          "state": "completed-as-distinct19plus2",
+          "originalManagedProcess": "proc_d9e9",
+          "originalController": "interrupted19of21",
+          "originalTerminalAbsent": true,
+          "originalPrimaryErrorAbsent": true,
+          "cause": "unknown",
+          "separateManagedProcess": "proc_1233",
+          "separateUnfinishedCommands": 2,
+          "noCompletedScopeRestarted": true
+        },
+        "publication": "pending-normal-scoped-commit-and-push",
+        "exactNewCommitCi": "pending",
+        "fullLocalAudit": "passed22runtime6static-honest19plus2",
+        "evidence": "docs/evidence/todos-disposal-official0359-checkpoint.json",
+        "local": {
+          "runtimeReports": 22,
+          "staticReports": 6,
+          "execution": "honest original interrupted19 plus separate2, no original terminal fabricated or completed scope restarted",
+          "strictResearchFailures": 14,
+          "completeCurrentAndFrozenNamesUnchanged": true
+        },
+        "preservation": {
+          "archives": 59,
+          "files": 88671,
+          "newOwnedArchives": 2,
+          "newOwnedFiles": 3349,
+          "newOwnedProjectsAbsent": 24,
+          "newOwnedParentsAbsent": 2,
+          "privateArtifacts": 7,
+          "privateFiles": 575,
+          "prior95FileCiManifest": "rehashed unchanged",
+          "original0358DemoDataAssetsSixContainersRootLockSupervisorTailnet": "unchanged",
+          "allPriorFailedInterruptedAndExplicitRetryHistories": "unchanged, no retroactive passes or invented causes"
+        }
+      }
+    },
+    "inheritedDuplicateMemberOccurrences": [
+      {
+        "path": "/previousReferencedOrderSession",
+        "key": "checkpoint",
+        "occurrences": [
+          "595106e14462522bb4fa12d03500a928b20e4899",
+          "595106e14462522bb4fa12d03500a928b20e4899"
+        ],
+        "equal": true
+      },
+      {
+        "path": "/g1NativePrototypeDirection",
+        "key": "httpSmtpEvidence",
+        "occurrences": [
+          "docs/evidence/phase-a-private-g1-http-smtp.json",
+          "docs/evidence/phase-a-private-g1-http-smtp.json: two real local HTTP cases passed—SMTP-stop/public-resend/signed-confirmation/identity-preserving login, and concurrent case-insensitive signup retaining one identity; six service image digests and loopback setup verified, cleanup passed."
+        ],
+        "equal": false
+      },
+      {
+        "path": "/g1NativePrototypeDirection",
+        "key": "upgradeEvidence",
+        "occurrences": [
+          "docs/evidence/phase-a-private-g1-upgrade.json",
+          "docs/evidence/phase-a-private-g1-upgrade.json: stock created one SMTP-stranded pending identity, was stopped, and the exact private patch restarted/migrated the same depot; ID/hash persisted through real confirmation and original-password login; setup/cleanup passed."
+        ],
+        "equal": false
+      },
+      {
+        "path": "/g1NativePrototypeDirection",
+        "key": "ambiguousRefusalEvidence",
+        "occurrences": [
+          "docs/evidence/phase-a-private-g1-ambiguous-refusal.json",
+          "docs/evidence/phase-a-private-g1-ambiguous-refusal.json: stock left two case-insensitive pending identities; exact private patch refused startup at migration preflight; identity rows/application schema/history/temp schema unchanged. SQLite optimizer stats additions are recorded separately; setup/cleanup passed."
+        ],
+        "equal": false
+      }
+    ],
+    "duplicatePolicy": "All ordered inherited occurrences preserved explicitly; current decoded historical semantics retained; no inferred new authority or pass.",
+    "qualification": {
+      "sourceSha256": "9f0037089fb0a0c55c6a2325df1fd1232333e83ffbd17cc0d4fd362926a57423",
+      "nodes": [
+        {
+          "node": "22.23.2",
+          "unitPassed": 867,
+          "unitFailed": 0,
+          "unitPending": 0,
+          "check": "passed",
+          "sdkCoverage": "passed",
+          "buildSdk": "passed",
+          "sdkPackage": "passed",
+          "sdkPackageCleanup": "passed",
+          "progress": "passed",
+          "coverageTotal": {
+            "statements": 97.46,
+            "lines": 99.53,
+            "functions": 99.35,
+            "branches": 95.18
+          },
+          "coverageModules": [
+            {
+              "path": "src/auth.ts",
+              "metrics": {
+                "statements": 97.69,
+                "lines": 100,
+                "functions": 98.97,
+                "branches": 95.04
+              }
+            },
+            {
+              "path": "src/common.ts",
+              "metrics": {
+                "statements": 100,
+                "lines": 100,
+                "functions": 100,
+                "branches": 93.54
+              }
+            },
+            {
+              "path": "src/index.ts",
+              "metrics": {
+                "statements": 96.61,
+                "lines": 98.62,
+                "functions": 100,
+                "branches": 95.63
+              }
+            }
+          ]
+        },
+        {
+          "node": "24.21.0",
+          "unitPassed": 867,
+          "unitFailed": 0,
+          "unitPending": 0,
+          "check": "passed",
+          "sdkCoverage": "passed",
+          "buildSdk": "passed",
+          "sdkPackage": "passed",
+          "sdkPackageCleanup": "passed",
+          "progress": "passed",
+          "coverageTotal": {
+            "statements": 97.46,
+            "lines": 99.53,
+            "functions": 99.35,
+            "branches": 95.18
+          },
+          "coverageModules": [
+            {
+              "path": "src/auth.ts",
+              "metrics": {
+                "statements": 97.69,
+                "lines": 100,
+                "functions": 98.97,
+                "branches": 95.04
+              }
+            },
+            {
+              "path": "src/common.ts",
+              "metrics": {
+                "statements": 100,
+                "lines": 100,
+                "functions": 100,
+                "branches": 93.54
+              }
+            },
+            {
+              "path": "src/index.ts",
+              "metrics": {
+                "statements": 96.61,
+                "lines": 98.62,
+                "functions": 100,
+                "branches": 95.63
+              }
+            }
+          ]
+        }
+      ],
+      "record": "docs/evidence/publication-completion-43be95a.json",
+      "privateControllerTestsNotInPublication": [
+        "tests/unit/fixture-auditor-containment.test.ts",
+        "tests/unit/fixture-auditor-owner.test.ts",
+        "tests/unit/fixture-mailpit-host.test.ts",
+        "tests/unit/fixture-original-channel.test.ts",
+        "tests/unit/fixture-original-parent.test.ts",
+        "tests/unit/fixture-owner-entry-lifetime.test.ts",
+        "tests/unit/fixture-parent-guards.test.ts",
+        "tests/unit/fixture-postgres-host.test.ts"
+      ],
+      "privateTestCasesNotIncluded": 66
+    },
+    "development": "stopped; publication-only",
+    "limitations": "Existing historical Auth cleanup failures, all20 genuine RR unexecuted/guards closed, native Auth/bootstrap/socket/session/teardown and complete reference/browser/security/resource/release/signoff gates remain open and unwaived.",
+    "publication": "Containing commit; remote ref and Actions must be verified by exact SHA. CI unobserved at commit time; no green/signoff inferred.",
+    "privacyReview": "Prospective Git tree and all9local-only commit paths/90distinct changed blobs screened. No private runtime/artifact files or controller imports. One private-key marker is an intentional rejection-test input, not a key; apparent missing JS imports are source-string negative tests or generated packed SDK browser modules. Dependency/pin/workflow unchanged."
   }
 }

@@ -1,0 +1,127 @@
+{
+  "scope": "Publication cleanup of the existing development checkpoint, NOT feature/backend/security/release signoff",
+  "status": "both-exact-node-offline-static-unit-coverage-build-packed-consumer-progress-verified",
+  "sourceSha256": "9f0037089fb0a0c55c6a2325df1fd1232333e83ffbd17cc0d4fd362926a57423",
+  "localParent": "43be95af7fe6b3f082d71a9b64874aa6bde57625",
+  "remoteParent": "996d1ee11d1ce32923ad39ac0e75d537c043749a",
+  "checks": [
+    {
+      "node": "22.23.2",
+      "unitPassed": 867,
+      "unitFailed": 0,
+      "unitPending": 0,
+      "check": "passed",
+      "sdkCoverage": "passed",
+      "buildSdk": "passed",
+      "sdkPackage": "passed",
+      "sdkPackageCleanup": "passed",
+      "progress": "passed",
+      "coverageTotal": {
+        "statements": 97.46,
+        "lines": 99.53,
+        "functions": 99.35,
+        "branches": 95.18
+      },
+      "coverageModules": [
+        {
+          "path": "src/auth.ts",
+          "metrics": {
+            "statements": 97.69,
+            "lines": 100,
+            "functions": 98.97,
+            "branches": 95.04
+          }
+        },
+        {
+          "path": "src/common.ts",
+          "metrics": {
+            "statements": 100,
+            "lines": 100,
+            "functions": 100,
+            "branches": 93.54
+          }
+        },
+        {
+          "path": "src/index.ts",
+          "metrics": {
+            "statements": 96.61,
+            "lines": 98.62,
+            "functions": 100,
+            "branches": 95.63
+          }
+        }
+      ]
+    },
+    {
+      "node": "24.21.0",
+      "unitPassed": 867,
+      "unitFailed": 0,
+      "unitPending": 0,
+      "check": "passed",
+      "sdkCoverage": "passed",
+      "buildSdk": "passed",
+      "sdkPackage": "passed",
+      "sdkPackageCleanup": "passed",
+      "progress": "passed",
+      "coverageTotal": {
+        "statements": 97.46,
+        "lines": 99.53,
+        "functions": 99.35,
+        "branches": 95.18
+      },
+      "coverageModules": [
+        {
+          "path": "src/auth.ts",
+          "metrics": {
+            "statements": 97.69,
+            "lines": 100,
+            "functions": 98.97,
+            "branches": 95.04
+          }
+        },
+        {
+          "path": "src/common.ts",
+          "metrics": {
+            "statements": 100,
+            "lines": 100,
+            "functions": 100,
+            "branches": 93.54
+          }
+        },
+        {
+          "path": "src/index.ts",
+          "metrics": {
+            "statements": 96.61,
+            "lines": 98.62,
+            "functions": 100,
+            "branches": 95.63
+          }
+        }
+      ]
+    }
+  ],
+  "verificationEnvironment": "Separate owned checkout and copied installed dependencies; explicit clean npm configs/private cache/tmp; child-only network namespace/loopback with capability drop and no-new-privileges; Node22 then24 serial.",
+  "cacheResolution": "Copied only six existing public registry metadata entries and their lock-integrity-verified tarballs from the existing cache; no download, install/version/dependency/pin change or source-cache mutation. Clean consumer installation itself was exercised by the unchanged package check.",
+  "preservedFailedAttempt": "Initial integrated check failed on a historical Markdown link into a private archive. Rendered the same path as a labelled archived reference; original failure/bytes preserved privately; checker/assertions/thresholds unchanged. Both final pins passed.",
+  "privateTestBoundary": {
+    "files": [
+      "tests/unit/fixture-auditor-containment.test.ts",
+      "tests/unit/fixture-auditor-owner.test.ts",
+      "tests/unit/fixture-mailpit-host.test.ts",
+      "tests/unit/fixture-original-channel.test.ts",
+      "tests/unit/fixture-original-parent.test.ts",
+      "tests/unit/fixture-owner-entry-lifetime.test.ts",
+      "tests/unit/fixture-parent-guards.test.ts",
+      "tests/unit/fixture-postgres-host.test.ts"
+    ],
+    "cases": 66,
+    "reason": "Untracked tests exercise unpublished private RR controller modules, not a portable public controller feature. Preserve privately with their original source/evidence; do not export private controllers, delete committed tests, change suite selection/assertions or claim these cases pass on this public source.",
+    "originalTestsAndControllersPreservedPrivately": true,
+    "notExecutedOnThisPublishedSource": true,
+    "committedTestsRemoved": 0
+  },
+  "provenance": "Public326/sourcef6854acc, Core426/sourceb3a558c6, Core224933/source2da89b50 and this integrated867/source9f0037089fb0a0c55c6a2325df1fd1232333e83ffbd17cc0d4fd362926a57423 are distinct. Historical pass/fail evidence remains source-bound.",
+  "publication": "Containing commit is the publication checkpoint; verify actual remote ref and Actions by its exact SHA. No release/package publication or deployment.",
+  "ciAtCommitTime": "not-yet-observed; subsequent exact-head results must be checked separately; no retry or all-green inference",
+  "remaining": "Existing Auth cleanup failures; all20 genuine RR unexecuted/guards closed; native backend/bootstrap/Auth socket/SCRAM/SQL/session/migration/teardown, reference/three-browser/security/fault/resource/platform/parity/release/maintainer-signoff acceptance remain open/unwaived. No local real backend/daemon/retained-owner attempt in this cleanup session."
+}
