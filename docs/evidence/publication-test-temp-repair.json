@@ -1,0 +1,147 @@
+{
+  "scope": "Narrow publication/portable unit-runner setup repair; no SDK/native owner/fixture admission, dependency/pin, suite selector, assertion, threshold or workflow change",
+  "status": "both-exact-node-offline-current-source-checks-verified-not-native-release-signoff",
+  "sourceSha256": "fc92c9196c54d665a67ac1505ff9924ed129f299e6f61ba6bccde77a11c0cf9b",
+  "parentCommit": "5e06c9088710165e32bef4331cf4d9b8c30ff6d6",
+  "firstPublicationCi": {
+    "runId": 42891043540,
+    "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/42891043540",
+    "commit": "5e06c9088710165e32bef4331cf4d9b8c30ff6d6",
+    "attempt": 1,
+    "conclusion": "failure",
+    "jobs": {
+      "staticUnit22": "failed",
+      "staticUnit24": "failed",
+      "packedNode": "skipped",
+      "sdkRealFixturesBrowsers": "skipped",
+      "realBackends": "skipped"
+    },
+    "unitPerPin": {
+      "passed": 711,
+      "failed": 156,
+      "pending": 0
+    },
+    "coverage": "failed; never relabelled passing",
+    "rawLogsPreservedPrivately": true
+  },
+  "negativeControl": {
+    "sourceSha256": "9f0037089fb0a0c55c6a2325df1fd1232333e83ffbd17cc0d4fd362926a57423",
+    "node": "22.23.2",
+    "unsetOnlyTMPDIR": true,
+    "passed": 711,
+    "failed": 156,
+    "pending": 0,
+    "exactCiFailedNameSetMatched": true,
+    "all156LocalFailures": "TypeError: path argument received undefined in finite unit setup",
+    "ciEnvironmentValueNotDirectlyObserved": true
+  },
+  "repair": "Shared unitTestEnvironment uses Node os.tmpdir; only unit and coverage child environments receive TMPDIR. Existing private mkdtemp fixture leaves and explicit caller temp parents remain intact. Parent environment is not mutated; no directory created/adopted/cleaned by the helper.",
+  "regressionTests": {
+    "red": 2,
+    "greenIncludedInFullSuite": 2,
+    "cases": [
+      "absent TMPDIR default and parent isolation",
+      "explicit temporary parent preserved"
+    ]
+  },
+  "checks": [
+    {
+      "node": "22.23.2",
+      "unitPassed": 869,
+      "unitFailed": 0,
+      "unitPending": 0,
+      "check": "passed",
+      "sdkCoverage": "passed",
+      "buildSdk": "passed",
+      "sdkPackage": "passed",
+      "sdkPackageCleanup": "passed",
+      "progress": "passed",
+      "TMPDIR": "absent from parent; Node os.tmpdir fallback uses private TMP; actual unit/coverage runners supply TMPDIR only to their child",
+      "coverageTotal": {
+        "statements": 97.46,
+        "lines": 99.53,
+        "functions": 99.35,
+        "branches": 95.18
+      },
+      "coverageModules": [
+        {
+          "path": "src/auth.ts",
+          "metrics": {
+            "statements": 97.69,
+            "lines": 100,
+            "functions": 98.97,
+            "branches": 95.04
+          }
+        },
+        {
+          "path": "src/common.ts",
+          "metrics": {
+            "statements": 100,
+            "lines": 100,
+            "functions": 100,
+            "branches": 93.54
+          }
+        },
+        {
+          "path": "src/index.ts",
+          "metrics": {
+            "statements": 96.61,
+            "lines": 98.62,
+            "functions": 100,
+            "branches": 95.63
+          }
+        }
+      ]
+    },
+    {
+      "node": "24.21.0",
+      "unitPassed": 869,
+      "unitFailed": 0,
+      "unitPending": 0,
+      "check": "passed",
+      "sdkCoverage": "passed",
+      "buildSdk": "passed",
+      "sdkPackage": "passed",
+      "sdkPackageCleanup": "passed",
+      "progress": "passed",
+      "TMPDIR": "absent from parent; Node os.tmpdir fallback uses private TMP; actual unit/coverage runners supply TMPDIR only to their child",
+      "coverageTotal": {
+        "statements": 97.46,
+        "lines": 99.53,
+        "functions": 99.35,
+        "branches": 95.18
+      },
+      "coverageModules": [
+        {
+          "path": "src/auth.ts",
+          "metrics": {
+            "statements": 97.69,
+            "lines": 100,
+            "functions": 98.97,
+            "branches": 95.04
+          }
+        },
+        {
+          "path": "src/common.ts",
+          "metrics": {
+            "statements": 100,
+            "lines": 100,
+            "functions": 100,
+            "branches": 93.54
+          }
+        },
+        {
+          "path": "src/index.ts",
+          "metrics": {
+            "statements": 96.61,
+            "lines": 98.62,
+            "functions": 100,
+            "branches": 95.63
+          }
+        }
+      ]
+    }
+  ],
+  "resultingCiAtCommitTime": "not-yet-observed; this is a source change, not an Actions retry; verify the containing exact commit separately",
+  "preservation": "Initial publication/CI failure, local867 evidence, private66 tests, Core63 source pairs and original retainer boundaries retained. No local real backend or original retained-owner query/action. Existing all20 genuine RR unexecuted/guards closed and Auth cleanup/native/security/reference/three-browser/platform/release/signoff gates remain open/unwaived."
+}

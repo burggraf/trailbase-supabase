@@ -10132,6 +10132,7 @@
     }
   ],
   "nextSteps": [
+    "PUBLICATION SETUP REPAIR: first pushed5e06c90 CI42891043540 failed711pass156fail perpin; exact156names reproduced with TMPDIRunset. Sourcefc92c9196c54d665a67ac1505ff9924ed129f299e6f61ba6bccde77a11c0cf9b now passed both exact Node22.23.2/24.21.0 check/869fullunit/coverage/build/offlinepackage/progress with parentTMPDIRabsent. Verify containing commit exact remote/resultingCI separately; no retry, green/signoff or development restart inferred. Prior entries below remain historical/source-bound.",
     "PUBLICATION CHECKPOINT: source9f0037089fb0a0c55c6a2325df1fd1232333e83ffbd17cc0d4fd362926a57423 passed both exact Node22.23.2/24.21.0 check/867full-unit/SDKcoverage/build/offlinepackage/progress. Verify the containing commit exact remote ref and CI separately; no retry/green/signoff inference. Development stopped; no native/backend or retained-owner action. Older instructions below are historical source-bound records, not fresh execution authority.",
     "STOP: Core224 complete; publication held at actual docs/PROGRESS.md and docs/progress.json history conflicts (8 local/1 remote). No commit/push/CI retry, next development or worker. Preserve checkpoint until deliberate ledger-history/staged-work reconciliation and full final integration/public-safe review.",
     "STOP development after bounded224. Only Mark-authorized scoped publication review/history reconciliation; preserve/report conflict or unverified prerequisite. No next milestone, specialist/Mantis restart or physical action.",
@@ -18800,5 +18801,143 @@
     "limitations": "Existing historical Auth cleanup failures, all20 genuine RR unexecuted/guards closed, native Auth/bootstrap/socket/session/teardown and complete reference/browser/security/resource/release/signoff gates remain open and unwaived.",
     "publication": "Containing commit; remote ref and Actions must be verified by exact SHA. CI unobserved at commit time; no green/signoff inferred.",
     "privacyReview": "Prospective Git tree and all9local-only commit paths/90distinct changed blobs screened. No private runtime/artifact files or controller imports. One private-key marker is an intentional rejection-test input, not a key; apparent missing JS imports are source-string negative tests or generated packed SDK browser modules. Dependency/pin/workflow unchanged."
+  },
+  "publicationTestTempRepair": {
+    "status": "both-exact-node-offline-current-source-checks-verified-not-native-release-signoff",
+    "sourceSha256": "fc92c9196c54d665a67ac1505ff9924ed129f299e6f61ba6bccde77a11c0cf9b",
+    "evidence": "docs/evidence/publication-test-temp-repair.json",
+    "firstPublicationCommit": "5e06c9088710165e32bef4331cf4d9b8c30ff6d6",
+    "firstPublicationCi": {
+      "runId": 42891043540,
+      "url": "https://github.com/burggraf/trailbase-supabase/actions/runs/42891043540",
+      "commit": "5e06c9088710165e32bef4331cf4d9b8c30ff6d6",
+      "attempt": 1,
+      "conclusion": "failure",
+      "jobs": {
+        "staticUnit22": "failed",
+        "staticUnit24": "failed",
+        "packedNode": "skipped",
+        "sdkRealFixturesBrowsers": "skipped",
+        "realBackends": "skipped"
+      },
+      "unitPerPin": {
+        "passed": 711,
+        "failed": 156,
+        "pending": 0
+      },
+      "coverage": "failed; never relabelled passing",
+      "rawLogsPreservedPrivately": true
+    },
+    "negativeControl": {
+      "sourceSha256": "9f0037089fb0a0c55c6a2325df1fd1232333e83ffbd17cc0d4fd362926a57423",
+      "node": "22.23.2",
+      "unsetOnlyTMPDIR": true,
+      "passed": 711,
+      "failed": 156,
+      "pending": 0,
+      "exactCiFailedNameSetMatched": true,
+      "all156LocalFailures": "TypeError: path argument received undefined in finite unit setup",
+      "ciEnvironmentValueNotDirectlyObserved": true
+    },
+    "qualification": [
+      {
+        "node": "22.23.2",
+        "unitPassed": 869,
+        "unitFailed": 0,
+        "unitPending": 0,
+        "check": "passed",
+        "sdkCoverage": "passed",
+        "buildSdk": "passed",
+        "sdkPackage": "passed",
+        "sdkPackageCleanup": "passed",
+        "progress": "passed",
+        "TMPDIR": "absent from parent; Node os.tmpdir fallback uses private TMP; actual unit/coverage runners supply TMPDIR only to their child",
+        "coverageTotal": {
+          "statements": 97.46,
+          "lines": 99.53,
+          "functions": 99.35,
+          "branches": 95.18
+        },
+        "coverageModules": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": 97.69,
+              "lines": 100,
+              "functions": 98.97,
+              "branches": 95.04
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": 100,
+              "lines": 100,
+              "functions": 100,
+              "branches": 93.54
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": 96.61,
+              "lines": 98.62,
+              "functions": 100,
+              "branches": 95.63
+            }
+          }
+        ]
+      },
+      {
+        "node": "24.21.0",
+        "unitPassed": 869,
+        "unitFailed": 0,
+        "unitPending": 0,
+        "check": "passed",
+        "sdkCoverage": "passed",
+        "buildSdk": "passed",
+        "sdkPackage": "passed",
+        "sdkPackageCleanup": "passed",
+        "progress": "passed",
+        "TMPDIR": "absent from parent; Node os.tmpdir fallback uses private TMP; actual unit/coverage runners supply TMPDIR only to their child",
+        "coverageTotal": {
+          "statements": 97.46,
+          "lines": 99.53,
+          "functions": 99.35,
+          "branches": 95.18
+        },
+        "coverageModules": [
+          {
+            "path": "src/auth.ts",
+            "metrics": {
+              "statements": 97.69,
+              "lines": 100,
+              "functions": 98.97,
+              "branches": 95.04
+            }
+          },
+          {
+            "path": "src/common.ts",
+            "metrics": {
+              "statements": 100,
+              "lines": 100,
+              "functions": 100,
+              "branches": 93.54
+            }
+          },
+          {
+            "path": "src/index.ts",
+            "metrics": {
+              "statements": 96.61,
+              "lines": 98.62,
+              "functions": 100,
+              "branches": 95.63
+            }
+          }
+        ]
+      }
+    ],
+    "resultingCi": "Unobserved at commit time; verify containing commit exact remote and Actions. No retry/signoff inferred.",
+    "next": "Development stopped. Preserve any new exact CI failures and missing proof; no blind retry, test weakening, native/backend/retained-owner work or new milestone inferred."
   }
 }

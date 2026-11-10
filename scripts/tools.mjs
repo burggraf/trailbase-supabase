@@ -4,7 +4,12 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { tmpdir } from 'node:os';
 
+// Unit fixture creators use private mkdtemp leaves; TMPDIR is not set on every host.
+export function unitTestEnvironment() {
+  return { ...process.env, TMPDIR: tmpdir() };
+}
 export const exec = promisify(execFile);
 export const baseline = JSON.parse(await readFile(new URL('../tests/fixtures/baseline.json', import.meta.url)));
 export function verifyChecksum(bytes, expected) {

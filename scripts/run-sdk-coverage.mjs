@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile, readdir, rm } from 'node:fs/promises';
 import { resolve, relative } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { baseline, exec } from './tools.mjs';
+import { baseline, exec, unitTestEnvironment } from './tools.mjs';
 import { sourceHash } from './run-phase-a.mjs';
 
 const thresholds = { statements: 95, lines: 95, functions: 95, branches: 90 };
@@ -31,7 +31,7 @@ async function main() {
   await rm('.runtime/sdk-coverage', { recursive: true, force: true });
   let passed = false, log;
   try {
-    const result = await exec(process.execPath, ['node_modules/vitest/vitest.mjs', 'run', 'tests/unit', '--coverage'], { timeout: 120000, maxBuffer: 20000000 });
+    const result = await exec(process.execPath, ['node_modules/vitest/vitest.mjs', 'run', 'tests/unit', '--coverage'], { timeout: 120000, maxBuffer: 20000000, env: unitTestEnvironment() });
     passed = true; log = result.stdout + result.stderr;
   } catch (error) { log = String(error.stdout ?? '') + String(error.stderr ?? ''); }
   await writeFile('.runtime/sdk-coverage.log', log, { mode: 0o600 });

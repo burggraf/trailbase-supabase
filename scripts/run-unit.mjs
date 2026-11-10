@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { exec } from './tools.mjs';
+import { exec, unitTestEnvironment } from './tools.mjs';
 import { sourceHash } from './run-phase-a.mjs';
 
 await mkdir('.runtime',{recursive:true,mode:0o700});
@@ -9,7 +9,7 @@ await rm('.runtime/unit.json',{force:true});
 const sourceSha256 = await sourceHash();
 let exitPassed = false;
 try {
-  const result = await exec(resolve('node_modules/.bin/vitest'),['run','tests/unit','--reporter=json','--outputFile',resolve('.runtime/unit.json')],{ timeout:60000 });
+  const result = await exec(resolve('node_modules/.bin/vitest'),['run','tests/unit','--reporter=json','--outputFile',resolve('.runtime/unit.json')],{ timeout:60000, env: unitTestEnvironment() });
   await writeFile('.runtime/unit.log',result.stdout+result.stderr,{mode:0o600});
   exitPassed = true;
 } catch (error) { await writeFile('.runtime/unit.log',String(error.stdout??'')+String(error.stderr??''),{mode:0o600}); }
